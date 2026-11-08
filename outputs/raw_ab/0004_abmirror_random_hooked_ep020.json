@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "abmirror_random_hooked_ep020",
+  "system": "You choose which clips get posted as ads for a vertical drama app.\n\nYou will see two clips taken from the same show, written out as everything that\nhappens in them. You have never seen the show. Pick the ONE you would post to\nstop a scrolling viewer and make them open the app.\n\nJudge only on: does something arresting happen immediately, does it make sense\nwithout context, and does it stop at a moment that leaves you needing more.\nIgnore length. Ignore which one you were shown first.\n\nYou must choose. Reply with JSON only:\n{\n  \"choice\": 1 or 2,\n  \"reason\": \"<one sentence>\",\n  \"confidence\": \"high\" | \"low\"\n}",
+  "prompt": "CLIP 1:\nRUPERT: \"They will learn their place when you wear the ducal crown.\"\n[action] The barn door opens, revealing daylight outside. SEAMUS, an older weathered villager in a waistcoat, carries a wooden bucket inside, his expression etched with deep sorrow and concern.\nSEAMUS: \"Let me take that basket, Lady Juliana.\"\nSEAMUS: \"Your palms are still raw from the fire. You shouldn't be working in this freezing draft.\"\n[action] Seamus reaches down to take the handle of the basket from her.\nJULIANA: \"If I stop, Seamus, the lung fever in the valley wins.\"\nJULIANA: \"I do not yield to a cold draft.\"\nSEAMUS: \"You are a viscount's daughter!\"\nSEAMUS: \"Sleeping on straw, sorting weeds!\"\nSEAMUS: \"Let the village tend to itself for once!\"\n\n-----\n\nCLIP 2:\n[action] Catherine's gloved hand sets her fine porcelain teacup down onto the silver tray with a delicate clatter.\n[sfx] Sharp porcelain chime of teacup meeting saucer.\nCATHERINE: \"Let the peasants rot in their barns.\"\nCATHERINE: \"Let them pray to their weeds.\"\nRUPERT: \"You have no rival here, Catherine.\"\nRUPERT: \"No one to stand in your way.\"\nCATHERINE: \"Once the old Duchess is gone...\"\nCATHERINE: \"...Ashbury will finally belong to us.\"\n[action] Catherine rises from her chair in one regal motion and glides toward the towering window overlooking the vast estate grounds.\nCATHERINE: \"This house will only bow to me.\"\n\nWhich would you post?",
+  "response_text": "{\"choice\":2,\"reason\":\"The power‑hungry dialogue and Catherine’s dramatic rise to the window create an immediate, self‑contained tension that ends on a visual cliffhanger\",\"confidence\":\"high\"}",
+  "response_payload": {
+    "id": "chatcmpl-6de761e4-415a-400d-a947-2158b006749c",
+    "object": "chat.completion",
+    "created": 1794165029,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"choice\":2,\"reason\":\"The power‑hungry dialogue and Catherine’s dramatic rise to the window create an immediate, self‑contained tension that ends on a visual cliffhanger\",\"confidence\":\"high\"}",
+          "reasoning": "We need to pick which clip is more arresting, makes sense without context, stops at a moment that leaves you needing more. Both are dialogue heavy. Clip 1: starts with Rupert line about ducal crown, then barn door opens, Seamus enters, etc. There's tension about cold draft, lung fever. Ends with Seamus saying \"Let the village tend to itself for once!\" Not a cliffhanger, but some tension.\n\nClip 2: Catherine sets teacup, says \"Let the peasants rot...\", Rupert says \"You have no rival...\", Catherine says \"Once the old Duchess is gone... Ashbury will finally belong to us.\" She rises and glides toward window, says \"This house will only bow to me.\" Ends with her moving to window, a power move. More dramatic, clear power struggle, ends with a visual of her at window, leaving need for more.\n\nClip 2 seems more arresting, immediate power conflict, clear stakes, ends on a visual. So choose 2.\n\nProvide JSON: {\"choice\":2,\"reason\":\"The power‑hungry dialogue and Catherine’s dramatic rise to the window create an immediate, self‑contained tension that ends on a visual cliffhanger\",\"confidence\":\"high\"}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.291178714,
+      "prompt_tokens": 606,
+      "prompt_time": 0.031230423,
+      "completion_tokens": 302,
+      "completion_time": 0.638571303,
+      "total_tokens": 908,
+      "total_time": 0.669801726,
+      "completion_tokens_details": {
+        "reasoning_tokens": 252
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_5082008e34",
+    "x_groq": {
+      "id": "req_01m6y93e39eqg80jec3yaejeyh",
+      "seed": 898976798
+    },
+    "service_tier": "on_demand"
+  }
+}

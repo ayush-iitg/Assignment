@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "abmirror_random_legal_ep026",
+  "system": "You choose which clips get posted as ads for a vertical drama app.\n\nYou will see two clips taken from the same show, written out as everything that\nhappens in them. You have never seen the show. Pick the ONE you would post to\nstop a scrolling viewer and make them open the app.\n\nJudge only on: does something arresting happen immediately, does it make sense\nwithout context, and does it stop at a moment that leaves you needing more.\nIgnore length. Ignore which one you were shown first.\n\nYou must choose. Reply with JSON only:\n{\n  \"choice\": 1 or 2,\n  \"reason\": \"<one sentence>\",\n  \"confidence\": \"high\" | \"low\"\n}",
+  "prompt": "CLIP 1:\nDOWAGER DUCHESS: \"Who are you? Speak to me. I have not seen your face before.\"\nJULIANA: \"Please, Your Grace. Drink the last of this antidote. Drink it slowly.\"\n[action] The Duchess swallows the remedy with difficulty as Juliana carefully tilts the amber bottle.\nDOWAGER DUCHESS: \"You... you are no common servant. You took Catherine's whip for me the other day.\"\nJULIANA: \"I did what I had to. It does not change my duty.\"\nJULIANA: \"Rest now, Your Grace. You are safe tonight.\"\nJULIANA: \"If the guards hear us, we are both dead.\"\n[action] The Duchess clutches the blanket against her chest, her breathing quickening with dismay.\n\n-----\n\nCLIP 2:\nDOWAGER DUCHESS: \"Rupert and Catherine want me dead. They are poisoning me in my own bed, aren't they?\"\nJULIANA: \"Yes. But the charcoal is fighting the poison. You are safe now.\"\nDOWAGER DUCHESS: \"Then tell me... why is a girl of such noble spirit working as a common maid?\"\nJULIANA: \"Because my family cast me out to rot. I have nothing left in this world but my honor.\"\n[action] Juliana rests her right hand against the edge of the bedcover, unwittingly placing the unique ring directly within the Duchess's line of sight.\n[sfx] A sharp, stunned gasp.\n[action] The Duchess's mouth hangs open in pure disbelief as she stares fixedly at Juliana's hand.\nDOWAGER DUCHESS: \"Your hand... Let me see your hand.\"\nJULIANA: \"Your Grace? What is wrong? You look as though you've seen a ghost.\"\n[action] The Duchess reaches outward with trembling fingers, grasping frantically for Juliana.\n[sfx] A sudden sharp rustle of fabric as her fingers snap tight.\nDOWAGER DUCHESS: \"Do not move!\"\nDOWAGER DUCHESS: \"Where... where... Where did you get this ring? Speak to me!\"\n\nWhich would you post?",
+  "response_text": "{\"choice\":2,\"reason\":\"The sudden gasp over the mysterious ring and the Duchess’s frantic demand creates an immediate mystery that hooks viewers.\",\"confidence\":\"high\"}",
+  "response_payload": {
+    "id": "chatcmpl-1fc4d9eb-129f-4dbb-95a7-c1aed322217b",
+    "object": "chat.completion",
+    "created": 1794165207,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"choice\":2,\"reason\":\"The sudden gasp over the mysterious ring and the Duchess’s frantic demand creates an immediate mystery that hooks viewers.\",\"confidence\":\"high\"}",
+          "reasoning": "We need to pick which clip is more arresting, makes sense without context, ends on a hook. Clip 1: dialogue about antidote, tension, but ends with Duchess clutches blanket, breathing quickening. No clear hook. Clip 2: poison, charcoal, then a ring appears, Duchess gasps, reaches for hand, demands ring, ends with \"Where did you get this ring? Speak to me!\" That's a clear hook, visual of ring, mystery. So choose Clip 2. Provide JSON."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.050462187,
+      "prompt_tokens": 705,
+      "prompt_time": 0.030411672,
+      "completion_tokens": 148,
+      "completion_time": 0.313868473,
+      "total_tokens": 853,
+      "total_time": 0.344280145,
+      "completion_tokens_details": {
+        "reasoning_tokens": 107
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_76082d2bd0",
+    "x_groq": {
+      "id": "req_01m6y98wd8ewkbaqqmvemaesn4",
+      "seed": 1125768677
+    },
+    "service_tier": "on_demand"
+  }
+}

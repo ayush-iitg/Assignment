@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "abmirror_random_legal_ep007",
+  "system": "You choose which clips get posted as ads for a vertical drama app.\n\nYou will see two clips taken from the same show, written out as everything that\nhappens in them. You have never seen the show. Pick the ONE you would post to\nstop a scrolling viewer and make them open the app.\n\nJudge only on: does something arresting happen immediately, does it make sense\nwithout context, and does it stop at a moment that leaves you needing more.\nIgnore length. Ignore which one you were shown first.\n\nYou must choose. Reply with JSON only:\n{\n  \"choice\": 1 or 2,\n  \"reason\": \"<one sentence>\",\n  \"confidence\": \"high\" | \"low\"\n}",
+  "prompt": "CLIP 1:\n[action] Juliana rinses the heavy mud from her hands in a cold rainwater puddle and rises to her feet, holding her head high.\nARISTOCRATIC WOMAN: \"This is where you live now?\"\nGERALD: \"A fitting home for a woman who threw away everything for a penniless soldier.\"\nJULIANA: \"You came all this way just to insult my home?\"\nARISTOCRATIC WOMAN: \"Home? Look at your hands, Juliana.\"\nARISTOCRATIC WOMAN: \"You look like a servant.\"\nJULIANA: \"I work with my hands. There is no shame in that.\"\nGERALD: \"You were born a lady.\"\nJULIANA: \"And I remain one.\"\nGERALD: \"You chose that scarred beggar over a life of comfort.\"\nJULIANA: \"I chose a man who stood beside me when you walked away.\"\nJULIANA: \"You have no authority here. Leave.\"\nGERALD: \"I have enough influence to make a beggar disappear.\"\nGERALD: \"And your husband?\"\n\n-----\n\nCLIP 2:\nGERALD: \"I have enough influence to make a beggar disappear.\"\nGERALD: \"And your husband?\"\nGERALD: \"Where is that beggar husband?\"\n[action] The Scarred Bearded Man marches purposefully toward the cottage, carrying a heavy bundle of chopped firewood bound tightly with hemp cord.\n[sfx] A dull, heavy thud of timber striking the mud.\n[action] Gerald freezes, his arrogant bravado instantly vanishing as cold dread overtakes his face.\nARISTOCRATIC WOMAN: \"Gerald, don't let him frighten you.\"\nGERALD: \"What are you staring at?\"\n[action] Gerald rapidly turns on his heel toward the carriage, unwilling to face another second of the silent glare.\nGERALD: \"We are leaving.\"\nARISTOCRATIC WOMAN: \"Leaving? Gerald!\"\n\nWhich would you post?",
+  "response_text": "{\"choice\":2,\"reason\":\"The visual threat of the scarred man and Gerald’s sudden dread create immediate tension and end on a cliffhanger.\",\"confidence\":\"high\"}",
+  "response_payload": {
+    "id": "chatcmpl-b7580b1f-e433-444d-9873-3b2b81aa5b9c",
+    "object": "chat.completion",
+    "created": 1794165091,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"choice\":2,\"reason\":\"The visual threat of the scarred man and Gerald’s sudden dread create immediate tension and end on a cliffhanger.\",\"confidence\":\"high\"}",
+          "reasoning": "We need to pick which clip is more arresting, makes sense without context, ends on a hook. Clip1: dialogue heavy, conflict, but no immediate visual hook? It starts with Juliana rinsing mud, then dialogue. Ends with Gerald saying \"And your husband?\" That's a question, but maybe less visual.\n\nClip2: starts with same line, then shows scarred bearded man marching with firewood, thud, Gerald freezes, dread, aristocratic woman says \"don't let him frighten you\", Gerald turns, says \"We are leaving\", aristocratic woman: \"Leaving? Gerald!\" Ends with tension, visual of a threatening figure, and a cliffhanger. More arresting.\n\nThus choose Clip2. Provide JSON."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.382281658,
+      "prompt_tokens": 669,
+      "prompt_time": 0.027550489,
+      "completion_tokens": 194,
+      "completion_time": 0.403895923,
+      "total_tokens": 863,
+      "total_time": 0.431446412,
+      "completion_tokens_details": {
+        "reasoning_tokens": 151
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_bb691ea66b",
+    "x_groq": {
+      "id": "req_01m6y95ad3e38r69fd78v5gt9t",
+      "seed": 1647325817
+    },
+    "service_tier": "on_demand"
+  }
+}

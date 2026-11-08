@@ -1,0 +1,13 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "abmirror_random_legal_ep020",
+  "system": "You choose which clips get posted as ads for a vertical drama app.\n\nYou will see two clips taken from the same show, written out as everything that\nhappens in them. You have never seen the show. Pick the ONE you would post to\nstop a scrolling viewer and make them open the app.\n\nJudge only on: does something arresting happen immediately, does it make sense\nwithout context, and does it stop at a moment that leaves you needing more.\nIgnore length. Ignore which one you were shown first.\n\nYou must choose. Reply with JSON only:\n{\n  \"choice\": 1 or 2,\n  \"reason\": \"<one sentence>\",\n  \"confidence\": \"high\" | \"low\"\n}",
+  "prompt": "CLIP 1:\n[action] Catherine's gloved hand sets her fine porcelain teacup down onto the silver tray with a delicate clatter.\n[sfx] Sharp porcelain chime of teacup meeting saucer.\nCATHERINE: \"Let the peasants rot in their barns.\"\nCATHERINE: \"Let them pray to their weeds.\"\nRUPERT: \"You have no rival here, Catherine.\"\nRUPERT: \"No one to stand in your way.\"\nCATHERINE: \"Once the old Duchess is gone...\"\nCATHERINE: \"...Ashbury will finally belong to us.\"\n[action] Catherine rises from her chair in one regal motion and glides toward the towering window overlooking the vast estate grounds.\nCATHERINE: \"This house will only bow to me.\"\n\n-----\n\nCLIP 2:\nRUPERT: \"Once my cousin Alexander's death is formally sealed by the Crown...\"\nRUPERT: \"...the title is mine.\"\nCATHERINE: \"And what of the Dowager? The old woman still breathes.\"\nCATHERINE: \"Her shadow still hangs over this house.\"\nRUPERT: \"Her health fails more each day. The physicians are baffled.\"\nRUPERT: \"They call it a wasting of the lungs.\"\nCATHERINE: \"How tragic. The slow, quiet decline.\"\nCATHERINE: \"How much longer can the frail thing survive?\"\nRUPERT: \"Not through the winter. I've ensured her quiet comfort.\"\nCATHERINE: \"Good. The village is already whispering about her.\"\nCATHERINE: \"The local peasants are like dogs, barking at every carriage that passes.\"\nCATHERINE: \"They disgust me.\"\n\nWhich would you post?",
+  "text": "{\"choice\":1,\"reason\":\"Catherine\u2019s bold declaration and dramatic rise to the window create immediate tension and a cliffhanger that begs for more\",\"confidence\":\"high\"}",
+  "parsed": {
+    "choice": 1,
+    "reason": "Catherine\u2019s bold declaration and dramatic rise to the window create immediate tension and a cliffhanger that begs for more",
+    "confidence": "high"
+  }
+}

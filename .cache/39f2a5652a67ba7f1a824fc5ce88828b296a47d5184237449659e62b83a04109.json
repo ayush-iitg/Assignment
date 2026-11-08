@@ -1,0 +1,13 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "abmirror_random_hooked_ep020",
+  "system": "You choose which clips get posted as ads for a vertical drama app.\n\nYou will see two clips taken from the same show, written out as everything that\nhappens in them. You have never seen the show. Pick the ONE you would post to\nstop a scrolling viewer and make them open the app.\n\nJudge only on: does something arresting happen immediately, does it make sense\nwithout context, and does it stop at a moment that leaves you needing more.\nIgnore length. Ignore which one you were shown first.\n\nYou must choose. Reply with JSON only:\n{\n  \"choice\": 1 or 2,\n  \"reason\": \"<one sentence>\",\n  \"confidence\": \"high\" | \"low\"\n}",
+  "prompt": "CLIP 1:\nRUPERT: \"They will learn their place when you wear the ducal crown.\"\n[action] The barn door opens, revealing daylight outside. SEAMUS, an older weathered villager in a waistcoat, carries a wooden bucket inside, his expression etched with deep sorrow and concern.\nSEAMUS: \"Let me take that basket, Lady Juliana.\"\nSEAMUS: \"Your palms are still raw from the fire. You shouldn't be working in this freezing draft.\"\n[action] Seamus reaches down to take the handle of the basket from her.\nJULIANA: \"If I stop, Seamus, the lung fever in the valley wins.\"\nJULIANA: \"I do not yield to a cold draft.\"\nSEAMUS: \"You are a viscount's daughter!\"\nSEAMUS: \"Sleeping on straw, sorting weeds!\"\nSEAMUS: \"Let the village tend to itself for once!\"\n\n-----\n\nCLIP 2:\n[action] Catherine's gloved hand sets her fine porcelain teacup down onto the silver tray with a delicate clatter.\n[sfx] Sharp porcelain chime of teacup meeting saucer.\nCATHERINE: \"Let the peasants rot in their barns.\"\nCATHERINE: \"Let them pray to their weeds.\"\nRUPERT: \"You have no rival here, Catherine.\"\nRUPERT: \"No one to stand in your way.\"\nCATHERINE: \"Once the old Duchess is gone...\"\nCATHERINE: \"...Ashbury will finally belong to us.\"\n[action] Catherine rises from her chair in one regal motion and glides toward the towering window overlooking the vast estate grounds.\nCATHERINE: \"This house will only bow to me.\"\n\nWhich would you post?",
+  "text": "{\"choice\":2,\"reason\":\"The power\u2011hungry dialogue and Catherine\u2019s dramatic rise to the window create an immediate, self\u2011contained tension that ends on a visual cliffhanger\",\"confidence\":\"high\"}",
+  "parsed": {
+    "choice": 2,
+    "reason": "The power\u2011hungry dialogue and Catherine\u2019s dramatic rise to the window create an immediate, self\u2011contained tension that ends on a visual cliffhanger",
+    "confidence": "high"
+  }
+}

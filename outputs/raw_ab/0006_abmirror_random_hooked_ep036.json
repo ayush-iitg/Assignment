@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "abmirror_random_hooked_ep036",
+  "system": "You choose which clips get posted as ads for a vertical drama app.\n\nYou will see two clips taken from the same show, written out as everything that\nhappens in them. You have never seen the show. Pick the ONE you would post to\nstop a scrolling viewer and make them open the app.\n\nJudge only on: does something arresting happen immediately, does it make sense\nwithout context, and does it stop at a moment that leaves you needing more.\nIgnore length. Ignore which one you were shown first.\n\nYou must choose. Reply with JSON only:\n{\n  \"choice\": 1 or 2,\n  \"reason\": \"<one sentence>\",\n  \"confidence\": \"high\" | \"low\"\n}",
+  "prompt": "CLIP 1:\nALEXANDER: \"They stole my home!\"\nALEXANDER: \"And now they have taken Juliana!\"\n[action] Close-up of Alexander's gloved hand clenching into a tight, leather-creaking fist.\n[sfx] The sharp, taut creak of leather straining under monstrous grip strength.\n[action] Alexander stands framed in the doorway, staring out into the vast, snow-covered pine forest under the cold moonlight.\nALEXANDER: \"Two days.\"\nALEXANDER: \"Then they have two days to celebrate.\"\nALEXANDER: \"Because before that wedding begins...\"\nALEXANDER: \"...their dead Duke is coming home.\"\n\n-----\n\nCLIP 2:\nALEXANDER: \"Arrested?\"\nALEXANDER'S MOTHER: \"Rupert and Catherine accused her of poisoning me!\"\nALEXANDER: \"But she saved you!\"\nALEXANDER'S MOTHER: \"I told them!\"\nALEXANDER: \"You told them the truth!\"\nALEXANDER'S MOTHER: \"They called her a witch!\"\nALEXANDER: \"Juliana... is in a cell?\"\nALEXANDER'S MOTHER: \"She was taken before a magistrate.\"\nALEXANDER: \"And?!\"\nALEXANDER'S MOTHER: \"They condemned her.\"\nALEXANDER: \"No.\"\nALEXANDER'S MOTHER: \"She is to be executed.\"\nALEXANDER: \"When?\"\n\nWhich would you post?",
+  "response_text": "{\"choice\":1,\"reason\":\"It opens with high stakes (home and loved one stolen) and ends on a looming, mysterious threat that begs continuation\",\"confidence\":\"high\"}",
+  "response_payload": {
+    "id": "chatcmpl-74fd860e-64f4-40e5-8395-ae215c5ca3d8",
+    "object": "chat.completion",
+    "created": 1794165031,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"choice\":1,\"reason\":\"It opens with high stakes (home and loved one stolen) and ends on a looming, mysterious threat that begs continuation\",\"confidence\":\"high\"}",
+          "reasoning": "We need to pick which clip is more arresting, makes sense without context, ends on a hook. Clip 1: Alexander shouting about stolen home, kidnapped Juliana, mentions dead Duke coming home, ominous. Ends with \"Because before that wedding begins... ...their dead Duke is coming home.\" That's a hook. Clip 2: Dialogue about accusation, execution, but less visual. Clip 1 has visual description, tension, cliffhanger. So choose 1. Provide JSON."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.158865837,
+      "prompt_tokens": 565,
+      "prompt_time": 0.02360719,
+      "completion_tokens": 144,
+      "completion_time": 0.299829625,
+      "total_tokens": 709,
+      "total_time": 0.323436815,
+      "completion_tokens_details": {
+        "reasoning_tokens": 100
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_4a7bb72c24",
+    "x_groq": {
+      "id": "req_01m6y93g33e308kj03tvp48cgq",
+      "seed": 138530276
+    },
+    "service_tier": "on_demand"
+  }
+}

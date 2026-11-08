@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "abmirror_random_hooked_ep039",
+  "system": "You choose which clips get posted as ads for a vertical drama app.\n\nYou will see two clips taken from the same show, written out as everything that\nhappens in them. You have never seen the show. Pick the ONE you would post to\nstop a scrolling viewer and make them open the app.\n\nJudge only on: does something arresting happen immediately, does it make sense\nwithout context, and does it stop at a moment that leaves you needing more.\nIgnore length. Ignore which one you were shown first.\n\nYou must choose. Reply with JSON only:\n{\n  \"choice\": 1 or 2,\n  \"reason\": \"<one sentence>\",\n  \"confidence\": \"high\" | \"low\"\n}",
+  "prompt": "CLIP 1:\n[action] Alexander lightly traces the jagged combat scar across his cheek, eyes burning with reclaimed power.\nALEXANDER: \"They buried Alexander Ashwin three years ago.\"\nALEXANDER: \"Today, he comes home.\"\n[action] Alexander emerges in full ducal splendor—dressed in an immaculate navy tailcoat lined with gold embroidery, double-breasted brass buttons, and a crisp white cravat.\nLOYALIST: \"Your Grace.\"\nALEXANDER: \"Secure the chapel.\"\nLOYALIST: \"Yes, Your Grace.\"\nALEXANDER: \"No more hiding.\"\n\n-----\n\nCLIP 2:\n[action] The driver leaps off the cart, striking the sentry across the chest, seizing his neck, and tackling him violently against the wooden carriage wheel.\n[sfx] Dull physical thuds and scuffling boots on wet stone as the guard groans in surprise.\n[action] The loyalist locks the sentry into a tight sleeper hold, clamping a hand firmly over his mouth until his eyes roll back and he goes limp.\nLOYALIST FIGHTER: \"Sleep.\"\nCART DRIVER: \"The road is clear.\"\nLOYALIST FIGHTER: \"Tell the Duke.\"\n[action] Alexander stares solemnly at his rugged reflection, his expression dark and resolute.\n[action] Alexander snips through his overgrown locks, shedding the years of exile and camouflage.\n[sfx] Rhythmic, metallic snips of heavy shears cutting through thick hair.\nALEXANDER: \"Enough hiding.\"\n[action] Alexander lightly traces the jagged combat scar across his cheek, eyes burning with reclaimed power.\nALEXANDER: \"They buried Alexander Ashwin three years ago.\"\nALEXANDER: \"Today, he comes home.\"\n\nWhich would you post?",
+  "response_text": "{\"choice\":1,\"reason\":\"It opens with a striking visual and a bold claim, ending on a tantalizing promise of return that begs for more.\",\"confidence\":\"high\"}",
+  "response_payload": {
+    "id": "chatcmpl-4756c055-a08f-435e-98af-0ad35260aff0",
+    "object": "chat.completion",
+    "created": 1794165274,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"choice\":1,\"reason\":\"It opens with a striking visual and a bold claim, ending on a tantalizing promise of return that begs for more.\",\"confidence\":\"high\"}",
+          "reasoning": "We need to pick which clip is more arresting, makes sense without context, ends on a hook. Clip1: Alexander traces scar, says line, emerges in ducal splendor, commands. Ends with \"No more hiding.\" That's a hook.\n\nClip2: longer, includes fight, driver, then Alexander cutting hair, then same lines as clip1. Ends with same line \"Today, he comes home.\" Actually ends with that line. Clip2 has more action earlier, but maybe too much, less immediate hook? The first few seconds: driver leaps, fights, then Alexander cutting hair. Might be confusing without context. Clip1 starts with scar trace, immediate intrigue, then reveals he's returning. Ends with \"No more hiding.\" That's a hook.\n\nThus choose Clip1. Provide JSON."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.317463447,
+      "prompt_tokens": 620,
+      "prompt_time": 0.033108389,
+      "completion_tokens": 206,
+      "completion_time": 0.430044276,
+      "total_tokens": 826,
+      "total_time": 0.463152665,
+      "completion_tokens_details": {
+        "reasoning_tokens": 162
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_4200b3f836",
+    "x_groq": {
+      "id": "req_01m6y9ax13ev2bvn9ktx1pgr80",
+      "seed": 732125789
+    },
+    "service_tier": "on_demand"
+  }
+}

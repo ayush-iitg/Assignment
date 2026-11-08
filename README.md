@@ -60,8 +60,8 @@ That isn't theoretical. On episode 8, `qwen3.8-27b` named as its hook a beat sta
 
 | | |
 |---|---|
-| **Beats a random legal window** (blind, 38 pairs) | **75.8%** position-corrected, 78.6% on a counterbalanced subset |
-| Beats a window that already passes the hook filter | **65.1%** — so the hook rule does most of the lift, the scoring adds a smaller real edge |
+| **Beats a random legal window** (blind, 38 pairs, every pair judged in both orders) | **77.4%** of decisive pairs, p=0.003 |
+| Beats a window that already passes the hook filter | **73.3%**, p=0.016 — the hook rule does a lot of the lift, the scoring adds a real edge on top |
 | Validators across 92 promos | **92/92** on all six. Zero invented timestamps |
 | Blind comprehension gate | 54 tested, **7 failed**, 0 untested |
 | Continuous vs spliced promos | **0.886 vs 0.800** pass rate — splicing measurably costs comprehension |

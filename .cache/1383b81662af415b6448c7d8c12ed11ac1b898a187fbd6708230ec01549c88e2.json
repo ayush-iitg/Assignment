@@ -1,0 +1,13 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "abmirror_random_hooked_ep043",
+  "system": "You choose which clips get posted as ads for a vertical drama app.\n\nYou will see two clips taken from the same show, written out as everything that\nhappens in them. You have never seen the show. Pick the ONE you would post to\nstop a scrolling viewer and make them open the app.\n\nJudge only on: does something arresting happen immediately, does it make sense\nwithout context, and does it stop at a moment that leaves you needing more.\nIgnore length. Ignore which one you were shown first.\n\nYou must choose. Reply with JSON only:\n{\n  \"choice\": 1 or 2,\n  \"reason\": \"<one sentence>\",\n  \"confidence\": \"high\" | \"low\"\n}",
+  "prompt": "CLIP 1:\nALEXANDER: \"You sold my men to the enemy.\"\nBLOND NOBLEMAN: \"I didn't!\"\nALEXANDER: \"And when you believed I was dead...\"\nALEXANDER: \"You took my title.\"\n[sfx] Brittle snap of breaking sealing wax.\nCROWN OFFICIAL: \"Official death confirmation was filed three months after the ambush.\"\nCROWN OFFICIAL: \"Duke Alexander Ashburn was declared dead.\"\nCROWN OFFICIAL: \"His estate and title were subsequently transferred under false authority.\"\n\n-----\n\nCLIP 2:\n[action] Lord Sterling clutches his gold-headed walking cane tightly, his jaw clenching as tension spreads through the church.\nBLOND NOBLEMAN: \"You have all been deceived!\"\nALEXANDER: \"Then let the Crown decide.\"\n[action] Alexander brings forth the dossier stamped \"WAR OFFICE - TOP SECRET\" with the royal crest.\nALEXANDER: \"These were delivered to me under the seal of the Crown.\"\nALEXANDER: \"Read the first.\"\n[action] The Crown Official receives the dossier solemnly with both hands.\n[sfx] Crisp sound of parchment turning.\nCROWN OFFICIAL: \"Military Intelligence Report, Iberian front, three years ago.\"\nCROWN OFFICIAL: \"Duke Alexander Ashburn's unit was ambushed after his location was compromised.\"\n\nWhich would you post?",
+  "text": "{\"choice\":2,\"reason\":\"It opens with tense visual action and a shocking revelation that ends on a cliffhanger, pulling viewers in without needing prior knowledge.\",\"confidence\":\"high\"}",
+  "parsed": {
+    "choice": 2,
+    "reason": "It opens with tense visual action and a shocking revelation that ends on a cliffhanger, pulling viewers in without needing prior knowledge.",
+    "confidence": "high"
+  }
+}

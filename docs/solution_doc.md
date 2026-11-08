@@ -51,11 +51,11 @@ Across all 92 promos, including rejected ones and the cross-episode promo, `time
 
 None of that answers the real question, which is whether the picks beat picking at random. So I tested it directly. Every pick goes up against a random legal window from the same episode: same length rules, same real beat boundaries, just not chosen. A blind judge sees two clips as plain text and never sees a score.
 
-Against any legal 20-60 second window, which tests the whole system, the tool wins **75.8%** of the time after correcting for position, and 78.6% on a strictly counterbalanced subset where it won both ways on 10 of 14 pairs. Against a window that already passes the hook filter it wins **65.1%** (64.3% counterbalanced). Chance is 50%, n is 38 pairs, uncorrected p=0.0017.
+Every pair was judged twice, once with each clip shown first, because the judge turned out to prefer whichever clip it read second. Running both orders makes that cancel instead of needing a correction. The unit of analysis is the pair, not the judgement, since two judgements of the same two clips aren't independent.
 
-One thing I nearly missed: the judge has a strong preference for whichever clip comes second, winning there 88.5% of the time against 41.7% shown first. So I re-judged as many pairs as the token budget allowed in the opposite order. Averaging the position-conditional rates and taking the counterbalanced subset give nearly the same answer, which is why I trust it.
+Against any legal window, the tool was preferred in **both** orders on 24 of 38 pairs and the random window on 7, with 7 flipping. That's **77.4% of the 31 pairs that gave a consistent answer, p=0.003**. Against a window that already passes the hook filter: 22 to 8 with 8 flips, so **73.3%, p=0.016**. Chance is 50%.
 
-The second comparison is the more useful number. Requiring a strong opening does most of the work; my tension scoring and the model's choice add a smaller but real edge on top. I'd rather report that than the flattering headline.
+The second comparison is the more useful one. Requiring a strong opening does a lot of the work on its own, and the tension scoring plus the model's choice adds a real edge on top of that rather than being the whole story. Order consistency was 82% and 79%, so roughly a fifth of pairs were close enough that reading order decided them, which is worth knowing before anyone over-reads a single comparison.
 
 Splicing turned out to cost comprehension, which I hadn't expected to be measurable. Continuous promos pass the gate at 0.886, spliced ones at 0.800. I'd already charged a flat 0.10 penalty for the cut on instinct; this is what justifies it, and no spliced promo makes it near the top of the ranking.
 

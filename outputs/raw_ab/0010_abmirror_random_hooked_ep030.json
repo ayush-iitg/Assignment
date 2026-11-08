@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "abmirror_random_hooked_ep030",
+  "system": "You choose which clips get posted as ads for a vertical drama app.\n\nYou will see two clips taken from the same show, written out as everything that\nhappens in them. You have never seen the show. Pick the ONE you would post to\nstop a scrolling viewer and make them open the app.\n\nJudge only on: does something arresting happen immediately, does it make sense\nwithout context, and does it stop at a moment that leaves you needing more.\nIgnore length. Ignore which one you were shown first.\n\nYou must choose. Reply with JSON only:\n{\n  \"choice\": 1 or 2,\n  \"reason\": \"<one sentence>\",\n  \"confidence\": \"high\" | \"low\"\n}",
+  "prompt": "CLIP 1:\nELDER NOBLEMAN: \"We stop hiding the prisoner.\"\n[sfx] The heavy creak of massive mahogany doors gliding open on brass hinges.\nELDER NOBLEMAN: \"We give them a reason to condemn her.\"\nCATHERINE: \"You have a solution?\"\nELDER NOBLEMAN: \"We use the law to destroy her.\"\nRUPERT: \"The law?\"\nELDER NOBLEMAN: \"A maid with herbs in her possession, a secret medicine, an unauthorized visit to the Duchess's chamber.\"\n[action] The Elder Nobleman leans both hands against the desk, leaning forward intently.\n\n-----\n\nCLIP 2:\nRUPERT: \"And Juliana?\"\nELDER NOBLEMAN: \"She goes before the magistrate tomorrow.\"\nCATHERINE: \"She will hang. A perfect solution. The town will cheer as the witch's disgraced daughter faces the noose.\"\nRUPERT: \"I will write the arrest warrant myself.\"\nELDER NOBLEMAN: \"Tomorrow, she stops being a prisoner. She becomes a witch.\"\n\nWhich would you post?",
+  "response_text": "{\"choice\":2,\"reason\":\"It ends on a shocking twist that a prisoner will become a witch, creating immediate intrigue and a hook for viewers.\",\"confidence\":\"high\"}",
+  "response_payload": {
+    "id": "chatcmpl-5499e53e-5fbe-4152-a848-53c27d2bcb7f",
+    "object": "chat.completion",
+    "created": 1794165087,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"choice\":2,\"reason\":\"It ends on a shocking twist that a prisoner will become a witch, creating immediate intrigue and a hook for viewers.\",\"confidence\":\"high\"}",
+          "reasoning": "We need to pick which clip is more arresting, makes sense without context, ends on a hook. Clip 1: starts with \"We stop hiding the prisoner.\" heavy doors opening, talk about using law to destroy her. Ends with Elder leaning forward. No clear cliffhanger, but tension.\n\nClip 2: mentions Juliana, magistrate, hanging, \"She will hang... town will cheer... I will write the arrest warrant myself.\" Ends with \"Tomorrow, she stops being a prisoner. She becomes a witch.\" That's a twist, hook. More dramatic. So choose Clip 2.\n\nProvide JSON with choice 2, reason one sentence, confidence high."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.380830585,
+      "prompt_tokens": 484,
+      "prompt_time": 0.01999616,
+      "completion_tokens": 179,
+      "completion_time": 0.372139894,
+      "total_tokens": 663,
+      "total_time": 0.392136054,
+      "completion_tokens_details": {
+        "reasoning_tokens": 136
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_803c0ba83d",
+    "x_groq": {
+      "id": "req_01m6y956z5eefspx1xfwr4c6sf",
+      "seed": 85000113
+    },
+    "service_tier": "on_demand"
+  }
+}

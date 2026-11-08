@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "abmirror_random_hooked_ep019",
+  "system": "You choose which clips get posted as ads for a vertical drama app.\n\nYou will see two clips taken from the same show, written out as everything that\nhappens in them. You have never seen the show. Pick the ONE you would post to\nstop a scrolling viewer and make them open the app.\n\nJudge only on: does something arresting happen immediately, does it make sense\nwithout context, and does it stop at a moment that leaves you needing more.\nIgnore length. Ignore which one you were shown first.\n\nYou must choose. Reply with JSON only:\n{\n  \"choice\": 1 or 2,\n  \"reason\": \"<one sentence>\",\n  \"confidence\": \"high\" | \"low\"\n}",
+  "prompt": "CLIP 1:\nJULIANA: \"My mother's book almost burned with it.\"\n[action] Juliana tenderly lifts a scorched corner of parchment, revealing the surviving botanical drawing of medicinal herbs inside.\nELDER VILLAGER: \"My lady. You cannot stay here.\"\nELDER VILLAGER: \"There is an old barn near the village. It is empty.\"\n[action] The elder villager steps closer, resting a gentle, reassuring hand on Juliana's shoulder.\nELDER VILLAGER: \"Take it.\"\nJULIANA: \"We cannot ask the village to feed us.\"\nELDER VILLAGER: \"You saved my son's life.\"\nELDER VILLAGER: \"You saved mine, too.\"\nJULIANA: \"Thank you.\"\n[action] Alexander steps forward and accepts the thick folded blankets and a wooden bucket from the villager.\nALEXANDER: \"We will not forget this kindness.\"\nELDER VILLAGER: \"Neither will the village.\"\nJULIANA: \"Goodbye, Blackwood.\"\n[action] Juliana turns her back on the ruins. Wide tracking shot from behind as Alexander and Juliana walk side by side down the stone path, leaving the smoldering ash behind as the scene fades into black.\n[action] A bald, scarred man dressed in a dark coat emerges from between the trees, immediately coming to a halt and bowing with clasped hands in formal deference.\nINFORMANT: \"Your Grace.\"\n\n-----\n\nCLIP 2:\n[action] A bald, scarred man dressed in a dark coat emerges from between the trees, immediately coming to a halt and bowing with clasped hands in formal deference.\nINFORMANT: \"Your Grace.\"\nALEXANDER: \"Tell me what is happening in Ashburg.\"\nINFORMANT: \"Lord Sterling's influence has grown since your disappearance. He has men in the county offices, the courts, even among the household staff.\"\nINFORMANT: \"Rupert has become the face of Ashburg. He sits in your father's room, signs your estate papers, gives orders as though the title already belongs to him.\"\nINFORMANT: \"And Lady Catherine, she behaves as though she is already the future duchess.\"\nINFORMANT: \"But they have separated her from the household. She is watched constantly. Every letter she sends is checked. Every visitor is questioned.\"\n\nWhich would you post?",
+  "response_text": "{\"choice\":1,\"reason\":\"The sudden appearance of a mysterious, scarred informant after the characters leave the ruins creates an immediate hook that makes sense on its own and ends on a question.\",\"confidence\":\"high\"}",
+  "response_payload": {
+    "id": "chatcmpl-625296f4-ebda-4f9b-85c5-ff4c314aff10",
+    "object": "chat.completion",
+    "created": 1794165270,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"choice\":1,\"reason\":\"The sudden appearance of a mysterious, scarred informant after the characters leave the ruins creates an immediate hook that makes sense on its own and ends on a question.\",\"confidence\":\"high\"}",
+          "reasoning": "We need to pick which clip is more arresting, makes sense without context, stops at a moment that leaves you needing more. Clip 1: starts with Juliana talking about mother's book, then elder villager, then they leave ruins, then a bald scarred man emerges and bows, says \"Your Grace.\" Ends with that. That's a twist: mysterious informant appears after they leave. Clip 2: starts with same bald scarred man bowing, then informant gives exposition about political intrigue, ends with description of Lady Catherine being watched. No cliffhanger? It ends with exposition, not a hook. Clip 1 has visual intrigue, a mysterious figure appears after a departure, leaving question who he is. Clip 2 is heavy exposition, less immediate action. So choose Clip 1.\n\nProvide JSON: {\"choice\":1,\"reason\":\"The sudden appearance of a mysterious, scarred informant after the characters leave the ruins creates an immediate hook that makes sense on its own and ends on a question.\",\"confidence\":\"high\"}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.382071328,
+      "prompt_tokens": 744,
+      "prompt_time": 0.03314964,
+      "completion_tokens": 264,
+      "completion_time": 0.558703232,
+      "total_tokens": 1008,
+      "total_time": 0.591852872,
+      "completion_tokens_details": {
+        "reasoning_tokens": 211
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_c868cf1eaa",
+    "x_groq": {
+      "id": "req_01m6y9as4wepavewapdqnysr1j",
+      "seed": 59715110
+    },
+    "service_tier": "on_demand"
+  }
+}

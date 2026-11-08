@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "abmirror_random_legal_ep016",
+  "system": "You choose which clips get posted as ads for a vertical drama app.\n\nYou will see two clips taken from the same show, written out as everything that\nhappens in them. You have never seen the show. Pick the ONE you would post to\nstop a scrolling viewer and make them open the app.\n\nJudge only on: does something arresting happen immediately, does it make sense\nwithout context, and does it stop at a moment that leaves you needing more.\nIgnore length. Ignore which one you were shown first.\n\nYou must choose. Reply with JSON only:\n{\n  \"choice\": 1 or 2,\n  \"reason\": \"<one sentence>\",\n  \"confidence\": \"high\" | \"low\"\n}",
+  "prompt": "CLIP 1:\n[action] Alexander strikes the thug across the chest and slams him violently into the muddy ground beside the stone wall.\n[sfx] Heavy thud of a body crashing into soil and wood.\nBALD THUG: \"Aaargh!\"\n[sfx] Loud wooden scrape and crunch as the Bald Thug slides across the planks into the fence.\nTHIRD THUG: \"Stay back!\"\n[action] Alexander deflects the strike with his forearm, drives a swift counter-blow into the thug's torso, and spins him violently to the ground.\n[sfx] Solid bone-and-fist impact followed by a groaning thud.\nJULIANA: \"Alexander...\"\nALEXANDER: \"Are you hurt?\"\nJULIANA: \"Only my hands.\"\n\n-----\n\nCLIP 2:\nALEXANDER: \"Wrong answer.\"\n[action] Alexander tightens his grip on the thug's throat, lifting him higher against the stone wall.\nALEXANDER: \"Who?!\"\nTHUG WITH CAP: \"Harrington! Gerald Harrington paid us!\"\nJULIANA: \"Gerald...\"\n[action] The Thug with Cap scrambles to his feet and sprints into the dark woods alongside his two limping accomplices.\nTHUG WITH CAP: \"We were only paid to destroy the garden, that's all!\"\n[action] Alexander flexes his bleeding hand, showing no sign of pain.\nJULIANA: \"You knew exactly what to do.\"\nJULIANA: \"You fought like you've done this a hundred times.\"\nALEXANDER: \"A soldier learns things he wishes he could forget.\"\nJULIANA: \"Are you hurt?\"\n[action] Juliana reaches out toward his injured hand with delicate concern.\nALEXANDER: \"No.\"\n[action] Alexander and Juliana gaze deeply into each other's eyes, an unspoken bond forming between them as the ruined garden lies silent beneath the moon.\n[sfx] Slow, resonant emotional cello melody swelling to a dramatic cliffhanger hold.\n\nWhich would you post?",
+  "response_text": "{\"choice\":2,\"reason\":\"It reveals a mystery, shows high tension and ends on an emotional cliffhanger that begs for more\",\"confidence\":\"high\"}",
+  "response_payload": {
+    "id": "chatcmpl-f375d64e-95d0-4e00-81f3-ecb759a835b6",
+    "object": "chat.completion",
+    "created": 1794165275,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"choice\":2,\"reason\":\"It reveals a mystery, shows high tension and ends on an emotional cliffhanger that begs for more\",\"confidence\":\"high\"}",
+          "reasoning": "We need to choose which clip is more arresting, makes sense without context, ends on a cliffhanger needing more. Clip1: action fight, ends with \"Only my hands.\" Not a big cliffhanger. Clip2: includes dialogue, a reveal about Gerald Harrington, a thug escaping, Alexander's bleeding hand, emotional bond, ends with dramatic music and cliffhanger. More intrigue. So choose Clip2. Provide JSON."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.385569671,
+      "prompt_tokens": 670,
+      "prompt_time": 0.038225247,
+      "completion_tokens": 128,
+      "completion_time": 0.265693352,
+      "total_tokens": 798,
+      "total_time": 0.303918599,
+      "completion_tokens_details": {
+        "reasoning_tokens": 88
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_c868cf1eaa",
+    "x_groq": {
+      "id": "req_01m6y9ay2wen4rym2qdbjg328t",
+      "seed": 1058137949
+    },
+    "service_tier": "on_demand"
+  }
+}

@@ -311,41 +311,46 @@ def markdown(report: dict) -> str:
         out.append("\n## 2. Blind A/B: does the tool beat picking at random?\n")
         out.append(f"Judge: `{ab['judge']['model']}`, seed {ab['judge']['seed']}. "
                    f"{ab['design']}\n")
-        if ab.get("caveat"):
-            out.append(f"> **Caveat.** {ab['caveat']}\n")
-        out.append("| Compared against | Pairs | Uncorrected | Shown 1st / 2nd | "
-                   "**Position-corrected** | Counterbalanced subset |")
-        out.append("|---|---|---|---|---|---|")
+        if ab.get("unit_of_analysis"):
+            out.append(f"**Unit of analysis.** {ab['unit_of_analysis']}\n")
         labels = {
             "random_legal": "Any legal 20–60s window — the whole system",
             "random_hooked": "A window already passing the hook filter — "
                              "what the tension scoring adds",
         }
+        out.append("| Compared against | Pairs | Tool won both orders | Rival won both | "
+                   "Flipped | **Win rate** | p |")
+        out.append("|---|---|---|---|---|---|---|")
         for name, row in ab["summary"].items():
-            cb = row.get("counterbalanced_subset") or {}
             out.append(
-                f"| {labels.get(name, name)} | {row['n_pairs']} | "
-                f"{row['uncorrected_win_rate']:.1%} (p={row['uncorrected_p_value']}) | "
-                f"{row['win_rate_when_tool_shown_first']:.1%} / "
-                f"{row['win_rate_when_tool_shown_second']:.1%} | "
-                f"**{row['position_corrected_win_rate']:.1%}** | "
-                f"{cb.get('win_rate', 0):.1%} over {cb.get('judgements', 0)} judgements |"
+                f"| {labels.get(name, name)} | {row['pairs']} | "
+                f"{row['tool_preferred_both_orders']} | "
+                f"{row['rival_preferred_both_orders']} | "
+                f"{row['flipped_with_order']} | "
+                f"**{row['win_rate_decisive_pairs']:.1%}** | "
+                f"{row['p_value_decisive_pairs']} |"
             )
-        out.append("\nChance is 50%. This replaces a hand-picked reference set as the "
-                   "headline quality measure: it runs unattended on any new show, needs "
-                   "no editor time, and n equals the episode count rather than 6.\n")
+        out.append("\nChance is 50%. Every pair was judged in both presentation orders, "
+                   "so position bias cancels by construction. This replaces a "
+                   "hand-picked reference set as the headline quality measure: it runs "
+                   "unattended on any new show and needs no editor time.\n")
         for name, row in ab["summary"].items():
-            cb = row.get("counterbalanced_subset") or {}
-            if cb:
-                out.append(f"*{labels.get(name, name)}* — on the {cb['pairs_judged_both_orders']} "
-                           f"pairs judged in both orders, the tool was preferred both ways "
-                           f"{cb['tool_preferred_both_orders']} times, the random window both "
-                           f"ways {cb['rival_preferred_both_orders']} times, and "
-                           f"{cb['flipped_with_order']} flipped with presentation order.\n")
+            out.append(
+                f"*{labels.get(name, name)}* — order consistency "
+                f"**{row['order_consistency']:.1%}**: the judge gave the same answer in "
+                f"both orders for {row['decisive_pairs']} of {row['pairs']} pairs. "
+                f"Treating all {row['judgements']} judgements as independent would give "
+                f"{row['win_rate_all_judgements']:.1%}, but they are correlated within a "
+                f"pair, so that figure is reported only for completeness. Position effect "
+                f"across judgements: {row['win_rate_when_shown_first']:.1%} when the "
+                f"tool's clip was shown first, {row['win_rate_when_shown_second']:.1%} "
+                f"when shown second.\n"
+            )
         for name, row in ab["summary"].items():
-            if row.get("losses"):
-                out.append(f"\n**Where the tool lost ({labels.get(name, name)}):**\n")
-                for loss in row["losses"][:6]:
+            if row.get("losses_both_orders"):
+                out.append(f"\n**Clean losses — the random window won in both orders "
+                           f"({labels.get(name, name)}):**\n")
+                for loss in row["losses_both_orders"][:8]:
                     out.append(f"- episode {loss['episode']}: tool picked "
                                f"`{loss['tool']}`, judge preferred `{loss['rival']}` — "
                                f"*{loss['reason']}*")

@@ -1,0 +1,13 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "abmirror_random_hooked_ep049",
+  "system": "You choose which clips get posted as ads for a vertical drama app.\n\nYou will see two clips taken from the same show, written out as everything that\nhappens in them. You have never seen the show. Pick the ONE you would post to\nstop a scrolling viewer and make them open the app.\n\nJudge only on: does something arresting happen immediately, does it make sense\nwithout context, and does it stop at a moment that leaves you needing more.\nIgnore length. Ignore which one you were shown first.\n\nYou must choose. Reply with JSON only:\n{\n  \"choice\": 1 or 2,\n  \"reason\": \"<one sentence>\",\n  \"confidence\": \"high\" | \"low\"\n}",
+  "prompt": "CLIP 1:\nCATHERINE: \"First, the hearing stays unresolved as long as possible. Every extension, every delay, every excuse to reconvene.\"\nCATHERINE: \"Second, I want to know what the council knows before it decides anything. Every argument, every witness, every whisper against her.\"\nFATHER THOMAS: \"You want eyes inside the council chamber itself?\"\nCATHERINE: \"I want eyes and ears everywhere that decides my future.\"\n[action] Father Thomas clasps his hands behind his back, turning slightly away to ponder the gravity of her words.\nCATHERINE: \"Is that so unreasonable coming from a woman the church itself just humiliated back into relevance?\"\nFATHER THOMAS: \"If I keep the hearing open, if I feed you every word spoken behind those doors, what happens to me when the Duke finds out a crowned priest conspired against him?\"\n\n-----\n\nCLIP 2:\nCATHERINE: \"Today went better than either of us planned for. The whole court watched you humiliate her.\"\nFATHER THOMAS: \"Fitting choice, this room. A place the family forgot for a conversation they mustn't remember.\"\nCATHERINE: \"You always did have a taste for symbolism.\"\nFATHER THOMAS: \"And you always did have a taste for using me. It's why we suit each other.\"\nCATHERINE: \"Then make certain the council remembers that for the full ten days, not just the first hour.\"\nFATHER THOMAS: \"What is it you actually need from me, Catherine? Say it plainly, for once.\"\n\nWhich would you post?",
+  "text": "{\"choice\":1,\"reason\":\"The dialogue instantly reveals high stakes intrigue and ends on a tense question about betrayal, compelling viewers to want more.\",\"confidence\":\"high\"}",
+  "parsed": {
+    "choice": 1,
+    "reason": "The dialogue instantly reveals high stakes intrigue and ends on a tense question about betrayal, compelling viewers to want more.",
+    "confidence": "high"
+  }
+}

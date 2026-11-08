@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "abmirror_random_legal_ep037",
+  "system": "You choose which clips get posted as ads for a vertical drama app.\n\nYou will see two clips taken from the same show, written out as everything that\nhappens in them. You have never seen the show. Pick the ONE you would post to\nstop a scrolling viewer and make them open the app.\n\nJudge only on: does something arresting happen immediately, does it make sense\nwithout context, and does it stop at a moment that leaves you needing more.\nIgnore length. Ignore which one you were shown first.\n\nYou must choose. Reply with JSON only:\n{\n  \"choice\": 1 or 2,\n  \"reason\": \"<one sentence>\",\n  \"confidence\": \"high\" | \"low\"\n}",
+  "prompt": "CLIP 1:\nNOBLEMAN: \"So it is finally official.\"\nCLARISSA: \"Lady Catherine Ashbridge.\"\nCLARISSA: \"And after the ceremony...\"\nNOBLEMAN: \"What?\"\n[action] Clarissa hands the letter upward to him. He takes it and looks down at the bold heading.\nNOBLEMAN: \"The sentencing of the condemned.\"\nCLARISSA: \"They want the families to witness it.\"\nNOBLEMAN: \"A public execution after a wedding.\"\nCLARISSA: \"Not just an execution. A warning.\"\nNOBLEMAN: \"To whom?\"\nCLARISSA: \"To every woman who thinks she can rise above the place she was given.\"\nCLARISSA: \"Juliana's ruin will be a lesson. And we will be there to watch.\"\n[sfx] Rhythmic water drips splashing onto stagnant dungeon puddles and a low, mournful ambient drone.\n[action] Juliana curls her fingers back, pulling away from the foul sustenance in defiance.\n\n-----\n\nCLIP 2:\n[sfx] The harsh scrape and clatter of heavy iron chains dragging across wet stone.\nJULIANA: \"I will not!\"\nJULIANA: \"They can take my name. They can take my home.\"\nJULIANA: \"They cannot take who I am!\"\nNOBLEMAN: \"Do you think she'll actually be executed?\"\nCLARISSA: \"After what she has been accused of? Of course.\"\nNOBLEMAN: \"She was always stubborn.\"\nCLARISSA: \"That was her greatest mistake. She could have accepted what happened. She could have disappeared quietly.\"\n[action] Clarissa rises from her armchair holding a cut crystal glass filled with dark red wine, pacing toward the fireplace.\nCLARISSA: \"Instead she married a nobody, played healer to peasants, challenged people above her. And now the whole county will watch her pay for it.\"\nCLARISSA: \"Let them see what happens when a woman forgets her place.\"\n[action] Clarissa takes a slow sip of the red wine, her eyes gleaming with dark relish.\n\nWhich would you post?",
+  "response_text": "{\"choice\":2,\"reason\":\"The opening chain sounds and Juliana's defiant shouts create instant tension, and Clarissa's dark sip leaves a hook for more drama.\",\"confidence\":\"high\"}",
+  "response_payload": {
+    "id": "chatcmpl-273ba128-4d12-4c05-bf85-9dd6708d66bd",
+    "object": "chat.completion",
+    "created": 1794165093,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"choice\":2,\"reason\":\"The opening chain sounds and Juliana's defiant shouts create instant tension, and Clarissa's dark sip leaves a hook for more drama.\",\"confidence\":\"high\"}",
+          "reasoning": "We need to choose which clip is more arresting, makes sense without context, ends on a hook. Clip 1: starts with \"So it is finally official.\" Then talk about execution after wedding, warning to women. Then sound of water drips, ambient drone, then Juliana curls fingers back, pulling away from foul sustenance in defiance. Ends with defiant gesture. Clip 2: starts with chain sounds, Juliana shouting \"I will not!\" etc. Then nobleman and Clarissa talk, Clarissa rises with wine, says \"Let them see what happens when a woman forgets her place.\" Takes sip, eyes gleaming. Ends with sip. Both have tension. Which is more immediate? Clip 2 opens with harsh chain sounds, immediate conflict, defiant speech, then villainous Clarissa sipping wine. Ends with dark relish. Clip 1 has more exposition about execution after wedding, but less immediate action; ends with defiant gesture but less vivid. Clip 2 likely more arresting. So choose 2. Provide JSON."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.155966259,
+      "prompt_tokens": 705,
+      "prompt_time": 0.02889228,
+      "completion_tokens": 266,
+      "completion_time": 0.548550221,
+      "total_tokens": 971,
+      "total_time": 0.577442501,
+      "completion_tokens_details": {
+        "reasoning_tokens": 217
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_a655021f7d",
+    "x_groq": {
+      "id": "req_01m6y95cekes2b0gmwfy1qvf9n",
+      "seed": 2097052386
+    },
+    "service_tier": "on_demand"
+  }
+}

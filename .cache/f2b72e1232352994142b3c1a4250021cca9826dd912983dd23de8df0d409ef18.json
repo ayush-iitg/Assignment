@@ -1,0 +1,13 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "abmirror_random_hooked_ep017",
+  "system": "You choose which clips get posted as ads for a vertical drama app.\n\nYou will see two clips taken from the same show, written out as everything that\nhappens in them. You have never seen the show. Pick the ONE you would post to\nstop a scrolling viewer and make them open the app.\n\nJudge only on: does something arresting happen immediately, does it make sense\nwithout context, and does it stop at a moment that leaves you needing more.\nIgnore length. Ignore which one you were shown first.\n\nYou must choose. Reply with JSON only:\n{\n  \"choice\": 1 or 2,\n  \"reason\": \"<one sentence>\",\n  \"confidence\": \"high\" | \"low\"\n}",
+  "prompt": "CLIP 1:\nALEXANDER: \"For what?\"\nJULIANA: \"For standing between me and those men.\"\nALEXANDER: \"I would do it again.\"\nJULIANA: \"Even if there were ten of them?\"\nALEXANDER: \"As long as I draw breath...\"\n[action] Alexander drops to one knee before Juliana, gently taking her trembling, bandaged hands into his large, weathered palms.\nALEXANDER: \"...no one will hurt you again.\"\nJULIANA: \"You cannot promise that.\"\nALEXANDER: \"I just did.\"\n[action] Alexander squeezes Juliana's hands reassuringly as she rests her fingertips against his skin. The scene fades to black.\n\n-----\n\nCLIP 2:\n[action] Juliana returns the damp cloth to the ceramic basin, her expression turning somber and reflective.\nJULIANA: \"I was frightened.\"\nALEXANDER: \"Of them?\"\nJULIANA: \"Of losing you.\"\n[action] Juliana rests her cheek against Alexander's chest, closing her eyes as his strong arms wrap around her shoulders, holding her safe against his frame.\n[action] Juliana nestles deeper into his coat, listening intently to the rapid thudding beneath his chest.\nJULIANA: \"Your heart is racing.\"\nALEXANDER: \"So is yours.\"\n[action] Juliana slowly raises her hand, gently twirling a lock of Alexander's long, unruly dark hair between her fingers.\nJULIANA: \"This is becoming impossible.\"\n\nWhich would you post?",
+  "text": "{\"choice\":1,\"reason\":\"The kneeling promise and unresolved threat create immediate tension and a cliffhanger that hooks viewers\",\"confidence\":\"high\"}",
+  "parsed": {
+    "choice": 1,
+    "reason": "The kneeling promise and unresolved threat create immediate tension and a cliffhanger that hooks viewers",
+    "confidence": "high"
+  }
+}

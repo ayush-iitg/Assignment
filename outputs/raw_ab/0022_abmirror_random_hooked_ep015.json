@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "abmirror_random_hooked_ep015",
+  "system": "You choose which clips get posted as ads for a vertical drama app.\n\nYou will see two clips taken from the same show, written out as everything that\nhappens in them. You have never seen the show. Pick the ONE you would post to\nstop a scrolling viewer and make them open the app.\n\nJudge only on: does something arresting happen immediately, does it make sense\nwithout context, and does it stop at a moment that leaves you needing more.\nIgnore length. Ignore which one you were shown first.\n\nYou must choose. Reply with JSON only:\n{\n  \"choice\": 1 or 2,\n  \"reason\": \"<one sentence>\",\n  \"confidence\": \"high\" | \"low\"\n}",
+  "prompt": "CLIP 1:\n[action] The Thug with Cap violently shoves Juliana back with both hands; she cries out as she loses her balance and crashes hard onto the wet stone path.\nJULIANA: \"Ah!\"\n[action] Juliana crawls forward on her elbows; fresh crimson blood seeps profusely through her white gauze bandages as she reaches for the ruined blossoms.\nJULIANA: \"My mother's plants...\"\nBALD THUG: \"Look at her! Crying over weeds!\"\nJULIANA: \"Stop!\"\n[action] The Tall Thug hoists his heavy wooden club above his head to crush the remaining herbs right before Juliana.\n[action] Alexander storms forward with lethal intensity, dark hair flying, breath misting in the cold, radiating untamed rage.\nJULIANA: \"Alexander...\"\n[action] Alexander places himself directly between Juliana and the three thugs, staring them down with cold, deadly intent.\nTHUG WITH CAP: \"What? You want to fight us, veteran?\"\n\n-----\n\nCLIP 2:\n[action] Juliana frantically tries to scoop the crushed soil and torn stems back into the bed with her bandaged hands.\nJULIANA: \"Please! Those plants took months to grow!\"\nTALL THUG: \"Months? You actually spend your days growing this filth?\"\nJULIANA: \"Leave my garden alone.\"\nTHUG WITH CAP: \"A noble lady playing in the dirt. What a joke.\"\nJULIANA: \"It is my home. You have no right to destroy anything here.\"\nTHUG WITH CAP: \"Get out of the way!\"\nJULIANA: \"No.\"\n[action] The Thug with Cap violently shoves Juliana back with both hands; she cries out as she loses her balance and crashes hard onto the wet stone path.\nJULIANA: \"Ah!\"\n[action] Juliana crawls forward on her elbows; fresh crimson blood seeps profusely through her white gauze bandages as she reaches for the ruined blossoms.\nJULIANA: \"My mother's plants...\"\nBALD THUG: \"Look at her! Crying over weeds!\"\n\nWhich would you post?",
+  "response_text": "{\"choice\":1,\"reason\":\"It opens with a violent clash, introduces a mysterious savior and ends on a tense challenge, creating an immediate hook.\",\"confidence\":\"high\"}",
+  "response_payload": {
+    "id": "chatcmpl-ba200a54-0f5e-44fe-8027-cd08703badfb",
+    "object": "chat.completion",
+    "created": 1794165152,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"choice\":1,\"reason\":\"It opens with a violent clash, introduces a mysterious savior and ends on a tense challenge, creating an immediate hook.\",\"confidence\":\"high\"}",
+          "reasoning": "We need to choose which clip is more arresting, makes sense without context, ends on a cliffhanger needing more. Clip 1 includes Alexander entering, tension, thugs, etc. Ends with thugs questioning Alexander: \"What? You want to fight us, veteran?\" That's a hook. Clip 2 is basically a subset of Clip 1, ends with \"Look at her! Crying over weeds!\" No hook. Clip 1 has more action and a hero appearing, leaving tension. So choose Clip 1. Provide JSON."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.285738581,
+      "prompt_tokens": 700,
+      "prompt_time": 0.030849635,
+      "completion_tokens": 155,
+      "completion_time": 0.332012575,
+      "total_tokens": 855,
+      "total_time": 0.36286221,
+      "completion_tokens_details": {
+        "reasoning_tokens": 111
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_96d96a151c",
+    "x_groq": {
+      "id": "req_01m6y9766resnt6j56ftryv459",
+      "seed": 524745933
+    },
+    "service_tier": "on_demand"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "abmirror_random_legal_ep022",
+  "system": "You choose which clips get posted as ads for a vertical drama app.\n\nYou will see two clips taken from the same show, written out as everything that\nhappens in them. You have never seen the show. Pick the ONE you would post to\nstop a scrolling viewer and make them open the app.\n\nJudge only on: does something arresting happen immediately, does it make sense\nwithout context, and does it stop at a moment that leaves you needing more.\nIgnore length. Ignore which one you were shown first.\n\nYou must choose. Reply with JSON only:\n{\n  \"choice\": 1 or 2,\n  \"reason\": \"<one sentence>\",\n  \"confidence\": \"high\" | \"low\"\n}",
+  "prompt": "CLIP 1:\n[action] Lady Juliana walks nervously along the stone pavement dressed in a modest dark maid's dress and a plain white apron, looking around cautiously.\n[action] Prudence rushes up behind Lady Juliana, pulling her into the shelter of the stone archway.\nPRUDENCE: \"Keep your head down. If anyone recognizes you, everything is over.\"\nJULIANA: \"No one will recognize me dressed like this.\"\nPRUDENCE: \"This is Ashburton Manor. The housekeeper watches everyone. Lady Catherine watches everyone, and Lord Rupert...\"\nJULIANA: \"The Duchess is dying.\"\nJULIANA: \"I saved Toby. I can save her.\"\nPRUDENCE: \"And if they discover who you are?\"\nJULIANA: \"Then I will face that when she is breathing again.\"\nPRUDENCE: \"Then forget you were ever a lady.\"\nJULIANA: \"Today, I am only a maid.\"\n[action] Prudence opens the heavy wooden service door, and both women step inside into the dark servants' corridor as the door shuts firmly behind them.\n[sfx] Heavy wooden latch clicks shut with a thud.\n\n-----\n\nCLIP 2:\nPRUDENCE: \"And if they discover who you are?\"\nJULIANA: \"Then I will face that when she is breathing again.\"\nPRUDENCE: \"Then forget you were ever a lady.\"\nJULIANA: \"Today, I am only a maid.\"\n[action] Prudence opens the heavy wooden service door, and both women step inside into the dark servants' corridor as the door shuts firmly behind them.\n[sfx] Heavy wooden latch clicks shut with a thud.\nHOUSEKEEPER: \"Prudence.\"\nHOUSEKEEPER: \"Who is this?\"\nPRUDENCE: \"Julian, ma'am. New help for the winter cleaning.\"\nHOUSEKEEPER: \"She looks soft.\"\n[action] Close-up on Lady Juliana's hands gripping the iron handle of the wooden wash bucket firmly.\nJULIANA: \"I can work, ma'am.\"\nHOUSEKEEPER: \"Can you scrub stone?\"\nJULIANA: \"Yes, ma'am.\"\nHOUSEKEEPER: \"Carry coal?\"\nJULIANA: \"Yes, ma'am.\"\nHOUSEKEEPER: \"And can you keep your eyes and ears where they belong?\"\n\nWhich would you post?",
+  "response_text": "{\"choice\":1,\"reason\":\"It ends on a tense, mysterious moment of the door shutting into darkness, prompting curiosity about what lies ahead\",\"confidence\":\"high\"}",
+  "response_payload": {
+    "id": "chatcmpl-5852b971-2bcf-4eb8-9426-3282cfcd4795",
+    "object": "chat.completion",
+    "created": 1794165209,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"choice\":1,\"reason\":\"It ends on a tense, mysterious moment of the door shutting into darkness, prompting curiosity about what lies ahead\",\"confidence\":\"high\"}",
+          "reasoning": "We need to pick which clip is more arresting, makes sense without context, stops at a moment that leaves you needing more. Clip 1 ends with them stepping into dark corridor, door shuts, latch click. That's a tense moment, unknown what's beyond. Clip 2 continues with housekeeper entering, dialogue, then close-up of hands gripping bucket, then more questions. It ends with \"And can you keep your eyes and ears where they belong?\" That's also a hook, but maybe less immediate tension? Clip 1 has immediate danger, secret identity, door closing, darkness. Clip 2 adds more exposition but maybe less immediate hook. The question: which would stop a scrolling viewer? Likely Clip 1 because it's more mysterious and ends on a cliffhanger. So choose 1.\n\nProvide JSON."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.158340802,
+      "prompt_tokens": 740,
+      "prompt_time": 0.030439138,
+      "completion_tokens": 206,
+      "completion_time": 0.425260379,
+      "total_tokens": 946,
+      "total_time": 0.455699517,
+      "completion_tokens_details": {
+        "reasoning_tokens": 164
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_c3da0d4bb9",
+    "x_groq": {
+      "id": "req_01m6y98y16e0vab9ksb8wzayn6",
+      "seed": 696427585
+    },
+    "service_tier": "on_demand"
+  }
+}

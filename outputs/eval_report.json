@@ -308,29 +308,24 @@
       "model": "openai/gpt-oss-120b",
       "seed": 20261108
     },
-    "design": "Each pick compared against a random legal window from the same episode. Blind: the judge sees two clips as text, never a score, never which is which. Order randomised per pair, then as many pairs as the free-tier token budget allowed were re-judged in the opposite order.",
-    "caveat": "The judge has a strong preference for whichever clip is shown second, so the uncorrected win rate is not trustworthy on its own. The position-corrected figure averages the two position-conditional rates; the counterbalanced subset removes position by construction. Report those, not the raw number.",
+    "design": "Each pick compared against a random legal window from the same episode: same length rules, same real beat boundaries, not selected. The judge sees two clips as plain text, never a score and never which is which. Every pair was judged twice, once in each presentation order, so position bias cancels by construction rather than by correction.",
+    "caveat": "",
     "summary": {
       "random_legal": {
-        "n_pairs": 38,
-        "uncorrected_win_rate": 0.763,
-        "uncorrected_p_value": 0.00166,
-        "win_rate_when_tool_shown_first": 0.667,
-        "win_rate_when_tool_shown_second": 0.85,
-        "allocation_first_vs_second": [
-          18,
-          20
-        ],
-        "position_corrected_win_rate": 0.758,
-        "counterbalanced_subset": {
-          "pairs_judged_both_orders": 14,
-          "judgements": 28,
-          "win_rate": 0.786,
-          "tool_preferred_both_orders": 10,
-          "rival_preferred_both_orders": 2,
-          "flipped_with_order": 2
-        },
-        "losses": [
+        "pairs": 38,
+        "judgements": 76,
+        "counterbalanced": true,
+        "tool_preferred_both_orders": 24,
+        "rival_preferred_both_orders": 7,
+        "flipped_with_order": 7,
+        "decisive_pairs": 31,
+        "win_rate_decisive_pairs": 0.774,
+        "p_value_decisive_pairs": 0.00333,
+        "order_consistency": 0.816,
+        "win_rate_all_judgements": 0.724,
+        "win_rate_when_shown_first": 0.632,
+        "win_rate_when_shown_second": 0.816,
+        "losses_both_orders": [
           {
             "episode": 28,
             "tool": "113.3-136.7",
@@ -344,12 +339,6 @@
             "reason": "It builds tension with a secretive ceremony then ends on a shocking outburst, leaving a clear hook."
           },
           {
-            "episode": 9,
-            "tool": "6.3-54.0",
-            "rival": "86.6-111.2",
-            "reason": "The mysterious rumor about a war veteran who looks like the dead Duke ends on a tense, unanswered \"Impossible\" hook."
-          },
-          {
             "episode": 18,
             "tool": "73.5-106.8",
             "rival": "38.0-68.0",
@@ -360,12 +349,6 @@
             "tool": "21.0-69.5",
             "rival": "65.6-93.8",
             "reason": "The scarred man’s ominous arrival and Gerald’s sudden dread create an immediate hook that leaves viewers wanting to know what happens next."
-          },
-          {
-            "episode": 37,
-            "tool": "104.0-148.0",
-            "rival": "47.0-95.5",
-            "reason": "It reveals a shocking public execution tied to a wedding and ends on Juliana’s defiant gesture, creating immediate intrigue and a cliffhanger."
           },
           {
             "episode": 43,
@@ -388,25 +371,20 @@
         ]
       },
       "random_hooked": {
-        "n_pairs": 38,
-        "uncorrected_win_rate": 0.737,
-        "uncorrected_p_value": 0.0051,
-        "win_rate_when_tool_shown_first": 0.417,
-        "win_rate_when_tool_shown_second": 0.885,
-        "allocation_first_vs_second": [
-          12,
-          26
-        ],
-        "position_corrected_win_rate": 0.651,
-        "counterbalanced_subset": {
-          "pairs_judged_both_orders": 14,
-          "judgements": 28,
-          "win_rate": 0.643,
-          "tool_preferred_both_orders": 8,
-          "rival_preferred_both_orders": 4,
-          "flipped_with_order": 2
-        },
-        "losses": [
+        "pairs": 38,
+        "judgements": 76,
+        "counterbalanced": true,
+        "tool_preferred_both_orders": 22,
+        "rival_preferred_both_orders": 8,
+        "flipped_with_order": 8,
+        "decisive_pairs": 30,
+        "win_rate_decisive_pairs": 0.733,
+        "p_value_decisive_pairs": 0.01612,
+        "order_consistency": 0.789,
+        "win_rate_all_judgements": 0.684,
+        "win_rate_when_shown_first": 0.632,
+        "win_rate_when_shown_second": 0.737,
+        "losses_both_orders": [
           {
             "episode": 28,
             "tool": "113.3-136.7",
@@ -438,22 +416,10 @@
             "reason": "It ends on a mysterious warning that hints at larger conflict, leaving the viewer craving more."
           },
           {
-            "episode": 30,
-            "tool": "120.0-143.5",
-            "rival": "44.8-72.8",
-            "reason": "The creaking doors, urgent dialogue about a hidden prisoner, and a tense reveal of a legal trap end on a cliffhanger that hooks viewers"
-          },
-          {
             "episode": 7,
             "tool": "21.0-69.5",
             "rival": "70.0-103.2",
             "reason": "The sudden arrival of the scarred man with firewood creates immediate tension and ends on a mysterious, unanswered line, prompting curiosity."
-          },
-          {
-            "episode": 38,
-            "tool": "62.8-84.0",
-            "rival": "3.2-39.0",
-            "reason": "The sudden act of a guard slipping bread to a starving prisoner creates immediate tension and ends on a haunting question that begs continuation"
           },
           {
             "episode": 19,

@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "abmirror_random_hooked_ep009",
+  "system": "You choose which clips get posted as ads for a vertical drama app.\n\nYou will see two clips taken from the same show, written out as everything that\nhappens in them. You have never seen the show. Pick the ONE you would post to\nstop a scrolling viewer and make them open the app.\n\nJudge only on: does something arresting happen immediately, does it make sense\nwithout context, and does it stop at a moment that leaves you needing more.\nIgnore length. Ignore which one you were shown first.\n\nYou must choose. Reply with JSON only:\n{\n  \"choice\": 1 or 2,\n  \"reason\": \"<one sentence>\",\n  \"confidence\": \"high\" | \"low\"\n}",
+  "prompt": "CLIP 1:\nJULIANA: \"He is not beyond saving.\"\n[action] The child swallows weakly and lets out a soft cough.\nPEASANT MOTHER: \"Why isn't it working?\"\nJULIANA: \"Wait.\"\nPEASANT MOTHER: \"His fever... it's breaking.\"\nPEASANT MOTHER: \"You saved him.\"\nJULIANA: \"The herbs did their work. Let him rest.\"\n[action] Juliana places a comforting hand over the mother's hands.\n[action] The mother gathers her sleeping son in her arms and steps back toward the rainy doorway.\nPEASANT MOTHER: \"I will tell the village what you did. They will never forget you.\"\n[action] The mother exits into the rainy twilight as Alexander pushes the door shut.\nALEXANDER: \"You cannot let the whole village start talking about you.\"\n\n-----\n\nCLIP 2:\n[action] Alexander steps forward and unlatches the cottage door, opening it into the pouring rain.\nPEASANT MOTHER: \"Please! They told me there was a woman here who knows herbs. My boy is burning with fever!\"\nJULIANA: \"Bring him here. Quickly.\"\n[action] The trembling mother gently lays the feverish boy down atop the wooden table as Juliana leans in close.\nJULIANA: \"He seems very unwell, but he is resting steadily. How long has he been like this?\"\nPEASANT MOTHER: \"Since yesterday morning. He has barely eaten since sunset.\"\n[action] Juliana lifts the weathered herbal book and rapidly browses the handwritten pages.\nJULIANA: \"Feverfew... Not alone.\"\nJULIANA: \"Chamomile... and willow bark.\"\nALEXANDER: \"You're certain?\"\nJULIANA: \"I have to be.\"\n[action] Juliana quickly grabs bundles of dried herbs from the table and turns to Alexander.\nJULIANA: \"Alexander, I need hot water.\"\nALEXANDER: \"I'm on it.\"\n[action] Alexander hurries to the hearth and lifts a boiling iron kettle from the hearth chain, while the mother buries her face in her hands.\nPEASANT MOTHER: \"Please save him.\"\n[action] Alexander returns and pours steaming hot water into the stone mortar as Juliana prepares the remedy.\nJULIANA: \"He is not beyond saving.\"\n[action] The child swallows weakly and lets out a soft cough.\nPEASANT MOTHER: \"Why isn't it working?\"\n\nWhich would you post?",
+  "response_text": "{\"choice\":1,\"reason\":\"Ends on a tense line about secrecy that leaves you wanting to know what happens next\",\"confidence\":\"high\"}",
+  "response_payload": {
+    "id": "chatcmpl-e960f584-519f-4307-bfdd-18dfe827a6a0",
+    "object": "chat.completion",
+    "created": 1794165033,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"choice\":1,\"reason\":\"Ends on a tense line about secrecy that leaves you wanting to know what happens next\",\"confidence\":\"high\"}",
+          "reasoning": "We need to pick which clip is more arresting, makes sense without context, stops at a moment that leaves you needing more. Clip 1: starts with Juliana saying \"He is not beyond saving.\" Then child coughs, mother asks why not working, Juliana says wait, mother says fever breaking, mother thanks Juliana, Juliana says herbs did work, mother says will tell village, mother exits, Alexander says \"You cannot let the whole village start talking about you.\" That ends with a line implying secrecy, tension. Clip 2: longer, shows the process of making remedy, ends with mother asking \"Why isn't it working?\" after child coughs. That ends with a question, but less tension? Clip 1 ends with Alexander's line about preventing gossip, which is intriguing. Clip 1 also has a clear climax: child coughs, mother asks why not working, then resolution with mother praising, then twist with Alexander's warning. That seems more arresting. Clip 2 ends on a question, but less resolution. So choose Clip 1.\n\nProvide JSON: {\"choice\":1,\"reason\":\"Ends on a tense line about secrecy that leaves you wanting to know what happens next\",\"confidence\":\"high\"}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.255329069,
+      "prompt_tokens": 771,
+      "prompt_time": 0.099562899,
+      "completion_tokens": 287,
+      "completion_time": 0.598427922,
+      "total_tokens": 1058,
+      "total_time": 0.697990821,
+      "completion_tokens_details": {
+        "reasoning_tokens": 250
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_86dc843b12",
+    "x_groq": {
+      "id": "req_01m6y93hvwe6qb4cqc9nk2mnvm",
+      "seed": 2026646734
+    },
+    "service_tier": "on_demand"
+  }
+}
