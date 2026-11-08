@@ -1,0 +1,41 @@
+{
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "tag": "select_ep035",
+  "system": "You are a promo editor for vertical microdramas (ReelShort/DramaBox style).\nYou pick which seconds of an episode become a 20-60 second advert for the show.\n\nA good promo:\n- opens on a hook: within its first beats, something that stops a scrolling viewer - a slap, a reveal, a shocking line\n- ends on a cliffhanger: it stops at an unresolved moment, so the viewer must go find the show\n- makes sense alone to someone who has never seen this show\n\nYou will be given candidate windows, each a contiguous run of beats labelled [b00], [b01]...\nYou must choose ONE window and may tighten its edges to any beat labels inside that window.\n\nReply with JSON only:\n{\n  \"chosen_window\": <integer index of the window you picked>,\n  \"start_beat\": \"<beat label>\",\n  \"end_beat\": \"<beat label>\",\n  \"hook_beat\": \"<beat label, must be at or within 2 beats of start_beat>\",\n  \"cliffhanger_beat\": \"<beat label, must be at or near end_beat>\",\n  \"hook\": \"<what grabs the viewer in the first seconds, one sentence>\",\n  \"cliffhanger\": \"<the unresolved moment it cuts on, one sentence>\",\n  \"hook_type\": \"<one of: moral outrage, romantic tension, empathy shock, power reversal>\",\n  \"why_it_works\": \"<one sentence, concrete, no marketing language>\",\n  \"standalone_risk\": \"<what a new viewer would NOT understand, or 'none'>\"\n}\n\nNever invent dialogue. Never output a time or a duration - only beat labels.",
+  "prompt": "Episode 35. 4 candidate windows, already checked for legal length and real beat boundaries.\n\n--- WINDOW 0 (24 seconds, code score 0.85) ---\n[b00] ALEXANDER (ominous, deliberate): \"Because someone wanted you to believe I was dead.\"\n[b01] ALEXANDER'S MOTHER (breathless): \"Who?\"\n[b02] ACTION: Alexander turns away toward the frosted window, staring out into the dark raging blizzard outside.\n[b03] ALEXANDER (brooding): \"I spent three years trying to find out.\"\n[b04] ACTION: Alexander abruptly pushes away from the window, storming back toward the table with burning rage.\n[b05] ALEXANDER (fierce, resolute): \"The ambush was not an accident.\"\n[b06] ALEXANDER (vehement, enraged): \"Someone ordered my men to die.\"\n[b07] ACTION: He leans heavily over the wooden table, looming close as his fury boils over.\n[b08] ALEXANDER (darkly intimating): \"Someone wanted me erased.\"\n[b09] ALEXANDER'S MOTHER (gasping, terrified): \"Who?\"\n[b10] ALEXANDER (deadly, chilling): \"The men behind it... are the same men ruling Ashwood now.\"\n\n--- WINDOW 1 (37 seconds, code score 0.85) ---\n[b00] ALEXANDER'S MOTHER (sobbing, stunned): \"Alexander!\"\n[b01] ALEXANDER (breathless, in disbelief): \"Mother?\"\n[b02] ACTION: She drops her walking staff and rushes forward, throwing her arms around Alexander's neck. He pulls her tightly into his chest.\n[b03] ALEXANDER'S MOTHER (weeping, overwhelmed): \"You're alive.\"\n[b04] ALEXANDER (gentle, choked up): \"Mother.\"\n[b05] ACTION: She leans back slightly, her frail hand reaching up to gently cup his bearded, scarred cheek, staring into his eyes in disbelief.\n[b06] ALEXANDER'S MOTHER (tearful, heartbroken): \"I buried you.\"\n[b07] ALEXANDER (soft, somber): \"I know.\"\n[b08] ALEXANDER'S MOTHER (anguished, accusing): \"They told me you died. They told me your entire regiment was destroyed.\"\n[b09] ALEXANDER (dark, resigned): \"Most of them were.\"\n[b10] ALEXANDER'S MOTHER (searching, desperate): \"Then how did you survive?\"\n\n--- WINDOW 2 (20 seconds, code score 0.79) ---\n[b00] ALEXANDER'S MOTHER (searching, desperate): \"Then how did you survive?\"\n[b01] ALEXANDER (grim, quiet): \"I wasn't supposed to.\"\n[b02] ACTION: Alexander steps over to the wooden table, looking down at the parchment map spread out under the lantern.\n[b03] ALEXANDER (solemn): \"Three years ago, I was sent to the Iberian front.\"\n[b04] ALEXANDER (steady, focused): \"It was a classified Crown mission. We were investigating a British officer selling military secrets to French spies.\"\n[b05] ACTION: Alexander's scarred finger points to a red-circled location on the parchment map marked near Madrid.\n[b06] ALEXANDER'S MOTHER (shocked): \"A traitor?\"\n\n--- WINDOW 3 (21 seconds, code score 0.79) ---\n[b00] ALEXANDER'S MOTHER (trembling, anxious): \"And you?\"\n[b01] ALEXANDER (hollow): \"I was shot. Left for dead.\"\n[b02] ALEXANDER'S MOTHER (pleading, astonished): \"How did you escape?\"\n[b03] ALEXANDER (somber, low): \"I crawled away from the battlefield, half dead, alone.\"\n[b04] ALEXANDER: \"I survived because the men who came looking for me believed I was already dead.\"\n[b05] ALEXANDER'S MOTHER (aghast, stunned): \"Then why did they never tell us?\"\n\nPick the single best promo.",
+  "response_text": "{\n  \"chosen_window\": 0,\n  \"start_beat\": \"b00\",\n  \"end_beat\": \"b10\",\n  \"hook_beat\": \"b00\",\n  \"cliffhanger_beat\": \"b10\",\n  \"hook\": \"A man reveals that his death was a deliberate cover-up, not an accident.\",\n  \"cliffhanger\": \"He identifies the current rulers of Ashwood as the ones who ordered his men killed.\",\n  \"hook_type\": \"power reversal\",\n  \"why_it_works\": \"It immediately establishes a high-stakes conspiracy where the protagonist is a ghost with a vendetta against the current power structure.\",\n  \"standalone_risk\": \"none\"\n}",
+  "response_payload": {
+    "id": "chatcmpl-df3d7d16-063c-45eb-8aad-ec62576f992b",
+    "object": "chat.completion",
+    "created": 1794112496,
+    "model": "qwen/qwen3.8-27b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"chosen_window\": 0,\n  \"start_beat\": \"b00\",\n  \"end_beat\": \"b10\",\n  \"hook_beat\": \"b00\",\n  \"cliffhanger_beat\": \"b10\",\n  \"hook\": \"A man reveals that his death was a deliberate cover-up, not an accident.\",\n  \"cliffhanger\": \"He identifies the current rulers of Ashwood as the ones who ordered his men killed.\",\n  \"hook_type\": \"power reversal\",\n  \"why_it_works\": \"It immediately establishes a high-stakes conspiracy where the protagonist is a ghost with a vendetta against the current power structure.\",\n  \"standalone_risk\": \"none\"\n}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.047894432,
+      "prompt_tokens": 1356,
+      "prompt_time": 0.09344186,
+      "completion_tokens": 166,
+      "completion_time": 0.365496502,
+      "total_tokens": 1522,
+      "total_time": 0.458938362
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_21e59ac2de",
+    "x_groq": {
+      "id": "req_01m6wq0834e06bhvx9fr0qpcew",
+      "seed": 1516482991
+    },
+    "service_tier": "on_demand"
+  }
+}

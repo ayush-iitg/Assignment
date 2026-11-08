@@ -1,0 +1,48 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "select_ep023",
+  "system": "You are a promo editor for vertical microdramas (ReelShort/DramaBox style).\nYou pick which seconds of an episode become a 20-60 second advert for the show.\n\nA good promo:\n- opens on a hook: within its first beats, something that stops a scrolling viewer - a slap, a reveal, a shocking line\n- ends on a cliffhanger: it stops at an unresolved moment, so the viewer must go find the show\n- makes sense alone to someone who has never seen this show\n\nYou will be given candidate windows, each a contiguous run of beats labelled [b00], [b01]...\nYou must choose ONE window and may tighten its edges to any beat labels inside that window.\n\nReply with JSON only:\n{\n  \"chosen_window\": <integer index of the window you picked>,\n  \"start_beat\": \"<beat label>\",\n  \"end_beat\": \"<beat label>\",\n  \"hook_beat\": \"<beat label, must be at or within 2 beats of start_beat>\",\n  \"cliffhanger_beat\": \"<beat label, must be at or near end_beat>\",\n  \"hook\": \"<what grabs the viewer in the first seconds, one sentence>\",\n  \"cliffhanger\": \"<the unresolved moment it cuts on, one sentence>\",\n  \"hook_type\": \"<one of: moral outrage, romantic tension, empathy shock, power reversal>\",\n  \"why_it_works\": \"<one sentence, concrete, no marketing language>\",\n  \"standalone_risk\": \"<what a new viewer would NOT understand, or 'none'>\"\n}\n\nNever invent dialogue. Never output a time or a duration - only beat labels.",
+  "prompt": "Episode 23. 4 candidate windows, already checked for legal length and real beat boundaries.\n\n--- WINDOW 0 (50 seconds, code score 0.85) ---\n[b00] PRUDENCE (panicked, shaken): \"What are you saying?\"\n[b01] JULIANA (cold, deadly serious): \"Someone is poisoning her.\"\n[b02] SFX: Sharp intake of breath from Prudence.\n[b03] PRUDENCE (muffled, horrified): \"Poison?\"\n[b04] JULIANA (venomous, resolute): \"Arsenic.\"\n[b05] SFX: Sudden violent coughing and sputtering from the Duchess.\n[b06] PRUDENCE (desperate, begging): \"Can you save her?\"\n[b07] JULIANA (focused, resolute): \"I can try.\"\n[b08] SFX: Heavy, rhythmic scraping of stone pestle grinding charcoal and dried herbs.\n[b09] JULIANA (urgent, focused): \"The charcoal may help remove what is still inside her. We must act quickly.\"\n[b10] SFX: Sudden muffled thump and heavy footsteps echoing from the hallway outside the door!\n[b11] PRUDENCE (terrified, hoarse whisper): \"Juliana... someone is coming.\"\n\n--- WINDOW 1 (24 seconds, code score 0.79) ---\n[b00] JULIANA (breathless, reverent): \"Mother.\"\n[b01] PRUDENCE (urgent, baffled): \"What is it?\"\n[b02] JULIANA (shocked, deliberate): \"Weakness. Dry mouth. The discoloration beneath the nails. The slow wasting.\"\n[b03] JULIANA (serious, chilled): \"I have seen these symptoms before.\"\n[b04] PRUDENCE (panicked, shaken): \"What are you saying?\"\n[b05] JULIANA (cold, deadly serious): \"Someone is poisoning her.\"\n[b06] SFX: Sharp intake of breath from Prudence.\n[b07] PRUDENCE (muffled, horrified): \"Poison?\"\n\n--- WINDOW 2 (22 seconds, code score 0.71) ---\n[b00] JULIANA (hushed, grave): \"How long has she been like this?\"\n[b01] PRUDENCE (tearful, trembling): \"Weeks.\"\n[b02] JULIANA (solemn): \"Her mouth is terribly dry.\"\n[b03] JULIANA (quiet, grim): \"Her pulse is weak.\"\n[b04] PRUDENCE (despairing, weeping): \"The physician said her heart is failing.\"\n\n--- WINDOW 3 (33 seconds, code score 0.69) ---\n[b00] JULIANA (quiet, grim): \"Her pulse is weak.\"\n[b01] PRUDENCE (despairing, weeping): \"The physician said her heart is failing.\"\n[b02] SFX: Duchess's raspy, labored inhalation.\n[b03] JULIANA (firm, resolute): \"No.\"\n[b04] JULIANA (certain, focused): \"This is not simply old age.\"\n[b05] ACTION: Juliana draws in a sharp, startled breath, her eyes widening in horror.\n[b06] JULIANA (breathless, reverent): \"Mother.\"\n[b07] PRUDENCE (urgent, baffled): \"What is it?\"\n\nPick the single best promo.",
+  "response_text": "{\"chosen_window\":0,\"start_beat\":\"b00\",\"end_beat\":\"b11\",\"hook_beat\":\"b01\",\"cliffhanger_beat\":\"b11\",\"hook\":\"Juliana’s cold confession, “Someone is poisoning her,” drops a deadly secret in the first seconds.\",\"cliffhanger\":\"Prudence whispers, “Juliana… someone is coming,” leaving the threat looming unresolved.\",\"hook_type\":\"moral outrage\",\"why_it_works\":\"The poison revelation instantly raises stakes and the sudden arrival of an unknown figure forces viewers to seek answers.\",\"standalone_risk\":\"The identity of the Duchess isn’t explained, but the danger is clear.\"}",
+  "response_payload": {
+    "id": "chatcmpl-acb28d1c-7c33-400c-886d-80994179e85d",
+    "object": "chat.completion",
+    "created": 1794082495,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"chosen_window\":0,\"start_beat\":\"b00\",\"end_beat\":\"b11\",\"hook_beat\":\"b01\",\"cliffhanger_beat\":\"b11\",\"hook\":\"Juliana’s cold confession, “Someone is poisoning her,” drops a deadly secret in the first seconds.\",\"cliffhanger\":\"Prudence whispers, “Juliana… someone is coming,” leaving the threat looming unresolved.\",\"hook_type\":\"moral outrage\",\"why_it_works\":\"The poison revelation instantly raises stakes and the sudden arrival of an unknown figure forces viewers to seek answers.\",\"standalone_risk\":\"The identity of the Duchess isn’t explained, but the danger is clear.\"}",
+          "reasoning": "We need to pick one window and possibly tighten edges. Must include hook within first 2 beats of start. Must end with cliffhanger near end. Provide JSON.\n\nWe need to evaluate each window.\n\nWindow 0: 11 beats, 50 seconds. Hook could be at b00: \"What are you saying?\" Not strong. Maybe b01: \"Someone is poisoning her.\" That's a shocking line, within first 2 beats (b01). Good hook. Cliffhanger: at b11, \"Juliana... someone is coming.\" That's unresolved tension. Works. Hook type: moral outrage (poisoning) or power reversal? Probably moral outrage. Why works: immediate crisis, poison, urgent.\n\nStandalone risk: viewer may not know who Duchess is, but okay.\n\nWindow 1: 8 beats, 24 seconds. Hook at b05: \"Someone is poisoning her.\" That's within first 2 beats? start at b00, hook at b05 is too far. Could start at b04? Hook must be within 2 beats of start. If we start at b04, hook at b05 is within 1 beat. Start at b04 (Prudence panicked) then hook at b05 (poison). End at b07 (Poison?). Cliffhanger maybe at b07 \"Poison?\" unresolved. That's okay but short. Hook type moral outrage. Works but less dramatic than window0.\n\nWindow 2: No poison line, less hook.\n\nWindow 3: No poison line, but \"This is not simply old age.\" Could be hook but less immediate. Not as strong.\n\nThus best is window 0. We can tighten edges maybe start at b00, hook at b01, end at b11. Provide JSON.\n\nCheck hook beat must be at or within 2 beats of start_beat. start b00, hook b01 okay. Cliffhanger beat near end, we can set end b11, cliffhanger b11.\n\nProvide fields.\n\nStandalone risk: viewer may not know who Duchess is, but they get tension.\n\nReturn compact JSON."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.158266992,
+      "prompt_tokens": 1153,
+      "prompt_time": 0.042206754,
+      "completion_tokens": 572,
+      "completion_time": 1.329491513,
+      "total_tokens": 1725,
+      "total_time": 1.371698267,
+      "prompt_tokens_details": {
+        "cached_tokens": 256
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 428
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_27194a498a",
+    "x_groq": {
+      "id": "req_01m6vtcn33ehvbg5dq6gzbfrf9",
+      "seed": 489013677
+    },
+    "service_tier": "on_demand"
+  }
+}

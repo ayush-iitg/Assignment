@@ -1,0 +1,41 @@
+{
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "tag": "gate_p_020_a",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\nSEAMUS: \"You are a viscount's daughter!\"\nSEAMUS: \"Sleeping on straw, sorting weeds!\"\nSEAMUS: \"Let the village tend to itself for once!\"\nJULIANA: \"The chapel is gone, Seamus. I am the only healer these people have left.\"\nJULIANA: \"I keep the basket.\"\nSEAMUS: \"They have reduced you to a peasant.\"\nJULIANA: \"They have reduced me to myself.\"\nJULIANA: \"And I am not finished.\"\n[action] Catherine's gloved hand sets her fine porcelain teacup down onto the silver tray with a delicate clatter.\n[sfx] Sharp porcelain chime of teacup meeting saucer.\nCATHERINE: \"Let the peasants rot in their barns.\"\nCATHERINE: \"Let them pray to their weeds.\"\nRUPERT: \"You have no rival here, Catherine.\"\nRUPERT: \"No one to stand in your way.\"\nCATHERINE: \"Once the old Duchess is gone...\"\nCATHERINE: \"...Ashbury will finally belong to us.\"\n[action] Catherine rises from her chair in one regal motion and glides toward the towering window overlooking the vast estate grounds.\nCATHERINE: \"This house will only bow to me.\"",
+  "response_text": "{\n  \"who_is_the_main_character\": \"The clip features two distinct groups: Seamus and Juliana (who are never given last names or titles beyond 'viscount's daughter'), and Catherine and Rupert. No single main character is explicitly identified as the protagonist, though Juliana and Catherine are the primary speakers.\",\n  \"what_is_at_stake\": \"There are two conflicting stakes: Juliana is fighting to remain a healer for her village despite her noble birth, while Catherine is plotting to take control of Ashbury estate after the death of the 'old Duchess'.\",\n  \"what_question_are_you_left_with\": \"Who is the 'old Duchess' and how does Juliana's role as a healer connect to Catherine's plot to take over Ashbury?\",\n  \"would_you_keep_watching\": \"maybe, because the connection between the two scenes is unclear and I need to know if Juliana is the target of Catherine's scheme\",\n  \"passes\": {\n    \"character_identifiable\": false,\n    \"stakes_clear\": false,\n    \"ends_unresolved\": true,\n    \"would_watch\": true\n  }\n}",
+  "response_payload": {
+    "id": "chatcmpl-84a11ea0-8666-4bc6-aeeb-4352c59de9a3",
+    "object": "chat.completion",
+    "created": 1794112806,
+    "model": "qwen/qwen3.8-27b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"who_is_the_main_character\": \"The clip features two distinct groups: Seamus and Juliana (who are never given last names or titles beyond 'viscount's daughter'), and Catherine and Rupert. No single main character is explicitly identified as the protagonist, though Juliana and Catherine are the primary speakers.\",\n  \"what_is_at_stake\": \"There are two conflicting stakes: Juliana is fighting to remain a healer for her village despite her noble birth, while Catherine is plotting to take control of Ashbury estate after the death of the 'old Duchess'.\",\n  \"what_question_are_you_left_with\": \"Who is the 'old Duchess' and how does Juliana's role as a healer connect to Catherine's plot to take over Ashbury?\",\n  \"would_you_keep_watching\": \"maybe, because the connection between the two scenes is unclear and I need to know if Juliana is the target of Catherine's scheme\",\n  \"passes\": {\n    \"character_identifiable\": false,\n    \"stakes_clear\": false,\n    \"ends_unresolved\": true,\n    \"would_watch\": true\n  }\n}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.048495914,
+      "prompt_tokens": 589,
+      "prompt_time": 0.044927665,
+      "completion_tokens": 234,
+      "completion_time": 0.444765294,
+      "total_tokens": 823,
+      "total_time": 0.489692959
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_a1293f40b5",
+    "x_groq": {
+      "id": "req_01m6wq9qgjesnbsy5tf8a9y3n9",
+      "seed": 739426292
+    },
+    "service_tier": "on_demand"
+  }
+}

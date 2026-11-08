@@ -1,0 +1,41 @@
+{
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "tag": "gate_p_015_a",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\nJULIANA: \"Those are medicinal plants!\"\nBALD THUG: \"They look like weeds to me.\"\n[action] The bald thug flings the bouquet into the mud and grinds his heavy boot directly onto the delicate flowers.\n[action] Juliana frantically tries to scoop the crushed soil and torn stems back into the bed with her bandaged hands.\nJULIANA: \"Please! Those plants took months to grow!\"\nTALL THUG: \"Months? You actually spend your days growing this filth?\"\nJULIANA: \"Leave my garden alone.\"\nTHUG WITH CAP: \"A noble lady playing in the dirt. What a joke.\"\nJULIANA: \"It is my home. You have no right to destroy anything here.\"\nTHUG WITH CAP: \"Get out of the way!\"\nJULIANA: \"No.\"\n[action] The Thug with Cap violently shoves Juliana back with both hands; she cries out as she loses her balance and crashes hard onto the wet stone path.\nJULIANA: \"Ah!\"\n[action] Juliana crawls forward on her elbows; fresh crimson blood seeps profusely through her white gauze bandages as she reaches for the ruined blossoms.\nJULIANA: \"My mother's plants...\"\nBALD THUG: \"Look at her! Crying over weeds!\"\nJULIANA: \"Stop!\"\n[action] The Tall Thug hoists his heavy wooden club above his head to crush the remaining herbs right before Juliana.",
+  "response_text": "{\n  \"who_is_the_main_character\": \"Juliana (the clip names her, but provides no other identifying details like her role or background)\",\n  \"what_is_at_stake\": \"The destruction of Juliana's medicinal garden, which she claims is her home and her mother's legacy, by a group of thugs\",\n  \"what_question_are_you_left_with\": \"Will the Tall Thug crush the remaining herbs with his club, and what will happen to Juliana?\",\n  \"would_you_keep_watching\": \"yes, because the clip ends on a direct physical threat that is about to be executed\",\n  \"passes\": {\n    \"character_identifiable\": true,\n    \"stakes_clear\": true,\n    \"ends_unresolved\": true,\n    \"would_watch\": true\n  }\n}",
+  "response_payload": {
+    "id": "chatcmpl-096c45c0-e00d-4146-9db0-0de75a898cba",
+    "object": "chat.completion",
+    "created": 1794112859,
+    "model": "qwen/qwen3.8-27b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"who_is_the_main_character\": \"Juliana (the clip names her, but provides no other identifying details like her role or background)\",\n  \"what_is_at_stake\": \"The destruction of Juliana's medicinal garden, which she claims is her home and her mother's legacy, by a group of thugs\",\n  \"what_question_are_you_left_with\": \"Will the Tall Thug crush the remaining herbs with his club, and what will happen to Juliana?\",\n  \"would_you_keep_watching\": \"yes, because the clip ends on a direct physical threat that is about to be executed\",\n  \"passes\": {\n    \"character_identifiable\": true,\n    \"stakes_clear\": true,\n    \"ends_unresolved\": true,\n    \"would_watch\": true\n  }\n}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.048989506,
+      "prompt_tokens": 626,
+      "prompt_time": 0.044340103,
+      "completion_tokens": 171,
+      "completion_time": 0.325711242,
+      "total_tokens": 797,
+      "total_time": 0.370051345
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_21e59ac2de",
+    "x_groq": {
+      "id": "req_01m6wqbagze1z9x5gvzrs9pxjd",
+      "seed": 1218951841
+    },
+    "service_tier": "on_demand"
+  }
+}

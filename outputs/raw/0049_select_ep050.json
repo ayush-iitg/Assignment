@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "select_ep050",
+  "system": "You are a promo editor for vertical microdramas (ReelShort/DramaBox style).\nYou pick which seconds of an episode become a 20-60 second advert for the show.\n\nA good promo:\n- opens on a hook: within its first beats, something that stops a scrolling viewer - a slap, a reveal, a shocking line\n- ends on a cliffhanger: it stops at an unresolved moment, so the viewer must go find the show\n- makes sense alone to someone who has never seen this show\n\nYou will be given candidate windows, each a contiguous run of beats labelled [b00], [b01]...\nYou must choose ONE window and may tighten its edges to any beat labels inside that window.\n\nReply with JSON only:\n{\n  \"chosen_window\": <integer index of the window you picked>,\n  \"start_beat\": \"<beat label>\",\n  \"end_beat\": \"<beat label>\",\n  \"hook_beat\": \"<beat label, must be at or within 2 beats of start_beat>\",\n  \"cliffhanger_beat\": \"<beat label, must be at or near end_beat>\",\n  \"hook\": \"<what grabs the viewer in the first seconds, one sentence>\",\n  \"cliffhanger\": \"<the unresolved moment it cuts on, one sentence>\",\n  \"hook_type\": \"<one of: moral outrage, romantic tension, empathy shock, power reversal>\",\n  \"why_it_works\": \"<one sentence, concrete, no marketing language>\",\n  \"standalone_risk\": \"<what a new viewer would NOT understand, or 'none'>\"\n}\n\nNever invent dialogue. Never output a time or a duration - only beat labels.",
+  "prompt": "Episode 50. 2 candidate windows, already checked for legal length and real beat boundaries.\n\n--- WINDOW 0 (23 seconds, code score 0.67) ---\n[b00] CATHERINE (direct, transactional): \"Name your price.\"\n[b01] FATHER THOMAS (calculated, demanding): \"The west territory. Tax collection, all of it. Routed through my office.\"\n[b02] CATHERINE (scoffing, incredulous): \"That's not absolution, Thomas. That's a fortune.\"\n[b03] FATHER THOMAS (steady, cold): \"Absolution is free. Discretion has a price.\"\n[b04] CATHERINE (soft, calculating): \"Unsupervised. In your hands alone.\"\n\n--- WINDOW 1 (48 seconds, code score 0.61) ---\n[b00] FATHER THOMAS (steady, cold): \"Absolution is free. Discretion has a price.\"\n[b01] CATHERINE (soft, calculating): \"Unsupervised. In your hands alone.\"\n[b02] FATHER THOMAS (grave): \"For as long as it holds.\"\n[b03] CATHERINE (softly, teasing): \"Done. You told yourself this ends when the hearing does.\"\n[b04] FATHER THOMAS (chuckle, resigned): \"I've told myself that since the dawn in your bedchamber, and here we are again.\"\n[b05] CATHERINE (murmuring): \"In another room no one uses?\"\n[b06] FATHER THOMAS (whispering): \"Perhaps I like rooms no one uses.\"\n[b07] CATHERINE (low, carnal): \"Or perhaps discretion isn't the only thing you've developed a taste for.\"\n[b08] ACTION: Catherine closes her eyes in surrender as Father Thomas holds her tight against his naked chest, lost in their forbidden entanglement.\n[b09] ACTION: Agnes scans the desolate hallway nervously, her lantern casting elongated shadows against the wall.\n[b10] ACTION: Through the crack of the door, Agnes sees Catherine and the shirtless priest locked in an intimate, passionate embrace upon the bed.\n[b11] ACTION: Agnes's jaw drops open in shock as she stifles a cry.\n[b12] SFX: Sharp, terrified gasp catching in Agnes's throat.\n\nPick the single best promo.",
+  "response_text": "{\"chosen_window\":1,\"start_beat\":\"b00\",\"end_beat\":\"b12\",\"hook_beat\":\"b00\",\"cliffhanger_beat\":\"b12\",\"hook\":\"Father Thomas declares, “Absolution is free. Discretion has a price,” instantly hinting a dangerous bargain.\",\"cliffhanger\":\"Agnes’s gasp freezes the scene as she witnesses the priest and Catherine’s forbidden embrace, leaving the outcome unknown.\",\"hook_type\":\"power reversal\",\"why_it_works\":\"The opening line flips expectations of mercy into a costly transaction, and the sudden shock of a hidden lover’s discovery forces curiosity.\",\"standalone_risk\":\"The viewer won’t know the characters’ back‑story or why their liaison is forbidden.\"}",
+  "response_payload": {
+    "id": "chatcmpl-2d5bb854-f48b-4d8a-b76d-85dcb432d94b",
+    "object": "chat.completion",
+    "created": 1794087403,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"chosen_window\":1,\"start_beat\":\"b00\",\"end_beat\":\"b12\",\"hook_beat\":\"b00\",\"cliffhanger_beat\":\"b12\",\"hook\":\"Father Thomas declares, “Absolution is free. Discretion has a price,” instantly hinting a dangerous bargain.\",\"cliffhanger\":\"Agnes’s gasp freezes the scene as she witnesses the priest and Catherine’s forbidden embrace, leaving the outcome unknown.\",\"hook_type\":\"power reversal\",\"why_it_works\":\"The opening line flips expectations of mercy into a costly transaction, and the sudden shock of a hidden lover’s discovery forces curiosity.\",\"standalone_risk\":\"The viewer won’t know the characters’ back‑story or why their liaison is forbidden.\"}",
+          "reasoning": "We need to pick one window and possibly tighten edges. Must include hook_beat within 2 beats of start_beat, cliffhanger near end_beat. Provide JSON.\n\nWe have two windows.\n\nWindow 0: 5 beats, dialogue about price, power reversal maybe. Hook could be \"Name your price.\" That's a hook. Cliffhanger? Ends at beat b04 \"Unsupervised. In your hands alone.\" Not a strong unresolved moment. No action. Might be less compelling.\n\nWindow 1: 13 beats, includes dialogue, then action, then Agnes shock, then gasp. Good hook could be at b00 \"Absolution is free. Discretion has a price.\" That's a hook (power reversal). Cliffhanger could be at b12 SFX gasp, unresolved shock. So choose window 1. We can tighten start maybe at b00, end at b12. Hook beat b00 within 2 beats. Cliffhanger beat b12.\n\nProvide JSON.\n\nCheck standalone risk: new viewer may not know who Catherine, Father Thomas, Agnes, but context of forbidden entanglement is clear. So risk: relationships unclear.\n\nNow produce JSON compact."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.157665125,
+      "prompt_tokens": 930,
+      "prompt_time": 0.035865322,
+      "completion_tokens": 395,
+      "completion_time": 0.816081164,
+      "total_tokens": 1325,
+      "total_time": 0.851946486,
+      "completion_tokens_details": {
+        "reasoning_tokens": 238
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_5a93aea882",
+    "x_groq": {
+      "id": "req_01m6vz2egjer48qtb0nwrhm41y",
+      "seed": 1099798162
+    },
+    "service_tier": "on_demand"
+  }
+}

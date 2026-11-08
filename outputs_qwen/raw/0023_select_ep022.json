@@ -1,0 +1,41 @@
+{
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "tag": "select_ep022",
+  "system": "You are a promo editor for vertical microdramas (ReelShort/DramaBox style).\nYou pick which seconds of an episode become a 20-60 second advert for the show.\n\nA good promo:\n- opens on a hook: within its first beats, something that stops a scrolling viewer - a slap, a reveal, a shocking line\n- ends on a cliffhanger: it stops at an unresolved moment, so the viewer must go find the show\n- makes sense alone to someone who has never seen this show\n\nYou will be given candidate windows, each a contiguous run of beats labelled [b00], [b01]...\nYou must choose ONE window and may tighten its edges to any beat labels inside that window.\n\nReply with JSON only:\n{\n  \"chosen_window\": <integer index of the window you picked>,\n  \"start_beat\": \"<beat label>\",\n  \"end_beat\": \"<beat label>\",\n  \"hook_beat\": \"<beat label, must be at or within 2 beats of start_beat>\",\n  \"cliffhanger_beat\": \"<beat label, must be at or near end_beat>\",\n  \"hook\": \"<what grabs the viewer in the first seconds, one sentence>\",\n  \"cliffhanger\": \"<the unresolved moment it cuts on, one sentence>\",\n  \"hook_type\": \"<one of: moral outrage, romantic tension, empathy shock, power reversal>\",\n  \"why_it_works\": \"<one sentence, concrete, no marketing language>\",\n  \"standalone_risk\": \"<what a new viewer would NOT understand, or 'none'>\"\n}\n\nNever invent dialogue. Never output a time or a duration - only beat labels.",
+  "prompt": "Episode 22. 4 candidate windows, already checked for legal length and real beat boundaries.\n\n--- WINDOW 0 (32 seconds, code score 0.78) ---\n[b00] HOUSEKEEPER (menacing, threatening): \"And can you keep your eyes and ears where they belong?\"\n[b01] JULIANA (subdued, steady): \"Yes, ma'am.\"\n[b02] HOUSEKEEPER (stern, dismissive): \"Then prove it. The manor has no use for useless girls.\"\n[b03] ACTION: The Housekeeper turns and stalks away down the corridor. Prudence exhales a trembling breath of relief.\n[b04] PRUDENCE (relieved, whispering): \"That was close.\"\n[b05] JULIANA (urgent, quiet): \"Where is the West Wing?\"\n[b06] PRUDENCE (nervous, warning): \"Beyond the grand staircase. Few servants go there.\"\n[b07] ACTION: Lady Juliana stops in her tracks and gazes upward in awe at the soaring gilded ceilings and aristocratic crest.\n[b08] JULIANA (breathless): \"This house...\"\n[b09] ACTION: Prudence rushes into frame, grabbing Juliana's arm to keep her moving.\n[b10] PRUDENCE (panicked, hushed): \"Do not stare. Keep walking.\"\n\n--- WINDOW 1 (44 seconds, code score 0.77) ---\n[b00] PRUDENCE (fretful): \"And if they discover who you are?\"\n[b01] JULIANA (steely, selfless): \"Then I will face that when she is breathing again.\"\n[b02] PRUDENCE (solemn): \"Then forget you were ever a lady.\"\n[b03] JULIANA (quietly resolute): \"Today, I am only a maid.\"\n[b04] ACTION: Prudence opens the heavy wooden service door, and both women step inside into the dark servants' corridor as the door shuts firmly behind them.\n[b05] SFX: Heavy wooden latch clicks shut with a thud.\n[b06] HOUSEKEEPER (sharp, stern): \"Prudence.\"\n[b07] HOUSEKEEPER (suspicious): \"Who is this?\"\n[b08] PRUDENCE (submissive): \"Julian, ma'am. New help for the winter cleaning.\"\n[b09] HOUSEKEEPER (cold, skeptical): \"She looks soft.\"\n[b10] ACTION: Close-up on Lady Juliana's hands gripping the iron handle of the wooden wash bucket firmly.\n[b11] JULIANA (humble, steady): \"I can work, ma'am.\"\n[b12] HOUSEKEEPER (demanding): \"Can you scrub stone?\"\n[b13] JULIANA (subdued): \"Yes, ma'am.\"\n[b14] HOUSEKEEPER (harsh): \"Carry coal?\"\n[b15] JULIANA (polite): \"Yes, ma'am.\"\n[b16] HOUSEKEEPER (menacing, threatening): \"And can you keep your eyes and ears where they belong?\"\n\n--- WINDOW 2 (34 seconds, code score 0.73) ---\n[b00] ACTION: Lady Juliana stops in her tracks and gazes upward in awe at the soaring gilded ceilings and aristocratic crest.\n[b01] JULIANA (breathless): \"This house...\"\n[b02] ACTION: Prudence rushes into frame, grabbing Juliana's arm to keep her moving.\n[b03] PRUDENCE (panicked, hushed): \"Do not stare. Keep walking.\"\n[b04] ACTION: Lady Juliana reaches out with a trembling hand and quietly turns the ornate brass and glass door knob.\n[b05] SFX: Faint, muffled click of the heavy door lock turning.\n[b06] SFX: Labored, raspy, shallow breathing echoing in the quiet room.\n[b07] ACTION: Lady Juliana hurries inside, sets the wooden bucket onto the floor, and rushes to the bedside.\n[b08] JULIANA (gentle, concerned): \"Your Grace?\"\n[b09] JULIANA (soft, comforting): \"Do not speak.\"\n[b10] ACTION: Lady Juliana's eyes widen with sudden, horrifying realization.\n[b11] JULIANA (shocked, murmuring): \"This isn't ordinary fever.\"\n[b12] ACTION: The Dowager Duchess suddenly gasps violently for breath, convulsing weakly as her eyes snap open in agony.\n[b13] JULIANA (urgent, alarmed): \"Who has been treating you?\"\n\n--- WINDOW 3 (24 seconds, code score 0.72) ---\n[b00] ACTION: Prudence rushes up behind Lady Juliana, pulling her into the shelter of the stone archway.\n[b01] PRUDENCE (urgent, whispering): \"Keep your head down. If anyone recognizes you, everything is over.\"\n[b02] JULIANA (resolute, quiet): \"No one will recognize me dressed like this.\"\n[b03] PRUDENCE (nervous, warning): \"This is Ashburton Manor. The housekeeper watches everyone. Lady Catherine watches everyone, and Lord Rupert...\"\n[b04] JULIANA (determined): \"The Duchess is dying.\"\n[b05] JULIANA (defiant, firm): \"I saved Toby. I can save her.\"\n[b06] PRUDENCE (fretful): \"And if they discover who you are?\"\n[b07] JULIANA (steely, selfless): \"Then I will face that when she is breathing again.\"\n\nPick the single best promo.",
+  "response_text": "{\n  \"chosen_window\": 1,\n  \"start_beat\": \"b00\",\n  \"end_beat\": \"b16\",\n  \"hook_beat\": \"b00\",\n  \"cliffhanger_beat\": \"b16\",\n  \"hook\": \"A noblewoman declares she will face exposure to save a dying life, immediately stripping away her identity to become a servant.\",\n  \"cliffhanger\": \"The housekeeper corners the new maid and threatens her with a final, menacing question about keeping her eyes and ears in check.\",\n  \"hook_type\": \"power reversal\",\n  \"why_it_works\": \"It establishes the high-stakes premise (noblewoman as maid) and ends on a direct threat that creates immediate tension for the viewer.\",\n  \"standalone_risk\": \"The viewer does not know who 'she' is or why the Duchess is dying, but the emotional stakes are clear.\"\n}",
+  "response_payload": {
+    "id": "chatcmpl-f9456d45-5378-4ca4-9bbb-1f8bb30ae740",
+    "object": "chat.completion",
+    "created": 1794103926,
+    "model": "qwen/qwen3.8-27b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"chosen_window\": 1,\n  \"start_beat\": \"b00\",\n  \"end_beat\": \"b16\",\n  \"hook_beat\": \"b00\",\n  \"cliffhanger_beat\": \"b16\",\n  \"hook\": \"A noblewoman declares she will face exposure to save a dying life, immediately stripping away her identity to become a servant.\",\n  \"cliffhanger\": \"The housekeeper corners the new maid and threatens her with a final, menacing question about keeping her eyes and ears in check.\",\n  \"hook_type\": \"power reversal\",\n  \"why_it_works\": \"It establishes the high-stakes premise (noblewoman as maid) and ends on a direct threat that creates immediate tension for the viewer.\",\n  \"standalone_risk\": \"The viewer does not know who 'she' is or why the Duchess is dying, but the emotional stakes are clear.\"\n}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.049388769,
+      "prompt_tokens": 1627,
+      "prompt_time": 0.111994007,
+      "completion_tokens": 208,
+      "completion_time": 0.394694646,
+      "total_tokens": 1835,
+      "total_time": 0.506688653
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_a1293f40b5",
+    "x_groq": {
+      "id": "req_01m6wetpyge8z9048qdrtehg26",
+      "seed": 764538296
+    },
+    "service_tier": "on_demand"
+  }
+}

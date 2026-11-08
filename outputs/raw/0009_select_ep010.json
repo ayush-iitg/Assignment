@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "select_ep010",
+  "system": "You are a promo editor for vertical microdramas (ReelShort/DramaBox style).\nYou pick which seconds of an episode become a 20-60 second advert for the show.\n\nA good promo:\n- opens on a hook: within its first beats, something that stops a scrolling viewer - a slap, a reveal, a shocking line\n- ends on a cliffhanger: it stops at an unresolved moment, so the viewer must go find the show\n- makes sense alone to someone who has never seen this show\n\nYou will be given candidate windows, each a contiguous run of beats labelled [b00], [b01]...\nYou must choose ONE window and may tighten its edges to any beat labels inside that window.\n\nReply with JSON only:\n{\n  \"chosen_window\": <integer index of the window you picked>,\n  \"start_beat\": \"<beat label>\",\n  \"end_beat\": \"<beat label>\",\n  \"hook_beat\": \"<beat label, must be at or within 2 beats of start_beat>\",\n  \"cliffhanger_beat\": \"<beat label, must be at or near end_beat>\",\n  \"hook\": \"<what grabs the viewer in the first seconds, one sentence>\",\n  \"cliffhanger\": \"<the unresolved moment it cuts on, one sentence>\",\n  \"hook_type\": \"<one of: moral outrage, romantic tension, empathy shock, power reversal>\",\n  \"why_it_works\": \"<one sentence, concrete, no marketing language>\",\n  \"standalone_risk\": \"<what a new viewer would NOT understand, or 'none'>\"\n}\n\nNever invent dialogue. Never output a time or a duration - only beat labels.",
+  "prompt": "Episode 10. 4 candidate windows, already checked for legal length and real beat boundaries.\n\n--- WINDOW 0 (23 seconds, code score 0.79) ---\n[b00] ACTION: Juliana quietly studies the botanical illustrations by firelight, a bundle of fresh dried herbs resting on the table.\n[b01] SFX: A heavy wooden door suddenly creaks and bangs open in the quiet cottage.\n[b02] ACTION: Juliana jerks her head up from the book, startled by the sudden intrusion.\n[b03] JULIANA (alarmed, breathless): \"Alexander!\"\n[b04] ALEXANDER (gruff, strained): \"It is nothing.\"\n[b05] JULIANA (urgent, worried): \"There is blood running down your arm.\"\n[b06] ALEXANDER (stiff, dismissive): \"A cut from the tenant fields.\"\n[b07] JULIANA (commanding, resolute): \"Sit down.\"\n[b08] JULIANA (stern): \"Now.\"\n[b09] JULIANA (gentle, insistent): \"I need to see the wound.\"\n[b10] ALEXANDER (low, defiant): \"It is only a scratch.\"\n\n--- WINDOW 1 (22 seconds, code score 0.70) ---\n[b00] JULIANA (soft, breathless): \"Why do you look at me like that?\"\n[b01] ALEXANDER (intense, sincere): \"Because you are looking at me.\"\n[b02] JULIANA (flustered, whispering): \"Hold still.\"\n[b03] ALEXANDER (low, husky): \"I am holding still.\"\n[b04] ALEXANDER (whispering, vulnerable): \"Perhaps it is your hand.\"\n[b05] ALEXANDER (deep, emotional): \"Your touch is the only medicine that has ever eased my pain.\"\n\n--- WINDOW 2 (23 seconds, code score 0.64) ---\n[b00] JULIANA (soft, sorrowful): \"You have suffered terribly.\"\n[b01] ALEXANDER (quiet, somber): \"It is over.\"\n[b02] JULIANA (gentle): \"Your scars disagree.\"\n[b03] JULIANA (tender): \"Does it hurt?\"\n[b04] ALEXANDER (gruff): \"Not much.\"\n[b05] JULIANA (playful, whispering): \"You are a terrible liar.\"\n[b06] JULIANA (soft, breathless): \"Why do you look at me like that?\"\n[b07] ALEXANDER (intense, sincere): \"Because you are looking at me.\"\n\n--- WINDOW 3 (28 seconds, code score 0.60) ---\n[b00] JULIANA (gentle, insistent): \"I need to see the wound.\"\n[b01] ALEXANDER (low, defiant): \"It is only a scratch.\"\n[b02] JULIANA (sarcastic, challenging): \"Then removing your shirt should not trouble you.\"\n[b03] JULIANA (whispering, distressed): \"Dear God.\"\n[b04] JULIANA (soft, sorrowful): \"You have suffered terribly.\"\n[b05] ALEXANDER (quiet, somber): \"It is over.\"\n\nPick the single best promo.",
+  "response_text": "{\"chosen_window\":0,\"start_beat\":\"b01\",\"end_beat\":\"b09\",\"hook_beat\":\"b01\",\"cliffhanger_beat\":\"b09\",\"hook\":\"A heavy wooden door bursts open, startling Juliana in the quiet cottage.\",\"cliffhanger\":\"Juliana commands, “I need to see the wound,” leaving Alexander’s reaction unseen.\",\"hook_type\":\"power reversal\",\"why_it_works\":\"The sudden door slam grabs attention and the demand to see the wound ends on a tense unanswered question.\",\"standalone_risk\":\"none\"}",
+  "response_payload": {
+    "id": "chatcmpl-2c073443-ca47-4e62-be4e-d4bc2dc725e1",
+    "object": "chat.completion",
+    "created": 1794082308,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"chosen_window\":0,\"start_beat\":\"b01\",\"end_beat\":\"b09\",\"hook_beat\":\"b01\",\"cliffhanger_beat\":\"b09\",\"hook\":\"A heavy wooden door bursts open, startling Juliana in the quiet cottage.\",\"cliffhanger\":\"Juliana commands, “I need to see the wound,” leaving Alexander’s reaction unseen.\",\"hook_type\":\"power reversal\",\"why_it_works\":\"The sudden door slam grabs attention and the demand to see the wound ends on a tense unanswered question.\",\"standalone_risk\":\"none\"}",
+          "reasoning": "We need to pick one window and possibly tighten edges. Must include hook within first 2 beats of start. Hook beat must be at or within 2 beats of start_beat. Cliffhanger beat near end.\n\nWe need to evaluate each window for hook and cliffhanger.\n\nWindow 0: beats: start at b00 (action of Juliana studying). Hook could be b01: door creaks and bangs open - a sudden intrusion, good hook (shock). That's within 2 beats of start. End at b10 (Alexander says \"It is only a scratch.\") Cliffhanger? Not unresolved; maybe tension about wound? Could cut before he reveals something else? But last beat is dismissive, not cliffhanger. Could cut earlier at b09 maybe? At b09 Juliana says \"I need to see the wound.\" That's a hook? Actually that's earlier. Cliffhanger could be after she demands to see wound, before he responds? That would be unresolved. So we could set end at b09, cliffhanger beat b09 (her demand). That leaves unresolved because we don't see his reaction. That works.\n\nWindow 1: starts with Juliana asking \"Why do you look at me like that?\" Hook? Not strong. No sudden event. Not good.\n\nWindow 2: similar, no hook.\n\nWindow 3: starts with Juliana \"I need to see the wound.\" Hook? Not immediate shock. Could start at b00 but no event. Not as strong.\n\nThus best is Window 0.\n\nWe need to tighten edges: start_beat maybe b01 (door creaks) as hook beat also. Hook beat must be at or within 2 beats of start_beat. If start_beat = b01, hook_beat could be b01 itself (door). Good. End_beat maybe b09 (Juliana demanding to see wound). Cliffhanger beat b09. That ends on unresolved demand.\n\nCheck that window 0 originally includes beats b00-b10. We can tighten to b01-b09. That's within original window.\n\nNow fill fields:\n\nchosen_window: 0\nstart_beat: \"b01\"\nend_beat: \"b09\"\nhook_beat: \"b01\"\ncliffhanger_beat: \"b09\"\nhook: \"A heavy wooden door bursts open, startling Juliana in the quiet cottage.\"\ncliffhanger: \"Juliana commands, “I need to see the wound,” leaving Alexander’s reaction unseen.\"\nhook_type: \"power reversal\" (intrusion shifts power? Actually it's a sudden intrusion causing tension, could be \"empathy shock\"? The door is shock, but power reversal maybe because Juliana takes control. Might be \"power reversal\".)\nwhy_it_works: \"The sudden door slam grabs attention and the demand to see the wound ends on a tense unanswered question.\"\nstandalone_risk: \"none\"\n\nCheck JSON compact."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.317890466,
+      "prompt_tokens": 1136,
+      "prompt_time": 0.046683959,
+      "completion_tokens": 716,
+      "completion_time": 1.483953326,
+      "total_tokens": 1852,
+      "total_time": 1.530637285,
+      "completion_tokens_details": {
+        "reasoning_tokens": 594
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_f640395b96",
+    "x_groq": {
+      "id": "req_01m6vt6y7se8yb8rg9wvpb790s",
+      "seed": 1275653886
+    },
+    "service_tier": "on_demand"
+  }
+}

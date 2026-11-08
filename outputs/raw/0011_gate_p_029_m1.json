@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "gate_p_029_m1",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\nJULIANA: \"Catherine! Please! That book is my mother's only legacy!\"\nJULIANA: \"It contains years of her work! Her knowledge! Everything she left me!\"\nCATHERINE: \"Your mother's little book of weeds?\"\nCATHERINE: \"I can burn it.\"\nCATHERINE: \"And when they find your corpse at the end of the rope...\"\nCATHERINE: \"...no one will remember what was written inside.\"\nJULIANA: \"You are doing this because I saved the Duchess!\"\nCATHERINE: \"I am doing this because women like you forget their place.\"",
+  "response_text": "{\"who_is_the_main_character\":\"Juliana (named in the clip)\",\"what_is_at_stake\":\"The survival of Juliana's mother's legacy book and Juliana's own life are threatened\",\"what_question_are_you_left_with\":\"Will Catherine burn the book and kill Juliana, or will Juliana prevent it?\",\"would_you_keep_watching\":\"maybe, the tension is intriguing but the context is unclear\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":true,\"ends_unresolved\":true,\"would_watch\":false}}",
+  "response_payload": {
+    "id": "chatcmpl-5fb92128-3574-45d1-9da1-c739caacb6fb",
+    "object": "chat.completion",
+    "created": 1794121021,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"who_is_the_main_character\":\"Juliana (named in the clip)\",\"what_is_at_stake\":\"The survival of Juliana's mother's legacy book and Juliana's own life are threatened\",\"what_question_are_you_left_with\":\"Will Catherine burn the book and kill Juliana, or will Juliana prevent it?\",\"would_you_keep_watching\":\"maybe, the tension is intriguing but the context is unclear\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":true,\"ends_unresolved\":true,\"would_watch\":false}}",
+          "reasoning": "We need to produce JSON with fields. Identify main character: The clip names Juliana and Catherine. Who is main? Likely Juliana because she speaks more and is pleading. Clip never explicitly says main, but we can infer. The instruction: \"name them if the clip names them; otherwise describe and say the clip never names them\". So we can say main character is Juliana (named). What is at stake? The book is the mother's legacy; Catherine threatens to burn it and kill Juliana (corpse at end of rope). So stakes: the preservation of the book and Juliana's life. So we can say \"the fate of Juliana's mother's book and Juliana's life\". It's clear from clip. What question left? Unresolved: Will Catherine burn the book / kill Juliana? So unresolved question: Will Juliana survive / will the book be destroyed? So we can phrase.\n\nWould you keep watching? Provide yes/maybe/no with short reason. Probably \"maybe\" because tension but unclear context.\n\nPasses: character_identifiable: true (we have names). stakes_clear: true (the conflict is clear). ends_unresolved: true (conflict unresolved). would_watch: maybe? The passes field \"would_watch\" expects boolean: true if would watch? Probably based on \"would_you_keep_watching\". If we answer maybe, then would_watch maybe false? The spec: passes: {\"would_watch\": true/false}. Should reflect if you'd watch? If maybe, maybe false? But ambiguous. I'd set would_watch false because not definite. But maybe they want true if you'd watch at all. I'd set false because not definite. Let's decide: I'd answer \"maybe\" and set would_watch false.\n\nNow produce compact JSON."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.319329682,
+      "prompt_tokens": 508,
+      "prompt_time": 0.021116706,
+      "completion_tokens": 474,
+      "completion_time": 0.988407324,
+      "total_tokens": 982,
+      "total_time": 1.00952403,
+      "completion_tokens_details": {
+        "reasoning_tokens": 358
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_8ea50c0161",
+    "x_groq": {
+      "id": "req_01m6wz4cvje61sh9fepnczw51r",
+      "seed": 746220028
+    },
+    "service_tier": "on_demand"
+  }
+}

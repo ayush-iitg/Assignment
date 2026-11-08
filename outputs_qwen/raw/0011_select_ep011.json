@@ -1,0 +1,41 @@
+{
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "tag": "select_ep011",
+  "system": "You are a promo editor for vertical microdramas (ReelShort/DramaBox style).\nYou pick which seconds of an episode become a 20-60 second advert for the show.\n\nA good promo:\n- opens on a hook: within its first beats, something that stops a scrolling viewer - a slap, a reveal, a shocking line\n- ends on a cliffhanger: it stops at an unresolved moment, so the viewer must go find the show\n- makes sense alone to someone who has never seen this show\n\nYou will be given candidate windows, each a contiguous run of beats labelled [b00], [b01]...\nYou must choose ONE window and may tighten its edges to any beat labels inside that window.\n\nReply with JSON only:\n{\n  \"chosen_window\": <integer index of the window you picked>,\n  \"start_beat\": \"<beat label>\",\n  \"end_beat\": \"<beat label>\",\n  \"hook_beat\": \"<beat label, must be at or within 2 beats of start_beat>\",\n  \"cliffhanger_beat\": \"<beat label, must be at or near end_beat>\",\n  \"hook\": \"<what grabs the viewer in the first seconds, one sentence>\",\n  \"cliffhanger\": \"<the unresolved moment it cuts on, one sentence>\",\n  \"hook_type\": \"<one of: moral outrage, romantic tension, empathy shock, power reversal>\",\n  \"why_it_works\": \"<one sentence, concrete, no marketing language>\",\n  \"standalone_risk\": \"<what a new viewer would NOT understand, or 'none'>\"\n}\n\nNever invent dialogue. Never output a time or a duration - only beat labels.",
+  "prompt": "Episode 11. 4 candidate windows, already checked for legal length and real beat boundaries.\n\n--- WINDOW 0 (23 seconds, code score 0.94) ---\n[b00] JULIANA (furious, defiant): \"You have already taken enough from me. Leave!\"\n[b01] GERALD (aggressive, snarl): \"Your husband stole my gold pocket watch!\"\n[b02] JULIANA (incredulous, gasping): \"What? When?\"\n[b03] GERALD (cold, certain): \"The last time I came here.\"\n[b04] JULIANA (contemptuous, outraged): \"You never even entered the cottage!\"\n[b05] GERALD (smug, threatening): \"Then you should have nothing to fear from a search.\"\n[b06] JULIANA (adamant, protective): \"Alexander would never steal from you.\"\n[b07] GERALD (mocking, spiteful): \"Of course you would defend him. You married a beggar!\"\n[b08] ALEXANDER (low, menacing): \"Choose your next words carefully.\"\n[b09] GERALD (shouting, dramatic): \"You hear that? He threatens me again!\"\n\n--- WINDOW 1 (34 seconds, code score 0.89) ---\n[b00] CONSTABLE (cold, procedural): \"Then a search will settle the matter.\"\n[b01] JULIANA (desperate, shouting): \"You cannot simply invade our home because this man makes an accusation!\"\n[b02] GERALD (taunting): \"If he has nothing to hide...\"\n[b03] GERALD (smug): \"...let the constable search.\"\n[b04] ALEXANDER (dark, grated): \"Search it.\"\n[b05] ALEXANDER (resigned, calm): \"Let them.\"\n[b06] SFX: Heavy thud of boots entering wooden floorboards, followed by forceful banging of furniture.\n[b07] ACTION: The Constable begins violently overturning crates and dumping contents across the floor.\n[b08] JULIANA (distressed, pleading): \"Stop! Those are my mother's medicines!\"\n[b09] ACTION: The Constable aggressively pulls folded bed linens from a shelf and hurls them onto the damp floor.\n[b10] JULIANA (crying, desperate): \"Please! There is nothing here!\"\n[b11] CONSTABLE (cold, indifferent): \"Then you have nothing to fear.\"\n[b12] JULIANA (heartbroken, sobbing): \"Those are all I have left!\"\n[b13] GERALD (cruel, condescending): \"Stand aside. Look at this place. A perfect hiding hole for a thief.\"\n[b14] JULIANA (furious, accusatory): \"You planted this accusation because you cannot bear that I am happy without you!\"\n\n--- WINDOW 2 (27 seconds, code score 0.87) ---\n[b00] JULIANA (heartbroken, sobbing): \"Those are all I have left!\"\n[b01] GERALD (cruel, condescending): \"Stand aside. Look at this place. A perfect hiding hole for a thief.\"\n[b02] JULIANA (furious, accusatory): \"You planted this accusation because you cannot bear that I am happy without you!\"\n[b03] GERALD (scoffing, sinister): \"Happy?\"\n[b04] GERALD (provoking, smirking): \"What is it, soldier? Going to strike a gentleman in front of his wife?\"\n[b05] JULIANA (whispering, terrified): \"Don't!\"\n[b06] ALEXANDER (haunted, resolute): \"One blow would end this.\"\n[b07] ALEXANDER (pained, selfless): \"But one blow would destroy her life.\"\n[b08] ACTION: The Constable grabs the coat by the collar and begins rummaging through its deep pockets.\n[b09] JULIANA (startled, shouting): \"That is his coat!\"\n\n--- WINDOW 3 (21 seconds, code score 0.70) ---\n[b00] ALEXANDER (haunted, resolute): \"One blow would end this.\"\n[b01] ALEXANDER (pained, selfless): \"But one blow would destroy her life.\"\n[b02] ACTION: The Constable grabs the coat by the collar and begins rummaging through its deep pockets.\n[b03] JULIANA (startled, shouting): \"That is his coat!\"\n[b04] SFX: Metallic clinking of the gold chain sliding against fabric.\n[b05] ACTION: Juliana draws a sharp, terrified breath as her face pales completely.\n[b06] GERALD (gloating, victorious): \"There it is. Ha!\"\n\nPick the single best promo.",
+  "response_text": "{\n  \"chosen_window\": 3,\n  \"start_beat\": \"b00\",\n  \"end_beat\": \"b06\",\n  \"hook_beat\": \"b00\",\n  \"cliffhanger_beat\": \"b06\",\n  \"hook\": \"A man holds back a violent impulse to protect his wife, creating immediate tension and moral weight.\",\n  \"cliffhanger\": \"The constable pulls the stolen gold watch from the coat pocket, and the antagonist gloatingly confirms the theft.\",\n  \"hook_type\": \"power reversal\",\n  \"why_it_works\": \"It isolates the pivotal moment of discovery where the protagonist's coat is searched, leading directly to the incriminating evidence being found.\",\n  \"standalone_risk\": \"The viewer does not know who Gerald is or why he is searching the coat, but the visual of finding a gold watch in a coat during a confrontation is universally understood as a theft reveal.\"\n}",
+  "response_payload": {
+    "id": "chatcmpl-08ac53cc-28fe-4b95-81c3-41f451845695",
+    "object": "chat.completion",
+    "created": 1794103800,
+    "model": "qwen/qwen3.8-27b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"chosen_window\": 3,\n  \"start_beat\": \"b00\",\n  \"end_beat\": \"b06\",\n  \"hook_beat\": \"b00\",\n  \"cliffhanger_beat\": \"b06\",\n  \"hook\": \"A man holds back a violent impulse to protect his wife, creating immediate tension and moral weight.\",\n  \"cliffhanger\": \"The constable pulls the stolen gold watch from the coat pocket, and the antagonist gloatingly confirms the theft.\",\n  \"hook_type\": \"power reversal\",\n  \"why_it_works\": \"It isolates the pivotal moment of discovery where the protagonist's coat is searched, leading directly to the incriminating evidence being found.\",\n  \"standalone_risk\": \"The viewer does not know who Gerald is or why he is searching the coat, but the visual of finding a gold watch in a coat during a confrontation is universally understood as a theft reveal.\"\n}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.047806481,
+      "prompt_tokens": 1469,
+      "prompt_time": 0.104355521,
+      "completion_tokens": 214,
+      "completion_time": 0.406006669,
+      "total_tokens": 1683,
+      "total_time": 0.51036219
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_21e59ac2de",
+    "x_groq": {
+      "id": "req_01m6wepvweetxs5mhxq138jhy9",
+      "seed": 257668571
+    },
+    "service_tier": "on_demand"
+  }
+}

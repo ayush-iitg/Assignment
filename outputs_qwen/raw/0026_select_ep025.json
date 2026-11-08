@@ -1,0 +1,41 @@
+{
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "tag": "select_ep025",
+  "system": "You are a promo editor for vertical microdramas (ReelShort/DramaBox style).\nYou pick which seconds of an episode become a 20-60 second advert for the show.\n\nA good promo:\n- opens on a hook: within its first beats, something that stops a scrolling viewer - a slap, a reveal, a shocking line\n- ends on a cliffhanger: it stops at an unresolved moment, so the viewer must go find the show\n- makes sense alone to someone who has never seen this show\n\nYou will be given candidate windows, each a contiguous run of beats labelled [b00], [b01]...\nYou must choose ONE window and may tighten its edges to any beat labels inside that window.\n\nReply with JSON only:\n{\n  \"chosen_window\": <integer index of the window you picked>,\n  \"start_beat\": \"<beat label>\",\n  \"end_beat\": \"<beat label>\",\n  \"hook_beat\": \"<beat label, must be at or within 2 beats of start_beat>\",\n  \"cliffhanger_beat\": \"<beat label, must be at or near end_beat>\",\n  \"hook\": \"<what grabs the viewer in the first seconds, one sentence>\",\n  \"cliffhanger\": \"<the unresolved moment it cuts on, one sentence>\",\n  \"hook_type\": \"<one of: moral outrage, romantic tension, empathy shock, power reversal>\",\n  \"why_it_works\": \"<one sentence, concrete, no marketing language>\",\n  \"standalone_risk\": \"<what a new viewer would NOT understand, or 'none'>\"\n}\n\nNever invent dialogue. Never output a time or a duration - only beat labels.",
+  "prompt": "Episode 25. 4 candidate windows, already checked for legal length and real beat boundaries.\n\n--- WINDOW 0 (21 seconds, code score 0.87) ---\n[b00] JULIANA (gentle, perplexed): \"Alexander... why are you so angry?\"\n[b01] ALEXANDER (fierce, reproachful): \"Because you were standing inside a house where someone is poisoning a woman... and you never told me.\"\n[b02] JULIANA (vulnerable): \"I knew you would worry.\"\n[b03] ALEXANDER (furious, tormented): \"Worry? They struck you. They could have killed you.\"\n[b04] JULIANA (defiant, soothing): \"But they didn't.\"\n[b05] ALEXANDER (grim, fearful): \"This time.\"\n\n--- WINDOW 1 (35 seconds, code score 0.80) ---\n[b00] ALEXANDER (fierce, urgent): \"Juliana... why were you inside Ashburg Manor?\"\n[b01] JULIANA (earnest): \"I went there to help someone.\"\n[b02] ALEXANDER (blunt): \"Who?\"\n[b03] JULIANA (solemn): \"The Dowager Duchess.\"\n[b04] ALEXANDER (stunned, disbelieving): \"The Dowager?\"\n[b05] JULIANA (urgent): \"Prudence told me she was dying.\"\n[b06] JULIANA (fervent): \"She was barely breathing when I found her. The doctor said she was simply growing old.\"\n[b07] JULIANA (chilling, definite): \"But it wasn't age.\"\n[b08] ALEXANDER (grim, low): \"What did you find?\"\n[b09] JULIANA (hushed, horrified): \"Poison.\"\n\n--- WINDOW 2 (34 seconds, code score 0.79) ---\n[b00] JULIANA (strained, minimizing): \"It is nothing.\"\n[b01] ACTION: Alexander's gloved fingers pull back the torn fabric of her cloak and sleeve, revealing a raw, bloody welt slashing across her bare shoulder.\n[b02] ALEXANDER (seething, dangerous): \"Who did this?\"\n[b03] JULIANA (subdued, weary): \"It does not matter.\"\n[b04] ALEXANDER (demanding, stern): \"Who?\"\n[b05] ACTION: Alexander steps directly into her space, firmly taking her hand in his.\n[b06] JULIANA (quiet, apprehensive): \"Lady Catherine.\"\n[b07] ALEXANDER (low, interrogating): \"Where did you meet her?\"\n[b08] JULIANA (hedged): \"I was in the wrong chamber. I was punished as a maid.\"\n[b09] ALEXANDER (incredulous, demanding): \"What were you doing there?\"\n[b10] ALEXANDER (fierce, urgent): \"Juliana... why were you inside Ashburg Manor?\"\n\n--- WINDOW 3 (56 seconds, code score 0.79) ---\n[b00] ALEXANDER (grim, low): \"What did you find?\"\n[b01] JULIANA (hushed, horrified): \"Poison.\"\n[b02] JULIANA (sober): \"Arsenic.\"\n[b03] ACTION: Alexander's hand drops to his side and clenches into a white-knuckled fist, the thick scar across his hand tightening with intense restraint.\n[b04] JULIANA (pained, troubled): \"Someone has been giving it to her again and again. Small amounts. Enough to make her weaker without killing her quickly.\"\n[b05] JULIANA (sincere, earnest): \"I made her medicine. She was still barely conscious, but her breathing became easier.\"\n[b06] ALEXANDER (incredulous): \"You treated her?\"\n[b07] JULIANA (firm): \"Yes.\"\n[b08] ALEXANDER (tense): \"Alone?\"\n[b09] JULIANA (soft): \"With Prudence.\"\n[b10] ALEXANDER (anxious): \"Will you be going there again?\"\n[b11] JULIANA (determined): \"I have to.\"\n[b12] JULIANA (pleading, defiant): \"She is still sick. I cannot leave her there.\"\n[b13] ACTION: Juliana places her gentle hand against Alexander's broad chest, trying to soothe his rising anger.\n[b14] ACTION: Alexander takes both of her hands into his own, gripping them tightly.\n[b15] JULIANA (gentle, perplexed): \"Alexander... why are you so angry?\"\n[b16] ALEXANDER (fierce, reproachful): \"Because you were standing inside a house where someone is poisoning a woman... and you never told me.\"\n\nPick the single best promo.",
+  "response_text": "{\n  \"chosen_window\": 1,\n  \"start_beat\": \"b00\",\n  \"end_beat\": \"b09\",\n  \"hook_beat\": \"b00\",\n  \"cliffhanger_beat\": \"b09\",\n  \"hook\": \"A man aggressively confronts a woman, demanding to know why she was inside a specific manor.\",\n  \"cliffhanger\": \"The woman reveals in a hushed, horrified voice that she found poison.\",\n  \"hook_type\": \"romantic tension\",\n  \"why_it_works\": \"It establishes high-stakes conflict and a mystery (the manor visit) that resolves into a shocking revelation (poison) right at the cut.\",\n  \"standalone_risk\": \"none\"\n}",
+  "response_payload": {
+    "id": "chatcmpl-055fbc90-9cd0-4aeb-a960-7ae676faa199",
+    "object": "chat.completion",
+    "created": 1794103984,
+    "model": "qwen/qwen3.8-27b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"chosen_window\": 1,\n  \"start_beat\": \"b00\",\n  \"end_beat\": \"b09\",\n  \"hook_beat\": \"b00\",\n  \"cliffhanger_beat\": \"b09\",\n  \"hook\": \"A man aggressively confronts a woman, demanding to know why she was inside a specific manor.\",\n  \"cliffhanger\": \"The woman reveals in a hushed, horrified voice that she found poison.\",\n  \"hook_type\": \"romantic tension\",\n  \"why_it_works\": \"It establishes high-stakes conflict and a mystery (the manor visit) that resolves into a shocking revelation (poison) right at the cut.\",\n  \"standalone_risk\": \"none\"\n}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.04958989,
+      "prompt_tokens": 1478,
+      "prompt_time": 0.101678748,
+      "completion_tokens": 175,
+      "completion_time": 0.332680882,
+      "total_tokens": 1653,
+      "total_time": 0.43435963
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_424cb89518",
+    "x_groq": {
+      "id": "req_01m6wewgbkev0867nt5b46kmgh",
+      "seed": 2113286100
+    },
+    "service_tier": "on_demand"
+  }
+}

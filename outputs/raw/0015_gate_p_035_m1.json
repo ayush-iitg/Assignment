@@ -1,0 +1,48 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "gate_p_035_m1",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\nALEXANDER'S MOTHER: \"Alexander!\"\nALEXANDER: \"Mother?\"\n[action] She drops her walking staff and rushes forward, throwing her arms around Alexander's neck. He pulls her tightly into his chest.\nALEXANDER'S MOTHER: \"You're alive.\"\nALEXANDER: \"Mother.\"\nALEXANDER'S MOTHER: \"How did you escape?\"\nALEXANDER: \"I crawled away from the battlefield, half dead, alone.\"\nALEXANDER: \"I survived because the men who came looking for me believed I was already dead.\"\nALEXANDER'S MOTHER: \"Then why did they never tell us?\"",
+  "response_text": "{\"who_is_the_main_character\":\"Alexander (the son, named in the clip)\",\"what_is_at_stake\":\"The immediate conflict is Alexander's unexpected return and his mother's confusion about why no one told them he was alive; broader stakes are unclear from the clip\",\"what_question_are_you_left_with\":\"Why did the men who found Alexander never tell his family he was alive?\",\"would_you_keep_watching\":\"maybe, the emotional reunion and mystery make me curious\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":false,\"ends_unresolved\":true,\"would_watch\":true}}",
+  "response_payload": {
+    "id": "chatcmpl-0e1cb507-6501-4e05-bc73-a0c287a19e2e",
+    "object": "chat.completion",
+    "created": 1794121077,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"who_is_the_main_character\":\"Alexander (the son, named in the clip)\",\"what_is_at_stake\":\"The immediate conflict is Alexander's unexpected return and his mother's confusion about why no one told them he was alive; broader stakes are unclear from the clip\",\"what_question_are_you_left_with\":\"Why did the men who found Alexander never tell his family he was alive?\",\"would_you_keep_watching\":\"maybe, the emotional reunion and mystery make me curious\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":false,\"ends_unresolved\":true,\"would_watch\":true}}",
+          "reasoning": "We need to produce JSON with fields. Determine main character: Alexander is named, mother also named but main likely Alexander. Clip names Alexander. So main character: Alexander (the clip never gives a surname, but name is Alexander). So we can say \"Alexander (the son)\". Provide description.\n\nWhat is at stake: The conflict seems about Alexander's survival, his mother didn't know he was alive, and why others didn't tell them. Stakes unclear? The stakes are about family reunion and mystery of why they were kept in the dark. It's somewhat clear that the stakes involve the truth about his survival and possibly larger war context. But from clip, we don't know larger stakes. So we can say \"unclear from the clip\" maybe? The conflict is about why they were not told he was alive. That's the immediate conflict. So we can state that.\n\nWhat question left: Why were they not told? Or what will happen now? So unresolved question: Why did the men not inform them? Or what will happen after reunion.\n\nWould you keep watching: maybe yes, because emotional reunion and mystery.\n\nPasses: character_identifiable: true (Alexander is named). stakes_clear: maybe false? The stakes are somewhat vague; we know personal stakes but not larger. The question: is that considered clear? The conflict is about lack of information. I'd say stakes are somewhat clear (the personal stakes of family reunion). But the larger stakes unknown. The instruction: \"stakes_clear\" false if you had to assume the situation. Here we can infer that the stakes are about family and war, but we might be assuming. I'd lean false because we don't know why it's important beyond personal. So stakes_clear: false.\n\nends_unresolved: true (question remains). would_watch: true.\n\nNow produce compact JSON."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.319192102,
+      "prompt_tokens": 520,
+      "prompt_time": 0.011403734,
+      "completion_tokens": 492,
+      "completion_time": 1.023936249,
+      "total_tokens": 1012,
+      "total_time": 1.035339983,
+      "prompt_tokens_details": {
+        "cached_tokens": 256
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 365
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_8ea50c0161",
+    "x_groq": {
+      "id": "req_01m6wz63vpe2avkzjnsynjb2p9",
+      "seed": 559815578
+    },
+    "service_tier": "on_demand"
+  }
+}

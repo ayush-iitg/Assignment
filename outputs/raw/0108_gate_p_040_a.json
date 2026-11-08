@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "gate_p_040_a",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\nELDER NOBLEMAN: \"Good.\"\nELDER NOBLEMAN: \"By sunset, Ashburgh will have its new Duke and Duchess.\"\nELDER NOBLEMAN: \"And its witch will be dead.\"\n[sfx] The heavy creak of massive wooden cathedral doors swinging open, accompanied by swelling bridal organ music.\nLADY HARRINGTON: \"She looks like a queen.\"\nBLOND NOBLEMAN: \"You look more queen than bride.\"\nCATHERINE: \"And you look better in silk than you ever did as an ignored cousin.\"\n[action] Rupert and Catherine exchange conspiratorial, triumphant smiles at the altar as the solemn organ chord holds and the scene cuts to black.",
+  "response_text": "{\"who_is_the_main_character\":\"The clip does not name a main character; several characters appear (Elder Nobleman, Lady Harrington, Blond Nobleman, Catherine, Rupert)\",\"what_is_at_stake\":\"unclear from the clip\",\"what_question_are_you_left_with\":\"What will happen to the witch and how will Catherine and Rupert’s scheme affect the new Duke and Duchess?\",\"would_you_keep_watching\":\"maybe, the political intrigue and conspiratorial smiles hint at larger drama\",\"passes\":{\"character_identifiable\":false,\"stakes_clear\":false,\"ends_unresolved\":true,\"would_watch\":true}}",
+  "response_payload": {
+    "id": "chatcmpl-47d71458-e4a8-40bc-b538-7005bb2af02e",
+    "object": "chat.completion",
+    "created": 1794103189,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"who_is_the_main_character\":\"The clip does not name a main character; several characters appear (Elder Nobleman, Lady Harrington, Blond Nobleman, Catherine, Rupert)\",\"what_is_at_stake\":\"unclear from the clip\",\"what_question_are_you_left_with\":\"What will happen to the witch and how will Catherine and Rupert’s scheme affect the new Duke and Duchess?\",\"would_you_keep_watching\":\"maybe, the political intrigue and conspiratorial smiles hint at larger drama\",\"passes\":{\"character_identifiable\":false,\"stakes_clear\":false,\"ends_unresolved\":true,\"would_watch\":true}}",
+          "reasoning": "We need to produce JSON with fields. Determine main character: clip mentions several characters: Elder Nobleman, Lady Harrington, Blond Nobleman, Catherine, Rupert (mentioned in action). No explicit main character. Who is central? Possibly Catherine? She speaks and smiles. But main character not named? The clip never names a main protagonist explicitly. So \"who_is_the_main_character\": \"The clip does not name a main character; several characters appear (Elder Nobleman, Lady Harrington, Blond Nobleman, Catherine, Rupert)\". Stakes: conflict about new Duke/Duchess, witch dead, marriage intrigue. Stakes unclear? The conflict seems political: new Duke/Duchess, witch dead, Catherine and Rupert conspiratorial. So stakes: unclear from clip? There's tension about power and witch. Could say \"unclear from the clip\". The unresolved question: what will happen to the witch? Or who will become Duke/Duchess? So we can state unresolved question: \"Will the witch be killed as promised?\" or \"What is the outcome of Catherine and Rupert's scheme?\" Provide one.\n\nWould you keep watching? maybe, because intrigue.\n\nPasses: character_identifiable? Since no main character identified, false. Stakes_clear? Not fully clear, so false. ends_unresolved? Yes unresolved, true. would_watch? maybe true.\n\nNow produce compact JSON."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.15710376,
+      "prompt_tokens": 526,
+      "prompt_time": 0.028563318,
+      "completion_tokens": 411,
+      "completion_time": 0.857351341,
+      "total_tokens": 937,
+      "total_time": 0.885914659,
+      "completion_tokens_details": {
+        "reasoning_tokens": 279
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_86dc843b12",
+    "x_groq": {
+      "id": "req_01m6we46h3egxt4q6z4qntbppm",
+      "seed": 232400743
+    },
+    "service_tier": "on_demand"
+  }
+}

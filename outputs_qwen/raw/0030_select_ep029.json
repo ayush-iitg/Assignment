@@ -1,0 +1,41 @@
+{
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "tag": "select_ep029",
+  "system": "You are a promo editor for vertical microdramas (ReelShort/DramaBox style).\nYou pick which seconds of an episode become a 20-60 second advert for the show.\n\nA good promo:\n- opens on a hook: within its first beats, something that stops a scrolling viewer - a slap, a reveal, a shocking line\n- ends on a cliffhanger: it stops at an unresolved moment, so the viewer must go find the show\n- makes sense alone to someone who has never seen this show\n\nYou will be given candidate windows, each a contiguous run of beats labelled [b00], [b01]...\nYou must choose ONE window and may tighten its edges to any beat labels inside that window.\n\nReply with JSON only:\n{\n  \"chosen_window\": <integer index of the window you picked>,\n  \"start_beat\": \"<beat label>\",\n  \"end_beat\": \"<beat label>\",\n  \"hook_beat\": \"<beat label, must be at or within 2 beats of start_beat>\",\n  \"cliffhanger_beat\": \"<beat label, must be at or near end_beat>\",\n  \"hook\": \"<what grabs the viewer in the first seconds, one sentence>\",\n  \"cliffhanger\": \"<the unresolved moment it cuts on, one sentence>\",\n  \"hook_type\": \"<one of: moral outrage, romantic tension, empathy shock, power reversal>\",\n  \"why_it_works\": \"<one sentence, concrete, no marketing language>\",\n  \"standalone_risk\": \"<what a new viewer would NOT understand, or 'none'>\"\n}\n\nNever invent dialogue. Never output a time or a duration - only beat labels.",
+  "prompt": "Episode 29. 4 candidate windows, already checked for legal length and real beat boundaries.\n\n--- WINDOW 0 (22 seconds, code score 0.92) ---\n[b00] CATHERINE (cruel, smug): \"You still call this a legacy?\"\n[b01] JULIANA (defiant, furious): \"It is medicine!\"\n[b02] CATHERINE (smooth, patronizing): \"Of course.\"\n[b03] CATHERINE (disdainful, calculating): \"Roots. Leaves. Powders. Strange mixtures written in a dead woman's hand.\"\n[b04] CATHERINE (icy, threatening): \"The magistrate will call it witchcraft.\"\n[b05] JULIANA (furious, shouted): \"You know that is a lie!\"\n[b06] CATHERINE (calm, sinister): \"I know exactly what I need him to believe.\"\n[b07] JULIANA (screaming, desperate): \"You cannot just destroy it!\"\n\n--- WINDOW 1 (21 seconds, code score 0.91) ---\n[b00] CATHERINE (calm, sinister): \"I know exactly what I need him to believe.\"\n[b01] JULIANA (screaming, desperate): \"You cannot just destroy it!\"\n[b02] CATHERINE (whispered, malicious): \"I can burn it.\"\n[b03] CATHERINE (chilling, relentless): \"And when they find your corpse at the end of the rope...\"\n[b04] CATHERINE (cruel, resolute): \"...no one will remember what was written inside.\"\n[b05] JULIANA (enraged, defiant): \"You are doing this because I saved the Duchess!\"\n[b06] CATHERINE (scornful, arrogant): \"I am doing this because women like you forget their place.\"\n\n--- WINDOW 2 (21 seconds, code score 0.89) ---\n[b00] JULIANA (desperate, weeping): \"Catherine! Please! That book is my mother's only legacy!\"\n[b01] JULIANA (pleading, agonized): \"It contains years of her work! Her knowledge! Everything she left me!\"\n[b02] CATHERINE (mocking, condescending): \"Your mother's little book of weeds?\"\n[b03] CATHERINE (cruel, smug): \"You still call this a legacy?\"\n[b04] JULIANA (defiant, furious): \"It is medicine!\"\n\n--- WINDOW 3 (49 seconds, code score 0.86) ---\n[b00] JULIANA (enraged, defiant): \"You are doing this because I saved the Duchess!\"\n[b01] CATHERINE (scornful, arrogant): \"I am doing this because women like you forget their place.\"\n[b02] CATHERINE (cold, venomous): \"You were cast out once.\"\n[b03] CATHERINE (menacing): \"You should have stayed forgotten.\"\n[b04] JULIANA (steely, resolute): \"My husband will find me.\"\n[b05] CATHERINE (scoffing, amused): \"Your scarred soldier?\"\n[b06] CATHERINE (derisive, biting): \"What exactly do you think a penniless veteran can do against Ashbrook?\"\n[b07] GUARD (gruff, dismissive): \"Move along, girl.\"\n[b08] ACTION: The guards shove Juliana violently into the cell; she falls hard onto all fours across the cold, wet stone floor.\n[b09] JULIANA (crying out, broken): \"Please!\"\n[b10] SFX: The heavy iron door slams shut with a deafening metallic thud, and the massive exterior bolt grates locked.\n[b11] ACTION: Juliana trembles uncontrollably, her fingers digging into the collar of her rustic dress as terror washes over her.\n[b12] JULIANA (sobbing, heartbroken): \"Mother...\"\n[b13] JULIANA (desperate, shouting): \"I have done nothing!\"\n[b14] JULIANA (screaming, hysterical): \"I saved her! I healed her!\"\n[b15] SFX: Muffled, dull metallic clanging reverberates as Juliana hammers against the iron door.\n[b16] JULIANA (shouting in anguish): \"I saved the Duchess!\"\n\nPick the single best promo.",
+  "response_text": "{\n  \"chosen_window\": 1,\n  \"start_beat\": \"b00\",\n  \"end_beat\": \"b06\",\n  \"hook_beat\": \"b00\",\n  \"cliffhanger_beat\": \"b06\",\n  \"hook\": \"Catherine calmly admits she is manipulating the magistrate to frame Juliana for witchcraft.\",\n  \"cliffhanger\": \"Catherine reveals her motive is not personal revenge, but enforcing a rigid social hierarchy by stating women like Juliana 'forget their place.'\",\n  \"hook_type\": \"power reversal\",\n  \"why_it_works\": \"It isolates the antagonist's specific, chilling plan to destroy evidence and kill the protagonist, creating immediate high stakes without needing prior context.\",\n  \"standalone_risk\": \"The viewer does not know what 'it' refers to (the book/legacy) or who the Duchess is, but the threat of execution and the motive of gender-based oppression are clear.\"\n}",
+  "response_payload": {
+    "id": "chatcmpl-95181c3d-44b1-4d8e-a07f-4aa164520dac",
+    "object": "chat.completion",
+    "created": 1794104093,
+    "model": "qwen/qwen3.8-27b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"chosen_window\": 1,\n  \"start_beat\": \"b00\",\n  \"end_beat\": \"b06\",\n  \"hook_beat\": \"b00\",\n  \"cliffhanger_beat\": \"b06\",\n  \"hook\": \"Catherine calmly admits she is manipulating the magistrate to frame Juliana for witchcraft.\",\n  \"cliffhanger\": \"Catherine reveals her motive is not personal revenge, but enforcing a rigid social hierarchy by stating women like Juliana 'forget their place.'\",\n  \"hook_type\": \"power reversal\",\n  \"why_it_works\": \"It isolates the antagonist's specific, chilling plan to destroy evidence and kill the protagonist, creating immediate high stakes without needing prior context.\",\n  \"standalone_risk\": \"The viewer does not know what 'it' refers to (the book/legacy) or who the Duchess is, but the threat of execution and the motive of gender-based oppression are clear.\"\n}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.049753985,
+      "prompt_tokens": 1372,
+      "prompt_time": 0.094592883,
+      "completion_tokens": 215,
+      "completion_time": 0.409465057,
+      "total_tokens": 1587,
+      "total_time": 0.50405794
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_21e59ac2de",
+    "x_groq": {
+      "id": "req_01m6wezsybengr16rsq99rnwzf",
+      "seed": 1236552260
+    },
+    "service_tier": "on_demand"
+  }
+}

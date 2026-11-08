@@ -1,0 +1,310 @@
+{
+  "run": {
+    "input_dir": "samples",
+    "episodes": [
+      1
+    ],
+    "started": "2026-11-08 10:19:05",
+    "elapsed_s": 2.3,
+    "use_llm": true,
+    "composite_weights": {
+      "hook": 0.3,
+      "tension": 0.2,
+      "cliffhanger": 0.3,
+      "standalone": 0.2
+    },
+    "promo_length_bounds": [
+      20.0,
+      60.0
+    ]
+  },
+  "llm": {
+    "provider": "groq",
+    "model": "qwen/qwen3.8-27b",
+    "calls": 3,
+    "max_calls": 20,
+    "cache_hits": 0,
+    "tokens_in": 1720,
+    "tokens_out": 469,
+    "paced_sleep_s": 0.0,
+    "failures": 0,
+    "failure_detail": []
+  },
+  "counts": {
+    "windows_enumerated": 135,
+    "rejected_no_hook": 38,
+    "shortlisted": 1,
+    "candidates": 1,
+    "validator_failed": 0,
+    "near_duplicates": 0,
+    "gate_failed": 0,
+    "gate_not_tested": 0,
+    "shipped": 1
+  },
+  "promos": [
+    {
+      "promo_id": "p_001_a",
+      "shape": "single_stretch",
+      "episodes": [
+        1
+      ],
+      "segments": [
+        {
+          "order": 1,
+          "episode": 1,
+          "start": "00:01.40",
+          "end": "00:57.80",
+          "start_s": 1.4,
+          "end_s": 57.8,
+          "duration_s": 56.4
+        }
+      ],
+      "total_duration_s": 56.4,
+      "hook_is_cold_open": false,
+      "hook": "A director slams a report on a table and accuses a junior employee of stealing nine million dollars.",
+      "hook_type": "power reversal",
+      "cliffhanger": "The junior employee calmly states that in nine minutes, the boardroom will no longer belong to the director.",
+      "why_it_works": "It establishes immediate high stakes with the accusation of theft, then subverts expectations by revealing the accused is actually the one holding the leverage.",
+      "standalone_risk": "none",
+      "hook_beat_id": "e001_b0003",
+      "cliffhanger_beat_id": "e001_b0019",
+      "source_beat_ids": [
+        "e001_b0000",
+        "e001_b0001",
+        "e001_b0002",
+        "e001_b0003",
+        "e001_b0004",
+        "e001_b0005",
+        "e001_b0006",
+        "e001_b0007",
+        "e001_b0008",
+        "e001_b0009",
+        "e001_b0010",
+        "e001_b0011",
+        "e001_b0012",
+        "e001_b0013",
+        "e001_b0014",
+        "e001_b0015",
+        "e001_b0016",
+        "e001_b0017",
+        "e001_b0018",
+        "e001_b0019"
+      ],
+      "scores": {
+        "hook": 1.0,
+        "tension": 0.6677,
+        "cliffhanger": 0.93,
+        "standalone": 0.6631,
+        "composite": 0.8452
+      },
+      "standalone_detail": {
+        "dialogue_coverage": 0.6631,
+        "n_speakers": 3,
+        "speakers": [
+          "DIRECTOR VOSS",
+          "MAYA",
+          "RAHUL"
+        ],
+        "names_spoken_aloud": [
+          "MAYA"
+        ],
+        "dangling_pronoun_opening": false
+      },
+      "selected_by": "llm",
+      "validators": {
+        "timestamps_exist": true,
+        "length_ok": true,
+        "order_ok": true,
+        "hook_within_3s": true,
+        "hook_inside_promo": true,
+        "cliffhanger_inside_promo": true
+      },
+      "validator_failures": [],
+      "valid": true,
+      "cold_viewer": {
+        "verdict": "pass",
+        "score": "4/4",
+        "score_n": 4,
+        "answers": {
+          "who_is_the_main_character": "Maya (the clip names her, but provides no last name or specific job title other than implying she is a 'junior' who was overruled)",
+          "what_is_at_stake": "Maya is being fired for a nine million loss, but she is revealing that Director Voss actually authorized the action that caused it, threatening his position in the company.",
+          "what_question_are_you_left_with": "What happens in the next nine minutes that will make the boardroom stop being Voss's?",
+          "would_you_keep_watching": "yes, the final line promises an immediate, specific consequence that hasn't happened yet"
+        },
+        "passes": {
+          "character_identifiable": true,
+          "stakes_clear": true,
+          "ends_unresolved": true,
+          "would_watch": true
+        }
+      },
+      "rank_rationale": "High-comprehension power reversal with a concrete time-based cliffhanger.",
+      "rank": 1
+    }
+  ],
+  "flagship": null,
+  "rejected": [],
+  "rank_rationale": {
+    "order": [
+      "p_001_a"
+    ],
+    "post_first": "p_001_a",
+    "post_first_reason": "The physical act of slamming a report creates immediate visual tension. The specific nine-minute countdown leaves a compelling question about the impending power shift.",
+    "rationale": {
+      "p_001_a": "High-comprehension power reversal with a concrete time-based cliffhanger."
+    }
+  },
+  "parse_report": {
+    "folder": "samples",
+    "n_files": 1,
+    "n_beats": 26,
+    "kinds": {
+      "CAMERA": 4,
+      "SFX": 3,
+      "ACTION": 5,
+      "DIALOGUE": 14
+    },
+    "episodes": [
+      {
+        "episode": 1,
+        "file": "sample_episode.txt",
+        "logline": "A junior analyst is publicly blamed for a failure she did not cause, and chooses the one response nobody in the room expects.",
+        "continuity": "Standalone sample episode. Written from scratch for testing the parser on unseen input; contains no Kuku content.",
+        "duration": 72.0,
+        "n_beats": 26,
+        "n_scenes": 2,
+        "counts": {
+          "CAMERA": 4,
+          "SFX": 3,
+          "ACTION": 5,
+          "DIALOGUE": 14
+        },
+        "reconcile": {
+          "labels_seen": 26,
+          "timestamps_seen": 26,
+          "beats_built": 26,
+          "ok": true
+        }
+      }
+    ],
+    "duration_stats": {
+      "min": 72.0,
+      "p25": 72.0,
+      "median": 72.0,
+      "p75": 72.0,
+      "max": 72.0,
+      "n_over_150s": 0
+    },
+    "tone_tag_coverage": 0.9286,
+    "n_distinct_tone_tags": 19,
+    "top_tone_tags": [
+      [
+        "quiet",
+        2
+      ],
+      [
+        "cold",
+        1
+      ],
+      [
+        "final",
+        1
+      ],
+      [
+        "steady",
+        1
+      ],
+      [
+        "impatient",
+        1
+      ],
+      [
+        "calm",
+        1
+      ],
+      [
+        "cutting",
+        1
+      ],
+      [
+        "dismissive",
+        1
+      ],
+      [
+        "unwavering",
+        1
+      ],
+      [
+        "whispering",
+        1
+      ],
+      [
+        "alarmed",
+        1
+      ],
+      [
+        "resolute",
+        1
+      ],
+      [
+        "clear",
+        1
+      ],
+      [
+        "accusing",
+        1
+      ],
+      [
+        "trembling",
+        1
+      ],
+      [
+        "furious",
+        1
+      ],
+      [
+        "steely",
+        1
+      ],
+      [
+        "panicked",
+        1
+      ],
+      [
+        "powerful",
+        1
+      ]
+    ],
+    "speaker_labels_raw": 3,
+    "characters_canonical": 3,
+    "bare_names_attested": [
+      "DIRECTOR VOSS",
+      "MAYA",
+      "RAHUL"
+    ],
+    "alias_map": {},
+    "hazards": [],
+    "n_hazards": 0,
+    "intensity_coverage": {
+      "dialogue_beats": 14,
+      "scored_from_tone_lexicon": 13,
+      "lexicon_hit_rate": 0.9286,
+      "n_unknown_tags": 1,
+      "top_unknown_tags": [
+        [
+          "cutting",
+          1
+        ]
+      ]
+    }
+  },
+  "window_stats": [
+    {
+      "episode": 1,
+      "windows_enumerated": 135,
+      "windows_with_hook": 97,
+      "rejected_no_hook": 38,
+      "shortlisted": 1
+    }
+  ]
+}

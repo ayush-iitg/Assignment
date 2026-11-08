@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "gate_p_028_a",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\nJULIANA: \"Do not speak about my husband!\"\nCATHERINE: \"And look at you now. Scrubbing fireplaces in my house.\"\nCATHERINE: \"What a magnificent fall, Lady Juliana.\"\nBLOND NOBLEMAN: \"Drag her to the wet cells beneath the south tower.\"\nCATHERINE: \"And this?\"\nCATHERINE: \"This book of weeds will hang her before the magistrate.\"\nJULIANA: \"That book is my mother's life's work!\"\nCATHERINE: \"Then perhaps you can explain every page to the magistrate...\"\nCATHERINE: \"...before he sends you to the gallows.\"",
+  "response_text": "{\"who_is_the_main_character\":\"Juliana, a lady being threatened (the clip never explicitly labels a main character)\",\"what_is_at_stake\":\"Juliana's life and her mother's life's work (the book) are threatened with execution and possibly the gallows\",\"what_question_are_you_left_with\":\"Will Juliana be able to explain the book to the magistrate and avoid execution?\",\"would_you_keep_watching\":\"maybe, the tension and mystery are intriguing\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":true,\"ends_unresolved\":true,\"would_watch\":true}}",
+  "response_payload": {
+    "id": "chatcmpl-f597bad4-2140-46a1-b394-fcc6268ff55c",
+    "object": "chat.completion",
+    "created": 1794087507,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"who_is_the_main_character\":\"Juliana, a lady being threatened (the clip never explicitly labels a main character)\",\"what_is_at_stake\":\"Juliana's life and her mother's life's work (the book) are threatened with execution and possibly the gallows\",\"what_question_are_you_left_with\":\"Will Juliana be able to explain the book to the magistrate and avoid execution?\",\"would_you_keep_watching\":\"maybe, the tension and mystery are intriguing\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":true,\"ends_unresolved\":true,\"would_watch\":true}}",
+          "reasoning": "We need to produce JSON with fields. Determine main character: The clip includes Juliana and Catherine, plus a blond nobleman. Who is main? Likely Juliana is central, but not explicitly named as main. The clip never names who is main, but we can infer. The instruction: \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\". So we can say \"Juliana (the lady being threatened)\" but we need to note that the clip never explicitly says she is main. However we can describe. Probably we should say \"Juliana, a lady being threatened, is the apparent main character; the clip never explicitly labels a main character.\" That satisfies.\n\nWhat is at stake? The conflict: Juliana's husband, her mother's book, potential execution. So stakes: Juliana's life, her mother's life's work, possibly being sent to gallows. So clear.\n\nWhat question left with? Unresolved: Will Juliana be able to explain the book to the magistrate? Will she be saved? So unresolved.\n\nWould you keep watching? Provide yes/maybe/no with short reason. I'd say maybe, because intrigue.\n\nPasses: character_identifiable? Yes, we have names and roles. So true. stakes_clear? Yes, clear. ends_unresolved? Yes, unresolved. would_watch? Based on would_you_keep_watching, if maybe, then true? The passes field \"would_watch\" expects boolean if you'd watch. If maybe, maybe true? Probably true if you'd consider watching. I'd set true.\n\nNow produce compact JSON. Ensure valid.\n\n"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.376190543,
+      "prompt_tokens": 515,
+      "prompt_time": 0.086071529,
+      "completion_tokens": 460,
+      "completion_time": 0.956396518,
+      "total_tokens": 975,
+      "total_time": 1.042468047,
+      "completion_tokens_details": {
+        "reasoning_tokens": 333
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_93703442d9",
+    "x_groq": {
+      "id": "req_01m6vz5mbze3m9w1tv75ry746y",
+      "seed": 2075119445
+    },
+    "service_tier": "on_demand"
+  }
+}

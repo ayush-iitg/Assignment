@@ -1,0 +1,48 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "gate_p_022_a",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\nPRUDENCE: \"And if they discover who you are?\"\nJULIANA: \"Then I will face that when she is breathing again.\"\nPRUDENCE: \"Then forget you were ever a lady.\"\nJULIANA: \"Today, I am only a maid.\"\n[action] Prudence opens the heavy wooden service door, and both women step inside into the dark servants' corridor as the door shuts firmly behind them.\n[sfx] Heavy wooden latch clicks shut with a thud.\nHOUSEKEEPER: \"Prudence.\"\nHOUSEKEEPER: \"Who is this?\"\nPRUDENCE: \"Julian, ma'am. New help for the winter cleaning.\"\nHOUSEKEEPER: \"She looks soft.\"\n[action] Close-up on Lady Juliana's hands gripping the iron handle of the wooden wash bucket firmly.\nJULIANA: \"I can work, ma'am.\"\nHOUSEKEEPER: \"Can you scrub stone?\"\nJULIANA: \"Yes, ma'am.\"\nHOUSEKEEPER: \"Carry coal?\"\nJULIANA: \"Yes, ma'am.\"\nHOUSEKEEPER: \"And can you keep your eyes and ears where they belong?\"",
+  "response_text": "{\"who_is_the_main_character\":\"Juliana (also referred to as Lady Juliana)\",\"what_is_at_stake\":\"Juliana’s secret identity being discovered, which could have serious consequences for her\",\"what_question_are_you_left_with\":\"Will Juliana be able to keep her secret and survive the demanding work?\",\"would_you_keep_watching\":\"maybe, the mystery of her hidden past is intriguing\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":true,\"ends_unresolved\":true,\"would_watch\":false}}",
+  "response_payload": {
+    "id": "chatcmpl-e5f5a11c-22ef-442a-bae1-d3bb4d9c3328",
+    "object": "chat.completion",
+    "created": 1794103120,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"who_is_the_main_character\":\"Juliana (also referred to as Lady Juliana)\",\"what_is_at_stake\":\"Juliana’s secret identity being discovered, which could have serious consequences for her\",\"what_question_are_you_left_with\":\"Will Juliana be able to keep her secret and survive the demanding work?\",\"would_you_keep_watching\":\"maybe, the mystery of her hidden past is intriguing\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":true,\"ends_unresolved\":true,\"would_watch\":false}}",
+          "reasoning": "We need to produce JSON with fields. Determine main character: The clip mentions Juliana (also called Lady Juliana) and Prudence. Who is main? Likely Juliana, as she is central dialogue about identity. But we need to base on clip: It doesn't explicitly name main character, but we can infer. The question: \"who_is_the_main_character\": we can say the clip never names them? Actually it names Juliana and Prudence. Which is main? Could be Juliana because she speaks more about stakes. But we need to answer strictly from clip. We can say main character appears to be Juliana, but the clip never explicitly says she is main. The instruction: \"name them if the clip names them; otherwise describe and say the clip never names them\". So we can name Juliana as main character. That satisfies.\n\nWhat is at stake? The conflict: Juliana is hiding identity, possibly being discovered. Stakes: If discovered, consequences unknown. So \"what_is_at_stake\": unclear? The clip suggests risk of being discovered as not a maid. So we can say the stakes involve Juliana's secret identity being revealed, possibly leading to punishment. That's derived from dialogue. It's not fully explicit but implied. So stakes clear? It's somewhat clear that being discovered is a problem. So stakes_clear = true.\n\nEnds unresolved? The clip ends with Housekeeper asking \"And can you keep your eyes and ears where they belong?\" No answer yet. So unresolved. ends_unresolved = true.\n\nWould you keep watching? Provide yes/maybe/no with short reason. I'd say maybe, because intrigue about secret identity.\n\npasses: character_identifiable: true (we have names). stakes_clear: true. ends_unresolved: true. would_watch: maybe => true? The passes field \"would_watch\" expects boolean indicating if you'd watch? Probably true if you'd keep watching. Since we said maybe, maybe we set would_watch = false? The spec: passes: { \"would_watch\": true/false }. It likely expects whether you'd watch based on earlier answer. If we said maybe, ambiguous. I'd set false? But maybe they want true if you'd watch. Since we said maybe, not definite. Could set false. But maybe they want true if you'd watch at all. I'd interpret \"would_watch\" as whether you'd watch (yes). Since we said maybe, it's not a definite yes. Might set false. Let's choose false.\n\nNow construct JSON compact.\n\n"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.317729313,
+      "prompt_tokens": 617,
+      "prompt_time": 0.229699021,
+      "completion_tokens": 617,
+      "completion_time": 1.661051982,
+      "total_tokens": 1234,
+      "total_time": 1.890751003,
+      "prompt_tokens_details": {
+        "cached_tokens": 256
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 503
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_4200b3f836",
+    "x_groq": {
+      "id": "req_01m6we228xeqjrx3chndvdje11",
+      "seed": 89956742
+    },
+    "service_tier": "on_demand"
+  }
+}

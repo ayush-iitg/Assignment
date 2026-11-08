@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "gate_p_043_a",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\nALEXANDER: \"You sold my men to the enemy.\"\nBLOND NOBLEMAN: \"I didn't!\"\nALEXANDER: \"And when you believed I was dead...\"\nALEXANDER: \"You took my title.\"\n[sfx] Brittle snap of breaking sealing wax.\nCROWN OFFICIAL: \"Official death confirmation was filed three months after the ambush.\"\nCROWN OFFICIAL: \"Duke Alexander Ashburn was declared dead.\"\nCROWN OFFICIAL: \"His estate and title were subsequently transferred under false authority.\"",
+  "response_text": "{\"who_is_the_main_character\":\"The clip names Alexander, specifically Duke Alexander Ashburn, as the central figure\",\"what_is_at_stake\":\"The loss and potential reclamation of Alexander's title, estate, and the betrayal involving his men being sold to the enemy\",\"what_question_are_you_left_with\":\"Will Alexander succeed in exposing the false transfer of his title and get his estate back?\",\"would_you_keep_watching\":\"maybe, the dialogue hints at intrigue but the clip ends without resolution\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":true,\"ends_unresolved\":true,\"would_watch\":false}}",
+  "response_payload": {
+    "id": "chatcmpl-c6e2df0c-4533-4ff0-b152-d6962d269421",
+    "object": "chat.completion",
+    "created": 1794103061,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"who_is_the_main_character\":\"The clip names Alexander, specifically Duke Alexander Ashburn, as the central figure\",\"what_is_at_stake\":\"The loss and potential reclamation of Alexander's title, estate, and the betrayal involving his men being sold to the enemy\",\"what_question_are_you_left_with\":\"Will Alexander succeed in exposing the false transfer of his title and get his estate back?\",\"would_you_keep_watching\":\"maybe, the dialogue hints at intrigue but the clip ends without resolution\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":true,\"ends_unresolved\":true,\"would_watch\":false}}",
+          "reasoning": "We need to produce JSON with fields. Identify main character: The clip includes dialogue from \"ALEXANDER\" and \"BLOND NOBLEman\" and \"CROWN OFFICIAL\". Main character likely Alexander, as he speaks and is central. Clip never gives full name? Actually Alexander says \"Duke Alexander Ashburn\". So main character is Alexander (Duke Alexander Ashburn). So we can name him.\n\nWhat is at stake? Conflict: Alexander accuses someone of betraying him, selling his men, taking his title after his presumed death. So stakes involve reclaiming his title, exposing betrayal. So at stake is his title/estate and perhaps his men. So we can say \"his title and estate, and the betrayal of his men\". It's clear.\n\nWhat question left with? Unresolved: Will Alexander succeed in reclaiming his title? Will the nobleman be punished? So unresolved question: Will Alexander get justice? So we can phrase.\n\nWould you keep watching? Provide yes/maybe/no with short reason. I'd say maybe, because intrigue but unclear.\n\nPasses: character_identifiable: true (we have name). stakes_clear: true (conflict about title). ends_unresolved: true (clip ends with info, no resolution). would_watch: maybe? The passes field \"would_watch\" expects boolean? It says true/false. So we need to set based on would_you_keep_watching? If we say maybe, then would_watch maybe false? Actually passes \"would_watch\" likely indicates if you'd watch the show. If we said maybe, maybe false? But could be true if you'd watch. The spec: passes: { \"would_watch\": true/false }. Probably true if you'd watch, false otherwise. Since we said maybe, ambiguous. I'd set false? But maybe we interpret maybe as not definite, but still maybe watch. I'd set false? Hmm. The passes likely evaluate if the clip passes criteria for watchability. I'd set false because not definite. But we can set true if we think you'd watch. Let's decide: I'd keep watching maybe, but not strongly. I'd set false? The passes likely reflect objective criteria: character_identifiable, stakes_clear, ends_unresolved, would_watch (i.e., would you watch). Since we said maybe, it's not a yes, so false. So passes.would_watch = false.\n\nNow produce compact JSON."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.052321236,
+      "prompt_tokens": 492,
+      "prompt_time": 0.019120979,
+      "completion_tokens": 618,
+      "completion_time": 1.2963544009999999,
+      "total_tokens": 1110,
+      "total_time": 1.31547538,
+      "completion_tokens_details": {
+        "reasoning_tokens": 486
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_69dbc96c74",
+    "x_groq": {
+      "id": "req_01m6we09dqets80b74pcz4vhk2",
+      "seed": 2019598200
+    },
+    "service_tier": "on_demand"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "select_ep040",
+  "system": "You are a promo editor for vertical microdramas (ReelShort/DramaBox style).\nYou pick which seconds of an episode become a 20-60 second advert for the show.\n\nA good promo:\n- opens on a hook: within its first beats, something that stops a scrolling viewer - a slap, a reveal, a shocking line\n- ends on a cliffhanger: it stops at an unresolved moment, so the viewer must go find the show\n- makes sense alone to someone who has never seen this show\n\nYou will be given candidate windows, each a contiguous run of beats labelled [b00], [b01]...\nYou must choose ONE window and may tighten its edges to any beat labels inside that window.\n\nReply with JSON only:\n{\n  \"chosen_window\": <integer index of the window you picked>,\n  \"start_beat\": \"<beat label>\",\n  \"end_beat\": \"<beat label>\",\n  \"hook_beat\": \"<beat label, must be at or within 2 beats of start_beat>\",\n  \"cliffhanger_beat\": \"<beat label, must be at or near end_beat>\",\n  \"hook\": \"<what grabs the viewer in the first seconds, one sentence>\",\n  \"cliffhanger\": \"<the unresolved moment it cuts on, one sentence>\",\n  \"hook_type\": \"<one of: moral outrage, romantic tension, empathy shock, power reversal>\",\n  \"why_it_works\": \"<one sentence, concrete, no marketing language>\",\n  \"standalone_risk\": \"<what a new viewer would NOT understand, or 'none'>\"\n}\n\nNever invent dialogue. Never output a time or a duration - only beat labels.",
+  "prompt": "Episode 40. 4 candidate windows, already checked for legal length and real beat boundaries.\n\n--- WINDOW 0 (33 seconds, code score 0.78) ---\n[b00] LORD HARRINGTON (inquiring, subdued): \"Of the wedding?\"\n[b01] LADY HARRINGTON (chilling, sarcastic): \"And everything that comes after it.\"\n[b02] BLOND NOBLEMAN (nervous, determined): \"Everything must go perfectly.\"\n[b03] ACTION: Rupert smooths the lapels of his coat, checking his posture as he waits for the bride.\n[b04] ELDER NOBLEMAN (stern, scheming): \"All entrances are covered?\"\n[b05] ROYAL GUARD (obedient, firm): \"Every one, my Lord.\"\n[b06] ELDER NOBLEMAN (calculating): \"Good.\"\n[b07] ELDER NOBLEMAN (ruthless, victorious): \"By sunset, Ashburgh will have its new Duke and Duchess.\"\n[b08] ELDER NOBLEMAN (deadly, uncompromising): \"And its witch will be dead.\"\n\n--- WINDOW 1 (27 seconds, code score 0.75) ---\n[b00] LADY HARRINGTON (smug, impressed): \"Look at them. Every noble family in the county is here today.\"\n[b01] LORD HARRINGTON (ambitious, proud): \"And soon, we'll be connected to the Duchess of Ashburgh.\"\n[b02] LADY HARRINGTON (malicious, taunting): \"Imagine Juliana seeing this.\"\n[b03] LORD HARRINGTON (sinister, dismissive): \"She won't be seeing anything for long.\"\n[b04] LADY HARRINGTON (pleased, cold): \"Good.\"\n[b05] LORD HARRINGTON (chuckling, scornful): \"This place has always been unlucky for Juliana.\"\n[b06] ACTION: Lady Harrington lets out a soft, amused laugh as they reach the heavy wooden cathedral doors.\n[b07] LADY HARRINGTON (vindictive, pious): \"She stands beneath God's watch and still gets exactly what she deserves.\"\n\n--- WINDOW 2 (23 seconds, code score 0.70) ---\n[b00] LORD HARRINGTON (chuckling, scornful): \"This place has always been unlucky for Juliana.\"\n[b01] ACTION: Lady Harrington lets out a soft, amused laugh as they reach the heavy wooden cathedral doors.\n[b02] LADY HARRINGTON (vindictive, pious): \"She stands beneath God's watch and still gets exactly what she deserves.\"\n[b03] ACTION: Lord and Lady Harrington slide gracefully into the polished wooden pew, smoothing their garments.\n[b04] LADY HARRINGTON (anticipatory, eager): \"We have an excellent view.\"\n[b05] LORD HARRINGTON (inquiring, subdued): \"Of the wedding?\"\n[b06] LADY HARRINGTON (chilling, sarcastic): \"And everything that comes after it.\"\n[b07] BLOND NOBLEMAN (nervous, determined): \"Everything must go perfectly.\"\n\n--- WINDOW 3 (42 seconds, code score 0.61) ---\n[b00] ELDER NOBLEMAN (calculating): \"Good.\"\n[b01] ELDER NOBLEMAN (ruthless, victorious): \"By sunset, Ashburgh will have its new Duke and Duchess.\"\n[b02] ELDER NOBLEMAN (deadly, uncompromising): \"And its witch will be dead.\"\n[b03] SFX: The heavy creak of massive wooden cathedral doors swinging open, accompanied by swelling bridal organ music.\n[b04] LADY HARRINGTON (awestruck, whispering): \"She looks like a queen.\"\n[b05] BLOND NOBLEMAN (enamored, flattering): \"You look more queen than bride.\"\n[b06] CATHERINE (smug, coquettish): \"And you look better in silk than you ever did as an ignored cousin.\"\n[b07] ACTION: Rupert and Catherine exchange conspiratorial, triumphant smiles at the altar as the solemn organ chord holds and the scene cuts to black.\n\nPick the single best promo.",
+  "response_text": "{\"chosen_window\":3,\"start_beat\":\"b00\",\"end_beat\":\"b07\",\"hook_beat\":\"b02\",\"cliffhanger_beat\":\"b07\",\"hook\":\"Elder Nobleman declares, “And its witch will be dead.”\",\"cliffhanger\":\"Rupert and Catherine exchange triumphant smiles at the altar as the organ chord holds and the scene cuts to black, leaving their plan’s outcome unknown.\",\"hook_type\":\"power reversal\",\"why_it_works\":\"The sudden death threat shocks the viewer and instantly raises the stakes, while the cut‑to‑black smile promises a decisive payoff.\",\"standalone_risk\":\"The audience won’t know who the witch is or why she matters\"}",
+  "response_payload": {
+    "id": "chatcmpl-80363aab-8a72-4bfc-a155-ec8ba6009cbe",
+    "object": "chat.completion",
+    "created": 1794082736,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"chosen_window\":3,\"start_beat\":\"b00\",\"end_beat\":\"b07\",\"hook_beat\":\"b02\",\"cliffhanger_beat\":\"b07\",\"hook\":\"Elder Nobleman declares, “And its witch will be dead.”\",\"cliffhanger\":\"Rupert and Catherine exchange triumphant smiles at the altar as the organ chord holds and the scene cuts to black, leaving their plan’s outcome unknown.\",\"hook_type\":\"power reversal\",\"why_it_works\":\"The sudden death threat shocks the viewer and instantly raises the stakes, while the cut‑to‑black smile promises a decisive payoff.\",\"standalone_risk\":\"The audience won’t know who the witch is or why she matters\"}",
+          "reasoning": "We need to pick one window and possibly tighten edges. Must include hook_beat within 2 beats of start_beat, cliffhanger near end_beat. Provide JSON.\n\nWe need to evaluate each window for hook and cliffhanger.\n\nWindow 0: beats 0-8. Hook could be early shocking line: maybe ELDER NOBLEMAN says \"And its witch will be dead.\" That's a deadly line, power reversal? Hook could be at b07 or b08. Hook must be within 2 beats of start. Start at b00, hook could be b02? But b02 is \"Everything must go perfectly.\" Not as hook. b07 is 7 beats later, too far. Maybe start later? We can tighten start to b05? Hook at b07 within 2 beats? If start at b06, hook at b07 (within 1 beat). That could work. End at b08 maybe cliffhanger? The line \"And its witch will be dead.\" is a threat, unresolved. Could end there. But need cliffhanger near end. Could cut after that line, leaving tension. That works.\n\nWindow 1: hook early: Lady says \"Look at them...\" not strong. Maybe Lord says \"She won't be seeing anything for long.\" That's threat. Hook at b03 within 2 beats of start (b00). Could start at b01, hook at b03. End at b07 with \"She stands beneath God's watch...\" unresolved. Good.\n\nWindow 2: similar but includes more context. Hook maybe at b00 \"This place has always been unlucky for Juliana.\" Not strong. Could start at b02 with vindictive line. Hook at b02. End at b07 \"Everything must go perfectly.\" Not cliffhanger.\n\nWindow 3: Hook early: ELDER NOBLEMAN says \"By sunset, Ashburgh will have its new Duke and Duchess.\" That's political. Or \"And its witch will be dead.\" That's hook. Start at b00, hook at b02 within 2 beats. End at b07 with conspiratorial smiles, cut to black. Cliffhanger: what will happen at altar? Good.\n\nWe need best promo: Should have strong hook (shock) and cliffhanger unresolved. Window 3 has cinematic SFX, organ music, and ends on conspiratorial smiles as scene cuts to black - good cliffhanger. Hook line \"And its witch will be dead.\" is shocking. Start at b00, hook at b02 (within 2). End at b07. That seems strong.\n\nThus choose window 3. Provide start_beat maybe b00, end_beat b07, hook_beat b02, cliffhanger_beat b07. Hook: \"And its witch will be dead.\" Cliffhanger: conspiratorial smiles as organ chord holds and cut to black, leaving fate unknown.\n\nHook_type: power reversal (witch killed). Why works: immediate threat reveals high stakes and mystery. Standalone risk: viewer may not know who the witch is. Provide that.\n\nNow produce JSON compact."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.050922973,
+      "prompt_tokens": 1321,
+      "prompt_time": 0.050255676,
+      "completion_tokens": 780,
+      "completion_time": 1.634682854,
+      "total_tokens": 2101,
+      "total_time": 1.6849385300000002,
+      "prompt_tokens_details": {
+        "cached_tokens": 256
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 628
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_76082d2bd0",
+    "x_groq": {
+      "id": "req_01m6vtm0xge0zvz3t23n8ddt49",
+      "seed": 359653861
+    },
+    "service_tier": "on_demand"
+  }
+}

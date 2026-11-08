@@ -1,0 +1,41 @@
+{
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "tag": "gate_p_019_a",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\nINFORMANT: \"But they have separated her from the household. She is watched constantly. Every letter she sends is checked. Every visitor is questioned.\"\nINFORMANT: \"There are almost no loyal servants left around her.\"\nINFORMANT: \"The people who served your family for years have been dismissed, frightened away, or replaced.\"\n[action] Alexander lifts his gaze toward the cold forest canopy, his breathing heavy with profound anguish.\nALEXANDER: \"My mother is a prisoner in her own house.\"\nINFORMANT: \"And everyone believes you are dead.\"\nALEXANDER: \"Then let them believe it a little longer.\"\nINFORMANT: \"And when we have the proof?\"\nALEXANDER: \"Then Ashburg will remember who it belongs to.\"",
+  "response_text": "{\n  \"who_is_the_main_character\": \"Alexander (named in the clip)\",\n  \"what_is_at_stake\": \"Alexander's mother is being held prisoner and spied on, and Alexander is hiding in exile under the false belief that he is dead, planning to reclaim a place called Ashburg once he has proof.\",\n  \"what_question_are_you_left_with\": \"What is the specific 'proof' Alexander needs, and how does he intend to use it to reclaim Ashburg?\",\n  \"would_you_keep_watching\": \"yes, the setup of a hidden heir planning a revenge/reclamation plot is compelling.\",\n  \"passes\": {\n    \"character_identifiable\": true,\n    \"stakes_clear\": true,\n    \"ends_unresolved\": true,\n    \"would_watch\": true\n  }\n}",
+  "response_payload": {
+    "id": "chatcmpl-d4efba7c-dd0d-4db4-83ef-2162ce0e9224",
+    "object": "chat.completion",
+    "created": 1794113006,
+    "model": "qwen/qwen3.8-27b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"who_is_the_main_character\": \"Alexander (named in the clip)\",\n  \"what_is_at_stake\": \"Alexander's mother is being held prisoner and spied on, and Alexander is hiding in exile under the false belief that he is dead, planning to reclaim a place called Ashburg once he has proof.\",\n  \"what_question_are_you_left_with\": \"What is the specific 'proof' Alexander needs, and how does he intend to use it to reclaim Ashburg?\",\n  \"would_you_keep_watching\": \"yes, the setup of a hidden heir planning a revenge/reclamation plot is compelling.\",\n  \"passes\": {\n    \"character_identifiable\": true,\n    \"stakes_clear\": true,\n    \"ends_unresolved\": true,\n    \"would_watch\": true\n  }\n}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.049602677,
+      "prompt_tokens": 476,
+      "prompt_time": 0.032469171,
+      "completion_tokens": 174,
+      "completion_time": 0.335932925,
+      "total_tokens": 650,
+      "total_time": 0.368402096
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_a1293f40b5",
+    "x_groq": {
+      "id": "req_01m6wqftvkenm8qfnagmw10epq",
+      "seed": 1923761317
+    },
+    "service_tier": "on_demand"
+  }
+}

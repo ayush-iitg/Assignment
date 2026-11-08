@@ -1,0 +1,48 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "gate_p_023_a",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\nPRUDENCE: \"What are you saying?\"\nJULIANA: \"Someone is poisoning her.\"\n[sfx] Sharp intake of breath from Prudence.\nPRUDENCE: \"Poison?\"\nJULIANA: \"Arsenic.\"\n[sfx] Sudden violent coughing and sputtering from the Duchess.\nPRUDENCE: \"Can you save her?\"\nJULIANA: \"I can try.\"\n[sfx] Heavy, rhythmic scraping of stone pestle grinding charcoal and dried herbs.\nJULIANA: \"The charcoal may help remove what is still inside her. We must act quickly.\"\n[sfx] Sudden muffled thump and heavy footsteps echoing from the hallway outside the door!\nPRUDENCE: \"Juliana... someone is coming.\"",
+  "response_text": "{\"who_is_the_main_character\":\"Prudence (named in the clip)\",\"what_is_at_stake\":\"The Duchess is being poisoned with arsenic and may die unless Juliana’s remedy works quickly\",\"what_question_are_you_left_with\":\"Will Juliana be able to save the Duchess before the approaching person arrives?\",\"would_you_keep_watching\":\"maybe, the tension of a life‑or‑death rescue is intriguing\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":true,\"ends_unresolved\":true,\"would_watch\":false}}",
+  "response_payload": {
+    "id": "chatcmpl-4bd30fa1-03cc-470a-9ea6-a3f0c9ee8b40",
+    "object": "chat.completion",
+    "created": 1794095536,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"who_is_the_main_character\":\"Prudence (named in the clip)\",\"what_is_at_stake\":\"The Duchess is being poisoned with arsenic and may die unless Juliana’s remedy works quickly\",\"what_question_are_you_left_with\":\"Will Juliana be able to save the Duchess before the approaching person arrives?\",\"would_you_keep_watching\":\"maybe, the tension of a life‑or‑death rescue is intriguing\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":true,\"ends_unresolved\":true,\"would_watch\":false}}",
+          "reasoning": "We need to produce JSON with fields. Determine main character: The clip includes Prudence and Juliana. Who is main? Probably Prudence is central, as she asks questions. The clip never names main beyond that. We can say main character is Prudence (named). So \"who_is_the_main_character\": \"Prudence (the one asking questions)\". Or we could say both but main is Prudence.\n\nWhat is at stake: Someone (the Duchess) is being poisoned with arsenic; they need to act quickly to save her. So stakes: the Duchess's life.\n\nWhat question left: Will they be able to save the Duchess before the incoming person arrives? Or will they be caught? So unresolved.\n\nWould you keep watching: maybe, because tension.\n\nPasses: character_identifiable: true (we have names). stakes_clear: true (poisoning, life). ends_unresolved: true (they haven't resolved). would_watch: maybe (since we said maybe). So passes.would_watch = false? The passes field \"would_watch\" expects true/false if you'd watch? The instruction: passes: \"would_watch\": true/false. Probably reflect if you'd watch based on your answer. Since we said maybe, that's not a definite yes, so maybe false? But maybe they want true if you'd watch. The earlier field \"would_you_keep_watching\": \"yes | maybe | no\". So passes.would_watch maybe true if you would watch (yes), false otherwise. Since we said maybe, ambiguous. I'd set false? But maybe they consider maybe as not a firm watch, so false. Let's set false.\n\nNow produce compact JSON."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.356880363,
+      "prompt_tokens": 537,
+      "prompt_time": 0.012886085,
+      "completion_tokens": 458,
+      "completion_time": 1.1731861000000001,
+      "total_tokens": 995,
+      "total_time": 1.186072185,
+      "prompt_tokens_details": {
+        "cached_tokens": 256
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 339
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_93703442d9",
+    "x_groq": {
+      "id": "req_01m6w6tmexe8da8qb4zbbeq8gh",
+      "seed": 1003803367
+    },
+    "service_tier": "on_demand"
+  }
+}

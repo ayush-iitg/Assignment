@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "gate_p_042_a",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\nALEXANDER: \"Juliana.\"\nBLOND NOBLEMAN: \"Guards! Arrest this imposter!\"\nROYAL GUARD: \"We will not.\"\nBLOND NOBLEMAN: \"I said arrest him!\"\nBLOND NOBLEMAN: \"Why?!\"\nROYAL GUARD: \"Because we know who he is.\"\nCATHERINE: \"Rupert...\"\nBLOND NOBLEMAN: \"You cannot be him. Alexander died!\"\nALEXANDER: \"And yet, here I stand. That is the lie you built your life upon.\"",
+  "response_text": "{\"who_is_the_main_character\":\"Alexander (named in the clip)\",\"what_is_at_stake\":\"Whether Alexander is truly alive or an impostor, which threatens the nobleman's claim and the political order\",\"what_question_are_you_left_with\":\"Is Alexander really the genuine Alexander, or is he an impostor, and what will happen to him?\",\"would_you_keep_watching\":\"maybe, the identity conflict is intriguing but unresolved\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":true,\"ends_unresolved\":true,\"would_watch\":true}}",
+  "response_payload": {
+    "id": "chatcmpl-5dc129a9-de84-4343-a622-edfecaaad1a9",
+    "object": "chat.completion",
+    "created": 1794090966,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"who_is_the_main_character\":\"Alexander (named in the clip)\",\"what_is_at_stake\":\"Whether Alexander is truly alive or an impostor, which threatens the nobleman's claim and the political order\",\"what_question_are_you_left_with\":\"Is Alexander really the genuine Alexander, or is he an impostor, and what will happen to him?\",\"would_you_keep_watching\":\"maybe, the identity conflict is intriguing but unresolved\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":true,\"ends_unresolved\":true,\"would_watch\":true}}",
+          "reasoning": "We need to produce JSON with fields. Determine main character: The clip includes characters: Alexander, Blond Nobleman, Royal Guard, Catherine. Who is main? Likely Alexander is central, speaking lines. Clip never names who main is? It names Alexander. So main character is Alexander. So we can name them.\n\nWhat is at stake? Conflict: Blond Nobleman accuses someone of being an imposter, wants arrest. Royal Guard refuses because they know who he is. Catherine says \"Rupert...\" The nobleman says \"You cannot be him. Alexander died!\" Alexander says \"And yet, here I stand. That is the lie you built your life upon.\" So stakes: identity, perhaps claim to throne, life of characters. So conflict is about whether Alexander is alive or impostor. So stakes: the truth of identity, possibly political power. So we can say \"the conflict is whether Alexander is truly alive or an impostor, affecting the nobleman's claim.\" That's clear from clip.\n\nWhat question left? Unresolved: Is Alexander really alive? Will he be arrested? Who is Rupert? So unresolved question: Is Alexander truly the real Alexander or an impostor? So we can state that.\n\nWould you keep watching? Provide yes/maybe/no with short reason. I'd say maybe, because intrigue but unclear.\n\nPasses: character_identifiable: true (Alexander is named). stakes_clear: true (conflict about identity). ends_unresolved: true (question unresolved). would_watch: maybe? The passes field \"would_watch\" expects boolean? It says passes: { \"would_watch\": true/false }. So we need to set true if we would watch? The earlier field \"would_you_keep_watching\" is yes/maybe/no. passes would_watch likely true if we would watch (yes or maybe). Since we said maybe, maybe we set would_watch true? The spec: passes: { \"would_watch\": true/false }. Probably true if you would watch (yes or maybe). I'd set true.\n\nNow produce compact JSON. Ensure valid.\n\n"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.045107613,
+      "prompt_tokens": 500,
+      "prompt_time": 0.021179886,
+      "completion_tokens": 538,
+      "completion_time": 1.149356314,
+      "total_tokens": 1038,
+      "total_time": 1.1705362,
+      "completion_tokens_details": {
+        "reasoning_tokens": 418
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_b9a23305b9",
+    "x_groq": {
+      "id": "req_01m6w2f60rezjte6et0zcey9tw",
+      "seed": 894433269
+    },
+    "service_tier": "on_demand"
+  }
+}

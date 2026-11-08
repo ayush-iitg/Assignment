@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-20b",
+  "tag": "fallback_test",
+  "system": "Reply with JSON only.",
+  "prompt": "Return {\"ok\":true,\"n\":7}",
+  "response_text": "{\"ok\":true,\"n\":7}",
+  "response_payload": {
+    "id": "chatcmpl-355c8546-6b32-47fc-9ada-6cf858cf3b66",
+    "object": "chat.completion",
+    "created": 1794079956,
+    "model": "openai/gpt-oss-20b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"ok\":true,\"n\":7}",
+          "reasoning": "The user wants JSON: {\"ok\":true,\"n\":7}. We must output JSON only. Ensure compact. So output exactly that."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.285572231,
+      "prompt_tokens": 117,
+      "prompt_time": 0.005628262,
+      "completion_tokens": 47,
+      "completion_time": 0.062349289,
+      "total_tokens": 164,
+      "total_time": 0.067977551,
+      "completion_tokens_details": {
+        "reasoning_tokens": 29
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_ef00694abe",
+    "x_groq": {
+      "id": "req_01m6vqz76veyptf20y1p40zacx",
+      "seed": 858310742
+    },
+    "service_tier": "on_demand"
+  }
+}

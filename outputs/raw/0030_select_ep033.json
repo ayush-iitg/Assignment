@@ -1,0 +1,48 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "select_ep033",
+  "system": "You are a promo editor for vertical microdramas (ReelShort/DramaBox style).\nYou pick which seconds of an episode become a 20-60 second advert for the show.\n\nA good promo:\n- opens on a hook: within its first beats, something that stops a scrolling viewer - a slap, a reveal, a shocking line\n- ends on a cliffhanger: it stops at an unresolved moment, so the viewer must go find the show\n- makes sense alone to someone who has never seen this show\n\nYou will be given candidate windows, each a contiguous run of beats labelled [b00], [b01]...\nYou must choose ONE window and may tighten its edges to any beat labels inside that window.\n\nReply with JSON only:\n{\n  \"chosen_window\": <integer index of the window you picked>,\n  \"start_beat\": \"<beat label>\",\n  \"end_beat\": \"<beat label>\",\n  \"hook_beat\": \"<beat label, must be at or within 2 beats of start_beat>\",\n  \"cliffhanger_beat\": \"<beat label, must be at or near end_beat>\",\n  \"hook\": \"<what grabs the viewer in the first seconds, one sentence>\",\n  \"cliffhanger\": \"<the unresolved moment it cuts on, one sentence>\",\n  \"hook_type\": \"<one of: moral outrage, romantic tension, empathy shock, power reversal>\",\n  \"why_it_works\": \"<one sentence, concrete, no marketing language>\",\n  \"standalone_risk\": \"<what a new viewer would NOT understand, or 'none'>\"\n}\n\nNever invent dialogue. Never output a time or a duration - only beat labels.",
+  "prompt": "Episode 33. 4 candidate windows, already checked for legal length and real beat boundaries.\n\n--- WINDOW 0 (22 seconds, code score 0.90) ---\n[b00] MAID (desperate, denying): \"No!\"\n[b01] LORD (low, menacing): \"Think carefully.\"\n[b02] LORD (ruthless): \"Your brother is still a pauper.\"\n[b03] LORD (threatening): \"One word from me, and the county gaol will take him before sunrise.\"\n[b04] ACTION: The maid gasps in sheer terror, her chest heaving as tears stream.\n[b05] MAID (begging, heartbroken): \"Please, my Lord... he is only seven!\"\n[b06] LORD (cold, unwavering): \"Then help him.\"\n[b07] MAID (crying, shattered): \"What do you want me to say?!\"\n\n--- WINDOW 1 (24 seconds, code score 0.85) ---\n[b00] MAID (wailing, tormented): \"I never said she was a witch!\"\n[b01] LORD (chillingly detached): \"You do not need to.\"\n[b02] LORD (chillingly detached): \"I have already written the story for you.\"\n[b03] MAID (sobbing): \"She saved my brother...\"\n[b04] LORD (inexorable): \"And now... you will save your brother.\"\n[b05] ACTION: The maid's knees buckle completely. She collapses forward onto the polished dark wood floor, groveling in total despair.\n[b06] MAID (weeping, broken): \"I am sorry, Lady Juliana...\"\n[b07] LORD (cold, merciless): \"Save your tears for the trial.\"\n\n--- WINDOW 2 (27 seconds, code score 0.84) ---\n[b00] LORD (relentless): \"You saw her use a forbidden book.\"\n[b01] LORD (condemning): \"You heard words you could not understand.\"\n[b02] LORD (deadly, resolute): \"That is witchcraft.\"\n[b03] MAID (crying out, desperate): \"No! She saved Toby! She made him breathe again!\"\n[b04] LORD (cold, final): \"That will be your testimony.\"\n[b05] MAID (gasping, shocked): \"My testimony?!\"\n[b06] LORD (unyielding): \"Before the magistrate.\"\n[b07] MAID (wailing, tormented): \"I never said she was a witch!\"\n\n--- WINDOW 3 (26 seconds, code score 0.79) ---\n[b00] LORD (accusatory): \"Did she use her mother's book?\"\n[b01] MAID (quietly weeping): \"Yes.\"\n[b02] LORD (insistent, cornering): \"Did she prepare things no physician had prescribed?\"\n[b03] MAID (choked sob): \"Yes.\"\n[b04] LORD (sly, sinister): \"And did she perform anything unusual?\"\n[b05] MAID (desperate, denying): \"No!\"\n[b06] LORD (low, menacing): \"Think carefully.\"\n[b07] LORD (ruthless): \"Your brother is still a pauper.\"\n\nPick the single best promo.",
+  "response_text": "{\"chosen_window\":0,\"start_beat\":\"b00\",\"end_beat\":\"b07\",\"hook_beat\":\"b01\",\"cliffhanger_beat\":\"b07\",\"hook\":\"Lord threatens that the county gaol will take her brother before sunrise, raising the stakes instantly.\",\"cliffhanger\":\"Maid begs, \\\"What do you want me to say?!\\\" leaving the lord's demand unresolved.\",\"hook_type\":\"moral outrage\",\"why_it_works\":\"The sudden death threat and the maid’s desperate question create immediate tension and a mystery that forces viewers to watch.\",\"standalone_risk\":\"The viewer won’t know who the brother is or why the maid can decide his fate.\"}",
+  "response_payload": {
+    "id": "chatcmpl-02a06728-df7d-4b54-89ae-d177245395d1",
+    "object": "chat.completion",
+    "created": 1794082616,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"chosen_window\":0,\"start_beat\":\"b00\",\"end_beat\":\"b07\",\"hook_beat\":\"b01\",\"cliffhanger_beat\":\"b07\",\"hook\":\"Lord threatens that the county gaol will take her brother before sunrise, raising the stakes instantly.\",\"cliffhanger\":\"Maid begs, \\\"What do you want me to say?!\\\" leaving the lord's demand unresolved.\",\"hook_type\":\"moral outrage\",\"why_it_works\":\"The sudden death threat and the maid’s desperate question create immediate tension and a mystery that forces viewers to watch.\",\"standalone_risk\":\"The viewer won’t know who the brother is or why the maid can decide his fate.\"}",
+          "reasoning": "We need to pick one window and possibly tighten edges. Must include hook within first 2 beats of start. Must end with cliffhanger near end. Provide JSON.\n\nWe need to evaluate each window for hook and cliffhanger.\n\nWindow 0: beats start with maid \"No!\" then lord \"Think carefully.\" Hook could be the lord's threat about gaol taking brother before sunrise. That's a strong hook: threat of death. Cliffhanger could be maid's \"What do you want me to say?!\" unresolved demand. Works.\n\nWindow 1: starts with maid wailing \"I never said she was a witch!\" Hook is immediate accusation. Then lord says \"You do not need to.\" Could be hook. Cliffhanger maybe \"Save your tears for the trial.\" unresolved trial.\n\nWindow 2: starts with lord \"You saw her use a forbidden book.\" Hook is accusation of witchcraft. Cliffhanger could be maid's \"I never said she was a witch!\" unresolved.\n\nWindow 3: starts with lord \"Did she use her mother's book?\" Hook is interrogation. Cliffhanger maybe after \"Your brother is still a pauper.\" unresolved.\n\nWe need best promo: hook early, cliffhanger unresolved tension. Window 0 seems strong: threat of gaol before sunrise, maid's desperate plea, ends with \"What do you want me to say?!\" which is a question, unresolved.\n\nWe can tighten edges: start at b00, hook at b01 maybe? Hook beat must be within 2 beats of start. Could set hook_beat = b01 (Lord \"Think carefully.\") but maybe b02 \"Your brother is still a pauper.\" That's also hook. Let's set start_beat b00, hook_beat b01 (Lord's menacing line). End_beat maybe b07 (maid's question). Cliffhanger_beat b07.\n\nCheck that cliffhanger near end. Yes.\n\nNow fill fields.\n\nhook: \"Lord threatens that the county gaol will take her brother before sunrise.\" cliffhanger: \"Maid begs, 'What do you want me to say?!' leaving the demand unknown.\"\n\nhook_type: moral outrage? It's power reversal? The lord wielding power over maid, moral outrage fits. Could be power reversal (lord imposing). I'd choose moral outrage.\n\nwhy_it_works: The immediate threat and the maid's desperate question create high stakes and unanswered demand.\n\nstandalone_risk: New viewer may not know who \"her brother\" is or why the maid can speak for him. So risk: lack of context about the brother's situation.\n\nReturn JSON compact."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.055121718,
+      "prompt_tokens": 1120,
+      "prompt_time": 0.05984152,
+      "completion_tokens": 678,
+      "completion_time": 1.447517982,
+      "total_tokens": 1798,
+      "total_time": 1.507359502,
+      "prompt_tokens_details": {
+        "cached_tokens": 256
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 529
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_420c059a6a",
+    "x_groq": {
+      "id": "req_01m6vtgbb5exf88ttedcggke0r",
+      "seed": 95432565
+    },
+    "service_tier": "on_demand"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "tag": "select_ep017",
+  "system": "You are a promo editor for vertical microdramas (ReelShort/DramaBox style).\nYou pick which seconds of an episode become a 20-60 second advert for the show.\n\nA good promo:\n- opens on a hook: within its first beats, something that stops a scrolling viewer - a slap, a reveal, a shocking line\n- ends on a cliffhanger: it stops at an unresolved moment, so the viewer must go find the show\n- makes sense alone to someone who has never seen this show\n\nYou will be given candidate windows, each a contiguous run of beats labelled [b00], [b01]...\nYou must choose ONE window and may tighten its edges to any beat labels inside that window.\n\nReply with JSON only:\n{\n  \"chosen_window\": <integer index of the window you picked>,\n  \"start_beat\": \"<beat label>\",\n  \"end_beat\": \"<beat label>\",\n  \"hook_beat\": \"<beat label, must be at or within 2 beats of start_beat>\",\n  \"cliffhanger_beat\": \"<beat label, must be at or near end_beat>\",\n  \"hook\": \"<what grabs the viewer in the first seconds, one sentence>\",\n  \"cliffhanger\": \"<the unresolved moment it cuts on, one sentence>\",\n  \"hook_type\": \"<one of: moral outrage, romantic tension, empathy shock, power reversal>\",\n  \"why_it_works\": \"<one sentence, concrete, no marketing language>\",\n  \"standalone_risk\": \"<what a new viewer would NOT understand, or 'none'>\"\n}\n\nNever invent dialogue. Never output a time or a duration - only beat labels.",
+  "prompt": "Episode 17. 3 candidate windows, already checked for legal length and real beat boundaries.\n\n--- WINDOW 0 (22 seconds, code score 0.64) ---\n[b00] ALEXANDER (gruff, low): \"For what?\"\n[b01] JULIANA (trembling, heartfelt): \"For standing between me and those men.\"\n[b02] ALEXANDER (unwavering, firm): \"I would do it again.\"\n[b03] JULIANA (whispering, awed): \"Even if there were ten of them?\"\n[b04] ALEXANDER (deep, resolute): \"As long as I draw breath...\"\n[b05] ACTION: Alexander drops to one knee before Juliana, gently taking her trembling, bandaged hands into his large, weathered palms.\n[b06] ALEXANDER (gentle, vowing): \"...no one will hurt you again.\"\n[b07] JULIANA (choked up, pained): \"You cannot promise that.\"\n[b08] ALEXANDER (quiet, absolute): \"I just did.\"\n[b09] ACTION: Alexander squeezes Juliana's hands reassuringly as she rests her fingertips against his skin. The scene fades to black.\n\n--- WINDOW 1 (29 seconds, code score 0.53) ---\n[b00] JULIANA (choked up, pained): \"You cannot promise that.\"\n[b01] ALEXANDER (quiet, absolute): \"I just did.\"\n[b02] ACTION: Alexander squeezes Juliana's hands reassuringly as she rests her fingertips against his skin. The scene fades to black.\n[b03] ACTION: Juliana wrings out a clean linen cloth from the basin and tenderly dabs at the fresh cuts and abrasions on the back of Alexander's right hand.\n[b04] JULIANA (tender, reproachful): \"You were bleeding last night.\"\n[b05] ALEXANDER (quiet, fond): \"So were you.\"\n[b06] JULIANA (softly teasing): \"You make it very difficult to argue with you.\"\n[b07] ACTION: Juliana returns the damp cloth to the ceramic basin, her expression turning somber and reflective.\n[b08] JULIANA (vulnerable, sincere): \"I was frightened.\"\n[b09] ALEXANDER (questioning): \"Of them?\"\n[b10] JULIANA (whispering, earnest): \"Of losing you.\"\n\n--- WINDOW 2 (60 seconds, code score 0.51) ---\n[b00] JULIANA (vulnerable, sincere): \"I was frightened.\"\n[b01] ALEXANDER (questioning): \"Of them?\"\n[b02] JULIANA (whispering, earnest): \"Of losing you.\"\n[b03] ACTION: Juliana rests her cheek against Alexander's chest, closing her eyes as his strong arms wrap around her shoulders, holding her safe against his frame.\n[b04] ACTION: Juliana nestles deeper into his coat, listening intently to the rapid thudding beneath his chest.\n[b05] JULIANA (soft, playful): \"Your heart is racing.\"\n[b06] ALEXANDER (warm, whispering): \"So is yours.\"\n[b07] ACTION: Juliana slowly raises her hand, gently twirling a lock of Alexander's long, unruly dark hair between her fingers.\n[b08] JULIANA (lighthearted, teasing): \"This is becoming impossible.\"\n[b09] JULIANA (smiling): \"Soon birds will start nesting in it.\"\n[b10] ALEXANDER (dry, amused): \"They have not complained yet.\"\n[b11] ACTION: Juliana lets out a quiet, melodic laugh.\n[b12] JULIANA (charming, tender): \"Then I shall have to save you from the birds.\"\n[b13] ACTION: Alexander gently catches her wrist mid-air, holding her hand firmly against his chest while looking into her eyes with solemn sincerity.\n[b14] ALEXANDER (solemn, gentle): \"Not yet.\"\n[b15] JULIANA (sweet, reassuring): \"Then I will wait.\"\n[b16] ACTION: Juliana rests her head against Alexander's collarbone once more, wrapping both arms around him as he cradles her head in his palm.\n[b17] JULIANA (reflective, resonant): \"I know almost nothing about the man I married.\"\n[b18] JULIANA (deeply moved, loving): \"But every day, he gives me another reason to trust him.\"\n[b19] SFX: Warm crackle of embers in the hearth blending with swelling, tender orchestral strings holding into the fade-out.\n\nPick the single best promo.",
+  "response_text": "{\n  \"chosen_window\": 0,\n  \"start_beat\": \"b00\",\n  \"end_beat\": \"b08\",\n  \"hook_beat\": \"b00\",\n  \"cliffhanger_beat\": \"b08\",\n  \"hook\": \"A gruff man asks 'For what?' in response to a woman's trembling gratitude, immediately establishing a high-stakes protective dynamic.\",\n  \"cliffhanger\": \"The man makes an absolute, quiet vow that 'no one will hurt you again,' leaving the viewer to wonder what threat he is facing.\",\n  \"hook_type\": \"power reversal\",\n  \"why_it_works\": \"It contrasts the character's rough exterior with a sudden, intense act of devotion (kneeling), creating immediate romantic tension and curiosity about the danger he just faced.\",\n  \"standalone_risk\": \"The specific identity of 'those men' or the nature of the attack is not shown, but the emotional stakes are clear.\"\n}",
+  "response_payload": {
+    "id": "chatcmpl-7800c0ce-df98-40d4-8396-6da80ec2b815",
+    "object": "chat.completion",
+    "created": 1794103864,
+    "model": "qwen/qwen3.8-27b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"chosen_window\": 0,\n  \"start_beat\": \"b00\",\n  \"end_beat\": \"b08\",\n  \"hook_beat\": \"b00\",\n  \"cliffhanger_beat\": \"b08\",\n  \"hook\": \"A gruff man asks 'For what?' in response to a woman's trembling gratitude, immediately establishing a high-stakes protective dynamic.\",\n  \"cliffhanger\": \"The man makes an absolute, quiet vow that 'no one will hurt you again,' leaving the viewer to wonder what threat he is facing.\",\n  \"hook_type\": \"power reversal\",\n  \"why_it_works\": \"It contrasts the character's rough exterior with a sudden, intense act of devotion (kneeling), creating immediate romantic tension and curiosity about the danger he just faced.\",\n  \"standalone_risk\": \"The specific identity of 'those men' or the nature of the attack is not shown, but the emotional stakes are clear.\"\n}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.048834946,
+      "prompt_tokens": 1434,
+      "prompt_time": 0.101792693,
+      "completion_tokens": 220,
+      "completion_time": 0.425783495,
+      "total_tokens": 1654,
+      "total_time": 0.527576188
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_21e59ac2de",
+    "x_groq": {
+      "id": "req_01m6wert41egxvn0ca8jnavyp4",
+      "seed": 471330311
+    },
+    "service_tier": "on_demand"
+  }
+}

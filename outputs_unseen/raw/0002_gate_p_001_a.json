@@ -1,0 +1,41 @@
+{
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "tag": "gate_p_001_a",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\n[sfx] Heavy paper slap followed by a low, tense string note.\n[action] A thick report lands on the table and skids to a stop in front of MAYA, who does not flinch.\nDIRECTOR VOSS: \"Nine million. Gone. And every signature on it is yours.\"\nMAYA: \"Every signature is mine.\"\nDIRECTOR VOSS: \"Then you understand why this is the last meeting you attend.\"\nMAYA: \"I understand why you need it to be.\"\n[action] Maya slides a thin folder across the table. It stops precisely at Voss's hand.\nMAYA: \"Page four. The approval that overrode mine. Read whose initials are on it.\"\nDIRECTOR VOSS: \"I don't need a lecture from a junior.\"\nMAYA: \"You need one more than anybody in this room.\"\n[action] Voss opens the folder. His face empties of colour as he reads.\n[sfx] The room's ambient hum drops away to near silence.\nRAHUL: \"Maya, don't. Not here.\"\nMAYA: \"I spent four months being told to stay quiet. I'm done being convenient.\"\nMAYA: \"You signed off on the override on a Friday night and buried the email on Monday.\"\nDIRECTOR VOSS: \"Get out of my boardroom.\"\nMAYA: \"In nine minutes it stops being yours.\"",
+  "response_text": "{\n  \"who_is_the_main_character\": \"Maya (the clip names her, but provides no last name or specific job title other than implying she is a 'junior' who was overruled)\",\n  \"what_is_at_stake\": \"Maya is being fired for a nine million loss, but she is revealing that Director Voss actually authorized the action that caused it, threatening his position in the company.\",\n  \"what_question_are_you_left_with\": \"What happens in the next nine minutes that will make the boardroom stop being Voss's?\",\n  \"would_you_keep_watching\": \"yes, the final line promises an immediate, specific consequence that hasn't happened yet\",\n  \"passes\": {\n    \"character_identifiable\": true,\n    \"stakes_clear\": true,\n    \"ends_unresolved\": true,\n    \"would_watch\": true\n  }\n}",
+  "response_payload": {
+    "id": "chatcmpl-d984eaa2-7d87-4813-86fd-5e4f47356a38",
+    "object": "chat.completion",
+    "created": 1794113344,
+    "model": "qwen/qwen3.8-27b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"who_is_the_main_character\": \"Maya (the clip names her, but provides no last name or specific job title other than implying she is a 'junior' who was overruled)\",\n  \"what_is_at_stake\": \"Maya is being fired for a nine million loss, but she is revealing that Director Voss actually authorized the action that caused it, threatening his position in the company.\",\n  \"what_question_are_you_left_with\": \"What happens in the next nine minutes that will make the boardroom stop being Voss's?\",\n  \"would_you_keep_watching\": \"yes, the final line promises an immediate, specific consequence that hasn't happened yet\",\n  \"passes\": {\n    \"character_identifiable\": true,\n    \"stakes_clear\": true,\n    \"ends_unresolved\": true,\n    \"would_watch\": true\n  }\n}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.048275916,
+      "prompt_tokens": 610,
+      "prompt_time": 0.041808011,
+      "completion_tokens": 190,
+      "completion_time": 0.370914128,
+      "total_tokens": 800,
+      "total_time": 0.412722139
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_a1293f40b5",
+    "x_groq": {
+      "id": "req_01m6wqt4gse53adzxb82m5tt88",
+      "seed": 1397345627
+    },
+    "service_tier": "on_demand"
+  }
+}

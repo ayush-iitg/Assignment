@@ -1,0 +1,24 @@
+# secrets — never commit
+.env
+.env.*
+.streamlit/secrets.toml
+
+# llm response cache (regenerable, keyed by provider+model+prompt hash)
+.cache/
+
+# python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# os
+.DS_Store
+
+# duplicate of data/ — the input pack is committed once, under data/
+I Married a Broken Soldier. He was a Duke/
+
+# build scratch
+logs/
+outputs_dev/
+scripts/

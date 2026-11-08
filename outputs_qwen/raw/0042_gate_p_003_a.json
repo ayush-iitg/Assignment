@@ -1,0 +1,41 @@
+{
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "tag": "gate_p_003_a",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\nNOBLE MATRIARCH: \"...and it isn't you.\"\n[action] The Noble Matriarch turns sharply toward the back of the chapel and barks an order.\nNOBLE MATRIARCH: \"Guards! Remove her!\"\n[action] The guards forcefully grab Juliana by both shoulders and drag her backwards.\nJULIANA: \"Let me go!\"\nJULIANA: \"Please! Someone!\"\n[action] The guards tear her grip away from the pew.\n[sfx] Muffled scuffle, rustle of heavy silk and frantic gasps echoing off cathedral stone.\n[action] The Bearded Stranger steps deliberately into the aisle, his heavy boots echoing.\nMYSTERIOUS BEARDED MAN: \"Take your hands off her.\"\nNOBLE MATRIARCH: \"And who are you to give orders in my family's chapel?!\"",
+  "response_text": "{\n  \"who_is_the_main_character\": \"The clip features a Noble Matriarch, a woman named Juliana, and a Mysterious Bearded Man. The clip never explicitly identifies a single 'main' character, though the Bearded Man is the last speaker.\",\n  \"what_is_at_stake\": \"Juliana is being physically removed from a chapel by guards on the orders of the Noble Matriarch. The Bearded Man intervenes to stop them.\",\n  \"what_question_are_you_left_with\": \"Who is the Bearded Man, and why is the Noble Matriarch so hostile to Juliana?\",\n  \"would_you_keep_watching\": \"yes, to see how the Bearded Man responds to the Matriarch's challenge and what happens to Juliana.\",\n  \"passes\": {\n    \"character_identifiable\": false,\n    \"stakes_clear\": true,\n    \"ends_unresolved\": true,\n    \"would_watch\": true\n  }\n}",
+  "response_payload": {
+    "id": "chatcmpl-28cd2a72-c2ed-4b77-9c9d-207a6ecdca45",
+    "object": "chat.completion",
+    "created": 1794112820,
+    "model": "qwen/qwen3.8-27b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"who_is_the_main_character\": \"The clip features a Noble Matriarch, a woman named Juliana, and a Mysterious Bearded Man. The clip never explicitly identifies a single 'main' character, though the Bearded Man is the last speaker.\",\n  \"what_is_at_stake\": \"Juliana is being physically removed from a chapel by guards on the orders of the Noble Matriarch. The Bearded Man intervenes to stop them.\",\n  \"what_question_are_you_left_with\": \"Who is the Bearded Man, and why is the Noble Matriarch so hostile to Juliana?\",\n  \"would_you_keep_watching\": \"yes, to see how the Bearded Man responds to the Matriarch's challenge and what happens to Juliana.\",\n  \"passes\": {\n    \"character_identifiable\": false,\n    \"stakes_clear\": true,\n    \"ends_unresolved\": true,\n    \"would_watch\": true\n  }\n}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.048960582,
+      "prompt_tokens": 486,
+      "prompt_time": 0.033144817,
+      "completion_tokens": 205,
+      "completion_time": 0.393713781,
+      "total_tokens": 691,
+      "total_time": 0.426858598
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_424cb89518",
+    "x_groq": {
+      "id": "req_01m6wqa4h9e67r6pkfb06fq67v",
+      "seed": 298348413
+    },
+    "service_tier": "on_demand"
+  }
+}

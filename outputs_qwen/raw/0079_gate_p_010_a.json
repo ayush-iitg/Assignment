@@ -1,0 +1,41 @@
+{
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "tag": "gate_p_010_a",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\nJULIANA: \"I need to see the wound.\"\nALEXANDER: \"It is only a scratch.\"\nJULIANA: \"Then removing your shirt should not trouble you.\"\nJULIANA: \"Dear God.\"\nJULIANA: \"You have suffered terribly.\"\nALEXANDER: \"It is over.\"",
+  "response_text": "{\n  \"who_is_the_main_character\": \"The clip features two characters named Juliana and Alexander. It does not specify who the 'main' character is, though Juliana appears to be the one driving the action.\",\n  \"what_is_at_stake\": \"Unclear from the clip. It appears to be a moment of medical or emotional assessment after an injury, but the broader context or danger is not explained.\",\n  \"what_question_are_you_left_with\": \"What happened to cause the injury, and why is Alexander hiding it?\",\n  \"would_you_keep_watching\": \"maybe, because the dialogue suggests a hidden backstory or relationship dynamic that is intriguing but under-explained\",\n  \"passes\": {\n    \"character_identifiable\": true,\n    \"stakes_clear\": false,\n    \"ends_unresolved\": true,\n    \"would_watch\": true\n  }\n}",
+  "response_payload": {
+    "id": "chatcmpl-973be35b-57ca-4f6c-8afb-1e5a61948042",
+    "object": "chat.completion",
+    "created": 1794113101,
+    "model": "qwen/qwen3.8-27b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"who_is_the_main_character\": \"The clip features two characters named Juliana and Alexander. It does not specify who the 'main' character is, though Juliana appears to be the one driving the action.\",\n  \"what_is_at_stake\": \"Unclear from the clip. It appears to be a moment of medical or emotional assessment after an injury, but the broader context or danger is not explained.\",\n  \"what_question_are_you_left_with\": \"What happened to cause the injury, and why is Alexander hiding it?\",\n  \"would_you_keep_watching\": \"maybe, because the dialogue suggests a hidden backstory or relationship dynamic that is intriguing but under-explained\",\n  \"passes\": {\n    \"character_identifiable\": true,\n    \"stakes_clear\": false,\n    \"ends_unresolved\": true,\n    \"would_watch\": true\n  }\n}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.050648484,
+      "prompt_tokens": 380,
+      "prompt_time": 0.026907675,
+      "completion_tokens": 186,
+      "completion_time": 0.360654995,
+      "total_tokens": 566,
+      "total_time": 0.38756267
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_21e59ac2de",
+    "x_groq": {
+      "id": "req_01m6wqjpz4etmr8r37zdsqvz0z",
+      "seed": 360861044
+    },
+    "service_tier": "on_demand"
+  }
+}

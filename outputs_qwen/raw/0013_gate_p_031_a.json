@@ -1,0 +1,41 @@
+{
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "tag": "gate_p_031_a",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\nCATHERINE: \"Enough!\"\n[sfx] Hiss of scorched parchment and curling white smoke rising as paper blackens under extreme heat.\nCATHERINE: \"This pathetic book is the only thing you still have from your mother.\"\n[action] Tears spill rapidly down Juliana's cheeks as she reaches forward in vain, restrained by her heavy iron chains.\nJULIANA: \"[gasping] Give it back!\"\nCATHERINE: \"There. Finally. Something still hurts you.\"\nJULIANA: \"No!\"\nCATHERINE: \"One flame, and your mother's life's work becomes ash.\"",
+  "response_text": "{\n  \"who_is_the_main_character\": \"Juliana (the clip names her, but provides no other identifying details like age, role, or background)\",\n  \"what_is_at_stake\": \"The destruction of a book belonging to Juliana's deceased mother, which is being burned by Catherine while Juliana is chained and unable to stop it\",\n  \"what_question_are_you_left_with\": \"Why is Catherine doing this, and what is the relationship between them?\",\n  \"would_you_keep_watching\": \"maybe, because the immediate threat is resolved in the clip but the motivation and context are completely missing\",\n  \"passes\": {\n    \"character_identifiable\": true,\n    \"stakes_clear\": true,\n    \"ends_unresolved\": true,\n    \"would_watch\": true\n  }\n}",
+  "response_payload": {
+    "id": "chatcmpl-8548efd4-a2ce-48e8-836f-41706af3d46a",
+    "object": "chat.completion",
+    "created": 1794112619,
+    "model": "qwen/qwen3.8-27b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"who_is_the_main_character\": \"Juliana (the clip names her, but provides no other identifying details like age, role, or background)\",\n  \"what_is_at_stake\": \"The destruction of a book belonging to Juliana's deceased mother, which is being burned by Catherine while Juliana is chained and unable to stop it\",\n  \"what_question_are_you_left_with\": \"Why is Catherine doing this, and what is the relationship between them?\",\n  \"would_you_keep_watching\": \"maybe, because the immediate threat is resolved in the clip but the motivation and context are completely missing\",\n  \"passes\": {\n    \"character_identifiable\": true,\n    \"stakes_clear\": true,\n    \"ends_unresolved\": true,\n    \"would_watch\": true\n  }\n}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.118137023,
+      "prompt_tokens": 439,
+      "prompt_time": 0.031242152,
+      "completion_tokens": 171,
+      "completion_time": 0.347872406,
+      "total_tokens": 610,
+      "total_time": 0.379114558
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_21e59ac2de",
+    "x_groq": {
+      "id": "req_01m6wq40whejpsrwa4j815pa7h",
+      "seed": 851151091
+    },
+    "service_tier": "on_demand"
+  }
+}

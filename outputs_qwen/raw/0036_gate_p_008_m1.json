@@ -1,0 +1,41 @@
+{
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "tag": "gate_p_008_m1",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\n[action] Juliana delicately runs her fingertips across the embossed leather cover of the worn botanical volume, noticing its weathered state.\nJULIANA: \"Some of the pages are ruined. Careful.\"\n[sfx] Soft metallic click of the book clasp loosening.\nJULIANA: \"Mother spent years writing this.\"\n[action] Alexander gently sets down a fresh bundle of small white herbal flowers tied with twine beside the open book.\nJULIANA: \"Yarrow.\"\nALEXANDER: \"Good for wounds. Fever, too.\"\nJULIANA: \"How do you know that?\"\nALEXANDER: \"Some were.\"\nJULIANA: \"It must have been terrible.\"\nALEXANDER: \"It was.\"\nJULIANA: \"I thought losing wealth meant losing everything.\"\nJULIANA: \"Perhaps I was wrong.\"\n[action] Juliana maintains her warm, peaceful gaze across the table as soft firelight flickers over her face into fade out.",
+  "response_text": "{\n  \"who_is_the_main_character\": \"Juliana (named in dialogue)\",\n  \"what_is_at_stake\": \"Unclear from the clip. There is a conversation about past trauma and loss of wealth, but no active conflict or immediate danger is shown.\",\n  \"what_question_are_you_left_with\": \"What happened to Alexander that caused him to lose his wealth and experience fever/wounds?\",\n  \"would_you_keep_watching\": \"maybe, the dialogue hints at a deeper backstory and emotional connection between the characters\",\n  \"passes\": {\n    \"character_identifiable\": true,\n    \"stakes_clear\": false,\n    \"ends_unresolved\": true,\n    \"would_watch\": true\n  }\n}",
+  "response_payload": {
+    "id": "chatcmpl-5314d303-b0b8-4f9c-b440-ed7b869135fb",
+    "object": "chat.completion",
+    "created": 1794121553,
+    "model": "qwen/qwen3.8-27b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"who_is_the_main_character\": \"Juliana (named in dialogue)\",\n  \"what_is_at_stake\": \"Unclear from the clip. There is a conversation about past trauma and loss of wealth, but no active conflict or immediate danger is shown.\",\n  \"what_question_are_you_left_with\": \"What happened to Alexander that caused him to lose his wealth and experience fever/wounds?\",\n  \"would_you_keep_watching\": \"maybe, the dialogue hints at a deeper backstory and emotional connection between the characters\",\n  \"passes\": {\n    \"character_identifiable\": true,\n    \"stakes_clear\": false,\n    \"ends_unresolved\": true,\n    \"would_watch\": true\n  }\n}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.047819121,
+      "prompt_tokens": 521,
+      "prompt_time": 0.03697234,
+      "completion_tokens": 155,
+      "completion_time": 0.317862324,
+      "total_tokens": 676,
+      "total_time": 0.354834664
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_a1293f40b5",
+    "x_groq": {
+      "id": "req_01m6wzmncge05re6pfyt88kyqp",
+      "seed": 753153282
+    },
+    "service_tier": "on_demand"
+  }
+}

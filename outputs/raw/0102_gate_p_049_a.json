@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "gate_p_049_a",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\nCATHERINE: \"Today went better than either of us planned for. The whole court watched you humiliate her.\"\nFATHER THOMAS: \"Fitting choice, this room. A place the family forgot for a conversation they mustn't remember.\"\nCATHERINE: \"You always did have a taste for symbolism.\"\nFATHER THOMAS: \"And you always did have a taste for using me. It's why we suit each other.\"\nCATHERINE: \"Then make certain the council remembers that for the full ten days, not just the first hour.\"\nFATHER THOMAS: \"What is it you actually need from me, Catherine? Say it plainly, for once.\"",
+  "response_text": "{\"who_is_the_main_character\":\"Catherine (named in the clip)\",\"what_is_at_stake\":\"Unclear from the clip – they mention a council needing to remember something for ten days and a humiliating public event, but the exact stakes aren’t explained\",\"what_question_are_you_left_with\":\"What does Catherine actually need from Father Thomas, and what will happen with the council’s memory?\",\"would_you_keep_watching\":\"maybe, the dialogue hints at deeper intrigue\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":false,\"ends_unresolved\":true,\"would_watch\":true}}",
+  "response_payload": {
+    "id": "chatcmpl-37190efb-ab21-46ba-a9d3-a326df38b09c",
+    "object": "chat.completion",
+    "created": 1794103131,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"who_is_the_main_character\":\"Catherine (named in the clip)\",\"what_is_at_stake\":\"Unclear from the clip – they mention a council needing to remember something for ten days and a humiliating public event, but the exact stakes aren’t explained\",\"what_question_are_you_left_with\":\"What does Catherine actually need from Father Thomas, and what will happen with the council’s memory?\",\"would_you_keep_watching\":\"maybe, the dialogue hints at deeper intrigue\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":false,\"ends_unresolved\":true,\"would_watch\":true}}",
+          "reasoning": "We need to produce JSON with fields. Determine main character: The clip includes Catherine and Father Thomas. Who is main? Both speak. No explicit naming of main. Could infer Catherine maybe central, but not named as main. The instruction: \"name them if the clip names them; otherwise describe and say the clip never names them\". So we can say main character is Catherine (named) but also Father Thomas. But main character singular? Could say main character is Catherine, as she seems driving conversation. The clip names her. So we can list Catherine. Or we could say main character is ambiguous. Probably we should say main character is Catherine, as she is named and appears central. Provide description.\n\nWhat is at stake? They discuss a council remembering something for ten days, a humiliation, a conversation they mustn't remember. Unclear specifics. Stakes: something about council remembering for ten days, maybe political consequences. But we can say unclear from clip.\n\nWhat question left? What does Catherine actually need from Father Thomas? Or what will happen with council? So unresolved question: what does Catherine need?\n\nWould you keep watching? maybe yes, because dialogue intriguing.\n\nPasses: character_identifiable: true (we have names). stakes_clear: false (unclear). ends_unresolved: true (question remains). would_watch: true.\n\nNow produce compact JSON."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.310100053,
+      "prompt_tokens": 520,
+      "prompt_time": 0.103107862,
+      "completion_tokens": 403,
+      "completion_time": 0.838807699,
+      "total_tokens": 923,
+      "total_time": 0.941915561,
+      "completion_tokens_details": {
+        "reasoning_tokens": 274
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_87b3c396db",
+    "x_groq": {
+      "id": "req_01m6we2ec5et6recs1x18rdswb",
+      "seed": 1651373285
+    },
+    "service_tier": "on_demand"
+  }
+}

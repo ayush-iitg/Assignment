@@ -1,0 +1,41 @@
+{
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "tag": "gate_p_041_a",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\nJULIANA: \"You needed an entire chapel to feel powerful over one chained woman?\"\nCATHERINE: \"Still arrogant. Still standing.\"\nCATHERINE: \"Come.\"\nCATHERINE: \"Soon, there will be nothing left between us and the Ashburgh title.\"\nBLOND NOBLEMAN: \"Nothing.\"\nPRIEST: \"Shall we?\"\n[sfx] Ear-splitting detonation, shattering stone, wood splintering violently into kindling, followed by terrified screams of the congregation.\n[action] A violent fireball bursts inward as the entire cathedral entrance explodes, blasting the massive double doors and masonry into flying shrapnel and billowing smoke.",
+  "response_text": "{\n  \"who_is_the_main_character\": \"The clip features a woman named Juliana and a woman named Catherine, but it does not identify a single main character or protagonist.\",\n  \"what_is_at_stake\": \"The conflict involves a power struggle over the 'Ashburgh title' between Juliana and Catherine, which is immediately interrupted by a violent explosion.\",\n  \"what_question_are_you_left_with\": \"Who caused the explosion, and what is the relationship between the characters and the attackers?\",\n  \"would_you_keep_watching\": \"yes, because the sudden explosion creates an immediate cliffhanger that demands to know what just happened.\",\n  \"passes\": {\n    \"character_identifiable\": true,\n    \"stakes_clear\": true,\n    \"ends_unresolved\": true,\n    \"would_watch\": true\n  }\n}",
+  "response_payload": {
+    "id": "chatcmpl-6b8a95cc-8cf6-496e-bb9e-4c203ebf2ca7",
+    "object": "chat.completion",
+    "created": 1794113005,
+    "model": "qwen/qwen3.8-27b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"who_is_the_main_character\": \"The clip features a woman named Juliana and a woman named Catherine, but it does not identify a single main character or protagonist.\",\n  \"what_is_at_stake\": \"The conflict involves a power struggle over the 'Ashburgh title' between Juliana and Catherine, which is immediately interrupted by a violent explosion.\",\n  \"what_question_are_you_left_with\": \"Who caused the explosion, and what is the relationship between the characters and the attackers?\",\n  \"would_you_keep_watching\": \"yes, because the sudden explosion creates an immediate cliffhanger that demands to know what just happened.\",\n  \"passes\": {\n    \"character_identifiable\": true,\n    \"stakes_clear\": true,\n    \"ends_unresolved\": true,\n    \"would_watch\": true\n  }\n}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.048321839,
+      "prompt_tokens": 452,
+      "prompt_time": 0.03086389,
+      "completion_tokens": 176,
+      "completion_time": 0.335452372,
+      "total_tokens": 628,
+      "total_time": 0.366316262
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_424cb89518",
+    "x_groq": {
+      "id": "req_01m6wqfsgwe3fbgv1bkyjq1qj0",
+      "seed": 1757936608
+    },
+    "service_tier": "on_demand"
+  }
+}

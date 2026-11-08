@@ -1,0 +1,41 @@
+{
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "tag": "gate_p_035_m1",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\nALEXANDER'S MOTHER: \"Alexander!\"\nALEXANDER: \"Mother?\"\n[action] She drops her walking staff and rushes forward, throwing her arms around Alexander's neck. He pulls her tightly into his chest.\nALEXANDER'S MOTHER: \"You're alive.\"\nALEXANDER: \"Mother.\"\nALEXANDER'S MOTHER: \"How did you escape?\"\nALEXANDER: \"I crawled away from the battlefield, half dead, alone.\"\nALEXANDER: \"I survived because the men who came looking for me believed I was already dead.\"\nALEXANDER'S MOTHER: \"Then why did they never tell us?\"",
+  "response_text": "{\n  \"who_is_the_main_character\": \"Alexander (named in dialogue)\",\n  \"what_is_at_stake\": \"Unclear from the clip. The immediate conflict is the mother's shock at his survival and the mystery of why his death was not reported, but the broader stakes (war, political intrigue, etc.) are not established.\",\n  \"what_question_are_you_left_with\": \"Why did the men who found him believe he was dead, and why did they never tell the family he was alive?\",\n  \"would_you_keep_watching\": \"maybe, the dialogue raises a specific mystery about his survival that I want to see explained\",\n  \"passes\": {\n    \"character_identifiable\": true,\n    \"stakes_clear\": false,\n    \"ends_unresolved\": true,\n    \"would_watch\": true\n  }\n}",
+  "response_payload": {
+    "id": "chatcmpl-fd82f372-3f67-497d-9655-1d9eec69d0f8",
+    "object": "chat.completion",
+    "created": 1794121414,
+    "model": "qwen/qwen3.8-27b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"who_is_the_main_character\": \"Alexander (named in dialogue)\",\n  \"what_is_at_stake\": \"Unclear from the clip. The immediate conflict is the mother's shock at his survival and the mystery of why his death was not reported, but the broader stakes (war, political intrigue, etc.) are not established.\",\n  \"what_question_are_you_left_with\": \"Why did the men who found him believe he was dead, and why did they never tell the family he was alive?\",\n  \"would_you_keep_watching\": \"maybe, the dialogue raises a specific mystery about his survival that I want to see explained\",\n  \"passes\": {\n    \"character_identifiable\": true,\n    \"stakes_clear\": false,\n    \"ends_unresolved\": true,\n    \"would_watch\": true\n  }\n}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.049652082,
+      "prompt_tokens": 455,
+      "prompt_time": 0.032089267,
+      "completion_tokens": 179,
+      "completion_time": 0.3531179,
+      "total_tokens": 634,
+      "total_time": 0.385207167
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_21e59ac2de",
+    "x_groq": {
+      "id": "req_01m6wzgdgxep68y4442ne737az",
+      "seed": 2085596373
+    },
+    "service_tier": "on_demand"
+  }
+}

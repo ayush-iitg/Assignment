@@ -1,0 +1,41 @@
+{
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "tag": "gate_p_035_a",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\nALEXANDER: \"Because someone wanted you to believe I was dead.\"\nALEXANDER'S MOTHER: \"Who?\"\n[action] Alexander turns away toward the frosted window, staring out into the dark raging blizzard outside.\nALEXANDER: \"I spent three years trying to find out.\"\n[action] Alexander abruptly pushes away from the window, storming back toward the table with burning rage.\nALEXANDER: \"The ambush was not an accident.\"\nALEXANDER: \"Someone ordered my men to die.\"\n[action] He leans heavily over the wooden table, looming close as his fury boils over.\nALEXANDER: \"Someone wanted me erased.\"\nALEXANDER'S MOTHER: \"Who?\"\nALEXANDER: \"The men behind it... are the same men ruling Ashwood now.\"",
+  "response_text": "{\n  \"who_is_the_main_character\": \"Alexander (named in the clip)\",\n  \"what_is_at_stake\": \"Alexander is seeking revenge or justice against the current rulers of Ashwood, who he believes orchestrated an ambush to kill him and his men three years ago.\",\n  \"what_question_are_you_left_with\": \"Who specifically are the men ruling Ashwood, and what will Alexander do about it?\",\n  \"would_you_keep_watching\": \"yes, the reveal that the current rulers are responsible for his past trauma creates immediate tension and a clear motivation for conflict.\",\n  \"passes\": {\n    \"character_identifiable\": true,\n    \"stakes_clear\": true,\n    \"ends_unresolved\": true,\n    \"would_watch\": true\n  }\n}",
+  "response_payload": {
+    "id": "chatcmpl-ffbfd7cf-a163-4737-b2d6-43d3ade0a99e",
+    "object": "chat.completion",
+    "created": 1794112798,
+    "model": "qwen/qwen3.8-27b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"who_is_the_main_character\": \"Alexander (named in the clip)\",\n  \"what_is_at_stake\": \"Alexander is seeking revenge or justice against the current rulers of Ashwood, who he believes orchestrated an ambush to kill him and his men three years ago.\",\n  \"what_question_are_you_left_with\": \"Who specifically are the men ruling Ashwood, and what will Alexander do about it?\",\n  \"would_you_keep_watching\": \"yes, the reveal that the current rulers are responsible for his past trauma creates immediate tension and a clear motivation for conflict.\",\n  \"passes\": {\n    \"character_identifiable\": true,\n    \"stakes_clear\": true,\n    \"ends_unresolved\": true,\n    \"would_watch\": true\n  }\n}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.048577202,
+      "prompt_tokens": 488,
+      "prompt_time": 0.033377673,
+      "completion_tokens": 165,
+      "completion_time": 0.326392382,
+      "total_tokens": 653,
+      "total_time": 0.359770055
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_21e59ac2de",
+    "x_groq": {
+      "id": "req_01m6wq9fesexv86e6m3k5ak3v1",
+      "seed": 1254710448
+    },
+    "service_tier": "on_demand"
+  }
+}

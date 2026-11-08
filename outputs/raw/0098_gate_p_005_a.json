@@ -1,0 +1,48 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "gate_p_005_a",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\n[action] Lady Ashcroft snatches the heavy book away and flings it disdainfully into the rain-soaked courtyard.\nJULIANA: \"Barbara, don't!\"\n[sfx] A heavy wet slap as the leather-bound book crashes into the puddle-slicked stone pavement.\nCLARISSA: \"Even your mother's precious legacy has been cast into the dirt!\"\nGERALD: \"Perhaps that is where it belongs.\"\n[action] Juliana drops to her knees onto the wet courtyard pavement, oblivious to the dirt soaking through her white bridal gown.\n[action] The Mysterious Bearded Man bends his knees and kneels down beside Juliana, extending his scarred hand to retrieve the fallen ledger.\nMYSTERIOUS BEARDED MAN: \"Here you go.\"\nJULIANA: \"They destroyed it.\"\nMYSTERIOUS BEARDED MAN: \"They dirtied it. That is not the same thing.\"\nJULIANA: \"It was my mother's.\"\nMYSTERIOUS BEARDED MAN: \"Then keep it.\"\n[action] The Mysterious Bearded Man reaches out with both hands, clasping his strong hands tenderly over hers and the book.\nMYSTERIOUS BEARDED MAN: \"Let them keep everything else.\"\nGERALD: \"Look at you.\"\nGERALD: \"A noblewoman reduced to a beggar's wife!\"\nMYSTERIOUS BEARDED MAN: \"Choose your next words carefully.\"",
+  "response_text": "{\"who_is_the_main_character\":\"Juliana (the woman in the white bridal gown, central to the action)\",\"what_is_at_stake\":\"The fate of a heavy leather‑bound book that is her mother's legacy, which has been thrown into the rain and could be ruined\",\"what_question_are_you_left_with\":\"Will Juliana keep the book (and her mother's legacy) or let it be lost, and what will the Mysterious Bearded Man do next?\",\"would_you_keep_watching\":\"maybe, the scene hints at deeper conflict and mystery\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":true,\"ends_unresolved\":true,\"would_watch\":true}}",
+  "response_payload": {
+    "id": "chatcmpl-3b008972-0d4a-413d-8e82-422187898d25",
+    "object": "chat.completion",
+    "created": 1794103124,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"who_is_the_main_character\":\"Juliana (the woman in the white bridal gown, central to the action)\",\"what_is_at_stake\":\"The fate of a heavy leather‑bound book that is her mother's legacy, which has been thrown into the rain and could be ruined\",\"what_question_are_you_left_with\":\"Will Juliana keep the book (and her mother's legacy) or let it be lost, and what will the Mysterious Bearded Man do next?\",\"would_you_keep_watching\":\"maybe, the scene hints at deeper conflict and mystery\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":true,\"ends_unresolved\":true,\"would_watch\":true}}",
+          "reasoning": "We need to produce JSON with fields. Determine main character: The clip mentions several characters: Lady Ashcroft, Juliana, Clarissa, Gerald, Mysterious Bearded Man. Who is main? Likely Juliana (central focus: she drops to knees, dialogue). Clip never names main explicitly, but we can describe. So \"who_is_the_main_character\": \"Julian...\". The clip never names them? It does name Juliana. So we can say main character is Juliana, as she is focus. So we can name.\n\nWhat is at stake: The heavy book (ledger) that is mother’s legacy, being thrown into rain, possibly destroyed. Conflict about preserving legacy vs destruction. So stakes: the preservation of a mother's legacy / the book's condition. So we can say \"the fate of the mother's legacy book\". It's clear.\n\nWhat question left with: Does the Mysterious Bearded Man keep the book? Will Juliana accept? Or what will happen to the legacy? So unresolved: what will Juliana do? Or what will Gerald do? So we can state unresolved question: \"Will Juliana keep the book or let it be destroyed?\" Or \"What will happen next?\" Provide.\n\nWould you keep watching: maybe, because intrigue. Provide short reason.\n\nPasses: character_identifiable: true (Juliana is identified). stakes_clear: true (the book's fate). ends_unresolved: true (conflict not resolved). would_watch: true (since we would keep watching). So passes: {character_identifiable:true, stakes_clear:true, ends_unresolved:true, would_watch:true}.\n\nNow produce compact JSON. Ensure valid."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.319971202,
+      "prompt_tokens": 681,
+      "prompt_time": 0.018274464,
+      "completion_tokens": 487,
+      "completion_time": 1.42912404,
+      "total_tokens": 1168,
+      "total_time": 1.447398504,
+      "prompt_tokens_details": {
+        "cached_tokens": 256
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 341
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_dee443f41b",
+    "x_groq": {
+      "id": "req_01m6we26cbeawrgj40mrv52eaw",
+      "seed": 125332710
+    },
+    "service_tier": "on_demand"
+  }
+}

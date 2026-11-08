@@ -1,0 +1,41 @@
+{
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "tag": "gate_p_014_m1",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\n[action] Juliana's blood-streaked, mud-caked hand slowly uncurls amidst the thorns, revealing the ornate emerald signet ring resting in her palm.\n[sfx] Eerie cold wind whistling over the briars with deep, atmospheric cello chords.\nJULIANA: \"I found it.\"\nJULIANA: \"Now release my husband.\"\n[action] The Constable takes the ring from her bloodied fingers.\n[sfx] Sharp metallic click and clinking rattle of heavy iron handcuffs unlocking and falling away.\n[action] The Constable unlocks the cuffs, freeing Alexander's large hands.\n[action] Juliana closes her eyes in exhausted relief, sinking into Alexander's warmth as his broad arm encloses her safely.\nALEXANDER: \"No one will ever hurt you for protecting me again.\"\n[action] Alexander strokes her cheek with his thumb, his gaze hardening into deadly, protective conviction.\n[action] Alexander's muscular arm drops into frame beside the bloody bucket; his scarred knuckles slowly and tightly clench into an iron fist of brewing vengeance.\n[sfx] Ominous, resonating low bass boom swelling into sudden silence as the screen cuts to black.",
+  "response_text": "{\n  \"who_is_the_main_character\": \"Juliana (named in dialogue), though Alexander is also present and named.\",\n  \"what_is_at_stake\": \"Juliana's freedom and her husband Alexander's safety; she traded a ring to secure his release.\",\n  \"what_question_are_you_left_with\": \"Who is the antagonist that Alexander is now preparing to seek vengeance against?\",\n  \"would_you_keep_watching\": \"yes, the ending implies an immediate and violent escalation of conflict.\",\n  \"passes\": {\n    \"character_identifiable\": true,\n    \"stakes_clear\": true,\n    \"ends_unresolved\": true,\n    \"would_watch\": true\n  }\n}",
+  "response_payload": {
+    "id": "chatcmpl-1ede5977-0623-4108-9483-330da04f4bff",
+    "object": "chat.completion",
+    "created": 1794121413,
+    "model": "qwen/qwen3.8-27b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"who_is_the_main_character\": \"Juliana (named in dialogue), though Alexander is also present and named.\",\n  \"what_is_at_stake\": \"Juliana's freedom and her husband Alexander's safety; she traded a ring to secure his release.\",\n  \"what_question_are_you_left_with\": \"Who is the antagonist that Alexander is now preparing to seek vengeance against?\",\n  \"would_you_keep_watching\": \"yes, the ending implies an immediate and violent escalation of conflict.\",\n  \"passes\": {\n    \"character_identifiable\": true,\n    \"stakes_clear\": true,\n    \"ends_unresolved\": true,\n    \"would_watch\": true\n  }\n}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.048075981,
+      "prompt_tokens": 563,
+      "prompt_time": 0.0410755,
+      "completion_tokens": 149,
+      "completion_time": 0.283121076,
+      "total_tokens": 712,
+      "total_time": 0.324196576
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_a1293f40b5",
+    "x_groq": {
+      "id": "req_01m6wzgceke2s92w8q81nmr0dy",
+      "seed": 250398743
+    },
+    "service_tier": "on_demand"
+  }
+}

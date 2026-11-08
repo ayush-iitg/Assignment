@@ -1,0 +1,48 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "gate_p_041_a",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\nJULIANA: \"You needed an entire chapel to feel powerful over one chained woman?\"\nCATHERINE: \"Still arrogant. Still standing.\"\nCATHERINE: \"Come.\"\nCATHERINE: \"Soon, there will be nothing left between us and the Ashburgh title.\"\nBLOND NOBLEMAN: \"Nothing.\"\nPRIEST: \"Shall we?\"\n[sfx] Ear-splitting detonation, shattering stone, wood splintering violently into kindling, followed by terrified screams of the congregation.\n[action] A violent fireball bursts inward as the entire cathedral entrance explodes, blasting the massive double doors and masonry into flying shrapnel and billowing smoke.",
+  "response_text": "{\"who_is_the_main_character\":\"The clip does not name a single main character; several characters (Juliana, Catherine, a blond nobleman, and a priest) speak.\",\"what_is_at_stake\":\"Unclear from the clip; there is mention of the Ashburgh title and a violent attack on a cathedral, but the exact stakes are not explained.\",\"what_question_are_you_left_with\":\"Will the Ashburgh title be claimed and who will survive the explosion?\",\"would_you_keep_watching\":\"maybe, the violent spectacle is intriguing but the context is vague\",\"passes\":{\"character_identifiable\":false,\"stakes_clear\":false,\"ends_unresolved\":true,\"would_watch\":false}}",
+  "response_payload": {
+    "id": "chatcmpl-df1f5a05-7da1-450b-a1e3-7c2526125430",
+    "object": "chat.completion",
+    "created": 1794103126,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"who_is_the_main_character\":\"The clip does not name a single main character; several characters (Juliana, Catherine, a blond nobleman, and a priest) speak.\",\"what_is_at_stake\":\"Unclear from the clip; there is mention of the Ashburgh title and a violent attack on a cathedral, but the exact stakes are not explained.\",\"what_question_are_you_left_with\":\"Will the Ashburgh title be claimed and who will survive the explosion?\",\"would_you_keep_watching\":\"maybe, the violent spectacle is intriguing but the context is vague\",\"passes\":{\"character_identifiable\":false,\"stakes_clear\":false,\"ends_unresolved\":true,\"would_watch\":false}}",
+          "reasoning": "We need to produce JSON with fields. Determine main character: Clip includes Juliana, Catherine, Blond Nobleman, Priest. Who is main? Likely Catherine? But we must base on clip. Main character is ambiguous. The clip doesn't explicitly state who is main. Could infer Catherine is central as she speaks multiple lines. But we must not guess? The instruction: \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\". The clip names characters. But which is main? We need to decide if we can identify main character. The clip shows dialogue from multiple characters. Main character could be ambiguous. We could say \"the clip does not make clear who the main character is; multiple characters speak\". So we should describe that.\n\nWhat is at stake? There's conflict about Ashburgh title, a chapel, a chained woman, explosion. Stakes unclear? We can say conflict appears to be a power struggle over the Ashburgh title and possibly a violent attack on the cathedral. So we can say \"unclear from the clip\" maybe? The stakes: something about title, but not fully explained. Might be \"the conflict is about gaining the Ashburgh title and a violent attack on the cathedral\". That's somewhat clear. But instruction: if not clear, say \"unclear from the clip\". I think we can describe: The stakes involve a struggle for the Ashburgh title and a violent explosion in a cathedral, but specifics are unclear. So maybe \"unclear from the clip\".\n\nWhat question left? Likely \"Will the Ashburgh title be claimed? Who will survive the explosion?\" So we can state unresolved question.\n\nWould you keep watching? Provide yes/maybe/no with short reason. Probably maybe.\n\nPasses: character_identifiable? Since we can't identify main character, false. Stakes_clear? Probably false. Ends_unresolved? Yes, unresolved, so true. would_watch? Based on our answer maybe maybe, so true? Actually passes.would_watch is boolean indicating if we would watch? Probably true if we said yes or maybe? The field \"would_watch\" likely reflects if we would watch. If we said maybe, it's ambiguous but we can set false? The spec: passes: { \"would_watch\": true/false }. Probably true if we would watch. Since we said maybe, maybe we set false? But maybe we interpret maybe as not definite watch. I'd set false.\n\nLet's craft JSON:\n\n{\n \"who_is_the_main_character\": \"The clip does not name a single main character; several characters (Juliana, Catherine, a blond nobleman, and a priest) speak.\",\n \"what_is_at_stake\": \"Unclear from the clip; there is mention of the Ashburgh title and a violent attack on a cathedral, but the exact stakes are not explained.\",\n \"what_question_are_you_left_with\": \"Will the Ashburgh title be claimed and who will survive the explosion?\",\n \"would_you_keep_watching\": \"maybe, the violent spectacle is intriguing but the context is vague\",\n \"passes\": {\n   \"character_identifiable\": false,\n   \"stakes_clear\": false,\n   \"ends_unresolved\": true,\n   \"would_watch\": false\n }\n}\n\nMake compact JSON."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.051656014,
+      "prompt_tokens": 521,
+      "prompt_time": 0.011733963,
+      "completion_tokens": 806,
+      "completion_time": 1.6912738699999998,
+      "total_tokens": 1327,
+      "total_time": 1.703007833,
+      "prompt_tokens_details": {
+        "cached_tokens": 256
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 660
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_69dbc96c74",
+    "x_groq": {
+      "id": "req_01m6we28dwez6bsbvz8frxhng2",
+      "seed": 742027906
+    },
+    "service_tier": "on_demand"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "tag": "gate_p_009_m1",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\n[action] Alexander steps forward and unlatches the cottage door, opening it into the pouring rain.\nPEASANT MOTHER: \"Please! They told me there was a woman here who knows herbs. My boy is burning with fever!\"\nJULIANA: \"Bring him here. Quickly.\"\n[action] The trembling mother gently lays the feverish boy down atop the wooden table as Juliana leans in close.\nJULIANA: \"He seems very unwell, but he is resting steadily. How long has he been like this?\"\nBLOND NOBLEMAN: \"What rumor?\"\nGERALD: \"About a war veteran. Some say he resembles the late Duke.\"\nBLOND NOBLEMAN: \"People see ghosts whenever they want a story.\"\nGERALD: \"The man is said to have the same kind of scar the Duke carried after the war.\"\nBLOND NOBLEMAN: \"Where?\"\nGERALD: \"No one seems certain.\"\nBLOND NOBLEMAN: \"Then let it remain a rumor.\"",
+  "response_text": "{\n  \"who_is_the_main_character\": \"The clip features multiple characters including Alexander, a Peasant Mother, Juliana, a Blond Nobleman, and Gerald. It does not clearly identify a single main character, though Juliana and the Blond Nobleman have the most dialogue.\",\n  \"what_is_at_stake\": \"Unclear from the clip. There are two distinct, unconnected scenes: one involving a sick child and another involving a rumor about a war veteran resembling a late Duke.\",\n  \"what_question_are_you_left_with\": \"Who is the war veteran, and why does the Blond Nobleman care about the rumor? Also, what is the connection between the cottage scene and the nobleman's conversation?\",\n  \"would_you_keep_watching\": \"no, the clip feels like two disjointed fragments with no clear narrative thread or hook.\",\n  \"passes\": {\n    \"character_identifiable\": false,\n    \"stakes_clear\": false,\n    \"ends_unresolved\": true,\n    \"would_watch\": false\n  }\n}",
+  "response_payload": {
+    "id": "chatcmpl-c981f398-38ea-4e23-88bd-8293ac87b5f7",
+    "object": "chat.completion",
+    "created": 1794121470,
+    "model": "qwen/qwen3.8-27b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"who_is_the_main_character\": \"The clip features multiple characters including Alexander, a Peasant Mother, Juliana, a Blond Nobleman, and Gerald. It does not clearly identify a single main character, though Juliana and the Blond Nobleman have the most dialogue.\",\n  \"what_is_at_stake\": \"Unclear from the clip. There are two distinct, unconnected scenes: one involving a sick child and another involving a rumor about a war veteran resembling a late Duke.\",\n  \"what_question_are_you_left_with\": \"Who is the war veteran, and why does the Blond Nobleman care about the rumor? Also, what is the connection between the cottage scene and the nobleman's conversation?\",\n  \"would_you_keep_watching\": \"no, the clip feels like two disjointed fragments with no clear narrative thread or hook.\",\n  \"passes\": {\n    \"character_identifiable\": false,\n    \"stakes_clear\": false,\n    \"ends_unresolved\": true,\n    \"would_watch\": false\n  }\n}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.049598724,
+      "prompt_tokens": 525,
+      "prompt_time": 0.038257316,
+      "completion_tokens": 219,
+      "completion_time": 0.420022596,
+      "total_tokens": 744,
+      "total_time": 0.458279912
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_a1293f40b5",
+    "x_groq": {
+      "id": "req_01m6wzj4d0evvr45p2s8v8286z",
+      "seed": 2045798761
+    },
+    "service_tier": "on_demand"
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "_note": "Hand-picked promos, chosen by reading docs/_beatsheets.txt BEFORE any model was run and before the scorer existed. This is the only human judgment the evaluation leans on, so it is kept in one small file that can be replaced wholesale. Timestamps are seconds from each episode's start.",
+  "_authored_by": "DRAFTED BY AI (Claude) during the Phase 0 audit by reading docs/_beatsheets.txt, before the scorer or any model call existed. NOT YET REVIEWED BY AYUSH. The solution doc claims these are hand-picked by the author; that claim is only true once Ayush has read them and kept, changed or replaced each one. See docs/SUBMIT.md step 3.",
+  "_how_to_edit": "Add or change entries, then run: python evaluate.py",
+  "promos": [
+    {
+      "episode": 1,
+      "start_s": 39.10,
+      "end_s": 78.50,
+      "hook": "Clarissa, gloating: 'Because he is marrying me.'",
+      "cliffhanger": "'Long enough to know he was never going to marry you.'",
+      "why": "Whole premise with zero prior context: a bride at the altar learns her sister is marrying her fiance, and the family knew."
+    },
+    {
+      "episode": 2,
+      "start_s": 47.80,
+      "end_s": 86.50,
+      "hook": "Clarissa, mocking: 'Why are you surprised, sister? Look at you.'",
+      "cliffhanger": "'Do not mistake my heartbreak for your victory, Gerald.'",
+      "why": "Humiliation turned into defiance; works as a standalone clapback with no setup needed."
+    },
+    {
+      "episode": 13,
+      "start_s": 54.00,
+      "end_s": 112.00,
+      "hook": "Blackthorn spines rake across Juliana's fingers, carving bloody gashes.",
+      "cliffhanger": "Her torn, bloodied hand closes around the emerald signet ring.",
+      "why": "Wordless physical ordeal, then an object reveal that poses a question without answering it."
+    },
+    {
+      "episode": 15,
+      "start_s": 47.40,
+      "end_s": 78.00,
+      "hook": "A thug shoves Juliana to the ground; blood seeps through her bandages.",
+      "cliffhanger": "Alexander steps between her and three thugs with cold, deadly intent.",
+      "why": "Violence opens it, and it cuts before the fight resolves - the viewer needs the outcome."
+    },
+    {
+      "episode": 24,
+      "start_s": 32.50,
+      "end_s": 81.00,
+      "hook": "Whip crack - a noblewoman strikes Juliana across the torso with a riding crop.",
+      "cliffhanger": "Juliana, cold: 'Let her think I am only a maid.'",
+      "why": "Physical violence stops the scroll, then a secret-identity tease replaces resolution."
+    },
+    {
+      "episode": 31,
+      "start_s": 131.00,
+      "end_s": 160.00,
+      "hook": "Catherine's enraged scream 'Enough!' as a branding iron sears her mother's book.",
+      "cliffhanger": "The iron stops inches from Juliana's eyes; macro close-up of the ember in her eye.",
+      "why": "Pure peril needing no setup, cut mid-threat. Flagged at audit time as the weakest of my picks for standalone comprehension - a stranger is never told her name."
+    }
+  ]
+}

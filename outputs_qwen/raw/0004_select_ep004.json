@@ -1,0 +1,41 @@
+{
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "tag": "select_ep004",
+  "system": "You are a promo editor for vertical microdramas (ReelShort/DramaBox style).\nYou pick which seconds of an episode become a 20-60 second advert for the show.\n\nA good promo:\n- opens on a hook: within its first beats, something that stops a scrolling viewer - a slap, a reveal, a shocking line\n- ends on a cliffhanger: it stops at an unresolved moment, so the viewer must go find the show\n- makes sense alone to someone who has never seen this show\n\nYou will be given candidate windows, each a contiguous run of beats labelled [b00], [b01]...\nYou must choose ONE window and may tighten its edges to any beat labels inside that window.\n\nReply with JSON only:\n{\n  \"chosen_window\": <integer index of the window you picked>,\n  \"start_beat\": \"<beat label>\",\n  \"end_beat\": \"<beat label>\",\n  \"hook_beat\": \"<beat label, must be at or within 2 beats of start_beat>\",\n  \"cliffhanger_beat\": \"<beat label, must be at or near end_beat>\",\n  \"hook\": \"<what grabs the viewer in the first seconds, one sentence>\",\n  \"cliffhanger\": \"<the unresolved moment it cuts on, one sentence>\",\n  \"hook_type\": \"<one of: moral outrage, romantic tension, empathy shock, power reversal>\",\n  \"why_it_works\": \"<one sentence, concrete, no marketing language>\",\n  \"standalone_risk\": \"<what a new viewer would NOT understand, or 'none'>\"\n}\n\nNever invent dialogue. Never output a time or a duration - only beat labels.",
+  "prompt": "Episode 4. 4 candidate windows, already checked for legal length and real beat boundaries.\n\n--- WINDOW 0 (22 seconds, code score 0.90) ---\n[b00] THE PRIEST (booming): \"...husband and wife!\"\n[b01] SFX: Dramatic musical chord swelling.\n[b02] GERALD (furious, shouting): \"You have thrown yourself away!\"\n[b03] GERALD (livid): \"For a penniless nobody!\"\n[b04] JULIANA (calm, cutting): \"I would rather choose my own life...\"\n[b05] JULIANA (firm, final): \"...than spend another moment begging for yours.\"\n[b06] ACTION: Gerald recoils slightly, mouth agape.\n[b07] LADY ASHCROFT (imperious, shouting): \"Do not bring this man anywhere near Ashcroft Manor!\"\n[b08] LADY ASHCROFT (venomous): \"You are disowned!\"\n\n--- WINDOW 1 (27 seconds, code score 0.76) ---\n[b00] JULIANA (unwavering): \"I am.\"\n[b01] THE PRIEST (resigned, solemn): \"Then... let us proceed.\"\n[b02] MYSTERIOUS BEARDED MAN (low, reassuring): \"You need not say anything you do not mean.\"\n[b03] JULIANA (warm, sincere): \"I truly mean it.\"\n[b04] ACTION: The Mysterious Bearded Man carefully slides the band onto Juliana's finger.\n[b05] MYSTERIOUS BEARDED MAN (solemn): \"You have my protection.\"\n[b06] MYSTERIOUS BEARDED MAN (steadfast): \"You have my respect.\"\n[b07] MYSTERIOUS BEARDED MAN (grave): \"And you have my word.\"\n[b08] THE PRIEST (ceremonial): \"By the authority entrusted to me, I now pronounce you...\"\n[b09] THE PRIEST (booming): \"...husband and wife!\"\n[b10] SFX: Dramatic musical chord swelling.\n[b11] GERALD (furious, shouting): \"You have thrown yourself away!\"\n\n--- WINDOW 2 (39 seconds, code score 0.73) ---\n[b00] JULIANA (conflicted, pained): \"You heard what they think I am.\"\n[b01] JULIANA (searching): \"Why would you offer me your name?\"\n[b02] MYSTERIOUS BEARDED MAN (grave, certain): \"Because I know what I see.\"\n[b03] JULIANA (quiet, hesitant): \"And what do you see?\"\n[b04] MYSTERIOUS BEARDED MAN (firm, sincere): \"A woman who was betrayed.\"\n[b05] MYSTERIOUS BEARDED MAN (resolute): \"Not a woman who deserves to be discarded.\"\n[b06] JULIANA (soft, bitter): \"You don't know what my family has done to me.\"\n[b07] MYSTERIOUS BEARDED MAN (solemn): \"I know they have made you stand alone.\"\n[b08] MYSTERIOUS BEARDED MAN (gentle): \"You don't have to stand alone now.\"\n[b09] JULIANA (defiant, dignified): \"If this is pity, take back your ring.\"\n[b10] JULIANA (fierce): \"I will not become anyone's charity.\"\n[b11] MYSTERIOUS BEARDED MAN (earnest): \"It is not pity, Lady Juliana.\"\n\n--- WINDOW 3 (22 seconds, code score 0.71) ---\n[b00] LADY ASHCROFT (imperious, shouting): \"Do not bring this man anywhere near Ashcroft Manor!\"\n[b01] LADY ASHCROFT (venomous): \"You are disowned!\"\n[b02] MYSTERIOUS BEARDED MAN (soft, protective): \"Come, Lady Juliana.\"\n[b03] ACTION: Clarissa gapes in shock while Lady Ashcroft exhales in exasperation.\n[b04] SFX: Heavy oak doors creaking open, followed by a triumphant musical swell fading out into silence.\n[b05] ACTION: Juliana and the Mysterious Bearded Man walk hand-in-hand through the towering doors into the sunlight together, turning their backs on the ruined wedding as the screen fades out.\n\nPick the single best promo.",
+  "response_text": "{\n  \"chosen_window\": 0,\n  \"start_beat\": \"b00\",\n  \"end_beat\": \"b08\",\n  \"hook_beat\": \"b00\",\n  \"cliffhanger_beat\": \"b08\",\n  \"hook\": \"A priest pronounces a couple husband and wife, immediately followed by a furious man shouting that the bride has 'thrown herself away' for a 'penniless nobody.'\",\n  \"cliffhanger\": \"The bride's mother screams that she is 'disowned' and bans the groom from the manor, leaving the couple's future in immediate jeopardy.\",\n  \"hook_type\": \"moral outrage\",\n  \"why_it_works\": \"It juxtaposes the sacred moment of marriage with immediate, violent social rejection, creating instant conflict and curiosity about the 'nobody' groom.\",\n  \"standalone_risk\": \"none\"\n}",
+  "response_payload": {
+    "id": "chatcmpl-a760a43d-b7ef-4429-b4b5-c0a0e81140b8",
+    "object": "chat.completion",
+    "created": 1794103681,
+    "model": "qwen/qwen3.8-27b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"chosen_window\": 0,\n  \"start_beat\": \"b00\",\n  \"end_beat\": \"b08\",\n  \"hook_beat\": \"b00\",\n  \"cliffhanger_beat\": \"b08\",\n  \"hook\": \"A priest pronounces a couple husband and wife, immediately followed by a furious man shouting that the bride has 'thrown herself away' for a 'penniless nobody.'\",\n  \"cliffhanger\": \"The bride's mother screams that she is 'disowned' and bans the groom from the manor, leaving the couple's future in immediate jeopardy.\",\n  \"hook_type\": \"moral outrage\",\n  \"why_it_works\": \"It juxtaposes the sacred moment of marriage with immediate, violent social rejection, creating instant conflict and curiosity about the 'nobody' groom.\",\n  \"standalone_risk\": \"none\"\n}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.048217485,
+      "prompt_tokens": 1372,
+      "prompt_time": 0.094512864,
+      "completion_tokens": 203,
+      "completion_time": 0.396847018,
+      "total_tokens": 1575,
+      "total_time": 0.491359882
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_a1293f40b5",
+    "x_groq": {
+      "id": "req_01m6wek850efcvxa6z0m7y739p",
+      "seed": 360670378
+    },
+    "service_tier": "on_demand"
+  }
+}

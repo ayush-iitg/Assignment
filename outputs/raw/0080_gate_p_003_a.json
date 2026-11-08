@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "gate_p_003_a",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\nROYAL GUARD: \"Stand aside, stranger!\"\nMYSTERIOUS BEARDED MAN: \"I said...\"\nMYSTERIOUS BEARDED MAN: \"...let her go.\"\n[action] The Bearded Stranger effortlessly blocks the guard's strike and drives a devastating strike into him, dropping the armed guard instantly to the floor.\n[sfx] A heavy, bone-rattling punch followed by the clatter and thud of the guard collapsing onto the stone floor.\nGERALD: \"What are you waiting for?! He's only one man!\"\nMYSTERIOUS BEARDED MAN: \"Are you hurt?\"\n[action] Juliana softly shakes her head 'no', her wide blue eyes locked onto him.\nMYSTERIOUS BEARDED MAN: \"Good. Then don't touch her again.\"\nNOBLE MATRIARCH: \"You cannot interfere in a family matter!\"",
+  "response_text": "{\"who_is_the_main_character\":\"the bearded stranger (MYSTERIOUS BEARDED MAN) – the clip never gives a proper name\",\"what_is_at_stake\":\"Juliana's safety/freedom as the bearded man defends her against the guard and family interference\",\"what_question_are_you_left_with\":\"Will the bearded man be allowed to protect Juliana despite the noble matriarch's objection?\",\"would_you_keep_watching\":\"maybe, because the action is intriguing but the context is unclear\",\"passes\":{\"character_identifiable\":false,\"stakes_clear\":true,\"ends_unresolved\":true,\"would_watch\":false}}",
+  "response_payload": {
+    "id": "chatcmpl-7258fe67-d0fd-4913-8619-38b4b40ed2e9",
+    "object": "chat.completion",
+    "created": 1794098239,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"who_is_the_main_character\":\"the bearded stranger (MYSTERIOUS BEARDED MAN) – the clip never gives a proper name\",\"what_is_at_stake\":\"Juliana's safety/freedom as the bearded man defends her against the guard and family interference\",\"what_question_are_you_left_with\":\"Will the bearded man be allowed to protect Juliana despite the noble matriarch's objection?\",\"would_you_keep_watching\":\"maybe, because the action is intriguing but the context is unclear\",\"passes\":{\"character_identifiable\":false,\"stakes_clear\":true,\"ends_unresolved\":true,\"would_watch\":false}}",
+          "reasoning": "We need to produce JSON with fields. Determine main character: The clip mentions several characters: Royal Guard, Mysterious Bearded Man, Gerald, Juliana, Noble Matriarch. Who is main? Likely the Mysterious Bearded Man is central, as he does actions. Clip never names him beyond description. So \"the clip never names them\" but we can describe: a bearded stranger. So \"who_is_the_main_character\": \"the bearded stranger (Mysterious Bearded Man) – the clip never gives a proper name\". Provide that.\n\nWhat is at stake? Conflict: Guard trying to stop stranger, matriarch says cannot interfere in family matter, Gerald urging action. The bearded man is protecting Juliana. Stakes unclear? At stake seems Juliana's safety/freedom. So we can say \"Juliana's safety / freedom from being taken\" but it's somewhat clear. So stakes clear? Yes, it's about protecting Juliana from being harmed or taken. So stakes_clear = true.\n\nEnds unresolved? The clip ends with Noble Matriarch saying you cannot interfere. No resolution; conflict continues. So ends_unresolved = true.\n\nWould you keep watching? Provide yes/maybe/no with short reason. I'd say maybe, because action is intriguing but unclear context. So maybe.\n\npasses: character_identifiable: false? The bearded man is described but not named. The clip calls him \"MYSTERIOUS BEARDED MAN\". That's a label, but not a proper name. The field likely expects true if we can identify who they are (like name). Since no proper name, false. Gerald, Juliana, Noble Matriarch are named. But main character is not named. So character_identifiable = false.\n\nstakes_clear = true.\n\nends_unresolved = true.\n\nwould_watch = maybe => true? The passes field \"would_watch\" expects boolean if you'd watch. Since answer \"maybe\", maybe false? The passes likely expects true if you'd watch. Since we said maybe, ambiguous. I'd set would_watch = false? But maybe they want true if you'd watch at all. I'd set false because not definite. But maybe they want true if you'd watch (maybe counts as watch). I'd interpret passes.would_watch as whether you'd watch (yes). Since we said maybe, it's not a definite yes, so false.\n\nThus JSON:\n\n{\n \"who_is_the_main_character\":\"the bearded stranger (MYSTERIOUS BEARDED MAN) – the clip never gives a proper name\",\n \"what_is_at_stake\":\"Juliana's safety/freedom as the bearded man defends her against the guard and family interference\",\n \"what_question_are_you_left_with\":\"Will the bearded man be allowed to protect Juliana despite the noble matriarch's objection?\",\n \"would_you_keep_watching\":\"maybe, because the action is intriguing but the context is unclear\",\n \"passes\":{\n   \"character_identifiable\":false,\n   \"stakes_clear\":true,\n   \"ends_unresolved\":true,\n   \"would_watch\":false\n }\n}\n\nCheck JSON compact: no line breaks? It's okay but compact means no unnecessary whitespace. Provide as single line."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.158599673,
+      "prompt_tokens": 559,
+      "prompt_time": 0.023082783,
+      "completion_tokens": 787,
+      "completion_time": 1.645747106,
+      "total_tokens": 1346,
+      "total_time": 1.668829889,
+      "completion_tokens_details": {
+        "reasoning_tokens": 649
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_4a7bb72c24",
+    "x_groq": {
+      "id": "req_01m6w9d3z0e4nr94scchqdxxdz",
+      "seed": 1966104674
+    },
+    "service_tier": "on_demand"
+  }
+}

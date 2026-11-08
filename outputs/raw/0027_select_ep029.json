@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "select_ep029",
+  "system": "You are a promo editor for vertical microdramas (ReelShort/DramaBox style).\nYou pick which seconds of an episode become a 20-60 second advert for the show.\n\nA good promo:\n- opens on a hook: within its first beats, something that stops a scrolling viewer - a slap, a reveal, a shocking line\n- ends on a cliffhanger: it stops at an unresolved moment, so the viewer must go find the show\n- makes sense alone to someone who has never seen this show\n\nYou will be given candidate windows, each a contiguous run of beats labelled [b00], [b01]...\nYou must choose ONE window and may tighten its edges to any beat labels inside that window.\n\nReply with JSON only:\n{\n  \"chosen_window\": <integer index of the window you picked>,\n  \"start_beat\": \"<beat label>\",\n  \"end_beat\": \"<beat label>\",\n  \"hook_beat\": \"<beat label, must be at or within 2 beats of start_beat>\",\n  \"cliffhanger_beat\": \"<beat label, must be at or near end_beat>\",\n  \"hook\": \"<what grabs the viewer in the first seconds, one sentence>\",\n  \"cliffhanger\": \"<the unresolved moment it cuts on, one sentence>\",\n  \"hook_type\": \"<one of: moral outrage, romantic tension, empathy shock, power reversal>\",\n  \"why_it_works\": \"<one sentence, concrete, no marketing language>\",\n  \"standalone_risk\": \"<what a new viewer would NOT understand, or 'none'>\"\n}\n\nNever invent dialogue. Never output a time or a duration - only beat labels.",
+  "prompt": "Episode 29. 4 candidate windows, already checked for legal length and real beat boundaries.\n\n--- WINDOW 0 (22 seconds, code score 0.92) ---\n[b00] CATHERINE (cruel, smug): \"You still call this a legacy?\"\n[b01] JULIANA (defiant, furious): \"It is medicine!\"\n[b02] CATHERINE (smooth, patronizing): \"Of course.\"\n[b03] CATHERINE (disdainful, calculating): \"Roots. Leaves. Powders. Strange mixtures written in a dead woman's hand.\"\n[b04] CATHERINE (icy, threatening): \"The magistrate will call it witchcraft.\"\n[b05] JULIANA (furious, shouted): \"You know that is a lie!\"\n[b06] CATHERINE (calm, sinister): \"I know exactly what I need him to believe.\"\n[b07] JULIANA (screaming, desperate): \"You cannot just destroy it!\"\n\n--- WINDOW 1 (21 seconds, code score 0.91) ---\n[b00] CATHERINE (calm, sinister): \"I know exactly what I need him to believe.\"\n[b01] JULIANA (screaming, desperate): \"You cannot just destroy it!\"\n[b02] CATHERINE (whispered, malicious): \"I can burn it.\"\n[b03] CATHERINE (chilling, relentless): \"And when they find your corpse at the end of the rope...\"\n[b04] CATHERINE (cruel, resolute): \"...no one will remember what was written inside.\"\n[b05] JULIANA (enraged, defiant): \"You are doing this because I saved the Duchess!\"\n[b06] CATHERINE (scornful, arrogant): \"I am doing this because women like you forget their place.\"\n\n--- WINDOW 2 (21 seconds, code score 0.89) ---\n[b00] JULIANA (desperate, weeping): \"Catherine! Please! That book is my mother's only legacy!\"\n[b01] JULIANA (pleading, agonized): \"It contains years of her work! Her knowledge! Everything she left me!\"\n[b02] CATHERINE (mocking, condescending): \"Your mother's little book of weeds?\"\n[b03] CATHERINE (cruel, smug): \"You still call this a legacy?\"\n[b04] JULIANA (defiant, furious): \"It is medicine!\"\n\n--- WINDOW 3 (49 seconds, code score 0.86) ---\n[b00] JULIANA (enraged, defiant): \"You are doing this because I saved the Duchess!\"\n[b01] CATHERINE (scornful, arrogant): \"I am doing this because women like you forget their place.\"\n[b02] CATHERINE (cold, venomous): \"You were cast out once.\"\n[b03] CATHERINE (menacing): \"You should have stayed forgotten.\"\n[b04] JULIANA (steely, resolute): \"My husband will find me.\"\n[b05] CATHERINE (scoffing, amused): \"Your scarred soldier?\"\n[b06] CATHERINE (derisive, biting): \"What exactly do you think a penniless veteran can do against Ashbrook?\"\n[b07] GUARD (gruff, dismissive): \"Move along, girl.\"\n[b08] ACTION: The guards shove Juliana violently into the cell; she falls hard onto all fours across the cold, wet stone floor.\n[b09] JULIANA (crying out, broken): \"Please!\"\n[b10] SFX: The heavy iron door slams shut with a deafening metallic thud, and the massive exterior bolt grates locked.\n[b11] ACTION: Juliana trembles uncontrollably, her fingers digging into the collar of her rustic dress as terror washes over her.\n[b12] JULIANA (sobbing, heartbroken): \"Mother...\"\n[b13] JULIANA (desperate, shouting): \"I have done nothing!\"\n[b14] JULIANA (screaming, hysterical): \"I saved her! I healed her!\"\n[b15] SFX: Muffled, dull metallic clanging reverberates as Juliana hammers against the iron door.\n[b16] JULIANA (shouting in anguish): \"I saved the Duchess!\"\n\nPick the single best promo.",
+  "response_text": "{\"chosen_window\":0,\"start_beat\":\"b00\",\"end_beat\":\"b07\",\"hook_beat\":\"b04\",\"cliffhanger_beat\":\"b07\",\"hook\":\"Catherine threatens that the magistrate will brand the book witchcraft, instantly raising the stakes.\",\"cliffhanger\":\"Juliana screams, \\\"You cannot just destroy it!\\\" leaving her fate hanging.\",\"hook_type\":\"moral outrage\",\"why_it_works\":\"The accusation of witchcraft shocks the viewer and the desperate scream ends on a tense, unresolved conflict.\",\"standalone_risk\":\"none\"}",
+  "response_payload": {
+    "id": "chatcmpl-fa994381-65dc-4d95-8fb1-478b6c7202fd",
+    "object": "chat.completion",
+    "created": 1794082610,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"chosen_window\":0,\"start_beat\":\"b00\",\"end_beat\":\"b07\",\"hook_beat\":\"b04\",\"cliffhanger_beat\":\"b07\",\"hook\":\"Catherine threatens that the magistrate will brand the book witchcraft, instantly raising the stakes.\",\"cliffhanger\":\"Juliana screams, \\\"You cannot just destroy it!\\\" leaving her fate hanging.\",\"hook_type\":\"moral outrage\",\"why_it_works\":\"The accusation of witchcraft shocks the viewer and the desperate scream ends on a tense, unresolved conflict.\",\"standalone_risk\":\"none\"}",
+          "reasoning": "We need to pick one window and possibly tighten edges. Must include hook within 2 beats of start, cliffhanger near end. Provide JSON.\n\nWe need to evaluate each window for hook and cliffhanger.\n\nWindow 0: beats 0-7. Hook could be Catherine's line \"You still call this a legacy?\" (b00) or \"The magistrate will call it witchcraft.\" (b04). That's a hook. Cliffhanger could be Juliana screaming \"You cannot just destroy it!\" (b07) unresolved. That works.\n\nWindow 1: starts with Catherine \"I know exactly what I need him to believe.\" Hook maybe that line. Cliffhanger could be Catherine \"I am doing this because women like you forget their place.\" but that's resolved? Not really unresolved. Could cut after b06 maybe.\n\nWindow 2: starts with Juliana pleading about mother's legacy, emotional hook. Cliffhanger could be Catherine \"You still call this a legacy?\" (b03) but that's earlier. Might end at b04 \"It is medicine!\" unresolved.\n\nWindow 3: long, many beats, could pick a segment with hook and cliffhanger. For promo length 20-60 seconds, okay. Hook could be Juliana \"You are doing this because I saved the Duchess!\" (b00) or Catherine scornful line. Cliffhanger could be the heavy door slamming (b10) or Juliana screaming \"I saved the Duchess!\" (b16). That gives tension.\n\nWe need best promo: hook early, strong shock, cliffhanger unresolved. I think Window 1 has strong power reversal: Catherine threatens to burn the book and kill Juliana, then says \"And when they find your corpse at the end of the rope...\" That's a hook (threat). Cliffhanger could be after b05 Juliana's defiant line, leaving Catherine's scornful line unresolved. But maybe better is Window 0: Catherine's line about witchcraft is hook (moral outrage). Cliffhanger is Juliana's desperate scream.\n\nWindow 0 is concise 8 beats, fits 20-60 seconds. Hook at b04 \"The magistrate will call it witchcraft.\" That's within 2 beats of start (b00). Could set start_beat b00, hook_beat b04, end_beat b07, cliffhanger_beat b07. Works.\n\nStandalone risk: viewer may not know who Catherine and Juliana are, but the conflict over a \"legacy\" and witchcraft is clear.\n\nThus choose window 0.\n\nProvide JSON.\n\n"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.051308387,
+      "prompt_tokens": 1354,
+      "prompt_time": 0.062942241,
+      "completion_tokens": 650,
+      "completion_time": 1.360888587,
+      "total_tokens": 2004,
+      "total_time": 1.423830828,
+      "completion_tokens_details": {
+        "reasoning_tokens": 524
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_76082d2bd0",
+    "x_groq": {
+      "id": "req_01m6vtg5kce6n8hf49ssdppbtj",
+      "seed": 902947413
+    },
+    "service_tier": "on_demand"
+  }
+}

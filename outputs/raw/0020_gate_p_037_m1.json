@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "gate_p_037_m1",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\nBLOND NOBLEMAN: \"Every important family in the county should witness it.\"\nCATHERINE: \"The wedding?\"\nBLOND NOBLEMAN: \"The transfer of Ashbridge.\"\nCATHERINE: \"After the ceremony, no one will question who owns this house.\"\nBLOND NOBLEMAN: \"And no one will question what happened to the woman who tried to stop us.\"\nCLARISSA: \"To every woman who thinks she can rise above the place she was given.\"\nCLARISSA: \"Juliana's ruin will be a lesson. And we will be there to watch.\"\n[sfx] Rhythmic water drips splashing onto stagnant dungeon puddles and a low, mournful ambient drone.",
+  "response_text": "{\"who_is_the_main_character\":\"The clip does not name a single main character; it features Blond Nobleman, Catherine, and Clarissa\",\"what_is_at_stake\":\"A transfer of Ashbridge (property ownership) and the fate of Juliana, whose ruin is threatened as a lesson to other women\",\"what_question_are_you_left_with\":\"Will Juliana be ruined and will the transfer of Ashbridge proceed as planned?\",\"would_you_keep_watching\":\"maybe, the dialogue hints at intrigue and conflict\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":true,\"ends_unresolved\":true,\"would_watch\":true}}",
+  "response_payload": {
+    "id": "chatcmpl-f4d05bc1-0371-4a6d-8cab-d79dcb62092c",
+    "object": "chat.completion",
+    "created": 1794121086,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"who_is_the_main_character\":\"The clip does not name a single main character; it features Blond Nobleman, Catherine, and Clarissa\",\"what_is_at_stake\":\"A transfer of Ashbridge (property ownership) and the fate of Juliana, whose ruin is threatened as a lesson to other women\",\"what_question_are_you_left_with\":\"Will Juliana be ruined and will the transfer of Ashbridge proceed as planned?\",\"would_you_keep_watching\":\"maybe, the dialogue hints at intrigue and conflict\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":true,\"ends_unresolved\":true,\"would_watch\":true}}",
+          "reasoning": "We need to produce JSON with fields. Determine main character: clip names several: Blond Nobleman, Catherine, Clarissa. Who is main? Hard to know. Probably main is unclear. Could say main character not named; clip never identifies a single protagonist. So \"who_is_the_main_character\": \"The clip does not name a single main character; it features Blond Nobleman, Catherine, and Clarissa.\"\n\nWhat is at stake? Transfer of Ashbridge, ownership of house, and fate of Juliana. So conflict: a transfer of property and a woman's ruin. So stakes: ownership and someone's ruin. So we can say \"the conflict revolves around the transfer of Ashbridge and the fate of Juliana, implying property control and a woman's ruin.\" That's clear from clip.\n\nWhat question left with? Unresolved: what will happen to Juliana? Will the transfer happen? Who is Juliana? So unresolved question: will Juliana be ruined? Or what is the outcome of the transfer? So we can state that.\n\nWould you keep watching? maybe, because intrigue about property and conflict.\n\nPasses: character_identifiable? Since we have names, but main character not clear. But characters are identifiable (they have names). So true.\n\nstakes_clear? Yes, stakes are clear from dialogue. So true.\n\nends_unresolved? Yes, unresolved. So true.\n\nwould_watch? Based on would_you_keep_watching yes/maybe/no. We said maybe. So passes would_watch true? The passes field \"would_watch\" expects boolean if you'd watch. Since we said maybe, maybe treat as true? Probably true if you'd consider watching. Might set true.\n\nNow produce compact JSON."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.31832463,
+      "prompt_tokens": 532,
+      "prompt_time": 0.023190193,
+      "completion_tokens": 476,
+      "completion_time": 0.986468095,
+      "total_tokens": 1008,
+      "total_time": 1.009658288,
+      "completion_tokens_details": {
+        "reasoning_tokens": 341
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_64b2f1c926",
+    "x_groq": {
+      "id": "req_01m6wz6c8ceejveh0mxc3ayse7",
+      "seed": 29835020
+    },
+    "service_tier": "on_demand"
+  }
+}

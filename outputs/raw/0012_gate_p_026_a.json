@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "gate_p_026_a",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\nDOWAGER DUCHESS: \"Rupert and Catherine want me dead. They are poisoning me in my own bed, aren't they?\"\nJULIANA: \"Yes. But the charcoal is fighting the poison. You are safe now.\"\nDOWAGER DUCHESS: \"Then tell me... why is a girl of such noble spirit working as a common maid?\"\nJULIANA: \"Because my family cast me out to rot. I have nothing left in this world but my honor.\"\n[action] Juliana rests her right hand against the edge of the bedcover, unwittingly placing the unique ring directly within the Duchess's line of sight.\n[sfx] A sharp, stunned gasp.\n[action] The Duchess's mouth hangs open in pure disbelief as she stares fixedly at Juliana's hand.\nDOWAGER DUCHESS: \"Your hand... Let me see your hand.\"\nJULIANA: \"Your Grace? What is wrong? You look as though you've seen a ghost.\"\n[action] The Duchess reaches outward with trembling fingers, grasping frantically for Juliana.\n[sfx] A sudden sharp rustle of fabric as her fingers snap tight.\nDOWAGER DUCHESS: \"Do not move!\"\nDOWAGER DUCHESS: \"Where... where... Where did you get this ring? Speak to me!\"",
+  "response_text": "{\"who_is_the_main_character\":\"Dowager Duchess (named in the clip)\",\"what_is_at_stake\":\"The Duchess's life (possible poisoning) and the mystery of the ring Juliana is wearing, which could reveal a hidden threat or secret\",\"what_question_are_you_left_with\":\"Where did Juliana obtain the mysterious ring and what does it mean?\",\"would_you_keep_watching\":\"maybe, the intrigue of the ring and the characters' secrets is compelling\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":true,\"ends_unresolved\":true,\"would_watch\":true}}",
+  "response_payload": {
+    "id": "chatcmpl-8a8fce7b-846f-4de3-ad26-823202592bea",
+    "object": "chat.completion",
+    "created": 1794121023,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"who_is_the_main_character\":\"Dowager Duchess (named in the clip)\",\"what_is_at_stake\":\"The Duchess's life (possible poisoning) and the mystery of the ring Juliana is wearing, which could reveal a hidden threat or secret\",\"what_question_are_you_left_with\":\"Where did Juliana obtain the mysterious ring and what does it mean?\",\"would_you_keep_watching\":\"maybe, the intrigue of the ring and the characters' secrets is compelling\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":true,\"ends_unresolved\":true,\"would_watch\":true}}",
+          "reasoning": "We need to produce JSON with fields. Determine main character: The clip includes Dowager Duchess and Juliana. Who is main? Likely Dowager Duchess is central, but could be Juliana. The clip focuses on both. The question: \"who_is_the_main_character\": need to name them if clip names them; otherwise describe and say the clip never names them. The clip names both characters. Which is main? We need to decide based on prominence. The Duchess speaks a lot, seems central. So main character: Dowager Duchess (named). Provide that.\n\nWhat is at stake: The Duchess believes she's being poisoned; Julian says charcoal fighting poison, safe now. Then a ring appears, causing suspicion. Stakes: The Duchess wants to know where the ring came from; possibly her life? The conflict is about the ring and perhaps Juliana's secret. So stake: The Duchess's safety and truth about Juliana's identity. It's somewhat clear. So \"what_is_at_stake\": The Duchess's life (potential poisoning) and the mystery of the ring/Juliana's background. Provide concise.\n\nWhat question are you left with: Where did Juliana get the ring? Or what is the significance of the ring? So unresolved question: The origin of the ring.\n\nWould you keep watching: maybe, because intrigue. Provide \"maybe\" with short reason.\n\nPasses: character_identifiable: true (we have names). stakes_clear: maybe true? The stakes are somewhat clear: Duchess's safety and mystery. I'd say true. ends_unresolved: true (question remains). would_watch: maybe (true? The passes field expects boolean). \"would_watch\": true? The earlier field \"would_you_keep_watching\" is yes/maybe/no. Passes \"would_watch\" is boolean indicating if you'd watch. Since we said maybe, we can set would_watch true? Probably true if you'd consider watching. I'd set true.\n\nNow produce compact JSON."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.157714993,
+      "prompt_tokens": 654,
+      "prompt_time": 0.025427588,
+      "completion_tokens": 525,
+      "completion_time": 1.108444034,
+      "total_tokens": 1179,
+      "total_time": 1.133871622,
+      "completion_tokens_details": {
+        "reasoning_tokens": 398
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_4a7bb72c24",
+    "x_groq": {
+      "id": "req_01m6wz4ef9ef5a609qasp6hpfe",
+      "seed": 715665177
+    },
+    "service_tier": "on_demand"
+  }
+}

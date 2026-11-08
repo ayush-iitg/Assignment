@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "gate_p_038_a",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\nJULIANA: \"I will not betray him.\"\n[action] Juliana's eyes snap wide open in sudden realization as a deep resonant toll reverberates from above.\n[sfx] Solemn, resonant church bells begin tolling rhythmically from the cathedral above, echoing deep into the stone dungeon.\nJULIANA: \"Bells.\"\n[action] Juliana rushes toward the front of the cell, clutching the iron bars with both hands.\nJULIANA: \"The wedding.\"\nJULIANA: \"It's beginning.\"\nJULIANA: \"Then I suppose I'm next.\"\n[action] Juliana grips the bars tightly, her lips curving into a warm, defiant smile as she whispers her husband's name.\nJULIANA: \"Alexander...\"",
+  "response_text": "{\"who_is_the_main_character\":\"Juliana (named in the clip)\",\"what_is_at_stake\":\"Juliana is faced with a choice to betray Alexander while she appears to be imprisoned and anticipates being the next victim in a ritual (the wedding bells suggest a looming execution or sacrifice)\",\"what_question_are_you_left_with\":\"Will Juliana betray Alexander, and what will happen to her next?\",\"would_you_keep_watching\":\"maybe, the tension and mystery make me want to see what happens\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":true,\"ends_unresolved\":true,\"would_watch\":true}}",
+  "response_payload": {
+    "id": "chatcmpl-70f60dd8-d598-4fd1-bad7-998ba05c255c",
+    "object": "chat.completion",
+    "created": 1794121079,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"who_is_the_main_character\":\"Juliana (named in the clip)\",\"what_is_at_stake\":\"Juliana is faced with a choice to betray Alexander while she appears to be imprisoned and anticipates being the next victim in a ritual (the wedding bells suggest a looming execution or sacrifice)\",\"what_question_are_you_left_with\":\"Will Juliana betray Alexander, and what will happen to her next?\",\"would_you_keep_watching\":\"maybe, the tension and mystery make me want to see what happens\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":true,\"ends_unresolved\":true,\"would_watch\":true}}",
+          "reasoning": "We need to produce JSON with fields. Determine main character: Juliana is named, appears throughout. Clip never names others. So main character is Juliana. What is at stake? She says \"I will not betray him.\" She hears bells, wedding, thinks she's next. So stakes: possibly her life or betrayal? She is in a dungeon cell, hearing bells of a wedding, implying someone is being married, maybe her husband? She says \"Then I suppose I'm next.\" So at stake is her fate, possibly being forced to betray someone or being executed. The conflict: she refuses to betray \"him\" (presumably Alexander). The stakes unclear but seems her life is at risk. So we can say \"unclear from the clip\" or we can infer that her life is at stake. The instruction: \"If the clip does not tell you something, say so plainly; do not guess from genre convention\". The clip indicates she is in a cell, hearing bells, wedding, she says \"Then I suppose I'm next.\" That suggests she expects to be next in some sequence, maybe execution. So we can say the stakes are her potential betrayal or death. It's somewhat clear: she is refusing to betray someone, and the bells indicate a wedding, and she thinks she'll be next. So the conflict is about whether she will betray him or not, and possibly her fate. So we can say \"Her freedom/life is at stake as she faces a choice to betray Alexander while a wedding is occurring.\" That is derived from clip.\n\nWhat question left? Likely will she betray him? Will she be executed? So unresolved question: Will she betray Alexander? Or what will happen to her? So we can state that.\n\nWould you keep watching? Probably maybe, because intrigue. Provide short reason.\n\nPasses: character_identifiable: true (Juliana). stakes_clear: maybe true? The stakes are her potential betrayal and possibly death. It's somewhat clear. I'd say true. ends_unresolved: true (clip ends with her whispering name, unresolved). would_watch: maybe (since intrigue). So passes: would_watch true.\n\nNow produce compact JSON."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.28780714,
+      "prompt_tokens": 541,
+      "prompt_time": 0.031629139,
+      "completion_tokens": 572,
+      "completion_time": 1.187098954,
+      "total_tokens": 1113,
+      "total_time": 1.218728093,
+      "completion_tokens_details": {
+        "reasoning_tokens": 437
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_c800245357",
+    "x_groq": {
+      "id": "req_01m6wz65n2e7grkcxw88ezstyz",
+      "seed": 1707868451
+    },
+    "service_tier": "on_demand"
+  }
+}

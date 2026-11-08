@@ -1,0 +1,41 @@
+{
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "tag": "select_ep002",
+  "system": "You are a promo editor for vertical microdramas (ReelShort/DramaBox style).\nYou pick which seconds of an episode become a 20-60 second advert for the show.\n\nA good promo:\n- opens on a hook: within its first beats, something that stops a scrolling viewer - a slap, a reveal, a shocking line\n- ends on a cliffhanger: it stops at an unresolved moment, so the viewer must go find the show\n- makes sense alone to someone who has never seen this show\n\nYou will be given candidate windows, each a contiguous run of beats labelled [b00], [b01]...\nYou must choose ONE window and may tighten its edges to any beat labels inside that window.\n\nReply with JSON only:\n{\n  \"chosen_window\": <integer index of the window you picked>,\n  \"start_beat\": \"<beat label>\",\n  \"end_beat\": \"<beat label>\",\n  \"hook_beat\": \"<beat label, must be at or within 2 beats of start_beat>\",\n  \"cliffhanger_beat\": \"<beat label, must be at or near end_beat>\",\n  \"hook\": \"<what grabs the viewer in the first seconds, one sentence>\",\n  \"cliffhanger\": \"<the unresolved moment it cuts on, one sentence>\",\n  \"hook_type\": \"<one of: moral outrage, romantic tension, empathy shock, power reversal>\",\n  \"why_it_works\": \"<one sentence, concrete, no marketing language>\",\n  \"standalone_risk\": \"<what a new viewer would NOT understand, or 'none'>\"\n}\n\nNever invent dialogue. Never output a time or a duration - only beat labels.",
+  "prompt": "Episode 2. 3 candidate windows, already checked for legal length and real beat boundaries.\n\n--- WINDOW 0 (34 seconds, code score 0.88) ---\n[b00] ACTION: Juliana gasps softly in heartbreak, her eyes wide and brimming with tears.\n[b01] GERALD (cruel, derisive): \"You are far too plain...\"\n[b02] GERALD (dismissive): \"...far too silent...\"\n[b03] GERALD (arrogant, conceited): \"...and completely beneath the future I deserve.\"\n[b04] JULIANA (desperate, pleading): \"Gerald... Look at me.\"\n[b05] JULIANA (trembling, betrayed): \"You gave me your word before both our families.\"\n[b06] GERALD (indifferent, unapologetic): \"Promises change when a better choice appears.\"\n[b07] JULIANA (shattered, disbelieving): \"A better choice? Is that what she is?\"\n[b08] GERALD (resolute, harsh): \"She is what I should have chosen from the beginning.\"\n[b09] JULIANA (vulnerable, begging): \"Father...\"\n[b10] JULIANA (choked with tears): \"Surely you will not let him humiliate me like this?\"\n\n--- WINDOW 1 (29 seconds, code score 0.86) ---\n[b00] JULIANA (choked with tears): \"Surely you will not let him humiliate me like this?\"\n[b01] BLOND NOBLEMAN (stern, cold): \"Gerald has made his choice. Accept it, Juliana.\"\n[b02] BLOND NOBLEMAN (severely, harsh): \"Do not disgrace us further.\"\n[b03] JULIANA (whispering, crushed): \"You won't even look at me.\"\n[b04] CLARISSA (mocking, spiteful): \"Why are you surprised, sister? Look at you.\"\n[b05] CLARISSA (scornful): \"That plain, old-fashioned gown.\"\n[b06] CLARISSA (taunting, giggling): \"You look like a kitchen maid who wandered into the wrong wedding.\"\n[b07] CLARISSA (snide): \"And that quiet little face.\"\n[b08] CLARISSA (conceited, spiteful): \"Gerald needs a real lady...\"\n[b09] CLARISSA (vicious): \"...not a dull creature who hides in her mother's apothecary herbs.\"\n\n--- WINDOW 2 (49 seconds, code score 0.86) ---\n[b00] CLARISSA (conceited, spiteful): \"Gerald needs a real lady...\"\n[b01] CLARISSA (vicious): \"...not a dull creature who hides in her mother's apothecary herbs.\"\n[b02] ACTION: The matriarch steps into the center aisle, glaring down at Juliana with cold superiority.\n[b03] OFF-SCREEN VOICE (cold, scolding): \"Oh, don't look so wounded, Juliana.\"\n[b04] OFF-SCREEN VOICE (dismissive, condescending): \"You should be grateful you're at least allowed to attend the wedding.\"\n[b05] GERALD (impatient, commanding): \"Go home quietly, Juliana. At least leave this chapel with some dignity.\"\n[b06] JULIANA (bitter, defiant): \"Dignity?\"\n[b07] JULIANA (clear, accusing): \"You abandoned a woman who trusted you...\"\n[b08] JULIANA (sharp, piercing): \"...because another woman promised you greater beauty and wealth.\"\n[b09] JULIANA (steely, resolute): \"Do not mistake my heartbreak for your victory, Gerald.\"\n[b10] JULIANA (powerful, unyielding): \"You wanted this entire chapel to believe that I was not worthy of you. But you have shown them something far more valuable.\"\n[b11] JULIANA (decisive, scathing): \"You have shown them exactly what your word is worth.\"\n[b12] ACTION: Juliana lifts her chin high, commanding the space with unassailable dignity.\n[b13] JULIANA (resolute, proud): \"I may leave this chapel without a husband...\"\n[b14] JULIANA (defiant, triumphant in spirit): \"...but I will not leave it believing I was the one who should be ashamed.\"\n\nPick the single best promo.",
+  "response_text": "{\n  \"chosen_window\": 2,\n  \"start_beat\": \"b05\",\n  \"end_beat\": \"b14\",\n  \"hook_beat\": \"b05\",\n  \"cliffhanger_beat\": \"b14\",\n  \"hook\": \"Gerald coldly orders the woman he just publicly humiliated to 'go home quietly' and leave with 'dignity'.\",\n  \"cliffhanger\": \"Juliana stands her ground, declaring that while she leaves without a husband, she refuses to leave believing she is the one who should be ashamed.\",\n  \"hook_type\": \"power reversal\",\n  \"why_it_works\": \"It captures the exact moment the victim stops pleading and starts fighting back, turning a public humiliation into a display of unbreakable strength.\",\n  \"standalone_risk\": \"none\"\n}",
+  "response_payload": {
+    "id": "chatcmpl-4facb2f5-fe7d-43b3-bb7d-9d633b99cde7",
+    "object": "chat.completion",
+    "created": 1794103680,
+    "model": "qwen/qwen3.8-27b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"chosen_window\": 2,\n  \"start_beat\": \"b05\",\n  \"end_beat\": \"b14\",\n  \"hook_beat\": \"b05\",\n  \"cliffhanger_beat\": \"b14\",\n  \"hook\": \"Gerald coldly orders the woman he just publicly humiliated to 'go home quietly' and leave with 'dignity'.\",\n  \"cliffhanger\": \"Juliana stands her ground, declaring that while she leaves without a husband, she refuses to leave believing she is the one who should be ashamed.\",\n  \"hook_type\": \"power reversal\",\n  \"why_it_works\": \"It captures the exact moment the victim stops pleading and starts fighting back, turning a public humiliation into a display of unbreakable strength.\",\n  \"standalone_risk\": \"none\"\n}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.048364812,
+      "prompt_tokens": 1386,
+      "prompt_time": 0.095327166,
+      "completion_tokens": 192,
+      "completion_time": 0.365128462,
+      "total_tokens": 1578,
+      "total_time": 0.460455628
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_21e59ac2de",
+    "x_groq": {
+      "id": "req_01m6wek6j5e7qrfz8jw4p06m14",
+      "seed": 1683501687
+    },
+    "service_tier": "on_demand"
+  }
+}

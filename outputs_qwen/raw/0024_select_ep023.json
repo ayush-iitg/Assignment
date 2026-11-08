@@ -1,0 +1,41 @@
+{
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "tag": "select_ep023",
+  "system": "You are a promo editor for vertical microdramas (ReelShort/DramaBox style).\nYou pick which seconds of an episode become a 20-60 second advert for the show.\n\nA good promo:\n- opens on a hook: within its first beats, something that stops a scrolling viewer - a slap, a reveal, a shocking line\n- ends on a cliffhanger: it stops at an unresolved moment, so the viewer must go find the show\n- makes sense alone to someone who has never seen this show\n\nYou will be given candidate windows, each a contiguous run of beats labelled [b00], [b01]...\nYou must choose ONE window and may tighten its edges to any beat labels inside that window.\n\nReply with JSON only:\n{\n  \"chosen_window\": <integer index of the window you picked>,\n  \"start_beat\": \"<beat label>\",\n  \"end_beat\": \"<beat label>\",\n  \"hook_beat\": \"<beat label, must be at or within 2 beats of start_beat>\",\n  \"cliffhanger_beat\": \"<beat label, must be at or near end_beat>\",\n  \"hook\": \"<what grabs the viewer in the first seconds, one sentence>\",\n  \"cliffhanger\": \"<the unresolved moment it cuts on, one sentence>\",\n  \"hook_type\": \"<one of: moral outrage, romantic tension, empathy shock, power reversal>\",\n  \"why_it_works\": \"<one sentence, concrete, no marketing language>\",\n  \"standalone_risk\": \"<what a new viewer would NOT understand, or 'none'>\"\n}\n\nNever invent dialogue. Never output a time or a duration - only beat labels.",
+  "prompt": "Episode 23. 4 candidate windows, already checked for legal length and real beat boundaries.\n\n--- WINDOW 0 (50 seconds, code score 0.85) ---\n[b00] PRUDENCE (panicked, shaken): \"What are you saying?\"\n[b01] JULIANA (cold, deadly serious): \"Someone is poisoning her.\"\n[b02] SFX: Sharp intake of breath from Prudence.\n[b03] PRUDENCE (muffled, horrified): \"Poison?\"\n[b04] JULIANA (venomous, resolute): \"Arsenic.\"\n[b05] SFX: Sudden violent coughing and sputtering from the Duchess.\n[b06] PRUDENCE (desperate, begging): \"Can you save her?\"\n[b07] JULIANA (focused, resolute): \"I can try.\"\n[b08] SFX: Heavy, rhythmic scraping of stone pestle grinding charcoal and dried herbs.\n[b09] JULIANA (urgent, focused): \"The charcoal may help remove what is still inside her. We must act quickly.\"\n[b10] SFX: Sudden muffled thump and heavy footsteps echoing from the hallway outside the door!\n[b11] PRUDENCE (terrified, hoarse whisper): \"Juliana... someone is coming.\"\n\n--- WINDOW 1 (24 seconds, code score 0.79) ---\n[b00] JULIANA (breathless, reverent): \"Mother.\"\n[b01] PRUDENCE (urgent, baffled): \"What is it?\"\n[b02] JULIANA (shocked, deliberate): \"Weakness. Dry mouth. The discoloration beneath the nails. The slow wasting.\"\n[b03] JULIANA (serious, chilled): \"I have seen these symptoms before.\"\n[b04] PRUDENCE (panicked, shaken): \"What are you saying?\"\n[b05] JULIANA (cold, deadly serious): \"Someone is poisoning her.\"\n[b06] SFX: Sharp intake of breath from Prudence.\n[b07] PRUDENCE (muffled, horrified): \"Poison?\"\n\n--- WINDOW 2 (22 seconds, code score 0.71) ---\n[b00] JULIANA (hushed, grave): \"How long has she been like this?\"\n[b01] PRUDENCE (tearful, trembling): \"Weeks.\"\n[b02] JULIANA (solemn): \"Her mouth is terribly dry.\"\n[b03] JULIANA (quiet, grim): \"Her pulse is weak.\"\n[b04] PRUDENCE (despairing, weeping): \"The physician said her heart is failing.\"\n\n--- WINDOW 3 (33 seconds, code score 0.69) ---\n[b00] JULIANA (quiet, grim): \"Her pulse is weak.\"\n[b01] PRUDENCE (despairing, weeping): \"The physician said her heart is failing.\"\n[b02] SFX: Duchess's raspy, labored inhalation.\n[b03] JULIANA (firm, resolute): \"No.\"\n[b04] JULIANA (certain, focused): \"This is not simply old age.\"\n[b05] ACTION: Juliana draws in a sharp, startled breath, her eyes widening in horror.\n[b06] JULIANA (breathless, reverent): \"Mother.\"\n[b07] PRUDENCE (urgent, baffled): \"What is it?\"\n\nPick the single best promo.",
+  "response_text": "{\n  \"chosen_window\": 0,\n  \"start_beat\": \"b00\",\n  \"end_beat\": \"b11\",\n  \"hook_beat\": \"b01\",\n  \"cliffhanger_beat\": \"b11\",\n  \"hook\": \"A woman calmly declares that someone is actively poisoning the Duchess with arsenic.\",\n  \"cliffhanger\": \"Footsteps approach the door as the characters realize they are trapped with the evidence of a crime.\",\n  \"hook_type\": \"moral outrage\",\n  \"why_it_works\": \"It establishes a high-stakes medical mystery and ends with an immediate physical threat that forces the viewer to seek resolution.\",\n  \"standalone_risk\": \"none\"\n}",
+  "response_payload": {
+    "id": "chatcmpl-5d20c460-8f2d-4827-9113-de464139c4a8",
+    "object": "chat.completion",
+    "created": 1794103981,
+    "model": "qwen/qwen3.8-27b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"chosen_window\": 0,\n  \"start_beat\": \"b00\",\n  \"end_beat\": \"b11\",\n  \"hook_beat\": \"b01\",\n  \"cliffhanger_beat\": \"b11\",\n  \"hook\": \"A woman calmly declares that someone is actively poisoning the Duchess with arsenic.\",\n  \"cliffhanger\": \"Footsteps approach the door as the characters realize they are trapped with the evidence of a crime.\",\n  \"hook_type\": \"moral outrage\",\n  \"why_it_works\": \"It establishes a high-stakes medical mystery and ends with an immediate physical threat that forces the viewer to seek resolution.\",\n  \"standalone_risk\": \"none\"\n}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.048512853,
+      "prompt_tokens": 1159,
+      "prompt_time": 0.082204711,
+      "completion_tokens": 167,
+      "completion_time": 0.317825043,
+      "total_tokens": 1326,
+      "total_time": 0.400029754
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_21e59ac2de",
+    "x_groq": {
+      "id": "req_01m6wewd4resz9e1exjmspvkye",
+      "seed": 1486568418
+    },
+    "service_tier": "on_demand"
+  }
+}

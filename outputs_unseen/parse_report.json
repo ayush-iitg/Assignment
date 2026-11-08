@@ -1,0 +1,144 @@
+{
+  "folder": "samples",
+  "n_files": 1,
+  "n_beats": 26,
+  "kinds": {
+    "CAMERA": 4,
+    "SFX": 3,
+    "ACTION": 5,
+    "DIALOGUE": 14
+  },
+  "episodes": [
+    {
+      "episode": 1,
+      "file": "sample_episode.txt",
+      "logline": "A junior analyst is publicly blamed for a failure she did not cause, and chooses the one response nobody in the room expects.",
+      "continuity": "Standalone sample episode. Written from scratch for testing the parser on unseen input; contains no Kuku content.",
+      "duration": 72.0,
+      "n_beats": 26,
+      "n_scenes": 2,
+      "counts": {
+        "CAMERA": 4,
+        "SFX": 3,
+        "ACTION": 5,
+        "DIALOGUE": 14
+      },
+      "reconcile": {
+        "labels_seen": 26,
+        "timestamps_seen": 26,
+        "beats_built": 26,
+        "ok": true
+      }
+    }
+  ],
+  "duration_stats": {
+    "min": 72.0,
+    "p25": 72.0,
+    "median": 72.0,
+    "p75": 72.0,
+    "max": 72.0,
+    "n_over_150s": 0
+  },
+  "tone_tag_coverage": 0.9286,
+  "n_distinct_tone_tags": 19,
+  "top_tone_tags": [
+    [
+      "quiet",
+      2
+    ],
+    [
+      "cold",
+      1
+    ],
+    [
+      "final",
+      1
+    ],
+    [
+      "steady",
+      1
+    ],
+    [
+      "impatient",
+      1
+    ],
+    [
+      "calm",
+      1
+    ],
+    [
+      "cutting",
+      1
+    ],
+    [
+      "dismissive",
+      1
+    ],
+    [
+      "unwavering",
+      1
+    ],
+    [
+      "whispering",
+      1
+    ],
+    [
+      "alarmed",
+      1
+    ],
+    [
+      "resolute",
+      1
+    ],
+    [
+      "clear",
+      1
+    ],
+    [
+      "accusing",
+      1
+    ],
+    [
+      "trembling",
+      1
+    ],
+    [
+      "furious",
+      1
+    ],
+    [
+      "steely",
+      1
+    ],
+    [
+      "panicked",
+      1
+    ],
+    [
+      "powerful",
+      1
+    ]
+  ],
+  "speaker_labels_raw": 3,
+  "characters_canonical": 3,
+  "bare_names_attested": [
+    "DIRECTOR VOSS",
+    "MAYA",
+    "RAHUL"
+  ],
+  "alias_map": {},
+  "hazards": [],
+  "n_hazards": 0,
+  "intensity_coverage": {
+    "dialogue_beats": 14,
+    "scored_from_tone_lexicon": 13,
+    "lexicon_hit_rate": 0.9286,
+    "n_unknown_tags": 1,
+    "top_unknown_tags": [
+      [
+        "cutting",
+        1
+      ]
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "tag": "select_ep034",
+  "system": "You are a promo editor for vertical microdramas (ReelShort/DramaBox style).\nYou pick which seconds of an episode become a 20-60 second advert for the show.\n\nA good promo:\n- opens on a hook: within its first beats, something that stops a scrolling viewer - a slap, a reveal, a shocking line\n- ends on a cliffhanger: it stops at an unresolved moment, so the viewer must go find the show\n- makes sense alone to someone who has never seen this show\n\nYou will be given candidate windows, each a contiguous run of beats labelled [b00], [b01]...\nYou must choose ONE window and may tighten its edges to any beat labels inside that window.\n\nReply with JSON only:\n{\n  \"chosen_window\": <integer index of the window you picked>,\n  \"start_beat\": \"<beat label>\",\n  \"end_beat\": \"<beat label>\",\n  \"hook_beat\": \"<beat label, must be at or within 2 beats of start_beat>\",\n  \"cliffhanger_beat\": \"<beat label, must be at or near end_beat>\",\n  \"hook\": \"<what grabs the viewer in the first seconds, one sentence>\",\n  \"cliffhanger\": \"<the unresolved moment it cuts on, one sentence>\",\n  \"hook_type\": \"<one of: moral outrage, romantic tension, empathy shock, power reversal>\",\n  \"why_it_works\": \"<one sentence, concrete, no marketing language>\",\n  \"standalone_risk\": \"<what a new viewer would NOT understand, or 'none'>\"\n}\n\nNever invent dialogue. Never output a time or a duration - only beat labels.",
+  "prompt": "Episode 34. 4 candidate windows, already checked for legal length and real beat boundaries.\n\n--- WINDOW 0 (40 seconds, code score 0.83) ---\n[b00] JUDGE (booming, authoritative): \"Lady Juliana Ashcroft, you are accused of witchcraft, unlawful healing, and poisoning.\"\n[b01] SFX: [A firm, hollow tap of a finger striking the parchment]\n[b02] JUDGE (inquisitive, severe): \"Do you deny possessing this book?\"\n[b03] JULIANA (calm, unflinching): \"No.\"\n[b04] JUDGE (stern, accusatory): \"Do you deny using its remedies?\"\n[b05] JULIANA (firm): \"No.\"\n[b06] JUDGE (hard, pressing): \"Then you admit to practicing forbidden arts.\"\n[b07] JULIANA (proud, dignified): \"I admit to healing the sick.\"\n[b08] ACTION: The Judge furiously raises his wooden gavel and strikes the sound block with sharp force.\n[b09] JUDGE (furious, shouting): \"Silence!\"\n[b10] SFX: [Sharp, echoing crack of the gavel slamming onto wood]\n[b11] JUDGE (commanding): \"Prudence. You served beside the accused?\"\n[b12] ACTION: Prudence the young maid stands trembling in the center of the courtroom floor, her head bowed in deep shame, clutching the sides of her apron.\n\n--- WINDOW 1 (54 seconds, code score 0.83) ---\n[b00] JULIANA (proud, dignified): \"I admit to healing the sick.\"\n[b01] ACTION: The Judge furiously raises his wooden gavel and strikes the sound block with sharp force.\n[b02] JUDGE (furious, shouting): \"Silence!\"\n[b03] SFX: [Sharp, echoing crack of the gavel slamming onto wood]\n[b04] JUDGE (commanding): \"Prudence. You served beside the accused?\"\n[b05] ACTION: Prudence the young maid stands trembling in the center of the courtroom floor, her head bowed in deep shame, clutching the sides of her apron.\n[b06] PRUDENCE (trembling, tearful): \"Yes, Your Honor.\"\n[b07] JUDGE (probing, formal): \"Did you witness Lady Juliana perform these treatments?\"\n[b08] JULIANA (softly, urgent): \"Tell the truth.\"\n[b09] PRUDENCE (sobbing, heartbroken): \"Yes.\"\n[b10] JUDGE (measured, stern): \"What did you see?\"\n[b11] PRUDENCE (choked with tears): \"She used herbs... and her mother's book.\"\n[b12] JUDGE (pressing, sharp): \"Did she draw strange markings?\"\n[b13] PRUDENCE (faltering, desperate): \"She... placed herbs around my brother's bed.\"\n[b14] JUDGE (accusatory, forceful): \"And did she speak words you could not understand?\"\n[b15] PRUDENCE (weeping, shaken): \"Yes.\"\n[b16] LORD (triumphant, smug): \"Your Honor... the witness has confirmed the ritual.\"\n[b17] ACTION: Lady Juliana slams her cuffed hands against the wooden railing of the dock, her voice ringing out in indignant fury.\n[b18] JULIANA (passionate, indignant): \"It was not a ritual!\"\n\n--- WINDOW 2 (20 seconds, code score 0.83) ---\n[b00] ACTION: Prudence buries her face in her stained white apron, shuddering with grief.\n[b01] JULIANA (passionate, defiant): \"Do not be afraid. I will not call healing evil just because powerful people have decided to fear it.\"\n[b02] ACTION: The Judge furiously smashes his gavel down upon the sound block with a deafening crack.\n[b03] SFX: [Violent, resonant smash of the wooden gavel]\n[b04] JUDGE (thunderous): \"Enough!\"\n[b05] ACTION: The Judge rises to his full height behind the bench, towering over the silent court.\n[b06] JUDGE (booming, solemn): \"Lady Juliana Ashcroft...\"\n\n--- WINDOW 3 (27 seconds, code score 0.83) ---\n[b00] ACTION: The Judge repeatedly hammers his gavel down onto the desk, roaring over her.\n[b01] SFX: [Violent, resonant double bang of the wooden gavel]\n[b02] JUDGE (bellowing): \"You will speak when addressed!\"\n[b03] LORD (calm, poisonous): \"We have further witnesses.\"\n[b04] TOWNSMAN (nervous, fearful): \"My wife took one of Lady Juliana's mixtures...\"\n[b05] JUDGE (sharp): \"And?\"\n[b06] TOWNSMAN (agitated): \"She became violently ill.\"\n[b07] OLD WOMAN (shrill, accusatory): \"My daughter drank one of her herbal preparations! She was sick for three days!\"\n[b08] LORD (mocking, smug): \"She calls it healing.\"\n[b09] ACTION: The Lord turns dramatically to face the entire assembly, gesturing toward the spectators.\n[b10] LORD (resonant, vindicative): \"The people call it poisoning!\"\n[b11] JULIANA (incisive, defiant): \"What were their illnesses?\"\n\nPick the single best promo.",
+  "response_text": "{\n  \"chosen_window\": 1,\n  \"start_beat\": \"b00\",\n  \"end_beat\": \"b18\",\n  \"hook_beat\": \"b00\",\n  \"cliffhanger_beat\": \"b18\",\n  \"hook\": \"A noblewoman calmly admits to 'healing the sick' in a courtroom, immediately triggering a furious gavel strike and a screaming judge.\",\n  \"cliffhanger\": \"The judge and the Lord declare the witness's testimony confirms a 'ritual,' and Juliana slams her cuffed hands on the railing to scream her denial.\",\n  \"hook_type\": \"power reversal\",\n  \"why_it_works\": \"It juxtaposes the protagonist's calm dignity against the escalating, violent hysteria of the court and the betrayal of her own maid, creating immediate high-stakes tension.\",\n  \"standalone_risk\": \"none\"\n}",
+  "response_payload": {
+    "id": "chatcmpl-47b6791b-43ff-4281-8556-809edf23e343",
+    "object": "chat.completion",
+    "created": 1794104179,
+    "model": "qwen/qwen3.8-27b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"chosen_window\": 1,\n  \"start_beat\": \"b00\",\n  \"end_beat\": \"b18\",\n  \"hook_beat\": \"b00\",\n  \"cliffhanger_beat\": \"b18\",\n  \"hook\": \"A noblewoman calmly admits to 'healing the sick' in a courtroom, immediately triggering a furious gavel strike and a screaming judge.\",\n  \"cliffhanger\": \"The judge and the Lord declare the witness's testimony confirms a 'ritual,' and Juliana slams her cuffed hands on the railing to scream her denial.\",\n  \"hook_type\": \"power reversal\",\n  \"why_it_works\": \"It juxtaposes the protagonist's calm dignity against the escalating, violent hysteria of the court and the betrayal of her own maid, creating immediate high-stakes tension.\",\n  \"standalone_risk\": \"none\"\n}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.048911106,
+      "prompt_tokens": 1642,
+      "prompt_time": 0.116942782,
+      "completion_tokens": 201,
+      "completion_time": 0.410160151,
+      "total_tokens": 1843,
+      "total_time": 0.527102933
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_21e59ac2de",
+    "x_groq": {
+      "id": "req_01m6wf2enseqjvpvzh95dd1rvk",
+      "seed": 658431720
+    },
+    "service_tier": "on_demand"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "gate_p_038_a",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\nJULIANA: \"I will not betray him.\"\n[action] Juliana's eyes snap wide open in sudden realization as a deep resonant toll reverberates from above.\n[sfx] Solemn, resonant church bells begin tolling rhythmically from the cathedral above, echoing deep into the stone dungeon.\nJULIANA: \"Bells.\"\n[action] Juliana rushes toward the front of the cell, clutching the iron bars with both hands.\nJULIANA: \"The wedding.\"\nJULIANA: \"It's beginning.\"\nJULIANA: \"Then I suppose I'm next.\"\n[action] Juliana grips the bars tightly, her lips curving into a warm, defiant smile as she whispers her husband's name.\nJULIANA: \"Alexander...\"\n[sfx] A sharp, high-tension dramatic swell strikes and echoes out into silence alongside the fading toll of the distant church bells.",
+  "response_text": "{\"who_is_the_main_character\":\"Juliana\",\"what_is_at_stake\":\"Juliana's life and her promise not to betray Alexander\",\"what_question_are_you_left_with\":\"Will Juliana betray Alexander or be killed as the bells toll?\",\"would_you_keep_watching\":\"maybe\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":true,\"ends_unresolved\":true,\"would_watch\":false}}",
+  "response_payload": {
+    "id": "chatcmpl-56a1eadd-944b-40cc-b516-b2af80c3fb06",
+    "object": "chat.completion",
+    "created": 1794103128,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"who_is_the_main_character\":\"Juliana\",\"what_is_at_stake\":\"Juliana's life and her promise not to betray Alexander\",\"what_question_are_you_left_with\":\"Will Juliana betray Alexander or be killed as the bells toll?\",\"would_you_keep_watching\":\"maybe\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":true,\"ends_unresolved\":true,\"would_watch\":false}}",
+          "reasoning": "We need to produce JSON with fields. Determine main character: Juliana is named, appears throughout. Clip never names others. So main character is Juliana, identified.\n\nWhat is at stake? She says \"I will not betray him.\" She is in a cell, hearing bells, wedding beginning, she thinks she's next. Stakes: possibly her life, betrayal, maybe being forced to betray someone. The conflict: she must decide whether to betray someone (maybe Alexander) or face death. So at stake is her loyalty vs her life. It's somewhat clear from clip: she fears being next (maybe execution). So stakes: her life and loyalty. So we can say \"Juliana's life and her promise not to betray Alexander.\" That's clear.\n\nWhat question left? Unresolved: Will she betray him? Will she be executed? What will happen next? So unresolved question: Will she betray Alexander or be killed? So we can phrase: \"Will Juliana betray Alexander or survive?\" Or \"What will happen to Juliana after the bells?\" Provide one.\n\nWould you keep watching? Provide yes/maybe/no with short reason. I'd say maybe, because intrigue but limited info. So maybe \"maybe\" with reason \"the cliffhanger hints at tension but it's unclear what the larger story is.\"\n\nPasses: character_identifiable true, stakes_clear true (we have clear stakes), ends_unresolved true (yes unresolved), would_watch maybe? The passes field \"would_watch\" expects boolean: true if would watch? The spec: passes: { \"character_identifiable\": true/false, \"stakes_clear\": true/false, \"ends_unresolved\": true/false, \"would_watch\": true/false }. So we need boolean for would_watch. Since we said maybe, we could set would_watch false? But maybe we interpret would_watch as \"would you watch?\" If maybe, maybe false? The spec says \"would_watch\": true/false. Probably true if you'd watch, false otherwise. Since we said maybe, ambiguous. Could set false? But maybe we set false because not a definite yes. However could set true because you'd consider watching. I'd choose false? The instruction: \"would_watch\": true/false. Not \"maybe\". So we need to decide. I'd set false because not a definite yes. But maybe they'd expect true if you'd watch. The earlier field \"would_you_keep_watching\": \"yes | maybe | no\". That is separate. So passes.would_watch likely corresponds to that: true if you'd watch (yes), false otherwise (no or maybe). I'd set false.\n\nThus JSON:\n\n{\n \"who_is_the_main_character\":\"Juliana\",\n \"what_is_at_stake\":\"Juliana's life and her promise not to betray Alexander\",\n \"what_question_are_you_left_with\":\"Will Juliana betray Alexander or be killed as the bells toll?\",\n \"would_you_keep_watching\":\"maybe\",\n \"passes\":{\"character_identifiable\":true,\"stakes_clear\":true,\"ends_unresolved\":true,\"would_watch\":false}\n}\n\nMake compact JSON."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.31743999,
+      "prompt_tokens": 568,
+      "prompt_time": 0.023894082,
+      "completion_tokens": 709,
+      "completion_time": 1.481144176,
+      "total_tokens": 1277,
+      "total_time": 1.505038258,
+      "completion_tokens_details": {
+        "reasoning_tokens": 619
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_8ea50c0161",
+    "x_groq": {
+      "id": "req_01m6we2addemeax0w62wdb4za1",
+      "seed": 745399276
+    },
+    "service_tier": "on_demand"
+  }
+}

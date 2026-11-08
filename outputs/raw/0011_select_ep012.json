@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "select_ep012",
+  "system": "You are a promo editor for vertical microdramas (ReelShort/DramaBox style).\nYou pick which seconds of an episode become a 20-60 second advert for the show.\n\nA good promo:\n- opens on a hook: within its first beats, something that stops a scrolling viewer - a slap, a reveal, a shocking line\n- ends on a cliffhanger: it stops at an unresolved moment, so the viewer must go find the show\n- makes sense alone to someone who has never seen this show\n\nYou will be given candidate windows, each a contiguous run of beats labelled [b00], [b01]...\nYou must choose ONE window and may tighten its edges to any beat labels inside that window.\n\nReply with JSON only:\n{\n  \"chosen_window\": <integer index of the window you picked>,\n  \"start_beat\": \"<beat label>\",\n  \"end_beat\": \"<beat label>\",\n  \"hook_beat\": \"<beat label, must be at or within 2 beats of start_beat>\",\n  \"cliffhanger_beat\": \"<beat label, must be at or near end_beat>\",\n  \"hook\": \"<what grabs the viewer in the first seconds, one sentence>\",\n  \"cliffhanger\": \"<the unresolved moment it cuts on, one sentence>\",\n  \"hook_type\": \"<one of: moral outrage, romantic tension, empathy shock, power reversal>\",\n  \"why_it_works\": \"<one sentence, concrete, no marketing language>\",\n  \"standalone_risk\": \"<what a new viewer would NOT understand, or 'none'>\"\n}\n\nNever invent dialogue. Never output a time or a duration - only beat labels.",
+  "prompt": "Episode 12. 3 candidate windows, already checked for legal length and real beat boundaries.\n\n--- WINDOW 0 (34 seconds, code score 0.94) ---\n[b00] JULIANA (enraged, shouting): \"You planted it!\"\n[b01] ACTION: Juliana lunges a step forward, jabbing an accusing finger toward Gerald.\n[b02] CLARISSA (purring, taunting): \"Oh, dear sister...\"\n[b03] CLARISSA (continuing taunt): \"...still defending your broken scrap of a man?\"\n[b04] JULIANA (steely, resolute): \"Name your price, Clarissa. I know you.\"\n[b05] CLARISSA (smooth, derisive): \"You always were clever, Juliana. Always searching for some way to escape.\"\n[b06] CLARISSA (scheming): \"Perhaps I can give you one.\"\n[b07] JULIANA (guarded, cold): \"What do you want?\"\n[b08] CLARISSA (cruel, savoring): \"I want to see you crawl, sister.\"\n[b09] CLARISSA (theatrical, vindictive): \"My emerald signet ring fell deep into the frozen blackthorn briars at Ashworth Manor. The thorns have grown over it...\"\n[b10] CLARISSA (chilling, sarcastic): \"...sharp as steel. The ground is frozen, like pure ice.\"\n[b11] ACTION: Gerald bursts into a loud, mocking laugh beside the stony Constable.\n[b12] CLARISSA (demanding, brutal): \"You will retrieve it with your bare hands before the magistrate arrives.\"\n\n--- WINDOW 1 (22 seconds, code score 0.90) ---\n[b00] ACTION: Juliana steps firmly forward, shielding Alexander with her body.\n[b01] JULIANA (furious, defiant): \"No! That watch was not in his coat!\"\n[b02] CONSTABLE (blunt, unyielding): \"I found it there myself.\"\n[b03] JULIANA (passionate, accusatory): \"Then someone put it there!\"\n[b04] GERALD (smug, condescending): \"The proof is in his coat, Juliana. A valuable pocket watch doesn't just walk into a beggar's pocket.\"\n[b05] ALEXANDER (low, steady, dangerous): \"I have never touched your property.\"\n[b06] GERALD (mocking, malicious): \"Then perhaps your wife should explain why it was found in your coat.\"\n[b07] JULIANA (enraged, shouting): \"You planted it!\"\n[b08] ACTION: Juliana lunges a step forward, jabbing an accusing finger toward Gerald.\n\n--- WINDOW 2 (21 seconds, code score 0.88) ---\n[b00] ACTION: Gerald bursts into a loud, mocking laugh beside the stony Constable.\n[b01] CLARISSA (demanding, brutal): \"You will retrieve it with your bare hands before the magistrate arrives.\"\n[b02] GERALD (gleeful, derisive): \"A lady's hands will be shredded to ribbons!\"\n[b03] CLARISSA (cold, transactional): \"Do it, and we withdraw the charges.\"\n[b04] CLARISSA (whispering, menacing): \"Fail, or refuse, and your husband hangs from the gallows.\"\n[b05] ACTION: Alexander rests his scarred hand reassuringly on Juliana's shoulder, leaning in toward her.\n[b06] ALEXANDER (desperate, protective, urgent): \"Juliana, no. Do not let them hurt you. I can handle the law.\"\n[b07] ACTION: Juliana clutches the front of her rustic grey dress, her breathing trembling.\n[b08] JULIANA (fierce, emotional, sacrificial): \"I am not letting them take you.\"\n\nPick the single best promo.",
+  "response_text": "{\"chosen_window\":0,\"start_beat\":\"b00\",\"end_beat\":\"b12\",\"hook_beat\":\"b00\",\"cliffhanger_beat\":\"b12\",\"hook\":\"Juliana erupts, shouting “You planted it!”\",\"cliffhanger\":\"Clarissa orders Juliana to retrieve the emerald signet ring with her bare hands before the magistrate arrives, leaving the task’s outcome unknown\",\"hook_type\":\"moral outrage\",\"why_it_works\":\"It thrusts the viewer into a heated accusation and an impossible‑to‑refuse challenge right away\",\"standalone_risk\":\"the rivalry between Juliana and Clarissa and the importance of the emerald signet ring aren’t explained\"}",
+  "response_payload": {
+    "id": "chatcmpl-f958302c-c5e4-47ef-862f-228c9d041a1d",
+    "object": "chat.completion",
+    "created": 1794082311,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"chosen_window\":0,\"start_beat\":\"b00\",\"end_beat\":\"b12\",\"hook_beat\":\"b00\",\"cliffhanger_beat\":\"b12\",\"hook\":\"Juliana erupts, shouting “You planted it!”\",\"cliffhanger\":\"Clarissa orders Juliana to retrieve the emerald signet ring with her bare hands before the magistrate arrives, leaving the task’s outcome unknown\",\"hook_type\":\"moral outrage\",\"why_it_works\":\"It thrusts the viewer into a heated accusation and an impossible‑to‑refuse challenge right away\",\"standalone_risk\":\"the rivalry between Juliana and Clarissa and the importance of the emerald signet ring aren’t explained\"}",
+          "reasoning": "We need to pick one window and possibly tighten edges. Must include hook within 2 beats of start, cliffhanger near end. Provide JSON.\n\nWe need to evaluate each window for hook and cliffhanger.\n\nWindow0: starts with Juliana enraged shouting \"You planted it!\" That's a hook (moral outrage). Ends with Clarissa demanding \"You will retrieve it with your bare hands before the magistrate arrives.\" That's a cliffhanger: task set, unresolved. Good.\n\nWe can maybe tighten start to b00 (hook) and end to b12 (cliffhanger). Hook beat is b00. Cliffhanger beat b12.\n\nWindow1: starts with action step forward shielding Alexander, not as strong hook. Hook could be b07 \"You planted it!\" but that's later. Start could be b07, but need within 2 beats of start. Could start at b06? But b06 is Gerald mocking. Not as strong. Hook is later. Might be okay but less dramatic.\n\nWindow2: starts with Gerald laughing, not hook. Hook could be b06 \"Juliana, no. Do not let them hurt you.\" Not as strong. Cliffhanger maybe b07 Juliana clutches dress, but unresolved? Not as clear.\n\nThus best is Window0.\n\nWe need to output JSON with chosen_window 0, start_beat \"b00\", end_beat \"b12\", hook_beat \"b00\", cliffhanger_beat \"b12\". Hook description: Juliana's furious accusation \"You planted it!\" grabs attention. Cliffhanger: Clarissa's demand that Juliana retrieve the signet ring with bare hands before the magistrate arrives, leaving the outcome unknown.\n\nHook_type: moral outrage (accusation). Why_it_works: immediate conflict and high stakes introduced in first seconds. Standalone_risk: viewer may not know who Clarissa is or the significance of the emerald signet ring.\n\nReturn compact JSON."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.28777797,
+      "prompt_tokens": 1273,
+      "prompt_time": 0.052805875,
+      "completion_tokens": 548,
+      "completion_time": 1.139487097,
+      "total_tokens": 1821,
+      "total_time": 1.192292972,
+      "completion_tokens_details": {
+        "reasoning_tokens": 397
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_c800245357",
+    "x_groq": {
+      "id": "req_01m6vt71wdebgayad8tagwe4m5",
+      "seed": 1686509047
+    },
+    "service_tier": "on_demand"
+  }
+}

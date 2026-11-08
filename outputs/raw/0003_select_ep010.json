@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "select_ep010",
+  "system": "You are a promo editor for vertical microdramas (ReelShort/DramaBox style).\nYou pick which seconds of an episode become a 20-60 second advert for the show.\n\nA good promo:\n- opens on a hook: within its first beats, something that stops a scrolling viewer - a slap, a reveal, a shocking line\n- ends on a cliffhanger: it stops at an unresolved moment, so the viewer must go find the show\n- makes sense alone to someone who has never seen this show\n\nYou will be given candidate windows, each a contiguous run of beats labelled [b00], [b01]...\nYou must choose ONE window and may tighten its edges to any beat labels inside that window.\n\nReply with JSON only:\n{\n  \"chosen_window\": <integer index of the window you picked>,\n  \"start_beat\": \"<beat label>\",\n  \"end_beat\": \"<beat label>\",\n  \"hook_beat\": \"<beat label, must be at or within 2 beats of start_beat>\",\n  \"cliffhanger_beat\": \"<beat label, must be at or near end_beat>\",\n  \"hook\": \"<what grabs the viewer in the first seconds, one sentence>\",\n  \"cliffhanger\": \"<the unresolved moment it cuts on, one sentence>\",\n  \"hook_type\": \"<one of: moral outrage, romantic tension, empathy shock, power reversal>\",\n  \"why_it_works\": \"<one sentence, concrete, no marketing language>\",\n  \"standalone_risk\": \"<what a new viewer would NOT understand, or 'none'>\"\n}\n\nNever invent dialogue. Never output a time or a duration - only beat labels.",
+  "prompt": "Episode 10. 4 candidate windows, already checked for legal length and real beat boundaries.\n\n--- WINDOW 0 (25 seconds, code score 0.78) ---\n[b00] ACTION: Juliana quietly studies the botanical illustrations by firelight, a bundle of fresh dried herbs resting on the table.\n[b01] SFX: A heavy wooden door suddenly creaks and bangs open in the quiet cottage.\n[b02] ACTION: Juliana jerks her head up from the book, startled by the sudden intrusion.\n[b03] JULIANA (alarmed, breathless): \"Alexander!\"\n[b04] ALEXANDER (gruff, strained): \"It is nothing.\"\n[b05] JULIANA (urgent, worried): \"There is blood running down your arm.\"\n[b06] ALEXANDER (stiff, dismissive): \"A cut from the tenant fields.\"\n[b07] JULIANA (commanding, resolute): \"Sit down.\"\n[b08] JULIANA (stern): \"Now.\"\n[b09] JULIANA (gentle, insistent): \"I need to see the wound.\"\n[b10] ALEXANDER (low, defiant): \"It is only a scratch.\"\n\n--- WINDOW 1 (22 seconds, code score 0.70) ---\n[b00] JULIANA (soft, breathless): \"Why do you look at me like that?\"\n[b01] ALEXANDER (intense, sincere): \"Because you are looking at me.\"\n[b02] JULIANA (flustered, whispering): \"Hold still.\"\n[b03] ALEXANDER (low, husky): \"I am holding still.\"\n[b04] ALEXANDER (whispering, vulnerable): \"Perhaps it is your hand.\"\n[b05] ALEXANDER (deep, emotional): \"Your touch is the only medicine that has ever eased my pain.\"\n\n--- WINDOW 2 (23 seconds, code score 0.64) ---\n[b00] JULIANA (soft, sorrowful): \"You have suffered terribly.\"\n[b01] ALEXANDER (quiet, somber): \"It is over.\"\n[b02] JULIANA (gentle): \"Your scars disagree.\"\n[b03] JULIANA (tender): \"Does it hurt?\"\n[b04] ALEXANDER (gruff): \"Not much.\"\n[b05] JULIANA (playful, whispering): \"You are a terrible liar.\"\n[b06] JULIANA (soft, breathless): \"Why do you look at me like that?\"\n[b07] ALEXANDER (intense, sincere): \"Because you are looking at me.\"\n\n--- WINDOW 3 (28 seconds, code score 0.60) ---\n[b00] JULIANA (gentle, insistent): \"I need to see the wound.\"\n[b01] ALEXANDER (low, defiant): \"It is only a scratch.\"\n[b02] JULIANA (sarcastic, challenging): \"Then removing your shirt should not trouble you.\"\n[b03] JULIANA (whispering, distressed): \"Dear God.\"\n[b04] JULIANA (soft, sorrowful): \"You have suffered terribly.\"\n[b05] ALEXANDER (quiet, somber): \"It is over.\"\n\nPick the single best promo.",
+  "response_text": "{\"chosen_window\":0,\"start_beat\":\"b01\",\"end_beat\":\"b10\",\"hook_beat\":\"b01\",\"cliffhanger_beat\":\"b10\",\"hook\":\"A heavy wooden door crashes open, jolting the quiet cottage.\",\"cliffhanger\":\"Alexander dismisses the wound as \\\"only a scratch,\\\" leaving the injury unseen.\",\"hook_type\":\"power reversal\",\"why_it_works\":\"The sudden intrusion shocks the viewer and the denial of injury creates immediate mystery.\",\"standalone_risk\":\"none\"}",
+  "response_payload": {
+    "id": "chatcmpl-2c79b23d-1880-46bb-99a8-3ca0fa60bac3",
+    "object": "chat.completion",
+    "created": 1794120900,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"chosen_window\":0,\"start_beat\":\"b01\",\"end_beat\":\"b10\",\"hook_beat\":\"b01\",\"cliffhanger_beat\":\"b10\",\"hook\":\"A heavy wooden door crashes open, jolting the quiet cottage.\",\"cliffhanger\":\"Alexander dismisses the wound as \\\"only a scratch,\\\" leaving the injury unseen.\",\"hook_type\":\"power reversal\",\"why_it_works\":\"The sudden intrusion shocks the viewer and the denial of injury creates immediate mystery.\",\"standalone_risk\":\"none\"}",
+          "reasoning": "We need to pick one window and possibly tighten edges. Must include hook within first 2 beats of start. Hook beat must be at or within 2 beats of start_beat. Cliffhanger beat near end.\n\nWe need to evaluate each window for hook and cliffhanger.\n\nWindow 0: beats b00-b10. Hook could be the door creak (b01) or Juliana startled (b02). That's within 2 beats of start (b00). Good. Cliffhanger: maybe end on Alexander defiant \"It is only a scratch.\" That's unresolved because we don't see wound. Could cut after b10. That works.\n\nWindow 1: starts with dialogue, no strong hook. No sudden event. Might be less attention-grabbing.\n\nWindow 2: similar, no hook.\n\nWindow 3: starts with Juliana demanding to see wound, not a hook. No sudden event.\n\nThus best is Window 0.\n\nWe can tighten start maybe at b01 (door creak) as start_beat, hook_beat also b01. End maybe at b10 (Alexander says \"It is only a scratch.\") cliffhanger beat b10. That ends unresolved.\n\nCheck hook_type: power reversal? The sudden intrusion reveals vulnerability. Could be moral outrage? Not exactly. Maybe power reversal: the door opens, shifting power. Or empathy shock? The sudden intrusion causing tension. I'd pick power reversal.\n\nWhy it works: sudden door slam grabs attention, then ends on denial of injury leaving mystery.\n\nStandalone risk: viewer may not know who Juliana/Alexander are, but the tension is clear.\n\nNow produce JSON compact."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.307514845,
+      "prompt_tokens": 1136,
+      "prompt_time": 0.106326163,
+      "completion_tokens": 446,
+      "completion_time": 0.927670028,
+      "total_tokens": 1582,
+      "total_time": 1.033996191,
+      "completion_tokens_details": {
+        "reasoning_tokens": 333
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_47082602e2",
+    "x_groq": {
+      "id": "req_01m6wz0pjeegbaz1vj066bh3ts",
+      "seed": 2086693043
+    },
+    "service_tier": "on_demand"
+  }
+}

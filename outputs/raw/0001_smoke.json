@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "smoke",
+  "system": "Reply with JSON only.",
+  "prompt": "Return {\"ok\":true,\"n\":7}",
+  "response_text": "{\"ok\":true,\"n\":7}",
+  "response_payload": {
+    "id": "chatcmpl-90755f24-ae29-408d-9fd8-2369e6a8ea03",
+    "object": "chat.completion",
+    "created": 1794080032,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"ok\":true,\"n\":7}",
+          "reasoning": "The user says \"Return {\"ok\":true,\"n\":7}\". The developer instructions: reply with JSON only, compact formatting, valid JSON. So we should output exactly that JSON. No extra text. Ensure it's compact: {\"ok\":true,\"n\":7}. That's valid."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.369126861,
+      "prompt_tokens": 117,
+      "prompt_time": 0.005625553,
+      "completion_tokens": 79,
+      "completion_time": 0.164255466,
+      "total_tokens": 196,
+      "total_time": 0.169881019,
+      "completion_tokens_details": {
+        "reasoning_tokens": 58
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_90620edd96",
+    "x_groq": {
+      "id": "req_01m6vr1hareqwbgcy2vmwae02w",
+      "seed": 1800424
+    },
+    "service_tier": "on_demand"
+  }
+}

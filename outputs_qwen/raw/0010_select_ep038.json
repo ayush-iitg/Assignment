@@ -1,0 +1,41 @@
+{
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "tag": "select_ep038",
+  "system": "You are a promo editor for vertical microdramas (ReelShort/DramaBox style).\nYou pick which seconds of an episode become a 20-60 second advert for the show.\n\nA good promo:\n- opens on a hook: within its first beats, something that stops a scrolling viewer - a slap, a reveal, a shocking line\n- ends on a cliffhanger: it stops at an unresolved moment, so the viewer must go find the show\n- makes sense alone to someone who has never seen this show\n\nYou will be given candidate windows, each a contiguous run of beats labelled [b00], [b01]...\nYou must choose ONE window and may tighten its edges to any beat labels inside that window.\n\nReply with JSON only:\n{\n  \"chosen_window\": <integer index of the window you picked>,\n  \"start_beat\": \"<beat label>\",\n  \"end_beat\": \"<beat label>\",\n  \"hook_beat\": \"<beat label, must be at or within 2 beats of start_beat>\",\n  \"cliffhanger_beat\": \"<beat label, must be at or near end_beat>\",\n  \"hook\": \"<what grabs the viewer in the first seconds, one sentence>\",\n  \"cliffhanger\": \"<the unresolved moment it cuts on, one sentence>\",\n  \"hook_type\": \"<one of: moral outrage, romantic tension, empathy shock, power reversal>\",\n  \"why_it_works\": \"<one sentence, concrete, no marketing language>\",\n  \"standalone_risk\": \"<what a new viewer would NOT understand, or 'none'>\"\n}\n\nNever invent dialogue. Never output a time or a duration - only beat labels.",
+  "prompt": "Episode 38. 4 candidate windows, already checked for legal length and real beat boundaries.\n\n--- WINDOW 0 (24 seconds, code score 0.81) ---\n[b00] ACTION: Juliana clutches the bread tightly with both hands, tears welling in her eyes.\n[b01] JULIANA (choked up, tearful): \"Thank you.\"\n[b02] ACTION: Starving and overcome with emotion, Juliana presses the bread to her lips and tears off a desperate, ravenous bite.\n[b03] ACTION: Juliana chews hungrily, closing her eyes as the agonizing reality of her plight hits her anew.\n[b04] JULIANA (sorrowful, whispering): \"Alexander...\"\n[b05] JULIANA (yearning): \"...are you safe?\"\n[b06] JULIANA (desperate, trembling): \"Do you even know what happened to me?\"\n[b07] JULIANA (grief-stricken): \"Do you know they condemned me?\"\n[b08] JULIANA (fearful, pleading): \"What if I die here?\"\n[b09] JULIANA (heartbroken): \"What if I never see you again?\"\n[b10] ACTION: A heavy tear drips down from her jaw, falling into the dark dampness below.\n\n--- WINDOW 1 (21 seconds, code score 0.80) ---\n[b00] JULIANA (grief-stricken): \"Do you know they condemned me?\"\n[b01] JULIANA (fearful, pleading): \"What if I die here?\"\n[b02] JULIANA (heartbroken): \"What if I never see you again?\"\n[b03] ACTION: A heavy tear drips down from her jaw, falling into the dark dampness below.\n[b04] JULIANA (fervent prayer): \"Keep him safe.\"\n[b05] JULIANA (resigned): \"Wherever he is.\"\n[b06] JULIANA (determined): \"Let him live.\"\n[b07] JULIANA (steely): \"And if I have only one thing left to give...\"\n[b08] JULIANA (defiant, unshakable): \"I will not give them my husband.\"\n[b09] JULIANA (resolute): \"I will not betray him.\"\n\n--- WINDOW 2 (24 seconds, code score 0.73) ---\n[b00] JULIANA (resolute): \"I will not betray him.\"\n[b01] ACTION: Juliana's eyes snap wide open in sudden realization as a deep resonant toll reverberates from above.\n[b02] SFX: Solemn, resonant church bells begin tolling rhythmically from the cathedral above, echoing deep into the stone dungeon.\n[b03] JULIANA (startled whisper): \"Bells.\"\n[b04] ACTION: Juliana rushes toward the front of the cell, clutching the iron bars with both hands.\n[b05] JULIANA (realizing): \"The wedding.\"\n[b06] JULIANA (grim): \"It's beginning.\"\n[b07] JULIANA (somber, steely): \"Then I suppose I'm next.\"\n[b08] ACTION: Juliana grips the bars tightly, her lips curving into a warm, defiant smile as she whispers her husband's name.\n[b09] JULIANA (hopeful, tender): \"Alexander...\"\n[b10] SFX: A sharp, high-tension dramatic swell strikes and echoes out into silence alongside the fading toll of the distant church bells.\n\n--- WINDOW 3 (24 seconds, code score 0.62) ---\n[b00] ACTION: Juliana sits motionless against the cold masonry, weak and visibly drained from starvation, her eyes cast downward.\n[b01] SFX: Echoing, heavy bootsteps approach down the corridor outside the cell.\n[b02] ACTION: Juliana blinks, lifting her gaze toward the heavy iron bars.\n[b03] ACTION: The Guard pauses, glancing over his shoulder into the gloomy corridor to ensure he is unobserved.\n[b04] ACTION: The Guard kneels down and slips a small loaf of rustic bread through the bottom gap between the iron bars, nudging it inside before withdrawing his gloved hand.\n[b05] JULIANA (breathless, bewildered): \"Why?\"\n[b06] GUARD (subdued, sincere): \"Because no one should die hungry.\"\n[b07] GUARD (urgent, whispered): \"Eat it before they see.\"\n[b08] ACTION: The Guard's silhouette retreats into the shadows.\n[b09] ACTION: Juliana clutches the bread tightly with both hands, tears welling in her eyes.\n[b10] JULIANA (choked up, tearful): \"Thank you.\"\n\nPick the single best promo.",
+  "response_text": "{\n  \"chosen_window\": 2,\n  \"start_beat\": \"b00\",\n  \"end_beat\": \"b10\",\n  \"hook_beat\": \"b00\",\n  \"cliffhanger_beat\": \"b07\",\n  \"hook\": \"A starving woman in a dungeon declares she will not betray her husband, immediately followed by the sound of church bells.\",\n  \"cliffhanger\": \"She realizes the bells signal a wedding is beginning and grimly accepts that she is next in line for execution.\",\n  \"hook_type\": \"power reversal\",\n  \"why_it_works\": \"It juxtaposes a moment of defiant love with the immediate, ominous realization of her impending death, creating high stakes and emotional urgency.\",\n  \"standalone_risk\": \"The viewer does not know who 'him' is or why she is in a dungeon, but the emotional context of a prisoner refusing to betray a loved one is clear.\"\n}",
+  "response_payload": {
+    "id": "chatcmpl-ef0ce89b-d249-4c22-ab3c-2fdc5f7bebe0",
+    "object": "chat.completion",
+    "created": 1794121372,
+    "model": "qwen/qwen3.8-27b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"chosen_window\": 2,\n  \"start_beat\": \"b00\",\n  \"end_beat\": \"b10\",\n  \"hook_beat\": \"b00\",\n  \"cliffhanger_beat\": \"b07\",\n  \"hook\": \"A starving woman in a dungeon declares she will not betray her husband, immediately followed by the sound of church bells.\",\n  \"cliffhanger\": \"She realizes the bells signal a wedding is beginning and grimly accepts that she is next in line for execution.\",\n  \"hook_type\": \"power reversal\",\n  \"why_it_works\": \"It juxtaposes a moment of defiant love with the immediate, ominous realization of her impending death, creating high stakes and emotional urgency.\",\n  \"standalone_risk\": \"The viewer does not know who 'him' is or why she is in a dungeon, but the emotional context of a prisoner refusing to betray a loved one is clear.\"\n}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.049701883,
+      "prompt_tokens": 1444,
+      "prompt_time": 0.105990099,
+      "completion_tokens": 212,
+      "completion_time": 0.414811622,
+      "total_tokens": 1656,
+      "total_time": 0.520801721
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_424cb89518",
+    "x_groq": {
+      "id": "req_01m6wzf43me4db2v4ft4ww8gqc",
+      "seed": 874411218
+    },
+    "service_tier": "on_demand"
+  }
+}

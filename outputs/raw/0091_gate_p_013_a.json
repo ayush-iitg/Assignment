@@ -1,0 +1,48 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "gate_p_013_a",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\n[action] Alexander loses control, violently lunging past the Constable toward the briars.\nALEXANDER: \"Stop!\"\n[action] Juliana continues clawing forward, branches lacerating her arm and cheek.\nJULIANA: \"Ahhh!\"\nALEXANDER: \"Juliana!\"\n[action] Juliana digs her torn fingers into the frost-hardened earth, turning over rocks and dead vegetation.\nALEXANDER: \"Juliana!\"\nJULIANA: \"Please, ring... you have to be here.\"\n[action] Her blood-smeared index finger brushes against a solid metallic object half-buried in the frozen dirt beneath a thorny branch.\n[action] Juliana reaches out her torn, bloodied hand and wraps her fingers tightly around the emerald ring.",
+  "response_text": "{\"who_is_the_main_character\":\"Juliana (the clip focuses on her actions)\",\"what_is_at_stake\":\"unclear from the clip\",\"what_question_are_you_left_with\":\"Does Juliana manage to retrieve the ring and what significance does it have?\",\"would_you_keep_watching\":\"maybe, the tension of her injury and the mysterious ring is intriguing\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":false,\"ends_unresolved\":true,\"would_watch\":true}}",
+  "response_payload": {
+    "id": "chatcmpl-0d8cd969-162f-4abe-85d5-04a2919754c0",
+    "object": "chat.completion",
+    "created": 1794103062,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"who_is_the_main_character\":\"Juliana (the clip focuses on her actions)\",\"what_is_at_stake\":\"unclear from the clip\",\"what_question_are_you_left_with\":\"Does Juliana manage to retrieve the ring and what significance does it have?\",\"would_you_keep_watching\":\"maybe, the tension of her injury and the mysterious ring is intriguing\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":false,\"ends_unresolved\":true,\"would_watch\":true}}",
+          "reasoning": "We need to produce JSON with fields. Determine main character: The clip mentions Alexander and Julian a. Who is main? Both appear. Alexander is speaking \"Stop!\" and calling Juliana. Juliana is the one acting, reaching for ring. The clip never names who is main, but we can describe. Probably main character is Juliana (focus on her actions). But we need to be strict: \"who_is_the_main_character\": \"the clip never names them\" or describe. The clip names them: Alexander and Juliana. Which is main? The clip centers on Juliana's struggle to get ring. Alexander is also present but less action. Could say main character appears to be Juliana, but the clip does not explicitly state main. The instruction: \"name them if the clip names them; otherwise describe and say the clip never names them\". So we can name them: Juliana (or Alexander). But which is main? We can say main character appears to be Juliana, as she is the focus. So we can answer: \"Juliana (the clip focuses on her)\". That satisfies naming.\n\nWhat is at stake? She is trying to get an emerald ring, possibly important. Conflict: She is injured, trying to retrieve ring. Stakes unclear. So we can say unclear from clip.\n\nWhat question left? Does she succeed? What is the ring? So unresolved.\n\nWould you keep watching? maybe, because tension.\n\nPasses: character_identifiable: true (we have names). stakes_clear: false (unclear). ends_unresolved: true (unresolved). would_watch: true (since maybe). Provide JSON compact.\n\nCheck JSON validity.\n\n"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.051499298,
+      "prompt_tokens": 542,
+      "prompt_time": 0.012528051,
+      "completion_tokens": 446,
+      "completion_time": 1.032654172,
+      "total_tokens": 988,
+      "total_time": 1.045182223,
+      "prompt_tokens_details": {
+        "cached_tokens": 256
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 340
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_69dbc96c74",
+    "x_groq": {
+      "id": "req_01m6we0b40edt8256xzp6pzfda",
+      "seed": 1009209097
+    },
+    "service_tier": "on_demand"
+  }
+}

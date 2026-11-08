@@ -1,0 +1,41 @@
+{
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "tag": "gate_p_024_a",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\n[action] Prudence steps toward the noblewoman in distress, her hands clasped tightly.\nPRUDENCE: \"My lady—\"\n[action] The noblewoman whips around sharply, thrusting the tip of her riding crop directly into Prudence's face.\nNOBLEWOMAN: \"Do you want the same punishment?\"\nPRUDENCE: \"No, my lady.\"\n[action] Juliana grips a coarse scrubbing brush with both hands and begins vigorously scraping the thick black ash across the hearthstones.\n[sfx] Rhythmic, harsh rasping sound of bristles scraping against stone.\nNOBLEWOMAN: \"That is where clever little servants belong.\"\nJULIANA: \"Let her think I am only a maid.\"\n[action] Juliana pauses scrubbing. Her soot-caked fingers reach into the deep pocket of her apron, carefully feeling the worn leather cover of her mother's remedy journal and the glass dropper bottle securely concealed within.\nJULIANA: \"Let her believe I am ignorant.\"\n[action] Juliana raises her head. Smudges of dark soot stain her fair cheek, but her piercing blue eyes burn with unwavering defiance and unyielding resolve as she stares toward the hallway.\nJULIANA: \"I will return. You cannot stop the healer.\"",
+  "response_text": "{\n  \"who_is_the_main_character\": \"Juliana (the clip names her; she is described as a maid with soot-caked fingers and blue eyes)\",\n  \"what_is_at_stake\": \"Juliana is hiding her identity as a healer from a noblewoman who punishes servants, while Prudence is threatened with punishment for trying to help.\",\n  \"what_question_are_you_left_with\": \"How will Juliana return to fulfill her role as a healer without being caught by the noblewoman?\",\n  \"would_you_keep_watching\": \"yes, the threat of punishment and the hidden identity create immediate tension\",\n  \"passes\": {\n    \"character_identifiable\": true,\n    \"stakes_clear\": true,\n    \"ends_unresolved\": true,\n    \"would_watch\": true\n  }\n}",
+  "response_payload": {
+    "id": "chatcmpl-313c3586-4e3d-418d-8adc-f72889d04a78",
+    "object": "chat.completion",
+    "created": 1794112739,
+    "model": "qwen/qwen3.8-27b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"who_is_the_main_character\": \"Juliana (the clip names her; she is described as a maid with soot-caked fingers and blue eyes)\",\n  \"what_is_at_stake\": \"Juliana is hiding her identity as a healer from a noblewoman who punishes servants, while Prudence is threatened with punishment for trying to help.\",\n  \"what_question_are_you_left_with\": \"How will Juliana return to fulfill her role as a healer without being caught by the noblewoman?\",\n  \"would_you_keep_watching\": \"yes, the threat of punishment and the hidden identity create immediate tension\",\n  \"passes\": {\n    \"character_identifiable\": true,\n    \"stakes_clear\": true,\n    \"ends_unresolved\": true,\n    \"would_watch\": true\n  }\n}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.049768725,
+      "prompt_tokens": 583,
+      "prompt_time": 0.041116884,
+      "completion_tokens": 174,
+      "completion_time": 0.376666948,
+      "total_tokens": 757,
+      "total_time": 0.417783832
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_a1293f40b5",
+    "x_groq": {
+      "id": "req_01m6wq7nw2ehhsq6s2zkv3fend",
+      "seed": 1491202846
+    },
+    "service_tier": "on_demand"
+  }
+}

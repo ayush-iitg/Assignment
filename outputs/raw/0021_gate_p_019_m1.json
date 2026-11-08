@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "gate_p_019_m1",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\nJULIANA: \"My mother's book almost burned with it.\"\n[action] Juliana tenderly lifts a scorched corner of parchment, revealing the surviving botanical drawing of medicinal herbs inside.\nELDER VILLAGER: \"My lady. You cannot stay here.\"\nELDER VILLAGER: \"There is an old barn near the village. It is empty.\"\n[action] The elder villager steps closer, resting a gentle, reassuring hand on Juliana's shoulder.\nELDER VILLAGER: \"Take it.\"\nALEXANDER: \"Then Ashburg will remember who it belongs to.\"\n[action] The heavy wooden barn doors creak open. Alexander steps into the lantern light, carrying a bundle of firewood and a thick blanket under his arm.\nJULIANA: \"We have lost everything.\"\nJULIANA: \"I don't know what we will do tomorrow.\"",
+  "response_text": "{\"who_is_the_main_character\":\"Juliana (named in the clip)\",\"what_is_at_stake\":\"They have lost everything, including a valuable book, and need shelter and safety; the conflict centers on survival and preserving the book\",\"what_question_are_you_left_with\":\"Will they find a place to stay and how will they survive after losing everything?\",\"would_you_keep_watching\":\"maybe, the situation feels tense and unresolved\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":true,\"ends_unresolved\":true,\"would_watch\":false}}",
+  "response_payload": {
+    "id": "chatcmpl-012b2b81-f7de-414e-87c3-3f9e963dc040",
+    "object": "chat.completion",
+    "created": 1794121088,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"who_is_the_main_character\":\"Juliana (named in the clip)\",\"what_is_at_stake\":\"They have lost everything, including a valuable book, and need shelter and safety; the conflict centers on survival and preserving the book\",\"what_question_are_you_left_with\":\"Will they find a place to stay and how will they survive after losing everything?\",\"would_you_keep_watching\":\"maybe, the situation feels tense and unresolved\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":true,\"ends_unresolved\":true,\"would_watch\":false}}",
+          "reasoning": "We need to produce JSON with fields. Determine main character: The clip mentions Juliana, Elder Villager, Alexander. Who is main? Likely Juliana is central, she speaks multiple lines and actions. Clip never names main explicitly, but we can infer. The instruction: \"name them if the clip names them; otherwise describe and say the clip never names them\". The clip names Juliana, Elder Villager, Alexander. So main character is Juliana? We can say main character is Juliana, as she has most dialogue. So we can name her.\n\nWhat is at stake? Conflict: They lost everything, mother’s book almost burned, they need shelter? Elder villager says cannot stay, offers barn. So stakes: survival, loss of home, preserving the book. So we can say unclear? But we have enough: they have lost everything, need shelter, maybe claim to Ashburg. So stakes: their survival and preserving the book. So it's clear.\n\nWhat question left? Unresolved: What will they do tomorrow? Will they find shelter? Will they retrieve the book? So unresolved question: Will they survive / find a place? So we can state that.\n\nWould you keep watching? Provide yes/maybe/no with short reason. I'd say maybe, because intrigue about survival.\n\nPasses: character_identifiable: true (Juliana identified). stakes_clear: true (they lost everything, need shelter). ends_unresolved: true (clip ends with uncertainty). would_watch: maybe? The passes \"would_watch\" should be true if you would keep watching? The field \"would_watch\": true/false. Since we said maybe, maybe we set would_watch to false? Actually \"would_watch\" likely indicates if you'd watch based on passes? The spec: passes includes \"would_watch\": true/false. Probably reflect if you'd watch. Since we said maybe, ambiguous. But need boolean. Could set false? But maybe we interpret \"maybe\" as not definite, but we can set false? The spec: \"would_watch\": true/false. Since we are not certain, maybe set false? But we can choose based on our answer: we said maybe, so not a definite yes, so false? Might be better to set false. However could set true if we think likely. The answer field \"would_you_keep_watching\": \"maybe | yes | no\". So we choose \"maybe\". Then passes \"would_watch\" maybe true? The passes likely reflect if you'd watch (i.e., would you watch). Since we said maybe, ambiguous, but we need boolean. I'd set false? But maybe they want true if you would watch. Since we said maybe, not a firm yes, maybe false. I'll set false.\n\nNow produce compact JSON."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.15635374,
+      "prompt_tokens": 559,
+      "prompt_time": 0.023074354,
+      "completion_tokens": 682,
+      "completion_time": 1.4332980929999999,
+      "total_tokens": 1241,
+      "total_time": 1.4563724470000001,
+      "completion_tokens_details": {
+        "reasoning_tokens": 562
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_c3da0d4bb9",
+    "x_groq": {
+      "id": "req_01m6wz6e0xe7hs4jx2v39ms665",
+      "seed": 1688803138
+    },
+    "service_tier": "on_demand"
+  }
+}

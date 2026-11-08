@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "gate_p_002_a",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\nCLARISSA: \"Gerald needs a real lady...\"\nCLARISSA: \"...not a dull creature who hides in her mother's apothecary herbs.\"\n[action] The matriarch steps into the center aisle, glaring down at Juliana with cold superiority.\nOFF-SCREEN VOICE: \"Oh, don't look so wounded, Juliana.\"\nOFF-SCREEN VOICE: \"You should be grateful you're at least allowed to attend the wedding.\"\nGERALD: \"Go home quietly, Juliana. At least leave this chapel with some dignity.\"\nJULIANA: \"Dignity?\"\nJULIANA: \"You abandoned a woman who trusted you...\"\nJULIANA: \"...because another woman promised you greater beauty and wealth.\"\nJULIANA: \"Do not mistake my heartbreak for your victory, Gerald.\"\nJULIANA: \"You wanted this entire chapel to believe that I was not worthy of you. But you have shown them something far more valuable.\"\nJULIANA: \"You have shown them exactly what your word is worth.\"\n[action] Juliana lifts her chin high, commanding the space with unassailable dignity.\nJULIANA: \"I may leave this chapel without a husband...\"",
+  "response_text": "{\"who_is_the_main_character\":\"Juliana (named in the clip)\",\"what_is_at_stake\":\"Juliana's dignity and marriage prospects are threatened by Gerald's betrayal and the public humiliation at the wedding chapel\",\"what_question_are_you_left_with\":\"Will Juliana leave the chapel alone, or will she find a way to secure a husband or reclaim her standing?\",\"would_you_keep_watching\":\"maybe, the dialogue hints at drama but the resolution is unclear\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":true,\"ends_unresolved\":true,\"would_watch\":false}}",
+  "response_payload": {
+    "id": "chatcmpl-585dcf6d-1155-4712-a11a-f712b8edc380",
+    "object": "chat.completion",
+    "created": 1794091992,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"who_is_the_main_character\":\"Juliana (named in the clip)\",\"what_is_at_stake\":\"Juliana's dignity and marriage prospects are threatened by Gerald's betrayal and the public humiliation at the wedding chapel\",\"what_question_are_you_left_with\":\"Will Juliana leave the chapel alone, or will she find a way to secure a husband or reclaim her standing?\",\"would_you_keep_watching\":\"maybe, the dialogue hints at drama but the resolution is unclear\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":true,\"ends_unresolved\":true,\"would_watch\":false}}",
+          "reasoning": "We need to produce JSON with fields. Determine main character: The clip mentions Clarissa, Gerald, Juliana, matriarch (unnamed). Who is main? Likely Juliana is central, she speaks many lines, actions. Clarissa only two lines. So main character is Juliana, though not named by clip? She is named. So we can say main character is Juliana.\n\nWhat is at stake? Conflict: Juliana confronting Gerald at a wedding, about being abandoned, dignity, marriage. Stakes: Her reputation, possibly marriage, her dignity, maybe her future. The clip shows she may leave without a husband. So stakes: her marriage prospects, dignity, maybe social standing. It's clear enough? The conflict is about Gerald's betrayal and Juliana's dignity. So stakes clear? Yes, we can infer that her social standing and marriage are at stake. That's clear from dialogue.\n\nWhat question left? Unresolved: Will Juliana leave? Will she get a husband? What will happen to Gerald? So unresolved question: Will Juliana find a husband or remain single? Or what will happen after she leaves? So we can state that.\n\nWould you keep watching? Provide yes/maybe/no with short reason. I'd say maybe, because drama but unclear.\n\nPasses: character_identifiable: true (Juliana is named). stakes_clear: true (conflict about marriage/dignity). ends_unresolved: true (the conflict not resolved). would_watch: maybe? The passes \"would_watch\" expects boolean? The spec: passes: { \"would_watch\": true/false }. So we need to set based on our answer. If we said maybe, then would_watch maybe false? Actually \"would_watch\" likely indicates if you'd watch based on clip. Since we said maybe, it's not a definite yes, but maybe we set false? The spec: passes: { \"would_watch\": true/false }. We need to decide. If we said maybe, then maybe false? But could be true if maybe still watch. I'd interpret \"would_watch\" as \"would you watch the show?\" If answer is maybe, then maybe false? But ambiguous. I'd set false because not a definite yes.\n\nNow produce compact JSON.\n\n"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.045566207,
+      "prompt_tokens": 632,
+      "prompt_time": 0.035387192,
+      "completion_tokens": 581,
+      "completion_time": 1.263939007,
+      "total_tokens": 1213,
+      "total_time": 1.299326199,
+      "completion_tokens_details": {
+        "reasoning_tokens": 454
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_7a4ab09ae4",
+    "x_groq": {
+      "id": "req_01m6w3efs8ed4rdvv88ypd35zz",
+      "seed": 1805277424
+    },
+    "service_tier": "on_demand"
+  }
+}

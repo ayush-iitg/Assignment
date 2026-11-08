@@ -1,0 +1,48 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "select_ep036",
+  "system": "You are a promo editor for vertical microdramas (ReelShort/DramaBox style).\nYou pick which seconds of an episode become a 20-60 second advert for the show.\n\nA good promo:\n- opens on a hook: within its first beats, something that stops a scrolling viewer - a slap, a reveal, a shocking line\n- ends on a cliffhanger: it stops at an unresolved moment, so the viewer must go find the show\n- makes sense alone to someone who has never seen this show\n\nYou will be given candidate windows, each a contiguous run of beats labelled [b00], [b01]...\nYou must choose ONE window and may tighten its edges to any beat labels inside that window.\n\nReply with JSON only:\n{\n  \"chosen_window\": <integer index of the window you picked>,\n  \"start_beat\": \"<beat label>\",\n  \"end_beat\": \"<beat label>\",\n  \"hook_beat\": \"<beat label, must be at or within 2 beats of start_beat>\",\n  \"cliffhanger_beat\": \"<beat label, must be at or near end_beat>\",\n  \"hook\": \"<what grabs the viewer in the first seconds, one sentence>\",\n  \"cliffhanger\": \"<the unresolved moment it cuts on, one sentence>\",\n  \"hook_type\": \"<one of: moral outrage, romantic tension, empathy shock, power reversal>\",\n  \"why_it_works\": \"<one sentence, concrete, no marketing language>\",\n  \"standalone_risk\": \"<what a new viewer would NOT understand, or 'none'>\"\n}\n\nNever invent dialogue. Never output a time or a duration - only beat labels.",
+  "prompt": "Episode 36. 4 candidate windows, already checked for legal length and real beat boundaries.\n\n--- WINDOW 0 (23 seconds, code score 0.92) ---\n[b00] ALEXANDER'S MOTHER (wailing): \"They arrested her!\"\n[b01] ALEXANDER (stunned): \"Arrested?\"\n[b02] ALEXANDER'S MOTHER (despairing): \"Rupert and Catherine accused her of poisoning me!\"\n[b03] ALEXANDER (shouting, incredulous): \"But she saved you!\"\n[b04] ALEXANDER'S MOTHER (weeping): \"I told them!\"\n[b05] ALEXANDER (furious): \"You told them the truth!\"\n[b06] ALEXANDER'S MOTHER (agonized): \"They called her a witch!\"\n\n--- WINDOW 1 (28 seconds, code score 0.92) ---\n[b00] ALEXANDER'S MOTHER (grim): \"Rupert... and Catherine's.\"\n[b01] SFX: A sudden dramatic metallic swell underscores the impending deadline.\n[b02] ALEXANDER'S MOTHER (deadly serious): \"Two days from now.\"\n[b03] ALEXANDER (simmering with fury): \"They are marrying in two days...\"\n[b04] ALEXANDER (deadly, throaty): \"...and killing my wife afterward.\"\n[b05] ALEXANDER'S MOTHER (pleading, terrified): \"Alexander, you cannot go back there alone!\"\n[b06] ALEXANDER (grave, seething): \"They already took my name.\"\n[b07] ALEXANDER (roaring with conviction): \"They stole my home!\"\n[b08] ALEXANDER (venomous): \"And now they have taken Juliana!\"\n\n--- WINDOW 2 (51 seconds, code score 0.85) ---\n[b00] ALEXANDER (darkly): \"While the world mourned a dead heir.\"\n[b01] ALEXANDER'S MOTHER (choked with tears): \"And I mourned you.\"\n[b02] ALEXANDER (softly): \"I know.\"\n[b03] ALEXANDER'S MOTHER (sobbing): \"I trusted them.\"\n[b04] ALEXANDER (gentle yet firm): \"You trusted family.\"\n[b05] ALEXANDER (resentful): \"They used that trust against you.\"\n[b06] ALEXANDER (urgent, anxious): \"Mother... Juliana...\"\n[b07] ALEXANDER (intense): \"She went into Ashbourne Manor to save you. She never came back.\"\n[b08] ALEXANDER (tremulous): \"I thought perhaps she stayed with you.\"\n[b09] ALEXANDER'S MOTHER (hesitant, trembling): \"Alexander...\"\n[b10] ALEXANDER (alarmed): \"What?\"\n[b11] ALEXANDER'S MOTHER (choked): \"She did come to me.\"\n[b12] ALEXANDER (demanding): \"Is she still at Ashbourne?\"\n[b13] ALEXANDER'S MOTHER (sobbing): \"No...\"\n[b14] ALEXANDER (desperate): \"Then where is she?\"\n[b15] ALEXANDER'S MOTHER (wailing): \"They arrested her!\"\n\n--- WINDOW 3 (25 seconds, code score 0.84) ---\n[b00] ALEXANDER (roaring with conviction): \"They stole my home!\"\n[b01] ALEXANDER (venomous): \"And now they have taken Juliana!\"\n[b02] ACTION: Close-up of Alexander's gloved hand clenching into a tight, leather-creaking fist.\n[b03] SFX: The sharp, taut creak of leather straining under monstrous grip strength.\n[b04] ACTION: Alexander stands framed in the doorway, staring out into the vast, snow-covered pine forest under the cold moonlight.\n[b05] ALEXANDER (calm, chilling): \"Two days.\"\n[b06] ALEXANDER (vow of vengeance): \"Then they have two days to celebrate.\"\n[b07] ALEXANDER (low, menacing promise): \"Because before that wedding begins...\"\n[b08] ALEXANDER (cold, thunderous finale): \"...their dead Duke is coming home.\"\n\nPick the single best promo.",
+  "response_text": "{\"chosen_window\":3,\"start_beat\":\"b00\",\"end_beat\":\"b08\",\"hook_beat\":\"b00\",\"cliffhanger_beat\":\"b08\",\"hook\":\"Alexander erupts, \\\"They stole my home!\\\" – a raw, vengeful outburst that grabs attention instantly.\",\"cliffhanger\":\"He warns that \\\"their dead Duke is coming home,\\\" leaving the supernatural threat hanging.\",\"hook_type\":\"power reversal\",\"why_it_works\":\"The opening shock of loss and fury spikes tension, and the final ominous line promises a larger, unresolved danger.\",\"standalone_risk\":\"New viewers won’t know who the dead Duke is or why his return matters.\"}",
+  "response_payload": {
+    "id": "chatcmpl-12f0b61b-ffa8-43e8-a1bb-8448c6d49de5",
+    "object": "chat.completion",
+    "created": 1794082675,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"chosen_window\":3,\"start_beat\":\"b00\",\"end_beat\":\"b08\",\"hook_beat\":\"b00\",\"cliffhanger_beat\":\"b08\",\"hook\":\"Alexander erupts, \\\"They stole my home!\\\" – a raw, vengeful outburst that grabs attention instantly.\",\"cliffhanger\":\"He warns that \\\"their dead Duke is coming home,\\\" leaving the supernatural threat hanging.\",\"hook_type\":\"power reversal\",\"why_it_works\":\"The opening shock of loss and fury spikes tension, and the final ominous line promises a larger, unresolved danger.\",\"standalone_risk\":\"New viewers won’t know who the dead Duke is or why his return matters.\"}",
+          "reasoning": "We need to pick one window and possibly tighten edges. Must include hook within 2 beats of start, cliffhanger near end. Provide JSON.\n\nWe evaluate each window.\n\nWindow0: starts with mother wailing \"They arrested her!\" That's a hook (shock). Ends with mother \"They called her a witch!\" That's a cliffhanger? Not unresolved, just statement. No clear tension. Might not be cliffhanger.\n\nWindow1: start with mother grim \"Rupert... and Catherine's.\" Not strong hook. Hook maybe later? Not great.\n\nWindow2: longer, includes reveal that Juliana arrested. Hook could be \"While the world mourned a dead heir.\" Not strong. Cliffhanger at end \"They arrested her!\" maybe unresolved. Could work.\n\nWindow3: starts with Alexander roaring \"They stole my home!\" That's strong hook (power reversal). Ends with \"...their dead Duke is coming home.\" That's a cliffhanger (what does that mean?). Good.\n\nWindow3 is 25 seconds, code score 0.84 but still good. Hook within first 2 beats: beat0 is strong. Cliffhanger near end: beat8 is unresolved. So choose window3.\n\nWe can tighten start at b00, end at b08. Hook beat b00. Cliffhanger beat b08.\n\nHook type: power reversal (someone losing home, vengeance). Why it works: immediate high stakes and ominous supernatural twist.\n\nStandalone risk: viewer may not know who the dead Duke is or why his return matters. So risk: unknown characters.\n\nNow produce JSON compact."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.050162206,
+      "prompt_tokens": 1363,
+      "prompt_time": 0.060019211,
+      "completion_tokens": 467,
+      "completion_time": 0.970035247,
+      "total_tokens": 1830,
+      "total_time": 1.030054458,
+      "prompt_tokens_details": {
+        "cached_tokens": 256
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 318
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_76082d2bd0",
+    "x_groq": {
+      "id": "req_01m6vtj5pteava8qc2xthwv1aw",
+      "seed": 1350889310
+    },
+    "service_tier": "on_demand"
+  }
+}

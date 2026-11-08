@@ -1,0 +1,41 @@
+{
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "tag": "select_ep036",
+  "system": "You are a promo editor for vertical microdramas (ReelShort/DramaBox style).\nYou pick which seconds of an episode become a 20-60 second advert for the show.\n\nA good promo:\n- opens on a hook: within its first beats, something that stops a scrolling viewer - a slap, a reveal, a shocking line\n- ends on a cliffhanger: it stops at an unresolved moment, so the viewer must go find the show\n- makes sense alone to someone who has never seen this show\n\nYou will be given candidate windows, each a contiguous run of beats labelled [b00], [b01]...\nYou must choose ONE window and may tighten its edges to any beat labels inside that window.\n\nReply with JSON only:\n{\n  \"chosen_window\": <integer index of the window you picked>,\n  \"start_beat\": \"<beat label>\",\n  \"end_beat\": \"<beat label>\",\n  \"hook_beat\": \"<beat label, must be at or within 2 beats of start_beat>\",\n  \"cliffhanger_beat\": \"<beat label, must be at or near end_beat>\",\n  \"hook\": \"<what grabs the viewer in the first seconds, one sentence>\",\n  \"cliffhanger\": \"<the unresolved moment it cuts on, one sentence>\",\n  \"hook_type\": \"<one of: moral outrage, romantic tension, empathy shock, power reversal>\",\n  \"why_it_works\": \"<one sentence, concrete, no marketing language>\",\n  \"standalone_risk\": \"<what a new viewer would NOT understand, or 'none'>\"\n}\n\nNever invent dialogue. Never output a time or a duration - only beat labels.",
+  "prompt": "Episode 36. 4 candidate windows, already checked for legal length and real beat boundaries.\n\n--- WINDOW 0 (23 seconds, code score 0.92) ---\n[b00] ALEXANDER'S MOTHER (wailing): \"They arrested her!\"\n[b01] ALEXANDER (stunned): \"Arrested?\"\n[b02] ALEXANDER'S MOTHER (despairing): \"Rupert and Catherine accused her of poisoning me!\"\n[b03] ALEXANDER (shouting, incredulous): \"But she saved you!\"\n[b04] ALEXANDER'S MOTHER (weeping): \"I told them!\"\n[b05] ALEXANDER (furious): \"You told them the truth!\"\n[b06] ALEXANDER'S MOTHER (agonized): \"They called her a witch!\"\n\n--- WINDOW 1 (28 seconds, code score 0.92) ---\n[b00] ALEXANDER'S MOTHER (grim): \"Rupert... and Catherine's.\"\n[b01] SFX: A sudden dramatic metallic swell underscores the impending deadline.\n[b02] ALEXANDER'S MOTHER (deadly serious): \"Two days from now.\"\n[b03] ALEXANDER (simmering with fury): \"They are marrying in two days...\"\n[b04] ALEXANDER (deadly, throaty): \"...and killing my wife afterward.\"\n[b05] ALEXANDER'S MOTHER (pleading, terrified): \"Alexander, you cannot go back there alone!\"\n[b06] ALEXANDER (grave, seething): \"They already took my name.\"\n[b07] ALEXANDER (roaring with conviction): \"They stole my home!\"\n[b08] ALEXANDER (venomous): \"And now they have taken Juliana!\"\n\n--- WINDOW 2 (51 seconds, code score 0.85) ---\n[b00] ALEXANDER (darkly): \"While the world mourned a dead heir.\"\n[b01] ALEXANDER'S MOTHER (choked with tears): \"And I mourned you.\"\n[b02] ALEXANDER (softly): \"I know.\"\n[b03] ALEXANDER'S MOTHER (sobbing): \"I trusted them.\"\n[b04] ALEXANDER (gentle yet firm): \"You trusted family.\"\n[b05] ALEXANDER (resentful): \"They used that trust against you.\"\n[b06] ALEXANDER (urgent, anxious): \"Mother... Juliana...\"\n[b07] ALEXANDER (intense): \"She went into Ashbourne Manor to save you. She never came back.\"\n[b08] ALEXANDER (tremulous): \"I thought perhaps she stayed with you.\"\n[b09] ALEXANDER'S MOTHER (hesitant, trembling): \"Alexander...\"\n[b10] ALEXANDER (alarmed): \"What?\"\n[b11] ALEXANDER'S MOTHER (choked): \"She did come to me.\"\n[b12] ALEXANDER (demanding): \"Is she still at Ashbourne?\"\n[b13] ALEXANDER'S MOTHER (sobbing): \"No...\"\n[b14] ALEXANDER (desperate): \"Then where is she?\"\n[b15] ALEXANDER'S MOTHER (wailing): \"They arrested her!\"\n\n--- WINDOW 3 (25 seconds, code score 0.84) ---\n[b00] ALEXANDER (roaring with conviction): \"They stole my home!\"\n[b01] ALEXANDER (venomous): \"And now they have taken Juliana!\"\n[b02] ACTION: Close-up of Alexander's gloved hand clenching into a tight, leather-creaking fist.\n[b03] SFX: The sharp, taut creak of leather straining under monstrous grip strength.\n[b04] ACTION: Alexander stands framed in the doorway, staring out into the vast, snow-covered pine forest under the cold moonlight.\n[b05] ALEXANDER (calm, chilling): \"Two days.\"\n[b06] ALEXANDER (vow of vengeance): \"Then they have two days to celebrate.\"\n[b07] ALEXANDER (low, menacing promise): \"Because before that wedding begins...\"\n[b08] ALEXANDER (cold, thunderous finale): \"...their dead Duke is coming home.\"\n\nPick the single best promo.",
+  "response_text": "{\n  \"chosen_window\": 3,\n  \"start_beat\": \"b00\",\n  \"end_beat\": \"b08\",\n  \"hook_beat\": \"b00\",\n  \"cliffhanger_beat\": \"b08\",\n  \"hook\": \"Alexander roars that his enemies have stolen his home and taken his wife, establishing immediate high stakes and personal loss.\",\n  \"cliffhanger\": \"He delivers a chilling promise that his 'dead Duke' persona is returning before the wedding, leaving the viewer to wonder how a dead man will act.\",\n  \"hook_type\": \"power reversal\",\n  \"why_it_works\": \"It condenses the entire revenge arc into a single, escalating monologue that ends on a supernatural or identity-shifting threat.\",\n  \"standalone_risk\": \"The viewer does not know who 'Juliana' is or why the Duke is considered dead, but the emotional intensity and threat are clear without context.\"\n}",
+  "response_payload": {
+    "id": "chatcmpl-8e335359-cf48-410b-94e4-81a1aff403c4",
+    "object": "chat.completion",
+    "created": 1794112497,
+    "model": "qwen/qwen3.8-27b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"chosen_window\": 3,\n  \"start_beat\": \"b00\",\n  \"end_beat\": \"b08\",\n  \"hook_beat\": \"b00\",\n  \"cliffhanger_beat\": \"b08\",\n  \"hook\": \"Alexander roars that his enemies have stolen his home and taken his wife, establishing immediate high stakes and personal loss.\",\n  \"cliffhanger\": \"He delivers a chilling promise that his 'dead Duke' persona is returning before the wedding, leaving the viewer to wonder how a dead man will act.\",\n  \"hook_type\": \"power reversal\",\n  \"why_it_works\": \"It condenses the entire revenge arc into a single, escalating monologue that ends on a supernatural or identity-shifting threat.\",\n  \"standalone_risk\": \"The viewer does not know who 'Juliana' is or why the Duke is considered dead, but the emotional intensity and threat are clear without context.\"\n}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.049882056,
+      "prompt_tokens": 1395,
+      "prompt_time": 0.096139122,
+      "completion_tokens": 215,
+      "completion_time": 0.408252063,
+      "total_tokens": 1610,
+      "total_time": 0.504391185
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_a1293f40b5",
+    "x_groq": {
+      "id": "req_01m6wq08vsem19cf5bvq4pee10",
+      "seed": 1384468193
+    },
+    "service_tier": "on_demand"
+  }
+}

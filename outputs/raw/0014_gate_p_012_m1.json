@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "gate_p_012_m1",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\n[action] Juliana steps firmly forward, shielding Alexander with her body.\nJULIANA: \"No! That watch was not in his coat!\"\nCONSTABLE: \"I found it there myself.\"\nJULIANA: \"Then someone put it there!\"\nGERALD: \"The proof is in his coat, Juliana. A valuable pocket watch doesn't just walk into a beggar's pocket.\"\nCLARISSA: \"Do it, and we withdraw the charges.\"\nCLARISSA: \"Fail, or refuse, and your husband hangs from the gallows.\"\n[action] Alexander rests his scarred hand reassuringly on Juliana's shoulder, leaning in toward her.\nALEXANDER: \"Juliana, no. Do not let them hurt you. I can handle the law.\"\n[action] Juliana clutches the front of her rustic grey dress, her breathing trembling.\nJULIANA: \"I am not letting them take you.\"",
+  "response_text": "{\"who_is_the_main_character\":\"Juliana\",\"what_is_at_stake\":\"Alexander's life – Clarissa threatens that his husband will be hanged if they fail or refuse\",\"what_question_are_you_left_with\":\"Will Juliana give in to the pressure or protect Alexander, and will the watch evidence be accepted?\",\"would_you_keep_watching\":\"maybe, the tension is intriguing but the clip ends abruptly\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":true,\"ends_unresolved\":true,\"would_watch\":false}}",
+  "response_payload": {
+    "id": "chatcmpl-203ee3f1-2e64-4685-aee4-98c1aaec6dfd",
+    "object": "chat.completion",
+    "created": 1794121027,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"who_is_the_main_character\":\"Juliana\",\"what_is_at_stake\":\"Alexander's life – Clarissa threatens that his husband will be hanged if they fail or refuse\",\"what_question_are_you_left_with\":\"Will Juliana give in to the pressure or protect Alexander, and will the watch evidence be accepted?\",\"would_you_keep_watching\":\"maybe, the tension is intriguing but the clip ends abruptly\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":true,\"ends_unresolved\":true,\"would_watch\":false}}",
+          "reasoning": "We need to produce JSON with fields. Determine main character: The clip mentions Juliana, Alexander, Constable, Gerald, Clarissa. Who is main? Likely Juliana as central actions. Clip never names main explicitly, but we can infer. The instruction: \"name them if the clip names them; otherwise describe and say the clip never names them\". The clip names Juliana, Alexander, etc. So main character is Juliana (most lines). So we can state \"Juliana\". What is at stake? Clarissa says \"Fail, or refuse, and your husband hangs from the gallows.\" So stakes: Alexander's life (husband) possibly execution. Also watch evidence. So conflict: Whether to accept proof or not. So stakes: Alexander's life/husband's execution. So we can say \"Alexander's life (potential execution)\". It's clear.\n\nWhat question left with? Unresolved: Will Juliana comply? Will they accept proof? Will Alexander be saved? So unresolved question: Will Juliana give in or protect Alexander? So we can phrase.\n\nWould you keep watching? Provide yes/maybe/no with short reason. Probably maybe because intrigue but unclear.\n\nPasses: character_identifiable: true (Juliana identified). stakes_clear: true (husband hangs). ends_unresolved: true (conflict unresolved). would_watch: maybe? The passes \"would_watch\" should reflect whether you'd keep watching? Probably true if you'd keep watching. The field \"would_watch\" expects boolean. So if we answer \"maybe\", then would_watch maybe false? Actually \"would_watch\" is boolean indicating if you'd watch? The spec: passes: \"would_watch\": true/false. So we need to set based on our answer. If we answer \"maybe\", then would_watch maybe false? But could be true? The pass likely expects true if you'd watch. Since we said maybe, ambiguous. I'd set false? But maybe they want true if you'd watch at all. I'd choose maybe => false? Hmm. I'd interpret \"would_watch\" as \"would you watch?\" If answer maybe, it's not a definite yes, so false. Let's set false.\n\nNow produce compact JSON."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.370907207,
+      "prompt_tokens": 574,
+      "prompt_time": 0.025506821,
+      "completion_tokens": 560,
+      "completion_time": 1.165206797,
+      "total_tokens": 1134,
+      "total_time": 1.190713618,
+      "completion_tokens_details": {
+        "reasoning_tokens": 445
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_e1a78f200e",
+    "x_groq": {
+      "id": "req_01m6wz4j3menqbemjhs2ttxwgd",
+      "seed": 222184717
+    },
+    "service_tier": "on_demand"
+  }
+}

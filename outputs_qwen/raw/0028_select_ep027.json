@@ -1,0 +1,41 @@
+{
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "tag": "select_ep027",
+  "system": "You are a promo editor for vertical microdramas (ReelShort/DramaBox style).\nYou pick which seconds of an episode become a 20-60 second advert for the show.\n\nA good promo:\n- opens on a hook: within its first beats, something that stops a scrolling viewer - a slap, a reveal, a shocking line\n- ends on a cliffhanger: it stops at an unresolved moment, so the viewer must go find the show\n- makes sense alone to someone who has never seen this show\n\nYou will be given candidate windows, each a contiguous run of beats labelled [b00], [b01]...\nYou must choose ONE window and may tighten its edges to any beat labels inside that window.\n\nReply with JSON only:\n{\n  \"chosen_window\": <integer index of the window you picked>,\n  \"start_beat\": \"<beat label>\",\n  \"end_beat\": \"<beat label>\",\n  \"hook_beat\": \"<beat label, must be at or within 2 beats of start_beat>\",\n  \"cliffhanger_beat\": \"<beat label, must be at or near end_beat>\",\n  \"hook\": \"<what grabs the viewer in the first seconds, one sentence>\",\n  \"cliffhanger\": \"<the unresolved moment it cuts on, one sentence>\",\n  \"hook_type\": \"<one of: moral outrage, romantic tension, empathy shock, power reversal>\",\n  \"why_it_works\": \"<one sentence, concrete, no marketing language>\",\n  \"standalone_risk\": \"<what a new viewer would NOT understand, or 'none'>\"\n}\n\nNever invent dialogue. Never output a time or a duration - only beat labels.",
+  "prompt": "Episode 27. 4 candidate windows, already checked for legal length and real beat boundaries.\n\n--- WINDOW 0 (35 seconds, code score 0.85) ---\n[b00] JULIANA (fierce): \"The physicians were not saving her!\"\n[b01] BLOND NOBLEMAN (measured, menacing): \"My aunt has been wasting away for months.\"\n[b02] BLOND NOBLEMAN (smooth, threatening): \"And now we find an unknown maid alone beside her bed...\"\n[b03] BLOND NOBLEMAN (contemptuous): \"...holding a substance no one authorized her to give.\"\n[b04] JULIANA (unyielding): \"It is an antidote.\"\n[b05] CATHERINE (sharp, provocative): \"An antidote to what?\"\n[b06] BLOND NOBLEMAN (stern, barked): \"Answer her.\"\n[b07] JULIANA (unyielding, resolute): \"Poison.\"\n[b08] BLOND NOBLEMAN (whispering, dangerous): \"Poison.\"\n[b09] JULIANA (urgent): \"Someone has been poisoning Her Grace.\"\n[b10] CATHERINE (shrieking, feigning horror): \"You hear that?!\"\n[b11] CATHERINE (venomous, accusing): \"She admits she has been giving the Duchess poison in secret!\"\n\n--- WINDOW 1 (23 seconds, code score 0.85) ---\n[b00] JULIANA (urgent): \"Someone has been poisoning Her Grace.\"\n[b01] CATHERINE (shrieking, feigning horror): \"You hear that?!\"\n[b02] CATHERINE (venomous, accusing): \"She admits she has been giving the Duchess poison in secret!\"\n[b03] JULIANA (desperate, outraged): \"That is not what I said!\"\n[b04] BLOND NOBLEMAN (authoritative, icy): \"Enough.\"\n[b05] ACTION: The Blond Nobleman takes the medicine vial from Juliana's grasp, inspecting it under the candlelight.\n[b06] BLOND NOBLEMAN (cold, calculating): \"An unknown servant enters a restricted chamber.\"\n[b07] BLOND NOBLEMAN (condemning, vindictive): \"She secretly administers an unidentified substance to a helpless woman.\"\n\n--- WINDOW 2 (25 seconds, code score 0.83) ---\n[b00] CATHERINE (incredulous, accusing): \"Who permitted you to give medicine to the Duchess?\"\n[b01] JULIANA (quiet, resolute): \"No one.\"\n[b02] CATHERINE (spiteful, indignant): \"Then you administered it without permission.\"\n[b03] JULIANA (passionate, urgent): \"Because she was dying!\"\n[b04] BLOND NOBLEMAN (cold, interrogating): \"And you decided you knew better than every physician in this house?\"\n[b05] JULIANA (fierce): \"The physicians were not saving her!\"\n[b06] BLOND NOBLEMAN (measured, menacing): \"My aunt has been wasting away for months.\"\n[b07] BLOND NOBLEMAN (smooth, threatening): \"And now we find an unknown maid alone beside her bed...\"\n\n--- WINDOW 3 (37 seconds, code score 0.80) ---\n[b00] DOWAGER DUCHESS (incredulous, intense): \"He is no commoner. What does he do?\"\n[b01] JULIANA (earnest, defending): \"He is a soldier. A veteran from the Peninsula.\"\n[b02] DOWAGER DUCHESS (trembling, revelatory): \"That is no ordinary band. It bears the Ashbourne crest.\"\n[b03] JULIANA (confused, gentle): \"No. He lives in a barn. He has nothing but his word.\"\n[b04] DOWAGER DUCHESS (emotionally strained, weeping): \"My lost son wore that exact ring. He went to war...\"\n[b05] JULIANA (shocked, breathless): \"Your son? He told me he was only a sergeant.\"\n[b06] DOWAGER DUCHESS (desperate, clinging): \"My lost son wore that ring!\"\n[b07] DOWAGER DUCHESS (pleading): \"Did your husband serve beside him?\"\n[b08] JULIANA (soft, reverent): \"He never spoke of his officers. He only spoke of survival.\"\n[b09] DOWAGER DUCHESS (hushed, desperate): \"What is your husband's name?\"\n\nPick the single best promo.",
+  "response_text": "{\n  \"chosen_window\": 0,\n  \"start_beat\": \"b00\",\n  \"end_beat\": \"b11\",\n  \"hook_beat\": \"b00\",\n  \"cliffhanger_beat\": \"b11\",\n  \"hook\": \"A maid is caught in a restricted chamber and immediately accused of poisoning a noblewoman.\",\n  \"cliffhanger\": \"The antagonist twists the maid's defense into an admission of guilt, leaving her trapped in a lie she cannot explain.\",\n  \"hook_type\": \"moral outrage\",\n  \"why_it_works\": \"It establishes a high-stakes legal/moral trap where the protagonist's truth is weaponized against her by a powerful antagonist.\",\n  \"standalone_risk\": \"none\"\n}",
+  "response_payload": {
+    "id": "chatcmpl-b5b8d71a-ff39-49d6-9680-bfb7726c4c08",
+    "object": "chat.completion",
+    "created": 1794103986,
+    "model": "qwen/qwen3.8-27b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"chosen_window\": 0,\n  \"start_beat\": \"b00\",\n  \"end_beat\": \"b11\",\n  \"hook_beat\": \"b00\",\n  \"cliffhanger_beat\": \"b11\",\n  \"hook\": \"A maid is caught in a restricted chamber and immediately accused of poisoning a noblewoman.\",\n  \"cliffhanger\": \"The antagonist twists the maid's defense into an admission of guilt, leaving her trapped in a lie she cannot explain.\",\n  \"hook_type\": \"moral outrage\",\n  \"why_it_works\": \"It establishes a high-stakes legal/moral trap where the protagonist's truth is weaponized against her by a powerful antagonist.\",\n  \"standalone_risk\": \"none\"\n}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.048923783,
+      "prompt_tokens": 1422,
+      "prompt_time": 0.098637507,
+      "completion_tokens": 175,
+      "completion_time": 0.372343075,
+      "total_tokens": 1597,
+      "total_time": 0.470980582
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_a1293f40b5",
+    "x_groq": {
+      "id": "req_01m6wewhwsenpr1w4fksw3rff3",
+      "seed": 1762105531
+    },
+    "service_tier": "on_demand"
+  }
+}

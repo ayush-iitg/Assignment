@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "gate_p_018_a",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\nALEXANDER: \"Juliana!\"\nJULIANA: \"It's my mother's!\"\n[action] Juliana snatches the scorched leather ledger from the burning table, pulling it tightly against her chest with both bandaged hands.\nJULIANA: \"Alexander!\"\nALEXANDER: \"Down!\"\n[action] Alexander lunges across the room, tackling her to the wooden floor and covering her body entirely with his own.\n[sfx] Massive wooden beam crashes directly where Juliana had been standing, showering them in sparks.\n[action] Alexander lifts his head slightly, checking her face and cradling her cheek tenderly.\nALEXANDER: \"I've got you.\"\n[action] Alexander scoops Juliana up in his arms, carrying her bridal-style as she clutches the ledger.\n[action] Juliana looks toward the side wall and points frantically at the parlor window.\nJULIANA: \"The window!\"\nALEXANDER: \"Hold on to me.\"",
+  "response_text": "{\"who_is_the_main_character\":\"Juliana and Alexander (both are named and central in the clip)\",\"what_is_at_stake\":\"Juliana's safety and the scorched leather ledger she clutches are in danger as the room collapses\",\"what_question_are_you_left_with\":\"Will they escape the collapsing room and keep the ledger safe?\",\"would_you_keep_watching\":\"yes, the tension and protective dynamic are compelling\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":true,\"ends_unresolved\":true,\"would_watch\":true}}",
+  "response_payload": {
+    "id": "chatcmpl-f4cd21c0-02e1-4a11-86c3-99bcea2303f4",
+    "object": "chat.completion",
+    "created": 1794101823,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"who_is_the_main_character\":\"Juliana and Alexander (both are named and central in the clip)\",\"what_is_at_stake\":\"Juliana's safety and the scorched leather ledger she clutches are in danger as the room collapses\",\"what_question_are_you_left_with\":\"Will they escape the collapsing room and keep the ledger safe?\",\"would_you_keep_watching\":\"yes, the tension and protective dynamic are compelling\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":true,\"ends_unresolved\":true,\"would_watch\":true}}",
+          "reasoning": "We need to produce JSON with fields. Determine main character: The clip names Alexander and Juliana. Who is main? Both appear, but likely Alexander is central? The clip shows both. The instruction: \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\". We can pick one? Might say both are main characters. Could say \"Juliana and Alexander\" as main characters. But maybe main is Alexander because he is protecting. But both are central. I'll state both.\n\nWhat is at stake: There's a burning table, a ledger, a beam crashes, they are in danger. The conflict is survival, protecting Juliana and the ledger. So stakes: their safety and the ledger (maybe important). So we can say \"Juliana's safety and the ledger are at stake\". It's clear.\n\nWhat question left with: Will they escape? Will the ledger be saved? So unresolved question: Will they get out alive / what is in the ledger? So we can phrase.\n\nWould you keep watching: maybe yes, because tension.\n\nPasses: character_identifiable: true (they are named). stakes_clear: true (they are in danger). ends_unresolved: true (they are still in danger). would_watch: true.\n\nNow produce compact JSON."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.307470291,
+      "prompt_tokens": 581,
+      "prompt_time": 0.026110788,
+      "completion_tokens": 387,
+      "completion_time": 0.808362814,
+      "total_tokens": 968,
+      "total_time": 0.834473602,
+      "completion_tokens_details": {
+        "reasoning_tokens": 268
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_47082602e2",
+    "x_groq": {
+      "id": "req_01m6wctgnyect8kzxqvgzv7n0b",
+      "seed": 486511084
+    },
+    "service_tier": "on_demand"
+  }
+}

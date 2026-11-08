@@ -1,0 +1,44 @@
+{
+  "run": {
+    "input_dir": "samples",
+    "episodes": [
+      1
+    ],
+    "started": "2026-11-08 10:19:05",
+    "elapsed_s": 2.3,
+    "use_llm": true,
+    "composite_weights": {
+      "hook": 0.3,
+      "tension": 0.2,
+      "cliffhanger": 0.3,
+      "standalone": 0.2
+    },
+    "promo_length_bounds": [
+      20.0,
+      60.0
+    ]
+  },
+  "llm": {
+    "provider": "groq",
+    "model": "qwen/qwen3.8-27b",
+    "calls": 3,
+    "max_calls": 20,
+    "cache_hits": 0,
+    "tokens_in": 1720,
+    "tokens_out": 469,
+    "paced_sleep_s": 0.0,
+    "failures": 0,
+    "failure_detail": []
+  },
+  "counts": {
+    "windows_enumerated": 135,
+    "rejected_no_hook": 38,
+    "shortlisted": 1,
+    "candidates": 1,
+    "validator_failed": 0,
+    "near_duplicates": 0,
+    "gate_failed": 0,
+    "gate_not_tested": 0,
+    "shipped": 1
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "gate_p_029_a",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\nCATHERINE: \"You still call this a legacy?\"\nJULIANA: \"It is medicine!\"\nCATHERINE: \"Of course.\"\nCATHERINE: \"Roots. Leaves. Powders. Strange mixtures written in a dead woman's hand.\"\nCATHERINE: \"The magistrate will call it witchcraft.\"\nJULIANA: \"You know that is a lie!\"\nCATHERINE: \"I know exactly what I need him to believe.\"\nJULIANA: \"You cannot just destroy it!\"",
+  "response_text": "{\"who_is_the_main_character\":\"Catherine (the clip names her and she dominates the dialogue)\",\"what_is_at_stake\":\"The fate of a medicinal \\\"legacy\\\" that could be labeled witchcraft by the magistrate, and whether it will be destroyed or preserved\",\"what_question_are_you_left_with\":\"Will Catherine succeed in getting the magistrate to believe her version and keep the legacy, or will Juliana stop its destruction?\",\"would_you_keep_watching\":\"maybe, the dialogue hints at intrigue but the conflict isn’t resolved\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":true,\"ends_unresolved\":true,\"would_watch\":false}}",
+  "response_payload": {
+    "id": "chatcmpl-67191b46-a755-4af2-9e67-4d5be8bfae1c",
+    "object": "chat.completion",
+    "created": 1794089665,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"who_is_the_main_character\":\"Catherine (the clip names her and she dominates the dialogue)\",\"what_is_at_stake\":\"The fate of a medicinal \\\"legacy\\\" that could be labeled witchcraft by the magistrate, and whether it will be destroyed or preserved\",\"what_question_are_you_left_with\":\"Will Catherine succeed in getting the magistrate to believe her version and keep the legacy, or will Juliana stop its destruction?\",\"would_you_keep_watching\":\"maybe, the dialogue hints at intrigue but the conflict isn’t resolved\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":true,\"ends_unresolved\":true,\"would_watch\":false}}",
+          "reasoning": "We need to produce JSON with fields. Determine main character: The clip includes two characters: Catherine and Juliana. Who is main? Both speak. The main character likely Catherine? She seems to be driving conversation, but not named as main. The clip never names a main character explicitly. We can say main character not named, but we can describe: a woman named Catherine appears to be central. So \"who_is_the_main_character\": \"Catherine (the clip never names a main character explicitly, but Catherine is the dominant speaker)\". Or we could say \"the clip never names a main character\". The instruction: \"name them if the clip names them; otherwise describe and say the clip never names them\". The clip names Catherine and Juliana. So we can name them. Which is main? Probably Catherine because she is speaking more and seems to have agenda. So we can say main character is Catherine. That satisfies naming.\n\nWhat is at stake? They discuss \"legacy\", \"medicine\", \"witchcraft\", \"magistrate\", \"destroy it\". So stakes involve a possibly dangerous or forbidden medical knowledge, maybe being labeled witchcraft, and someone wanting the magistrate to believe something. So conflict: whether to destroy the medicine/legacy. So stakes: the fate of the medicine/legacy and possibly legal consequences. So we can say \"the fate of a medicinal legacy that may be deemed witchcraft by authorities\". That's clear from clip.\n\nWhat question are you left with? Unresolved: Will Catherine succeed in convincing magistrate? Will Julian stop destruction? So question: Will the legacy be destroyed or saved? So we can phrase.\n\nWould you keep watching? Provide yes/maybe/no with short reason. I'd say maybe, because intrigue but unclear.\n\nPasses: character_identifiable: true (we have names). stakes_clear: true (we can infer stakes). ends_unresolved: true (conflict unresolved). would_watch: maybe? The passes field \"would_watch\" expects boolean? It says true/false. So we need to set true if we would watch, false otherwise. Since we said maybe, we need to decide boolean. Probably false? But maybe we interpret \"would_watch\" as true if we would watch, false otherwise. Since we said maybe, ambiguous. Might set false? But we can set true if we would watch. Since we said maybe, maybe we set false? The spec: \"passes\": {\"would_watch\": true/false}. It expects a boolean indicating if we would watch. Since we said maybe, we could set false? But maybe we set false because not definite. However \"maybe\" is not yes, so maybe false. Let's choose false.\n\nNow produce compact JSON.\n\n"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.055199475,
+      "prompt_tokens": 486,
+      "prompt_time": 0.022349074,
+      "completion_tokens": 692,
+      "completion_time": 1.433406821,
+      "total_tokens": 1178,
+      "total_time": 1.455755895,
+      "completion_tokens_details": {
+        "reasoning_tokens": 551
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_76082d2bd0",
+    "x_groq": {
+      "id": "req_01m6w17fxkejer607dxkbty7t3",
+      "seed": 2005648618
+    },
+    "service_tier": "on_demand"
+  }
+}

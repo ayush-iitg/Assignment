@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "select_ep030",
+  "system": "You are a promo editor for vertical microdramas (ReelShort/DramaBox style).\nYou pick which seconds of an episode become a 20-60 second advert for the show.\n\nA good promo:\n- opens on a hook: within its first beats, something that stops a scrolling viewer - a slap, a reveal, a shocking line\n- ends on a cliffhanger: it stops at an unresolved moment, so the viewer must go find the show\n- makes sense alone to someone who has never seen this show\n\nYou will be given candidate windows, each a contiguous run of beats labelled [b00], [b01]...\nYou must choose ONE window and may tighten its edges to any beat labels inside that window.\n\nReply with JSON only:\n{\n  \"chosen_window\": <integer index of the window you picked>,\n  \"start_beat\": \"<beat label>\",\n  \"end_beat\": \"<beat label>\",\n  \"hook_beat\": \"<beat label, must be at or within 2 beats of start_beat>\",\n  \"cliffhanger_beat\": \"<beat label, must be at or near end_beat>\",\n  \"hook\": \"<what grabs the viewer in the first seconds, one sentence>\",\n  \"cliffhanger\": \"<the unresolved moment it cuts on, one sentence>\",\n  \"hook_type\": \"<one of: moral outrage, romantic tension, empathy shock, power reversal>\",\n  \"why_it_works\": \"<one sentence, concrete, no marketing language>\",\n  \"standalone_risk\": \"<what a new viewer would NOT understand, or 'none'>\"\n}\n\nNever invent dialogue. Never output a time or a duration - only beat labels.",
+  "prompt": "Episode 30. 4 candidate windows, already checked for legal length and real beat boundaries.\n\n--- WINDOW 0 (20 seconds, code score 0.83) ---\n[b00] ELDER NOBLEMAN (cold, accusatory): \"You have a rat in your cellar, Rupert. And the servants are beginning to smell it.\"\n[b01] RUPERT (defensive, anxious): \"The Ashcroft girl is locked tight. Nobody knows she is down there.\"\n[b02] ELDER NOBLEMAN (stern, disapproving): \"The kitchen maids are whispering. They see the soup bowls returned unwiped. They see your guards outside the lower grates.\"\n[b03] RUPERT (muttered, paranoid): \"She knows the Duchess was poisoned.\"\n\n--- WINDOW 1 (24 seconds, code score 0.83) ---\n[b00] RUPERT (hesitant): \"And Juliana?\"\n[b01] ELDER NOBLEMAN (cold, resolute): \"She goes before the magistrate tomorrow.\"\n[b02] CATHERINE (cruel, exultant): \"She will hang. A perfect solution. The town will cheer as the witch's disgraced daughter faces the noose.\"\n[b03] RUPERT (resolute, vengeful): \"I will write the arrest warrant myself.\"\n[b04] ELDER NOBLEMAN (chilling, decisive): \"Tomorrow, she stops being a prisoner. She becomes a witch.\"\n\n--- WINDOW 2 (29 seconds, code score 0.82) ---\n[b00] ACTION: The Elder Nobleman thrusts the gold knob of his walking stick directly against Rupert's chest, pinning him against the wall.\n[b01] ELDER NOBLEMAN (fierce, venomous): \"Then make certain she isn't! A peasant weed, Rupert! You do not store weeds in your cellar, you burn them!\"\n[b02] RUPERT (faltering, submissive): \"What are you suggesting?\"\n[b03] ELDER NOBLEMAN (calculated, ominous): \"We stop hiding the prisoner.\"\n[b04] SFX: The heavy creak of massive mahogany doors gliding open on brass hinges.\n[b05] ELDER NOBLEMAN (deadpan, sinister): \"We give them a reason to condemn her.\"\n[b06] CATHERINE (inquiring, sharp): \"You have a solution?\"\n[b07] ELDER NOBLEMAN (ruthless): \"We use the law to destroy her.\"\n\n--- WINDOW 3 (34 seconds, code score 0.78) ---\n[b00] CATHERINE (inquiring, sharp): \"You have a solution?\"\n[b01] ELDER NOBLEMAN (ruthless): \"We use the law to destroy her.\"\n[b02] RUPERT (confused): \"The law?\"\n[b03] ELDER NOBLEMAN (pragmatic, scheming): \"A maid with herbs in her possession, a secret medicine, an unauthorized visit to the Duchess's chamber.\"\n[b04] ACTION: The Elder Nobleman leans both hands against the desk, leaning forward intently.\n[b05] ELDER NOBLEMAN (cold, calculating): \"Give those facts to a magistrate in the right order, and she becomes a poisoner.\"\n[b06] CATHERINE (curious, conniving): \"And if she claims she is a healer?\"\n[b07] ELDER NOBLEMAN (sinister): \"Then call it witchcraft.\"\n[b08] RUPERT (stunned): \"Witchcraft is a capital charge.\"\n\nPick the single best promo.",
+  "response_text": "{\"chosen_window\":1,\"start_beat\":\"b00\",\"end_beat\":\"b04\",\"hook_beat\":\"b02\",\"cliffhanger_beat\":\"b04\",\"hook\":\"Catherine declares the condemned daughter will be hanged, a chilling public spectacle.\",\"cliffhanger\":\"The Elder Nobleman ominously says she will stop being a prisoner and become a witch tomorrow.\",\"hook_type\":\"moral outrage\",\"why_it_works\":\"The brutal verdict grabs attention instantly, and the sudden re‑branding of the victim into a witch leaves the outcome unknown.\",\"standalone_risk\":\"The viewer won’t know who Juliana is, but the stakes of the accusation are clear.\"}",
+  "response_payload": {
+    "id": "chatcmpl-8c36f3f4-4272-49cd-b0e6-0136fadbdfa6",
+    "object": "chat.completion",
+    "created": 1794082612,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"chosen_window\":1,\"start_beat\":\"b00\",\"end_beat\":\"b04\",\"hook_beat\":\"b02\",\"cliffhanger_beat\":\"b04\",\"hook\":\"Catherine declares the condemned daughter will be hanged, a chilling public spectacle.\",\"cliffhanger\":\"The Elder Nobleman ominously says she will stop being a prisoner and become a witch tomorrow.\",\"hook_type\":\"moral outrage\",\"why_it_works\":\"The brutal verdict grabs attention instantly, and the sudden re‑branding of the victim into a witch leaves the outcome unknown.\",\"standalone_risk\":\"The viewer won’t know who Juliana is, but the stakes of the accusation are clear.\"}",
+          "reasoning": "We need to pick one window and possibly tighten edges. Must include hook within 2 beats of start, cliffhanger near end. Provide JSON.\n\nWe evaluate each window.\n\nWindow0: beats b00-b03. Hook could be b00: \"You have a rat in your cellar...\" shocking accusation. Cliffhanger? Ends at b03 where Rupert says \"She knows the Duchess was poisoned.\" That's unresolved tension. Works alone? Might need context of who \"she\" is, but okay.\n\nWindow1: b00-b04. Hook could be b02: Catherine says \"She will hang...\" shock. Cliffhanger at b04: Elder says \"Tomorrow, she stops being a prisoner. She becomes a witch.\" That's a twist. Works alone? Might need know who \"she\" is, but okay.\n\nWindow2: b00-b07. Hook is b00 action of stick thrust, visual shock. Cliffhanger maybe at b07: Elder says \"We use the law to destroy her.\" That's a plan, not resolved. Could be okay. But longer.\n\nWindow3: b00-b08. Hook could be b00 Catherine asking \"You have a solution?\" Not as strong. Better hook earlier maybe b03 describing herbs. Not as immediate.\n\nWe need 20-60 sec promo; all windows within. Choose best hook and cliffhanger. Window2 has strong visual hook (stick thrust) and ends with plan, but maybe not cliffhanger. Window1 has strong moral outrage (witch accusation) and ends with transformation to witch, a cliffhanger. Hook_type moral outrage fits. Hook at b02 within 2 beats of start (start b00, hook b02 okay). Cliffhanger at b04 end. Provide start_beat b00, end_beat b04, hook_beat b02, cliffhanger_beat b04.\n\nStandalone risk: viewer may not know who Juliana is, but context of witch accusation is clear.\n\nThus choose window1.\n\nProvide JSON."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.369848887,
+      "prompt_tokens": 1209,
+      "prompt_time": 0.047364412,
+      "completion_tokens": 550,
+      "completion_time": 1.143439526,
+      "total_tokens": 1759,
+      "total_time": 1.190803938,
+      "completion_tokens_details": {
+        "reasoning_tokens": 403
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_90620edd96",
+    "x_groq": {
+      "id": "req_01m6vtg79neg8v3fjg81f5b3nn",
+      "seed": 907332025
+    },
+    "service_tier": "on_demand"
+  }
+}

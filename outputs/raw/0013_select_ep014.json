@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "select_ep014",
+  "system": "You are a promo editor for vertical microdramas (ReelShort/DramaBox style).\nYou pick which seconds of an episode become a 20-60 second advert for the show.\n\nA good promo:\n- opens on a hook: within its first beats, something that stops a scrolling viewer - a slap, a reveal, a shocking line\n- ends on a cliffhanger: it stops at an unresolved moment, so the viewer must go find the show\n- makes sense alone to someone who has never seen this show\n\nYou will be given candidate windows, each a contiguous run of beats labelled [b00], [b01]...\nYou must choose ONE window and may tighten its edges to any beat labels inside that window.\n\nReply with JSON only:\n{\n  \"chosen_window\": <integer index of the window you picked>,\n  \"start_beat\": \"<beat label>\",\n  \"end_beat\": \"<beat label>\",\n  \"hook_beat\": \"<beat label, must be at or within 2 beats of start_beat>\",\n  \"cliffhanger_beat\": \"<beat label, must be at or near end_beat>\",\n  \"hook\": \"<what grabs the viewer in the first seconds, one sentence>\",\n  \"cliffhanger\": \"<the unresolved moment it cuts on, one sentence>\",\n  \"hook_type\": \"<one of: moral outrage, romantic tension, empathy shock, power reversal>\",\n  \"why_it_works\": \"<one sentence, concrete, no marketing language>\",\n  \"standalone_risk\": \"<what a new viewer would NOT understand, or 'none'>\"\n}\n\nNever invent dialogue. Never output a time or a duration - only beat labels.",
+  "prompt": "Episode 14. 3 candidate windows, already checked for legal length and real beat boundaries.\n\n--- WINDOW 0 (28 seconds, code score 0.76) ---\n[b00] ACTION: Juliana's blood-streaked, mud-caked hand slowly uncurls amidst the thorns, revealing the ornate emerald signet ring resting in her palm.\n[b01] SFX: Eerie cold wind whistling over the briars with deep, atmospheric cello chords.\n[b02] JULIANA (exhausted, resolute): \"I found it.\"\n[b03] JULIANA (firm, commanding): \"Now release my husband.\"\n[b04] ACTION: The Constable takes the ring from her bloodied fingers.\n[b05] SFX: Sharp metallic click and clinking rattle of heavy iron handcuffs unlocking and falling away.\n[b06] ACTION: The Constable unlocks the cuffs, freeing Alexander's large hands.\n[b07] ALEXANDER (gasping, urgent): \"Juliana.\"\n[b08] ACTION: Alexander gently turns her palms up, his thumbs trembling as he inspects the deep, bleeding gashes gouged into her skin.\n[b09] ALEXANDER (trembling, heartbroken): \"What have they done to you?\"\n[b10] JULIANA (softly, stifling pain): \"Nothing they didn't promise.\"\n\n--- WINDOW 1 (40 seconds, code score 0.74) ---\n[b00] SFX: Crackling flames and wood popping in the open fireplace.\n[b01] ALEXANDER (hoarse, stricken): \"You could have lost your hands.\"\n[b02] JULIANA (whispered, emotional): \"But I didn't lose you.\"\n[b03] ALEXANDER (quiet, tender): \"I'm sorry.\"\n[b04] JULIANA (gentle, reassuring): \"You didn't hurt me.\"\n[b05] JULIANA (loving, earnest): \"You have taken my place today.\"\n[b06] JULIANA: \"And you are doing it better than me.\"\n[b07] ACTION: Juliana closes her eyes in exhausted relief, sinking into Alexander's warmth as his broad arm encloses her safely.\n[b08] ALEXANDER (dark, solemn vow): \"No one will ever hurt you for protecting me again.\"\n[b09] ACTION: Alexander strokes her cheek with his thumb, his gaze hardening into deadly, protective conviction.\n[b10] ACTION: Alexander's muscular arm drops into frame beside the bloody bucket; his scarred knuckles slowly and tightly clench into an iron fist of brewing vengeance.\n[b11] SFX: Ominous, resonating low bass boom swelling into sudden silence as the screen cuts to black.\n\n--- WINDOW 2 (28 seconds, code score 0.69) ---\n[b00] ACTION: Alexander gently turns her palms up, his thumbs trembling as he inspects the deep, bleeding gashes gouged into her skin.\n[b01] ALEXANDER (trembling, heartbroken): \"What have they done to you?\"\n[b02] JULIANA (softly, stifling pain): \"Nothing they didn't promise.\"\n[b03] JULIANA (faint, pleading): \"Take me home.\"\n[b04] ACTION: Alexander lifts Juliana bridal-style, wrapping his strong arms protectively around her as she rests against his shoulder.\n[b05] ALEXANDER (deep, sorrowful): \"You should never have had to bleed for me.\"\n[b06] SFX: Gentle patter of rain and cold wind howling in the desolate countryside.\n[b07] ACTION: Alexander gently wraps clean linen bandages around Juliana's torn wrist and palm.\n[b08] SFX: Crackling flames and wood popping in the open fireplace.\n\nPick the single best promo.",
+  "response_text": "{\"chosen_window\":0,\"start_beat\":\"b00\",\"end_beat\":\"b09\",\"hook_beat\":\"b00\",\"cliffhanger_beat\":\"b09\",\"hook\":\"Juliana's blood‑streaked, mud‑caked hand emerges from thorns, revealing a glittering emerald signet ring.\",\"cliffhanger\":\"Alexander leans in and asks, “What have they done to you?” – a question left hanging.\",\"hook_type\":\"empathy shock\",\"why_it_works\":\"The gruesome visual grabs attention instantly, then the unanswered question forces viewers to seek the story’s resolution.\",\"standalone_risk\":\"The viewer won’t know who Alexander or the Constable are, or why Juliana is bound.\"}",
+  "response_payload": {
+    "id": "chatcmpl-da2c2cd4-87a0-496b-876e-63fe3e8734cd",
+    "object": "chat.completion",
+    "created": 1794082368,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"chosen_window\":0,\"start_beat\":\"b00\",\"end_beat\":\"b09\",\"hook_beat\":\"b00\",\"cliffhanger_beat\":\"b09\",\"hook\":\"Juliana's blood‑streaked, mud‑caked hand emerges from thorns, revealing a glittering emerald signet ring.\",\"cliffhanger\":\"Alexander leans in and asks, “What have they done to you?” – a question left hanging.\",\"hook_type\":\"empathy shock\",\"why_it_works\":\"The gruesome visual grabs attention instantly, then the unanswered question forces viewers to seek the story’s resolution.\",\"standalone_risk\":\"The viewer won’t know who Alexander or the Constable are, or why Juliana is bound.\"}",
+          "reasoning": "We need to pick one window and possibly tighten edges. Must include hook_beat within 2 beats of start_beat. Cliffhanger near end_beat. Provide JSON.\n\nWe need to evaluate which window has strong hook and cliffhanger.\n\nWindow 0: starts with Juliana's blood-streaked hand revealing ring. Hook: visual shock, moral outrage? Could be empathy shock. Hook beat could be b00 (the hand). Cliffhanger: maybe at b10 where she says \"Nothing they didn't promise.\" That's unresolved? Not a cliffhanger. Could cut after b09 where Alexander asks \"What have they done to you?\" That's a question, good cliffhanger. End at b09 maybe. So start b00, end b09, hook b00, cliffhanger b09. Works.\n\nWindow 1: starts with crackling flames, not hook. Hook could be b00? Not strong. Maybe b08 where Alexander says \"No one will ever hurt you for protecting me again.\" That's a vow, but later action of clenched fist. Cliffhanger at b11 where boom then black. Hook maybe b08? But start earlier needed. Not as strong.\n\nWindow 2: starts with Alexander inspecting wounds, similar to window 0 but later. Hook b00 similar. Cliffhanger could be at b05 \"You should never have had to bleed for me.\" Not a question. Could cut after b07 bandaging, but not cliffhanger. Not as strong.\n\nThus window 0 seems best: hook visual blood ring, cliffhanger question.\n\nWe need to ensure start_beat and end_beat within window. Choose start b00, end b09. Hook beat b00 (within 2). Cliffhanger beat b09 (near end). Provide hook description: \"Juliana's blood‑streaked hand emerges from thorns, revealing a glittering emerald ring.\" Cliffhanger: \"Alexander's desperate question, “What have they done to you?” hangs unanswered.\" Hook_type: empathy shock or moral outrage? It's visual shock, empathy shock. Why it works: immediate visceral image and a question that demands resolution. Standalone risk: viewer may not know who Alexander is or why she's captive. So risk: identity of constable and backstory.\n\nReturn JSON compact."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.317923626,
+      "prompt_tokens": 1237,
+      "prompt_time": 0.05425183,
+      "completion_tokens": 624,
+      "completion_time": 1.300572705,
+      "total_tokens": 1861,
+      "total_time": 1.354824535,
+      "completion_tokens_details": {
+        "reasoning_tokens": 465
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_8ea50c0161",
+    "x_groq": {
+      "id": "req_01m6vt8s7keg1rckfj0hmcx5fq",
+      "seed": 305711340
+    },
+    "service_tier": "on_demand"
+  }
+}

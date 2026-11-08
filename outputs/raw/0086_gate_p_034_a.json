@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "gate_p_034_a",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\n[action] The Judge repeatedly hammers his gavel down onto the desk, roaring over her.\n[sfx] [Violent, resonant double bang of the wooden gavel]\nJUDGE: \"You will speak when addressed!\"\nLORD: \"We have further witnesses.\"\nTOWNSMAN: \"My wife took one of Lady Juliana's mixtures...\"\nJUDGE: \"And?\"\nTOWNSMAN: \"She became violently ill.\"\nOLD WOMAN: \"My daughter drank one of her herbal preparations! She was sick for three days!\"\nLORD: \"She calls it healing.\"\n[action] The Lord turns dramatically to face the entire assembly, gesturing toward the spectators.\nLORD: \"The people call it poisoning!\"\nJULIANA: \"What were their illnesses?\"",
+  "response_text": "{\"who_is_the_main_character\":\"The clip does not name a main character; several characters appear (Judge, Lord, Townsman, Old Woman, Juliana)\",\"what_is_at_stake\":\"unclear from the clip\",\"what_question_are_you_left_with\":\"Is Juliana’s mixture a cure or a poison?\",\"would_you_keep_watching\":\"maybe, because the dispute hints at larger consequences\",\"passes\":{\"character_identifiable\":false,\"stakes_clear\":false,\"ends_unresolved\":true,\"would_watch\":false}}",
+  "response_payload": {
+    "id": "chatcmpl-f5e58841-ce75-42eb-ae73-97f4d914efa6",
+    "object": "chat.completion",
+    "created": 1794101821,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"who_is_the_main_character\":\"The clip does not name a main character; several characters appear (Judge, Lord, Townsman, Old Woman, Juliana)\",\"what_is_at_stake\":\"unclear from the clip\",\"what_question_are_you_left_with\":\"Is Juliana’s mixture a cure or a poison?\",\"would_you_keep_watching\":\"maybe, because the dispute hints at larger consequences\",\"passes\":{\"character_identifiable\":false,\"stakes_clear\":false,\"ends_unresolved\":true,\"would_watch\":false}}",
+          "reasoning": "We need to produce JSON with fields. Determine main character: clip mentions Judge, Lord, Townsman, Old Woman, Juliana. Who is main? Probably Judge? But main character is ambiguous. The clip never names a protagonist; multiple characters. So \"character_identifiable\": false. So \"who_is_the_main_character\": \"The clip does not name a main character; several characters appear (Judge, Lord, Townsman, Old Woman, Juliana)\". Stakes: conflict about whether Juliana's mixtures are healing or poisoning; unclear stakes? It's about accusation of poisoning. So stakes: unclear from clip? We can say \"unclear from the clip\" because we don't know consequences. So stakes_clear false. Ends unresolved: The clip ends with Juliana asking \"What were their illnesses?\" No resolution. So ends_unresolved true. Would you keep watching? maybe, because intrigue. Provide yes/maybe/no. I'd say maybe. Provide reason short. passes: character_identifiable false, stakes_clear false, ends_unresolved true, would_watch maybe? The passes \"would_watch\" boolean: true if would watch? Probably false because not enough? But we need boolean. Since we said maybe, maybe we set would_watch false? The spec: passes: \"would_watch\": true/false. Probably true if you'd watch. Since we said maybe, ambiguous. I'd set false? But maybe we interpret maybe as not definite, so false. Let's set false.\n\nNow construct JSON compact."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.376459802,
+      "prompt_tokens": 539,
+      "prompt_time": 0.026179006,
+      "completion_tokens": 419,
+      "completion_time": 0.866689916,
+      "total_tokens": 958,
+      "total_time": 0.892868922,
+      "completion_tokens_details": {
+        "reasoning_tokens": 304
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_19b184c447",
+    "x_groq": {
+      "id": "req_01m6wctf55ewb9v90kkkm0qx60",
+      "seed": 68450930
+    },
+    "service_tier": "on_demand"
+  }
+}

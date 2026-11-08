@@ -1,0 +1,122 @@
+EPISODE NUMBER: Episode 1
+EPISODE LOGLINE: A junior analyst is publicly blamed for a failure she did not cause, and chooses the one response nobody in the room expects.
+CONTINUITY NOTES: Standalone sample episode. Written from scratch for testing the parser on unseen input; contains no Kuku content.
+
+--- SCRIPT START ---
+
+SCENE 01
+Scene heading: INT. GLASS-WALLED BOARDROOM – MORNING
+Scene start: 00:00.00
+Scene end: 01:12.00
+
+Actions and dialogue:
+
+**CAMERA:**
+Start: (00:00.00) | End: (00:03.20)
+Slow push-in on a long table of silent executives, a single empty chair at the far end.
+
+**ACTION:**
+Start: (00:01.40) | End: (00:04.00)
+A thick report lands on the table and skids to a stop in front of MAYA, who does not flinch.
+
+**SOUND FX:**
+Start: (00:01.40) | End: (00:02.60)
+Heavy paper slap followed by a low, tense string note.
+
+**DIRECTOR VOSS (Cold, Final):**
+Start: (00:04.20) | End: (00:07.10)
+"Nine million. Gone. And every signature on it is yours."
+
+**MAYA (Quiet, Steady):**
+Start: (00:07.60) | End: (00:09.40)
+"Every signature is mine."
+
+**DIRECTOR VOSS (Impatient):**
+Start: (00:09.80) | End: (00:12.20)
+"Then you understand why this is the last meeting you attend."
+
+**MAYA:**
+Start: (00:12.60) | End: (00:14.80)
+"I understand why you need it to be."
+
+**CAMERA:**
+Start: (00:14.90) | End: (00:17.00)
+Close-up on a colleague, RAHUL, whose jaw tightens as he looks away.
+
+**ACTION:**
+Start: (00:17.20) | End: (00:20.50)
+Maya slides a thin folder across the table. It stops precisely at Voss's hand.
+
+**MAYA (Calm, Cutting):**
+Start: (00:20.80) | End: (00:24.60)
+"Page four. The approval that overrode mine. Read whose initials are on it."
+
+**DIRECTOR VOSS (Dismissive):**
+Start: (00:25.00) | End: (00:27.40)
+"I don't need a lecture from a junior."
+
+**MAYA (Unwavering):**
+Start: (00:27.80) | End: (00:31.50)
+"You need one more than anybody in this room."
+
+**ACTION:**
+Start: (00:31.80) | End: (00:34.60)
+Voss opens the folder. His face empties of colour as he reads.
+
+**SOUND FX:**
+Start: (00:33.00) | End: (00:35.00)
+The room's ambient hum drops away to near silence.
+
+**RAHUL (Whispering, Alarmed):**
+Start: (00:35.20) | End: (00:37.80)
+"Maya, don't. Not here."
+
+**MAYA (Resolute):**
+Start: (00:38.10) | End: (00:41.90)
+"I spent four months being told to stay quiet. I'm done being convenient."
+SCENE 02
+Scene heading: INT. BOARDROOM – CONTINUOUS
+Scene start: 00:42.00
+Scene end: 01:12.00
+
+**CAMERA:**
+Start: (00:42.20) | End: (00:45.00)
+Wide shot. Maya stands. Nobody else moves.
+
+**MAYA (Clear, Accusing):**
+Start: (00:45.20) | End: (00:50.40)
+"You signed off on the override on a Friday night and buried the email on Monday."
+
+**DIRECTOR VOSS (Trembling, Furious):**
+Start: (00:50.80) | End: (00:53.60)
+"Get out of my boardroom."
+
+**MAYA (Steely):**
+Start: (00:54.00) | End: (00:57.80)
+"In nine minutes it stops being yours."
+
+**ACTION:**
+Start: (00:58.00) | End: (01:01.40)
+Maya's phone screen lights up on the table: a sent email, 412 recipients, subject line "Page 4".
+
+**SOUND FX:**
+Start: (00:58.20) | End: (01:00.00)
+Sharp notification chime, then a rising orchestral swell.
+
+**DIRECTOR VOSS (Panicked):**
+Start: (01:01.60) | End: (01:03.40)
+"What did you do?"
+
+**MAYA (Quiet, Powerful):**
+Start: (01:03.80) | End: (01:07.20)
+"What you were counting on nobody junior would ever do."
+
+**ACTION:**
+Start: (01:07.40) | End: (01:10.00)
+Every phone in the room begins to buzz at once. Voss does not reach for his.
+
+**CAMERA:**
+Start: (01:10.00) | End: (01:12.00)
+Hold on Maya's face, unreadable, as the buzzing builds. Cut to black.
+
+--- SCRIPT END ---

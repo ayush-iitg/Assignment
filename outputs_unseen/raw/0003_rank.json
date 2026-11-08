@@ -1,0 +1,41 @@
+{
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "tag": "rank",
+  "system": "You are the editor deciding posting order for promo clips from one show.\nYou will see each promo's hook, cliffhanger and a blind viewer's comprehension result.\n\nReply with JSON only, and keep it short:\n{\n  \"order\": [\"<promo_id>\", \"<promo_id>\", ...],\n  \"post_first\": \"<promo_id>\",\n  \"post_first_reason\": \"<two sentences maximum>\",\n  \"rationale\": {\"<promo_id>\": \"<one short clause>\"}\n}\n\nInclude every promo_id you were given in \"order\". Put a rationale for the top 5\nonly. Favour promos a stranger understood, that open on something physical or\nshocking, and that leave a question. Spread hook types rather than posting four\nof a kind.",
+  "prompt": "p_001_a | episodes [1] | 56s | hook_type power reversal | code score 0.85 | blind viewer 4/4\n  hook: A director slams a report on a table and accuses a junior employee of stealing nine million dollars.\n  cliffhanger: The junior employee calmly states that in nine minutes, the boardroom will no longer belong to the director.",
+  "response_text": "{\n  \"order\": [\"p_001_a\"],\n  \"post_first\": \"p_001_a\",\n  \"post_first_reason\": \"The physical act of slamming a report creates immediate visual tension. The specific nine-minute countdown leaves a compelling question about the impending power shift.\",\n  \"rationale\": {\n    \"p_001_a\": \"High-comprehension power reversal with a concrete time-based cliffhanger.\"\n  }\n}",
+  "response_payload": {
+    "id": "chatcmpl-65e2f1df-86fe-4546-b867-48dcba9961d9",
+    "object": "chat.completion",
+    "created": 1794113345,
+    "model": "qwen/qwen3.8-27b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"order\": [\"p_001_a\"],\n  \"post_first\": \"p_001_a\",\n  \"post_first_reason\": \"The physical act of slamming a report creates immediate visual tension. The specific nine-minute countdown leaves a compelling question about the impending power shift.\",\n  \"rationale\": {\n    \"p_001_a\": \"High-comprehension power reversal with a concrete time-based cliffhanger.\"\n  }\n}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.048375571,
+      "prompt_tokens": 267,
+      "prompt_time": 0.018128099,
+      "completion_tokens": 102,
+      "completion_time": 0.194275723,
+      "total_tokens": 369,
+      "total_time": 0.212403822
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_a1293f40b5",
+    "x_groq": {
+      "id": "req_01m6wqt58sed287mfwq3wdh9x0",
+      "seed": 846649529
+    },
+    "service_tier": "on_demand"
+  }
+}

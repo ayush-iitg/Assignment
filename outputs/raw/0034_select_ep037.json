@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "select_ep037",
+  "system": "You are a promo editor for vertical microdramas (ReelShort/DramaBox style).\nYou pick which seconds of an episode become a 20-60 second advert for the show.\n\nA good promo:\n- opens on a hook: within its first beats, something that stops a scrolling viewer - a slap, a reveal, a shocking line\n- ends on a cliffhanger: it stops at an unresolved moment, so the viewer must go find the show\n- makes sense alone to someone who has never seen this show\n\nYou will be given candidate windows, each a contiguous run of beats labelled [b00], [b01]...\nYou must choose ONE window and may tighten its edges to any beat labels inside that window.\n\nReply with JSON only:\n{\n  \"chosen_window\": <integer index of the window you picked>,\n  \"start_beat\": \"<beat label>\",\n  \"end_beat\": \"<beat label>\",\n  \"hook_beat\": \"<beat label, must be at or within 2 beats of start_beat>\",\n  \"cliffhanger_beat\": \"<beat label, must be at or near end_beat>\",\n  \"hook\": \"<what grabs the viewer in the first seconds, one sentence>\",\n  \"cliffhanger\": \"<the unresolved moment it cuts on, one sentence>\",\n  \"hook_type\": \"<one of: moral outrage, romantic tension, empathy shock, power reversal>\",\n  \"why_it_works\": \"<one sentence, concrete, no marketing language>\",\n  \"standalone_risk\": \"<what a new viewer would NOT understand, or 'none'>\"\n}\n\nNever invent dialogue. Never output a time or a duration - only beat labels.",
+  "prompt": "Episode 37. 4 candidate windows, already checked for legal length and real beat boundaries.\n\n--- WINDOW 0 (41 seconds, code score 0.83) ---\n[b00] SFX: The harsh scrape and clatter of heavy iron chains dragging across wet stone.\n[b01] JULIANA (straining, defiant gasps): \"I will not!\"\n[b02] JULIANA (passionate defiance): \"They can take my name. They can take my home.\"\n[b03] JULIANA (indomitable spirit): \"They cannot take who I am!\"\n[b04] NOBLEMAN (quietly skeptical): \"Do you think she'll actually be executed?\"\n[b05] CLARISSA (dismissive, certain): \"After what she has been accused of? Of course.\"\n[b06] NOBLEMAN (musing): \"She was always stubborn.\"\n[b07] CLARISSA (bitter, cold): \"That was her greatest mistake. She could have accepted what happened. She could have disappeared quietly.\"\n[b08] ACTION: Clarissa rises from her armchair holding a cut crystal glass filled with dark red wine, pacing toward the fireplace.\n[b09] CLARISSA (venomous monologue): \"Instead she married a nobody, played healer to peasants, challenged people above her. And now the whole county will watch her pay for it.\"\n[b10] CLARISSA (chilling proclamation): \"Let them see what happens when a woman forgets her place.\"\n[b11] ACTION: Clarissa takes a slow sip of the red wine, her eyes gleaming with dark relish.\n\n--- WINDOW 1 (24 seconds, code score 0.79) ---\n[b00] SFX: Rhythmic water drips splashing onto stagnant dungeon puddles and a low, mournful ambient drone.\n[b01] ACTION: Juliana curls her fingers back, pulling away from the foul sustenance in defiance.\n[b02] JULIANA (weak, whispering through tears): \"They think hunger will make me surrender.\"\n[b03] JULIANA (fierce resolve): \"They think fear will make me beg.\"\n[b04] SFX: The harsh scrape and clatter of heavy iron chains dragging across wet stone.\n[b05] JULIANA (straining, defiant gasps): \"I will not!\"\n[b06] JULIANA (passionate defiance): \"They can take my name. They can take my home.\"\n\n--- WINDOW 2 (20 seconds, code score 0.77) ---\n[b00] BLOND NOBLEMAN (rupert, cold, calculating): \"Every important family in the county should witness it.\"\n[b01] CATHERINE (inquiring, smug): \"The wedding?\"\n[b02] BLOND NOBLEMAN (rupert, authoritative): \"The transfer of Ashbridge.\"\n[b03] CATHERINE (gloating): \"After the ceremony, no one will question who owns this house.\"\n[b04] BLOND NOBLEMAN (rupert, sinister, ruthless): \"And no one will question what happened to the woman who tried to stop us.\"\n[b05] CATHERINE (venomous satisfaction): \"Juliana's execution comes after the wedding.\"\n\n--- WINDOW 3 (22 seconds, code score 0.76) ---\n[b00] CLARISSA (chilling, sharp): \"Not just an execution. A warning.\"\n[b01] NOBLEMAN (curious): \"To whom?\"\n[b02] CLARISSA (contemptuous, scornful): \"To every woman who thinks she can rise above the place she was given.\"\n[b03] CLARISSA (smug triumph): \"Juliana's ruin will be a lesson. And we will be there to watch.\"\n[b04] SFX: Rhythmic water drips splashing onto stagnant dungeon puddles and a low, mournful ambient drone.\n\nPick the single best promo.",
+  "response_text": "{\"chosen_window\":0,\"start_beat\":\"b01\",\"end_beat\":\"b11\",\"hook_beat\":\"b01\",\"cliffhanger_beat\":\"b11\",\"hook\":\"Juliana’s fierce cry, “I will not!,” erupts over the clanking chains, instantly gripping the viewer.\",\"cliffhanger\":\"Clarissa lifts her wine, eyes gleaming with dark relish as she sips, leaving Juliana’s fate hanging in the balance.\",\"hook_type\":\"moral outrage\",\"why_it_works\":\"The defiant shout against oppression grabs attention, and the final shot of a villain savoring the moment creates a tense, unanswered question.\",\"standalone_risk\":\"none\"}",
+  "response_payload": {
+    "id": "chatcmpl-6ffe76b9-96d2-480c-97bc-92a4ba39d88b",
+    "object": "chat.completion",
+    "created": 1794082677,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"chosen_window\":0,\"start_beat\":\"b01\",\"end_beat\":\"b11\",\"hook_beat\":\"b01\",\"cliffhanger_beat\":\"b11\",\"hook\":\"Juliana’s fierce cry, “I will not!,” erupts over the clanking chains, instantly gripping the viewer.\",\"cliffhanger\":\"Clarissa lifts her wine, eyes gleaming with dark relish as she sips, leaving Juliana’s fate hanging in the balance.\",\"hook_type\":\"moral outrage\",\"why_it_works\":\"The defiant shout against oppression grabs attention, and the final shot of a villain savoring the moment creates a tense, unanswered question.\",\"standalone_risk\":\"none\"}",
+          "reasoning": "We need to pick one window and possibly tighten edges. Must include hook within first 2 beats of start. Cliffhanger near end. Provide JSON.\n\nWe evaluate each window.\n\nWindow0: 41 sec, starts with chain sound (b00) then Juliana defiant lines. Hook could be Juliana's defiant \"I will not!\" or Clarissa's chilling proclamation \"Let them see what happens when a woman forgets her place.\" Hook should be within 2 beats of start. Could start at b01 (Juliana defiant) or b09 (Clarissa chilling). Hook likely moral outrage (woman punished). Cliffhanger could cut after Clarissa sipping wine, leaving tension. Ends at b11. Could cut at b11 with her eyes gleaming, unresolved. Works.\n\nWindow1: 24 sec, starts with water drips, then Juliana defiant. Hook could be \"I will not!\" at b05 within 2 beats of start (b00 water, b01 action, b02 line, b03 line, b04 chains, b05 defiant). Hook maybe empathy shock. Cliffhanger maybe ends at b06 with \"They can take my name...\" unresolved. Works but less dramatic.\n\nWindow2: 20 sec, dialogue about execution after wedding. Hook could be \"Every important family in the county should witness it.\" That's a power reversal? Maybe moral outrage. Cliffhanger could be after \"Juliana's execution comes after the wedding.\" That's resolved? Not much cliff.\n\nWindow3: 22 sec, Clarissa says \"Not just an execution. A warning.\" Hook immediate. Cliffhanger after \"Juliana's ruin will be a lesson. And we will be there to watch.\" Could cut there. Good.\n\nWe need best promo: likely Window0 because strong hook with chain sound and defiant line, and chilling monologue, ends on ominous sip. Also longer gives more context but still within 20-60 sec. Hook within first 2 beats: could start at b01 (Juliana defiant). Hook line: \"I will not!\" Good. Cliffhanger at b11 (Clarissa sipping, eyes gleaming). Unresolved: what will happen to Juliana? Works.\n\nCheck standalone risk: viewer may not know who Clarissa is, but context of execution is clear.\n\nThus choose window0, maybe tighten start at b01, end at b11.\n\nHook beat: b01 (or b05). Must be within 2 beats of start. If start is b01, hook beat can be b01. Good.\n\nCliffhanger beat: b11.\n\nProvide JSON.\n\n"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.158555993,
+      "prompt_tokens": 1270,
+      "prompt_time": 0.052827217,
+      "completion_tokens": 686,
+      "completion_time": 1.421685712,
+      "total_tokens": 1956,
+      "total_time": 1.474512929,
+      "completion_tokens_details": {
+        "reasoning_tokens": 537
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_c3da0d4bb9",
+    "x_groq": {
+      "id": "req_01m6vtj73texrsz6h3jnkf6vcv",
+      "seed": 1078918295
+    },
+    "service_tier": "on_demand"
+  }
+}

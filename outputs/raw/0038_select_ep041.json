@@ -1,0 +1,48 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "select_ep041",
+  "system": "You are a promo editor for vertical microdramas (ReelShort/DramaBox style).\nYou pick which seconds of an episode become a 20-60 second advert for the show.\n\nA good promo:\n- opens on a hook: within its first beats, something that stops a scrolling viewer - a slap, a reveal, a shocking line\n- ends on a cliffhanger: it stops at an unresolved moment, so the viewer must go find the show\n- makes sense alone to someone who has never seen this show\n\nYou will be given candidate windows, each a contiguous run of beats labelled [b00], [b01]...\nYou must choose ONE window and may tighten its edges to any beat labels inside that window.\n\nReply with JSON only:\n{\n  \"chosen_window\": <integer index of the window you picked>,\n  \"start_beat\": \"<beat label>\",\n  \"end_beat\": \"<beat label>\",\n  \"hook_beat\": \"<beat label, must be at or within 2 beats of start_beat>\",\n  \"cliffhanger_beat\": \"<beat label, must be at or near end_beat>\",\n  \"hook\": \"<what grabs the viewer in the first seconds, one sentence>\",\n  \"cliffhanger\": \"<the unresolved moment it cuts on, one sentence>\",\n  \"hook_type\": \"<one of: moral outrage, romantic tension, empathy shock, power reversal>\",\n  \"why_it_works\": \"<one sentence, concrete, no marketing language>\",\n  \"standalone_risk\": \"<what a new viewer would NOT understand, or 'none'>\"\n}\n\nNever invent dialogue. Never output a time or a duration - only beat labels.",
+  "prompt": "Episode 41. 2 candidate windows, already checked for legal length and real beat boundaries.\n\n--- WINDOW 0 (46 seconds, code score 0.79) ---\n[b00] ACTION: Juliana, dressed in a coarse drab prison dress with a numbered identification badge, is marched forward by two armed constables holding her by the arms.\n[b01] CATHERINE (smug, taunting): \"There she is.\"\n[b02] NOBLEWOMAN (gleeful, whispering): \"Look at her.\"\n[b03] NOBLEMAN (mocking, chuckling): \"She actually came back to the chapel.\"\n[b04] NOBLEWOMAN (scornful, smug): \"Not as a bride this time.\"\n[b05] CATHERINE (derisive, projecting): \"Lady Juliana Ashcroft. Look around.\"\n[b06] CATHERINE (mocking, resonant): \"This is the world you thought you belonged to.\"\n[b07] CATHERINE (spiteful, boastful): \"And now they can all see what you truly are.\"\n[b08] ACTION: Juliana looks around the cathedral at the sea of pompous faces, then raises her eyes straight back to Catherine with utter disdain.\n[b09] JULIANA (defiant, unbowed): \"You needed an entire chapel to feel powerful over one chained woman?\"\n[b10] CATHERINE (murmured, cold): \"Still arrogant. Still standing.\"\n\n--- WINDOW 1 (26 seconds, code score 0.73) ---\n[b00] JULIANA (defiant, unbowed): \"You needed an entire chapel to feel powerful over one chained woman?\"\n[b01] CATHERINE (murmured, cold): \"Still arrogant. Still standing.\"\n[b02] CATHERINE (dismissive): \"Come.\"\n[b03] CATHERINE (intimate, ambitious): \"Soon, there will be nothing left between us and the Ashburgh title.\"\n[b04] BLOND NOBLEMAN (quietly triumphant): \"Nothing.\"\n[b05] PRIEST (solemn, polite): \"Shall we?\"\n[b06] SFX: Ear-splitting detonation, shattering stone, wood splintering violently into kindling, followed by terrified screams of the congregation.\n[b07] ACTION: A violent fireball bursts inward as the entire cathedral entrance explodes, blasting the massive double doors and masonry into flying shrapnel and billowing smoke.\n\nPick the single best promo.",
+  "response_text": "{\"chosen_window\":1,\"start_beat\":\"b00\",\"end_beat\":\"b07\",\"hook_beat\":\"b00\",\"cliffhanger_beat\":\"b07\",\"hook\":\"Juliana defiantly challenges Catherine, calling out her need for a chapel to dominate a chained woman.\",\"cliffhanger\":\"A massive explosion tears the cathedral doors apart, sending a fireball and shrapnel into the crowd, leaving the showdown unresolved.\",\"hook_type\":\"power reversal\",\"why_it_works\":\"The opening line pits a captive against her oppressor, then the sudden cathedral blast leaves the conflict hanging.\",\"standalone_risk\":\"Viewers won’t know the characters’ back‑story or why the chapel matters, but the visual stakes are clear.\"}",
+  "response_payload": {
+    "id": "chatcmpl-7504d55f-8d32-4611-a717-1fd3c2ef8e2b",
+    "object": "chat.completion",
+    "created": 1794082739,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"chosen_window\":1,\"start_beat\":\"b00\",\"end_beat\":\"b07\",\"hook_beat\":\"b00\",\"cliffhanger_beat\":\"b07\",\"hook\":\"Juliana defiantly challenges Catherine, calling out her need for a chapel to dominate a chained woman.\",\"cliffhanger\":\"A massive explosion tears the cathedral doors apart, sending a fireball and shrapnel into the crowd, leaving the showdown unresolved.\",\"hook_type\":\"power reversal\",\"why_it_works\":\"The opening line pits a captive against her oppressor, then the sudden cathedral blast leaves the conflict hanging.\",\"standalone_risk\":\"Viewers won’t know the characters’ back‑story or why the chapel matters, but the visual stakes are clear.\"}",
+          "reasoning": "We need to pick one window and possibly tighten edges. Must include hook within 2 beats of start, cliffhanger near end. Provide JSON.\n\nWe have two windows.\n\nWindow0: 10 beats (b00-b10). Hook could be at b00 (prison dress march) or b09 (defiant line). Need hook within 2 beats of start. So start at b00, hook at b00 (visual hook: prisoner being marched). Cliffhanger at end maybe b09 or b10? Need unresolved moment. Could cut after b09 where Juliana defies, before Catherine's reply? That leaves tension. Or after b10 where Catherine says \"Still arrogant. Still standing.\" That's a line but resolved? Might be okay but maybe better to cut after b09, leaving Catherine's response unknown. However cliffhanger must be at or near end_beat. If end_beat is b09, cliffhanger beat b09 (defiant line) is unresolved? Actually it's a statement, not resolved. Could be okay. But we need a cliffhanger that leaves viewer wanting more. The tension between Juliana and Catherine is unresolved. So end at b09 maybe.\n\nWindow1: 8 beats (b00-b07). Hook could be b00 (same defiant line). Cliffhanger could be after explosion b07, which is a big visual cliffhanger. That seems strong. Start at b00, hook at b00. End at b07, cliffhanger beat b07 (explosion). That gives a dramatic hook and cliffhanger. Also includes the explosion, which is a visual hook? The hook is the defiant line, but maybe the explosion is later. However the hook should be within first 2 beats, which is satisfied. The cliffhanger is the explosion, unresolved. This seems stronger.\n\nWe need to ensure the promo makes sense alone. The explosion may be confusing without context, but the preceding dialogue sets stakes: Catherine says \"Come.\" Then \"Soon, there will be nothing left...\" then explosion. A viewer sees a tense confrontation leading to massive explosion, likely to want to watch. So good.\n\nThus choose window1, maybe tighten start at b00, end at b07. Hook beat b00. Cliffhanger beat b07.\n\nNow fill fields.\n\nhook: \"Juliana defiantly challenges Catherine, calling out her need for a chapel to dominate a chained woman.\" That's the hook.\n\ncliffhanger: \"A massive explosion tears the cathedral doors apart, sending fireball and shrapnel into the crowd.\" That's unresolved.\n\nhook_type: power reversal (defiant challenge to authority). Could also be moral outrage, but power reversal fits.\n\nwhy_it_works: The opening line pits a captive against her oppressor, then the sudden cathedral explosion leaves the conflict hanging.\n\nstandalone_risk: New viewers might not know who Juliana and Catherine are or why the chapel matters, but the visual stakes are clear.\n\nNow produce JSON compact.\n\n"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.368603959,
+      "prompt_tokens": 969,
+      "prompt_time": 0.033689896,
+      "completion_tokens": 764,
+      "completion_time": 1.840342645,
+      "total_tokens": 1733,
+      "total_time": 1.874032541,
+      "prompt_tokens_details": {
+        "cached_tokens": 256
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 605
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_b1dd3e7a63",
+    "x_groq": {
+      "id": "req_01m6vtm2xvesnr5cnrv6m9sdsy",
+      "seed": 1570457732
+    },
+    "service_tier": "on_demand"
+  }
+}

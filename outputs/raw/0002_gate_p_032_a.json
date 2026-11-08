@@ -1,0 +1,48 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "gate_p_032_a",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\nCATHERINE: \"Why?!\"\nJULIANA: \"Because I am right!\"\nJULIANA: \"You want everyone to believe you are powerful.\"\nJULIANA: \"You want everyone to fear you.\"\nJULIANA: \"But look at you.\"\nJULIANA: \"You have to threaten a chained woman to feel powerful!\"\nCATHERINE: \"You insolent—!\"\nJULIANA: \"You may have the title you have always wanted...\"\nJULIANA: \"...but you will never have the courage to earn what you demand from everyone else.\"\nCATHERINE: \"You think you can lecture me?!\"\n[action] Catherine hoists the searing branding rod over Juliana with frantic fury.\nCATHERINE: \"Then let's see how brave you are when it touches your skin!\"",
+  "response_text": "{\"who_is_the_main_character\":\"Catherine\",\"what_is_at_stake\":\"Catherine is trying to prove her power and courage by threatening to brand Juliana with a searing rod, while Juliana's safety and dignity are at risk\",\"what_question_are_you_left_with\":\"Will Catherine actually use the branding rod on Juliana, and what will be the outcome?\",\"would_you_keep_watching\":\"maybe, because the confrontation is tense and the outcome is uncertain\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":true,\"ends_unresolved\":true,\"would_watch\":true}}",
+  "response_payload": {
+    "id": "chatcmpl-a6e338fc-3cb1-40fa-89a7-42994c4bc08e",
+    "object": "chat.completion",
+    "created": 1794103388,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"who_is_the_main_character\":\"Catherine\",\"what_is_at_stake\":\"Catherine is trying to prove her power and courage by threatening to brand Juliana with a searing rod, while Juliana's safety and dignity are at risk\",\"what_question_are_you_left_with\":\"Will Catherine actually use the branding rod on Juliana, and what will be the outcome?\",\"would_you_keep_watching\":\"maybe, because the confrontation is tense and the outcome is uncertain\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":true,\"ends_unresolved\":true,\"would_watch\":true}}",
+          "reasoning": "We need to produce JSON with fields. Determine main character: The clip includes two characters: Catherine and Juliana. Who is main? Likely Catherine is protagonist? But we need to answer based on clip: It names both. Which is main? The clip focuses on Catherine's actions (hoisting rod). Could say main character is Catherine, as she is central to conflict. But we could also say both are present. The instruction: \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\". We can name Catherine as main character. Provide reasoning: The clip names Catherine and Julian; Catherine appears to be central. So we can say Catherine.\n\nWhat is at stake: Conflict about power, courage, maybe a challenge. The stakes: Catherine threatens Juliana with a branding rod; possibly physical harm. So at stake is Catherine's desire to prove power and Juliana's safety. So we can say the conflict is about Catherine's need to assert power and Juliana's challenge to her. It's clear from dialogue. So stakes clear: yes.\n\nWhat question left with: Will Catherine actually brand Juliana? Will Juliana survive? So unresolved question: Does Catherine go through with the branding? So we can state that.\n\nWould you keep watching: maybe, because tension.\n\nPasses: character_identifiable: true (Catherine is identified). stakes_clear: true. ends_unresolved: true (conflict unresolved). would_watch: true.\n\nNow produce compact JSON. Ensure booleans not strings. Provide reason after comma? The field \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\". So value is a string containing \"maybe, because ...\" Actually format: \"<yes | maybe | no>, then one short reason\". So we need something like \"maybe, because the tension is high\". Provide exactly that.\n\nNow produce JSON."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.158688296,
+      "prompt_tokens": 552,
+      "prompt_time": 0.014089701,
+      "completion_tokens": 518,
+      "completion_time": 1.139942728,
+      "total_tokens": 1070,
+      "total_time": 1.154032429,
+      "prompt_tokens_details": {
+        "cached_tokens": 256
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 391
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_a655021f7d",
+    "x_groq": {
+      "id": "req_01m6wea95beac83q05fddry7bh",
+      "seed": 597710278
+    },
+    "service_tier": "on_demand"
+  }
+}

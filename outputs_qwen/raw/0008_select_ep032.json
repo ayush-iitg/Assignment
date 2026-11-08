@@ -1,0 +1,41 @@
+{
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "tag": "select_ep032",
+  "system": "You are a promo editor for vertical microdramas (ReelShort/DramaBox style).\nYou pick which seconds of an episode become a 20-60 second advert for the show.\n\nA good promo:\n- opens on a hook: within its first beats, something that stops a scrolling viewer - a slap, a reveal, a shocking line\n- ends on a cliffhanger: it stops at an unresolved moment, so the viewer must go find the show\n- makes sense alone to someone who has never seen this show\n\nYou will be given candidate windows, each a contiguous run of beats labelled [b00], [b01]...\nYou must choose ONE window and may tighten its edges to any beat labels inside that window.\n\nReply with JSON only:\n{\n  \"chosen_window\": <integer index of the window you picked>,\n  \"start_beat\": \"<beat label>\",\n  \"end_beat\": \"<beat label>\",\n  \"hook_beat\": \"<beat label, must be at or within 2 beats of start_beat>\",\n  \"cliffhanger_beat\": \"<beat label, must be at or near end_beat>\",\n  \"hook\": \"<what grabs the viewer in the first seconds, one sentence>\",\n  \"cliffhanger\": \"<the unresolved moment it cuts on, one sentence>\",\n  \"hook_type\": \"<one of: moral outrage, romantic tension, empathy shock, power reversal>\",\n  \"why_it_works\": \"<one sentence, concrete, no marketing language>\",\n  \"standalone_risk\": \"<what a new viewer would NOT understand, or 'none'>\"\n}\n\nNever invent dialogue. Never output a time or a duration - only beat labels.",
+  "prompt": "Episode 32. 4 candidate windows, already checked for legal length and real beat boundaries.\n\n--- WINDOW 0 (29 seconds, code score 0.91) ---\n[b00] CATHERINE (shrieking): \"Why?!\"\n[b01] JULIANA (forceful): \"Because I am right!\"\n[b02] JULIANA (scathing, direct): \"You want everyone to believe you are powerful.\"\n[b03] JULIANA: \"You want everyone to fear you.\"\n[b04] JULIANA (mocking, direct): \"But look at you.\"\n[b05] JULIANA (stripping her bare): \"You have to threaten a chained woman to feel powerful!\"\n[b06] CATHERINE (choking with rage): \"You insolent—!\"\n[b07] JULIANA (steely, triumphant): \"You may have the title you have always wanted...\"\n[b08] JULIANA (final, condemning): \"...but you will never have the courage to earn what you demand from everyone else.\"\n[b09] CATHERINE (enraged, shouting): \"You think you can lecture me?!\"\n[b10] ACTION: Catherine hoists the searing branding rod over Juliana with frantic fury.\n[b11] CATHERINE (screaming, maniacal): \"Then let's see how brave you are when it touches your skin!\"\n\n--- WINDOW 1 (34 seconds, code score 0.89) ---\n[b00] CATHERINE (furious, shouting): \"You still think you are better?!\"\n[b01] JULIANA (serene, grounded): \"I know what I am.\"\n[b02] CATHERINE (sneering, mocking): \"A disgraced woman?\"\n[b03] JULIANA (unwavering): \"A woman who survived. You cannot destroy me.\"\n[b04] CATHERINE (screaming, enraged): \"You are lying!\"\n[b05] JULIANA (measured, emphatic): \"Gerald leaving me was the best thing he ever did for me.\"\n[b06] JULIANA (contemplative, scathing): \"He wanted a woman who looked beautiful beside his wealth.\"\n[b07] JULIANA (passionate, clear): \"He wanted a wife whose family could raise his name. He measured a woman's worth by what she could give him.\"\n[b08] JULIANA (unapologetic, victorious): \"Let him have Clarissa.\"\n[b09] JULIANA (proud): \"He lost me.\"\n[b10] CATHERINE (shrieking, vicious): \"You were rejected!\"\n[b11] JULIANA (grounded, powerful): \"I was freed. And I found a man who never asked me what I was worth.\"\n\n--- WINDOW 2 (53 seconds, code score 0.87) ---\n[b00] JULIANA (proud): \"He lost me.\"\n[b01] CATHERINE (shrieking, vicious): \"You were rejected!\"\n[b02] JULIANA (grounded, powerful): \"I was freed. And I found a man who never asked me what I was worth.\"\n[b03] CATHERINE (disdainful): \"Your soldier?\"\n[b04] JULIANA (tender, certain): \"My husband.\"\n[b05] CATHERINE (bitter): \"He is a nobody.\"\n[b06] JULIANA (warm, defiant): \"Then I love a nobody.\"\n[b07] JULIANA (resonant, moving): \"Because that nobody showed me more love than your entire world ever did.\"\n[b08] CATHERINE (indignant, sharp): \"You know nothing about my world.\"\n[b09] JULIANA (knowing, sober): \"I know exactly what your world values.\"\n[b10] JULIANA (listing, deliberate): \"Beauty. Money.\"\n[b11] JULIANA (firm): \"Family. A perfect name.\"\n[b12] JULIANA: \"And a woman who never embarrasses the people standing behind her.\"\n[b13] CATHERINE (shouting, outraged): \"And what is wrong with that?!\"\n[b14] JULIANA (gentle, penetrating): \"Nothing. Until you have nothing left beneath it.\"\n[b15] JULIANA (unrelenting): \"You have spent your whole life collecting things that make people bow...\"\n[b16] JULIANA (piercing): \"...but you have never learned how to make anyone love you.\"\n[b17] CATHERINE (hysterical, screaming): \"Silence! Silence!\"\n[b18] CATHERINE (shrieking): \"Why?!\"\n\n--- WINDOW 3 (38 seconds, code score 0.84) ---\n[b00] CATHERINE (cruel, final): \"Say goodbye to your mother.\"\n[b01] ACTION: Juliana's despair suddenly solidifies. Her jaw tightens, tears stopping as resolve takes over.\n[b02] JULIANA (defiant, unbroken): \"Burn it.\"\n[b03] CATHERINE (disconcerted): \"What?\"\n[b04] JULIANA (firm, resolute): \"Burn the ledger. Burn every page.\"\n[b05] JULIANA (steely, proud): \"You may destroy the book...\"\n[b06] JULIANA (transcendent, defiant): \"...you cannot destroy what my mother taught me.\"\n[b07] CATHERINE (spiteful, hissing): \"You think a few herbs make you better than me?\"\n[b08] JULIANA (calm, cutting): \"No. Your cruelty does that for me.\"\n[b09] CATHERINE (furious, shouting): \"You still think you are better?!\"\n[b10] JULIANA (serene, grounded): \"I know what I am.\"\n[b11] CATHERINE (sneering, mocking): \"A disgraced woman?\"\n[b12] JULIANA (unwavering): \"A woman who survived. You cannot destroy me.\"\n[b13] CATHERINE (screaming, enraged): \"You are lying!\"\n\nPick the single best promo.",
+  "response_text": "{\n  \"chosen_window\": 0,\n  \"start_beat\": \"b00\",\n  \"end_beat\": \"b11\",\n  \"hook_beat\": \"b05\",\n  \"cliffhanger_beat\": \"b11\",\n  \"hook\": \"A villainess publicly humiliates a chained woman, stripping away her power with the line 'You have to threaten a chained woman to feel powerful!'\",\n  \"cliffhanger\": \"The enraged villainess raises a searing branding rod, screaming 'Then let's see how brave you are when it touches your skin!'\",\n  \"hook_type\": \"power reversal\",\n  \"why_it_works\": \"It juxtaposes the victim's verbal dominance against the villain's physical threat, creating immediate high-stakes tension that demands a resolution.\",\n  \"standalone_risk\": \"none\"\n}",
+  "response_payload": {
+    "id": "chatcmpl-640d6155-568f-4813-a367-0c728f13d183",
+    "object": "chat.completion",
+    "created": 1794121346,
+    "model": "qwen/qwen3.8-27b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"chosen_window\": 0,\n  \"start_beat\": \"b00\",\n  \"end_beat\": \"b11\",\n  \"hook_beat\": \"b05\",\n  \"cliffhanger_beat\": \"b11\",\n  \"hook\": \"A villainess publicly humiliates a chained woman, stripping away her power with the line 'You have to threaten a chained woman to feel powerful!'\",\n  \"cliffhanger\": \"The enraged villainess raises a searing branding rod, screaming 'Then let's see how brave you are when it touches your skin!'\",\n  \"hook_type\": \"power reversal\",\n  \"why_it_works\": \"It juxtaposes the victim's verbal dominance against the villain's physical threat, creating immediate high-stakes tension that demands a resolution.\",\n  \"standalone_risk\": \"none\"\n}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.049274594,
+      "prompt_tokens": 1754,
+      "prompt_time": 0.1316203,
+      "completion_tokens": 193,
+      "completion_time": 0.369363253,
+      "total_tokens": 1947,
+      "total_time": 0.500983553
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_424cb89518",
+    "x_groq": {
+      "id": "req_01m6wzeasmehk9zzys8fmzjzcg",
+      "seed": 781530383
+    },
+    "service_tier": "on_demand"
+  }
+}

@@ -1,0 +1,840 @@
+{
+  "primary": {
+    "folder": "outputs",
+    "model": "openai/gpt-oss-120b",
+    "run": {
+      "input_dir": "data",
+      "episodes": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50
+      ],
+      "started": "2026-11-08 12:29:59",
+      "elapsed_s": 305.2,
+      "use_llm": true,
+      "composite_weights": {
+        "hook": 0.3,
+        "tension": 0.2,
+        "cliffhanger": 0.3,
+        "standalone": 0.2
+      },
+      "promo_length_bounds": [
+        20.0,
+        60.0
+      ]
+    },
+    "counts": {
+      "windows_enumerated": 18141,
+      "rejected_no_hook": 3376,
+      "shortlisted": 171,
+      "candidates": 91,
+      "candidates_single_stretch": 50,
+      "candidates_two_piece": 41,
+      "validator_failed": 0,
+      "near_duplicates": 37,
+      "gate_failed": 7,
+      "gate_not_tested": 0,
+      "shipped": 47
+    }
+  },
+  "gold": {
+    "rows": [
+      {
+        "episode": 1,
+        "my_pick": "39.1-78.5",
+        "note": "Whole premise with zero prior context: a bride at the altar learns her sister is marrying her fiance, and the family knew.",
+        "tool_pick": "46.8-70.4",
+        "tool_shape": "single_stretch",
+        "iou": 0.599,
+        "overlaps_at_all": true,
+        "promo_id": "p_001_a",
+        "shipped": true,
+        "status": "shipped",
+        "rank": 7
+      },
+      {
+        "episode": 2,
+        "my_pick": "47.8-86.5",
+        "note": "Humiliation turned into defiance; works as a standalone clapback with no setup needed.",
+        "tool_pick": "58.7-102.8",
+        "tool_shape": "single_stretch",
+        "iou": 0.505,
+        "overlaps_at_all": true,
+        "promo_id": "p_002_a",
+        "shipped": true,
+        "status": "shipped",
+        "rank": 13
+      },
+      {
+        "episode": 13,
+        "my_pick": "54.0-112.0",
+        "note": "Wordless physical ordeal, then an object reveal that poses a question without answering it.",
+        "tool_pick": "80.5-112.0",
+        "tool_shape": "single_stretch",
+        "iou": 0.543,
+        "overlaps_at_all": true,
+        "promo_id": "p_013_a",
+        "shipped": true,
+        "status": "shipped",
+        "rank": 26
+      },
+      {
+        "episode": 15,
+        "my_pick": "47.4-78.0",
+        "note": "Violence opens it, and it cuts before the fight resolves - the viewer needs the outcome.",
+        "tool_pick": "47.4-82.4",
+        "tool_shape": "single_stretch",
+        "iou": 0.874,
+        "overlaps_at_all": true,
+        "promo_id": "p_015_a",
+        "shipped": true,
+        "status": "shipped",
+        "rank": 27
+      },
+      {
+        "episode": 24,
+        "my_pick": "32.5-81.0",
+        "note": "Physical violence stops the scroll, then a secret-identity tease replaces resolution.",
+        "tool_pick": "67.5-89.8",
+        "tool_shape": "single_stretch",
+        "iou": 0.236,
+        "overlaps_at_all": true,
+        "promo_id": "p_024_a",
+        "shipped": true,
+        "status": "shipped",
+        "rank": 3
+      },
+      {
+        "episode": 31,
+        "my_pick": "131.0-160.0",
+        "note": "Pure peril needing no setup, cut mid-threat. Flagged at audit time as the weakest of my picks for standalone comprehension - a stranger is never told her name.",
+        "tool_pick": "10.5-23.5 + 118.4-132.8",
+        "tool_shape": "multi_segment",
+        "iou": 0.033,
+        "overlaps_at_all": true,
+        "promo_id": "p_031_m1",
+        "shipped": false,
+        "status": "rejected: near-duplicate of p_032_a (episodes [32], 1 apart, visual overlap 0.23",
+        "rank": null
+      }
+    ],
+    "n_gold": 6,
+    "mean_iou": 0.465,
+    "n_overlapping": 6,
+    "n_shipped": 5
+  },
+  "validators": {
+    "checks": {
+      "timestamps_exist": {
+        "pass": 92,
+        "fail": 0,
+        "failing_ids": []
+      },
+      "length_ok": {
+        "pass": 92,
+        "fail": 0,
+        "failing_ids": []
+      },
+      "order_ok": {
+        "pass": 92,
+        "fail": 0,
+        "failing_ids": []
+      },
+      "hook_within_3s": {
+        "pass": 92,
+        "fail": 0,
+        "failing_ids": []
+      },
+      "hook_inside_promo": {
+        "pass": 92,
+        "fail": 0,
+        "failing_ids": []
+      },
+      "cliffhanger_inside_promo": {
+        "pass": 92,
+        "fail": 0,
+        "failing_ids": []
+      }
+    },
+    "n_evaluated": 92,
+    "shipped_but_invalid": [],
+    "invented_timestamps_in_shipped_output": true
+  },
+  "gate": {
+    "n_tested": 54,
+    "n_failed": 7,
+    "n_not_tested": 0,
+    "pass_rate": 0.87,
+    "per_criterion_pass_counts": {
+      "character_identifiable": 49,
+      "stakes_clear": 41,
+      "ends_unresolved": 54,
+      "would_watch": 35
+    },
+    "per_criterion_pass_rate": {
+      "character_identifiable": 0.907,
+      "stakes_clear": 0.759,
+      "ends_unresolved": 1.0,
+      "would_watch": 0.648
+    },
+    "failures": [
+      {
+        "promo_id": "p_011_a",
+        "episodes": [
+          11
+        ],
+        "structural_score": 0.873,
+        "gate_score": "2/4",
+        "answers": {
+          "who_is_the_main_character": "Juliana (the clip focuses on her, though it never labels her as the main character)",
+          "what_is_at_stake": "Juliana's remaining possessions and possibly her reputation/freedom are threatened by accusations of theft and the prospect of violence",
+          "what_question_are_you_left_with": "Will the constable find incriminating evidence in the coat, and will anyone be harmed by the threatened \"one blow\"?",
+          "would_you_keep_watching": "maybe, the dialogue hints at high tension but the situation is unclear"
+        },
+        "passes": {
+          "character_identifiable": true,
+          "stakes_clear": false,
+          "ends_unresolved": true,
+          "would_watch": false
+        }
+      },
+      {
+        "promo_id": "p_003_a",
+        "episodes": [
+          3
+        ],
+        "structural_score": 0.8379,
+        "gate_score": "2/4",
+        "answers": {
+          "who_is_the_main_character": "the bearded stranger (MYSTERIOUS BEARDED MAN) – the clip never gives a proper name",
+          "what_is_at_stake": "Juliana's safety/freedom as the bearded man defends her against the guard and family interference",
+          "what_question_are_you_left_with": "Will the bearded man be allowed to protect Juliana despite the noble matriarch's objection?",
+          "would_you_keep_watching": "maybe, because the action is intriguing but the context is unclear"
+        },
+        "passes": {
+          "character_identifiable": false,
+          "stakes_clear": true,
+          "ends_unresolved": true,
+          "would_watch": false
+        }
+      },
+      {
+        "promo_id": "p_034_a",
+        "episodes": [
+          34
+        ],
+        "structural_score": 0.8263,
+        "gate_score": "1/4",
+        "answers": {
+          "who_is_the_main_character": "The clip does not name a main character; several characters appear (Judge, Lord, Townsman, Old Woman, Juliana)",
+          "what_is_at_stake": "unclear from the clip",
+          "what_question_are_you_left_with": "Is Juliana’s mixture a cure or a poison?",
+          "would_you_keep_watching": "maybe, because the dispute hints at larger consequences"
+        },
+        "passes": {
+          "character_identifiable": false,
+          "stakes_clear": false,
+          "ends_unresolved": true,
+          "would_watch": false
+        }
+      },
+      {
+        "promo_id": "p_041_a",
+        "episodes": [
+          41
+        ],
+        "structural_score": 0.7317,
+        "gate_score": "1/4",
+        "answers": {
+          "who_is_the_main_character": "The clip does not name a single main character; several characters (Juliana, Catherine, a blond nobleman, and a priest) speak.",
+          "what_is_at_stake": "Unclear from the clip; there is mention of the Ashburgh title and a violent attack on a cathedral, but the exact stakes are not explained.",
+          "what_question_are_you_left_with": "Will the Ashburgh title be claimed and who will survive the explosion?",
+          "would_you_keep_watching": "maybe, the violent spectacle is intriguing but the context is vague"
+        },
+        "passes": {
+          "character_identifiable": false,
+          "stakes_clear": false,
+          "ends_unresolved": true,
+          "would_watch": false
+        }
+      },
+      {
+        "promo_id": "p_006_m1",
+        "episodes": [
+          6
+        ],
+        "structural_score": 0.6459,
+        "gate_score": "2/4",
+        "answers": {
+          "who_is_the_main_character": "Juliana (named in the clip)",
+          "what_is_at_stake": "unclear from the clip",
+          "what_question_are_you_left_with": "Will Juliana continue onward despite her loss, or what will happen next?",
+          "would_you_keep_watching": "maybe, the mood is intriguing but the stakes are vague"
+        },
+        "passes": {
+          "character_identifiable": true,
+          "stakes_clear": false,
+          "ends_unresolved": true,
+          "would_watch": false
+        }
+      },
+      {
+        "promo_id": "p_040_a",
+        "episodes": [
+          40
+        ],
+        "structural_score": 0.614,
+        "gate_score": "2/4",
+        "answers": {
+          "who_is_the_main_character": "The clip does not name a main character; several characters appear (Elder Nobleman, Lady Harrington, Blond Nobleman, Catherine, Rupert)",
+          "what_is_at_stake": "unclear from the clip",
+          "what_question_are_you_left_with": "What will happen to the witch and how will Catherine and Rupert’s scheme affect the new Duke and Duchess?",
+          "would_you_keep_watching": "maybe, the political intrigue and conspiratorial smiles hint at larger drama"
+        },
+        "passes": {
+          "character_identifiable": false,
+          "stakes_clear": false,
+          "ends_unresolved": true,
+          "would_watch": true
+        }
+      },
+      {
+        "promo_id": "p_049_m1",
+        "episodes": [
+          49
+        ],
+        "structural_score": 0.5929,
+        "gate_score": "2/4",
+        "answers": {
+          "who_is_the_main_character": "Catherine (named in the clip)",
+          "what_is_at_stake": "The outcome of an unresolved hearing and the council's decision about a woman referred to as \"her,\" with Catherine trying to delay the hearing and learn the council's knowledge",
+          "what_question_are_you_left_with": "What is the hearing about, who is \"her,\" and how will the council ultimately decide?",
+          "would_you_keep_watching": "maybe, the dialogue hints at intrigue but lacks context"
+        },
+        "passes": {
+          "character_identifiable": true,
+          "stakes_clear": false,
+          "ends_unresolved": true,
+          "would_watch": false
+        }
+      }
+    ]
+  },
+  "shapes": {
+    "single_stretch": {
+      "tested": 44,
+      "passed": 39,
+      "failed": 5,
+      "pass_rate": 0.886,
+      "mean_gate_score": 3.36,
+      "best_rank": 1,
+      "shipped": 39
+    },
+    "multi_segment": {
+      "tested": 10,
+      "passed": 8,
+      "failed": 2,
+      "pass_rate": 0.8,
+      "mean_gate_score": 3.1,
+      "best_rank": 23,
+      "shipped": 8
+    }
+  },
+  "fingerprint": "c7b809ad92b976e7",
+  "gold_code_only": {
+    "rows": [
+      {
+        "episode": 1,
+        "my_pick": "39.1-78.5",
+        "note": "Whole premise with zero prior context: a bride at the altar learns her sister is marrying her fiance, and the family knew.",
+        "tool_pick": "46.8-70.4",
+        "tool_shape": "single_stretch",
+        "iou": 0.599,
+        "overlaps_at_all": true,
+        "promo_id": "p_001_a",
+        "shipped": true,
+        "status": "shipped",
+        "rank": 15
+      },
+      {
+        "episode": 2,
+        "my_pick": "47.8-86.5",
+        "note": "Humiliation turned into defiance; works as a standalone clapback with no setup needed.",
+        "tool_pick": null,
+        "tool_shape": null,
+        "iou": 0.0,
+        "overlaps_at_all": false,
+        "promo_id": null,
+        "shipped": false,
+        "status": "no promo for this episode",
+        "rank": null
+      },
+      {
+        "episode": 13,
+        "my_pick": "54.0-112.0",
+        "note": "Wordless physical ordeal, then an object reveal that poses a question without answering it.",
+        "tool_pick": "68.5-88.8",
+        "tool_shape": "single_stretch",
+        "iou": 0.35,
+        "overlaps_at_all": true,
+        "promo_id": "p_013_a",
+        "shipped": true,
+        "status": "shipped",
+        "rank": 13
+      },
+      {
+        "episode": 15,
+        "my_pick": "47.4-78.0",
+        "note": "Violence opens it, and it cuts before the fight resolves - the viewer needs the outcome.",
+        "tool_pick": "16.4-61.0",
+        "tool_shape": "single_stretch",
+        "iou": 0.221,
+        "overlaps_at_all": true,
+        "promo_id": "p_015_a",
+        "shipped": true,
+        "status": "shipped",
+        "rank": 27
+      },
+      {
+        "episode": 24,
+        "my_pick": "32.5-81.0",
+        "note": "Physical violence stops the scroll, then a secret-identity tease replaces resolution.",
+        "tool_pick": "66.2-89.8",
+        "tool_shape": "single_stretch",
+        "iou": 0.258,
+        "overlaps_at_all": true,
+        "promo_id": "p_024_a",
+        "shipped": true,
+        "status": "shipped",
+        "rank": 20
+      },
+      {
+        "episode": 31,
+        "my_pick": "131.0-160.0",
+        "note": "Pure peril needing no setup, cut mid-threat. Flagged at audit time as the weakest of my picks for standalone comprehension - a stranger is never told her name.",
+        "tool_pick": "131.0-151.2",
+        "tool_shape": "single_stretch",
+        "iou": 0.697,
+        "overlaps_at_all": true,
+        "promo_id": "p_031_a",
+        "shipped": true,
+        "status": "shipped",
+        "rank": 6
+      }
+    ],
+    "n_gold": 6,
+    "mean_iou": 0.354,
+    "n_overlapping": 5,
+    "n_shipped": 5
+  },
+  "stability": {
+    "model_a": "openai/gpt-oss-120b",
+    "model_b": "qwen/qwen3.8-27b",
+    "n_episodes": 50,
+    "mean_iou": 0.5,
+    "n_identical": 17,
+    "n_disjoint": 8,
+    "n_substantial_overlap": 23,
+    "shipped_set_jaccard": 0.548,
+    "hook_type_agreement": 0.48,
+    "rows": [
+      {
+        "episode": 1,
+        "a": "46.8-70.4",
+        "b": "46.8-61.8 + 117.0-131.2",
+        "iou": 0.28,
+        "same_hook_type": false
+      },
+      {
+        "episode": 2,
+        "a": "58.7-102.8",
+        "b": "69.4-107.4",
+        "iou": 0.686,
+        "same_hook_type": true
+      },
+      {
+        "episode": 3,
+        "a": "42.1-58.2 + 81.8-98.5",
+        "b": "56.3-76.8",
+        "iou": 0.363,
+        "same_hook_type": false
+      },
+      {
+        "episode": 4,
+        "a": "113.0-134.5",
+        "b": "113.0-134.5",
+        "iou": 1.0,
+        "same_hook_type": false
+      },
+      {
+        "episode": 5,
+        "a": "54.5-100.8",
+        "b": "54.5-100.8",
+        "iou": 1.0,
+        "same_hook_type": false
+      },
+      {
+        "episode": 6,
+        "a": "30.1-60.0",
+        "b": "0.0-33.1",
+        "iou": 0.05,
+        "same_hook_type": false
+      },
+      {
+        "episode": 7,
+        "a": "21.0-69.5",
+        "b": "68.6-96.0",
+        "iou": 0.012,
+        "same_hook_type": true
+      },
+      {
+        "episode": 8,
+        "a": "0.0-21.8",
+        "b": "0.2-16.1 + 63.2-78.0",
+        "iou": 0.277,
+        "same_hook_type": false
+      },
+      {
+        "episode": 9,
+        "a": "6.3-54.0",
+        "b": "38.0-81.6",
+        "iou": 0.212,
+        "same_hook_type": true
+      },
+      {
+        "episode": 10,
+        "a": "2.1-24.9",
+        "b": "20.9-49.0",
+        "iou": 0.085,
+        "same_hook_type": false
+      },
+      {
+        "episode": 11,
+        "a": "14.4-29.0 + 81.3-93.2",
+        "b": "14.4-29.0 + 81.3-93.2",
+        "iou": 1.0,
+        "same_hook_type": true
+      },
+      {
+        "episode": 12,
+        "a": "26.8-60.6",
+        "b": "56.8-78.2",
+        "iou": 0.074,
+        "same_hook_type": true
+      },
+      {
+        "episode": 13,
+        "a": "80.5-112.0",
+        "b": "80.5-112.0",
+        "iou": 1.0,
+        "same_hook_type": false
+      },
+      {
+        "episode": 14,
+        "a": "0.5-15.6 + 71.0-87.0",
+        "b": "0.5-15.6 + 71.0-87.0",
+        "iou": 1.0,
+        "same_hook_type": true
+      },
+      {
+        "episode": 15,
+        "a": "47.4-82.4",
+        "b": "16.4-62.0",
+        "iou": 0.221,
+        "same_hook_type": false
+      },
+      {
+        "episode": 16,
+        "a": "46.3-83.2",
+        "b": "25.8-58.2",
+        "iou": 0.207,
+        "same_hook_type": true
+      },
+      {
+        "episode": 17,
+        "a": "16.8-39.0",
+        "b": "16.8-39.0",
+        "iou": 1.0,
+        "same_hook_type": false
+      },
+      {
+        "episode": 18,
+        "a": "73.5-106.8",
+        "b": "73.5-106.8",
+        "iou": 1.0,
+        "same_hook_type": true
+      },
+      {
+        "episode": 19,
+        "a": "43.0-70.5",
+        "b": "65.1-88.9",
+        "iou": 0.118,
+        "same_hook_type": true
+      },
+      {
+        "episode": 20,
+        "a": "88.2-109.0",
+        "b": "4.6-21.2 + 92.6-109.2",
+        "iou": 0.199,
+        "same_hook_type": false
+      },
+      {
+        "episode": 21,
+        "a": "4.2-18.2 + 42.8-58.2",
+        "b": "91.0-114.0",
+        "iou": 0.0,
+        "same_hook_type": false
+      },
+      {
+        "episode": 22,
+        "a": "26.0-69.5",
+        "b": "26.0-69.5",
+        "iou": 1.0,
+        "same_hook_type": true
+      },
+      {
+        "episode": 23,
+        "a": "73.8-124.0",
+        "b": "29.0-43.0 + 107.5-124.0",
+        "iou": 0.528,
+        "same_hook_type": false
+      },
+      {
+        "episode": 24,
+        "a": "67.5-89.8",
+        "b": "6.8-36.8",
+        "iou": 0.0,
+        "same_hook_type": true
+      },
+      {
+        "episode": 25,
+        "a": "16.8-51.2",
+        "b": "47.0-81.8",
+        "iou": 0.065,
+        "same_hook_type": false
+      },
+      {
+        "episode": 26,
+        "a": "56.0-115.5",
+        "b": "56.0-115.5",
+        "iou": 1.0,
+        "same_hook_type": true
+      },
+      {
+        "episode": 27,
+        "a": "93.3-128.4",
+        "b": "93.3-128.4",
+        "iou": 1.0,
+        "same_hook_type": true
+      },
+      {
+        "episode": 28,
+        "a": "113.3-136.7",
+        "b": "113.3-136.7",
+        "iou": 1.0,
+        "same_hook_type": true
+      },
+      {
+        "episode": 29,
+        "a": "7.4-24.0 + 47.3-63.4",
+        "b": "42.0-63.4",
+        "iou": 0.382,
+        "same_hook_type": false
+      },
+      {
+        "episode": 30,
+        "a": "120.0-143.5",
+        "b": "8.8-25.8 + 48.0-62.5",
+        "iou": 0.0,
+        "same_hook_type": false
+      },
+      {
+        "episode": 31,
+        "a": "83.5-124.0",
+        "b": "131.0-151.2",
+        "iou": 0.0,
+        "same_hook_type": false
+      },
+      {
+        "episode": 32,
+        "a": "121.8-151.2",
+        "b": "16.2-32.8 + 107.2-122.8",
+        "iou": 0.007,
+        "same_hook_type": false
+      },
+      {
+        "episode": 33,
+        "a": "57.4-79.0",
+        "b": "140.5-164.5",
+        "iou": 0.0,
+        "same_hook_type": true
+      },
+      {
+        "episode": 34,
+        "a": "87.8-101.8 + 176.5-184.2",
+        "b": "33.2-87.2",
+        "iou": 0.0,
+        "same_hook_type": false
+      },
+      {
+        "episode": 35,
+        "a": "126.0-150.0",
+        "b": "126.0-150.0",
+        "iou": 1.0,
+        "same_hook_type": true
+      },
+      {
+        "episode": 36,
+        "a": "171.6-196.8",
+        "b": "171.6-196.8",
+        "iou": 1.0,
+        "same_hook_type": true
+      },
+      {
+        "episode": 37,
+        "a": "104.0-148.0",
+        "b": "104.0-148.0",
+        "iou": 1.0,
+        "same_hook_type": true
+      },
+      {
+        "episode": 38,
+        "a": "62.8-84.0",
+        "b": "26.0-43.0 + 71.0-87.0",
+        "iou": 0.348,
+        "same_hook_type": false
+      },
+      {
+        "episode": 39,
+        "a": "32.8-66.9",
+        "b": "29.8-66.9",
+        "iou": 0.919,
+        "same_hook_type": true
+      },
+      {
+        "episode": 40,
+        "a": "12.4-28.9 + 65.0-77.4",
+        "b": "12.4-28.9 + 65.0-77.4",
+        "iou": 1.0,
+        "same_hook_type": true
+      },
+      {
+        "episode": 41,
+        "a": "58.0-84.0",
+        "b": "58.0-84.0",
+        "iou": 1.0,
+        "same_hook_type": true
+      },
+      {
+        "episode": 42,
+        "a": "16.8-39.8",
+        "b": "18.0-42.5",
+        "iou": 0.848,
+        "same_hook_type": false
+      },
+      {
+        "episode": 43,
+        "a": "69.0-93.0",
+        "b": "10.5-56.5",
+        "iou": 0.0,
+        "same_hook_type": false
+      },
+      {
+        "episode": 44,
+        "a": "14.0-62.4",
+        "b": "14.0-62.4",
+        "iou": 1.0,
+        "same_hook_type": true
+      },
+      {
+        "episode": 45,
+        "a": "22.9-66.8",
+        "b": "58.2-90.8",
+        "iou": 0.127,
+        "same_hook_type": false
+      },
+      {
+        "episode": 46,
+        "a": "96.8-133.2",
+        "b": "76.8-100.4",
+        "iou": 0.064,
+        "same_hook_type": false
+      },
+      {
+        "episode": 47,
+        "a": "78.8-108.5",
+        "b": "31.0-48.0 + 91.5-108.5",
+        "iou": 0.383,
+        "same_hook_type": false
+      },
+      {
+        "episode": 48,
+        "a": "34.0-73.4",
+        "b": "30.9-73.4",
+        "iou": 0.927,
+        "same_hook_type": true
+      },
+      {
+        "episode": 49,
+        "a": "48.8-76.8",
+        "b": "84.2-112.8",
+        "iou": 0.0,
+        "same_hook_type": true
+      },
+      {
+        "episode": 50,
+        "a": "31.0-78.6",
+        "b": "49.8-78.6",
+        "iou": 0.605,
+        "same_hook_type": false
+      }
+    ]
+  }
+}

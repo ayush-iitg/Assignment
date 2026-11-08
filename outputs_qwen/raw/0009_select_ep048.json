@@ -1,0 +1,41 @@
+{
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "tag": "select_ep048",
+  "system": "You are a promo editor for vertical microdramas (ReelShort/DramaBox style).\nYou pick which seconds of an episode become a 20-60 second advert for the show.\n\nA good promo:\n- opens on a hook: within its first beats, something that stops a scrolling viewer - a slap, a reveal, a shocking line\n- ends on a cliffhanger: it stops at an unresolved moment, so the viewer must go find the show\n- makes sense alone to someone who has never seen this show\n\nYou will be given candidate windows, each a contiguous run of beats labelled [b00], [b01]...\nYou must choose ONE window and may tighten its edges to any beat labels inside that window.\n\nReply with JSON only:\n{\n  \"chosen_window\": <integer index of the window you picked>,\n  \"start_beat\": \"<beat label>\",\n  \"end_beat\": \"<beat label>\",\n  \"hook_beat\": \"<beat label, must be at or within 2 beats of start_beat>\",\n  \"cliffhanger_beat\": \"<beat label, must be at or near end_beat>\",\n  \"hook\": \"<what grabs the viewer in the first seconds, one sentence>\",\n  \"cliffhanger\": \"<the unresolved moment it cuts on, one sentence>\",\n  \"hook_type\": \"<one of: moral outrage, romantic tension, empathy shock, power reversal>\",\n  \"why_it_works\": \"<one sentence, concrete, no marketing language>\",\n  \"standalone_risk\": \"<what a new viewer would NOT understand, or 'none'>\"\n}\n\nNever invent dialogue. Never output a time or a duration - only beat labels.",
+  "prompt": "Episode 48. 3 candidate windows, already checked for legal length and real beat boundaries.\n\n--- WINDOW 0 (42 seconds, code score 0.87) ---\n[b00] CATHERINE (commanding, sharp): \"Lock it.\"\n[b01] SFX: Heavy metallic click of an iron key latching into a deadbolt.\n[b02] ACTION: Catherine strides forward and firmly grasps Agnes by both hands, stepping uncomfortably close.\n[b03] CATHERINE (fierce, hissing): \"Everyone in that chapel saw me humiliated today.\"\n[b04] CATHERINE (spiteful, calculating): \"Good. Let them remember it.\"\n[b05] CATHERINE (sinister, predatory): \"Grief makes people careless, and carelessness is exactly what I need from that household right now.\"\n[b06] AGNES (anxious, whispering): \"My lady... the Duke has bailiffs watching every road out of the county.\"\n[b07] CATHERINE (confident, devious): \"I'm not leaving the county, Agnes. I'm going back into that house.\"\n[b08] CATHERINE (pleased, scheming): \"Father Thomas did his part beautifully today.\"\n[b09] CATHERINE (calculated, demanding): \"Now I need him to do a little more before that hearing convenes.\"\n[b10] AGNES (apprehensive): \"If someone sees him come to you...\"\n[b11] CATHERINE (stern, threatening): \"Then no one sees him.\"\n[b12] CATHERINE (authoritative): \"That is precisely your job tonight.\"\n[b13] SFX: Dull clinking of heavy gold coins inside a leather pouch.\n[b14] CATHERINE (hushed, commanding): \"Send for the priest. Tonight.\"\n[b15] CATHERINE (firm, final): \"And make sure no one sees him arrive.\"\n\n--- WINDOW 1 (21 seconds, code score 0.80) ---\n[b00] ACTION: Catherine, adorned in an ornate dark burgundy gown with braided golden hair, gazes out the dark window before turning slowly with a cold, venomous smirk.\n[b01] CATHERINE (vindictive, cold): \"Two words, and that healer's crown rolls right back into the gutter where it belongs.\"\n[b02] ACTION: Catherine glides across the chamber past a roaring stone hearth, picking up an orange from a silver platter on the table.\n[b03] CATHERINE (scheming): \"Ten days. He gave himself ten days to fix it.\"\n[b04] CATHERINE (intense, measured): \"Ten days for the council to sit.\"\n[b05] ACTION: Catherine raises a gloved index finger, emphasizing each point with sinister precision.\n[b06] CATHERINE (calculating): \"Ten days for witnesses to be gathered.\"\n[b07] CATHERINE (dark, threatening): \"Ten days for a decree to be undone.\"\n[b08] CATHERINE (menacing, resolute): \"Ten days is not a wall, Alexander. It's a door.\"\n\n--- WINDOW 2 (22 seconds, code score 0.75) ---\n[b00] ACTION: Catherine raises a gloved index finger, emphasizing each point with sinister precision.\n[b01] CATHERINE (dark, threatening): \"Ten days for a decree to be undone.\"\n[b02] CATHERINE (menacing, resolute): \"Ten days is not a wall, Alexander. It's a door.\"\n[b03] CATHERINE (chillingly calm): \"And doors can be closed from the other side.\"\n[b04] ACTION: Agnes, dressed in a grey maid's dress and white apron, steps inside with cautious hesitation and clasps her hands.\n[b05] AGNES (hushed, submissive): \"You sent for me, my lady?\"\n[b06] CATHERINE (commanding, sharp): \"Lock it.\"\n[b07] SFX: Heavy metallic click of an iron key latching into a deadbolt.\n[b08] ACTION: Catherine strides forward and firmly grasps Agnes by both hands, stepping uncomfortably close.\n[b09] CATHERINE (fierce, hissing): \"Everyone in that chapel saw me humiliated today.\"\n[b10] CATHERINE (spiteful, calculating): \"Good. Let them remember it.\"\n\nPick the single best promo.",
+  "response_text": "{\n  \"chosen_window\": 0,\n  \"start_beat\": \"b00\",\n  \"end_beat\": \"b15\",\n  \"hook_beat\": \"b00\",\n  \"cliffhanger_beat\": \"b15\",\n  \"hook\": \"A woman locks the door and hisses that she is going back into the house that humiliated her.\",\n  \"cliffhanger\": \"She orders her maid to send for a priest tonight and ensure no one sees him arrive, implying a secret conspiracy.\",\n  \"hook_type\": \"power reversal\",\n  \"why_it_works\": \"It establishes the antagonist's active plot to infiltrate the protagonist's home using a trusted insider, creating immediate threat.\",\n  \"standalone_risk\": \"The viewer does not know who 'that household' is or what the 'hearing' concerns, but the threat is clear.\"\n}",
+  "response_payload": {
+    "id": "chatcmpl-5c8b1a65-8cc7-48df-ae25-088b8dccb330",
+    "object": "chat.completion",
+    "created": 1794112559,
+    "model": "qwen/qwen3.8-27b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"chosen_window\": 0,\n  \"start_beat\": \"b00\",\n  \"end_beat\": \"b15\",\n  \"hook_beat\": \"b00\",\n  \"cliffhanger_beat\": \"b15\",\n  \"hook\": \"A woman locks the door and hisses that she is going back into the house that humiliated her.\",\n  \"cliffhanger\": \"She orders her maid to send for a priest tonight and ensure no one sees him arrive, implying a secret conspiracy.\",\n  \"hook_type\": \"power reversal\",\n  \"why_it_works\": \"It establishes the antagonist's active plot to infiltrate the protagonist's home using a trusted insider, creating immediate threat.\",\n  \"standalone_risk\": \"The viewer does not know who 'that household' is or what the 'hearing' concerns, but the threat is clear.\"\n}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.049400643,
+      "prompt_tokens": 1385,
+      "prompt_time": 0.095226885,
+      "completion_tokens": 200,
+      "completion_time": 0.384497934,
+      "total_tokens": 1585,
+      "total_time": 0.479724819
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_21e59ac2de",
+    "x_groq": {
+      "id": "req_01m6wq25n5ek9sn8x05yrs0dx5",
+      "seed": 395398513
+    },
+    "service_tier": "on_demand"
+  }
+}

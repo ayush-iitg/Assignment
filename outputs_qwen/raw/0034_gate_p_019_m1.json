@@ -1,0 +1,41 @@
+{
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "tag": "gate_p_019_m1",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\nJULIANA: \"My mother's book almost burned with it.\"\n[action] Juliana tenderly lifts a scorched corner of parchment, revealing the surviving botanical drawing of medicinal herbs inside.\nELDER VILLAGER: \"My lady. You cannot stay here.\"\nELDER VILLAGER: \"There is an old barn near the village. It is empty.\"\n[action] The elder villager steps closer, resting a gentle, reassuring hand on Juliana's shoulder.\nELDER VILLAGER: \"Take it.\"\nALEXANDER: \"Then Ashburg will remember who it belongs to.\"\n[action] The heavy wooden barn doors creak open. Alexander steps into the lantern light, carrying a bundle of firewood and a thick blanket under his arm.\nJULIANA: \"We have lost everything.\"\nJULIANA: \"I don't know what we will do tomorrow.\"",
+  "response_text": "{\n  \"who_is_the_main_character\": \"Juliana (named in dialogue)\",\n  \"what_is_at_stake\": \"Survival and shelter after a fire destroyed their home and possessions\",\n  \"what_question_are_you_left_with\": \"How will they survive in the empty barn and what is the significance of the book?\",\n  \"would_you_keep_watching\": \"maybe, to see how they cope with the loss and what the book means\",\n  \"passes\": {\n    \"character_identifiable\": true,\n    \"stakes_clear\": true,\n    \"ends_unresolved\": true,\n    \"would_watch\": true\n  }\n}",
+  "response_payload": {
+    "id": "chatcmpl-47f0d92e-e524-4419-9d86-f941328816d6",
+    "object": "chat.completion",
+    "created": 1794121540,
+    "model": "qwen/qwen3.8-27b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"who_is_the_main_character\": \"Juliana (named in dialogue)\",\n  \"what_is_at_stake\": \"Survival and shelter after a fire destroyed their home and possessions\",\n  \"what_question_are_you_left_with\": \"How will they survive in the empty barn and what is the significance of the book?\",\n  \"would_you_keep_watching\": \"maybe, to see how they cope with the loss and what the book means\",\n  \"passes\": {\n    \"character_identifiable\": true,\n    \"stakes_clear\": true,\n    \"ends_unresolved\": true,\n    \"would_watch\": true\n  }\n}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.047662746,
+      "prompt_tokens": 496,
+      "prompt_time": 0.037474602,
+      "completion_tokens": 140,
+      "completion_time": 0.283998401,
+      "total_tokens": 636,
+      "total_time": 0.321473003
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_21e59ac2de",
+    "x_groq": {
+      "id": "req_01m6wzm8mhep39sn09eq4nj6et",
+      "seed": 2076413437
+    },
+    "service_tier": "on_demand"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "tag": "gate_p_026_a",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\nDOWAGER DUCHESS: \"Rupert and Catherine want me dead. They are poisoning me in my own bed, aren't they?\"\nJULIANA: \"Yes. But the charcoal is fighting the poison. You are safe now.\"\nDOWAGER DUCHESS: \"Then tell me... why is a girl of such noble spirit working as a common maid?\"\nJULIANA: \"Because my family cast me out to rot. I have nothing left in this world but my honor.\"\n[action] Juliana rests her right hand against the edge of the bedcover, unwittingly placing the unique ring directly within the Duchess's line of sight.\n[sfx] A sharp, stunned gasp.\n[action] The Duchess's mouth hangs open in pure disbelief as she stares fixedly at Juliana's hand.\nDOWAGER DUCHESS: \"Your hand... Let me see your hand.\"\nJULIANA: \"Your Grace? What is wrong? You look as though you've seen a ghost.\"\n[action] The Duchess reaches outward with trembling fingers, grasping frantically for Juliana.\n[sfx] A sudden sharp rustle of fabric as her fingers snap tight.\nDOWAGER DUCHESS: \"Do not move!\"\nDOWAGER DUCHESS: \"Where... where... Where did you get this ring? Speak to me!\"",
+  "response_text": "{\n  \"who_is_the_main_character\": \"Juliana (the maid) and the Dowager Duchess; the clip names them but does not provide surnames or further identity details\",\n  \"what_is_at_stake\": \"The Dowager Duchess believes she is being poisoned by Rupert and Catherine, and the sudden discovery of a specific ring on Juliana's hand creates an immediate, high-tension confrontation regarding Juliana's true identity or origin.\",\n  \"what_question_are_you_left_with\": \"Who is Juliana really, and why does the Dowager Duchess react with such shock and fear to the ring on her hand?\",\n  \"would_you_keep_watching\": \"yes, the sudden shift from a poisoning plot to a shocking identity reveal creates a strong hook to see the explanation.\",\n  \"passes\": {\n    \"character_identifiable\": true,\n    \"stakes_clear\": true,\n    \"ends_unresolved\": true,\n    \"would_watch\": true\n  }\n}",
+  "response_payload": {
+    "id": "chatcmpl-6af12fa4-24fc-435b-8b69-ae874b856afa",
+    "object": "chat.completion",
+    "created": 1794121409,
+    "model": "qwen/qwen3.8-27b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"who_is_the_main_character\": \"Juliana (the maid) and the Dowager Duchess; the clip names them but does not provide surnames or further identity details\",\n  \"what_is_at_stake\": \"The Dowager Duchess believes she is being poisoned by Rupert and Catherine, and the sudden discovery of a specific ring on Juliana's hand creates an immediate, high-tension confrontation regarding Juliana's true identity or origin.\",\n  \"what_question_are_you_left_with\": \"Who is Juliana really, and why does the Dowager Duchess react with such shock and fear to the ring on her hand?\",\n  \"would_you_keep_watching\": \"yes, the sudden shift from a poisoning plot to a shocking identity reveal creates a strong hook to see the explanation.\",\n  \"passes\": {\n    \"character_identifiable\": true,\n    \"stakes_clear\": true,\n    \"ends_unresolved\": true,\n    \"would_watch\": true\n  }\n}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.707228956,
+      "prompt_tokens": 594,
+      "prompt_time": 0.044086322,
+      "completion_tokens": 205,
+      "completion_time": 0.402976069,
+      "total_tokens": 799,
+      "total_time": 0.447062391
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_a1293f40b5",
+    "x_groq": {
+      "id": "req_01m6wzg7cbe6xs1r30dbfjs6ew",
+      "seed": 309375199
+    },
+    "service_tier": "on_demand"
+  }
+}

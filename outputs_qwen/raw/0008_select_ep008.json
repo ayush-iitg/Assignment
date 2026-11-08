@@ -1,0 +1,41 @@
+{
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "tag": "select_ep008",
+  "system": "You are a promo editor for vertical microdramas (ReelShort/DramaBox style).\nYou pick which seconds of an episode become a 20-60 second advert for the show.\n\nA good promo:\n- opens on a hook: within its first beats, something that stops a scrolling viewer - a slap, a reveal, a shocking line\n- ends on a cliffhanger: it stops at an unresolved moment, so the viewer must go find the show\n- makes sense alone to someone who has never seen this show\n\nYou will be given candidate windows, each a contiguous run of beats labelled [b00], [b01]...\nYou must choose ONE window and may tighten its edges to any beat labels inside that window.\n\nReply with JSON only:\n{\n  \"chosen_window\": <integer index of the window you picked>,\n  \"start_beat\": \"<beat label>\",\n  \"end_beat\": \"<beat label>\",\n  \"hook_beat\": \"<beat label, must be at or within 2 beats of start_beat>\",\n  \"cliffhanger_beat\": \"<beat label, must be at or near end_beat>\",\n  \"hook\": \"<what grabs the viewer in the first seconds, one sentence>\",\n  \"cliffhanger\": \"<the unresolved moment it cuts on, one sentence>\",\n  \"hook_type\": \"<one of: moral outrage, romantic tension, empathy shock, power reversal>\",\n  \"why_it_works\": \"<one sentence, concrete, no marketing language>\",\n  \"standalone_risk\": \"<what a new viewer would NOT understand, or 'none'>\"\n}\n\nNever invent dialogue. Never output a time or a duration - only beat labels.",
+  "prompt": "Episode 8. 3 candidate windows, already checked for legal length and real beat boundaries.\n\n--- WINDOW 0 (30 seconds, code score 0.63) ---\n[b00] JULIANA (teasing, determined): \"But one day, I am trimming that beard.\"\n[b01] ALEXANDER (low, amused): \"We'll see.\"\n[b02] ALEXANDER (instructional, calm): \"That one grows near the northern stream. Crushed leaves ease swelling.\"\n[b03] JULIANA (soft, nostalgic): \"My mother wrote the same thing.\"\n[b04] JULIANA (hesitant, compassionate): \"And the scars... were they from the war?\"\n[b05] ALEXANDER (quiet, subdued): \"Some were.\"\n[b06] JULIANA (tender, aching): \"It must have been terrible.\"\n[b07] ALEXANDER (heavy, somber): \"It was.\"\n[b08] JULIANA (reflective, vulnerable): \"I thought losing wealth meant losing everything.\"\n[b09] JULIANA (quiet, transformed): \"Perhaps I was wrong.\"\n[b10] ACTION: Juliana maintains her warm, peaceful gaze across the table as soft firelight flickers over her face into fade out.\n\n--- WINDOW 1 (34 seconds, code score 0.56) ---\n[b00] JULIANA (inquiring, soft): \"How do you know that?\"\n[b01] ALEXANDER (somber, matter-of-fact): \"Soldiers learn quickly which plants keep a man alive.\"\n[b02] JULIANA (observant, lightly teasing): \"You know more about healing than you let on.\"\n[b03] ALEXANDER (quiet, gritty): \"Enough to survive.\"\n[b04] JULIANA (hesitant, soft): \"Your hair and beard...\"\n[b05] JULIANA (gentle, tender): \"I could trim them for you.\"\n[b06] ALEXANDER (firm, low): \"Not yet.\"\n[b07] JULIANA (puzzled, curious): \"Not yet?\"\n[b08] ALEXANDER (grounded, steady): \"Let them grow.\"\n[b09] JULIANA (playful, amused): \"You prefer looking like a forest hermit?\"\n[b10] ALEXANDER (dry, droll): \"It has advantages.\"\n[b11] JULIANA (fond, resigned): \"Very well.\"\n[b12] JULIANA (teasing, determined): \"But one day, I am trimming that beard.\"\n\n--- WINDOW 2 (22 seconds, code score 0.49) ---\n[b00] ACTION: Juliana delicately runs her fingertips across the embossed leather cover of the worn botanical volume, noticing its weathered state.\n[b01] JULIANA (gentle, somber): \"Some of the pages are ruined. Careful.\"\n[b02] SFX: Soft metallic click of the book clasp loosening.\n[b03] JULIANA (reflective, reverent): \"Mother spent years writing this.\"\n[b04] ACTION: Alexander gently sets down a fresh bundle of small white herbal flowers tied with twine beside the open book.\n[b05] JULIANA (curious, recognizing): \"Yarrow.\"\n[b06] ALEXANDER (calm, knowledgeable): \"Good for wounds. Fever, too.\"\n[b07] JULIANA (inquiring, soft): \"How do you know that?\"\n[b08] ALEXANDER (somber, matter-of-fact): \"Soldiers learn quickly which plants keep a man alive.\"\n[b09] JULIANA (observant, lightly teasing): \"You know more about healing than you let on.\"\n\nPick the single best promo.",
+  "response_text": "{\n  \"chosen_window\": 1,\n  \"start_beat\": \"b04\",\n  \"end_beat\": \"b12\",\n  \"hook_beat\": \"b05\",\n  \"cliffhanger_beat\": \"b12\",\n  \"hook\": \"Juliana offers to trim Alexander's beard, but he refuses with a cryptic 'Not yet.'\",\n  \"cliffhanger\": \"Juliana declares with determination that she will trim his beard one day, leaving the reason for his refusal unresolved.\",\n  \"hook_type\": \"romantic tension\",\n  \"why_it_works\": \"The refusal to let her touch his face creates immediate intimacy and mystery, while the final line promises a future confrontation or resolution.\",\n  \"standalone_risk\": \"none\"\n}",
+  "response_payload": {
+    "id": "chatcmpl-17828111-1d9c-4f77-8351-dfa78c342810",
+    "object": "chat.completion",
+    "created": 1794103742,
+    "model": "qwen/qwen3.8-27b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"chosen_window\": 1,\n  \"start_beat\": \"b04\",\n  \"end_beat\": \"b12\",\n  \"hook_beat\": \"b05\",\n  \"cliffhanger_beat\": \"b12\",\n  \"hook\": \"Juliana offers to trim Alexander's beard, but he refuses with a cryptic 'Not yet.'\",\n  \"cliffhanger\": \"Juliana declares with determination that she will trim his beard one day, leaving the reason for his refusal unresolved.\",\n  \"hook_type\": \"romantic tension\",\n  \"why_it_works\": \"The refusal to let her touch his face creates immediate intimacy and mystery, while the final line promises a future confrontation or resolution.\",\n  \"standalone_risk\": \"none\"\n}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.04954189,
+      "prompt_tokens": 1224,
+      "prompt_time": 0.084032454,
+      "completion_tokens": 178,
+      "completion_time": 0.35390921,
+      "total_tokens": 1402,
+      "total_time": 0.437941664
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_21e59ac2de",
+    "x_groq": {
+      "id": "req_01m6wen36cewdt7b7xxtme2fps",
+      "seed": 1819178934
+    },
+    "service_tier": "on_demand"
+  }
+}

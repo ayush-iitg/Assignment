@@ -1,0 +1,48 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "select_ep035",
+  "system": "You are a promo editor for vertical microdramas (ReelShort/DramaBox style).\nYou pick which seconds of an episode become a 20-60 second advert for the show.\n\nA good promo:\n- opens on a hook: within its first beats, something that stops a scrolling viewer - a slap, a reveal, a shocking line\n- ends on a cliffhanger: it stops at an unresolved moment, so the viewer must go find the show\n- makes sense alone to someone who has never seen this show\n\nYou will be given candidate windows, each a contiguous run of beats labelled [b00], [b01]...\nYou must choose ONE window and may tighten its edges to any beat labels inside that window.\n\nReply with JSON only:\n{\n  \"chosen_window\": <integer index of the window you picked>,\n  \"start_beat\": \"<beat label>\",\n  \"end_beat\": \"<beat label>\",\n  \"hook_beat\": \"<beat label, must be at or within 2 beats of start_beat>\",\n  \"cliffhanger_beat\": \"<beat label, must be at or near end_beat>\",\n  \"hook\": \"<what grabs the viewer in the first seconds, one sentence>\",\n  \"cliffhanger\": \"<the unresolved moment it cuts on, one sentence>\",\n  \"hook_type\": \"<one of: moral outrage, romantic tension, empathy shock, power reversal>\",\n  \"why_it_works\": \"<one sentence, concrete, no marketing language>\",\n  \"standalone_risk\": \"<what a new viewer would NOT understand, or 'none'>\"\n}\n\nNever invent dialogue. Never output a time or a duration - only beat labels.",
+  "prompt": "Episode 35. 4 candidate windows, already checked for legal length and real beat boundaries.\n\n--- WINDOW 0 (24 seconds, code score 0.85) ---\n[b00] ALEXANDER (ominous, deliberate): \"Because someone wanted you to believe I was dead.\"\n[b01] ALEXANDER'S MOTHER (breathless): \"Who?\"\n[b02] ACTION: Alexander turns away toward the frosted window, staring out into the dark raging blizzard outside.\n[b03] ALEXANDER (brooding): \"I spent three years trying to find out.\"\n[b04] ACTION: Alexander abruptly pushes away from the window, storming back toward the table with burning rage.\n[b05] ALEXANDER (fierce, resolute): \"The ambush was not an accident.\"\n[b06] ALEXANDER (vehement, enraged): \"Someone ordered my men to die.\"\n[b07] ACTION: He leans heavily over the wooden table, looming close as his fury boils over.\n[b08] ALEXANDER (darkly intimating): \"Someone wanted me erased.\"\n[b09] ALEXANDER'S MOTHER (gasping, terrified): \"Who?\"\n[b10] ALEXANDER (deadly, chilling): \"The men behind it... are the same men ruling Ashwood now.\"\n\n--- WINDOW 1 (37 seconds, code score 0.85) ---\n[b00] ALEXANDER'S MOTHER (sobbing, stunned): \"Alexander!\"\n[b01] ALEXANDER (breathless, in disbelief): \"Mother?\"\n[b02] ACTION: She drops her walking staff and rushes forward, throwing her arms around Alexander's neck. He pulls her tightly into his chest.\n[b03] ALEXANDER'S MOTHER (weeping, overwhelmed): \"You're alive.\"\n[b04] ALEXANDER (gentle, choked up): \"Mother.\"\n[b05] ACTION: She leans back slightly, her frail hand reaching up to gently cup his bearded, scarred cheek, staring into his eyes in disbelief.\n[b06] ALEXANDER'S MOTHER (tearful, heartbroken): \"I buried you.\"\n[b07] ALEXANDER (soft, somber): \"I know.\"\n[b08] ALEXANDER'S MOTHER (anguished, accusing): \"They told me you died. They told me your entire regiment was destroyed.\"\n[b09] ALEXANDER (dark, resigned): \"Most of them were.\"\n[b10] ALEXANDER'S MOTHER (searching, desperate): \"Then how did you survive?\"\n\n--- WINDOW 2 (20 seconds, code score 0.79) ---\n[b00] ALEXANDER'S MOTHER (searching, desperate): \"Then how did you survive?\"\n[b01] ALEXANDER (grim, quiet): \"I wasn't supposed to.\"\n[b02] ACTION: Alexander steps over to the wooden table, looking down at the parchment map spread out under the lantern.\n[b03] ALEXANDER (solemn): \"Three years ago, I was sent to the Iberian front.\"\n[b04] ALEXANDER (steady, focused): \"It was a classified Crown mission. We were investigating a British officer selling military secrets to French spies.\"\n[b05] ACTION: Alexander's scarred finger points to a red-circled location on the parchment map marked near Madrid.\n[b06] ALEXANDER'S MOTHER (shocked): \"A traitor?\"\n\n--- WINDOW 3 (21 seconds, code score 0.79) ---\n[b00] ALEXANDER'S MOTHER (trembling, anxious): \"And you?\"\n[b01] ALEXANDER (hollow): \"I was shot. Left for dead.\"\n[b02] ALEXANDER'S MOTHER (pleading, astonished): \"How did you escape?\"\n[b03] ALEXANDER (somber, low): \"I crawled away from the battlefield, half dead, alone.\"\n[b04] ALEXANDER: \"I survived because the men who came looking for me believed I was already dead.\"\n[b05] ALEXANDER'S MOTHER (aghast, stunned): \"Then why did they never tell us?\"\n\nPick the single best promo.",
+  "response_text": "{\"chosen_window\":0,\"start_beat\":\"b00\",\"end_beat\":\"b10\",\"hook_beat\":\"b00\",\"cliffhanger_beat\":\"b10\",\"hook\":\"Alexander’s chilling line, “Because someone wanted you to believe I was dead,” drops a deadly secret right away.\",\"cliffhanger\":\"He reveals that the conspirators are the very men ruling Ashwood now, leaving the power struggle unresolved.\",\"hook_type\":\"power reversal\",\"why_it_works\":\"It thrusts the viewer into a high‑stakes conspiracy with a shocking betrayal.\",\"standalone_risk\":\"The audience won’t know who or what Ashwood is, but the tension still hooks them.\"}",
+  "response_payload": {
+    "id": "chatcmpl-3ae327b0-4c67-4616-a849-a90f894c7fb1",
+    "object": "chat.completion",
+    "created": 1794082674,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"chosen_window\":0,\"start_beat\":\"b00\",\"end_beat\":\"b10\",\"hook_beat\":\"b00\",\"cliffhanger_beat\":\"b10\",\"hook\":\"Alexander’s chilling line, “Because someone wanted you to believe I was dead,” drops a deadly secret right away.\",\"cliffhanger\":\"He reveals that the conspirators are the very men ruling Ashwood now, leaving the power struggle unresolved.\",\"hook_type\":\"power reversal\",\"why_it_works\":\"It thrusts the viewer into a high‑stakes conspiracy with a shocking betrayal.\",\"standalone_risk\":\"The audience won’t know who or what Ashwood is, but the tension still hooks them.\"}",
+          "reasoning": "We need to pick one window and possibly tighten edges. Must include hook within first 2 beats of start. Must end with cliffhanger near end. Provide JSON.\n\nWe evaluate each window.\n\nWindow0: starts with Alexander ominous line \"Because someone wanted you to believe I was dead.\" That's a hook (moral outrage/power reversal). Ends with \"The men behind it... are the same men ruling Ashwood now.\" That's a cliffhanger, reveals conspiracy. Good. Hook beat could be b00. Cliffhanger beat b10. Start at b00, end at b10. Hook within 2 beats okay. Works alone? Might need context of Ashwood ruling men, but okay. Standalone risk: viewer may not know who \"Ashwood\" is, but still intrigue.\n\nWindow1: emotional reunion. Hook is mother sobbing \"Alexander!\" emotional shock. Cliffhanger maybe at b10 \"Then how did you survive?\" That's unresolved. Works. Hook type romantic tension? maybe empathy shock. Could be good.\n\nWindow2: starts with mother asking \"Then how did you survive?\" That's same as cliffhanger earlier. Hook maybe not as strong. Ends with \"A traitor?\" question, but less cliffhanger.\n\nWindow3: similar.\n\nWe need best promo: likely Window0 because strong power reversal and conspiracy hook, ends with big reveal. Hook within first 2 beats: b00 is good. Cliffhanger at b10. Provide JSON.\n\nCheck constraints: start_beat label, end_beat label within window. Hook_beat within 2 beats of start_beat: b00. Cliffhanger_beat near end: b10.\n\nProvide hook_type: power reversal (someone wanted you to believe I was dead, then reveals ruling men). Why_it_works: immediate intrigue and high stakes. Standalone_risk: viewer may not know Ashwood's political context.\n\nReturn JSON compact."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.055369062,
+      "prompt_tokens": 1342,
+      "prompt_time": 0.065347477,
+      "completion_tokens": 535,
+      "completion_time": 1.1134435169999999,
+      "total_tokens": 1877,
+      "total_time": 1.178790994,
+      "prompt_tokens_details": {
+        "cached_tokens": 256
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 388
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_267e812a3a",
+    "x_groq": {
+      "id": "req_01m6vtj471emjrv66grke0qq62",
+      "seed": 2141119534
+    },
+    "service_tier": "on_demand"
+  }
+}

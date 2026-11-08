@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "select_ep017",
+  "system": "You are a promo editor for vertical microdramas (ReelShort/DramaBox style).\nYou pick which seconds of an episode become a 20-60 second advert for the show.\n\nA good promo:\n- opens on a hook: within its first beats, something that stops a scrolling viewer - a slap, a reveal, a shocking line\n- ends on a cliffhanger: it stops at an unresolved moment, so the viewer must go find the show\n- makes sense alone to someone who has never seen this show\n\nYou will be given candidate windows, each a contiguous run of beats labelled [b00], [b01]...\nYou must choose ONE window and may tighten its edges to any beat labels inside that window.\n\nReply with JSON only:\n{\n  \"chosen_window\": <integer index of the window you picked>,\n  \"start_beat\": \"<beat label>\",\n  \"end_beat\": \"<beat label>\",\n  \"hook_beat\": \"<beat label, must be at or within 2 beats of start_beat>\",\n  \"cliffhanger_beat\": \"<beat label, must be at or near end_beat>\",\n  \"hook\": \"<what grabs the viewer in the first seconds, one sentence>\",\n  \"cliffhanger\": \"<the unresolved moment it cuts on, one sentence>\",\n  \"hook_type\": \"<one of: moral outrage, romantic tension, empathy shock, power reversal>\",\n  \"why_it_works\": \"<one sentence, concrete, no marketing language>\",\n  \"standalone_risk\": \"<what a new viewer would NOT understand, or 'none'>\"\n}\n\nNever invent dialogue. Never output a time or a duration - only beat labels.",
+  "prompt": "Episode 17. 3 candidate windows, already checked for legal length and real beat boundaries.\n\n--- WINDOW 0 (22 seconds, code score 0.64) ---\n[b00] ALEXANDER (gruff, low): \"For what?\"\n[b01] JULIANA (trembling, heartfelt): \"For standing between me and those men.\"\n[b02] ALEXANDER (unwavering, firm): \"I would do it again.\"\n[b03] JULIANA (whispering, awed): \"Even if there were ten of them?\"\n[b04] ALEXANDER (deep, resolute): \"As long as I draw breath...\"\n[b05] ACTION: Alexander drops to one knee before Juliana, gently taking her trembling, bandaged hands into his large, weathered palms.\n[b06] ALEXANDER (gentle, vowing): \"...no one will hurt you again.\"\n[b07] JULIANA (choked up, pained): \"You cannot promise that.\"\n[b08] ALEXANDER (quiet, absolute): \"I just did.\"\n[b09] ACTION: Alexander squeezes Juliana's hands reassuringly as she rests her fingertips against his skin. The scene fades to black.\n\n--- WINDOW 1 (29 seconds, code score 0.53) ---\n[b00] JULIANA (choked up, pained): \"You cannot promise that.\"\n[b01] ALEXANDER (quiet, absolute): \"I just did.\"\n[b02] ACTION: Alexander squeezes Juliana's hands reassuringly as she rests her fingertips against his skin. The scene fades to black.\n[b03] ACTION: Juliana wrings out a clean linen cloth from the basin and tenderly dabs at the fresh cuts and abrasions on the back of Alexander's right hand.\n[b04] JULIANA (tender, reproachful): \"You were bleeding last night.\"\n[b05] ALEXANDER (quiet, fond): \"So were you.\"\n[b06] JULIANA (softly teasing): \"You make it very difficult to argue with you.\"\n[b07] ACTION: Juliana returns the damp cloth to the ceramic basin, her expression turning somber and reflective.\n[b08] JULIANA (vulnerable, sincere): \"I was frightened.\"\n[b09] ALEXANDER (questioning): \"Of them?\"\n[b10] JULIANA (whispering, earnest): \"Of losing you.\"\n\n--- WINDOW 2 (60 seconds, code score 0.51) ---\n[b00] JULIANA (vulnerable, sincere): \"I was frightened.\"\n[b01] ALEXANDER (questioning): \"Of them?\"\n[b02] JULIANA (whispering, earnest): \"Of losing you.\"\n[b03] ACTION: Juliana rests her cheek against Alexander's chest, closing her eyes as his strong arms wrap around her shoulders, holding her safe against his frame.\n[b04] ACTION: Juliana nestles deeper into his coat, listening intently to the rapid thudding beneath his chest.\n[b05] JULIANA (soft, playful): \"Your heart is racing.\"\n[b06] ALEXANDER (warm, whispering): \"So is yours.\"\n[b07] ACTION: Juliana slowly raises her hand, gently twirling a lock of Alexander's long, unruly dark hair between her fingers.\n[b08] JULIANA (lighthearted, teasing): \"This is becoming impossible.\"\n[b09] JULIANA (smiling): \"Soon birds will start nesting in it.\"\n[b10] ALEXANDER (dry, amused): \"They have not complained yet.\"\n[b11] ACTION: Juliana lets out a quiet, melodic laugh.\n[b12] JULIANA (charming, tender): \"Then I shall have to save you from the birds.\"\n[b13] ACTION: Alexander gently catches her wrist mid-air, holding her hand firmly against his chest while looking into her eyes with solemn sincerity.\n[b14] ALEXANDER (solemn, gentle): \"Not yet.\"\n[b15] JULIANA (sweet, reassuring): \"Then I will wait.\"\n[b16] ACTION: Juliana rests her head against Alexander's collarbone once more, wrapping both arms around him as he cradles her head in his palm.\n[b17] JULIANA (reflective, resonant): \"I know almost nothing about the man I married.\"\n[b18] JULIANA (deeply moved, loving): \"But every day, he gives me another reason to trust him.\"\n[b19] SFX: Warm crackle of embers in the hearth blending with swelling, tender orchestral strings holding into the fade-out.\n\nPick the single best promo.",
+  "response_text": "{\"chosen_window\":0,\"start_beat\":\"b00\",\"end_beat\":\"b10\",\"hook_beat\":\"b00\",\"cliffhanger_beat\":\"b10\",\"hook\":\"Juliana’s desperate plea, “You cannot promise that,” instantly signals high emotional stakes.\",\"cliffhanger\":\"Alexander’s quiet question, “Of losing you?” leaves their future uncertain.\",\"hook_type\":\"romantic tension\",\"why_it_works\":\"It thrusts viewers into a tense, intimate moment and ends on an unanswered fear that demands resolution.\",\"standalone_risk\":\"None\"}",
+  "response_payload": {
+    "id": "chatcmpl-f8a59979-bb1b-4a49-86e0-8ef600eede1c",
+    "object": "chat.completion",
+    "created": 1794082374,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"chosen_window\":0,\"start_beat\":\"b00\",\"end_beat\":\"b10\",\"hook_beat\":\"b00\",\"cliffhanger_beat\":\"b10\",\"hook\":\"Juliana’s desperate plea, “You cannot promise that,” instantly signals high emotional stakes.\",\"cliffhanger\":\"Alexander’s quiet question, “Of losing you?” leaves their future uncertain.\",\"hook_type\":\"romantic tension\",\"why_it_works\":\"It thrusts viewers into a tense, intimate moment and ends on an unanswered fear that demands resolution.\",\"standalone_risk\":\"None\"}",
+          "reasoning": "We need to pick one window and possibly tighten edges. Must include hook_beat within 2 beats of start_beat. Cliffhanger near end_beat. Provide JSON.\n\nWe need best promo: hook early, cliffhanger unresolved. Let's examine windows.\n\nWindow0: starts with Alexander asking \"For what?\" then Juliana says \"For standing between me and those men.\" It's a conflict. Hook could be the line \"For standing between me and those men.\" That's a reveal of stakes. Ends with fade to black after hand squeeze. No cliffhanger? Could cut before resolution? The last line is \"I just did.\" Then fade. Not much unresolved.\n\nWindow1: starts with Juliana \"You cannot promise that.\" That's a hook? maybe emotional tension. Ends with \"Of losing you.\" That's a question, unresolved. Could be good. Hook early: maybe line \"You cannot promise that.\" That's a hook (empathy shock). Cliffhanger: \"Of losing you.\" unresolved.\n\nWindow2: longer, more romantic. Hook could be \"I was frightened.\" Not as strong. Could start with \"Your heart is racing.\" Not hook. Might be less immediate.\n\nThus best is Window1. We can tighten start at b00, end at b10 (the last line). Hook beat b00 within 2 beats. Cliffhanger beat b10 (the line \"Of losing you.\") which is unresolved. Provide JSON.\n\nCheck hook_type: romantic tension or empathy shock? The line \"You cannot promise that.\" is emotional tension, maybe \"romantic tension\". Could be \"romantic tension\". Provide why_it_works: immediate conflict and a question about fear leaves curiosity.\n\nStandalone risk: viewer may not know who they are, but the emotional stakes are clear.\n\nNow produce JSON compact."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.155823051,
+      "prompt_tokens": 1425,
+      "prompt_time": 0.058994386,
+      "completion_tokens": 487,
+      "completion_time": 0.999446916,
+      "total_tokens": 1912,
+      "total_time": 1.058441302,
+      "completion_tokens_details": {
+        "reasoning_tokens": 364
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_27194a498a",
+    "x_groq": {
+      "id": "req_01m6vt8z8vex3bpayn1m7g4c6d",
+      "seed": 1934852740
+    },
+    "service_tier": "on_demand"
+  }
+}

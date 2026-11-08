@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "gate_p_011_a",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\nJULIANA: \"Those are all I have left!\"\nGERALD: \"Stand aside. Look at this place. A perfect hiding hole for a thief.\"\nJULIANA: \"You planted this accusation because you cannot bear that I am happy without you!\"\nGERALD: \"Happy?\"\nGERALD: \"What is it, soldier? Going to strike a gentleman in front of his wife?\"\nJULIANA: \"Don't!\"\nALEXANDER: \"One blow would end this.\"\nALEXANDER: \"But one blow would destroy her life.\"\n[action] The Constable grabs the coat by the collar and begins rummaging through its deep pockets.\nJULIANA: \"That is his coat!\"",
+  "response_text": "{\"who_is_the_main_character\":\"Juliana (the clip focuses on her, though it never labels her as the main character)\",\"what_is_at_stake\":\"Juliana's remaining possessions and possibly her reputation/freedom are threatened by accusations of theft and the prospect of violence\",\"what_question_are_you_left_with\":\"Will the constable find incriminating evidence in the coat, and will anyone be harmed by the threatened \\\"one blow\\\"?\",\"would_you_keep_watching\":\"maybe, the dialogue hints at high tension but the situation is unclear\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":false,\"ends_unresolved\":true,\"would_watch\":false}}",
+  "response_payload": {
+    "id": "chatcmpl-300ac341-8358-4c21-83ef-9bfc7991520d",
+    "object": "chat.completion",
+    "created": 1794090970,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"who_is_the_main_character\":\"Juliana (the clip focuses on her, though it never labels her as the main character)\",\"what_is_at_stake\":\"Juliana's remaining possessions and possibly her reputation/freedom are threatened by accusations of theft and the prospect of violence\",\"what_question_are_you_left_with\":\"Will the constable find incriminating evidence in the coat, and will anyone be harmed by the threatened \\\"one blow\\\"?\",\"would_you_keep_watching\":\"maybe, the dialogue hints at high tension but the situation is unclear\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":false,\"ends_unresolved\":true,\"would_watch\":false}}",
+          "reasoning": "We need to parse the clip and answer JSON fields.\n\nWe have characters: Juliana, Gerald, Alexander, and a Constable (maybe the same as Gerald? No, Gerald is separate). Dialogue:\n\nJULIANA: \"Those are all I have left!\"\nGERALD: \"Stand ... perfect hiding hole for a thief.\"\nJULIANA: \"You planted this accusation because you cannot bear that I am happy without ...!\"\nGERALD: \"Happy?\"\nGERALD: \"What is it, soldier? Going ...?\"\nJULIANA: \"Don't!\"\nALEXANDER: \"One blow would end this.\"\nALEXANDER: \"But one blow ... destroy her life.\"\n[action] The Constable grabs the coat by the collar and begins rummaging through its deep pockets.\nJULIANA: \"That is his coat!\"\n\nWe need to identify main character: likely Juliana is central, she speaks most lines. Clip never names main character explicitly as \"main character\". So we can say main character appears to be Juliana, but clip never names them as main. The instruction: \"name them if the clip names them; otherwise describe and say the clip never names them\". The clip names Juliana, Gerald, Alexander, Constable. So we can name Juliana as main character (since she has most dialogue). So \"who_is_the_main_character\": \"Juliana (the clip focuses on her)\". Or we could say \"Juliana, though the clip does not explicitly label her as main\". We'll phrase accordingly.\n\nWhat is at stake? Conflict seems about accusation of theft, possibly a blow that could end something but destroy her life. The stakes involve Juliana's possessions (\"Those are all I have left!\"), accusation of being a thief, potential violence (\"one blow would end this\") that could destroy her life. So at stake is Juliana's reputation/life/possessions. But is it clear? It's somewhat ambiguous. We can say \"Juliana's remaining possessions and possibly her freedom/reputation are at stake\". So we can state that.\n\nWhat question are you left with? Unresolved: What will happen with the coat? Who does it belong to? Will the constable find something? Will a blow be delivered? So unresolved question: Will the constable find evidence? Will someone be harmed? So we can phrase: \"Will the constable discover something in the coat that resolves the accusation?\" Or \"Will the 'one blow' be delivered?\" We'll pick one.\n\nWould you keep watching? Provide yes/maybe/no with short reason. Based on intrigue, maybe \"maybe\" because unclear but interesting.\n\nPasses: character_identifiable: true (we have names). stakes_clear: maybe false? The stakes are somewhat implied but not fully clear. I'd say false because we have to infer. ends_unresolved: true (conflict unresolved). would_watch: maybe (true? The passes field expects boolean). \"would_watch\": true if you would watch? The field is \"would_watch\": true/false. Since we said maybe, we need to decide boolean. Probably false because not definite? The instruction: passes includes \"would_watch\": true/false. It likely reflects whether you'd watch. Since we said maybe, maybe set false? But maybe we interpret \"maybe\" as not a definite yes, so false. However we could set true if we think you'd watch. The earlier field \"would_you_keep_watching\": \"maybe\" with reason. passes \"would_watch\" maybe true if you'd consider watching. I'd set false because not a clear yes. But ambiguous. I'll set false.\n\nNow produce compact JSON.\n\n"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.156667848,
+      "prompt_tokens": 530,
+      "prompt_time": 0.026074029,
+      "completion_tokens": 889,
+      "completion_time": 1.869588359,
+      "total_tokens": 1419,
+      "total_time": 1.8956623879999999,
+      "completion_tokens_details": {
+        "reasoning_tokens": 745
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_86dc843b12",
+    "x_groq": {
+      "id": "req_01m6w2f8xnesabnq69jh8ewwpp",
+      "seed": 545814989
+    },
+    "service_tier": "on_demand"
+  }
+}

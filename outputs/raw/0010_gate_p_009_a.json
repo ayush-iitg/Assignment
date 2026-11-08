@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "gate_p_009_a",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\n[action] Alexander steps forward and unlatches the cottage door, opening it into the pouring rain.\nPEASANT MOTHER: \"Please! They told me there was a woman here who knows herbs. My boy is burning with fever!\"\nJULIANA: \"Bring him here. Quickly.\"\n[action] The trembling mother gently lays the feverish boy down atop the wooden table as Juliana leans in close.\nJULIANA: \"He seems very unwell, but he is resting steadily. How long has he been like this?\"\nPEASANT MOTHER: \"Since yesterday morning. He has barely eaten since sunset.\"\n[action] Juliana lifts the weathered herbal book and rapidly browses the handwritten pages.\nJULIANA: \"Feverfew... Not alone.\"\nJULIANA: \"Chamomile... and willow bark.\"\nALEXANDER: \"You're certain?\"\nJULIANA: \"I have to be.\"\n[action] Juliana quickly grabs bundles of dried herbs from the table and turns to Alexander.\nJULIANA: \"Alexander, I need hot water.\"\nALEXANDER: \"I'm on it.\"\n[action] Alexander hurries to the hearth and lifts a boiling iron kettle from the hearth chain, while the mother buries her face in her hands.\nPEASANT MOTHER: \"Please save him.\"\n[action] Alexander returns and pours steaming hot water into the stone mortar as Juliana prepares the remedy.\nJULIANA: \"He is not beyond saving.\"\n[action] The child swallows weakly and lets out a soft cough.\nPEASANT MOTHER: \"Why isn't it working?\"",
+  "response_text": "{\"who_is_the_main_character\":\"Juliana (the healer)\",\"what_is_at_stake\":\"The feverish child's life is in danger\",\"what_question_are_you_left_with\":\"Will the remedy Juliana prepares be enough to save the child?\",\"would_you_keep_watching\":\"maybe, the tension of a life‑or‑death cure is intriguing\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":true,\"ends_unresolved\":true,\"would_watch\":false}}",
+  "response_payload": {
+    "id": "chatcmpl-f424ca4d-8dd5-4e99-b470-0b34fa87a88d",
+    "object": "chat.completion",
+    "created": 1794121019,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"who_is_the_main_character\":\"Juliana (the healer)\",\"what_is_at_stake\":\"The feverish child's life is in danger\",\"what_question_are_you_left_with\":\"Will the remedy Juliana prepares be enough to save the child?\",\"would_you_keep_watching\":\"maybe, the tension of a life‑or‑death cure is intriguing\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":true,\"ends_unresolved\":true,\"would_watch\":false}}",
+          "reasoning": "We need to produce JSON with fields. Determine main character: The clip mentions Alexander, Juliana, Peasant Mother, child. Who is main? Likely Juliana as central healer. But we need to base on clip: Who is main? The clip focuses on Juliana's actions and dialogue. Alexander also active. But main character likely Juliana. We can say the clip never names a main character explicitly, but Julian is central. The instruction: \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\". So we can name Juliana as main because she is central. But is that an assumption? The clip shows her as healer, main focus. So we can say main character is Juliana, as she is the one performing the remedy. That is acceptable.\n\nWhat is at stake: The child's life (fever). So stakes: child's health, possibly death.\n\nWhat question left with: Will the remedy save the child? Or will the child survive? So unresolved.\n\nWould you keep watching: maybe, because tension.\n\nPasses: character_identifiable: true (we have names). stakes_clear: true (child's health). ends_unresolved: true (child not saved). would_watch: maybe? The passes \"would_watch\" is boolean: true if you would watch? The field \"would_watch\" under passes likely indicates if you'd watch. The earlier field \"would_you_keep_watching\" is yes/maybe/no. So passes would_watch true if you would watch. Since we said maybe, maybe we set would_watch false? The spec: passes: {\"would_watch\": true/false}. Probably true if you would watch. Since we said maybe, ambiguous. I'd set false? But maybe \"maybe\" counts as not definite watch, so false. Let's set false.\n\nNow produce compact JSON."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.367971585,
+      "prompt_tokens": 714,
+      "prompt_time": 0.033176943,
+      "completion_tokens": 486,
+      "completion_time": 1.000493312,
+      "total_tokens": 1200,
+      "total_time": 1.033670255,
+      "completion_tokens_details": {
+        "reasoning_tokens": 382
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_19b184c447",
+    "x_groq": {
+      "id": "req_01m6wz4b2ne83rmdq0k146qstj",
+      "seed": 940394993
+    },
+    "service_tier": "on_demand"
+  }
+}

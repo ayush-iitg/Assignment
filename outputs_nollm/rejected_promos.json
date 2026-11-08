@@ -1,0 +1,3208 @@
+[
+  {
+    "promo_id": "p_029_a",
+    "shape": "single_stretch",
+    "episodes": [
+      29
+    ],
+    "segments": [
+      {
+        "order": 1,
+        "episode": 29,
+        "start": "00:24.80",
+        "end": "00:46.50",
+        "start_s": 24.8,
+        "end_s": 46.5,
+        "duration_s": 21.7
+      }
+    ],
+    "total_duration_s": 21.7,
+    "hook_is_cold_open": false,
+    "hook": "JULIANA (defiant, furious): \"It is medicine!\"",
+    "hook_type": "",
+    "cliffhanger": "JULIANA (screaming, desperate): \"You cannot just destroy it!\"",
+    "why_it_works": "[--no-llm mode] highest-intensity opening and an unresolved final beat.",
+    "standalone_risk": "",
+    "hook_beat_id": "e029_b0015",
+    "cliffhanger_beat_id": "e029_b0027",
+    "source_beat_ids": [
+      "e029_b0011",
+      "e029_b0013",
+      "e029_b0014",
+      "e029_b0015",
+      "e029_b0016",
+      "e029_b0017",
+      "e029_b0018",
+      "e029_b0019",
+      "e029_b0020",
+      "e029_b0021",
+      "e029_b0022",
+      "e029_b0023",
+      "e029_b0024",
+      "e029_b0025",
+      "e029_b0026",
+      "e029_b0027"
+    ],
+    "scores": {
+      "hook": 1.0,
+      "tension": 0.889,
+      "cliffhanger": 1.0,
+      "standalone": 0.7071,
+      "composite": 0.9192
+    },
+    "standalone_detail": {
+      "dialogue_coverage": 0.8571,
+      "n_speakers": 2,
+      "speakers": [
+        "CATHERINE",
+        "JULIANA"
+      ],
+      "names_spoken_aloud": [],
+      "dangling_pronoun_opening": true
+    },
+    "selected_by": "code",
+    "validators": {
+      "timestamps_exist": true,
+      "length_ok": true,
+      "order_ok": true,
+      "hook_within_3s": true,
+      "hook_inside_promo": true,
+      "cliffhanger_inside_promo": true
+    },
+    "validator_failures": [],
+    "valid": true,
+    "rejected_reason": "near-duplicate of p_028_a (episodes [28], 1 apart, visual overlap 0.22 >= 0.17)"
+  },
+  {
+    "promo_id": "p_032_a",
+    "shape": "single_stretch",
+    "episodes": [
+      32
+    ],
+    "segments": [
+      {
+        "order": 1,
+        "episode": 32,
+        "start": "02:01.80",
+        "end": "02:31.20",
+        "start_s": 121.8,
+        "end_s": 151.2,
+        "duration_s": 29.4
+      }
+    ],
+    "total_duration_s": 29.4,
+    "hook_is_cold_open": false,
+    "hook": "CATHERINE (shrieking): \"Why?!\"",
+    "hook_type": "",
+    "cliffhanger": "CATHERINE (enraged, shouting): \"You think you can lecture me?!\"",
+    "why_it_works": "[--no-llm mode] highest-intensity opening and an unresolved final beat.",
+    "standalone_risk": "",
+    "hook_beat_id": "e032_b0091",
+    "cliffhanger_beat_id": "e032_b0110",
+    "source_beat_ids": [
+      "e032_b0091",
+      "e032_b0092",
+      "e032_b0093",
+      "e032_b0094",
+      "e032_b0095",
+      "e032_b0096",
+      "e032_b0097",
+      "e032_b0098",
+      "e032_b0099",
+      "e032_b0100",
+      "e032_b0101",
+      "e032_b0102",
+      "e032_b0103",
+      "e032_b0104",
+      "e032_b0105",
+      "e032_b0106",
+      "e032_b0107",
+      "e032_b0108",
+      "e032_b0109",
+      "e032_b0110",
+      "e032_b0111",
+      "e032_b0112",
+      "e032_b0113",
+      "e032_b0114"
+    ],
+    "scores": {
+      "hook": 1.0,
+      "tension": 0.7655,
+      "cliffhanger": 1.0,
+      "standalone": 0.7684,
+      "composite": 0.9068
+    },
+    "standalone_detail": {
+      "dialogue_coverage": 0.9184,
+      "n_speakers": 2,
+      "speakers": [
+        "CATHERINE",
+        "JULIANA"
+      ],
+      "names_spoken_aloud": [],
+      "dangling_pronoun_opening": true
+    },
+    "selected_by": "code",
+    "validators": {
+      "timestamps_exist": true,
+      "length_ok": true,
+      "order_ok": true,
+      "hook_within_3s": true,
+      "hook_inside_promo": true,
+      "cliffhanger_inside_promo": true
+    },
+    "validator_failures": [],
+    "valid": true,
+    "rejected_reason": "near-duplicate of p_031_a (episodes [31], 1 apart, visual overlap 0.19 >= 0.17)"
+  },
+  {
+    "promo_id": "p_002_a",
+    "shape": "single_stretch",
+    "episodes": [
+      2
+    ],
+    "segments": [
+      {
+        "order": 1,
+        "episode": 2,
+        "start": "00:02.80",
+        "end": "00:37.10",
+        "start_s": 2.8,
+        "end_s": 37.1,
+        "duration_s": 34.3
+      }
+    ],
+    "total_duration_s": 34.3,
+    "hook_is_cold_open": false,
+    "hook": "GERALD (cruel, derisive): \"You are far too plain...\"",
+    "hook_type": "",
+    "cliffhanger": "JULIANA (choked with tears): \"Surely you will not let him humiliate me like this?\"",
+    "why_it_works": "[--no-llm mode] highest-intensity opening and an unresolved final beat.",
+    "standalone_risk": "",
+    "hook_beat_id": "e002_b0005",
+    "cliffhanger_beat_id": "e002_b0025",
+    "source_beat_ids": [
+      "e002_b0002",
+      "e002_b0003",
+      "e002_b0004",
+      "e002_b0005",
+      "e002_b0006",
+      "e002_b0007",
+      "e002_b0008",
+      "e002_b0009",
+      "e002_b0010",
+      "e002_b0011",
+      "e002_b0012",
+      "e002_b0013",
+      "e002_b0014",
+      "e002_b0015",
+      "e002_b0016",
+      "e002_b0017",
+      "e002_b0018",
+      "e002_b0019",
+      "e002_b0020",
+      "e002_b0021",
+      "e002_b0022",
+      "e002_b0023",
+      "e002_b0024",
+      "e002_b0025"
+    ],
+    "scores": {
+      "hook": 0.93,
+      "tension": 0.7403,
+      "cliffhanger": 1.0,
+      "standalone": 0.7464,
+      "composite": 0.8763
+    },
+    "standalone_detail": {
+      "dialogue_coverage": 0.7464,
+      "n_speakers": 2,
+      "speakers": [
+        "GERALD",
+        "JULIANA"
+      ],
+      "names_spoken_aloud": [
+        "GERALD"
+      ],
+      "dangling_pronoun_opening": false
+    },
+    "selected_by": "code",
+    "validators": {
+      "timestamps_exist": true,
+      "length_ok": true,
+      "order_ok": true,
+      "hook_within_3s": true,
+      "hook_inside_promo": true,
+      "cliffhanger_inside_promo": true
+    },
+    "validator_failures": [],
+    "valid": true,
+    "rejected_reason": "near-duplicate of p_004_a (episodes [4], 2 apart, visual overlap 0.20 >= 0.17)"
+  },
+  {
+    "promo_id": "p_045_a",
+    "shape": "single_stretch",
+    "episodes": [
+      45
+    ],
+    "segments": [
+      {
+        "order": 1,
+        "episode": 45,
+        "start": "00:22.90",
+        "end": "01:06.80",
+        "start_s": 22.9,
+        "end_s": 66.8,
+        "duration_s": 43.9
+      }
+    ],
+    "total_duration_s": 43.9,
+    "hook_is_cold_open": false,
+    "hook": "JULIANA (shocked, wondering): \"You're the Duke?\"",
+    "hook_type": "",
+    "cliffhanger": "ALEXANDER (thunderous, biting): \"You knew exactly what you were doing!\"",
+    "why_it_works": "[--no-llm mode] highest-intensity opening and an unresolved final beat.",
+    "standalone_risk": "",
+    "hook_beat_id": "e045_b0018",
+    "cliffhanger_beat_id": "e045_b0042",
+    "source_beat_ids": [
+      "e045_b0016",
+      "e045_b0017",
+      "e045_b0018",
+      "e045_b0019",
+      "e045_b0020",
+      "e045_b0021",
+      "e045_b0022",
+      "e045_b0023",
+      "e045_b0024",
+      "e045_b0025",
+      "e045_b0026",
+      "e045_b0027",
+      "e045_b0028",
+      "e045_b0029",
+      "e045_b0030",
+      "e045_b0031",
+      "e045_b0032",
+      "e045_b0033",
+      "e045_b0034",
+      "e045_b0035",
+      "e045_b0036",
+      "e045_b0037",
+      "e045_b0038",
+      "e045_b0039",
+      "e045_b0040",
+      "e045_b0041",
+      "e045_b0042",
+      "e045_b0043",
+      "e045_b0044"
+    ],
+    "scores": {
+      "hook": 0.86,
+      "tension": 0.6955,
+      "cliffhanger": 0.98,
+      "standalone": 0.82,
+      "composite": 0.8551
+    },
+    "standalone_detail": {
+      "dialogue_coverage": 0.82,
+      "n_speakers": 3,
+      "speakers": [
+        "ALEXANDER",
+        "CATHERINE",
+        "JULIANA"
+      ],
+      "names_spoken_aloud": [
+        "ALEXANDER"
+      ],
+      "dangling_pronoun_opening": false
+    },
+    "selected_by": "code",
+    "validators": {
+      "timestamps_exist": true,
+      "length_ok": true,
+      "order_ok": true,
+      "hook_within_3s": true,
+      "hook_inside_promo": true,
+      "cliffhanger_inside_promo": true
+    },
+    "validator_failures": [],
+    "valid": true,
+    "rejected_reason": "near-duplicate of p_044_a (episodes [44], 1 apart, visual overlap 0.17 >= 0.17)"
+  },
+  {
+    "promo_id": "p_036_m1",
+    "shape": "multi_segment",
+    "episodes": [
+      36
+    ],
+    "segments": [
+      {
+        "order": 1,
+        "episode": 36,
+        "start": "01:39.50",
+        "end": "01:56.50",
+        "start_s": 99.5,
+        "end_s": 116.5,
+        "duration_s": 17.0
+      },
+      {
+        "order": 2,
+        "episode": 36,
+        "start": "02:40.50",
+        "end": "02:56.80",
+        "start_s": 160.5,
+        "end_s": 176.8,
+        "duration_s": 16.3
+      }
+    ],
+    "total_duration_s": 33.3,
+    "gap_removed_s": 44.0,
+    "hook_is_cold_open": false,
+    "hook": "ALEXANDER'S MOTHER (wailing): \"They arrested her!\"",
+    "hook_type": "",
+    "cliffhanger": "ALEXANDER (roaring with conviction): \"They stole my home!\"",
+    "why_it_works": "Two moments from episode 36 joined, with 44s of setup cut out: opens on the strongest beat and lands on an unresolved one.",
+    "standalone_risk": "The viewer must bridge one cut unaided.",
+    "hook_beat_id": "e036_b0061",
+    "cliffhanger_beat_id": "e036_b0105",
+    "source_beat_ids": [
+      "e036_b0060",
+      "e036_b0061",
+      "e036_b0062",
+      "e036_b0063",
+      "e036_b0064",
+      "e036_b0065",
+      "e036_b0066",
+      "e036_b0067",
+      "e036_b0068",
+      "e036_b0069",
+      "e036_b0098",
+      "e036_b0099",
+      "e036_b0100",
+      "e036_b0101",
+      "e036_b0102",
+      "e036_b0103",
+      "e036_b0104",
+      "e036_b0105",
+      "e036_b0106",
+      "e036_b0107"
+    ],
+    "scores": {
+      "hook": 1.0,
+      "tension": 0.8704,
+      "cliffhanger": 1.0,
+      "standalone": 0.2415,
+      "composite": 0.8224
+    },
+    "standalone_detail": {
+      "dialogue_coverage": 0.3415,
+      "n_speakers": 2,
+      "speakers": [
+        "ALEXANDER",
+        "ALEXANDER'S MOTHER"
+      ],
+      "names_spoken_aloud": [
+        "ALEXANDER"
+      ],
+      "dangling_pronoun_opening": false
+    },
+    "selected_by": "code",
+    "validators": {
+      "timestamps_exist": true,
+      "length_ok": true,
+      "order_ok": true,
+      "hook_within_3s": true,
+      "hook_inside_promo": true,
+      "cliffhanger_inside_promo": true
+    },
+    "validator_failures": [],
+    "valid": true,
+    "rejected_reason": "near-duplicate of p_036_a (episodes [36], 0 apart, visual overlap 0.48 >= 0.17)"
+  },
+  {
+    "promo_id": "p_028_m1",
+    "shape": "multi_segment",
+    "episodes": [
+      28
+    ],
+    "segments": [
+      {
+        "order": 1,
+        "episode": 28,
+        "start": "00:35.00",
+        "end": "00:49.70",
+        "start_s": 35.0,
+        "end_s": 49.7,
+        "duration_s": 14.7
+      },
+      {
+        "order": 2,
+        "episode": 28,
+        "start": "01:41.50",
+        "end": "01:55.80",
+        "start_s": 101.5,
+        "end_s": 115.8,
+        "duration_s": 14.3
+      }
+    ],
+    "total_duration_s": 29.0,
+    "gap_removed_s": 51.8,
+    "hook_is_cold_open": false,
+    "hook": "DOWAGER DUCHESS (trembling, shouting): \"I know what happened to me!\"",
+    "hook_type": "",
+    "cliffhanger": "JULIANA (screaming, wildly defiant): \"Do not speak about my husband!\"",
+    "why_it_works": "Two moments from episode 28 joined, with 52s of setup cut out: opens on the strongest beat and lands on an unresolved one.",
+    "standalone_risk": "The viewer must bridge one cut unaided.",
+    "hook_beat_id": "e028_b0028",
+    "cliffhanger_beat_id": "e028_b0081",
+    "source_beat_ids": [
+      "e028_b0027",
+      "e028_b0028",
+      "e028_b0029",
+      "e028_b0030",
+      "e028_b0031",
+      "e028_b0032",
+      "e028_b0033",
+      "e028_b0034",
+      "e028_b0035",
+      "e028_b0036",
+      "e028_b0037",
+      "e028_b0038",
+      "e028_b0073",
+      "e028_b0074",
+      "e028_b0075",
+      "e028_b0076",
+      "e028_b0077",
+      "e028_b0078",
+      "e028_b0079",
+      "e028_b0080",
+      "e028_b0081"
+    ],
+    "scores": {
+      "hook": 1.0,
+      "tension": 0.8002,
+      "cliffhanger": 1.0,
+      "standalone": 0.2267,
+      "composite": 0.8054
+    },
+    "standalone_detail": {
+      "dialogue_coverage": 0.3267,
+      "n_speakers": 3,
+      "speakers": [
+        "CATHERINE",
+        "DOWAGER DUCHESS",
+        "JULIANA"
+      ],
+      "names_spoken_aloud": [
+        "CATHERINE"
+      ],
+      "dangling_pronoun_opening": false
+    },
+    "selected_by": "code",
+    "validators": {
+      "timestamps_exist": true,
+      "length_ok": true,
+      "order_ok": true,
+      "hook_within_3s": true,
+      "hook_inside_promo": true,
+      "cliffhanger_inside_promo": true
+    },
+    "validator_failures": [],
+    "valid": true,
+    "rejected_reason": "near-duplicate of p_028_a (episodes [28], 0 apart, visual overlap 0.19 >= 0.17)"
+  },
+  {
+    "promo_id": "p_013_m1",
+    "shape": "multi_segment",
+    "episodes": [
+      13
+    ],
+    "segments": [
+      {
+        "order": 1,
+        "episode": 13,
+        "start": "00:05.40",
+        "end": "00:17.30",
+        "start_s": 5.4,
+        "end_s": 17.3,
+        "duration_s": 11.9
+      },
+      {
+        "order": 2,
+        "episode": 13,
+        "start": "01:14.50",
+        "end": "01:28.80",
+        "start_s": 74.5,
+        "end_s": 88.8,
+        "duration_s": 14.3
+      }
+    ],
+    "total_duration_s": 26.2,
+    "gap_removed_s": 57.2,
+    "hook_is_cold_open": false,
+    "hook": "ALEXANDER (pleading, agonized): \"Juliana, look at those thorns. You cannot do this.\"",
+    "hook_type": "",
+    "cliffhanger": "JULIANA (agonized scream): \"Ahhh!\"",
+    "why_it_works": "Two moments from episode 13 joined, with 57s of setup cut out: opens on the strongest beat and lands on an unresolved one.",
+    "standalone_risk": "The viewer must bridge one cut unaided.",
+    "hook_beat_id": "e013_b0004",
+    "cliffhanger_beat_id": "e013_b0057",
+    "source_beat_ids": [
+      "e013_b0002",
+      "e013_b0003",
+      "e013_b0004",
+      "e013_b0005",
+      "e013_b0006",
+      "e013_b0007",
+      "e013_b0008",
+      "e013_b0009",
+      "e013_b0048",
+      "e013_b0049",
+      "e013_b0050",
+      "e013_b0051",
+      "e013_b0052",
+      "e013_b0053",
+      "e013_b0054",
+      "e013_b0055",
+      "e013_b0056",
+      "e013_b0057",
+      "e013_b0058",
+      "e013_b0059"
+    ],
+    "scores": {
+      "hook": 0.96,
+      "tension": 0.9403,
+      "cliffhanger": 1.0,
+      "standalone": 0.1014,
+      "composite": 0.7963
+    },
+    "standalone_detail": {
+      "dialogue_coverage": 0.2014,
+      "n_speakers": 2,
+      "speakers": [
+        "ALEXANDER",
+        "JULIANA"
+      ],
+      "names_spoken_aloud": [
+        "JULIANA"
+      ],
+      "dangling_pronoun_opening": false
+    },
+    "selected_by": "code",
+    "validators": {
+      "timestamps_exist": true,
+      "length_ok": true,
+      "order_ok": true,
+      "hook_within_3s": true,
+      "hook_inside_promo": true,
+      "cliffhanger_inside_promo": true
+    },
+    "validator_failures": [],
+    "valid": true,
+    "rejected_reason": "near-duplicate of p_013_a (episodes [13], 0 apart, visual overlap 0.57 >= 0.17)"
+  },
+  {
+    "promo_id": "p_011_m1",
+    "shape": "multi_segment",
+    "episodes": [
+      11
+    ],
+    "segments": [
+      {
+        "order": 1,
+        "episode": 11,
+        "start": "00:14.40",
+        "end": "00:29.00",
+        "start_s": 14.4,
+        "end_s": 29.0,
+        "duration_s": 14.6
+      },
+      {
+        "order": 2,
+        "episode": 11,
+        "start": "01:21.30",
+        "end": "01:33.20",
+        "start_s": 81.3,
+        "end_s": 93.2,
+        "duration_s": 11.9
+      }
+    ],
+    "total_duration_s": 26.5,
+    "gap_removed_s": 52.3,
+    "hook_is_cold_open": false,
+    "hook": "JULIANA (furious, defiant): \"You have already taken enough from me. Leave!\"",
+    "hook_type": "",
+    "cliffhanger": "The Constable grabs the coat by the collar and begins rummaging through its deep pockets.",
+    "why_it_works": "Two moments from episode 11 joined, with 52s of setup cut out: opens on the strongest beat and lands on an unresolved one.",
+    "standalone_risk": "The viewer must bridge one cut unaided.",
+    "hook_beat_id": "e011_b0013",
+    "cliffhanger_beat_id": "e011_b0075",
+    "source_beat_ids": [
+      "e011_b0012",
+      "e011_b0013",
+      "e011_b0014",
+      "e011_b0015",
+      "e011_b0016",
+      "e011_b0017",
+      "e011_b0018",
+      "e011_b0019",
+      "e011_b0020",
+      "e011_b0021",
+      "e011_b0022",
+      "e011_b0023",
+      "e011_b0024",
+      "e011_b0025",
+      "e011_b0026",
+      "e011_b0067",
+      "e011_b0068",
+      "e011_b0069",
+      "e011_b0070",
+      "e011_b0071",
+      "e011_b0072",
+      "e011_b0073",
+      "e011_b0074",
+      "e011_b0075",
+      "e011_b0076"
+    ],
+    "scores": {
+      "hook": 1.0,
+      "tension": 0.8096,
+      "cliffhanger": 1.0,
+      "standalone": 0.1538,
+      "composite": 0.7927
+    },
+    "standalone_detail": {
+      "dialogue_coverage": 0.2538,
+      "n_speakers": 3,
+      "speakers": [
+        "ALEXANDER",
+        "GERALD",
+        "JULIANA"
+      ],
+      "names_spoken_aloud": [
+        "ALEXANDER"
+      ],
+      "dangling_pronoun_opening": false
+    },
+    "selected_by": "code",
+    "validators": {
+      "timestamps_exist": true,
+      "length_ok": true,
+      "order_ok": true,
+      "hook_within_3s": true,
+      "hook_inside_promo": true,
+      "cliffhanger_inside_promo": true
+    },
+    "validator_failures": [],
+    "valid": true,
+    "rejected_reason": "near-duplicate of p_011_a (episodes [11], 0 apart, visual overlap 0.51 >= 0.17)"
+  },
+  {
+    "promo_id": "p_033_m1",
+    "shape": "multi_segment",
+    "episodes": [
+      33
+    ],
+    "segments": [
+      {
+        "order": 1,
+        "episode": 33,
+        "start": "00:57.40",
+        "end": "01:13.00",
+        "start_s": 57.4,
+        "end_s": 73.0,
+        "duration_s": 15.6
+      },
+      {
+        "order": 2,
+        "episode": 33,
+        "start": "02:12.00",
+        "end": "02:24.00",
+        "start_s": 132.0,
+        "end_s": 144.0,
+        "duration_s": 12.0
+      }
+    ],
+    "total_duration_s": 27.6,
+    "gap_removed_s": 59.0,
+    "hook_is_cold_open": false,
+    "hook": "MAID (desperate, denying): \"No!\"",
+    "hook_type": "",
+    "cliffhanger": "MAID (wailing, tormented): \"I never said she was a witch!\"",
+    "why_it_works": "Two moments from episode 33 joined, with 59s of setup cut out: opens on the strongest beat and lands on an unresolved one.",
+    "standalone_risk": "The viewer must bridge one cut unaided.",
+    "hook_beat_id": "e033_b0034",
+    "cliffhanger_beat_id": "e033_b0083",
+    "source_beat_ids": [
+      "e033_b0033",
+      "e033_b0034",
+      "e033_b0035",
+      "e033_b0036",
+      "e033_b0037",
+      "e033_b0038",
+      "e033_b0039",
+      "e033_b0040",
+      "e033_b0041",
+      "e033_b0042",
+      "e033_b0077",
+      "e033_b0078",
+      "e033_b0079",
+      "e033_b0080",
+      "e033_b0081",
+      "e033_b0082",
+      "e033_b0083",
+      "e033_b0084"
+    ],
+    "scores": {
+      "hook": 0.96,
+      "tension": 0.8075,
+      "cliffhanger": 1.0,
+      "standalone": 0.1691,
+      "composite": 0.7833
+    },
+    "standalone_detail": {
+      "dialogue_coverage": 0.2691,
+      "n_speakers": 2,
+      "speakers": [
+        "LORD",
+        "MAID"
+      ],
+      "names_spoken_aloud": [
+        "LORD"
+      ],
+      "dangling_pronoun_opening": false
+    },
+    "selected_by": "code",
+    "validators": {
+      "timestamps_exist": true,
+      "length_ok": true,
+      "order_ok": true,
+      "hook_within_3s": true,
+      "hook_inside_promo": true,
+      "cliffhanger_inside_promo": true
+    },
+    "validator_failures": [],
+    "valid": true,
+    "rejected_reason": "near-duplicate of p_033_a (episodes [33], 0 apart, visual overlap 0.59 >= 0.17)"
+  },
+  {
+    "promo_id": "p_010_a",
+    "shape": "single_stretch",
+    "episodes": [
+      10
+    ],
+    "segments": [
+      {
+        "order": 1,
+        "episode": 10,
+        "start": "00:00.00",
+        "end": "00:24.90",
+        "start_s": 0.0,
+        "end_s": 24.9,
+        "duration_s": 24.9
+      }
+    ],
+    "total_duration_s": 24.9,
+    "hook_is_cold_open": false,
+    "hook": "Juliana quietly studies the botanical illustrations by firelight, a bundle of fresh dried herbs resting on the table.",
+    "hook_type": "",
+    "cliffhanger": "ALEXANDER (low, defiant): \"It is only a scratch.\"",
+    "why_it_works": "[--no-llm mode] highest-intensity opening and an unresolved final beat.",
+    "standalone_risk": "",
+    "hook_beat_id": "e010_b0000",
+    "cliffhanger_beat_id": "e010_b0021",
+    "source_beat_ids": [
+      "e010_b0000",
+      "e010_b0001",
+      "e010_b0002",
+      "e010_b0003",
+      "e010_b0004",
+      "e010_b0005",
+      "e010_b0006",
+      "e010_b0007",
+      "e010_b0008",
+      "e010_b0009",
+      "e010_b0010",
+      "e010_b0011",
+      "e010_b0012",
+      "e010_b0013",
+      "e010_b0014",
+      "e010_b0015",
+      "e010_b0016",
+      "e010_b0017",
+      "e010_b0018",
+      "e010_b0019",
+      "e010_b0020",
+      "e010_b0021"
+    ],
+    "scores": {
+      "hook": 1.0,
+      "tension": 0.6519,
+      "cliffhanger": 0.78,
+      "standalone": 0.5622,
+      "composite": 0.7768
+    },
+    "standalone_detail": {
+      "dialogue_coverage": 0.5622,
+      "n_speakers": 2,
+      "speakers": [
+        "ALEXANDER",
+        "JULIANA"
+      ],
+      "names_spoken_aloud": [
+        "ALEXANDER"
+      ],
+      "dangling_pronoun_opening": false
+    },
+    "selected_by": "code",
+    "validators": {
+      "timestamps_exist": true,
+      "length_ok": true,
+      "order_ok": true,
+      "hook_within_3s": true,
+      "hook_inside_promo": true,
+      "cliffhanger_inside_promo": true
+    },
+    "validator_failures": [],
+    "valid": true,
+    "rejected_reason": "near-duplicate of p_009_a (episodes [9], 1 apart, visual overlap 0.18 >= 0.17)"
+  },
+  {
+    "promo_id": "p_040_a",
+    "shape": "single_stretch",
+    "episodes": [
+      40
+    ],
+    "segments": [
+      {
+        "order": 1,
+        "episode": 40,
+        "start": "00:44.10",
+        "end": "01:17.40",
+        "start_s": 44.1,
+        "end_s": 77.4,
+        "duration_s": 33.3
+      }
+    ],
+    "total_duration_s": 33.3,
+    "hook_is_cold_open": false,
+    "hook": "LADY HARRINGTON (chilling, sarcastic): \"And everything that comes after it.\"",
+    "hook_type": "",
+    "cliffhanger": "ELDER NOBLEMAN (deadly, uncompromising): \"And its witch will be dead.\"",
+    "why_it_works": "[--no-llm mode] highest-intensity opening and an unresolved final beat.",
+    "standalone_risk": "",
+    "hook_beat_id": "e040_b0024",
+    "cliffhanger_beat_id": "e040_b0037",
+    "source_beat_ids": [
+      "e040_b0020",
+      "e040_b0022",
+      "e040_b0023",
+      "e040_b0024",
+      "e040_b0025",
+      "e040_b0026",
+      "e040_b0027",
+      "e040_b0028",
+      "e040_b0029",
+      "e040_b0030",
+      "e040_b0031",
+      "e040_b0032",
+      "e040_b0033",
+      "e040_b0034",
+      "e040_b0035",
+      "e040_b0036",
+      "e040_b0037"
+    ],
+    "scores": {
+      "hook": 0.92,
+      "tension": 0.7209,
+      "cliffhanger": 0.94,
+      "standalone": 0.3685,
+      "composite": 0.7759
+    },
+    "standalone_detail": {
+      "dialogue_coverage": 0.5285,
+      "n_speakers": 5,
+      "speakers": [
+        "BLOND NOBLEMAN",
+        "ELDER NOBLEMAN",
+        "LADY HARRINGTON",
+        "LORD HARRINGTON",
+        "ROYAL GUARD"
+      ],
+      "names_spoken_aloud": [
+        "LORD HARRINGTON"
+      ],
+      "dangling_pronoun_opening": false
+    },
+    "selected_by": "code",
+    "validators": {
+      "timestamps_exist": true,
+      "length_ok": true,
+      "order_ok": true,
+      "hook_within_3s": true,
+      "hook_inside_promo": true,
+      "cliffhanger_inside_promo": true
+    },
+    "validator_failures": [],
+    "valid": true,
+    "rejected_reason": "near-duplicate of p_042_a (episodes [42], 2 apart, visual overlap 0.18 >= 0.17)"
+  },
+  {
+    "promo_id": "p_046_m1",
+    "shape": "multi_segment",
+    "episodes": [
+      46
+    ],
+    "segments": [
+      {
+        "order": 1,
+        "episode": 46,
+        "start": "00:52.20",
+        "end": "01:05.50",
+        "start_s": 52.2,
+        "end_s": 65.5,
+        "duration_s": 13.3
+      },
+      {
+        "order": 2,
+        "episode": 46,
+        "start": "01:58.80",
+        "end": "02:13.20",
+        "start_s": 118.8,
+        "end_s": 133.2,
+        "duration_s": 14.4
+      }
+    ],
+    "total_duration_s": 27.7,
+    "gap_removed_s": 53.3,
+    "hook_is_cold_open": false,
+    "hook": "HIGH PRIEST (thundering): \"And no clerk in London ever entered your name in the Royal register, because as far as the Crown knew, Alexander Ashburton was already dead.\"",
+    "hook_type": "",
+    "cliffhanger": "ALEXANDER (thunderous, imposing): \"Lower them! Or explain to the Crown why its own bailiffs raised iron on the Duke it just confirmed!\"",
+    "why_it_works": "Two moments from episode 46 joined, with 53s of setup cut out: opens on the strongest beat and lands on an unresolved one.",
+    "standalone_risk": "The viewer must bridge one cut unaided.",
+    "hook_beat_id": "e046_b0030",
+    "cliffhanger_beat_id": "e046_b0066",
+    "source_beat_ids": [
+      "e046_b0030",
+      "e046_b0031",
+      "e046_b0032",
+      "e046_b0033",
+      "e046_b0034",
+      "e046_b0035",
+      "e046_b0062",
+      "e046_b0063",
+      "e046_b0064",
+      "e046_b0065",
+      "e046_b0066",
+      "e046_b0067"
+    ],
+    "scores": {
+      "hook": 0.88,
+      "tension": 0.8203,
+      "cliffhanger": 0.98,
+      "standalone": 0.2173,
+      "composite": 0.7655
+    },
+    "standalone_detail": {
+      "dialogue_coverage": 0.3173,
+      "n_speakers": 3,
+      "speakers": [
+        "ALEXANDER",
+        "HIGH PRIEST",
+        "JULIANA"
+      ],
+      "names_spoken_aloud": [
+        "ALEXANDER"
+      ],
+      "dangling_pronoun_opening": false
+    },
+    "selected_by": "code",
+    "validators": {
+      "timestamps_exist": true,
+      "length_ok": true,
+      "order_ok": true,
+      "hook_within_3s": true,
+      "hook_inside_promo": true,
+      "cliffhanger_inside_promo": true
+    },
+    "validator_failures": [],
+    "valid": true,
+    "rejected_reason": "near-duplicate of p_046_a (episodes [46], 0 apart, visual overlap 0.49 >= 0.17)"
+  },
+  {
+    "promo_id": "p_043_m1",
+    "shape": "multi_segment",
+    "episodes": [
+      43
+    ],
+    "segments": [
+      {
+        "order": 1,
+        "episode": 43,
+        "start": "00:10.50",
+        "end": "00:25.80",
+        "start_s": 10.5,
+        "end_s": 25.8,
+        "duration_s": 15.3
+      },
+      {
+        "order": 2,
+        "episode": 43,
+        "start": "01:33.40",
+        "end": "01:49.00",
+        "start_s": 93.4,
+        "end_s": 109.0,
+        "duration_s": 15.6
+      }
+    ],
+    "total_duration_s": 30.9,
+    "gap_removed_s": 67.6,
+    "hook_is_cold_open": false,
+    "hook": "BLOND NOBLEMAN (enraged, screaming): \"I said arrest him!\"",
+    "hook_type": "",
+    "cliffhanger": "CATHERINE (shocked, murmuring): \"My Lord?\"",
+    "why_it_works": "Two moments from episode 43 joined, with 68s of setup cut out: opens on the strongest beat and lands on an unresolved one.",
+    "standalone_risk": "The viewer must bridge one cut unaided.",
+    "hook_beat_id": "e043_b0007",
+    "cliffhanger_beat_id": "e043_b0080",
+    "source_beat_ids": [
+      "e043_b0007",
+      "e043_b0008",
+      "e043_b0009",
+      "e043_b0010",
+      "e043_b0011",
+      "e043_b0012",
+      "e043_b0013",
+      "e043_b0014",
+      "e043_b0015",
+      "e043_b0016",
+      "e043_b0017",
+      "e043_b0018",
+      "e043_b0019",
+      "e043_b0020",
+      "e043_b0021",
+      "e043_b0022",
+      "e043_b0072",
+      "e043_b0073",
+      "e043_b0074",
+      "e043_b0075",
+      "e043_b0076",
+      "e043_b0077",
+      "e043_b0078",
+      "e043_b0079",
+      "e043_b0080",
+      "e043_b0081",
+      "e043_b0082",
+      "e043_b0083"
+    ],
+    "scores": {
+      "hook": 1.0,
+      "tension": 0.8457,
+      "cliffhanger": 0.98,
+      "standalone": 0.0,
+      "composite": 0.7631
+    },
+    "standalone_detail": {
+      "dialogue_coverage": 0.2091,
+      "n_speakers": 4,
+      "speakers": [
+        "ALEXANDER",
+        "BLOND NOBLEMAN",
+        "CATHERINE",
+        "ROYAL GUARD"
+      ],
+      "names_spoken_aloud": [],
+      "dangling_pronoun_opening": true
+    },
+    "selected_by": "code",
+    "validators": {
+      "timestamps_exist": true,
+      "length_ok": true,
+      "order_ok": true,
+      "hook_within_3s": true,
+      "hook_inside_promo": true,
+      "cliffhanger_inside_promo": true
+    },
+    "validator_failures": [],
+    "valid": true,
+    "rejected_reason": "near-duplicate of p_044_a (episodes [44], 1 apart, visual overlap 0.17 >= 0.17)"
+  },
+  {
+    "promo_id": "p_014_m1",
+    "shape": "multi_segment",
+    "episodes": [
+      14
+    ],
+    "segments": [
+      {
+        "order": 1,
+        "episode": 14,
+        "start": "00:00.50",
+        "end": "00:15.60",
+        "start_s": 0.5,
+        "end_s": 15.6,
+        "duration_s": 15.1
+      },
+      {
+        "order": 2,
+        "episode": 14,
+        "start": "01:11.00",
+        "end": "01:27.00",
+        "start_s": 71.0,
+        "end_s": 87.0,
+        "duration_s": 16.0
+      }
+    ],
+    "total_duration_s": 31.1,
+    "gap_removed_s": 55.4,
+    "hook_is_cold_open": false,
+    "hook": "Juliana's blood-streaked, mud-caked hand slowly uncurls amidst the thorns, revealing the ornate emerald signet ring resting in her palm.",
+    "hook_type": "",
+    "cliffhanger": "Alexander strokes her cheek with his thumb, his gaze hardening into deadly, protective conviction.",
+    "why_it_works": "Two moments from episode 14 joined, with 55s of setup cut out: opens on the strongest beat and lands on an unresolved one.",
+    "standalone_risk": "The viewer must bridge one cut unaided.",
+    "hook_beat_id": "e014_b0001",
+    "cliffhanger_beat_id": "e014_b0047",
+    "source_beat_ids": [
+      "e014_b0000",
+      "e014_b0001",
+      "e014_b0002",
+      "e014_b0003",
+      "e014_b0004",
+      "e014_b0005",
+      "e014_b0006",
+      "e014_b0007",
+      "e014_b0008",
+      "e014_b0009",
+      "e014_b0010",
+      "e014_b0043",
+      "e014_b0044",
+      "e014_b0045",
+      "e014_b0046",
+      "e014_b0047",
+      "e014_b0048",
+      "e014_b0049",
+      "e014_b0050"
+    ],
+    "scores": {
+      "hook": 0.97,
+      "tension": 0.8007,
+      "cliffhanger": 0.98,
+      "standalone": 0.0,
+      "composite": 0.7451
+    },
+    "standalone_detail": {
+      "dialogue_coverage": 0.0925,
+      "n_speakers": 2,
+      "speakers": [
+        "ALEXANDER",
+        "JULIANA"
+      ],
+      "names_spoken_aloud": [],
+      "dangling_pronoun_opening": true
+    },
+    "selected_by": "code",
+    "validators": {
+      "timestamps_exist": true,
+      "length_ok": true,
+      "order_ok": true,
+      "hook_within_3s": true,
+      "hook_inside_promo": true,
+      "cliffhanger_inside_promo": true
+    },
+    "validator_failures": [],
+    "valid": true,
+    "rejected_reason": "near-duplicate of p_014_a (episodes [14], 0 apart, visual overlap 0.49 >= 0.17)"
+  },
+  {
+    "promo_id": "p_042_m1",
+    "shape": "multi_segment",
+    "episodes": [
+      42
+    ],
+    "segments": [
+      {
+        "order": 1,
+        "episode": 42,
+        "start": "00:16.80",
+        "end": "00:33.80",
+        "start_s": 16.8,
+        "end_s": 33.8,
+        "duration_s": 17.0
+      },
+      {
+        "order": 2,
+        "episode": 42,
+        "start": "01:02.00",
+        "end": "01:12.40",
+        "start_s": 62.0,
+        "end_s": 72.4,
+        "duration_s": 10.4
+      }
+    ],
+    "total_duration_s": 27.4,
+    "gap_removed_s": 28.2,
+    "hook_is_cold_open": false,
+    "hook": "BLOND NOBLEMAN (furious, hysterical): \"Guards! Arrest this imposter!\"",
+    "hook_type": "",
+    "cliffhanger": "ALEXANDER'S MOTHER (ringing, authoritative): \"Let everyone hear me! This is my son... Alexander Ashburn. The rightful Duke of Ashburn!\"",
+    "why_it_works": "Two moments from episode 42 joined, with 28s of setup cut out: opens on the strongest beat and lands on an unresolved one.",
+    "standalone_risk": "The viewer must bridge one cut unaided.",
+    "hook_beat_id": "e042_b0009",
+    "cliffhanger_beat_id": "e042_b0033",
+    "source_beat_ids": [
+      "e042_b0006",
+      "e042_b0007",
+      "e042_b0008",
+      "e042_b0009",
+      "e042_b0010",
+      "e042_b0011",
+      "e042_b0012",
+      "e042_b0013",
+      "e042_b0014",
+      "e042_b0015",
+      "e042_b0016",
+      "e042_b0017",
+      "e042_b0018",
+      "e042_b0019",
+      "e042_b0020",
+      "e042_b0030",
+      "e042_b0031",
+      "e042_b0032",
+      "e042_b0033"
+    ],
+    "scores": {
+      "hook": 0.99,
+      "tension": 0.7386,
+      "cliffhanger": 0.84,
+      "standalone": 0.195,
+      "composite": 0.7357
+    },
+    "standalone_detail": {
+      "dialogue_coverage": 0.455,
+      "n_speakers": 5,
+      "speakers": [
+        "ALEXANDER",
+        "ALEXANDER'S MOTHER",
+        "BLOND NOBLEMAN",
+        "CATHERINE",
+        "ROYAL GUARD"
+      ],
+      "names_spoken_aloud": [
+        "ALEXANDER"
+      ],
+      "dangling_pronoun_opening": false
+    },
+    "selected_by": "code",
+    "validators": {
+      "timestamps_exist": true,
+      "length_ok": true,
+      "order_ok": true,
+      "hook_within_3s": true,
+      "hook_inside_promo": true,
+      "cliffhanger_inside_promo": true
+    },
+    "validator_failures": [],
+    "valid": true,
+    "rejected_reason": "near-duplicate of p_042_a (episodes [42], 0 apart, visual overlap 0.61 >= 0.17)"
+  },
+  {
+    "promo_id": "p_003_m1",
+    "shape": "multi_segment",
+    "episodes": [
+      3
+    ],
+    "segments": [
+      {
+        "order": 1,
+        "episode": 3,
+        "start": "00:42.10",
+        "end": "00:58.20",
+        "start_s": 42.1,
+        "end_s": 58.2,
+        "duration_s": 16.1
+      },
+      {
+        "order": 2,
+        "episode": 3,
+        "start": "01:21.80",
+        "end": "01:38.50",
+        "start_s": 81.8,
+        "end_s": 98.5,
+        "duration_s": 16.7
+      }
+    ],
+    "total_duration_s": 32.8,
+    "gap_removed_s": 23.6,
+    "hook_is_cold_open": false,
+    "hook": "NOBLE MATRIARCH (cruel, scornful): \"Wherever a discarded daughter belongs.\"",
+    "hook_type": "",
+    "cliffhanger": "NOBLE MATRIARCH (furious, hysterical): \"You cannot interfere in a family matter!\"",
+    "why_it_works": "Two moments from episode 3 joined, with 24s of setup cut out: opens on the strongest beat and lands on an unresolved one.",
+    "standalone_risk": "The viewer must bridge one cut unaided.",
+    "hook_beat_id": "e003_b0034",
+    "cliffhanger_beat_id": "e003_b0082",
+    "source_beat_ids": [
+      "e003_b0031",
+      "e003_b0032",
+      "e003_b0033",
+      "e003_b0034",
+      "e003_b0035",
+      "e003_b0036",
+      "e003_b0037",
+      "e003_b0038",
+      "e003_b0039",
+      "e003_b0040",
+      "e003_b0041",
+      "e003_b0042",
+      "e003_b0043",
+      "e003_b0044",
+      "e003_b0067",
+      "e003_b0068",
+      "e003_b0069",
+      "e003_b0070",
+      "e003_b0071",
+      "e003_b0072",
+      "e003_b0073",
+      "e003_b0074",
+      "e003_b0075",
+      "e003_b0076",
+      "e003_b0077",
+      "e003_b0078",
+      "e003_b0079",
+      "e003_b0080",
+      "e003_b0081",
+      "e003_b0082",
+      "e003_b0083"
+    ],
+    "scores": {
+      "hook": 0.88,
+      "tension": 0.7529,
+      "cliffhanger": 0.99,
+      "standalone": 0.1062,
+      "composite": 0.7328
+    },
+    "standalone_detail": {
+      "dialogue_coverage": 0.4362,
+      "n_speakers": 4,
+      "speakers": [
+        "GERALD",
+        "JULIANA",
+        "MYSTERIOUS BEARDED MAN",
+        "NOBLE MATRIARCH"
+      ],
+      "names_spoken_aloud": [],
+      "dangling_pronoun_opening": true
+    },
+    "selected_by": "code",
+    "validators": {
+      "timestamps_exist": true,
+      "length_ok": true,
+      "order_ok": true,
+      "hook_within_3s": true,
+      "hook_inside_promo": true,
+      "cliffhanger_inside_promo": true
+    },
+    "validator_failures": [],
+    "valid": true,
+    "rejected_reason": "near-duplicate of p_003_a (episodes [3], 0 apart, visual overlap 0.32 >= 0.17)"
+  },
+  {
+    "promo_id": "p_031_m1",
+    "shape": "multi_segment",
+    "episodes": [
+      31
+    ],
+    "segments": [
+      {
+        "order": 1,
+        "episode": 31,
+        "start": "00:10.50",
+        "end": "00:23.50",
+        "start_s": 10.5,
+        "end_s": 23.5,
+        "duration_s": 13.0
+      },
+      {
+        "order": 2,
+        "episode": 31,
+        "start": "01:58.40",
+        "end": "02:12.80",
+        "start_s": 118.4,
+        "end_s": 132.8,
+        "duration_s": 14.4
+      }
+    ],
+    "total_duration_s": 27.4,
+    "gap_removed_s": 94.9,
+    "hook_is_cold_open": false,
+    "hook": "CATHERINE (mocking, venomous): \"The great Lady Juliana Ashcroft.\"",
+    "hook_type": "",
+    "cliffhanger": "CATHERINE (enraged scream): \"Enough!\"",
+    "why_it_works": "Two moments from episode 31 joined, with 95s of setup cut out: opens on the strongest beat and lands on an unresolved one.",
+    "standalone_risk": "The viewer must bridge one cut unaided.",
+    "hook_beat_id": "e031_b0008",
+    "cliffhanger_beat_id": "e031_b0070",
+    "source_beat_ids": [
+      "e031_b0007",
+      "e031_b0008",
+      "e031_b0009",
+      "e031_b0010",
+      "e031_b0011",
+      "e031_b0012",
+      "e031_b0013",
+      "e031_b0014",
+      "e031_b0064",
+      "e031_b0065",
+      "e031_b0066",
+      "e031_b0067",
+      "e031_b0068",
+      "e031_b0069",
+      "e031_b0070"
+    ],
+    "scores": {
+      "hook": 0.82,
+      "tension": 0.8033,
+      "cliffhanger": 1.0,
+      "standalone": 0.0946,
+      "composite": 0.7256
+    },
+    "standalone_detail": {
+      "dialogue_coverage": 0.1946,
+      "n_speakers": 2,
+      "speakers": [
+        "CATHERINE",
+        "JULIANA"
+      ],
+      "names_spoken_aloud": [
+        "CATHERINE",
+        "JULIANA"
+      ],
+      "dangling_pronoun_opening": false
+    },
+    "selected_by": "code",
+    "validators": {
+      "timestamps_exist": true,
+      "length_ok": true,
+      "order_ok": true,
+      "hook_within_3s": true,
+      "hook_inside_promo": true,
+      "cliffhanger_inside_promo": true
+    },
+    "validator_failures": [],
+    "valid": true,
+    "rejected_reason": "near-duplicate of p_031_a (episodes [31], 0 apart, visual overlap 0.22 >= 0.17)"
+  },
+  {
+    "promo_id": "p_023_m1",
+    "shape": "multi_segment",
+    "episodes": [
+      23
+    ],
+    "segments": [
+      {
+        "order": 1,
+        "episode": 23,
+        "start": "00:29.00",
+        "end": "00:43.00",
+        "start_s": 29.0,
+        "end_s": 43.0,
+        "duration_s": 14.0
+      },
+      {
+        "order": 2,
+        "episode": 23,
+        "start": "01:47.50",
+        "end": "02:04.00",
+        "start_s": 107.5,
+        "end_s": 124.0,
+        "duration_s": 16.5
+      }
+    ],
+    "total_duration_s": 30.5,
+    "gap_removed_s": 64.5,
+    "hook_is_cold_open": false,
+    "hook": "PRUDENCE (despairing, weeping): \"The physician said her heart is failing.\"",
+    "hook_type": "",
+    "cliffhanger": "PRUDENCE (terrified, hoarse whisper): \"Juliana... someone is coming.\"",
+    "why_it_works": "Two moments from episode 23 joined, with 64s of setup cut out: opens on the strongest beat and lands on an unresolved one.",
+    "standalone_risk": "The viewer must bridge one cut unaided.",
+    "hook_beat_id": "e023_b0015",
+    "cliffhanger_beat_id": "e023_b0062",
+    "source_beat_ids": [
+      "e023_b0012",
+      "e023_b0013",
+      "e023_b0014",
+      "e023_b0015",
+      "e023_b0016",
+      "e023_b0017",
+      "e023_b0018",
+      "e023_b0019",
+      "e023_b0054",
+      "e023_b0055",
+      "e023_b0056",
+      "e023_b0057",
+      "e023_b0058",
+      "e023_b0059",
+      "e023_b0060",
+      "e023_b0061",
+      "e023_b0062"
+    ],
+    "scores": {
+      "hook": 0.84,
+      "tension": 0.7659,
+      "cliffhanger": 1.0,
+      "standalone": 0.0937,
+      "composite": 0.7239
+    },
+    "standalone_detail": {
+      "dialogue_coverage": 0.1937,
+      "n_speakers": 2,
+      "speakers": [
+        "JULIANA",
+        "PRUDENCE"
+      ],
+      "names_spoken_aloud": [
+        "JULIANA"
+      ],
+      "dangling_pronoun_opening": false
+    },
+    "selected_by": "code",
+    "validators": {
+      "timestamps_exist": true,
+      "length_ok": true,
+      "order_ok": true,
+      "hook_within_3s": true,
+      "hook_inside_promo": true,
+      "cliffhanger_inside_promo": true
+    },
+    "validator_failures": [],
+    "valid": true,
+    "rejected_reason": "near-duplicate of p_023_a (episodes [23], 0 apart, visual overlap 0.35 >= 0.17)"
+  },
+  {
+    "promo_id": "p_045_m1",
+    "shape": "multi_segment",
+    "episodes": [
+      45
+    ],
+    "segments": [
+      {
+        "order": 1,
+        "episode": 45,
+        "start": "00:07.40",
+        "end": "00:24.40",
+        "start_s": 7.4,
+        "end_s": 24.4,
+        "duration_s": 17.0
+      },
+      {
+        "order": 2,
+        "episode": 45,
+        "start": "01:14.60",
+        "end": "01:30.80",
+        "start_s": 74.6,
+        "end_s": 90.8,
+        "duration_s": 16.2
+      }
+    ],
+    "total_duration_s": 33.2,
+    "gap_removed_s": 50.2,
+    "hook_is_cold_open": false,
+    "hook": "Heavy iron clanking as the shackles fall away.",
+    "hook_type": "",
+    "cliffhanger": "HIGH PRIEST (booming, stern): \"No one will bow yet!\"",
+    "why_it_works": "Two moments from episode 45 joined, with 50s of setup cut out: opens on the strongest beat and lands on an unresolved one.",
+    "standalone_risk": "The viewer must bridge one cut unaided.",
+    "hook_beat_id": "e045_b0009",
+    "cliffhanger_beat_id": "e045_b0059",
+    "source_beat_ids": [
+      "e045_b0004",
+      "e045_b0005",
+      "e045_b0006",
+      "e045_b0007",
+      "e045_b0008",
+      "e045_b0009",
+      "e045_b0010",
+      "e045_b0011",
+      "e045_b0012",
+      "e045_b0013",
+      "e045_b0014",
+      "e045_b0015",
+      "e045_b0016",
+      "e045_b0017",
+      "e045_b0018",
+      "e045_b0050",
+      "e045_b0051",
+      "e045_b0052",
+      "e045_b0053",
+      "e045_b0054",
+      "e045_b0055",
+      "e045_b0056",
+      "e045_b0057",
+      "e045_b0058",
+      "e045_b0059"
+    ],
+    "scores": {
+      "hook": 0.87,
+      "tension": 0.7093,
+      "cliffhanger": 1.0,
+      "standalone": 0.0358,
+      "composite": 0.71
+    },
+    "standalone_detail": {
+      "dialogue_coverage": 0.2158,
+      "n_speakers": 4,
+      "speakers": [
+        "ALEXANDER",
+        "HIGH PRIEST",
+        "JULIANA",
+        "RUPERT"
+      ],
+      "names_spoken_aloud": [
+        "JULIANA"
+      ],
+      "dangling_pronoun_opening": false
+    },
+    "selected_by": "code",
+    "validators": {
+      "timestamps_exist": true,
+      "length_ok": true,
+      "order_ok": true,
+      "hook_within_3s": true,
+      "hook_inside_promo": true,
+      "cliffhanger_inside_promo": true
+    },
+    "validator_failures": [],
+    "valid": true,
+    "rejected_reason": "near-duplicate of p_044_a (episodes [44], 1 apart, visual overlap 0.20 >= 0.17)"
+  },
+  {
+    "promo_id": "p_021_m1",
+    "shape": "multi_segment",
+    "episodes": [
+      21
+    ],
+    "segments": [
+      {
+        "order": 1,
+        "episode": 21,
+        "start": "00:04.20",
+        "end": "00:18.20",
+        "start_s": 4.2,
+        "end_s": 18.2,
+        "duration_s": 14.0
+      },
+      {
+        "order": 2,
+        "episode": 21,
+        "start": "00:42.80",
+        "end": "00:58.20",
+        "start_s": 42.8,
+        "end_s": 58.2,
+        "duration_s": 15.4
+      }
+    ],
+    "total_duration_s": 29.4,
+    "gap_removed_s": 24.6,
+    "hook_is_cold_open": false,
+    "hook": "PRUDENCE (desperate, panicked): \"Lady Juliana! Please! You have to help me, Toby is dying!\"",
+    "hook_type": "",
+    "cliffhanger": "Prudence wraps a cloth around the iron handle of the steaming kettle resting over the hearth fire and lifts it.",
+    "why_it_works": "Two moments from episode 21 joined, with 25s of setup cut out: opens on the strongest beat and lands on an unresolved one.",
+    "standalone_risk": "The viewer must bridge one cut unaided.",
+    "hook_beat_id": "e021_b0004",
+    "cliffhanger_beat_id": "e021_b0037",
+    "source_beat_ids": [
+      "e021_b0002",
+      "e021_b0003",
+      "e021_b0004",
+      "e021_b0005",
+      "e021_b0006",
+      "e021_b0007",
+      "e021_b0008",
+      "e021_b0009",
+      "e021_b0010",
+      "e021_b0011",
+      "e021_b0027",
+      "e021_b0028",
+      "e021_b0029",
+      "e021_b0030",
+      "e021_b0031",
+      "e021_b0032",
+      "e021_b0033",
+      "e021_b0034",
+      "e021_b0035",
+      "e021_b0036",
+      "e021_b0037",
+      "e021_b0038",
+      "e021_b0039"
+    ],
+    "scores": {
+      "hook": 1.0,
+      "tension": 0.674,
+      "cliffhanger": 0.7,
+      "standalone": 0.3185,
+      "composite": 0.7085
+    },
+    "standalone_detail": {
+      "dialogue_coverage": 0.4185,
+      "n_speakers": 2,
+      "speakers": [
+        "JULIANA",
+        "PRUDENCE"
+      ],
+      "names_spoken_aloud": [
+        "JULIANA",
+        "PRUDENCE"
+      ],
+      "dangling_pronoun_opening": false
+    },
+    "selected_by": "code",
+    "validators": {
+      "timestamps_exist": true,
+      "length_ok": true,
+      "order_ok": true,
+      "hook_within_3s": true,
+      "hook_inside_promo": true,
+      "cliffhanger_inside_promo": true
+    },
+    "validator_failures": [],
+    "valid": true,
+    "rejected_reason": "near-duplicate of p_021_a (episodes [21], 0 apart, visual overlap 0.37 >= 0.17)"
+  },
+  {
+    "promo_id": "p_025_m1",
+    "shape": "multi_segment",
+    "episodes": [
+      25
+    ],
+    "segments": [
+      {
+        "order": 1,
+        "episode": 25,
+        "start": "00:47.00",
+        "end": "01:02.50",
+        "start_s": 47.0,
+        "end_s": 62.5,
+        "duration_s": 15.5
+      },
+      {
+        "order": 2,
+        "episode": 25,
+        "start": "02:15.00",
+        "end": "02:26.40",
+        "start_s": 135.0,
+        "end_s": 146.4,
+        "duration_s": 11.4
+      }
+    ],
+    "total_duration_s": 26.9,
+    "gap_removed_s": 72.5,
+    "hook_is_cold_open": false,
+    "hook": "ALEXANDER (fierce, urgent): \"Juliana... why were you inside Ashburg Manor?\"",
+    "hook_type": "",
+    "cliffhanger": "ALEXANDER (furious, tormented): \"Worry? They struck you. They could have killed you.\"",
+    "why_it_works": "Two moments from episode 25 joined, with 72s of setup cut out: opens on the strongest beat and lands on an unresolved one.",
+    "standalone_risk": "The viewer must bridge one cut unaided.",
+    "hook_beat_id": "e025_b0031",
+    "cliffhanger_beat_id": "e025_b0080",
+    "source_beat_ids": [
+      "e025_b0030",
+      "e025_b0031",
+      "e025_b0032",
+      "e025_b0033",
+      "e025_b0034",
+      "e025_b0035",
+      "e025_b0036",
+      "e025_b0037",
+      "e025_b0038",
+      "e025_b0077",
+      "e025_b0078",
+      "e025_b0079",
+      "e025_b0080",
+      "e025_b0081",
+      "e025_b0082",
+      "e025_b0083",
+      "e025_b0084"
+    ],
+    "scores": {
+      "hook": 0.9,
+      "tension": 0.6708,
+      "cliffhanger": 0.93,
+      "standalone": 0.1002,
+      "composite": 0.7032
+    },
+    "standalone_detail": {
+      "dialogue_coverage": 0.2002,
+      "n_speakers": 2,
+      "speakers": [
+        "ALEXANDER",
+        "JULIANA"
+      ],
+      "names_spoken_aloud": [
+        "JULIANA"
+      ],
+      "dangling_pronoun_opening": false
+    },
+    "selected_by": "code",
+    "validators": {
+      "timestamps_exist": true,
+      "length_ok": true,
+      "order_ok": true,
+      "hook_within_3s": true,
+      "hook_inside_promo": true,
+      "cliffhanger_inside_promo": true
+    },
+    "validator_failures": [],
+    "valid": true,
+    "rejected_reason": "near-duplicate of p_025_a (episodes [25], 0 apart, visual overlap 0.51 >= 0.17)"
+  },
+  {
+    "promo_id": "p_027_m1",
+    "shape": "multi_segment",
+    "episodes": [
+      27
+    ],
+    "segments": [
+      {
+        "order": 1,
+        "episode": 27,
+        "start": "01:18.10",
+        "end": "01:34.90",
+        "start_s": 78.1,
+        "end_s": 94.9,
+        "duration_s": 16.8
+      },
+      {
+        "order": 2,
+        "episode": 27,
+        "start": "02:08.70",
+        "end": "02:23.80",
+        "start_s": 128.7,
+        "end_s": 143.8,
+        "duration_s": 15.1
+      }
+    ],
+    "total_duration_s": 31.9,
+    "gap_removed_s": 33.8,
+    "hook_is_cold_open": false,
+    "hook": "CATHERINE (incredulous, accusing): \"Who permitted you to give medicine to the Duchess?\"",
+    "hook_type": "",
+    "cliffhanger": "BLOND NOBLEMAN (condemning, vindictive): \"She secretly administers an unidentified substance to a helpless woman.\"",
+    "why_it_works": "Two moments from episode 27 joined, with 34s of setup cut out: opens on the strongest beat and lands on an unresolved one.",
+    "standalone_risk": "The viewer must bridge one cut unaided.",
+    "hook_beat_id": "e027_b0047",
+    "cliffhanger_beat_id": "e027_b0089",
+    "source_beat_ids": [
+      "e027_b0046",
+      "e027_b0047",
+      "e027_b0048",
+      "e027_b0049",
+      "e027_b0050",
+      "e027_b0051",
+      "e027_b0052",
+      "e027_b0053",
+      "e027_b0054",
+      "e027_b0055",
+      "e027_b0056",
+      "e027_b0057",
+      "e027_b0081",
+      "e027_b0082",
+      "e027_b0083",
+      "e027_b0084",
+      "e027_b0085",
+      "e027_b0086",
+      "e027_b0087",
+      "e027_b0088",
+      "e027_b0089"
+    ],
+    "scores": {
+      "hook": 0.84,
+      "tension": 0.7586,
+      "cliffhanger": 0.92,
+      "standalone": 0.1168,
+      "composite": 0.7031
+    },
+    "standalone_detail": {
+      "dialogue_coverage": 0.3668,
+      "n_speakers": 3,
+      "speakers": [
+        "BLOND NOBLEMAN",
+        "CATHERINE",
+        "JULIANA"
+      ],
+      "names_spoken_aloud": [],
+      "dangling_pronoun_opening": true
+    },
+    "selected_by": "code",
+    "validators": {
+      "timestamps_exist": true,
+      "length_ok": true,
+      "order_ok": true,
+      "hook_within_3s": true,
+      "hook_inside_promo": true,
+      "cliffhanger_inside_promo": true
+    },
+    "validator_failures": [],
+    "valid": true,
+    "rejected_reason": "near-duplicate of p_027_a (episodes [27], 0 apart, visual overlap 0.20 >= 0.17)"
+  },
+  {
+    "promo_id": "p_038_m1",
+    "shape": "multi_segment",
+    "episodes": [
+      38
+    ],
+    "segments": [
+      {
+        "order": 1,
+        "episode": 38,
+        "start": "00:26.00",
+        "end": "00:43.00",
+        "start_s": 26.0,
+        "end_s": 43.0,
+        "duration_s": 17.0
+      },
+      {
+        "order": 2,
+        "episode": 38,
+        "start": "01:11.00",
+        "end": "01:27.00",
+        "start_s": 71.0,
+        "end_s": 87.0,
+        "duration_s": 16.0
+      }
+    ],
+    "total_duration_s": 33.0,
+    "gap_removed_s": 28.0,
+    "hook_is_cold_open": false,
+    "hook": "JULIANA (choked up, tearful): \"Thank you.\"",
+    "hook_type": "",
+    "cliffhanger": "A sharp, high-tension dramatic swell strikes and echoes out into silence alongside the fading toll of the distant church bells.",
+    "why_it_works": "Two moments from episode 38 joined, with 28s of setup cut out: opens on the strongest beat and lands on an unresolved one.",
+    "standalone_risk": "The viewer must bridge one cut unaided.",
+    "hook_beat_id": "e038_b0018",
+    "cliffhanger_beat_id": "e038_b0056",
+    "source_beat_ids": [
+      "e038_b0016",
+      "e038_b0017",
+      "e038_b0018",
+      "e038_b0019",
+      "e038_b0020",
+      "e038_b0021",
+      "e038_b0022",
+      "e038_b0023",
+      "e038_b0024",
+      "e038_b0025",
+      "e038_b0026",
+      "e038_b0043",
+      "e038_b0046",
+      "e038_b0047",
+      "e038_b0048",
+      "e038_b0049",
+      "e038_b0050",
+      "e038_b0051",
+      "e038_b0052",
+      "e038_b0053",
+      "e038_b0054",
+      "e038_b0055",
+      "e038_b0056"
+    ],
+    "scores": {
+      "hook": 0.91,
+      "tension": 0.6426,
+      "cliffhanger": 1.0,
+      "standalone": 0.0025,
+      "composite": 0.702
+    },
+    "standalone_detail": {
+      "dialogue_coverage": 0.2525,
+      "n_speakers": 1,
+      "speakers": [
+        "JULIANA"
+      ],
+      "names_spoken_aloud": [],
+      "dangling_pronoun_opening": true
+    },
+    "selected_by": "code",
+    "validators": {
+      "timestamps_exist": true,
+      "length_ok": true,
+      "order_ok": true,
+      "hook_within_3s": true,
+      "hook_inside_promo": true,
+      "cliffhanger_inside_promo": true
+    },
+    "validator_failures": [],
+    "valid": true,
+    "rejected_reason": "near-duplicate of p_038_a (episodes [38], 0 apart, visual overlap 0.52 >= 0.17)"
+  },
+  {
+    "promo_id": "p_024_m1",
+    "shape": "multi_segment",
+    "episodes": [
+      24
+    ],
+    "segments": [
+      {
+        "order": 1,
+        "episode": 24,
+        "start": "00:06.80",
+        "end": "00:22.20",
+        "start_s": 6.8,
+        "end_s": 22.2,
+        "duration_s": 15.4
+      },
+      {
+        "order": 2,
+        "episode": 24,
+        "start": "01:13.00",
+        "end": "01:29.80",
+        "start_s": 73.0,
+        "end_s": 89.8,
+        "duration_s": 16.8
+      }
+    ],
+    "total_duration_s": 32.2,
+    "gap_removed_s": 50.8,
+    "hook_is_cold_open": false,
+    "hook": "NOBLEWOMAN (sharp, demanding): \"Who are you?\"",
+    "hook_type": "",
+    "cliffhanger": "Juliana raises her head. Smudges of dark soot stain her fair cheek, but her piercing blue eyes burn with unwavering defiance and unyielding resolve as she stares toward the hallway.",
+    "why_it_works": "Two moments from episode 24 joined, with 51s of setup cut out: opens on the strongest beat and lands on an unresolved one.",
+    "standalone_risk": "The viewer must bridge one cut unaided.",
+    "hook_beat_id": "e024_b0005",
+    "cliffhanger_beat_id": "e024_b0066",
+    "source_beat_ids": [
+      "e024_b0004",
+      "e024_b0005",
+      "e024_b0006",
+      "e024_b0007",
+      "e024_b0008",
+      "e024_b0009",
+      "e024_b0010",
+      "e024_b0011",
+      "e024_b0012",
+      "e024_b0013",
+      "e024_b0014",
+      "e024_b0056",
+      "e024_b0057",
+      "e024_b0058",
+      "e024_b0059",
+      "e024_b0060",
+      "e024_b0061",
+      "e024_b0062",
+      "e024_b0063",
+      "e024_b0064",
+      "e024_b0065",
+      "e024_b0066",
+      "e024_b0067",
+      "e024_b0068"
+    ],
+    "scores": {
+      "hook": 0.84,
+      "tension": 0.6625,
+      "cliffhanger": 0.94,
+      "standalone": 0.1747,
+      "composite": 0.7014
+    },
+    "standalone_detail": {
+      "dialogue_coverage": 0.2747,
+      "n_speakers": 2,
+      "speakers": [
+        "JULIANA",
+        "NOBLEWOMAN"
+      ],
+      "names_spoken_aloud": [
+        "JULIANA"
+      ],
+      "dangling_pronoun_opening": false
+    },
+    "selected_by": "code",
+    "validators": {
+      "timestamps_exist": true,
+      "length_ok": true,
+      "order_ok": true,
+      "hook_within_3s": true,
+      "hook_inside_promo": true,
+      "cliffhanger_inside_promo": true
+    },
+    "validator_failures": [],
+    "valid": true,
+    "rejected_reason": "near-duplicate of p_024_a (episodes [24], 0 apart, visual overlap 0.64 >= 0.17)"
+  },
+  {
+    "promo_id": "p_009_m1",
+    "shape": "multi_segment",
+    "episodes": [
+      9
+    ],
+    "segments": [
+      {
+        "order": 1,
+        "episode": 9,
+        "start": "00:06.30",
+        "end": "00:19.80",
+        "start_s": 6.3,
+        "end_s": 19.8,
+        "duration_s": 13.5
+      },
+      {
+        "order": 2,
+        "episode": 9,
+        "start": "01:30.60",
+        "end": "01:45.90",
+        "start_s": 90.6,
+        "end_s": 105.9,
+        "duration_s": 15.3
+      }
+    ],
+    "total_duration_s": 28.8,
+    "gap_removed_s": 70.8,
+    "hook_is_cold_open": false,
+    "hook": "PEASANT MOTHER (frantic, weeping): \"Please! They told me there was a woman here who knows herbs. My boy is burning with fever!\"",
+    "hook_type": "",
+    "cliffhanger": "BLOND NOBLEMAN (sharp, demanding): \"Where?\"",
+    "why_it_works": "Two moments from episode 9 joined, with 71s of setup cut out: opens on the strongest beat and lands on an unresolved one.",
+    "standalone_risk": "The viewer must bridge one cut unaided.",
+    "hook_beat_id": "e009_b0008",
+    "cliffhanger_beat_id": "e009_b0080",
+    "source_beat_ids": [
+      "e009_b0006",
+      "e009_b0007",
+      "e009_b0008",
+      "e009_b0009",
+      "e009_b0010",
+      "e009_b0011",
+      "e009_b0012",
+      "e009_b0013",
+      "e009_b0014",
+      "e009_b0015",
+      "e009_b0071",
+      "e009_b0072",
+      "e009_b0073",
+      "e009_b0074",
+      "e009_b0075",
+      "e009_b0076",
+      "e009_b0077",
+      "e009_b0078",
+      "e009_b0079",
+      "e009_b0080",
+      "e009_b0081",
+      "e009_b0082",
+      "e009_b0083",
+      "e009_b0084"
+    ],
+    "scores": {
+      "hook": 1.0,
+      "tension": 0.5399,
+      "cliffhanger": 0.96,
+      "standalone": 0.0,
+      "composite": 0.696
+    },
+    "standalone_detail": {
+      "dialogue_coverage": 0.241,
+      "n_speakers": 4,
+      "speakers": [
+        "BLOND NOBLEMAN",
+        "GERALD",
+        "JULIANA",
+        "PEASANT MOTHER"
+      ],
+      "names_spoken_aloud": [],
+      "dangling_pronoun_opening": true
+    },
+    "selected_by": "code",
+    "validators": {
+      "timestamps_exist": true,
+      "length_ok": true,
+      "order_ok": true,
+      "hook_within_3s": true,
+      "hook_inside_promo": true,
+      "cliffhanger_inside_promo": true
+    },
+    "validator_failures": [],
+    "valid": true,
+    "rejected_reason": "near-duplicate of p_009_a (episodes [9], 0 apart, visual overlap 0.33 >= 0.17)"
+  },
+  {
+    "promo_id": "p_030_m1",
+    "shape": "multi_segment",
+    "episodes": [
+      30
+    ],
+    "segments": [
+      {
+        "order": 1,
+        "episode": 30,
+        "start": "00:08.80",
+        "end": "00:25.80",
+        "start_s": 8.8,
+        "end_s": 25.8,
+        "duration_s": 17.0
+      },
+      {
+        "order": 2,
+        "episode": 30,
+        "start": "00:48.00",
+        "end": "01:02.50",
+        "start_s": 48.0,
+        "end_s": 62.5,
+        "duration_s": 14.5
+      }
+    ],
+    "total_duration_s": 31.5,
+    "gap_removed_s": 22.2,
+    "hook_is_cold_open": false,
+    "hook": "ELDER NOBLEMAN (cold, accusatory): \"You have a rat in your cellar, Rupert. And the servants are beginning to smell it.\"",
+    "hook_type": "",
+    "cliffhanger": "ELDER NOBLEMAN (ruthless): \"We use the law to destroy her.\"",
+    "why_it_works": "Two moments from episode 30 joined, with 22s of setup cut out: opens on the strongest beat and lands on an unresolved one.",
+    "standalone_risk": "The viewer must bridge one cut unaided.",
+    "hook_beat_id": "e030_b0006",
+    "cliffhanger_beat_id": "e030_b0030",
+    "source_beat_ids": [
+      "e030_b0005",
+      "e030_b0006",
+      "e030_b0007",
+      "e030_b0008",
+      "e030_b0009",
+      "e030_b0010",
+      "e030_b0023",
+      "e030_b0024",
+      "e030_b0025",
+      "e030_b0026",
+      "e030_b0027",
+      "e030_b0028",
+      "e030_b0029",
+      "e030_b0030"
+    ],
+    "scores": {
+      "hook": 0.74,
+      "tension": 0.7408,
+      "cliffhanger": 0.84,
+      "standalone": 0.3451,
+      "composite": 0.6912
+    },
+    "standalone_detail": {
+      "dialogue_coverage": 0.4451,
+      "n_speakers": 3,
+      "speakers": [
+        "CATHERINE",
+        "ELDER NOBLEMAN",
+        "RUPERT"
+      ],
+      "names_spoken_aloud": [
+        "RUPERT"
+      ],
+      "dangling_pronoun_opening": false
+    },
+    "selected_by": "code",
+    "validators": {
+      "timestamps_exist": true,
+      "length_ok": true,
+      "order_ok": true,
+      "hook_within_3s": true,
+      "hook_inside_promo": true,
+      "cliffhanger_inside_promo": true
+    },
+    "validator_failures": [],
+    "valid": true,
+    "rejected_reason": "near-duplicate of p_030_a (episodes [30], 0 apart, visual overlap 0.23 >= 0.17)"
+  },
+  {
+    "promo_id": "p_020_m1",
+    "shape": "multi_segment",
+    "episodes": [
+      20
+    ],
+    "segments": [
+      {
+        "order": 1,
+        "episode": 20,
+        "start": "00:04.60",
+        "end": "00:21.20",
+        "start_s": 4.6,
+        "end_s": 21.2,
+        "duration_s": 16.6
+      },
+      {
+        "order": 2,
+        "episode": 20,
+        "start": "01:32.60",
+        "end": "01:49.20",
+        "start_s": 92.6,
+        "end_s": 109.2,
+        "duration_s": 16.6
+      }
+    ],
+    "total_duration_s": 33.2,
+    "gap_removed_s": 71.4,
+    "hook_is_cold_open": false,
+    "hook": "CATHERINE (taunting, silkily): \"Or has your sudden climb to power sweetened your taste already?\"",
+    "hook_type": "",
+    "cliffhanger": "CATHERINE (cold, ruthless): \"This house will only bow to me.\"",
+    "why_it_works": "Two moments from episode 20 joined, with 71s of setup cut out: opens on the strongest beat and lands on an unresolved one.",
+    "standalone_risk": "The viewer must bridge one cut unaided.",
+    "hook_beat_id": "e020_b0003",
+    "cliffhanger_beat_id": "e020_b0066",
+    "source_beat_ids": [
+      "e020_b0001",
+      "e020_b0003",
+      "e020_b0004",
+      "e020_b0005",
+      "e020_b0006",
+      "e020_b0007",
+      "e020_b0008",
+      "e020_b0009",
+      "e020_b0010",
+      "e020_b0011",
+      "e020_b0012",
+      "e020_b0013",
+      "e020_b0055",
+      "e020_b0057",
+      "e020_b0058",
+      "e020_b0059",
+      "e020_b0060",
+      "e020_b0061",
+      "e020_b0062",
+      "e020_b0063",
+      "e020_b0064",
+      "e020_b0065",
+      "e020_b0066"
+    ],
+    "scores": {
+      "hook": 0.82,
+      "tension": 0.535,
+      "cliffhanger": 1.0,
+      "standalone": 0.1706,
+      "composite": 0.6871
+    },
+    "standalone_detail": {
+      "dialogue_coverage": 0.2706,
+      "n_speakers": 2,
+      "speakers": [
+        "CATHERINE",
+        "RUPERT"
+      ],
+      "names_spoken_aloud": [
+        "CATHERINE"
+      ],
+      "dangling_pronoun_opening": false
+    },
+    "selected_by": "code",
+    "validators": {
+      "timestamps_exist": true,
+      "length_ok": true,
+      "order_ok": true,
+      "hook_within_3s": true,
+      "hook_inside_promo": true,
+      "cliffhanger_inside_promo": true
+    },
+    "validator_failures": [],
+    "valid": true,
+    "rejected_reason": "near-duplicate of p_020_a (episodes [20], 0 apart, visual overlap 0.42 >= 0.17)"
+  },
+  {
+    "promo_id": "p_010_m1",
+    "shape": "multi_segment",
+    "episodes": [
+      10
+    ],
+    "segments": [
+      {
+        "order": 1,
+        "episode": 10,
+        "start": "00:00.00",
+        "end": "00:16.00",
+        "start_s": 0.0,
+        "end_s": 16.0,
+        "duration_s": 16.0
+      },
+      {
+        "order": 2,
+        "episode": 10,
+        "start": "01:09.60",
+        "end": "01:25.90",
+        "start_s": 69.6,
+        "end_s": 85.9,
+        "duration_s": 16.3
+      }
+    ],
+    "total_duration_s": 32.3,
+    "gap_removed_s": 53.6,
+    "hook_is_cold_open": false,
+    "hook": "Juliana quietly studies the botanical illustrations by firelight, a bundle of fresh dried herbs resting on the table.",
+    "hook_type": "",
+    "cliffhanger": "ALEXANDER (deep, emotional): \"Your touch is the only medicine that has ever eased my pain.\"",
+    "why_it_works": "Two moments from episode 10 joined, with 54s of setup cut out: opens on the strongest beat and lands on an unresolved one.",
+    "standalone_risk": "The viewer must bridge one cut unaided.",
+    "hook_beat_id": "e010_b0000",
+    "cliffhanger_beat_id": "e010_b0058",
+    "source_beat_ids": [
+      "e010_b0000",
+      "e010_b0001",
+      "e010_b0002",
+      "e010_b0003",
+      "e010_b0004",
+      "e010_b0005",
+      "e010_b0006",
+      "e010_b0007",
+      "e010_b0008",
+      "e010_b0009",
+      "e010_b0010",
+      "e010_b0011",
+      "e010_b0012",
+      "e010_b0013",
+      "e010_b0014",
+      "e010_b0050",
+      "e010_b0051",
+      "e010_b0052",
+      "e010_b0053",
+      "e010_b0054",
+      "e010_b0055",
+      "e010_b0056",
+      "e010_b0057",
+      "e010_b0058"
+    ],
+    "scores": {
+      "hook": 1.0,
+      "tension": 0.6189,
+      "cliffhanger": 0.8,
+      "standalone": 0.1107,
+      "composite": 0.6859
+    },
+    "standalone_detail": {
+      "dialogue_coverage": 0.2107,
+      "n_speakers": 2,
+      "speakers": [
+        "ALEXANDER",
+        "JULIANA"
+      ],
+      "names_spoken_aloud": [
+        "ALEXANDER"
+      ],
+      "dangling_pronoun_opening": false
+    },
+    "selected_by": "code",
+    "validators": {
+      "timestamps_exist": true,
+      "length_ok": true,
+      "order_ok": true,
+      "hook_within_3s": true,
+      "hook_inside_promo": true,
+      "cliffhanger_inside_promo": true
+    },
+    "validator_failures": [],
+    "valid": true,
+    "rejected_reason": "near-duplicate of p_009_a (episodes [9], 1 apart, visual overlap 0.21 >= 0.17)"
+  },
+  {
+    "promo_id": "p_001_m1",
+    "shape": "multi_segment",
+    "episodes": [
+      1
+    ],
+    "segments": [
+      {
+        "order": 1,
+        "episode": 1,
+        "start": "00:46.80",
+        "end": "01:01.80",
+        "start_s": 46.8,
+        "end_s": 61.8,
+        "duration_s": 15.0
+      },
+      {
+        "order": 2,
+        "episode": 1,
+        "start": "01:57.00",
+        "end": "02:11.20",
+        "start_s": 117.0,
+        "end_s": 131.2,
+        "duration_s": 14.2
+      }
+    ],
+    "total_duration_s": 29.2,
+    "gap_removed_s": 55.2,
+    "hook_is_cold_open": false,
+    "hook": "JULIANA (outraged, accusing): \"You knew this before I walked through those doors!\"",
+    "hook_type": "",
+    "cliffhanger": "GERALD (arrogant, dismissive): \"I cannot marry a woman of such plainness and low value...\"",
+    "why_it_works": "Two moments from episode 1 joined, with 55s of setup cut out: opens on the strongest beat and lands on an unresolved one.",
+    "standalone_risk": "The viewer must bridge one cut unaided.",
+    "hook_beat_id": "e001_b0030",
+    "cliffhanger_beat_id": "e001_b0085",
+    "source_beat_ids": [
+      "e001_b0030",
+      "e001_b0031",
+      "e001_b0032",
+      "e001_b0033",
+      "e001_b0034",
+      "e001_b0035",
+      "e001_b0036",
+      "e001_b0037",
+      "e001_b0038",
+      "e001_b0039",
+      "e001_b0040",
+      "e001_b0080",
+      "e001_b0081",
+      "e001_b0082",
+      "e001_b0083",
+      "e001_b0084",
+      "e001_b0085",
+      "e001_b0086",
+      "e001_b0087",
+      "e001_b0088"
+    ],
+    "scores": {
+      "hook": 1.0,
+      "tension": 0.6357,
+      "cliffhanger": 0.82,
+      "standalone": 0.0154,
+      "composite": 0.6762
+    },
+    "standalone_detail": {
+      "dialogue_coverage": 0.2654,
+      "n_speakers": 2,
+      "speakers": [
+        "GERALD",
+        "JULIANA"
+      ],
+      "names_spoken_aloud": [],
+      "dangling_pronoun_opening": true
+    },
+    "selected_by": "code",
+    "validators": {
+      "timestamps_exist": true,
+      "length_ok": true,
+      "order_ok": true,
+      "hook_within_3s": true,
+      "hook_inside_promo": true,
+      "cliffhanger_inside_promo": true
+    },
+    "validator_failures": [],
+    "valid": true,
+    "rejected_reason": "near-duplicate of p_001_a (episodes [1], 0 apart, visual overlap 0.57 >= 0.17)"
+  },
+  {
+    "promo_id": "p_050_a",
+    "shape": "single_stretch",
+    "episodes": [
+      50
+    ],
+    "segments": [
+      {
+        "order": 1,
+        "episode": 50,
+        "start": "00:16.80",
+        "end": "00:39.40",
+        "start_s": 16.8,
+        "end_s": 39.4,
+        "duration_s": 22.6
+      }
+    ],
+    "total_duration_s": 22.6,
+    "hook_is_cold_open": false,
+    "hook": "FATHER THOMAS (calculated, demanding): \"The west territory. Tax collection, all of it. Routed through my office.\"",
+    "hook_type": "",
+    "cliffhanger": "FATHER THOMAS (steady, cold): \"Absolution is free. Discretion has a price.\"",
+    "why_it_works": "[--no-llm mode] highest-intensity opening and an unresolved final beat.",
+    "standalone_risk": "",
+    "hook_beat_id": "e050_b0012",
+    "cliffhanger_beat_id": "e050_b0016",
+    "source_beat_ids": [
+      "e050_b0009",
+      "e050_b0010",
+      "e050_b0011",
+      "e050_b0012",
+      "e050_b0013",
+      "e050_b0014",
+      "e050_b0015",
+      "e050_b0016",
+      "e050_b0017",
+      "e050_b0018"
+    ],
+    "scores": {
+      "hook": 0.74,
+      "tension": 0.6512,
+      "cliffhanger": 0.64,
+      "standalone": 0.6111,
+      "composite": 0.6665
+    },
+    "standalone_detail": {
+      "dialogue_coverage": 0.7611,
+      "n_speakers": 2,
+      "speakers": [
+        "CATHERINE",
+        "FATHER THOMAS"
+      ],
+      "names_spoken_aloud": [],
+      "dangling_pronoun_opening": true
+    },
+    "selected_by": "code",
+    "validators": {
+      "timestamps_exist": true,
+      "length_ok": true,
+      "order_ok": true,
+      "hook_within_3s": true,
+      "hook_inside_promo": true,
+      "cliffhanger_inside_promo": true
+    },
+    "validator_failures": [],
+    "valid": true,
+    "rejected_reason": "near-duplicate of p_049_a (episodes [49], 1 apart, visual overlap 0.18 >= 0.17)"
+  },
+  {
+    "promo_id": "p_004_m1",
+    "shape": "multi_segment",
+    "episodes": [
+      4
+    ],
+    "segments": [
+      {
+        "order": 1,
+        "episode": 4,
+        "start": "00:23.50",
+        "end": "00:38.80",
+        "start_s": 23.5,
+        "end_s": 38.8,
+        "duration_s": 15.3
+      },
+      {
+        "order": 2,
+        "episode": 4,
+        "start": "01:40.20",
+        "end": "01:56.80",
+        "start_s": 100.2,
+        "end_s": 116.8,
+        "duration_s": 16.6
+      }
+    ],
+    "total_duration_s": 31.9,
+    "gap_removed_s": 61.4,
+    "hook_is_cold_open": false,
+    "hook": "JULIANA (conflicted, pained): \"You heard what they think I am.\"",
+    "hook_type": "",
+    "cliffhanger": "GERALD (furious, shouting): \"You have thrown yourself away!\"",
+    "why_it_works": "Two moments from episode 4 joined, with 61s of setup cut out: opens on the strongest beat and lands on an unresolved one.",
+    "standalone_risk": "The viewer must bridge one cut unaided.",
+    "hook_beat_id": "e004_b0019",
+    "cliffhanger_beat_id": "e004_b0086",
+    "source_beat_ids": [
+      "e004_b0018",
+      "e004_b0019",
+      "e004_b0020",
+      "e004_b0021",
+      "e004_b0022",
+      "e004_b0023",
+      "e004_b0024",
+      "e004_b0025",
+      "e004_b0026",
+      "e004_b0027",
+      "e004_b0028",
+      "e004_b0029",
+      "e004_b0030",
+      "e004_b0072",
+      "e004_b0073",
+      "e004_b0074",
+      "e004_b0075",
+      "e004_b0076",
+      "e004_b0077",
+      "e004_b0078",
+      "e004_b0079",
+      "e004_b0080",
+      "e004_b0081",
+      "e004_b0082",
+      "e004_b0083",
+      "e004_b0084",
+      "e004_b0085",
+      "e004_b0086"
+    ],
+    "scores": {
+      "hook": 0.72,
+      "tension": 0.603,
+      "cliffhanger": 1.0,
+      "standalone": 0.0805,
+      "composite": 0.6527
+    },
+    "standalone_detail": {
+      "dialogue_coverage": 0.2605,
+      "n_speakers": 4,
+      "speakers": [
+        "GERALD",
+        "JULIANA",
+        "MYSTERIOUS BEARDED MAN",
+        "THE PRIEST"
+      ],
+      "names_spoken_aloud": [
+        "THE PRIEST"
+      ],
+      "dangling_pronoun_opening": false
+    },
+    "selected_by": "code",
+    "validators": {
+      "timestamps_exist": true,
+      "length_ok": true,
+      "order_ok": true,
+      "hook_within_3s": true,
+      "hook_inside_promo": true,
+      "cliffhanger_inside_promo": true
+    },
+    "validator_failures": [],
+    "valid": true,
+    "rejected_reason": "near-duplicate of p_004_a (episodes [4], 0 apart, visual overlap 0.27 >= 0.17)"
+  },
+  {
+    "promo_id": "p_016_m1",
+    "shape": "multi_segment",
+    "episodes": [
+      16
+    ],
+    "segments": [
+      {
+        "order": 1,
+        "episode": 16,
+        "start": "00:06.40",
+        "end": "00:21.80",
+        "start_s": 6.4,
+        "end_s": 21.8,
+        "duration_s": 15.4
+      },
+      {
+        "order": 2,
+        "episode": 16,
+        "start": "01:07.80",
+        "end": "01:23.19",
+        "start_s": 67.8,
+        "end_s": 83.19,
+        "duration_s": 15.39
+      }
+    ],
+    "total_duration_s": 30.79,
+    "gap_removed_s": 46.0,
+    "hook_is_cold_open": false,
+    "hook": "THUG WITH CAP (furious, shouting): \"I said, move!\"",
+    "hook_type": "",
+    "cliffhanger": "Slow, resonant emotional cello melody swelling to a dramatic cliffhanger hold.",
+    "why_it_works": "Two moments from episode 16 joined, with 46s of setup cut out: opens on the strongest beat and lands on an unresolved one.",
+    "standalone_risk": "The viewer must bridge one cut unaided.",
+    "hook_beat_id": "e016_b0005",
+    "cliffhanger_beat_id": "e016_b0063",
+    "source_beat_ids": [
+      "e016_b0005",
+      "e016_b0006",
+      "e016_b0007",
+      "e016_b0008",
+      "e016_b0009",
+      "e016_b0010",
+      "e016_b0011",
+      "e016_b0012",
+      "e016_b0013",
+      "e016_b0014",
+      "e016_b0015",
+      "e016_b0016",
+      "e016_b0017",
+      "e016_b0053",
+      "e016_b0054",
+      "e016_b0055",
+      "e016_b0056",
+      "e016_b0057",
+      "e016_b0058",
+      "e016_b0059",
+      "e016_b0060",
+      "e016_b0061",
+      "e016_b0062",
+      "e016_b0063"
+    ],
+    "scores": {
+      "hook": 1.0,
+      "tension": 0.5862,
+      "cliffhanger": 0.72,
+      "standalone": 0.0771,
+      "composite": 0.6487
+    },
+    "standalone_detail": {
+      "dialogue_coverage": 0.1771,
+      "n_speakers": 3,
+      "speakers": [
+        "ALEXANDER",
+        "JULIANA",
+        "THUG WITH CAP"
+      ],
+      "names_spoken_aloud": [
+        "ALEXANDER"
+      ],
+      "dangling_pronoun_opening": false
+    },
+    "selected_by": "code",
+    "validators": {
+      "timestamps_exist": true,
+      "length_ok": true,
+      "order_ok": true,
+      "hook_within_3s": true,
+      "hook_inside_promo": true,
+      "cliffhanger_inside_promo": true
+    },
+    "validator_failures": [],
+    "valid": true,
+    "rejected_reason": "near-duplicate of p_015_a (episodes [15], 1 apart, visual overlap 0.17 >= 0.17)"
+  },
+  {
+    "promo_id": "p_006_m1",
+    "shape": "multi_segment",
+    "episodes": [
+      6
+    ],
+    "segments": [
+      {
+        "order": 1,
+        "episode": 6,
+        "start": "00:02.30",
+        "end": "00:18.20",
+        "start_s": 2.3,
+        "end_s": 18.2,
+        "duration_s": 15.9
+      },
+      {
+        "order": 2,
+        "episode": 6,
+        "start": "01:10.10",
+        "end": "01:23.80",
+        "start_s": 70.1,
+        "end_s": 83.8,
+        "duration_s": 13.7
+      }
+    ],
+    "total_duration_s": 29.6,
+    "gap_removed_s": 51.9,
+    "hook_is_cold_open": false,
+    "hook": "Heavy rain pouring through dense tree canopies with steady footfalls on wet earth.",
+    "hook_type": "",
+    "cliffhanger": "He strikes flint and steel together over dry kindling, igniting bright sparks that catch into a flickering flame.",
+    "why_it_works": "Two moments from episode 6 joined, with 52s of setup cut out: opens on the strongest beat and lands on an unresolved one.",
+    "standalone_risk": "The viewer must bridge one cut unaided.",
+    "hook_beat_id": "e006_b0003",
+    "cliffhanger_beat_id": "e006_b0070",
+    "source_beat_ids": [
+      "e006_b0001",
+      "e006_b0002",
+      "e006_b0003",
+      "e006_b0004",
+      "e006_b0005",
+      "e006_b0006",
+      "e006_b0007",
+      "e006_b0008",
+      "e006_b0009",
+      "e006_b0010",
+      "e006_b0011",
+      "e006_b0012",
+      "e006_b0013",
+      "e006_b0014",
+      "e006_b0015",
+      "e006_b0061",
+      "e006_b0062",
+      "e006_b0063",
+      "e006_b0064",
+      "e006_b0065",
+      "e006_b0066",
+      "e006_b0067",
+      "e006_b0068",
+      "e006_b0069",
+      "e006_b0070",
+      "e006_b0071"
+    ],
+    "scores": {
+      "hook": 0.81,
+      "tension": 0.5893,
+      "cliffhanger": 0.95,
+      "standalone": 0.0,
+      "composite": 0.6459
+    },
+    "standalone_detail": {
+      "dialogue_coverage": 0.1356,
+      "n_speakers": 2,
+      "speakers": [
+        "JULIANA",
+        "MYSTERIOUS BEARDED MAN"
+      ],
+      "names_spoken_aloud": [],
+      "dangling_pronoun_opening": true
+    },
+    "selected_by": "code",
+    "validators": {
+      "timestamps_exist": true,
+      "length_ok": true,
+      "order_ok": true,
+      "hook_within_3s": true,
+      "hook_inside_promo": true,
+      "cliffhanger_inside_promo": true
+    },
+    "validator_failures": [],
+    "valid": true,
+    "rejected_reason": "near-duplicate of p_006_a (episodes [6], 0 apart, visual overlap 0.47 >= 0.17)"
+  },
+  {
+    "promo_id": "p_019_m1",
+    "shape": "multi_segment",
+    "episodes": [
+      19
+    ],
+    "segments": [
+      {
+        "order": 1,
+        "episode": 19,
+        "start": "00:05.10",
+        "end": "00:20.50",
+        "start_s": 5.1,
+        "end_s": 20.5,
+        "duration_s": 15.4
+      },
+      {
+        "order": 2,
+        "episode": 19,
+        "start": "01:25.90",
+        "end": "01:42.60",
+        "start_s": 85.9,
+        "end_s": 102.6,
+        "duration_s": 16.7
+      }
+    ],
+    "total_duration_s": 32.1,
+    "gap_removed_s": 65.4,
+    "hook_is_cold_open": false,
+    "hook": "JULIANA (emotional, fragile): \"My mother's book almost burned with it.\"",
+    "hook_type": "",
+    "cliffhanger": "JULIANA (despairing, broken): \"I don't know what we will do tomorrow.\"",
+    "why_it_works": "Two moments from episode 19 joined, with 65s of setup cut out: opens on the strongest beat and lands on an unresolved one.",
+    "standalone_risk": "The viewer must bridge one cut unaided.",
+    "hook_beat_id": "e019_b0004",
+    "cliffhanger_beat_id": "e019_b0056",
+    "source_beat_ids": [
+      "e019_b0003",
+      "e019_b0004",
+      "e019_b0005",
+      "e019_b0006",
+      "e019_b0007",
+      "e019_b0008",
+      "e019_b0009",
+      "e019_b0010",
+      "e019_b0011",
+      "e019_b0012",
+      "e019_b0048",
+      "e019_b0049",
+      "e019_b0050",
+      "e019_b0051",
+      "e019_b0052",
+      "e019_b0053",
+      "e019_b0054",
+      "e019_b0055",
+      "e019_b0056"
+    ],
+    "scores": {
+      "hook": 0.7,
+      "tension": 0.537,
+      "cliffhanger": 0.92,
+      "standalone": 0.0,
+      "composite": 0.5934
+    },
+    "standalone_detail": {
+      "dialogue_coverage": 0.1774,
+      "n_speakers": 3,
+      "speakers": [
+        "ALEXANDER",
+        "ELDER VILLAGER",
+        "JULIANA"
+      ],
+      "names_spoken_aloud": [],
+      "dangling_pronoun_opening": true
+    },
+    "selected_by": "code",
+    "validators": {
+      "timestamps_exist": true,
+      "length_ok": true,
+      "order_ok": true,
+      "hook_within_3s": true,
+      "hook_inside_promo": true,
+      "cliffhanger_inside_promo": true
+    },
+    "validator_failures": [],
+    "valid": true,
+    "rejected_reason": "near-duplicate of p_019_a (episodes [19], 0 apart, visual overlap 0.53 >= 0.17)"
+  },
+  {
+    "promo_id": "p_049_m1",
+    "shape": "multi_segment",
+    "episodes": [
+      49
+    ],
+    "segments": [
+      {
+        "order": 1,
+        "episode": 49,
+        "start": "00:22.20",
+        "end": "00:33.00",
+        "start_s": 22.2,
+        "end_s": 33.0,
+        "duration_s": 10.8
+      },
+      {
+        "order": 2,
+        "episode": 49,
+        "start": "01:17.20",
+        "end": "01:31.20",
+        "start_s": 77.2,
+        "end_s": 91.2,
+        "duration_s": 14.0
+      }
+    ],
+    "total_duration_s": 24.8,
+    "gap_removed_s": 44.2,
+    "hook_is_cold_open": false,
+    "hook": "FATHER THOMAS (grave): \"No shadows tonight, Catherine. Just us and an empty wing.\"",
+    "hook_type": "",
+    "cliffhanger": "CATHERINE (fierce, uncompromising): \"Second, I want to know what the council knows before it decides anything. Every argument, every witness, every whisper against her.\"",
+    "why_it_works": "Two moments from episode 49 joined, with 44s of setup cut out: opens on the strongest beat and lands on an unresolved one.",
+    "standalone_risk": "The viewer must bridge one cut unaided.",
+    "hook_beat_id": "e049_b0013",
+    "cliffhanger_beat_id": "e049_b0036",
+    "source_beat_ids": [
+      "e049_b0012",
+      "e049_b0013",
+      "e049_b0014",
+      "e049_b0015",
+      "e049_b0033",
+      "e049_b0034",
+      "e049_b0035",
+      "e049_b0036"
+    ],
+    "scores": {
+      "hook": 0.6,
+      "tension": 0.6195,
+      "cliffhanger": 0.8,
+      "standalone": 0.2449,
+      "composite": 0.5929
+    },
+    "standalone_detail": {
+      "dialogue_coverage": 0.3449,
+      "n_speakers": 2,
+      "speakers": [
+        "CATHERINE",
+        "FATHER THOMAS"
+      ],
+      "names_spoken_aloud": [
+        "CATHERINE"
+      ],
+      "dangling_pronoun_opening": false
+    },
+    "selected_by": "code",
+    "validators": {
+      "timestamps_exist": true,
+      "length_ok": true,
+      "order_ok": true,
+      "hook_within_3s": true,
+      "hook_inside_promo": true,
+      "cliffhanger_inside_promo": true
+    },
+    "validator_failures": [],
+    "valid": true,
+    "rejected_reason": "near-duplicate of p_049_a (episodes [49], 0 apart, visual overlap 0.41 >= 0.17)"
+  },
+  {
+    "promo_id": "p_008_m1",
+    "shape": "multi_segment",
+    "episodes": [
+      8
+    ],
+    "segments": [
+      {
+        "order": 1,
+        "episode": 8,
+        "start": "00:00.20",
+        "end": "00:16.10",
+        "start_s": 0.2,
+        "end_s": 16.1,
+        "duration_s": 15.9
+      },
+      {
+        "order": 2,
+        "episode": 8,
+        "start": "01:03.20",
+        "end": "01:18.00",
+        "start_s": 63.2,
+        "end_s": 78.0,
+        "duration_s": 14.8
+      }
+    ],
+    "total_duration_s": 30.7,
+    "gap_removed_s": 47.1,
+    "hook_is_cold_open": false,
+    "hook": "JULIANA (gentle, somber): \"Some of the pages are ruined. Careful.\"",
+    "hook_type": "",
+    "cliffhanger": "Juliana maintains her warm, peaceful gaze across the table as soft firelight flickers over her face into fade out.",
+    "why_it_works": "Two moments from episode 8 joined, with 47s of setup cut out: opens on the strongest beat and lands on an unresolved one.",
+    "standalone_risk": "The viewer must bridge one cut unaided.",
+    "hook_beat_id": "e008_b0002",
+    "cliffhanger_beat_id": "e008_b0062",
+    "source_beat_ids": [
+      "e008_b0000",
+      "e008_b0001",
+      "e008_b0002",
+      "e008_b0003",
+      "e008_b0004",
+      "e008_b0005",
+      "e008_b0006",
+      "e008_b0007",
+      "e008_b0008",
+      "e008_b0009",
+      "e008_b0010",
+      "e008_b0011",
+      "e008_b0012",
+      "e008_b0013",
+      "e008_b0014",
+      "e008_b0051",
+      "e008_b0052",
+      "e008_b0053",
+      "e008_b0054",
+      "e008_b0055",
+      "e008_b0056",
+      "e008_b0057",
+      "e008_b0058",
+      "e008_b0059",
+      "e008_b0060",
+      "e008_b0061",
+      "e008_b0062"
+    ],
+    "scores": {
+      "hook": 0.52,
+      "tension": 0.4379,
+      "cliffhanger": 0.8,
+      "standalone": 0.0,
+      "composite": 0.4836
+    },
+    "standalone_detail": {
+      "dialogue_coverage": 0.2455,
+      "n_speakers": 2,
+      "speakers": [
+        "ALEXANDER",
+        "JULIANA"
+      ],
+      "names_spoken_aloud": [],
+      "dangling_pronoun_opening": true
+    },
+    "selected_by": "code",
+    "validators": {
+      "timestamps_exist": true,
+      "length_ok": true,
+      "order_ok": true,
+      "hook_within_3s": true,
+      "hook_inside_promo": true,
+      "cliffhanger_inside_promo": true
+    },
+    "validator_failures": [],
+    "valid": true,
+    "rejected_reason": "near-duplicate of p_008_a (episodes [8], 0 apart, visual overlap 0.44 >= 0.17)"
+  }
+]

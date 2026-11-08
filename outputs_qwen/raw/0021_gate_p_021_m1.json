@@ -1,0 +1,41 @@
+{
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "tag": "gate_p_021_m1",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\n[sfx] A loud wooden slam as the heavy double barn doors violently fly open.\nPRUDENCE: \"Lady Juliana! Please! You have to help me, Toby is dying!\"\n[action] Lady Juliana hurries over, placing her bandaged hands reassuringly on Prudence's trembling shoulders.\nJULIANA: \"Oh dear. Breathe. Tell me what has happened.\"\nPRUDENCE: \"My little brother Toby... his chest is burning! He cannot breathe!\"\nJULIANA: \"Tell me what the apothecary said. Did he not give you medicine?\"\n[sfx] Heavy, raspy chest coughs echoing in the small room, accompanied by crackling hearth fire.\n[action] Lady Juliana rushes in, sets the ledger on the rustic wooden table, and quickly flips open the pages.\nJULIANA: \"His skin is burning hot.\"\n[action] Lady Juliana places her bandaged hand against Toby's flushed, sweating forehead as he wheezes painfully.\nJULIANA: \"Prudence, fetch hot water immediately!\"\nPRUDENCE: \"Yes! Right away, I will get it!\"\n[action] Prudence wraps a cloth around the iron handle of the steaming kettle resting over the hearth fire and lifts it.\nJULIANA: \"I cannot let my own weariness stop me. This boy needs my mother's knowledge.\"",
+  "response_text": "{\n  \"who_is_the_main_character\": \"Lady Juliana (the clip names her; she is described as having bandaged hands and possessing 'mother's knowledge')\",\n  \"what_is_at_stake\": \"The life of a young boy named Toby, who is dying from a condition where his chest is burning and he cannot breathe.\",\n  \"what_question_are_you_left_with\": \"Will Lady Juliana's medical knowledge be enough to save Toby before he dies?\",\n  \"would_you_keep_watching\": \"yes, because the immediate life-or-death tension is high and the outcome is unknown.\",\n  \"passes\": {\n    \"character_identifiable\": true,\n    \"stakes_clear\": true,\n    \"ends_unresolved\": true,\n    \"would_watch\": true\n  }\n}",
+  "response_payload": {
+    "id": "chatcmpl-a2d0bebc-067c-430b-9ffc-8e72f585f7b7",
+    "object": "chat.completion",
+    "created": 1794121466,
+    "model": "qwen/qwen3.8-27b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"who_is_the_main_character\": \"Lady Juliana (the clip names her; she is described as having bandaged hands and possessing 'mother's knowledge')\",\n  \"what_is_at_stake\": \"The life of a young boy named Toby, who is dying from a condition where his chest is burning and he cannot breathe.\",\n  \"what_question_are_you_left_with\": \"Will Lady Juliana's medical knowledge be enough to save Toby before he dies?\",\n  \"would_you_keep_watching\": \"yes, because the immediate life-or-death tension is high and the outcome is unknown.\",\n  \"passes\": {\n    \"character_identifiable\": true,\n    \"stakes_clear\": true,\n    \"ends_unresolved\": true,\n    \"would_watch\": true\n  }\n}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.047832073,
+      "prompt_tokens": 598,
+      "prompt_time": 0.043723254,
+      "completion_tokens": 168,
+      "completion_time": 0.33796653,
+      "total_tokens": 766,
+      "total_time": 0.381689784
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_21e59ac2de",
+    "x_groq": {
+      "id": "req_01m6wzj068e25vtw2h2t7e9289",
+      "seed": 1635794099
+    },
+    "service_tier": "on_demand"
+  }
+}

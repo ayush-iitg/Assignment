@@ -1,0 +1,41 @@
+{
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "tag": "gate_p_013_a",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\n[action] Alexander loses control, violently lunging past the Constable toward the briars.\nALEXANDER: \"Stop!\"\n[action] Juliana continues clawing forward, branches lacerating her arm and cheek.\nJULIANA: \"Ahhh!\"\nALEXANDER: \"Juliana!\"\n[action] Juliana digs her torn fingers into the frost-hardened earth, turning over rocks and dead vegetation.\nALEXANDER: \"Juliana!\"\nJULIANA: \"Please, ring... you have to be here.\"\n[action] Her blood-smeared index finger brushes against a solid metallic object half-buried in the frozen dirt beneath a thorny branch.\n[action] Juliana reaches out her torn, bloodied hand and wraps her fingers tightly around the emerald ring.",
+  "response_text": "{\n  \"who_is_the_main_character\": \"Juliana (the clip names her, but provides no other identifying details like profession or background)\",\n  \"what_is_at_stake\": \"Finding a specific emerald ring buried in the ground; the clip implies it is critical to Juliana, but does not explain why\",\n  \"what_question_are_you_left_with\": \"Why is this ring so important that Juliana is willing to tear herself apart to find it, and who is Alexander?\",\n  \"would_you_keep_watching\": \"maybe, because the physical intensity and the mystery of the ring's significance create a hook, though the context is missing\",\n  \"passes\": {\n    \"character_identifiable\": true,\n    \"stakes_clear\": false,\n    \"ends_unresolved\": true,\n    \"would_watch\": true\n  }\n}",
+  "response_payload": {
+    "id": "chatcmpl-23d66c41-d228-4f5b-9b85-e3834a6b52a2",
+    "object": "chat.completion",
+    "created": 1794112921,
+    "model": "qwen/qwen3.8-27b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"who_is_the_main_character\": \"Juliana (the clip names her, but provides no other identifying details like profession or background)\",\n  \"what_is_at_stake\": \"Finding a specific emerald ring buried in the ground; the clip implies it is critical to Juliana, but does not explain why\",\n  \"what_question_are_you_left_with\": \"Why is this ring so important that Juliana is willing to tear herself apart to find it, and who is Alexander?\",\n  \"would_you_keep_watching\": \"maybe, because the physical intensity and the mystery of the ring's significance create a hook, though the context is missing\",\n  \"passes\": {\n    \"character_identifiable\": true,\n    \"stakes_clear\": false,\n    \"ends_unresolved\": true,\n    \"would_watch\": true\n  }\n}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.048212416,
+      "prompt_tokens": 474,
+      "prompt_time": 0.032357513,
+      "completion_tokens": 179,
+      "completion_time": 0.339989766,
+      "total_tokens": 653,
+      "total_time": 0.372347279
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_424cb89518",
+    "x_groq": {
+      "id": "req_01m6wqd7tmerxa4d43e0yjxpaa",
+      "seed": 232391568
+    },
+    "service_tier": "on_demand"
+  }
+}

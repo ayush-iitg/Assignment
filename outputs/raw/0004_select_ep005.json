@@ -1,0 +1,48 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "select_ep005",
+  "system": "You are a promo editor for vertical microdramas (ReelShort/DramaBox style).\nYou pick which seconds of an episode become a 20-60 second advert for the show.\n\nA good promo:\n- opens on a hook: within its first beats, something that stops a scrolling viewer - a slap, a reveal, a shocking line\n- ends on a cliffhanger: it stops at an unresolved moment, so the viewer must go find the show\n- makes sense alone to someone who has never seen this show\n\nYou will be given candidate windows, each a contiguous run of beats labelled [b00], [b01]...\nYou must choose ONE window and may tighten its edges to any beat labels inside that window.\n\nReply with JSON only:\n{\n  \"chosen_window\": <integer index of the window you picked>,\n  \"start_beat\": \"<beat label>\",\n  \"end_beat\": \"<beat label>\",\n  \"hook_beat\": \"<beat label, must be at or within 2 beats of start_beat>\",\n  \"cliffhanger_beat\": \"<beat label, must be at or near end_beat>\",\n  \"hook\": \"<what grabs the viewer in the first seconds, one sentence>\",\n  \"cliffhanger\": \"<the unresolved moment it cuts on, one sentence>\",\n  \"hook_type\": \"<one of: moral outrage, romantic tension, empathy shock, power reversal>\",\n  \"why_it_works\": \"<one sentence, concrete, no marketing language>\",\n  \"standalone_risk\": \"<what a new viewer would NOT understand, or 'none'>\"\n}\n\nNever invent dialogue. Never output a time or a duration - only beat labels.",
+  "prompt": "Episode 5. 3 candidate windows, already checked for legal length and real beat boundaries.\n\n--- WINDOW 0 (28 seconds, code score 0.85) ---\n[b00] JULIANA (shaking, tearful): \"You truly mean it? You are my father!\"\n[b01] LORD ASHCROFT: \"And you have chosen to become a stranger.\"\n[b02] JULIANA (quietly resolute): \"No, Father. You chose that long before today.\"\n[b03] LADY ASHCROFT (sharply dismissive): \"Enough sentiment.\"\n[b04] LADY ASHCROFT (cold, demanding): \"And the ledger...\"\n[b05] LADY ASHCROFT (venomous): \"...that belongs to this family.\"\n[b06] JULIANA (alarmed, protective): \"It belonged to my mother! It is all I have left of her.\"\n[b07] LADY ASHCROFT (cruel): \"Then you should have guarded it better.\"\n[b08] ACTION: Lady Ashcroft snatches the heavy book away and flings it disdainfully into the rain-soaked courtyard.\n[b09] JULIANA (screaming, desperate): \"Barbara, don't!\"\n[b10] SFX: A heavy wet slap as the leather-bound book crashes into the puddle-slicked stone pavement.\n\n--- WINDOW 1 (22 seconds, code score 0.77) ---\n[b00] JULIANA (defiant, steadfast): \"The vows are spoken, Father. I am his wife now.\"\n[b01] LORD ASHCROFT (harsh, final): \"Then leave as his wife.\"\n[b02] LORD ASHCROFT (harsh, final): \"You leave as no daughter of mine.\"\n[b03] LORD ASHCROFT (o.s. / continues): \"Your dowry is revoked.\"\n[b04] LORD ASHCROFT (o.s. / continues): \"Your inheritance is revoked.\"\n[b05] LORD ASHCROFT (o.s. / continues): \"From this moment, you are dead to the Ashcroft family.\"\n[b06] JULIANA (shaking, tearful): \"You truly mean it? You are my father!\"\n\n--- WINDOW 2 (45 seconds, code score 0.76) ---\n[b00] ACTION: Lady Ashcroft snatches the heavy book away and flings it disdainfully into the rain-soaked courtyard.\n[b01] JULIANA (screaming, desperate): \"Barbara, don't!\"\n[b02] SFX: A heavy wet slap as the leather-bound book crashes into the puddle-slicked stone pavement.\n[b03] CLARISSA (gleeful, mocking): \"Even your mother's precious legacy has been cast into the dirt!\"\n[b04] GERALD (smug, cruel): \"Perhaps that is where it belongs.\"\n[b05] ACTION: Juliana drops to her knees onto the wet courtyard pavement, oblivious to the dirt soaking through her white bridal gown.\n[b06] ACTION: The Mysterious Bearded Man bends his knees and kneels down beside Juliana, extending his scarred hand to retrieve the fallen ledger.\n[b07] MYSTERIOUS BEARDED MAN (low, gentle): \"Here you go.\"\n[b08] JULIANA (choked, weeping): \"They destroyed it.\"\n[b09] MYSTERIOUS BEARDED MAN (calm, grounded): \"They dirtied it. That is not the same thing.\"\n[b10] JULIANA (broken): \"It was my mother's.\"\n[b11] MYSTERIOUS BEARDED MAN (gentle, protective): \"Then keep it.\"\n[b12] ACTION: The Mysterious Bearded Man reaches out with both hands, clasping his strong hands tenderly over hers and the book.\n[b13] MYSTERIOUS BEARDED MAN (firm, comforting): \"Let them keep everything else.\"\n[b14] GERALD (mocking, arrogant): \"Look at you.\"\n[b15] GERALD (scornful, spiteful): \"A noblewoman reduced to a beggar's wife!\"\n[b16] MYSTERIOUS BEARDED MAN (low, lethally cold): \"Choose your next words carefully.\"\n\nPick the single best promo.",
+  "response_text": "{\"chosen_window\":2,\"start_beat\":\"b00\",\"end_beat\":\"b16\",\"hook_beat\":\"b00\",\"cliffhanger_beat\":\"b16\",\"hook\":\"Lady Ashcroft snatches the heavy family ledger and flings it into the rain‑soaked courtyard, the wet slap of leather on stone echoing ominously.\",\"cliffhanger\":\"The mysterious bearded man leans in and warns, “Choose your next words carefully,” leaving Juliana’s fate hanging.\",\"hook_type\":\"power reversal\",\"why_it_works\":\"The brutal destruction of a cherished heirloom shocks the viewer, and the sudden, cryptic warning creates a tense cliffhanger that demands resolution.\",\"standalone_risk\":\"A new viewer won’t know why the ledger matters or who the bearded man is.\"}",
+  "response_payload": {
+    "id": "chatcmpl-be541155-943a-4b8b-ad83-fd8c4c734167",
+    "object": "chat.completion",
+    "created": 1794082192,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"chosen_window\":2,\"start_beat\":\"b00\",\"end_beat\":\"b16\",\"hook_beat\":\"b00\",\"cliffhanger_beat\":\"b16\",\"hook\":\"Lady Ashcroft snatches the heavy family ledger and flings it into the rain‑soaked courtyard, the wet slap of leather on stone echoing ominously.\",\"cliffhanger\":\"The mysterious bearded man leans in and warns, “Choose your next words carefully,” leaving Juliana’s fate hanging.\",\"hook_type\":\"power reversal\",\"why_it_works\":\"The brutal destruction of a cherished heirloom shocks the viewer, and the sudden, cryptic warning creates a tense cliffhanger that demands resolution.\",\"standalone_risk\":\"A new viewer won’t know why the ledger matters or who the bearded man is.\"}",
+          "reasoning": "We need to pick one window and possibly tighten edges. Must include hook within 2 beats of start, cliffhanger near end. Provide JSON.\n\nWe need to evaluate each window for hook and cliffhanger.\n\nWindow 0: beats 0-10. Hook could be Juliana tearful line \"You truly mean it? You are my father!\" at b00, emotional shock. That's within start. Cliffhanger could be the heavy wet slap sound at b10, but that's resolved? The book crashes, maybe unresolved tension about ledger. Could cut right after the slap, leaving question what will happen. Works.\n\nWindow 1: start b00 with Juliana defiant \"The vows are spoken...\" Hook maybe less shocking. Could hook on Lord's harsh revocation \"You are dead to the Ashcroft family\" at b05. But start is earlier. Cliffhanger maybe after Juliana's tearful line b06, unresolved. Might be okay.\n\nWindow 2: longer, includes action of book thrown, then mysterious man helps. Hook could be the book being flung and slap at b02, visual shock. Cliffhanger could be the bearded man's warning \"Choose your next words carefully.\" at b16, unresolved tension. This seems strong.\n\nWe need 20-60 seconds; window 2 is 45 seconds, okay. Hook must be within 2 beats of start. If we start at b00 (action of snatching book) that's a visual hook. Good. Cliffhanger near end maybe b16 line. So we can set start_beat b00, end_beat b16. Hook_beat b00 (or b02). Provide hook description: Lady Ashcroft flings a heavy family ledger into the rain-soaked courtyard, the wet slap echoing. Cliffhanger: The mysterious bearded man warns \"Choose your next words carefully,\" leaving Juliana's fate uncertain.\n\nHook_type: power reversal (someone powerful destroys, then a mysterious protector appears). Or moral outrage? It's a power reversal: the powerful lady destroys, then a lower-status man intervenes. Choose power reversal.\n\nWhy it works: The visceral image of a treasured ledger being smashed grabs attention, and the ominous warning leaves the conflict unresolved.\n\nStandalone risk: New viewer may not know who the ledger belongs to or why it's important. So risk: significance of ledger.\n\nNow produce JSON."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.369884327,
+      "prompt_tokens": 1339,
+      "prompt_time": 0.191441756,
+      "completion_tokens": 655,
+      "completion_time": 1.381363304,
+      "total_tokens": 1994,
+      "total_time": 1.5728050599999999,
+      "prompt_tokens_details": {
+        "cached_tokens": 256
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 483
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_b1dd3e7a63",
+    "x_groq": {
+      "id": "req_01m6vt3dbde4drf8sbwb0me2cx",
+      "seed": 90946513
+    },
+    "service_tier": "on_demand"
+  }
+}

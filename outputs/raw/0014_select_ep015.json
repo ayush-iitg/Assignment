@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "select_ep015",
+  "system": "You are a promo editor for vertical microdramas (ReelShort/DramaBox style).\nYou pick which seconds of an episode become a 20-60 second advert for the show.\n\nA good promo:\n- opens on a hook: within its first beats, something that stops a scrolling viewer - a slap, a reveal, a shocking line\n- ends on a cliffhanger: it stops at an unresolved moment, so the viewer must go find the show\n- makes sense alone to someone who has never seen this show\n\nYou will be given candidate windows, each a contiguous run of beats labelled [b00], [b01]...\nYou must choose ONE window and may tighten its edges to any beat labels inside that window.\n\nReply with JSON only:\n{\n  \"chosen_window\": <integer index of the window you picked>,\n  \"start_beat\": \"<beat label>\",\n  \"end_beat\": \"<beat label>\",\n  \"hook_beat\": \"<beat label, must be at or within 2 beats of start_beat>\",\n  \"cliffhanger_beat\": \"<beat label, must be at or near end_beat>\",\n  \"hook\": \"<what grabs the viewer in the first seconds, one sentence>\",\n  \"cliffhanger\": \"<the unresolved moment it cuts on, one sentence>\",\n  \"hook_type\": \"<one of: moral outrage, romantic tension, empathy shock, power reversal>\",\n  \"why_it_works\": \"<one sentence, concrete, no marketing language>\",\n  \"standalone_risk\": \"<what a new viewer would NOT understand, or 'none'>\"\n}\n\nNever invent dialogue. Never output a time or a duration - only beat labels.",
+  "prompt": "Episode 15. 2 candidate windows, already checked for legal length and real beat boundaries.\n\n--- WINDOW 0 (45 seconds, code score 0.85) ---\n[b00] JULIANA (furious, pleading): \"Those are medicinal plants!\"\n[b01] BALD THUG (callous): \"They look like weeds to me.\"\n[b02] ACTION: The bald thug flings the bouquet into the mud and grinds his heavy boot directly onto the delicate flowers.\n[b03] ACTION: Juliana frantically tries to scoop the crushed soil and torn stems back into the bed with her bandaged hands.\n[b04] JULIANA (choked with tears, desperate): \"Please! Those plants took months to grow!\"\n[b05] TALL THUG (contemptuous, derisive): \"Months? You actually spend your days growing this filth?\"\n[b06] JULIANA (defiant, firm): \"Leave my garden alone.\"\n[b07] THUG WITH CAP (sneering, disdainful): \"A noble lady playing in the dirt. What a joke.\"\n[b08] JULIANA (resolute, dignified): \"It is my home. You have no right to destroy anything here.\"\n[b09] THUG WITH CAP (menacing snarl): \"Get out of the way!\"\n[b10] JULIANA (steely, fearless): \"No.\"\n[b11] ACTION: The Thug with Cap violently shoves Juliana back with both hands; she cries out as she loses her balance and crashes hard onto the wet stone path.\n[b12] JULIANA (gasping cry): \"Ah!\"\n[b13] ACTION: Juliana crawls forward on her elbows; fresh crimson blood seeps profusely through her white gauze bandages as she reaches for the ruined blossoms.\n[b14] JULIANA (broken, sobbing): \"My mother's plants...\"\n[b15] BALD THUG (cruel, laughing): \"Look at her! Crying over weeds!\"\n[b16] JULIANA (screaming): \"Stop!\"\n[b17] ACTION: The Tall Thug hoists his heavy wooden club above his head to crush the remaining herbs right before Juliana.\n\n--- WINDOW 1 (35 seconds, code score 0.79) ---\n[b00] ACTION: The Thug with Cap violently shoves Juliana back with both hands; she cries out as she loses her balance and crashes hard onto the wet stone path.\n[b01] JULIANA (gasping cry): \"Ah!\"\n[b02] ACTION: Juliana crawls forward on her elbows; fresh crimson blood seeps profusely through her white gauze bandages as she reaches for the ruined blossoms.\n[b03] JULIANA (broken, sobbing): \"My mother's plants...\"\n[b04] BALD THUG (cruel, laughing): \"Look at her! Crying over weeds!\"\n[b05] JULIANA (screaming): \"Stop!\"\n[b06] ACTION: The Tall Thug hoists his heavy wooden club above his head to crush the remaining herbs right before Juliana.\n[b07] ACTION: Alexander storms forward with lethal intensity, dark hair flying, breath misting in the cold, radiating untamed rage.\n[b08] JULIANA (whispered breath, stunned): \"Alexander...\"\n[b09] ACTION: Alexander places himself directly between Juliana and the three thugs, staring them down with cold, deadly intent.\n[b10] THUG WITH CAP (challenging, arrogant): \"What? You want to fight us, veteran?\"\n\nPick the single best promo.",
+  "response_text": "{\"chosen_window\":1,\"start_beat\":\"b00\",\"end_beat\":\"b10\",\"hook_beat\":\"b00\",\"cliffhanger_beat\":\"b10\",\"hook\":\"A thug violently shoves Juliana, sending her crashing onto the wet stone path.\",\"cliffhanger\":\"The arrogant thug sneers, \\\"What? You want to fight us, veteran?\\\" leaving the showdown unresolved.\",\"hook_type\":\"power reversal\",\"why_it_works\":\"The sudden, brutal shove shocks the viewer and the final taunt promises an imminent fight.\",\"standalone_risk\":\"None, the conflict is clear even without prior context\"}",
+  "response_payload": {
+    "id": "chatcmpl-8141cc1d-8983-4bbd-8b6c-f56e00914832",
+    "object": "chat.completion",
+    "created": 1794082370,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"chosen_window\":1,\"start_beat\":\"b00\",\"end_beat\":\"b10\",\"hook_beat\":\"b00\",\"cliffhanger_beat\":\"b10\",\"hook\":\"A thug violently shoves Juliana, sending her crashing onto the wet stone path.\",\"cliffhanger\":\"The arrogant thug sneers, \\\"What? You want to fight us, veteran?\\\" leaving the showdown unresolved.\",\"hook_type\":\"power reversal\",\"why_it_works\":\"The sudden, brutal shove shocks the viewer and the final taunt promises an imminent fight.\",\"standalone_risk\":\"None, the conflict is clear even without prior context\"}",
+          "reasoning": "We need to pick one window and possibly tighten edges. Must include hook within first 2 beats of start, cliffhanger near end. Provide JSON.\n\nWe have two windows. Window 0 starts with Juliana pleading about medicinal plants, then thug dismisses. Hook could be the violent crushing of flowers (b02) or the line \"Those are medicinal plants!\" (b00). Hook should be within 2 beats of start. So start_beat maybe b00, hook_beat b00 or b02. Need cliffhanger near end: maybe at b17 where Tall Thug hoists club, tension unresolved. That works.\n\nWindow 1 starts with shove (b00) which is immediate action, hook could be b00. End at b10 where thug challenges. Cliffhanger could be at b10, unresolved fight.\n\nWhich is better? Need hook that stops scrolling: violent shove and blood is strong. Window 1 is shorter (35 sec) but still within 20-60 sec. Hook at b00 is good. Cliffhanger at b10 leaves question if Alexander will fight. That seems strong.\n\nWindow 0 has longer build-up, but hook maybe less immediate. The hook \"Those are medicinal plants!\" is less shocking than blood. So Window 1 likely better.\n\nWe can tighten start at b00, end at b10. Hook_beat b00. Cliffhanger_beat b10.\n\nHook: \"A thug shoves Juliana, sending her crashing to the stone path.\" Cliffhanger: \"The arrogant thug taunts, 'What? You want to fight us, veteran?' leaving the showdown hanging.\"\n\nHook_type: power reversal (victim being shoved, then hero steps in). Or moral outrage? It's physical aggression, power reversal fits.\n\nWhy_it_works: immediate violence grabs attention and the final challenge promises a fight.\n\nStandalone_risk: viewer may not know who Alexander is or why he appears, but the tension is clear.\n\nReturn JSON."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.32145303,
+      "prompt_tokens": 1194,
+      "prompt_time": 0.101252371,
+      "completion_tokens": 538,
+      "completion_time": 1.122304638,
+      "total_tokens": 1732,
+      "total_time": 1.223557009,
+      "completion_tokens_details": {
+        "reasoning_tokens": 402
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_4200b3f836",
+    "x_groq": {
+      "id": "req_01m6vt8v67eg7vwrd80ak4h4ka",
+      "seed": 239573570
+    },
+    "service_tier": "on_demand"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "select_ep014",
+  "system": "You are a promo editor for vertical microdramas (ReelShort/DramaBox style).\nYou pick which seconds of an episode become a 20-60 second advert for the show.\n\nA good promo:\n- opens on a hook: within its first beats, something that stops a scrolling viewer - a slap, a reveal, a shocking line\n- ends on a cliffhanger: it stops at an unresolved moment, so the viewer must go find the show\n- makes sense alone to someone who has never seen this show\n\nYou will be given candidate windows, each a contiguous run of beats labelled [b00], [b01]...\nYou must choose ONE window and may tighten its edges to any beat labels inside that window.\n\nReply with JSON only:\n{\n  \"chosen_window\": <integer index of the window you picked>,\n  \"start_beat\": \"<beat label>\",\n  \"end_beat\": \"<beat label>\",\n  \"hook_beat\": \"<beat label, must be at or within 2 beats of start_beat>\",\n  \"cliffhanger_beat\": \"<beat label, must be at or near end_beat>\",\n  \"hook\": \"<what grabs the viewer in the first seconds, one sentence>\",\n  \"cliffhanger\": \"<the unresolved moment it cuts on, one sentence>\",\n  \"hook_type\": \"<one of: moral outrage, romantic tension, empathy shock, power reversal>\",\n  \"why_it_works\": \"<one sentence, concrete, no marketing language>\",\n  \"standalone_risk\": \"<what a new viewer would NOT understand, or 'none'>\"\n}\n\nNever invent dialogue. Never output a time or a duration - only beat labels.",
+  "prompt": "Episode 14. 3 candidate windows, already checked for legal length and real beat boundaries.\n\n--- WINDOW 0 (28 seconds, code score 0.76) ---\n[b00] ACTION: Juliana's blood-streaked, mud-caked hand slowly uncurls amidst the thorns, revealing the ornate emerald signet ring resting in her palm.\n[b01] SFX: Eerie cold wind whistling over the briars with deep, atmospheric cello chords.\n[b02] JULIANA (exhausted, resolute): \"I found it.\"\n[b03] JULIANA (firm, commanding): \"Now release my husband.\"\n[b04] ACTION: The Constable takes the ring from her bloodied fingers.\n[b05] SFX: Sharp metallic click and clinking rattle of heavy iron handcuffs unlocking and falling away.\n[b06] ACTION: The Constable unlocks the cuffs, freeing Alexander's large hands.\n[b07] ALEXANDER (gasping, urgent): \"Juliana.\"\n[b08] ACTION: Alexander gently turns her palms up, his thumbs trembling as he inspects the deep, bleeding gashes gouged into her skin.\n[b09] ALEXANDER (trembling, heartbroken): \"What have they done to you?\"\n[b10] JULIANA (softly, stifling pain): \"Nothing they didn't promise.\"\n\n--- WINDOW 1 (43 seconds, code score 0.74) ---\n[b00] ACTION: Alexander gently wraps clean linen bandages around Juliana's torn wrist and palm.\n[b01] SFX: Crackling flames and wood popping in the open fireplace.\n[b02] ALEXANDER (hoarse, stricken): \"You could have lost your hands.\"\n[b03] JULIANA (whispered, emotional): \"But I didn't lose you.\"\n[b04] ALEXANDER (quiet, tender): \"I'm sorry.\"\n[b05] JULIANA (gentle, reassuring): \"You didn't hurt me.\"\n[b06] JULIANA (loving, earnest): \"You have taken my place today.\"\n[b07] JULIANA: \"And you are doing it better than me.\"\n[b08] ACTION: Juliana closes her eyes in exhausted relief, sinking into Alexander's warmth as his broad arm encloses her safely.\n[b09] ALEXANDER (dark, solemn vow): \"No one will ever hurt you for protecting me again.\"\n[b10] ACTION: Alexander strokes her cheek with his thumb, his gaze hardening into deadly, protective conviction.\n[b11] ACTION: Alexander's muscular arm drops into frame beside the bloody bucket; his scarred knuckles slowly and tightly clench into an iron fist of brewing vengeance.\n[b12] SFX: Ominous, resonating low bass boom swelling into sudden silence as the screen cuts to black.\n\n--- WINDOW 2 (28 seconds, code score 0.69) ---\n[b00] ACTION: Alexander gently turns her palms up, his thumbs trembling as he inspects the deep, bleeding gashes gouged into her skin.\n[b01] ALEXANDER (trembling, heartbroken): \"What have they done to you?\"\n[b02] JULIANA (softly, stifling pain): \"Nothing they didn't promise.\"\n[b03] JULIANA (faint, pleading): \"Take me home.\"\n[b04] ACTION: Alexander lifts Juliana bridal-style, wrapping his strong arms protectively around her as she rests against his shoulder.\n[b05] ALEXANDER (deep, sorrowful): \"You should never have had to bleed for me.\"\n[b06] SFX: Gentle patter of rain and cold wind howling in the desolate countryside.\n[b07] ACTION: Alexander gently wraps clean linen bandages around Juliana's torn wrist and palm.\n[b08] SFX: Crackling flames and wood popping in the open fireplace.\n\nPick the single best promo.",
+  "response_text": "{\"chosen_window\":0,\"start_beat\":\"b00\",\"end_beat\":\"b10\",\"hook_beat\":\"b00\",\"cliffhanger_beat\":\"b10\",\"hook\":\"Juliana's blood‑streaked hand emerges from thorns, revealing a glittering emerald signet ring.\",\"cliffhanger\":\"She whispers, \\\"Nothing they didn't promise,\\\" leaving the cost of the promise unknown.\",\"hook_type\":\"empathy shock\",\"why_it_works\":\"The opening visual is visceral and the final line hints at a hidden danger, urging viewers to watch.\",\"standalone_risk\":\"The audience won’t know who the Constable is or why the ring matters\"}",
+  "response_payload": {
+    "id": "chatcmpl-46d64659-5a76-4f9a-84f5-3daf2790ecb7",
+    "object": "chat.completion",
+    "created": 1794120902,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"chosen_window\":0,\"start_beat\":\"b00\",\"end_beat\":\"b10\",\"hook_beat\":\"b00\",\"cliffhanger_beat\":\"b10\",\"hook\":\"Juliana's blood‑streaked hand emerges from thorns, revealing a glittering emerald signet ring.\",\"cliffhanger\":\"She whispers, \\\"Nothing they didn't promise,\\\" leaving the cost of the promise unknown.\",\"hook_type\":\"empathy shock\",\"why_it_works\":\"The opening visual is visceral and the final line hints at a hidden danger, urging viewers to watch.\",\"standalone_risk\":\"The audience won’t know who the Constable is or why the ring matters\"}",
+          "reasoning": "We need to pick one window and possibly tighten edges. Must include hook_beat within 2 beats of start_beat. Hook must be something that grabs viewer early. Let's examine windows.\n\nWindow0: starts with Juliana's blood-streaked hand revealing ring. That's a strong visual hook. Ends with \"Nothing they didn't promise.\" That's a line but maybe not cliffhanger. Could cut after that? The cliffhanger could be before resolution? The scene ends with her statement, but no unresolved tension. Could cut earlier maybe after constable takes ring? Not sure.\n\nWindow1: starts with Alexander bandaging Juliana's wrist. Not as hooky. Ends with ominous low bass boom and cut to black. That's a cliffhanger. Hook maybe earlier? Not strong.\n\nWindow2: starts with Alexander inspecting gashes, similar to window0 but later. Hook could be the line \"What have they done to you?\" Not as visual. Ends with SFX of fireplace, not cliffhanger.\n\nThus window0 seems best for hook (bloodied hand, ring). Need cliffhanger: maybe cut right after the constable takes ring? But that resolves? Actually after unlocking cuffs, Alexander appears, then Juliana says \"Nothing they didn't promise.\" That line hints at something ominous. Could be cliffhanger: we don't know what promise. So end at b10 maybe. That works.\n\nWe need to choose start_beat maybe b00, hook_beat b00 (within 2). End_beat b10. Cliffhanger_beat b10.\n\nNow fill fields.\n\nhook: \"Juliana's blood‑streaked hand emerges from thorns, revealing a glittering emerald signet ring.\" cliffhanger: \"She whispers, 'Nothing they didn't promise,' leaving the cost of the promise unknown.\"\n\nhook_type: moral outrage? It's more empathy shock (blood, suffering). Could be empathy shock. Choose \"empathy shock\".\n\nwhy_it_works: The opening visual is visceral and the final line hints at a hidden danger, urging viewers to watch.\n\nstandalone_risk: New viewers might not know who the Constable is or why the ring matters. So mention that.\n\nNow produce JSON compact."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.369450419,
+      "prompt_tokens": 1258,
+      "prompt_time": 0.062793038,
+      "completion_tokens": 592,
+      "completion_time": 1.23776156,
+      "total_tokens": 1850,
+      "total_time": 1.300554598,
+      "completion_tokens_details": {
+        "reasoning_tokens": 448
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_93703442d9",
+    "x_groq": {
+      "id": "req_01m6wz0r60e909eqf9zye47f8b",
+      "seed": 1326833137
+    },
+    "service_tier": "on_demand"
+  }
+}

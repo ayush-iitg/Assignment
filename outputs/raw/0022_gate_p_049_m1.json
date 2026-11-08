@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "gate_p_049_m1",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\nFATHER THOMAS: \"No shadows tonight, Catherine. Just us and an empty wing.\"\nCATHERINE: \"You didn't need them the first time, either. I just prefer my secrets thorough.\"\nCATHERINE: \"First, the hearing stays unresolved as long as possible. Every extension, every delay, every excuse to reconvene.\"\nCATHERINE: \"Second, I want to know what the council knows before it decides anything. Every argument, every witness, every whisper against her.\"",
+  "response_text": "{\"who_is_the_main_character\":\"Catherine (named in the clip)\",\"what_is_at_stake\":\"The outcome of an unresolved hearing and the council's decision about a woman referred to as \\\"her,\\\" with Catherine trying to delay the hearing and learn the council's knowledge\",\"what_question_are_you_left_with\":\"What is the hearing about, who is \\\"her,\\\" and how will the council ultimately decide?\",\"would_you_keep_watching\":\"maybe, the dialogue hints at intrigue but lacks context\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":false,\"ends_unresolved\":true,\"would_watch\":false}}",
+  "response_payload": {
+    "id": "chatcmpl-b92f364c-180a-4ccd-b0a7-15be5e04a4a4",
+    "object": "chat.completion",
+    "created": 1794121138,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"who_is_the_main_character\":\"Catherine (named in the clip)\",\"what_is_at_stake\":\"The outcome of an unresolved hearing and the council's decision about a woman referred to as \\\"her,\\\" with Catherine trying to delay the hearing and learn the council's knowledge\",\"what_question_are_you_left_with\":\"What is the hearing about, who is \\\"her,\\\" and how will the council ultimately decide?\",\"would_you_keep_watching\":\"maybe, the dialogue hints at intrigue but lacks context\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":false,\"ends_unresolved\":true,\"would_watch\":false}}",
+          "reasoning": "We need to produce JSON with fields. Determine main character: The clip includes Father Thomas and Catherine. Who is main? Likely Catherine speaks more. The clip never names main character explicitly, but we can infer Catherine is central. The instruction: \"name them if the clip names them; otherwise describe and say the clip never names them\". The clip names Catherine and Father Thomas. So main character could be Catherine (more lines). So we can say main character is Catherine.\n\nWhat is at stake? From dialogue: There's a hearing, extensions, council decisions, secrets. Stakes: Catherine wants to delay hearing and learn council info before decision; possibly about someone \"her\". So stakes unclear but we can say conflict about a hearing and council decision regarding \"her\". So \"unclear from the clip\" maybe? But we have some sense: The stakes involve the outcome of a hearing and council's knowledge. So we can describe that.\n\nWhat question left with? Likely: What is the hearing about? Who is \"her\"? Will the council decide? So unresolved question: What will the council decide about \"her\"? So we can phrase.\n\nWould you keep watching? Provide yes/maybe/no with short reason. I'd say maybe, because intrigue but unclear.\n\nPasses: character_identifiable: true (we have names). stakes_clear: maybe false? The stakes are somewhat implied but not fully clear. I'd say false because we have to infer. ends_unresolved: true (clip ends unresolved). would_watch: maybe (true? The field expects boolean). The passes field includes \"would_watch\": true/false. Since we said maybe, we can set would_watch false? Actually \"would_watch\" likely indicates if you'd watch based on passes? Probably true if you'd watch. Since we said maybe, maybe set false? But we need boolean. Could set false. But maybe we interpret \"would_watch\" as \"would you watch?\" boolean. Since we said maybe, ambiguous. Choose false? Might be safer to set false because not definite. But maybe they expect true if you'd watch. The earlier field \"would_you_keep_watching\" is separate with yes/maybe/no. So passes.would_watch maybe indicates if passes criteria indicate you'd watch. Could set false because not all passes are true. Let's set false.\n\nNow construct JSON compact.\n\n"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.370850951,
+      "prompt_tokens": 482,
+      "prompt_time": 0.022026563,
+      "completion_tokens": 604,
+      "completion_time": 1.26141949,
+      "total_tokens": 1086,
+      "total_time": 1.283446053,
+      "completion_tokens_details": {
+        "reasoning_tokens": 471
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_c868cf1eaa",
+    "x_groq": {
+      "id": "req_01m6wz7z34efxbwna17xzy920c",
+      "seed": 125229705
+    },
+    "service_tier": "on_demand"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "tag": "select_ep018",
+  "system": "You are a promo editor for vertical microdramas (ReelShort/DramaBox style).\nYou pick which seconds of an episode become a 20-60 second advert for the show.\n\nA good promo:\n- opens on a hook: within its first beats, something that stops a scrolling viewer - a slap, a reveal, a shocking line\n- ends on a cliffhanger: it stops at an unresolved moment, so the viewer must go find the show\n- makes sense alone to someone who has never seen this show\n\nYou will be given candidate windows, each a contiguous run of beats labelled [b00], [b01]...\nYou must choose ONE window and may tighten its edges to any beat labels inside that window.\n\nReply with JSON only:\n{\n  \"chosen_window\": <integer index of the window you picked>,\n  \"start_beat\": \"<beat label>\",\n  \"end_beat\": \"<beat label>\",\n  \"hook_beat\": \"<beat label, must be at or within 2 beats of start_beat>\",\n  \"cliffhanger_beat\": \"<beat label, must be at or near end_beat>\",\n  \"hook\": \"<what grabs the viewer in the first seconds, one sentence>\",\n  \"cliffhanger\": \"<the unresolved moment it cuts on, one sentence>\",\n  \"hook_type\": \"<one of: moral outrage, romantic tension, empathy shock, power reversal>\",\n  \"why_it_works\": \"<one sentence, concrete, no marketing language>\",\n  \"standalone_risk\": \"<what a new viewer would NOT understand, or 'none'>\"\n}\n\nNever invent dialogue. Never output a time or a duration - only beat labels.",
+  "prompt": "Episode 18. 4 candidate windows, already checked for legal length and real beat boundaries.\n\n--- WINDOW 0 (20 seconds, code score 0.89) ---\n[b00] ACTION: Juliana spots the book and halts abruptly, pointing back toward the burning desk.\n[b01] JULIANA (frantic, desperate): \"The ledger!\"\n[b02] ACTION: Alexander firmly grips her arm, pulling her back toward safety.\n[b03] ALEXANDER (stern, shouting): \"Leave it!\"\n[b04] JULIANA (hysterical, screaming): \"No! No!\"\n[b05] ACTION: Alexander points upward with urgency, pulling her under his arm.\n[b06] ALEXANDER (loud, alarmed): \"Juliana, the ceiling is coming down!\"\n[b07] ACTION: Juliana wrests her hand from his grasp and charges straight toward the burning desk.\n[b08] ALEXANDER (roaring in terror): \"Juliana!\"\n[b09] JULIANA (defiant, weeping): \"It's my mother's!\"\n\n--- WINDOW 1 (56 seconds, code score 0.84) ---\n[b00] ACTION: Juliana bolts upright in bed, tossing off the woolen quilt as she sees the orange glow under the door.\n[b01] JULIANA (screaming, terrified): \"Alexander!\"\n[b02] JULIANA (desperate, shouting): \"Alexander!\"\n[b03] ACTION: Juliana sits huddled at the edge of the bed, pressing her bandaged hands against her mouth, coughing and sobbing in fear.\n[b04] JULIANA (muffled, weeping): \"Alexander...\"\n[b05] SFX: A violent crash as the bedroom door is kicked open.\n[b06] ALEXANDER (authoritative, urgency): \"Juliana! Get up!\"\n[b07] ACTION: Alexander reaches the bed, hoisting Juliana up by her arms into a standing embrace.\n[b08] JULIANA (breathless, distressed): \"What happened?\"\n[b09] ALEXANDER (grim, urgent): \"Fire.\"\n[b10] ACTION: Alexander clutches Juliana against his chest with one strong arm, shielding her face from the sparks.\n[b11] ALEXANDER (firm, protective): \"Stay close to me.\"\n[b12] ACTION: Juliana recoils from the heat, clutching Alexander's coat tightly.\n[b13] JULIANA (panic-stricken, choked): \"We cannot get through!\"\n[b14] ALEXANDER (resolute, calm under pressure): \"Then we go another way.\"\n[b15] SFX: Loud wooden groaning and thunderous crash of burning rafters falling behind them.\n[b16] ACTION: Juliana spots the book and halts abruptly, pointing back toward the burning desk.\n[b17] JULIANA (frantic, desperate): \"The ledger!\"\n[b18] ACTION: Alexander firmly grips her arm, pulling her back toward safety.\n[b19] ALEXANDER (stern, shouting): \"Leave it!\"\n[b20] JULIANA (hysterical, screaming): \"No! No!\"\n\n--- WINDOW 2 (33 seconds, code score 0.83) ---\n[b00] ALEXANDER (roaring in terror): \"Juliana!\"\n[b01] JULIANA (defiant, weeping): \"It's my mother's!\"\n[b02] ACTION: Juliana snatches the scorched leather ledger from the burning table, pulling it tightly against her chest with both bandaged hands.\n[b03] JULIANA (screaming, blood-curdling): \"Alexander!\"\n[b04] ALEXANDER (screaming command): \"Down!\"\n[b05] ACTION: Alexander lunges across the room, tackling her to the wooden floor and covering her body entirely with his own.\n[b06] SFX: Massive wooden beam crashes directly where Juliana had been standing, showering them in sparks.\n[b07] ACTION: Alexander lifts his head slightly, checking her face and cradling her cheek tenderly.\n[b08] ALEXANDER (panting, reassuring): \"I've got you.\"\n[b09] ACTION: Alexander scoops Juliana up in his arms, carrying her bridal-style as she clutches the ledger.\n[b10] ACTION: Juliana looks toward the side wall and points frantically at the parlor window.\n[b11] JULIANA (urgent, shouting): \"The window!\"\n[b12] ALEXANDER (steely, determined): \"Hold on to me.\"\n\n--- WINDOW 3 (22 seconds, code score 0.79) ---\n[b00] ACTION: Juliana turns toward Alexander, her hand trembling as she reaches out and touches his chest.\n[b01] JULIANA (voice breaking, anguished): \"Why would anyone do this?\"\n[b02] JULIANA (whispering, tearful): \"Alexander...\"\n[b03] ACTION: Alexander draws her firmly into his arms, wrapping both burly arms around her as she buries her face into his shoulder, weeping uncontrollably.\n[b04] ALEXANDER (cold, ominous): \"Someone wanted us out.\"\n[b05] JULIANA (despairing, weeping): \"We have nowhere to go.\"\n\nPick the single best promo.",
+  "response_text": "{\n  \"chosen_window\": 2,\n  \"start_beat\": \"b00\",\n  \"end_beat\": \"b12\",\n  \"hook_beat\": \"b01\",\n  \"cliffhanger_beat\": \"b12\",\n  \"hook\": \"A woman screams that a burning object is her mother's, defying a man's command to leave it.\",\n  \"cliffhanger\": \"The man carries her bridal-style toward a window while she clutches the ledger, leaving the escape unresolved.\",\n  \"hook_type\": \"empathy shock\",\n  \"why_it_works\": \"The physical danger of the fire combined with the emotional stakes of the mother's ledger creates immediate high tension and character depth.\",\n  \"standalone_risk\": \"The specific significance of the ledger is not explained, but the emotional weight is clear from her reaction.\"\n}",
+  "response_payload": {
+    "id": "chatcmpl-8591a99c-1e32-45e1-ab22-aa7fdb174e36",
+    "object": "chat.completion",
+    "created": 1794103865,
+    "model": "qwen/qwen3.8-27b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"chosen_window\": 2,\n  \"start_beat\": \"b00\",\n  \"end_beat\": \"b12\",\n  \"hook_beat\": \"b01\",\n  \"cliffhanger_beat\": \"b12\",\n  \"hook\": \"A woman screams that a burning object is her mother's, defying a man's command to leave it.\",\n  \"cliffhanger\": \"The man carries her bridal-style toward a window while she clutches the ledger, leaving the escape unresolved.\",\n  \"hook_type\": \"empathy shock\",\n  \"why_it_works\": \"The physical danger of the fire combined with the emotional stakes of the mother's ledger creates immediate high tension and character depth.\",\n  \"standalone_risk\": \"The specific significance of the ledger is not explained, but the emotional weight is clear from her reaction.\"\n}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.0500386,
+      "prompt_tokens": 1577,
+      "prompt_time": 0.115607127,
+      "completion_tokens": 196,
+      "completion_time": 0.375233868,
+      "total_tokens": 1773,
+      "total_time": 0.490840995
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_424cb89518",
+    "x_groq": {
+      "id": "req_01m6wervvmedwv7jggh85ke5qm",
+      "seed": 751095643
+    },
+    "service_tier": "on_demand"
+  }
+}

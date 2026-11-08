@@ -1,0 +1,41 @@
+{
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "tag": "gate_p_044_a",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\n[action] A royal redcoat guard firmly forces Rupert down into the stone dust.\nBLOND NOBLEMAN: \"Get your hands off me! Catherine!\"\nBLOND NOBLEMAN: \"Do something!\"\n[action] Catherine's satin-gloved hand clenches tightly into a trembling fist against the folds of her ornate gown.\nCATHERINE: \"Alexander... I thought you had died.\"\nCATHERINE: \"Do you know what this did to me?\"\nCATHERINE: \"I mourned you.\"\nCATHERINE: \"I waited for you.\"\nCATHERINE: \"For three years, I believed the man I loved was buried somewhere across the sea.\"\nCATHERINE: \"I never stopped loving you.\"\n[action] Alexander abruptly pulls his face back, refusing her touch and leaving her hand suspended in mid-air.\nCATHERINE: \"You don't remember?\"\nCATHERINE: \"I was supposed to be your Duchess!\"\nALEXANDER: \"You were never my Duchess.\"\nCATHERINE: \"But I loved you!\"\nALEXANDER: \"You loved the Duke you thought you would marry.\"\nCATHERINE: \"No!\"\nCATHERINE: \"I loved you before all this!\"",
+  "response_text": "{\n  \"who_is_the_main_character\": \"The clip names two characters, Catherine and Alexander (referred to as Rupert by the guard). It does not identify a single main character, but focuses on their interaction.\",\n  \"what_is_at_stake\": \"Catherine is trying to rekindle a romantic relationship with Alexander, who is currently being restrained by guards. The conflict is emotional: she believes they were engaged to be married, while he denies it.\",\n  \"what_question_are_you_left_with\": \"Why is Alexander being held by guards, and why does he claim he doesn't remember her or that she was never his Duchess?\",\n  \"would_you_keep_watching\": \"maybe, because the sudden shift from a reunion to a rejection is dramatic, but I don't know who these people are or why they are in this situation.\",\n  \"passes\": {\n    \"character_identifiable\": true,\n    \"stakes_clear\": false,\n    \"ends_unresolved\": true,\n    \"would_watch\": true\n  }\n}",
+  "response_payload": {
+    "id": "chatcmpl-fe6f340c-833a-4b48-b666-20ed0cc926a7",
+    "object": "chat.completion",
+    "created": 1794112685,
+    "model": "qwen/qwen3.8-27b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"who_is_the_main_character\": \"The clip names two characters, Catherine and Alexander (referred to as Rupert by the guard). It does not identify a single main character, but focuses on their interaction.\",\n  \"what_is_at_stake\": \"Catherine is trying to rekindle a romantic relationship with Alexander, who is currently being restrained by guards. The conflict is emotional: she believes they were engaged to be married, while he denies it.\",\n  \"what_question_are_you_left_with\": \"Why is Alexander being held by guards, and why does he claim he doesn't remember her or that she was never his Duchess?\",\n  \"would_you_keep_watching\": \"maybe, because the sudden shift from a reunion to a rejection is dramatic, but I don't know who these people are or why they are in this situation.\",\n  \"passes\": {\n    \"character_identifiable\": true,\n    \"stakes_clear\": false,\n    \"ends_unresolved\": true,\n    \"would_watch\": true\n  }\n}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.048240259,
+      "prompt_tokens": 573,
+      "prompt_time": 0.03940345,
+      "completion_tokens": 220,
+      "completion_time": 0.417995647,
+      "total_tokens": 793,
+      "total_time": 0.457399097
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_21e59ac2de",
+    "x_groq": {
+      "id": "req_01m6wq61bpe00rhnm74839k8sd",
+      "seed": 1854626791
+    },
+    "service_tier": "on_demand"
+  }
+}

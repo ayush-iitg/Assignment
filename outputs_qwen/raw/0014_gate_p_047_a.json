@@ -1,0 +1,41 @@
+{
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "tag": "gate_p_047_a",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\nCATHERINE: \"Please, Alexander! Have mercy!\"\nJULIANA: \"Stop.\"\nALEXANDER: \"Juliana, she tried to destroy you!\"\nJULIANA: \"She did.\"\nJULIANA: \"But Ashbourne does not throw beggars into the mud.\"\n[action] Juliana walks to a side bench, picks up a rough servant's apron and a heavy iron ring of keys, and turns back to face Catherine.\nJULIANA: \"If you seek shelter in this house, Catherine, you earn it.\"\nCATHERINE: \"You want me? As a guest?\"\nJULIANA: \"As a scullery maid.\"\nCATHERINE: \"You expect me to scrub floors before these commoners?\"\nJULIANA: \"You will scrub the floors you walked on as an impostor.\"",
+  "response_text": "{\n  \"who_is_the_main_character\": \"Juliana (the clip names her, but does not explain who she is or her role beyond being in charge of the house)\",\n  \"what_is_at_stake\": \"Catherine's survival and status; she is being forced to work as a servant after being exposed as an impostor who tried to destroy Juliana\",\n  \"what_question_are_you_left_with\": \"Who is this 'impostor' Catherine, what did she actually do to Juliana, and what is the nature of the house 'Ashbourne'?\",\n  \"would_you_keep_watching\": \"maybe, the dialogue is dramatic but I have no context for who these people are or why this matters\",\n  \"passes\": {\n    \"character_identifiable\": false,\n    \"stakes_clear\": false,\n    \"ends_unresolved\": true,\n    \"would_watch\": false\n  }\n}",
+  "response_payload": {
+    "id": "chatcmpl-1d462fe3-4d22-47e8-92f4-292ce49b7a67",
+    "object": "chat.completion",
+    "created": 1794112620,
+    "model": "qwen/qwen3.8-27b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"who_is_the_main_character\": \"Juliana (the clip names her, but does not explain who she is or her role beyond being in charge of the house)\",\n  \"what_is_at_stake\": \"Catherine's survival and status; she is being forced to work as a servant after being exposed as an impostor who tried to destroy Juliana\",\n  \"what_question_are_you_left_with\": \"Who is this 'impostor' Catherine, what did she actually do to Juliana, and what is the nature of the house 'Ashbourne'?\",\n  \"would_you_keep_watching\": \"maybe, the dialogue is dramatic but I have no context for who these people are or why this matters\",\n  \"passes\": {\n    \"character_identifiable\": false,\n    \"stakes_clear\": false,\n    \"ends_unresolved\": true,\n    \"would_watch\": false\n  }\n}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.049451976,
+      "prompt_tokens": 488,
+      "prompt_time": 0.035639299,
+      "completion_tokens": 194,
+      "completion_time": 0.369505979,
+      "total_tokens": 682,
+      "total_time": 0.405145278
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_a1293f40b5",
+    "x_groq": {
+      "id": "req_01m6wq41p7ec9tcmmzyacgg68p",
+      "seed": 1289032806
+    },
+    "service_tier": "on_demand"
+  }
+}

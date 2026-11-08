@@ -1,0 +1,48 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "select_ep026",
+  "system": "You are a promo editor for vertical microdramas (ReelShort/DramaBox style).\nYou pick which seconds of an episode become a 20-60 second advert for the show.\n\nA good promo:\n- opens on a hook: within its first beats, something that stops a scrolling viewer - a slap, a reveal, a shocking line\n- ends on a cliffhanger: it stops at an unresolved moment, so the viewer must go find the show\n- makes sense alone to someone who has never seen this show\n\nYou will be given candidate windows, each a contiguous run of beats labelled [b00], [b01]...\nYou must choose ONE window and may tighten its edges to any beat labels inside that window.\n\nReply with JSON only:\n{\n  \"chosen_window\": <integer index of the window you picked>,\n  \"start_beat\": \"<beat label>\",\n  \"end_beat\": \"<beat label>\",\n  \"hook_beat\": \"<beat label, must be at or within 2 beats of start_beat>\",\n  \"cliffhanger_beat\": \"<beat label, must be at or near end_beat>\",\n  \"hook\": \"<what grabs the viewer in the first seconds, one sentence>\",\n  \"cliffhanger\": \"<the unresolved moment it cuts on, one sentence>\",\n  \"hook_type\": \"<one of: moral outrage, romantic tension, empathy shock, power reversal>\",\n  \"why_it_works\": \"<one sentence, concrete, no marketing language>\",\n  \"standalone_risk\": \"<what a new viewer would NOT understand, or 'none'>\"\n}\n\nNever invent dialogue. Never output a time or a duration - only beat labels.",
+  "prompt": "Episode 26. 3 candidate windows, already checked for legal length and real beat boundaries.\n\n--- WINDOW 0 (25 seconds, code score 0.79) ---\n[b00] SFX: A sharp, stunned gasp.\n[b01] ACTION: The Duchess's mouth hangs open in pure disbelief as she stares fixedly at Juliana's hand.\n[b02] DOWAGER DUCHESS (breathless, shaken): \"Your hand... Let me see your hand.\"\n[b03] JULIANA (confused, alarmed): \"Your Grace? What is wrong? You look as though you've seen a ghost.\"\n[b04] ACTION: The Duchess reaches outward with trembling fingers, grasping frantically for Juliana.\n[b05] SFX: A sudden sharp rustle of fabric as her fingers snap tight.\n[b06] DOWAGER DUCHESS (stern, desperate): \"Do not move!\"\n[b07] DOWAGER DUCHESS (intense, demanding): \"Where... where... Where did you get this ring? Speak to me!\"\n\n--- WINDOW 1 (36 seconds, code score 0.77) ---\n[b00] DOWAGER DUCHESS (faint, discerning): \"You... you are no common servant. You took Catherine's whip for me the other day.\"\n[b01] JULIANA (humble, sincere): \"I did what I had to. It does not change my duty.\"\n[b02] JULIANA (gentle, calming): \"Rest now, Your Grace. You are safe tonight.\"\n[b03] JULIANA (hushed, tense whisper): \"If the guards hear us, we are both dead.\"\n[b04] ACTION: The Duchess clutches the blanket against her chest, her breathing quickening with dismay.\n[b05] DOWAGER DUCHESS (trembling, heartbroken): \"Rupert and Catherine want me dead. They are poisoning me in my own bed, aren't they?\"\n[b06] JULIANA (reassuring, steadfast): \"Yes. But the charcoal is fighting the poison. You are safe now.\"\n\n--- WINDOW 2 (30 seconds, code score 0.70) ---\n[b00] DOWAGER DUCHESS (trembling, heartbroken): \"Rupert and Catherine want me dead. They are poisoning me in my own bed, aren't they?\"\n[b01] JULIANA (reassuring, steadfast): \"Yes. But the charcoal is fighting the poison. You are safe now.\"\n[b02] DOWAGER DUCHESS (curious, searching): \"Then tell me... why is a girl of such noble spirit working as a common maid?\"\n[b03] JULIANA (painful, proud): \"Because my family cast me out to rot. I have nothing left in this world but my honor.\"\n\nPick the single best promo.",
+  "response_text": "{\"chosen_window\":0,\"start_beat\":\"b00\",\"end_beat\":\"b07\",\"hook_beat\":\"b00\",\"cliffhanger_beat\":\"b07\",\"hook\":\"A stunned gasp erupts as the Duchess freezes, eyes locked on Juliana’s hand.\",\"cliffhanger\":\"The Duchess demands to know where the mysterious ring came from, cutting off before the answer is given.\",\"hook_type\":\"power reversal\",\"why_it_works\":\"The gasp creates an instant shock while the unanswered ring mystery forces the viewer to keep watching.\",\"standalone_risk\":\"The significance of the ring and Juliana’s role are unclear to a new viewer\"}",
+  "response_payload": {
+    "id": "chatcmpl-829c8497-8e95-4b27-a96e-8d50ca614f10",
+    "object": "chat.completion",
+    "created": 1794082551,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"chosen_window\":0,\"start_beat\":\"b00\",\"end_beat\":\"b07\",\"hook_beat\":\"b00\",\"cliffhanger_beat\":\"b07\",\"hook\":\"A stunned gasp erupts as the Duchess freezes, eyes locked on Juliana’s hand.\",\"cliffhanger\":\"The Duchess demands to know where the mysterious ring came from, cutting off before the answer is given.\",\"hook_type\":\"power reversal\",\"why_it_works\":\"The gasp creates an instant shock while the unanswered ring mystery forces the viewer to keep watching.\",\"standalone_risk\":\"The significance of the ring and Juliana’s role are unclear to a new viewer\"}",
+          "reasoning": "We need to pick one window and possibly tighten edges. Must include hook within 2 beats of start. Must end with cliffhanger near end. Provide JSON.\n\nWe need to evaluate each window for hook and cliffhanger.\n\nWindow 0: beats b00 to b07. Hook could be b00: gasp, shock. That's a hook. Cliffhanger: maybe at b07 where Duchess demands \"Where did you get this ring? Speak to me!\" That's unresolved, we don't know the ring. Good.\n\nWe can maybe start at b00, end at b07. Hook beat b00, cliffhanger beat b07. Works.\n\nWindow 1: starts with Duchess accusing Juliana of taking whip. Hook maybe b00 (accusation). Cliffhanger maybe b05 where Duchess says \"They are poisoning me... aren't they?\" That's a question, unresolved. Could end at b05 or b06. But we need within window. Could start b00, end b05. Hook b00, cliffhanger b05. Works.\n\nWindow 2: similar but shorter. Hook maybe b00 (poison accusation). Cliffhanger maybe b02 where she asks why a noble girl works as maid. That's a question, unresolved. Could end at b02. Hook b00, cliffhanger b02.\n\nWhich is best? Need strong hook within first seconds: b00 gasp is visual shock. That's strong. Also ring mystery is compelling. Window 0 includes physical reaction, gasp, hand, ring. Good.\n\nWindow 1 has political intrigue but less immediate visual. Window 2 similar but less content.\n\nThus choose window 0.\n\nNow need to possibly tighten edges: start at b00, end at b07. Hook beat b00 (within 2 beats). Cliffhanger beat b07.\n\nProvide hook description: \"A stunned gasp as the Duchess freezes, eyes locked on Juliana’s hand.\" Cliffhanger: \"The Duchess demands to know where the mysterious ring came from, leaving the secret hanging.\"\n\nHook_type: power reversal? Actually it's empathy shock? The Duchess is shocked, power reversal maybe because servant holds something that threatens. Could be power reversal (servant holds power). Choose \"power reversal\".\n\nwhy_it_works: The opening gasp instantly grabs attention and the unanswered question about the ring forces curiosity.\n\nstandalone_risk: New viewers might not know why the ring matters or who Juliana is.\n\nReturn JSON compact."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.159089748,
+      "prompt_tokens": 1035,
+      "prompt_time": 0.03286888,
+      "completion_tokens": 632,
+      "completion_time": 1.588012643,
+      "total_tokens": 1667,
+      "total_time": 1.620881523,
+      "prompt_tokens_details": {
+        "cached_tokens": 256
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 492
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_69334c0be3",
+    "x_groq": {
+      "id": "req_01m6vtecdceah924w34gw40czk",
+      "seed": 2028760341
+    },
+    "service_tier": "on_demand"
+  }
+}

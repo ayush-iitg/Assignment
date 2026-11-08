@@ -1,0 +1,103 @@
+{
+  "run": {
+    "input_dir": "data",
+    "episodes": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50
+    ],
+    "started": "2026-11-08 12:36:32",
+    "elapsed_s": 342.2,
+    "use_llm": true,
+    "composite_weights": {
+      "hook": 0.3,
+      "tension": 0.2,
+      "cliffhanger": 0.3,
+      "standalone": 0.2
+    },
+    "promo_length_bounds": [
+      20.0,
+      60.0
+    ]
+  },
+  "llm": {
+    "provider": "groq",
+    "model": "qwen/qwen3.8-27b",
+    "calls": 40,
+    "max_calls": 300,
+    "cache_hits": 81,
+    "tokens_in": 27049,
+    "tokens_out": 5973,
+    "paced_sleep_s": 215.2,
+    "failures": 1,
+    "failure_detail": [
+      {
+        "tag": "select_ep026",
+        "attempt": 0,
+        "error": "HTTP 503: {\"error\":{\"message\":\"qwen/qwen3.8-27b is currently over capacity. Please try again and back off exponentially. Visit https://groqstatus.com to see if there is an active incident.\",\"type\":\"internal_server_error\"}}\n",
+        "provider": "groq",
+        "model": "qwen/qwen3.8-27b"
+      }
+    ]
+  },
+  "counts": {
+    "windows_enumerated": 18141,
+    "rejected_no_hook": 3376,
+    "shortlisted": 171,
+    "candidates": 91,
+    "candidates_single_stretch": 50,
+    "candidates_two_piece": 41,
+    "validator_failed": 1,
+    "near_duplicates": 32,
+    "gate_failed": 9,
+    "gate_not_tested": 0,
+    "shipped": 49
+  }
+}

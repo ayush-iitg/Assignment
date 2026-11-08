@@ -1,0 +1,41 @@
+{
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "tag": "gate_p_025_a",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\nALEXANDER: \"Juliana... why were you inside Ashburg Manor?\"\nJULIANA: \"I went there to help someone.\"\nALEXANDER: \"Who?\"\nJULIANA: \"The Dowager Duchess.\"\nALEXANDER: \"The Dowager?\"\nJULIANA: \"Prudence told me she was dying.\"\nJULIANA: \"She was barely breathing when I found her. The doctor said she was simply growing old.\"\nJULIANA: \"But it wasn't age.\"\nALEXANDER: \"What did you find?\"\nJULIANA: \"Poison.\"",
+  "response_text": "{\n  \"who_is_the_main_character\": \"The clip features two characters, Alexander and Juliana. It does not explicitly identify a single 'main' character, though Juliana provides the exposition. The clip names them, but does not provide their last names or specific roles beyond their interaction.\",\n  \"what_is_at_stake\": \"The discovery that the Dowager Duchess was poisoned rather than dying of old age, implying a murder or foul play at Ashburg Manor.\",\n  \"what_question_are_you_left_with\": \"Who poisoned the Dowager Duchess, and what is the connection between Juliana, Alexander, and the manor?\",\n  \"would_you_keep_watching\": \"yes, because the revelation of poison in a seemingly natural death creates an immediate mystery.\",\n  \"passes\": {\n    \"character_identifiable\": true,\n    \"stakes_clear\": true,\n    \"ends_unresolved\": true,\n    \"would_watch\": true\n  }\n}",
+  "response_payload": {
+    "id": "chatcmpl-783745a1-9b2e-4031-a212-7de39242980d",
+    "object": "chat.completion",
+    "created": 1794112932,
+    "model": "qwen/qwen3.8-27b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"who_is_the_main_character\": \"The clip features two characters, Alexander and Juliana. It does not explicitly identify a single 'main' character, though Juliana provides the exposition. The clip names them, but does not provide their last names or specific roles beyond their interaction.\",\n  \"what_is_at_stake\": \"The discovery that the Dowager Duchess was poisoned rather than dying of old age, implying a murder or foul play at Ashburg Manor.\",\n  \"what_question_are_you_left_with\": \"Who poisoned the Dowager Duchess, and what is the connection between Juliana, Alexander, and the manor?\",\n  \"would_you_keep_watching\": \"yes, because the revelation of poison in a seemingly natural death creates an immediate mystery.\",\n  \"passes\": {\n    \"character_identifiable\": true,\n    \"stakes_clear\": true,\n    \"ends_unresolved\": true,\n    \"would_watch\": true\n  }\n}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.047804185,
+      "prompt_tokens": 441,
+      "prompt_time": 0.030949574,
+      "completion_tokens": 200,
+      "completion_time": 0.382190586,
+      "total_tokens": 641,
+      "total_time": 0.41314016
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_a1293f40b5",
+    "x_groq": {
+      "id": "req_01m6wqdjnbe69vfbhes9dhjh5x",
+      "seed": 616604253
+    },
+    "service_tier": "on_demand"
+  }
+}

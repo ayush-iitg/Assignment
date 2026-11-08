@@ -1,0 +1,48 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "gate_p_006_m1",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\n[action] Juliana lifts the hem of her white satin wedding gown to keep it out of the pooling mud, shivering under her dark hooded cloak.\n[sfx] Heavy rain pouring through dense tree canopies with steady footfalls on wet earth.\n[action] Juliana turns back toward him, water glistening on her face and hair.\nMYSTERIOUS BEARDED MAN: \"I know this is not the life you came from.\"\nJULIANA: \"No.\"\n[action] Juliana looks upward into the canopy, gathering herself with a faint nod.\nJULIANA: \"It isn't.\"\nMYSTERIOUS BEARDED MAN: \"You should not have had to walk through this rain tonight.\"\nJULIANA: \"If I stop now, I will think about everything I lost.\"\n[action] Instead of stopping her, the Mysterious Bearded Man kneels beside the table and begins inspecting and adjusting the wobbly table leg to help.\n[action] Juliana picks up a straw broom and sweeps the stone floor in front of the stone hearth.\n[action] The Mysterious Bearded Man carries a heavy wooden log across the room and places it onto the iron grate in the hearth.\n[action] He strikes flint and steel together over dry kindling, igniting bright sparks that catch into a flickering flame.",
+  "response_text": "{\"who_is_the_main_character\":\"Juliana (named in the clip)\",\"what_is_at_stake\":\"unclear from the clip\",\"what_question_are_you_left_with\":\"Will Juliana continue onward despite her loss, or what will happen next?\",\"would_you_keep_watching\":\"maybe, the mood is intriguing but the stakes are vague\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":false,\"ends_unresolved\":true,\"would_watch\":false}}",
+  "response_payload": {
+    "id": "chatcmpl-3cd9ec3e-1b1a-4c67-8a51-8fa893b42d95",
+    "object": "chat.completion",
+    "created": 1794121084,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"who_is_the_main_character\":\"Juliana (named in the clip)\",\"what_is_at_stake\":\"unclear from the clip\",\"what_question_are_you_left_with\":\"Will Juliana continue onward despite her loss, or what will happen next?\",\"would_you_keep_watching\":\"maybe, the mood is intriguing but the stakes are vague\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":false,\"ends_unresolved\":true,\"would_watch\":false}}",
+          "reasoning": "We need to produce JSON with fields. Determine main character: Julian? The clip names Juliana. So main character is Juliana. The clip never names the mysterious bearded man. So main character is Juliana, identified.\n\nWhat is at stake? There's conflict: Juliana is walking in rain, possibly about lost something, maybe about continuing. She says \"If I stop now, I will think about everything I lost.\" The stakes unclear but seems about her continuing journey vs stopping and reflecting on loss. So we can say unclear from clip. But we can infer that she must keep moving to avoid thinking about loss. The stakes: her emotional state, maybe survival. The clip doesn't explicitly state what's at stake beyond her internal conflict. So we can say \"unclear from the clip\".\n\nWhat question left? Likely will the fire stay lit? Will she continue? Or what will happen next? The unresolved question: Will Juliana succeed in whatever she is trying to do? Or what is the significance of the table? Probably \"Will Juliana be able to move forward despite her loss?\" So we can phrase as unresolved.\n\nWould you keep watching? Provide yes/maybe/no with short reason. I'd say maybe: The atmosphere is intriguing but unclear stakes.\n\nPasses: character_identifiable true (Juliana identified). stakes_clear false. ends_unresolved true (conflict unresolved). would_watch maybe? The passes field \"would_watch\" true/false. Since we said maybe, we need boolean. Probably false? The spec: passes: \"would_watch\": true/false. Since we said maybe, we need decide. I'd set false? But maybe we interpret maybe as not a definite yes, so false. But maybe we could set true if we think likely to watch. The question: \"would_watch\" indicates if you'd watch based on clip. Since we said maybe, it's not a definite yes, so false. Let's set false.\n\nNow produce compact JSON."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.157669058,
+      "prompt_tokens": 655,
+      "prompt_time": 0.019542552,
+      "completion_tokens": 500,
+      "completion_time": 1.048594081,
+      "total_tokens": 1155,
+      "total_time": 1.068136633,
+      "prompt_tokens_details": {
+        "cached_tokens": 256
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 398
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_4a7bb72c24",
+    "x_groq": {
+      "id": "req_01m6wz6ateekgb8dka8m2j8w5k",
+      "seed": 590830361
+    },
+    "service_tier": "on_demand"
+  }
+}

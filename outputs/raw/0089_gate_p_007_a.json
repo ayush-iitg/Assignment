@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "gate_p_007_a",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\n[action] Juliana rinses the heavy mud from her hands in a cold rainwater puddle and rises to her feet, holding her head high.\nARISTOCRATIC WOMAN: \"This is where you live now?\"\nGERALD: \"A fitting home for a woman who threw away everything for a penniless soldier.\"\nJULIANA: \"You came all this way just to insult my home?\"\nARISTOCRATIC WOMAN: \"Home? Look at your hands, Juliana.\"\nARISTOCRATIC WOMAN: \"You look like a servant.\"\nJULIANA: \"I work with my hands. There is no shame in that.\"\nGERALD: \"You were born a lady.\"\nJULIANA: \"And I remain one.\"\nGERALD: \"You chose that scarred beggar over a life of comfort.\"\nJULIANA: \"I chose a man who stood beside me when you walked away.\"\nJULIANA: \"You have no authority here. Leave.\"\nGERALD: \"I have enough influence to make a beggar disappear.\"\nGERALD: \"And your husband?\"",
+  "response_text": "{\"who_is_the_main_character\":\"Juliana\",\"what_is_at_stake\":\"Juliana's autonomy and the safety of her husband are threatened by Gerald's influence\",\"what_question_are_you_left_with\":\"Will Gerald act on his threat against Juliana or her husband?\",\"would_you_keep_watching\":\"maybe, the tension between the characters is intriguing\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":true,\"ends_unresolved\":true,\"would_watch\":false}}",
+  "response_payload": {
+    "id": "chatcmpl-56d4c9ea-2530-43cb-b649-1b5c54285d54",
+    "object": "chat.completion",
+    "created": 1794103059,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"who_is_the_main_character\":\"Juliana\",\"what_is_at_stake\":\"Juliana's autonomy and the safety of her husband are threatened by Gerald's influence\",\"what_question_are_you_left_with\":\"Will Gerald act on his threat against Juliana or her husband?\",\"would_you_keep_watching\":\"maybe, the tension between the characters is intriguing\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":true,\"ends_unresolved\":true,\"would_watch\":false}}",
+          "reasoning": "We need to produce JSON with fields. Determine main character: The clip mentions Juliana, Gerald, Aristocratic Woman. Who is main? Likely Juliana, as she is central, but clip never names main explicitly. We can say main character is Juliana, as she is the focus. The clip names her. So \"who_is_the_main_character\": \"Juliana\". Stakes: conflict between Julian and Gerald (and aristocratic woman). Stakes unclear? It's about authority, maybe her home, her marriage. The clip shows tension, but not fully clear what's at stake beyond social status. Could say \"unclear from the clip\". But we can infer conflict: Gerald threatens her, mentions influence, husband. So stakes: her autonomy, safety, maybe her marriage. Might be somewhat clear: Gerald threatens to use influence, possibly to harm her husband. So stakes: her safety and her husband's safety. It's somewhat clear. I'd say stakes are somewhat clear: Gerald's threat vs Juliana's defiance. So \"what_is_at_stake\": \"Juliana's autonomy and the safety of her husband\". It's derived from dialogue. It's not ambiguous. So true.\n\nUnresolved question: What will Gerald do? Will he act on his threat? So unresolved question: Will Gerald follow through? So \"what_question_are_you_left_with\": \"Will Gerald use his influence against Juliana or her husband?\" Good.\n\nWould you keep watching? Probably maybe, because tension. So \"maybe\" with short reason.\n\nPasses: character_identifiable: true (Juliana is named). stakes_clear: true (we can see conflict). ends_unresolved: true (conflict unresolved). would_watch: maybe => true? The passes field \"would_watch\" expects boolean if you'd watch? Probably true if you'd keep watching. Since we said maybe, maybe we set would_watch false? The spec: passes: \"would_watch\": true/false. Should reflect if you'd watch. Since we said maybe, ambiguous. I'd set false? But maybe they want true if you'd watch. Since we said maybe, not definite. I'd set false? The spec: \"would_watch\": true/false. It doesn't have maybe. So we need decide. I'd set false because not fully convinced. But maybe they'd consider maybe as true? I'd choose false.\n\nThus JSON. Ensure compact."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.375258459,
+      "prompt_tokens": 613,
+      "prompt_time": 0.032923886,
+      "completion_tokens": 580,
+      "completion_time": 1.199707056,
+      "total_tokens": 1193,
+      "total_time": 1.2326309420000001,
+      "completion_tokens_details": {
+        "reasoning_tokens": 477
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_93703442d9",
+    "x_groq": {
+      "id": "req_01m6we07kaeh7rt5dg2gsmas5v",
+      "seed": 1097338511
+    },
+    "service_tier": "on_demand"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "tag": "gate_p_011_a",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\nALEXANDER: \"One blow would end this.\"\nALEXANDER: \"But one blow would destroy her life.\"\n[action] The Constable grabs the coat by the collar and begins rummaging through its deep pockets.\nJULIANA: \"That is his coat!\"\n[sfx] Metallic clinking of the gold chain sliding against fabric.\n[action] Juliana draws a sharp, terrified breath as her face pales completely.\nGERALD: \"There it is. Ha!\"",
+  "response_text": "{\n  \"who_is_the_main_character\": \"The clip features Alexander, Juliana, Gerald, and a Constable. It does not identify a single main character, nor does it provide context for who they are to each other beyond their names.\",\n  \"what_is_at_stake\": \"Unclear from the clip. There is a conflict involving a coat and a gold chain, and Alexander mentions a choice between ending something and destroying a life, but the specific nature of the threat or the relationship between the characters is not explained.\",\n  \"what_question_are_you_left_with\": \"Who is 'her' that Alexander is protecting, and what is the significance of the gold chain in the coat that causes Juliana such terror?\",\n  \"would_you_keep_watching\": \"maybe, because the sudden shift from philosophical dialogue to a physical search and a character's terrified reaction creates a jarring mystery that demands an explanation.\",\n  \"passes\": {\n    \"character_identifiable\": false,\n    \"stakes_clear\": false,\n    \"ends_unresolved\": true,\n    \"would_watch\": true\n  }\n}",
+  "response_payload": {
+    "id": "chatcmpl-91e056e9-bdc1-43cf-b01c-1c1282e40782",
+    "object": "chat.completion",
+    "created": 1794113042,
+    "model": "qwen/qwen3.8-27b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"who_is_the_main_character\": \"The clip features Alexander, Juliana, Gerald, and a Constable. It does not identify a single main character, nor does it provide context for who they are to each other beyond their names.\",\n  \"what_is_at_stake\": \"Unclear from the clip. There is a conflict involving a coat and a gold chain, and Alexander mentions a choice between ending something and destroying a life, but the specific nature of the threat or the relationship between the characters is not explained.\",\n  \"what_question_are_you_left_with\": \"Who is 'her' that Alexander is protecting, and what is the significance of the gold chain in the coat that causes Juliana such terror?\",\n  \"would_you_keep_watching\": \"maybe, because the sudden shift from philosophical dialogue to a physical search and a character's terrified reaction creates a jarring mystery that demands an explanation.\",\n  \"passes\": {\n    \"character_identifiable\": false,\n    \"stakes_clear\": false,\n    \"ends_unresolved\": true,\n    \"would_watch\": true\n  }\n}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.047917818,
+      "prompt_tokens": 412,
+      "prompt_time": 0.028127176,
+      "completion_tokens": 231,
+      "completion_time": 0.441883353,
+      "total_tokens": 643,
+      "total_time": 0.470010529
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_21e59ac2de",
+    "x_groq": {
+      "id": "req_01m6wqgx72etjv6y0zddj34cgs",
+      "seed": 567445659
+    },
+    "service_tier": "on_demand"
+  }
+}

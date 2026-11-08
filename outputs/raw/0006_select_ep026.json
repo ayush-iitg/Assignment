@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "select_ep026",
+  "system": "You are a promo editor for vertical microdramas (ReelShort/DramaBox style).\nYou pick which seconds of an episode become a 20-60 second advert for the show.\n\nA good promo:\n- opens on a hook: within its first beats, something that stops a scrolling viewer - a slap, a reveal, a shocking line\n- ends on a cliffhanger: it stops at an unresolved moment, so the viewer must go find the show\n- makes sense alone to someone who has never seen this show\n\nYou will be given candidate windows, each a contiguous run of beats labelled [b00], [b01]...\nYou must choose ONE window and may tighten its edges to any beat labels inside that window.\n\nReply with JSON only:\n{\n  \"chosen_window\": <integer index of the window you picked>,\n  \"start_beat\": \"<beat label>\",\n  \"end_beat\": \"<beat label>\",\n  \"hook_beat\": \"<beat label, must be at or within 2 beats of start_beat>\",\n  \"cliffhanger_beat\": \"<beat label, must be at or near end_beat>\",\n  \"hook\": \"<what grabs the viewer in the first seconds, one sentence>\",\n  \"cliffhanger\": \"<the unresolved moment it cuts on, one sentence>\",\n  \"hook_type\": \"<one of: moral outrage, romantic tension, empathy shock, power reversal>\",\n  \"why_it_works\": \"<one sentence, concrete, no marketing language>\",\n  \"standalone_risk\": \"<what a new viewer would NOT understand, or 'none'>\"\n}\n\nNever invent dialogue. Never output a time or a duration - only beat labels.",
+  "prompt": "Episode 26. 2 candidate windows, already checked for legal length and real beat boundaries.\n\n--- WINDOW 0 (60 seconds, code score 0.79) ---\n[b00] DOWAGER DUCHESS (trembling, heartbroken): \"Rupert and Catherine want me dead. They are poisoning me in my own bed, aren't they?\"\n[b01] JULIANA (reassuring, steadfast): \"Yes. But the charcoal is fighting the poison. You are safe now.\"\n[b02] DOWAGER DUCHESS (curious, searching): \"Then tell me... why is a girl of such noble spirit working as a common maid?\"\n[b03] JULIANA (painful, proud): \"Because my family cast me out to rot. I have nothing left in this world but my honor.\"\n[b04] ACTION: Juliana rests her right hand against the edge of the bedcover, unwittingly placing the unique ring directly within the Duchess's line of sight.\n[b05] SFX: A sharp, stunned gasp.\n[b06] ACTION: The Duchess's mouth hangs open in pure disbelief as she stares fixedly at Juliana's hand.\n[b07] DOWAGER DUCHESS (breathless, shaken): \"Your hand... Let me see your hand.\"\n[b08] JULIANA (confused, alarmed): \"Your Grace? What is wrong? You look as though you've seen a ghost.\"\n[b09] ACTION: The Duchess reaches outward with trembling fingers, grasping frantically for Juliana.\n[b10] SFX: A sudden sharp rustle of fabric as her fingers snap tight.\n[b11] DOWAGER DUCHESS (stern, desperate): \"Do not move!\"\n[b12] DOWAGER DUCHESS (intense, demanding): \"Where... where... Where did you get this ring? Speak to me!\"\n\n--- WINDOW 1 (36 seconds, code score 0.77) ---\n[b00] DOWAGER DUCHESS (faint, discerning): \"You... you are no common servant. You took Catherine's whip for me the other day.\"\n[b01] JULIANA (humble, sincere): \"I did what I had to. It does not change my duty.\"\n[b02] JULIANA (gentle, calming): \"Rest now, Your Grace. You are safe tonight.\"\n[b03] JULIANA (hushed, tense whisper): \"If the guards hear us, we are both dead.\"\n[b04] ACTION: The Duchess clutches the blanket against her chest, her breathing quickening with dismay.\n[b05] DOWAGER DUCHESS (trembling, heartbroken): \"Rupert and Catherine want me dead. They are poisoning me in my own bed, aren't they?\"\n[b06] JULIANA (reassuring, steadfast): \"Yes. But the charcoal is fighting the poison. You are safe now.\"\n\nPick the single best promo.",
+  "response_text": "{\"chosen_window\":0,\"start_beat\":\"b00\",\"end_beat\":\"b12\",\"hook_beat\":\"b00\",\"cliffhanger_beat\":\"b12\",\"hook\":\"The Duchess gasps, accusing Rupert and Catherine of trying to poison her in her own bed.\",\"cliffhanger\":\"She lunges for Juliana’s hand, demanding to know where the mysterious ring came from.\",\"hook_type\":\"moral outrage\",\"why_it_works\":\"It thrusts the viewer into a life‑or‑death conspiracy and a sudden, visual mystery about the ring.\",\"standalone_risk\":\"The names Rupert and Catherine are unexplained, but the danger is clear.\"}",
+  "response_payload": {
+    "id": "chatcmpl-6ad2e716-ad11-4cb5-b9da-6527783f505c",
+    "object": "chat.completion",
+    "created": 1794120959,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"chosen_window\":0,\"start_beat\":\"b00\",\"end_beat\":\"b12\",\"hook_beat\":\"b00\",\"cliffhanger_beat\":\"b12\",\"hook\":\"The Duchess gasps, accusing Rupert and Catherine of trying to poison her in her own bed.\",\"cliffhanger\":\"She lunges for Juliana’s hand, demanding to know where the mysterious ring came from.\",\"hook_type\":\"moral outrage\",\"why_it_works\":\"It thrusts the viewer into a life‑or‑death conspiracy and a sudden, visual mystery about the ring.\",\"standalone_risk\":\"The names Rupert and Catherine are unexplained, but the danger is clear.\"}",
+          "reasoning": "We need to pick one window and possibly tighten edges. Must include hook within first 2 beats of start. Provide hook beat label, cliffhanger beat label near end. Provide hook description, cliffhanger description, hook_type, why_it_works, standalone_risk.\n\nWe have two windows.\n\nWindow 0 is 60 seconds, includes strong hook: Duchess accusing poison, then gasp at ring, then demand \"Where did you get this ring?\" That's a power reversal (servant holds something powerful). Hook could be at b00 (the accusation) or b05 (sharp gasp). Hook should be within 2 beats of start. If start at b00, hook beat could be b00 (the accusation) which is shocking. Cliffhanger near end could be b12 where she demands ring origin. That leaves unresolved mystery.\n\nWindow 1 is shorter, includes similar but less dramatic. Hook could be b00 (the Duchess's line \"You... you are no common servant...\") but less shocking. Cliffhanger maybe b06 (the reassurance). Not as strong.\n\nThus choose window 0. We can tighten start maybe at b00, end at b12. Hook beat b00. Cliffhanger beat b12.\n\nHook: Duchess accusing poison, immediate tension. Hook_type: moral outrage? It's about betrayal. Could be power reversal (servant holds ring). The hook is the accusation of murder, but the reversal is later. Might label as moral outrage (she's being poisoned). Or power reversal (servant holds ring). The hook is the accusation, but the reversal is later. Choose \"moral outrage\" maybe.\n\nWhy it works: Immediate high stakes and mystery about the ring.\n\nStandalone risk: viewer may not know who Rupert/Catherine are, but the danger is clear.\n\nProvide JSON.\n\n"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.28722808,
+      "prompt_tokens": 1054,
+      "prompt_time": 0.040994353,
+      "completion_tokens": 511,
+      "completion_time": 1.063069945,
+      "total_tokens": 1565,
+      "total_time": 1.104064298,
+      "completion_tokens_details": {
+        "reasoning_tokens": 366
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_854fa9be4c",
+    "x_groq": {
+      "id": "req_01m6wz2fveeamv222cp9vgh4dc",
+      "seed": 37581870
+    },
+    "service_tier": "on_demand"
+  }
+}

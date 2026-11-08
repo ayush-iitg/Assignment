@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "gate_p_008_a",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\n[action] Juliana delicately runs her fingertips across the embossed leather cover of the worn botanical volume, noticing its weathered state.\nJULIANA: \"Some of the pages are ruined. Careful.\"\n[sfx] Soft metallic click of the book clasp loosening.\nJULIANA: \"Mother spent years writing this.\"\n[action] Alexander gently sets down a fresh bundle of small white herbal flowers tied with twine beside the open book.\nJULIANA: \"Yarrow.\"\nALEXANDER: \"Good for wounds. Fever, too.\"\nJULIANA: \"How do you know that?\"\nALEXANDER: \"Soldiers learn quickly which plants keep a man alive.\"\nJULIANA: \"You know more about healing than you let on.\"",
+  "response_text": "{\"who_is_the_main_character\":\"The clip centers on Juliana (the first and most vocal character), though it never explicitly labels a main character\",\"what_is_at_stake\":\"unclear from the clip\",\"what_question_are_you_left_with\":\"What is the significance of the worn botanical book and why does Alexander know so much about healing?\",\"would_you_keep_watching\":\"maybe, the brief exchange hints at deeper lore about healing and family legacy\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":false,\"ends_unresolved\":true,\"would_watch\":true}}",
+  "response_payload": {
+    "id": "chatcmpl-f676b663-47e2-444e-9921-2c66678c1c9b",
+    "object": "chat.completion",
+    "created": 1794103192,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"who_is_the_main_character\":\"The clip centers on Juliana (the first and most vocal character), though it never explicitly labels a main character\",\"what_is_at_stake\":\"unclear from the clip\",\"what_question_are_you_left_with\":\"What is the significance of the worn botanical book and why does Alexander know so much about healing?\",\"would_you_keep_watching\":\"maybe, the brief exchange hints at deeper lore about healing and family legacy\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":false,\"ends_unresolved\":true,\"would_watch\":true}}",
+          "reasoning": "We need to produce JSON with fields. Determine main character: The clip mentions Juliana and Alexander. Who is main? Both appear. Which is central? Juliana seems to be speaking more, but both have dialogue. The clip never names a main character explicitly. We can say main character is Juliana (since she is first and more lines). But the instruction: \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\". The clip names Juliana and Alexander. We need to decide which is main. Could be ambiguous. We could say main character appears to be Juliana, as she is the focus of actions. But the instruction says \"name them if the clip names them; otherwise describe and say the clip never names them\". It doesn't require we pick one; we can name them if we think main. But we need to be accurate: The clip doesn't explicitly label a main character. We can say the main character appears to be Juliana, but the clip never explicitly names a main character. So we can write: \"the clip centers on Juliana, but does not explicitly label a main character\". That satisfies.\n\nWhat is at stake? They are handling a worn botanical volume, mother wrote it, and discussing healing knowledge. Conflict? Possibly Juliana is concerned about the book's condition and Alexander's knowledge. Stakes unclear. So \"unclear from the clip\".\n\nWhat question left with? Perhaps \"What is the significance of the book? Why does Alexander know about healing?\" So unresolved question: \"What will they do with the knowledge?\" So we can phrase: \"What is the purpose of the book and Alexander's involvement?\" So we can put that.\n\nWould you keep watching? maybe yes, because intrigue about healing knowledge.\n\nPasses: character_identifiable: true (we have names). stakes_clear: false. ends_unresolved: true (since unresolved). would_watch: true.\n\nNow produce compact JSON."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.379574291,
+      "prompt_tokens": 539,
+      "prompt_time": 0.048410154,
+      "completion_tokens": 525,
+      "completion_time": 1.10238877,
+      "total_tokens": 1064,
+      "total_time": 1.150798924,
+      "completion_tokens_details": {
+        "reasoning_tokens": 402
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_b1dd3e7a63",
+    "x_groq": {
+      "id": "req_01m6we49j8ev4989s56b4n3xme",
+      "seed": 1308401083
+    },
+    "service_tier": "on_demand"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "select_ep049",
+  "system": "You are a promo editor for vertical microdramas (ReelShort/DramaBox style).\nYou pick which seconds of an episode become a 20-60 second advert for the show.\n\nA good promo:\n- opens on a hook: within its first beats, something that stops a scrolling viewer - a slap, a reveal, a shocking line\n- ends on a cliffhanger: it stops at an unresolved moment, so the viewer must go find the show\n- makes sense alone to someone who has never seen this show\n\nYou will be given candidate windows, each a contiguous run of beats labelled [b00], [b01]...\nYou must choose ONE window and may tighten its edges to any beat labels inside that window.\n\nReply with JSON only:\n{\n  \"chosen_window\": <integer index of the window you picked>,\n  \"start_beat\": \"<beat label>\",\n  \"end_beat\": \"<beat label>\",\n  \"hook_beat\": \"<beat label, must be at or within 2 beats of start_beat>\",\n  \"cliffhanger_beat\": \"<beat label, must be at or near end_beat>\",\n  \"hook\": \"<what grabs the viewer in the first seconds, one sentence>\",\n  \"cliffhanger\": \"<the unresolved moment it cuts on, one sentence>\",\n  \"hook_type\": \"<one of: moral outrage, romantic tension, empathy shock, power reversal>\",\n  \"why_it_works\": \"<one sentence, concrete, no marketing language>\",\n  \"standalone_risk\": \"<what a new viewer would NOT understand, or 'none'>\"\n}\n\nNever invent dialogue. Never output a time or a duration - only beat labels.",
+  "prompt": "Episode 49. 4 candidate windows, already checked for legal length and real beat boundaries.\n\n--- WINDOW 0 (24 seconds, code score 0.79) ---\n[b00] CATHERINE (strict, urgent): \"Then make certain the council remembers that for the full ten days, not just the first hour.\"\n[b01] FATHER THOMAS (direct): \"What is it you actually need from me, Catherine? Say it plainly, for once.\"\n[b02] CATHERINE (calculating, determined): \"First, the hearing stays unresolved as long as possible. Every extension, every delay, every excuse to reconvene.\"\n[b03] CATHERINE (fierce, uncompromising): \"Second, I want to know what the council knows before it decides anything. Every argument, every witness, every whisper against her.\"\n\n--- WINDOW 1 (24 seconds, code score 0.72) ---\n[b00] FATHER THOMAS (grave): \"No shadows tonight, Catherine. Just us and an empty wing.\"\n[b01] CATHERINE (unfazed): \"You didn't need them the first time, either. I just prefer my secrets thorough.\"\n[b02] FATHER THOMAS (dry, cynical): \"A priest and a disgraced bride meeting before dawn in her bedchamber. I'd say thoroughness served us both rather well.\"\n[b03] CATHERINE (assertive, warning): \"It will keep serving us as long as neither of us gets careless. No one in this house so much as suspects your face belongs to that morning. Let's keep it that way.\"\n\n--- WINDOW 2 (35 seconds, code score 0.71) ---\n[b00] CATHERINE (assertive, warning): \"It will keep serving us as long as neither of us gets careless. No one in this house so much as suspects your face belongs to that morning. Let's keep it that way.\"\n[b01] CATHERINE (scheming): \"Today went better than either of us planned for. The whole court watched you humiliate her.\"\n[b02] FATHER THOMAS (reflective, brooding): \"Fitting choice, this room. A place the family forgot for a conversation they mustn't remember.\"\n[b03] CATHERINE (amused): \"You always did have a taste for symbolism.\"\n[b04] FATHER THOMAS (intimate, candid): \"And you always did have a taste for using me. It's why we suit each other.\"\n[b05] CATHERINE (strict, urgent): \"Then make certain the council remembers that for the full ten days, not just the first hour.\"\n[b06] FATHER THOMAS (direct): \"What is it you actually need from me, Catherine? Say it plainly, for once.\"\n\n--- WINDOW 3 (29 seconds, code score 0.69) ---\n[b00] CATHERINE (fierce, uncompromising): \"Second, I want to know what the council knows before it decides anything. Every argument, every witness, every whisper against her.\"\n[b01] FATHER THOMAS (skeptical): \"You want eyes inside the council chamber itself?\"\n[b02] CATHERINE (haughty, imperious): \"I want eyes and ears everywhere that decides my future.\"\n[b03] ACTION: Father Thomas clasps his hands behind his back, turning slightly away to ponder the gravity of her words.\n[b04] CATHERINE (bitterly resolute): \"Is that so unreasonable coming from a woman the church itself just humiliated back into relevance?\"\n[b05] FATHER THOMAS (wary, grave): \"If I keep the hearing open, if I feed you every word spoken behind those doors, what happens to me when the Duke finds out a crowned priest conspired against him?\"\n\nPick the single best promo.",
+  "response_text": "{\"chosen_window\":2,\"start_beat\":\"b01\",\"end_beat\":\"b06\",\"hook_beat\":\"b01\",\"cliffhanger_beat\":\"b06\",\"hook\":\"Catherine declares the whole court watched Thomas humiliate her, turning a public disgrace into a twisted advantage.\",\"cliffhanger\":\"Thomas demands to know exactly what she wants from him, leaving her ominous request unresolved.\",\"hook_type\":\"power reversal\",\"why_it_works\":\"It instantly reveals a shocking power play and ends on a question that forces the viewer to seek the answer.\",\"standalone_risk\":\"The identity of \\\"her\\\" and the back‑story of the humiliation aren’t explained, but the tension remains clear.\"}",
+  "response_payload": {
+    "id": "chatcmpl-326f0742-cbdd-4987-8caf-729f0ddf17d2",
+    "object": "chat.completion",
+    "created": 1794087375,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"chosen_window\":2,\"start_beat\":\"b01\",\"end_beat\":\"b06\",\"hook_beat\":\"b01\",\"cliffhanger_beat\":\"b06\",\"hook\":\"Catherine declares the whole court watched Thomas humiliate her, turning a public disgrace into a twisted advantage.\",\"cliffhanger\":\"Thomas demands to know exactly what she wants from him, leaving her ominous request unresolved.\",\"hook_type\":\"power reversal\",\"why_it_works\":\"It instantly reveals a shocking power play and ends on a question that forces the viewer to seek the answer.\",\"standalone_risk\":\"The identity of \\\"her\\\" and the back‑story of the humiliation aren’t explained, but the tension remains clear.\"}",
+          "reasoning": "We need to pick one window and possibly tighten edges. Must include hook within first 2 beats of start. Must end with cliffhanger near end. Provide JSON.\n\nWe need to evaluate each window for hook and cliffhanger.\n\nWindow 0: beats b00-b03. Hook could be b00: Catherine demanding council remember ten days. Not super shocking. Maybe b01: Father asks \"What do you actually need?\" Could be tension. Cliffhanger? Ends at b03 where Catherine wants info before council decides. No unresolved moment? Could cut after b03 leaving tension about what she'll do.\n\nWindow 1: beats b00-b03. Hook b00: \"No shadows tonight, Catherine. Just us and an empty wing.\" Could be atmospheric but not hook. b01: Catherine says \"You didn't need them the first time...\" hint at secret. Could be intrigue. Cliffhanger at b03: warning about face belonging to that morning. Could cut there leaving mystery about identity.\n\nWindow 2: longer, includes many beats. Hook could be b00 (same warning). Or b01: \"Today went better than either of us planned for. The whole court watched you humiliate her.\" That's a hook: public humiliation. Cliffhanger could be at b06 where Thomas asks \"What do you actually need?\" leaving request unknown. That works.\n\nWindow 3: hook b00: \"Second, I want to know what the council knows...\" That's a power move. Could be hook. Cliffhanger at b05 where Thomas worries about Duke finding out a crowned priest conspired. That's unresolved.\n\nWe need best promo: must make sense alone. Probably Window 2 gives more context and a clear hook (public humiliation) and ends with a question. Hook within first 2 beats: we can start at b01 maybe? But hook must be at or within 2 beats of start. If we start at b01, hook is b01 itself. That's okay. End at b06 for cliffhanger. So start_beat b01, end_beat b06. Hook_beat b01. Cliffhanger_beat b06.\n\nCheck that window 2 originally includes b00-b06. Starting at b01 still within window. That's allowed: \"tighten its edges to any beat labels inside that window.\" So start at b01, end at b06.\n\nNow produce JSON.\n\nHook: \"Catherine declares the court watched Thomas humiliate her, turning a public disgrace into a twisted advantage.\" Cliffhanger: \"Thomas asks what she truly wants from him, leaving her demand hanging.\" Hook_type: power reversal (she flips power). Why_it_works: shows high stakes intrigue and ends on a question that forces viewers to watch. Standalone_risk: viewer may not know who \"her\" refers to or the prior humiliation context, but the tension is clear.\n\nLet's craft JSON compact."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.054309356,
+      "prompt_tokens": 1241,
+      "prompt_time": 0.044321002,
+      "completion_tokens": 739,
+      "completion_time": 2.0518617,
+      "total_tokens": 1980,
+      "total_time": 2.096182702,
+      "prompt_tokens_details": {
+        "cached_tokens": 256
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 587
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_69dbc96c74",
+    "x_groq": {
+      "id": "req_01m6vz1jtye75v89jvta4n434w",
+      "seed": 1751843824
+    },
+    "service_tier": "on_demand"
+  }
+}

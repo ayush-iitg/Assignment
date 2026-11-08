@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "gate_p_045_a",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\n[action] Alexander places the ducal cloak over Juliana's rustic gown, adjusting it gently over her shoulders.\nJULIANA: \"You're the Duke?\"\nALEXANDER: \"Alexander Ashburton. The rightful Duke of Ashburton.\"\nJULIANA: \"All this time?\"\nALEXANDER: \"You chose me when you believed I was nobody.\"\nJULIANA: \"I chose you because you were kind.\"\nALEXANDER: \"You chose me when I had nothing.\"\nJULIANA: \"I chose you because you had honor.\"\nALEXANDER: \"And I chose you because you saw the man before the title.\"\n[action] Alexander and Juliana close their eyes, breathing together with their foreheads pressed gently against one another.\nJULIANA: \"I loved you before I ever knew who you were.\"\nALEXANDER: \"And I loved you before I ever dared to tell you.\"\n[action] Catherine takes a desperate step forward, clutching her skirts and weeping.\nCATHERINE: \"Alexander...\"\nALEXANDER: \"You poisoned my mother. You tortured my wife.\"\nCATHERINE: \"I didn't know!\"\nALEXANDER: \"You knew exactly what you were doing!\"\nALEXANDER: \"You hurt the two women who mattered most to me: my mother, and my wife.\"",
+  "response_text": "{\"who_is_the_main_character\":\"Alexander (named as the rightful Duke of Ashburton)\",\"what_is_at_stake\":\"Alexander confronts Catherine about allegedly poisoning his mother and torturing his wife, putting his familial bonds and possibly his claim to the dukedom in jeopardy\",\"what_question_are_you_left_with\":\"Is Catherine truly guilty of the crimes Alexander accuses her of, and what will happen to their relationship?\",\"would_you_keep_watching\":\"maybe, the emotional tension is intriguing but the conflict feels unresolved\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":true,\"ends_unresolved\":true,\"would_watch\":false}}",
+  "response_payload": {
+    "id": "chatcmpl-4e7b803c-8323-4e83-96a8-ad50cf20410a",
+    "object": "chat.completion",
+    "created": 1794095534,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"who_is_the_main_character\":\"Alexander (named as the rightful Duke of Ashburton)\",\"what_is_at_stake\":\"Alexander confronts Catherine about allegedly poisoning his mother and torturing his wife, putting his familial bonds and possibly his claim to the dukedom in jeopardy\",\"what_question_are_you_left_with\":\"Is Catherine truly guilty of the crimes Alexander accuses her of, and what will happen to their relationship?\",\"would_you_keep_watching\":\"maybe, the emotional tension is intriguing but the conflict feels unresolved\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":true,\"ends_unresolved\":true,\"would_watch\":false}}",
+          "reasoning": "We need to produce JSON with fields. Determine main character: The clip mentions Alexander, Juliana, Catherine. Who is main? Likely Alexander appears most, but we need to base on clip. The clip never explicitly names a main character; but Alexander is central, speaking many lines. So we can say main character is Alexander (named). So \"who_is_the_main_character\": \"Alexander (the Duke of Ashburton)\". It's named.\n\nWhat is at stake? Conflict: Catherine accuses Alexander of poisoning his mother and torturing his wife; Alexander is angry. The stakes unclear? The conflict seems about betrayal and possibly revenge. So stakes: Alexander's relationships, possibly his claim to dukedom, and Catherine's guilt. It's somewhat clear that something is at stake: the truth about Catherine's actions and the emotional fallout. So we can say \"the conflict revolves around Alexander confronting Catherine about her alleged poisoning of his mother and torture of his wife, putting their relationship and possibly his claim at risk.\" That's derived from clip.\n\nWhat question left with? Unresolved: Is Catherine actually guilty? What will happen next? Will Alexander kill her? So we can state that.\n\nWould you keep watching? Provide yes/maybe/no with short reason. I'd say maybe, because emotional drama but unclear.\n\nPasses: character_identifiable: true (Alexander is named). stakes_clear: maybe true? The stakes are somewhat clear: accusation of murder/torment. I'd say true. ends_unresolved: true (conflict not resolved). would_watch: maybe true? The passes field \"would_watch\" expects boolean indicating if you'd watch? Probably true if you'd keep watching. Since we said maybe, but boolean? maybe we set false? The spec: passes: {\"would_watch\": true/false}. Since we said maybe, ambiguous. I'd set false? But maybe we interpret \"maybe\" as not definite, but passes expects boolean. I'd set false because not a clear yes. But we could set true because we might watch. The question: \"would_watch\" likely indicates if you'd watch based on passes. Since we said maybe, maybe false? I'd choose false.\n\nLet's craft JSON compact.\n\n"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.309263728,
+      "prompt_tokens": 663,
+      "prompt_time": 0.02907911,
+      "completion_tokens": 579,
+      "completion_time": 1.211722216,
+      "total_tokens": 1242,
+      "total_time": 1.240801326,
+      "completion_tokens_details": {
+        "reasoning_tokens": 441
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_4200b3f836",
+    "x_groq": {
+      "id": "req_01m6w6tjnperfbywmh4vanw13b",
+      "seed": 1253916843
+    },
+    "service_tier": "on_demand"
+  }
+}

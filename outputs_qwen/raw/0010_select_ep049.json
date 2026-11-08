@@ -1,0 +1,41 @@
+{
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "tag": "select_ep049",
+  "system": "You are a promo editor for vertical microdramas (ReelShort/DramaBox style).\nYou pick which seconds of an episode become a 20-60 second advert for the show.\n\nA good promo:\n- opens on a hook: within its first beats, something that stops a scrolling viewer - a slap, a reveal, a shocking line\n- ends on a cliffhanger: it stops at an unresolved moment, so the viewer must go find the show\n- makes sense alone to someone who has never seen this show\n\nYou will be given candidate windows, each a contiguous run of beats labelled [b00], [b01]...\nYou must choose ONE window and may tighten its edges to any beat labels inside that window.\n\nReply with JSON only:\n{\n  \"chosen_window\": <integer index of the window you picked>,\n  \"start_beat\": \"<beat label>\",\n  \"end_beat\": \"<beat label>\",\n  \"hook_beat\": \"<beat label, must be at or within 2 beats of start_beat>\",\n  \"cliffhanger_beat\": \"<beat label, must be at or near end_beat>\",\n  \"hook\": \"<what grabs the viewer in the first seconds, one sentence>\",\n  \"cliffhanger\": \"<the unresolved moment it cuts on, one sentence>\",\n  \"hook_type\": \"<one of: moral outrage, romantic tension, empathy shock, power reversal>\",\n  \"why_it_works\": \"<one sentence, concrete, no marketing language>\",\n  \"standalone_risk\": \"<what a new viewer would NOT understand, or 'none'>\"\n}\n\nNever invent dialogue. Never output a time or a duration - only beat labels.",
+  "prompt": "Episode 49. 4 candidate windows, already checked for legal length and real beat boundaries.\n\n--- WINDOW 0 (24 seconds, code score 0.79) ---\n[b00] CATHERINE (strict, urgent): \"Then make certain the council remembers that for the full ten days, not just the first hour.\"\n[b01] FATHER THOMAS (direct): \"What is it you actually need from me, Catherine? Say it plainly, for once.\"\n[b02] CATHERINE (calculating, determined): \"First, the hearing stays unresolved as long as possible. Every extension, every delay, every excuse to reconvene.\"\n[b03] CATHERINE (fierce, uncompromising): \"Second, I want to know what the council knows before it decides anything. Every argument, every witness, every whisper against her.\"\n\n--- WINDOW 1 (24 seconds, code score 0.72) ---\n[b00] FATHER THOMAS (grave): \"No shadows tonight, Catherine. Just us and an empty wing.\"\n[b01] CATHERINE (unfazed): \"You didn't need them the first time, either. I just prefer my secrets thorough.\"\n[b02] FATHER THOMAS (dry, cynical): \"A priest and a disgraced bride meeting before dawn in her bedchamber. I'd say thoroughness served us both rather well.\"\n[b03] CATHERINE (assertive, warning): \"It will keep serving us as long as neither of us gets careless. No one in this house so much as suspects your face belongs to that morning. Let's keep it that way.\"\n\n--- WINDOW 2 (35 seconds, code score 0.71) ---\n[b00] CATHERINE (assertive, warning): \"It will keep serving us as long as neither of us gets careless. No one in this house so much as suspects your face belongs to that morning. Let's keep it that way.\"\n[b01] CATHERINE (scheming): \"Today went better than either of us planned for. The whole court watched you humiliate her.\"\n[b02] FATHER THOMAS (reflective, brooding): \"Fitting choice, this room. A place the family forgot for a conversation they mustn't remember.\"\n[b03] CATHERINE (amused): \"You always did have a taste for symbolism.\"\n[b04] FATHER THOMAS (intimate, candid): \"And you always did have a taste for using me. It's why we suit each other.\"\n[b05] CATHERINE (strict, urgent): \"Then make certain the council remembers that for the full ten days, not just the first hour.\"\n[b06] FATHER THOMAS (direct): \"What is it you actually need from me, Catherine? Say it plainly, for once.\"\n\n--- WINDOW 3 (29 seconds, code score 0.69) ---\n[b00] CATHERINE (fierce, uncompromising): \"Second, I want to know what the council knows before it decides anything. Every argument, every witness, every whisper against her.\"\n[b01] FATHER THOMAS (skeptical): \"You want eyes inside the council chamber itself?\"\n[b02] CATHERINE (haughty, imperious): \"I want eyes and ears everywhere that decides my future.\"\n[b03] ACTION: Father Thomas clasps his hands behind his back, turning slightly away to ponder the gravity of her words.\n[b04] CATHERINE (bitterly resolute): \"Is that so unreasonable coming from a woman the church itself just humiliated back into relevance?\"\n[b05] FATHER THOMAS (wary, grave): \"If I keep the hearing open, if I feed you every word spoken behind those doors, what happens to me when the Duke finds out a crowned priest conspired against him?\"\n\nPick the single best promo.",
+  "response_text": "{\n  \"chosen_window\": 3,\n  \"start_beat\": \"b00\",\n  \"end_beat\": \"b05\",\n  \"hook_beat\": \"b00\",\n  \"cliffhanger_beat\": \"b05\",\n  \"hook\": \"A woman demands total surveillance of the council deciding her fate, revealing she is a 'disgraced bride' being humiliated by the church.\",\n  \"cliffhanger\": \"The priest warns that if the Duke discovers his conspiracy, he will be destroyed, leaving the viewer wondering if he will betray her.\",\n  \"hook_type\": \"power reversal\",\n  \"why_it_works\": \"It establishes a high-stakes alliance between a disgraced noblewoman and a priest, ending on the specific threat of the Duke's wrath which creates immediate tension.\",\n  \"standalone_risk\": \"The viewer does not know who 'the Duke' is or the specific nature of the 'humiliation,' but the power dynamic is clear.\"\n}",
+  "response_payload": {
+    "id": "chatcmpl-d8b19a66-9372-4685-b693-e9cc92e8db03",
+    "object": "chat.completion",
+    "created": 1794112617,
+    "model": "qwen/qwen3.8-27b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"chosen_window\": 3,\n  \"start_beat\": \"b00\",\n  \"end_beat\": \"b05\",\n  \"hook_beat\": \"b00\",\n  \"cliffhanger_beat\": \"b05\",\n  \"hook\": \"A woman demands total surveillance of the council deciding her fate, revealing she is a 'disgraced bride' being humiliated by the church.\",\n  \"cliffhanger\": \"The priest warns that if the Duke discovers his conspiracy, he will be destroyed, leaving the viewer wondering if he will betray her.\",\n  \"hook_type\": \"power reversal\",\n  \"why_it_works\": \"It establishes a high-stakes alliance between a disgraced noblewoman and a priest, ending on the specific threat of the Duke's wrath which creates immediate tension.\",\n  \"standalone_risk\": \"The viewer does not know who 'the Duke' is or the specific nature of the 'humiliation,' but the power dynamic is clear.\"\n}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.04779125,
+      "prompt_tokens": 1242,
+      "prompt_time": 0.085758898,
+      "completion_tokens": 222,
+      "completion_time": 0.420137166,
+      "total_tokens": 1464,
+      "total_time": 0.505896064
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_424cb89518",
+    "x_groq": {
+      "id": "req_01m6wq3y6xedprnkf7xpkbg2xj",
+      "seed": 56102607
+    },
+    "service_tier": "on_demand"
+  }
+}

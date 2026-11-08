@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "gate_p_037_a",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\n[sfx] The harsh scrape and clatter of heavy iron chains dragging across wet stone.\nJULIANA: \"I will not!\"\nJULIANA: \"They can take my name. They can take my home.\"\nJULIANA: \"They cannot take who I am!\"\nNOBLEMAN: \"Do you think she'll actually be executed?\"\nCLARISSA: \"After what she has been accused of? Of course.\"\nNOBLEMAN: \"She was always stubborn.\"\nCLARISSA: \"That was her greatest mistake. She could have accepted what happened. She could have disappeared quietly.\"\n[action] Clarissa rises from her armchair holding a cut crystal glass filled with dark red wine, pacing toward the fireplace.\nCLARISSA: \"Instead she married a nobody, played healer to peasants, challenged people above her. And now the whole county will watch her pay for it.\"\nCLARISSA: \"Let them see what happens when a woman forgets her place.\"\n[action] Clarissa takes a slow sip of the red wine, her eyes gleaming with dark relish.",
+  "response_text": "{\"who_is_the_main_character\":\"Juliana (named in the clip)\",\"what_is_at_stake\":\"Juliana's life/execution and her personal identity versus the noble's authority\",\"what_question_are_you_left_with\":\"Will Juliana be executed or somehow escape her fate?\",\"would_you_keep_watching\":\"maybe, the tension around her fate is intriguing\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":true,\"ends_unresolved\":true,\"would_watch\":true}}",
+  "response_payload": {
+    "id": "chatcmpl-6dcd1a10-c0fa-4635-89cc-02efbc86c8b0",
+    "object": "chat.completion",
+    "created": 1794101820,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"who_is_the_main_character\":\"Juliana (named in the clip)\",\"what_is_at_stake\":\"Juliana's life/execution and her personal identity versus the noble's authority\",\"what_question_are_you_left_with\":\"Will Juliana be executed or somehow escape her fate?\",\"would_you_keep_watching\":\"maybe, the tension around her fate is intriguing\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":true,\"ends_unresolved\":true,\"would_watch\":true}}",
+          "reasoning": "We need to produce JSON with fields. Determine main character: The clip mentions Juliana speaking, also Clarissa and Nobleman. Who is main? Likely Juliana is central as she is being condemned, but the clip doesn't name main explicitly. We can say main character is Juliana, as she has dialogue and is focus. Clip never names them? It does name Juliana. So main character is Juliana.\n\nWhat is at stake? Juliana's life/execution, identity, freedom. So conflict: her execution, her defiance. So stakes: her life, possibly execution.\n\nWhat question left with? Will she be executed? Or will Clarissa's plan succeed? So unresolved: outcome of execution.\n\nWould you keep watching? maybe, because tension.\n\nPasses: character_identifiable: true (Juliana identified). stakes_clear: true (her life at stake). ends_unresolved: true (outcome unresolved). would_watch: true.\n\nNow produce compact JSON."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.319546416,
+      "prompt_tokens": 607,
+      "prompt_time": 0.028469139,
+      "completion_tokens": 305,
+      "completion_time": 0.630167327,
+      "total_tokens": 912,
+      "total_time": 0.658636466,
+      "completion_tokens_details": {
+        "reasoning_tokens": 199
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_4200b3f836",
+    "x_groq": {
+      "id": "req_01m6wctdwyes6ag7ys010ws5fh",
+      "seed": 1466494217
+    },
+    "service_tier": "on_demand"
+  }
+}

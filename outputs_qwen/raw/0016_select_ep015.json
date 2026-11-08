@@ -1,0 +1,41 @@
+{
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "tag": "select_ep015",
+  "system": "You are a promo editor for vertical microdramas (ReelShort/DramaBox style).\nYou pick which seconds of an episode become a 20-60 second advert for the show.\n\nA good promo:\n- opens on a hook: within its first beats, something that stops a scrolling viewer - a slap, a reveal, a shocking line\n- ends on a cliffhanger: it stops at an unresolved moment, so the viewer must go find the show\n- makes sense alone to someone who has never seen this show\n\nYou will be given candidate windows, each a contiguous run of beats labelled [b00], [b01]...\nYou must choose ONE window and may tighten its edges to any beat labels inside that window.\n\nReply with JSON only:\n{\n  \"chosen_window\": <integer index of the window you picked>,\n  \"start_beat\": \"<beat label>\",\n  \"end_beat\": \"<beat label>\",\n  \"hook_beat\": \"<beat label, must be at or within 2 beats of start_beat>\",\n  \"cliffhanger_beat\": \"<beat label, must be at or near end_beat>\",\n  \"hook\": \"<what grabs the viewer in the first seconds, one sentence>\",\n  \"cliffhanger\": \"<the unresolved moment it cuts on, one sentence>\",\n  \"hook_type\": \"<one of: moral outrage, romantic tension, empathy shock, power reversal>\",\n  \"why_it_works\": \"<one sentence, concrete, no marketing language>\",\n  \"standalone_risk\": \"<what a new viewer would NOT understand, or 'none'>\"\n}\n\nNever invent dialogue. Never output a time or a duration - only beat labels.",
+  "prompt": "Episode 15. 2 candidate windows, already checked for legal length and real beat boundaries.\n\n--- WINDOW 0 (45 seconds, code score 0.85) ---\n[b00] JULIANA (furious, pleading): \"Those are medicinal plants!\"\n[b01] BALD THUG (callous): \"They look like weeds to me.\"\n[b02] ACTION: The bald thug flings the bouquet into the mud and grinds his heavy boot directly onto the delicate flowers.\n[b03] ACTION: Juliana frantically tries to scoop the crushed soil and torn stems back into the bed with her bandaged hands.\n[b04] JULIANA (choked with tears, desperate): \"Please! Those plants took months to grow!\"\n[b05] TALL THUG (contemptuous, derisive): \"Months? You actually spend your days growing this filth?\"\n[b06] JULIANA (defiant, firm): \"Leave my garden alone.\"\n[b07] THUG WITH CAP (sneering, disdainful): \"A noble lady playing in the dirt. What a joke.\"\n[b08] JULIANA (resolute, dignified): \"It is my home. You have no right to destroy anything here.\"\n[b09] THUG WITH CAP (menacing snarl): \"Get out of the way!\"\n[b10] JULIANA (steely, fearless): \"No.\"\n[b11] ACTION: The Thug with Cap violently shoves Juliana back with both hands; she cries out as she loses her balance and crashes hard onto the wet stone path.\n[b12] JULIANA (gasping cry): \"Ah!\"\n[b13] ACTION: Juliana crawls forward on her elbows; fresh crimson blood seeps profusely through her white gauze bandages as she reaches for the ruined blossoms.\n[b14] JULIANA (broken, sobbing): \"My mother's plants...\"\n[b15] BALD THUG (cruel, laughing): \"Look at her! Crying over weeds!\"\n[b16] JULIANA (screaming): \"Stop!\"\n[b17] ACTION: The Tall Thug hoists his heavy wooden club above his head to crush the remaining herbs right before Juliana.\n\n--- WINDOW 1 (35 seconds, code score 0.79) ---\n[b00] ACTION: The Thug with Cap violently shoves Juliana back with both hands; she cries out as she loses her balance and crashes hard onto the wet stone path.\n[b01] JULIANA (gasping cry): \"Ah!\"\n[b02] ACTION: Juliana crawls forward on her elbows; fresh crimson blood seeps profusely through her white gauze bandages as she reaches for the ruined blossoms.\n[b03] JULIANA (broken, sobbing): \"My mother's plants...\"\n[b04] BALD THUG (cruel, laughing): \"Look at her! Crying over weeds!\"\n[b05] JULIANA (screaming): \"Stop!\"\n[b06] ACTION: The Tall Thug hoists his heavy wooden club above his head to crush the remaining herbs right before Juliana.\n[b07] ACTION: Alexander storms forward with lethal intensity, dark hair flying, breath misting in the cold, radiating untamed rage.\n[b08] JULIANA (whispered breath, stunned): \"Alexander...\"\n[b09] ACTION: Alexander places himself directly between Juliana and the three thugs, staring them down with cold, deadly intent.\n[b10] THUG WITH CAP (challenging, arrogant): \"What? You want to fight us, veteran?\"\n\nPick the single best promo.",
+  "response_text": "{\n  \"chosen_window\": 0,\n  \"start_beat\": \"b00\",\n  \"end_beat\": \"b17\",\n  \"hook_beat\": \"b02\",\n  \"cliffhanger_beat\": \"b17\",\n  \"hook\": \"A thug grinds his boot into a woman's precious medicinal plants while she begs him to stop.\",\n  \"cliffhanger\": \"A thug raises a heavy wooden club to crush the remaining herbs right in front of the helpless, bleeding woman.\",\n  \"hook_type\": \"moral outrage\",\n  \"why_it_works\": \"The visual of deliberate destruction combined with the victim's physical vulnerability creates immediate empathy and anger, forcing the viewer to wait for the rescue.\",\n  \"standalone_risk\": \"none\"\n}",
+  "response_payload": {
+    "id": "chatcmpl-bda45b7f-b109-4d76-9152-2cea1d3457db",
+    "object": "chat.completion",
+    "created": 1794103860,
+    "model": "qwen/qwen3.8-27b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"chosen_window\": 0,\n  \"start_beat\": \"b00\",\n  \"end_beat\": \"b17\",\n  \"hook_beat\": \"b02\",\n  \"cliffhanger_beat\": \"b17\",\n  \"hook\": \"A thug grinds his boot into a woman's precious medicinal plants while she begs him to stop.\",\n  \"cliffhanger\": \"A thug raises a heavy wooden club to crush the remaining herbs right in front of the helpless, bleeding woman.\",\n  \"hook_type\": \"moral outrage\",\n  \"why_it_works\": \"The visual of deliberate destruction combined with the victim's physical vulnerability creates immediate empathy and anger, forcing the viewer to wait for the rescue.\",\n  \"standalone_risk\": \"none\"\n}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.047760501,
+      "prompt_tokens": 1184,
+      "prompt_time": 0.084568803,
+      "completion_tokens": 181,
+      "completion_time": 0.345031761,
+      "total_tokens": 1365,
+      "total_time": 0.429600564
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_21e59ac2de",
+    "x_groq": {
+      "id": "req_01m6werq0yecd9dz08md0yyya1",
+      "seed": 220507174
+    },
+    "service_tier": "on_demand"
+  }
+}

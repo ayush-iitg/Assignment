@@ -1,0 +1,41 @@
+{
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "tag": "gate_p_043_a",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\nBLOND NOBLEMAN: \"I said arrest him!\"\n[action] The Guard Captain brings his ceremonial sword upright to attention, his expression stern and resolute.\nROYAL GUARD: \"We will not.\"\nBLOND NOBLEMAN: \"I am Lord Rupert Ashburn!\"\nBLOND NOBLEMAN: \"Your Duke!\"\nROYAL GUARD: \"No. He is your Duke.\"\n[action] The Guard Captain snaps a crisp salute toward Alexander.\n[action] Lord Sterling clutches his gold-headed walking cane tightly, his jaw clenching as tension spreads through the church.\nBLOND NOBLEMAN: \"You have all been deceived!\"\nALEXANDER: \"Then let the Crown decide.\"\n[action] Alexander brings forth the dossier stamped \"WAR OFFICE - TOP SECRET\" with the royal crest.\nALEXANDER: \"These were delivered to me under the seal of the Crown.\"\nALEXANDER: \"Read the first.\"\n[action] The Crown Official receives the dossier solemnly with both hands.\n[sfx] Crisp sound of parchment turning.\nCROWN OFFICIAL: \"Military Intelligence Report, Iberian front, three years ago.\"\nCROWN OFFICIAL: \"Duke Alexander Ashburn's unit was ambushed after his location was compromised.\"\nCROWN OFFICIAL: \"The report identifies the leak as deliberate.\"\nCROWN OFFICIAL: \"Information regarding the Duke's position was transmitted through British channels.\"\n[action] Rupert staggers backward, his knees buckling as he leans his weight heavily on the stone balustrade.\nBLOND NOBLEMAN: \"No...\"",
+  "response_text": "{\n  \"who_is_the_main_character\": \"Alexander (identified as Duke Alexander Ashburn in the dossier; the clip does not explicitly state his full name in dialogue, only 'Alexander' and 'Duke Alexander Ashburn' in the document)\",\n  \"what_is_at_stake\": \"Whether Alexander is guilty of treason or a victim of a deliberate leak, and who holds authority over his fate (Lord Rupert vs. the Crown/Guards)\",\n  \"what_question_are_you_left_with\": \"What is in the rest of the dossier, and will the Crown officially clear Alexander or side with Lord Rupert?\",\n  \"would_you_keep_watching\": \"yes, the reveal of the secret dossier creates immediate tension and a clear power struggle\",\n  \"passes\": {\n    \"character_identifiable\": true,\n    \"stakes_clear\": true,\n    \"ends_unresolved\": true,\n    \"would_watch\": true\n  }\n}",
+  "response_payload": {
+    "id": "chatcmpl-60524324-52b8-4867-85d9-5badcb08c345",
+    "object": "chat.completion",
+    "created": 1794112738,
+    "model": "qwen/qwen3.8-27b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"who_is_the_main_character\": \"Alexander (identified as Duke Alexander Ashburn in the dossier; the clip does not explicitly state his full name in dialogue, only 'Alexander' and 'Duke Alexander Ashburn' in the document)\",\n  \"what_is_at_stake\": \"Whether Alexander is guilty of treason or a victim of a deliberate leak, and who holds authority over his fate (Lord Rupert vs. the Crown/Guards)\",\n  \"what_question_are_you_left_with\": \"What is in the rest of the dossier, and will the Crown officially clear Alexander or side with Lord Rupert?\",\n  \"would_you_keep_watching\": \"yes, the reveal of the secret dossier creates immediate tension and a clear power struggle\",\n  \"passes\": {\n    \"character_identifiable\": true,\n    \"stakes_clear\": true,\n    \"ends_unresolved\": true,\n    \"would_watch\": true\n  }\n}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.048903457,
+      "prompt_tokens": 648,
+      "prompt_time": 0.044755452,
+      "completion_tokens": 197,
+      "completion_time": 0.388186108,
+      "total_tokens": 845,
+      "total_time": 0.43294156
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_424cb89518",
+    "x_groq": {
+      "id": "req_01m6wq7mbwe7rafay0rgs1z0m9",
+      "seed": 1806584829
+    },
+    "service_tier": "on_demand"
+  }
+}
