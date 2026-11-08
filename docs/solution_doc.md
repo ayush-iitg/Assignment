@@ -9,7 +9,11 @@ colorlinks: true
 
 ### Why I picked Problem 1
 
-The brief states the bottleneck outright: an editor watches every episode and picks promo moments by hand, and a new show ships every week. That's a repeating cost with an output you can check. I scored all three problems before writing anything (`docs/02_decision.md`), and the only reweighting that flipped the winner was caring about nothing except whether I could finish. The obvious objection is that it's also the obvious choice, so plenty of submissions will look similar. I decided to fight that on method rather than topic.
+The brief states the bottleneck outright: an editor watches every episode and picks promo moments by hand, and a new show ships every week. So the cost repeats indefinitely, and unlike most things you'd point AI at, the output is checkable. A timestamp either exists in the screenplay or it doesn't. It's also the only one of the three problems that arrives with real data, which meant I could show the tool working on Kuku's own material rather than on test cases I'd written to suit myself.
+
+I scored all three against the five lenses before writing any code (`docs/02_decision.md`), and Problem 1 led on the two I care most about: whether I could measure quality honestly, and whether the prototype would survive being re-run live on an input it hasn't seen. Problem 2 would have meant writing legal content with no legal background and no input pack, under a rule against inventing sections, which is a lot of ways to be confidently wrong. For Problem 3 I did find four real defects in this data, but none of them clears the brief's own bar of mattering more than Problems 1 and 2, and saying that seemed better than dressing up a QA chore as a business problem.
+
+The obvious objection is that it's the obvious choice, so plenty of submissions will look similar. I decided to compete on method rather than topic.
 
 ### Assumptions I had to make
 
