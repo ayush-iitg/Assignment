@@ -5,18 +5,21 @@ Evaluation harness.
 Answers "how do I know this is good?" with numbers that come from files,
 not from opinion. Five questions, in order of how much they matter:
 
-  1. Gold-set agreement - does the tool find the promos a human picked by
-     hand BEFORE the tool existed? Measured as IoU on the time span.
-  2. Validator integrity - did any shipped promo carry a timestamp that does
+  1. Validator integrity - did any shipped promo carry a timestamp that does
      not exist in the screenplay? This must be zero.
+  2. Blind A/B (ab_test.py, reported here) - does a pick beat a random legal
+     window from the same episode? This is the headline measure. There is
+     deliberately no hand-picked reference set: it asks whether the tool
+     matched one person's taste, which is not the job, and keeping one per
+     show would recreate the manual work the tool removes.
   3. Blind-gate results - what fraction of structurally-good promos a
      context-free reader could actually follow, and which failed.
   4. Stability - same input, two different models: do they choose the same
      moments? Low agreement means the ranking is model-taste, not signal.
-  5. Determinism - same input, same model, twice: byte-identical?
+  5. Determinism - same input, same model, twice: identical decisions?
 
     python evaluate.py
-    python evaluate.py --a outputs --b outputs_qwen --gold docs/gold_set.json
+    python evaluate.py --a outputs --b outputs_qwen
 """
 import os
 import json
@@ -86,51 +89,7 @@ def describe(promo: dict) -> str:
 
 
 # ---------------------------------------------------------------------------
-# 1. Gold-set agreement
-# ---------------------------------------------------------------------------
-
-def gold_agreement(result: dict, gold: list[dict]) -> dict:
-    promos = all_promos(result)
-    rows = []
-    for entry in gold:
-        ep = entry["episode"]
-        mine = (entry["start_s"], entry["end_s"])
-        # Any promo the tool produced for this episode.
-        here = [p for p in promos.values() if ep in p["episodes"]]
-        best, best_iou = None, 0.0
-        for promo in here:
-            score = iou_segments(mine, segments_of(promo))
-            if score > best_iou:
-                best, best_iou = promo, score
-        shipped = {p["promo_id"] for p in result["promos"]}
-        rows.append({
-            "episode": ep,
-            "my_pick": f"{mine[0]:.1f}-{mine[1]:.1f}",
-            "note": entry.get("why", ""),
-            "tool_pick": describe(best) if best else None,
-            "tool_shape": best["shape"] if best else None,
-            "iou": round(best_iou, 3),
-            "overlaps_at_all": best_iou > 0,
-            "promo_id": best["promo_id"] if best else None,
-            "shipped": bool(best and best["promo_id"] in shipped),
-            "status": (
-                "shipped" if best and best["promo_id"] in shipped
-                else ("rejected: " + (best.get("rejected_reason", "")[:70]) if best else "no promo for this episode")
-            ),
-            "rank": best.get("rank") if best else None,
-        })
-    scored = [r["iou"] for r in rows]
-    return {
-        "rows": rows,
-        "n_gold": len(rows),
-        "mean_iou": round(sum(scored) / len(scored), 3) if scored else 0.0,
-        "n_overlapping": sum(1 for r in rows if r["overlaps_at_all"]),
-        "n_shipped": sum(1 for r in rows if r["shipped"]),
-    }
-
-
-# ---------------------------------------------------------------------------
-# 2. Validator integrity
+# 1. Validator integrity
 # ---------------------------------------------------------------------------
 
 def validator_report(result: dict) -> dict:
@@ -336,30 +295,8 @@ def markdown(report: dict) -> str:
         if key in counts:
             out.append(f"| {label} | {counts[key]} |")
 
-    gold = report["gold"]
-    out.append("\n## 1. Sanity check against spans drafted before the tool existed\n")
-    out.append("Kept as a sanity check only, not as a quality measure. A hand-picked "
-               "gold set asks the wrong question — 'did the tool match one human's "
-               "pick?' — and it does not scale: maintaining one per show would "
-               "recreate the manual work the tool removes. The headline measure is "
-               "the blind A/B in section 1b. With n=6 the numbers below cannot rank "
-               "approaches, and the per-episode spread shows why.\n")
-    out.append(f"{gold['n_overlapping']} of {gold['n_gold']} drafted spans overlap "
-               f"a tool pick. Mean IoU **{gold['mean_iou']}**.\n")
-    out.append("| Episode | My pick (s) | Tool pick (s) | IoU | Status | Why I picked it |")
-    out.append("|---|---|---|---|---|---|")
-    for row in gold["rows"]:
-        out.append(f"| {row['episode']} | {row['my_pick']} | {row['tool_pick'] or '-'} | "
-                   f"{row['iou']} | {row['status']} | {row['note']} |")
-
-    if report.get("gold_code_only"):
-        gco = report["gold_code_only"]
-        out.append(f"\n**Code-only comparison:** with the model switched off, mean IoU "
-                   f"against the same hand-picks is **{gco['mean_iou']}** "
-                   f"({gco['n_overlapping']}/{gco['n_gold']} overlapping).\n")
-
     val = report["validators"]
-    out.append("\n## 2. Validator integrity\n")
+    out.append("\n## 1. Validator integrity\n")
     out.append(f"Evaluated {val['n_evaluated']} promos (shipped + rejected + flagship).\n")
     out.append("| Check | Pass | Fail | Failing |")
     out.append("|---|---|---|---|")
@@ -369,30 +306,9 @@ def markdown(report: dict) -> str:
     out.append(f"\nNo invented timestamps in shipped output: "
                f"**{val['invented_timestamps_in_shipped_output']}**\n")
 
-    gate = report["gate"]
-    out.append("\n## 3. Blind cold-viewer gate\n")
-    if gate["n_tested"]:
-        out.append(f"{gate['n_tested']} promos tested, {gate['n_failed']} failed, "
-                   f"pass rate **{gate['pass_rate']}**. "
-                   f"{gate['n_not_tested']} could not be tested.\n")
-        out.append("| Criterion | Pass rate |")
-        out.append("|---|---|")
-        for name, rate in gate["per_criterion_pass_rate"].items():
-            out.append(f"| {name.replace('_', ' ')} | {rate} |")
-        out.append("\n### Promos that failed, with the transcript\n")
-        for failure in gate["failures"]:
-            out.append(f"**`{failure['promo_id']}` · episode {failure['episodes']} · "
-                       f"structural score {failure['structural_score']:.2f} · "
-                       f"gate {failure['gate_score']}**\n")
-            for question, answer in (failure["answers"] or {}).items():
-                out.append(f"- *{question.replace('_', ' ')}* — {answer}")
-            out.append("")
-    else:
-        out.append("Gate did not run in this result.\n")
-
     ab = report.get("ab_test")
     if ab:
-        out.append("\n## 1b. Blind A/B — does the tool beat picking at random?\n")
+        out.append("\n## 2. Blind A/B: does the tool beat picking at random?\n")
         out.append(f"Judge: `{ab['judge']['model']}`, seed {ab['judge']['seed']}. "
                    f"{ab['design']}\n")
         if ab.get("caveat"):
@@ -435,9 +351,30 @@ def markdown(report: dict) -> str:
                                f"*{loss['reason']}*")
                 out.append("")
 
+    gate = report["gate"]
+    out.append("\n## 3. Blind cold-viewer gate\n")
+    if gate["n_tested"]:
+        out.append(f"{gate['n_tested']} promos tested, {gate['n_failed']} failed, "
+                   f"pass rate **{gate['pass_rate']}**. "
+                   f"{gate['n_not_tested']} could not be tested.\n")
+        out.append("| Criterion | Pass rate |")
+        out.append("|---|---|")
+        for name, rate in gate["per_criterion_pass_rate"].items():
+            out.append(f"| {name.replace('_', ' ')} | {rate} |")
+        out.append("\n### Promos that failed, with the transcript\n")
+        for failure in gate["failures"]:
+            out.append(f"**`{failure['promo_id']}` · episode {failure['episodes']} · "
+                       f"structural score {failure['structural_score']:.2f} · "
+                       f"gate {failure['gate_score']}**\n")
+            for question, answer in (failure["answers"] or {}).items():
+                out.append(f"- *{question.replace('_', ' ')}* — {answer}")
+            out.append("")
+    else:
+        out.append("Gate did not run in this result.\n")
+
     shapes = report.get("shapes") or {}
     if len(shapes) > 1:
-        out.append("\n## 3b. Does splicing cost comprehension?\n")
+        out.append("\n## 4. Does splicing cost comprehension?\n")
         out.append("The brief says a promo is *usually* one continuous stretch. "
                    "This is whether that 'usually' is earned.\n")
         out.append("| Shape | Tested | Passed | Pass rate | Mean gate score | Shipped | Best rank |")
@@ -463,7 +400,7 @@ def markdown(report: dict) -> str:
 
     if report.get("stability"):
         st = report["stability"]
-        out.append("\n## 4. Stability across two models\n")
+        out.append("\n## 5. Stability across two models\n")
         out.append(f"`{st['model_a']}` vs `{st['model_b']}` on the same "
                    f"{st['n_episodes']} episodes.\n")
         out.append("| Metric | Value |")
@@ -476,7 +413,7 @@ def markdown(report: dict) -> str:
         out.append(f"| Hook-type agreement | {st['hook_type_agreement']} |")
         out.append("\nPer-episode detail is in `outputs/eval_report.json`.\n")
 
-    out.append("\n## 5. Determinism\n")
+    out.append("\n## 6. Determinism\n")
     out.append(f"Decision fingerprint of this run: `{report['fingerprint']}`. "
                f"Re-running with the cache on reproduces it exactly, because every "
                f"model response is cached by `(provider, model, prompt hash)`.\n")
@@ -487,8 +424,6 @@ def main(argv=None) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--a", default="outputs", help="primary result folder")
     ap.add_argument("--b", default="outputs_qwen", help="second-model result folder")
-    ap.add_argument("--code-only", default="outputs_nollm", help="no-LLM result folder")
-    ap.add_argument("--gold", default="docs/gold_set.json")
     ap.add_argument("--out", default="outputs")
     args = ap.parse_args(argv)
 
@@ -496,8 +431,6 @@ def main(argv=None) -> int:
     if not primary:
         print(f"no promos.json in {args.a}; run the pipeline first")
         return 1
-    with open(args.gold, encoding="utf-8") as fh:
-        gold = json.load(fh)["promos"]
 
     report = {
         "primary": {
@@ -506,7 +439,6 @@ def main(argv=None) -> int:
             "run": primary["run"],
             "counts": primary["counts"],
         },
-        "gold": gold_agreement(primary, gold),
         "validators": validator_report(primary),
         "gate": gate_report(primary),
         "shapes": shape_report(primary),
@@ -529,9 +461,6 @@ def main(argv=None) -> int:
             }
             break
 
-    code_only = load(args.code_only)
-    if code_only:
-        report["gold_code_only"] = gold_agreement(code_only, gold)
     second = load(args.b)
     if second:
         report["stability"] = stability(primary, second)
