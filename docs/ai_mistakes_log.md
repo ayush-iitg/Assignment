@@ -45,7 +45,20 @@ The beat it points at actually reads:
 
 The word "blood" appears in **zero** of episode 44's beats — I checked every one. "Slams" is also an upgrade on "firmly forces".
 
-**Not fixed, and scoped honestly.** The architecture guarantees the dangerous thing: timestamps are verified. What it does not guarantee is the prose. An editor reading "blood and dust flying" would cut to `00:14.00` and find no blood. So the honest statement is **timestamps are verified, descriptions are not** — and a copy verifier (string-match the nouns in the hook against the beats it covers, flag anything unsupported) is the next thing I would build. I am recording this rather than quietly patching it at the end of a build, because a known unverified claim is worth more to a reader than a silent fix.
+**A competing explanation, tested and rejected.** `BLOND NOBLEMAN` speaks two beats below the hook, and *blond* is one character from *blood*. A token-level corruption of a character label into a physical substance would be a far more alarming failure than embellishment, and it fits the evidence at a glance. So I tested it: same prompt, same model, speaker renamed to `FAIR-HAIRED NOBLEMAN`, so the string `blond` appears nowhere.
+
+```
+A  original            (BLOND present) -> "...to the ground, blood and dust flying"
+B  BLOND -> FAIR-HAIRED (blond absent)  -> "...to the ground, blood and dust flying"
+```
+
+B settles it. With `blond` gone the fabrication survives, so the model is not misreading the label. What it is doing is pattern-completion: "forced down into the stone dust" plus violence completes as the genre cliché "blood and dust flying". It keeps the real word, `dust`, and attaches a conventional companion the screenplay never mentions.
+
+**Why the test mattered more than the result.** The corruption story was the better story, and I would have had no evidence for it. This is the second time here that the tidy explanation was wrong and one controlled variable caught it, the first being #5 below. The rule I'd take forward: when a failure has an explanation that is more interesting than the obvious one, that is the moment to run the control, not to start writing.
+
+**Still not fixed, and scoped honestly.** The architecture guarantees the dangerous part: timestamps are verified. The prose is not. An editor reading "blood and dust flying" would cut to `00:14.00` and find no blood.
+
+I also measured how widespread it is before deciding what to build, and the obvious fix turned out to be useless. Matching the words of each description against the beats it covers flags **46 of 47** promos, because the top offenders are `declares`, `erupts`, `hanging` and `unresolved` - legitimate paraphrase and structural description, not invention. Narrowing to concrete physical things a viewer would expect to see, and counting speaker labels as present, leaves **2 of 47**, of which one is arguable. So the real rate is roughly one in fifty, and a word-presence verifier would fire on everything while catching nothing. Any useful version has to separate paraphrase from fabrication, which word presence cannot do.
 
 ---
 
