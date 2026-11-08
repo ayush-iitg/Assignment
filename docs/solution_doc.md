@@ -7,10 +7,6 @@ colorlinks: true
 
 ## Find the Promos
 
-Ayush Raj, IIT Guwahati, Chemical Engineering, Roll `<NUMBER>`
-
-Prototype `<link>` · Repo `<link>` · Raw outputs `<link>` · Video `<link>` · Longer notes in `docs/assumptions.md`, `docs/ai_mistakes_log.md`, `outputs/eval_report.md`.
-
 ### Why I picked Problem 1
 
 The brief states the bottleneck outright: an editor watches every episode and picks promo moments by hand, and a new show ships every week. That's a repeating cost with an output you can check. I scored all three problems before writing anything (`docs/02_decision.md`), and the only reweighting that flipped the winner was caring about nothing except whether I could finish. The obvious objection is that it's also the obvious choice, so plenty of submissions will look similar. I decided to fight that on method rather than topic.
