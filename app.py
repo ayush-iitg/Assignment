@@ -73,11 +73,22 @@ with st.sidebar:
     )
     provider, model = MODELS[choice]
     has_key = bool(key_for(provider))
-    if not has_key:
-        st.error(f"{PROVIDERS[provider]['key_env']} not set")
-    go = st.button("▶  Find promos", type="primary", width="stretch",
-                   disabled=not has_key)
-    st.caption("Responses are cached, so a repeat run is instant.")
+    go = st.button("▶  Find promos", type="primary", width="stretch")
+
+    if has_key:
+        st.caption("Responses are cached, so a repeat run is instant.")
+    else:
+        # No key is not a blocker. Every model response from the full run is
+        # committed in .cache/, keyed by (provider, model, prompt hash), and
+        # the client checks the cache before it checks for a key. So the
+        # bundled pack reproduces exactly with no credentials at all. Only a
+        # file the cache has never seen needs a live call.
+        st.caption(
+            f"No {PROVIDERS[provider]['key_env']} configured. The bundled "
+            f"50-episode pack still runs from cached responses, which is how "
+            f"this reproduces without credentials. Uploading a new screenplay "
+            f"needs a key."
+        )
 
 
 st.title("🎬 Promo Finder")
@@ -98,7 +109,8 @@ if go:
     else:
         input_dir = "data" if glob.glob("data/*.txt") else "samples"
 
-    os.environ[PROVIDERS[provider]["key_env"]] = key_for(provider)
+    if has_key:
+        os.environ[PROVIDERS[provider]["key_env"]] = key_for(provider)
     lines: list[str] = []
     box = st.empty()
 
@@ -115,7 +127,18 @@ if go:
             st.session_state.result = result
         box.empty()
     except RuntimeError as exc:
-        st.error(str(exc))
+        message = str(exc)
+        if "is not set" in message:
+            st.error(
+                f"This input needs a live model call and no "
+                f"{PROVIDERS[provider]['key_env']} is configured. The bundled "
+                f"50-episode pack runs without one because its responses are "
+                f"cached; a screenplay the cache has never seen cannot. Add the "
+                f"key under **Settings → Secrets** and rerun, or clear the "
+                f"uploader to use the bundled pack."
+            )
+        else:
+            st.error(message)
     finally:
         if workdir:
             shutil.rmtree(workdir, ignore_errors=True)

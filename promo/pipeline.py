@@ -104,7 +104,10 @@ def run(
     use_cache: bool = True,
     episodes: list[int] | None = None,
     max_calls: int = 400,
-    top_k: int = 6,
+    # Must match run.py's --top-k default. If the CLI and the UI disagree, the
+    # shortlist differs, so every prompt differs, so every cached response
+    # misses and the committed cache becomes useless.
+    top_k: int = 4,
     promos_per_episode: int = 1,
     multi_per_episode: int = 1,
     run_gate: bool = True,
