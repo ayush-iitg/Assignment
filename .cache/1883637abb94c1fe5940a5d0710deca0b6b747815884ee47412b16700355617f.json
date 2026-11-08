@@ -1,0 +1,20 @@
+{
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "tag": "gate_p_038_m1",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\n[action] Juliana clutches the bread tightly with both hands, tears welling in her eyes.\nJULIANA: \"Thank you.\"\n[action] Starving and overcome with emotion, Juliana presses the bread to her lips and tears off a desperate, ravenous bite.\n[action] Juliana chews hungrily, closing her eyes as the agonizing reality of her plight hits her anew.\nJULIANA: \"Alexander...\"\nJULIANA: \"...are you safe?\"\nJULIANA: \"Do you even know what happened to me?\"\n[sfx] Solemn, resonant church bells begin tolling rhythmically from the cathedral above, echoing deep into the stone dungeon.\n[action] Juliana rushes toward the front of the cell, clutching the iron bars with both hands.\nJULIANA: \"The wedding.\"\nJULIANA: \"It's beginning.\"\nJULIANA: \"Then I suppose I'm next.\"\n[action] Juliana grips the bars tightly, her lips curving into a warm, defiant smile as she whispers her husband's name.\nJULIANA: \"Alexander...\"\n[sfx] A sharp, high-tension dramatic swell strikes and echoes out into silence alongside the fading toll of the distant church bells.",
+  "text": "{\n  \"who_is_the_main_character\": \"Juliana\",\n  \"what_is_at_stake\": \"Juliana is starving and imprisoned in a dungeon. She is worried about the safety of Alexander and believes she is about to be executed or harmed because a wedding is beginning.\",\n  \"what_question_are_you_left_with\": \"Who is Alexander, why is Juliana in a dungeon, and what exactly is going to happen to her now that the wedding has started?\",\n  \"would_you_keep_watching\": \"yes, the immediate threat of her fate and the mystery of her imprisonment are compelling.\",\n  \"passes\": {\n    \"character_identifiable\": true,\n    \"stakes_clear\": true,\n    \"ends_unresolved\": true,\n    \"would_watch\": true\n  }\n}",
+  "parsed": {
+    "who_is_the_main_character": "Juliana",
+    "what_is_at_stake": "Juliana is starving and imprisoned in a dungeon. She is worried about the safety of Alexander and believes she is about to be executed or harmed because a wedding is beginning.",
+    "what_question_are_you_left_with": "Who is Alexander, why is Juliana in a dungeon, and what exactly is going to happen to her now that the wedding has started?",
+    "would_you_keep_watching": "yes, the immediate threat of her fate and the mystery of her imprisonment are compelling.",
+    "passes": {
+      "character_identifiable": true,
+      "stakes_clear": true,
+      "ends_unresolved": true,
+      "would_watch": true
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "ab_random_hooked_ep039",
+  "system": "You choose which clips get posted as ads for a vertical drama app.\n\nYou will see two clips taken from the same show, written out as everything that\nhappens in them. You have never seen the show. Pick the ONE you would post to\nstop a scrolling viewer and make them open the app.\n\nJudge only on: does something arresting happen immediately, does it make sense\nwithout context, and does it stop at a moment that leaves you needing more.\nIgnore length. Ignore which one you were shown first.\n\nYou must choose. Reply with JSON only:\n{\n  \"choice\": 1 or 2,\n  \"reason\": \"<one sentence>\",\n  \"confidence\": \"high\" | \"low\"\n}",
+  "prompt": "CLIP 1:\n[action] The driver leaps off the cart, striking the sentry across the chest, seizing his neck, and tackling him violently against the wooden carriage wheel.\n[sfx] Dull physical thuds and scuffling boots on wet stone as the guard groans in surprise.\n[action] The loyalist locks the sentry into a tight sleeper hold, clamping a hand firmly over his mouth until his eyes roll back and he goes limp.\nLOYALIST FIGHTER: \"Sleep.\"\nCART DRIVER: \"The road is clear.\"\nLOYALIST FIGHTER: \"Tell the Duke.\"\n[action] Alexander stares solemnly at his rugged reflection, his expression dark and resolute.\n[action] Alexander snips through his overgrown locks, shedding the years of exile and camouflage.\n[sfx] Rhythmic, metallic snips of heavy shears cutting through thick hair.\nALEXANDER: \"Enough hiding.\"\n[action] Alexander lightly traces the jagged combat scar across his cheek, eyes burning with reclaimed power.\nALEXANDER: \"They buried Alexander Ashwin three years ago.\"\nALEXANDER: \"Today, he comes home.\"\n\n-----\n\nCLIP 2:\n[action] Alexander lightly traces the jagged combat scar across his cheek, eyes burning with reclaimed power.\nALEXANDER: \"They buried Alexander Ashwin three years ago.\"\nALEXANDER: \"Today, he comes home.\"\n[action] Alexander emerges in full ducal splendor—dressed in an immaculate navy tailcoat lined with gold embroidery, double-breasted brass buttons, and a crisp white cravat.\nLOYALIST: \"Your Grace.\"\nALEXANDER: \"Secure the chapel.\"\nLOYALIST: \"Yes, Your Grace.\"\nALEXANDER: \"No more hiding.\"\n\nWhich would you post?",
+  "response_text": "{\"choice\":1,\"reason\":\"It opens with a sudden violent confrontation and ends on a mysterious promise of return, creating an immediate hook.\",\"confidence\":\"high\"}",
+  "response_payload": {
+    "id": "chatcmpl-057f7725-2945-47ea-8a46-b5490c8b6ddc",
+    "object": "chat.completion",
+    "created": 1794128848,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"choice\":1,\"reason\":\"It opens with a sudden violent confrontation and ends on a mysterious promise of return, creating an immediate hook.\",\"confidence\":\"high\"}",
+          "reasoning": "We need to pick which clip is more arresting, makes sense without context, ends on a hook. Clip1: starts with driver leaping off cart, fighting guard, then loyalist holds guard, then Alexander cutting hair, etc. Ends with \"Today, he comes home.\" That's a hook. Clip2 starts with same lines then Alexander appears in splendor, orders secure chapel, \"No more hiding.\" Ends with that line. Which is more arresting? Clip1 has immediate action (fight) then transformation, ends with reveal. Clip2 is more static, less action. So choose Clip1. Provide JSON."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.370018462,
+      "prompt_tokens": 620,
+      "prompt_time": 0.025923794,
+      "completion_tokens": 168,
+      "completion_time": 0.348908825,
+      "total_tokens": 788,
+      "total_time": 0.374832619,
+      "completion_tokens_details": {
+        "reasoning_tokens": 127
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_93703442d9",
+    "x_groq": {
+      "id": "req_01m6x6k8xbe76vz41tvz12yzkf",
+      "seed": 1897731452
+    },
+    "service_tier": "on_demand"
+  }
+}

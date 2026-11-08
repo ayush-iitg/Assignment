@@ -1,0 +1,20 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "gate_p_014_a",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\n[action] Juliana's blood-streaked, mud-caked hand slowly uncurls amidst the thorns, revealing the ornate emerald signet ring resting in her palm.\n[sfx] Eerie cold wind whistling over the briars with deep, atmospheric cello chords.\nJULIANA: \"I found it.\"\nJULIANA: \"Now release my husband.\"\n[action] The Constable takes the ring from her bloodied fingers.\n[sfx] Sharp metallic click and clinking rattle of heavy iron handcuffs unlocking and falling away.\n[action] The Constable unlocks the cuffs, freeing Alexander's large hands.\nALEXANDER: \"Juliana.\"\n[action] Alexander gently turns her palms up, his thumbs trembling as he inspects the deep, bleeding gashes gouged into her skin.\nALEXANDER: \"What have they done to you?\"",
+  "text": "{\"who_is_the_main_character\":\"Juliana\",\"what_is_at_stake\":\"Juliana is trying to secure the release of her husband Alexander by giving the emerald signet ring to the Constable, while she is severely injured\",\"what_question_are_you_left_with\":\"What happened to Juliana that caused the deep bleeding gashes?\",\"would_you_keep_watching\":\"maybe, the scene is tense and raises mystery\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":true,\"ends_unresolved\":true,\"would_watch\":true}}",
+  "parsed": {
+    "who_is_the_main_character": "Juliana",
+    "what_is_at_stake": "Juliana is trying to secure the release of her husband Alexander by giving the emerald signet ring to the Constable, while she is severely injured",
+    "what_question_are_you_left_with": "What happened to Juliana that caused the deep bleeding gashes?",
+    "would_you_keep_watching": "maybe, the scene is tense and raises mystery",
+    "passes": {
+      "character_identifiable": true,
+      "stakes_clear": true,
+      "ends_unresolved": true,
+      "would_watch": true
+    }
+  }
+}

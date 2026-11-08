@@ -1,0 +1,20 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "gate_p_043_a",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\nALEXANDER: \"You sold my men to the enemy.\"\nBLOND NOBLEMAN: \"I didn't!\"\nALEXANDER: \"And when you believed I was dead...\"\nALEXANDER: \"You took my title.\"\n[sfx] Brittle snap of breaking sealing wax.\nCROWN OFFICIAL: \"Official death confirmation was filed three months after the ambush.\"\nCROWN OFFICIAL: \"Duke Alexander Ashburn was declared dead.\"\nCROWN OFFICIAL: \"His estate and title were subsequently transferred under false authority.\"",
+  "text": "{\"who_is_the_main_character\":\"The clip names Alexander, specifically Duke Alexander Ashburn, as the central figure\",\"what_is_at_stake\":\"The loss and potential reclamation of Alexander's title, estate, and the betrayal involving his men being sold to the enemy\",\"what_question_are_you_left_with\":\"Will Alexander succeed in exposing the false transfer of his title and get his estate back?\",\"would_you_keep_watching\":\"maybe, the dialogue hints at intrigue but the clip ends without resolution\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":true,\"ends_unresolved\":true,\"would_watch\":false}}",
+  "parsed": {
+    "who_is_the_main_character": "The clip names Alexander, specifically Duke Alexander Ashburn, as the central figure",
+    "what_is_at_stake": "The loss and potential reclamation of Alexander's title, estate, and the betrayal involving his men being sold to the enemy",
+    "what_question_are_you_left_with": "Will Alexander succeed in exposing the false transfer of his title and get his estate back?",
+    "would_you_keep_watching": "maybe, the dialogue hints at intrigue but the clip ends without resolution",
+    "passes": {
+      "character_identifiable": true,
+      "stakes_clear": true,
+      "ends_unresolved": true,
+      "would_watch": false
+    }
+  }
+}

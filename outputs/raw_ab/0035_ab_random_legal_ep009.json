@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "ab_random_legal_ep009",
+  "system": "You choose which clips get posted as ads for a vertical drama app.\n\nYou will see two clips taken from the same show, written out as everything that\nhappens in them. You have never seen the show. Pick the ONE you would post to\nstop a scrolling viewer and make them open the app.\n\nJudge only on: does something arresting happen immediately, does it make sense\nwithout context, and does it stop at a moment that leaves you needing more.\nIgnore length. Ignore which one you were shown first.\n\nYou must choose. Reply with JSON only:\n{\n  \"choice\": 1 or 2,\n  \"reason\": \"<one sentence>\",\n  \"confidence\": \"high\" | \"low\"\n}",
+  "prompt": "CLIP 1:\n[action] Alexander steps forward and unlatches the cottage door, opening it into the pouring rain.\nPEASANT MOTHER: \"Please! They told me there was a woman here who knows herbs. My boy is burning with fever!\"\nJULIANA: \"Bring him here. Quickly.\"\n[action] The trembling mother gently lays the feverish boy down atop the wooden table as Juliana leans in close.\nJULIANA: \"He seems very unwell, but he is resting steadily. How long has he been like this?\"\nPEASANT MOTHER: \"Since yesterday morning. He has barely eaten since sunset.\"\n[action] Juliana lifts the weathered herbal book and rapidly browses the handwritten pages.\nJULIANA: \"Feverfew... Not alone.\"\nJULIANA: \"Chamomile... and willow bark.\"\nALEXANDER: \"You're certain?\"\nJULIANA: \"I have to be.\"\n[action] Juliana quickly grabs bundles of dried herbs from the table and turns to Alexander.\nJULIANA: \"Alexander, I need hot water.\"\nALEXANDER: \"I'm on it.\"\n[action] Alexander hurries to the hearth and lifts a boiling iron kettle from the hearth chain, while the mother buries her face in her hands.\nPEASANT MOTHER: \"Please save him.\"\n[action] Alexander returns and pours steaming hot water into the stone mortar as Juliana prepares the remedy.\nJULIANA: \"He is not beyond saving.\"\n[action] The child swallows weakly and lets out a soft cough.\nPEASANT MOTHER: \"Why isn't it working?\"\n\n-----\n\nCLIP 2:\nBLOND NOBLEMAN: \"What is it?\"\nGERALD: \"There is a rumor going around, my Lord.\"\nBLOND NOBLEMAN: \"What rumor?\"\nGERALD: \"About a war veteran. Some say he resembles the late Duke.\"\nBLOND NOBLEMAN: \"People see ghosts whenever they want a story.\"\nGERALD: \"The man is said to have the same kind of scar the Duke carried after the war.\"\nBLOND NOBLEMAN: \"Where?\"\nGERALD: \"No one seems certain.\"\nBLOND NOBLEMAN: \"Then let it remain a rumor.\"\nBLOND NOBLEMAN: \"Impossible.\"\n\nWhich would you post?",
+  "response_text": "{\"choice\":2,\"reason\":\"The mysterious rumor about a war veteran who looks like the dead Duke ends on a tense, unanswered \\\"Impossible\\\" hook.\",\"confidence\":\"high\"}",
+  "response_payload": {
+    "id": "chatcmpl-78412b98-92e0-443b-b85b-7e212aed890f",
+    "object": "chat.completion",
+    "created": 1794128604,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"choice\":2,\"reason\":\"The mysterious rumor about a war veteran who looks like the dead Duke ends on a tense, unanswered \\\"Impossible\\\" hook.\",\"confidence\":\"high\"}",
+          "reasoning": "We need to pick which clip is more arresting, makes sense without context, ends on a hook. Clip1: a mother pleading, child fever, herbal remedy, tension but maybe resolves? Ends with mother asking \"Why isn't it working?\" That's a question, but maybe not a strong hook. Clip2: conversation about rumor of war veteran resembling late Duke, ends with \"Impossible.\" That is a hook, suggests mystery. Clip2 is shorter, but has intrigue. Clip1 has immediate action, but maybe less hook. Clip2 ends with \"Impossible.\" That leaves need for more. Both have some hook. Which is more arresting? Clip2 has a mysterious rumor, potential supernatural. Clip1 is a medical emergency, but may feel like a scene that could resolve quickly. Clip2 likely to stop scrolling. So choose Clip2.\n\nProvide JSON."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.372817261,
+      "prompt_tokens": 738,
+      "prompt_time": 0.043813873,
+      "completion_tokens": 218,
+      "completion_time": 0.450120738,
+      "total_tokens": 956,
+      "total_time": 0.493934611,
+      "completion_tokens_details": {
+        "reasoning_tokens": 174
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_e5b4e54fbb",
+    "x_groq": {
+      "id": "req_01m6x6bthcetaabrkcn3yr2r62",
+      "seed": 1184917333
+    },
+    "service_tier": "on_demand"
+  }
+}

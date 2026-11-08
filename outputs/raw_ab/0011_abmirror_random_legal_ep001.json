@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "abmirror_random_legal_ep001",
+  "system": "You choose which clips get posted as ads for a vertical drama app.\n\nYou will see two clips taken from the same show, written out as everything that\nhappens in them. You have never seen the show. Pick the ONE you would post to\nstop a scrolling viewer and make them open the app.\n\nJudge only on: does something arresting happen immediately, does it make sense\nwithout context, and does it stop at a moment that leaves you needing more.\nIgnore length. Ignore which one you were shown first.\n\nYou must choose. Reply with JSON only:\n{\n  \"choice\": 1 or 2,\n  \"reason\": \"<one sentence>\",\n  \"confidence\": \"high\" | \"low\"\n}",
+  "prompt": "CLIP 1:\nJULIANA: \"You knew this before I walked through those doors!\"\nJULIANA: \"You let me come here...\"\nJULIANA: \"You let me dress in my mother's gown...\"\nJULIANA: \"You let me believe I was walking toward my husband!\"\nGERALD: \"I changed my mind.\"\nJULIANA: \"You swore you loved me!\"\nCLARISSA: \"People change their minds, sister.\"\nJULIANA: \"And you knew?\"\n\n-----\n\nCLIP 2:\nMATRIARCH: \"Clarissa knows how to carry herself.\"\nMATRIARCH: \"She has beauty, connections, and a future worth protecting.\"\nJULIANA: \"And I am what?\"\nCLARISSA: \"You are the daughter people tolerate because they have to.\"\nCLARISSA: \"I am the daughter they choose.\"\nMATRIARCH: \"Clarissa is the jewel of this family.\"\nJULIANA: \"So that is what I was worth to you?\"\n\nWhich would you post?",
+  "response_text": "{\"choice\":1,\"reason\":\"The clip erupts with betrayal and urgent accusations that hook the viewer with a tense, unanswered question.\",\"confidence\":\"high\"}",
+  "response_payload": {
+    "id": "chatcmpl-31abc6bc-898d-4ed9-b8e1-e943f3207a20",
+    "object": "chat.completion",
+    "created": 1794129087,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"choice\":1,\"reason\":\"The clip erupts with betrayal and urgent accusations that hook the viewer with a tense, unanswered question.\",\"confidence\":\"high\"}",
+          "reasoning": "We need to pick which clip is more arresting, makes sense without context, ends on a hook. Clip 1: dialogue with accusations, \"You knew this before I walked through those doors!\" \"You let me dress in my mother's gown...\" \"You let me believe I was walking toward my husband!\" \"I changed my mind.\" \"You swore you loved me!\" \"People change their minds, sister.\" \"And you knew?\" Ends with question. There's tension, betrayal, mystery. Clip 2: more exposition about family hierarchy, less immediate conflict, ends with \"So that is what I was worth to you?\" also a question but less immediate drama. Clip 1 seems more arresting. So choose 1.\n\nProvide JSON with choice 1, reason one sentence, confidence high."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.369979344,
+      "prompt_tokens": 471,
+      "prompt_time": 0.019634482,
+      "completion_tokens": 203,
+      "completion_time": 0.424240977,
+      "total_tokens": 674,
+      "total_time": 0.443875459,
+      "completion_tokens_details": {
+        "reasoning_tokens": 163
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_8655ddce88",
+    "x_groq": {
+      "id": "req_01m6x6tht8eh9aec3mk1ess8t4",
+      "seed": 1836098753
+    },
+    "service_tier": "on_demand"
+  }
+}

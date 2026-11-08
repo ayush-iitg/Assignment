@@ -1,0 +1,48 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "ab_random_legal_ep023",
+  "system": "You choose which clips get posted as ads for a vertical drama app.\n\nYou will see two clips taken from the same show, written out as everything that\nhappens in them. You have never seen the show. Pick the ONE you would post to\nstop a scrolling viewer and make them open the app.\n\nJudge only on: does something arresting happen immediately, does it make sense\nwithout context, and does it stop at a moment that leaves you needing more.\nIgnore length. Ignore which one you were shown first.\n\nYou must choose. Reply with JSON only:\n{\n  \"choice\": 1 or 2,\n  \"reason\": \"<one sentence>\",\n  \"confidence\": \"high\" | \"low\"\n}",
+  "prompt": "CLIP 1:\nJULIANA: \"No.\"\nJULIANA: \"This is not simply old age.\"\n[action] Juliana draws in a sharp, startled breath, her eyes widening in horror.\nJULIANA: \"Mother.\"\nPRUDENCE: \"What is it?\"\nJULIANA: \"Weakness. Dry mouth. The discoloration beneath the nails. The slow wasting.\"\nJULIANA: \"I have seen these symptoms before.\"\nPRUDENCE: \"What are you saying?\"\nJULIANA: \"Someone is poisoning her.\"\n\n-----\n\nCLIP 2:\nPRUDENCE: \"What are you saying?\"\nJULIANA: \"Someone is poisoning her.\"\n[sfx] Sharp intake of breath from Prudence.\nPRUDENCE: \"Poison?\"\nJULIANA: \"Arsenic.\"\n[sfx] Sudden violent coughing and sputtering from the Duchess.\nPRUDENCE: \"Can you save her?\"\nJULIANA: \"I can try.\"\n[sfx] Heavy, rhythmic scraping of stone pestle grinding charcoal and dried herbs.\nJULIANA: \"The charcoal may help remove what is still inside her. We must act quickly.\"\n[sfx] Sudden muffled thump and heavy footsteps echoing from the hallway outside the door!\nPRUDENCE: \"Juliana... someone is coming.\"\n\nWhich would you post?",
+  "response_text": "{\"choice\":2,\"reason\":\"It builds tension with sounds, urgent action, and ends on a looming threat, prompting curiosity\",\"confidence\":\"high\"}",
+  "response_payload": {
+    "id": "chatcmpl-9c2616a4-ad56-4378-8aa6-039451706b22",
+    "object": "chat.completion",
+    "created": 1794128491,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"choice\":2,\"reason\":\"It builds tension with sounds, urgent action, and ends on a looming threat, prompting curiosity\",\"confidence\":\"high\"}",
+          "reasoning": "We need to pick which clip is more arresting, makes sense without context, ends on a cliffhanger. Clip 1: dialogue about poisoning, but ends with \"Someone is poisoning her.\" No sound, no cliff. Clip 2: includes sound effects, coughing, grinding charcoal, footsteps, someone coming. Ends with \"Juliana... someone is coming.\" That's a cliffhanger. So choose Clip 2. Provide JSON."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.318319309,
+      "prompt_tokens": 533,
+      "prompt_time": 0.014608816,
+      "completion_tokens": 127,
+      "completion_time": 0.261771043,
+      "total_tokens": 660,
+      "total_time": 0.276379859,
+      "prompt_tokens_details": {
+        "cached_tokens": 256
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 88
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_fe269835c7",
+    "x_groq": {
+      "id": "req_01m6x68cane4qa2jph5f6h92tx",
+      "seed": 269841836
+    },
+    "service_tier": "on_demand"
+  }
+}

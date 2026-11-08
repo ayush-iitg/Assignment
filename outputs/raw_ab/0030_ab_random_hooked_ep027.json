@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "ab_random_hooked_ep027",
+  "system": "You choose which clips get posted as ads for a vertical drama app.\n\nYou will see two clips taken from the same show, written out as everything that\nhappens in them. You have never seen the show. Pick the ONE you would post to\nstop a scrolling viewer and make them open the app.\n\nJudge only on: does something arresting happen immediately, does it make sense\nwithout context, and does it stop at a moment that leaves you needing more.\nIgnore length. Ignore which one you were shown first.\n\nYou must choose. Reply with JSON only:\n{\n  \"choice\": 1 or 2,\n  \"reason\": \"<one sentence>\",\n  \"confidence\": \"high\" | \"low\"\n}",
+  "prompt": "CLIP 1:\nDOWAGER DUCHESS: \"My lost son wore that ring!\"\nDOWAGER DUCHESS: \"Did your husband serve beside him?\"\nJULIANA: \"He never spoke of his officers. He only spoke of survival.\"\nDOWAGER DUCHESS: \"What is your husband's name?\"\n[sfx] Loud, violent pounding echoes on the wooden double doors.\n[action] The heavy mahogany double doors burst open, revealing the Blond Nobleman flanked by Lady Catherine and a royal guard in uniform.\nCATHERINE: \"What is that maid doing in Her Grace's private chamber?\"\nJULIANA: \"She needed help.\"\nCATHERINE: \"What are you hiding?\"\nJULIANA: \"Nothing.\"\nCATHERINE: \"Show me your hand.\"\nBLOND NOBLEMAN: \"Girl. Show me what you are holding.\"\nBLOND NOBLEMAN: \"What is this?\"\nJULIANA: \"Medicine.\"\nCATHERINE: \"Medicine? You are a new maid.\"\nCATHERINE: \"Who permitted you to give medicine to the Duchess?\"\n\n-----\n\nCLIP 2:\nJULIANA: \"The physicians were not saving her!\"\nBLOND NOBLEMAN: \"My aunt has been wasting away for months.\"\nBLOND NOBLEMAN: \"And now we find an unknown maid alone beside her bed...\"\nBLOND NOBLEMAN: \"...holding a substance no one authorized her to give.\"\nJULIANA: \"It is an antidote.\"\nCATHERINE: \"An antidote to what?\"\nBLOND NOBLEMAN: \"Answer her.\"\nJULIANA: \"Poison.\"\nBLOND NOBLEMAN: \"Poison.\"\nJULIANA: \"Someone has been poisoning Her Grace.\"\nCATHERINE: \"You hear that?!\"\nCATHERINE: \"She admits she has been giving the Duchess poison in secret!\"\n\nWhich would you post?",
+  "response_text": "{\"choice\":2,\"reason\":\"The sudden revelation of secret poisoning creates immediate intrigue and ends on a shocking confession that begs for more.\",\"confidence\":\"high\"}",
+  "response_payload": {
+    "id": "chatcmpl-e3390f0c-c536-4731-b1bf-3cdc62b7e7dc",
+    "object": "chat.completion",
+    "created": 1794128548,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"choice\":2,\"reason\":\"The sudden revelation of secret poisoning creates immediate intrigue and ends on a shocking confession that begs for more.\",\"confidence\":\"high\"}",
+          "reasoning": "We need to pick which clip is more arresting, makes sense without context, ends on a hook. Clip 1: starts with dialogue, then doors burst open, tension, accusations. Ends with \"Who permitted you to give medicine to the Duchess?\" That's a question, hook. Clip 2: reveals poisoning, accusation, ends with \"She admits she has been giving the Duchess poison in secret!\" That's a revelation, also hook. Which is more immediate? Clip 2 has a twist: someone admits to poisoning. Clip 1 has action of doors bursting, but maybe less clear. Clip 2 seems more dramatic and leaves need to know who. I'd choose Clip 2. Provide JSON."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.367418477,
+      "prompt_tokens": 651,
+      "prompt_time": 0.032728072,
+      "completion_tokens": 182,
+      "completion_time": 0.37913219,
+      "total_tokens": 833,
+      "total_time": 0.411860262,
+      "completion_tokens_details": {
+        "reasoning_tokens": 142
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_803c0ba83d",
+    "x_groq": {
+      "id": "req_01m6x6a474ej0vks6emqthtd6d",
+      "seed": 584728836
+    },
+    "service_tier": "on_demand"
+  }
+}

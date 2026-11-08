@@ -337,8 +337,14 @@ def markdown(report: dict) -> str:
             out.append(f"| {label} | {counts[key]} |")
 
     gold = report["gold"]
-    out.append("\n## 1. Agreement with promos I picked by hand before building the tool\n")
-    out.append(f"{gold['n_overlapping']} of {gold['n_gold']} hand-picked promos overlap "
+    out.append("\n## 1. Sanity check against spans drafted before the tool existed\n")
+    out.append("Kept as a sanity check only, not as a quality measure. A hand-picked "
+               "gold set asks the wrong question — 'did the tool match one human's "
+               "pick?' — and it does not scale: maintaining one per show would "
+               "recreate the manual work the tool removes. The headline measure is "
+               "the blind A/B in section 1b. With n=6 the numbers below cannot rank "
+               "approaches, and the per-episode spread shows why.\n")
+    out.append(f"{gold['n_overlapping']} of {gold['n_gold']} drafted spans overlap "
                f"a tool pick. Mean IoU **{gold['mean_iou']}**.\n")
     out.append("| Episode | My pick (s) | Tool pick (s) | IoU | Status | Why I picked it |")
     out.append("|---|---|---|---|---|---|")
@@ -383,6 +389,51 @@ def markdown(report: dict) -> str:
             out.append("")
     else:
         out.append("Gate did not run in this result.\n")
+
+    ab = report.get("ab_test")
+    if ab:
+        out.append("\n## 1b. Blind A/B — does the tool beat picking at random?\n")
+        out.append(f"Judge: `{ab['judge']['model']}`, seed {ab['judge']['seed']}. "
+                   f"{ab['design']}\n")
+        if ab.get("caveat"):
+            out.append(f"> **Caveat.** {ab['caveat']}\n")
+        out.append("| Compared against | Pairs | Uncorrected | Shown 1st / 2nd | "
+                   "**Position-corrected** | Counterbalanced subset |")
+        out.append("|---|---|---|---|---|---|")
+        labels = {
+            "random_legal": "Any legal 20–60s window — the whole system",
+            "random_hooked": "A window already passing the hook filter — "
+                             "what the tension scoring adds",
+        }
+        for name, row in ab["summary"].items():
+            cb = row.get("counterbalanced_subset") or {}
+            out.append(
+                f"| {labels.get(name, name)} | {row['n_pairs']} | "
+                f"{row['uncorrected_win_rate']:.1%} (p={row['uncorrected_p_value']}) | "
+                f"{row['win_rate_when_tool_shown_first']:.1%} / "
+                f"{row['win_rate_when_tool_shown_second']:.1%} | "
+                f"**{row['position_corrected_win_rate']:.1%}** | "
+                f"{cb.get('win_rate', 0):.1%} over {cb.get('judgements', 0)} judgements |"
+            )
+        out.append("\nChance is 50%. This replaces a hand-picked reference set as the "
+                   "headline quality measure: it runs unattended on any new show, needs "
+                   "no editor time, and n equals the episode count rather than 6.\n")
+        for name, row in ab["summary"].items():
+            cb = row.get("counterbalanced_subset") or {}
+            if cb:
+                out.append(f"*{labels.get(name, name)}* — on the {cb['pairs_judged_both_orders']} "
+                           f"pairs judged in both orders, the tool was preferred both ways "
+                           f"{cb['tool_preferred_both_orders']} times, the random window both "
+                           f"ways {cb['rival_preferred_both_orders']} times, and "
+                           f"{cb['flipped_with_order']} flipped with presentation order.\n")
+        for name, row in ab["summary"].items():
+            if row.get("losses"):
+                out.append(f"\n**Where the tool lost ({labels.get(name, name)}):**\n")
+                for loss in row["losses"][:6]:
+                    out.append(f"- episode {loss['episode']}: tool picked "
+                               f"`{loss['tool']}`, judge preferred `{loss['rival']}` — "
+                               f"*{loss['reason']}*")
+                out.append("")
 
     shapes = report.get("shapes") or {}
     if len(shapes) > 1:
@@ -461,6 +512,22 @@ def main(argv=None) -> int:
         "shapes": shape_report(primary),
         "fingerprint": fingerprint(primary),
     }
+
+    # Prefer the position-corrected file. The raw order-randomised run is not
+    # trustworthy on its own: the judge strongly prefers whichever clip is
+    # shown second, so only the corrected figures should be reported.
+    for name in ("ab_test_balanced.json", "ab_test.json"):
+        ab_path = os.path.join(args.out, name)
+        if os.path.exists(ab_path):
+            with open(ab_path, encoding="utf-8") as fh:
+                ab = json.load(fh)
+            report["ab_test"] = {
+                "judge": ab["judge"],
+                "design": ab["design"],
+                "caveat": ab.get("caveat", ""),
+                "summary": ab["summary"],
+            }
+            break
 
     code_only = load(args.code_only)
     if code_only:

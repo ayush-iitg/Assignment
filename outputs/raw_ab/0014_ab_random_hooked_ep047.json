@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "ab_random_hooked_ep047",
+  "system": "You choose which clips get posted as ads for a vertical drama app.\n\nYou will see two clips taken from the same show, written out as everything that\nhappens in them. You have never seen the show. Pick the ONE you would post to\nstop a scrolling viewer and make them open the app.\n\nJudge only on: does something arresting happen immediately, does it make sense\nwithout context, and does it stop at a moment that leaves you needing more.\nIgnore length. Ignore which one you were shown first.\n\nYou must choose. Reply with JSON only:\n{\n  \"choice\": 1 or 2,\n  \"reason\": \"<one sentence>\",\n  \"confidence\": \"high\" | \"low\"\n}",
+  "prompt": "CLIP 1:\nCATHERINE: \"Please, Alexander! Have mercy!\"\nJULIANA: \"Stop.\"\nALEXANDER: \"Juliana, she tried to destroy you!\"\nJULIANA: \"She did.\"\nJULIANA: \"But Ashbourne does not throw beggars into the mud.\"\n[action] Juliana walks to a side bench, picks up a rough servant's apron and a heavy iron ring of keys, and turns back to face Catherine.\nJULIANA: \"If you seek shelter in this house, Catherine, you earn it.\"\nCATHERINE: \"You want me? As a guest?\"\nJULIANA: \"As a scullery maid.\"\nCATHERINE: \"You expect me to scrub floors before these commoners?\"\nJULIANA: \"You will scrub the floors you walked on as an impostor.\"\n\n-----\n\nCLIP 2:\nALEXANDER: \"You are my wife.\"\n[action] Alexander gently pulls Juliana closer, his hands resting securely on her shoulders.\nALEXANDER: \"You were my wife before that priest ever opened his mouth. And we will stand before the King and God again within ten days. Nothing breaks that.\"\nLADY ASHBOURNE: \"You dare show your face in Ashbourne courtyard?\"\nCATHERINE: \"I have nowhere to go, Your Grace.\"\nCATHERINE: \"London closed its doors! My family disowned me!\"\nLADY ASHBOURNE: \"She aided the poison in my veins. Cast her into the road.\"\nVAUGHN: \"One command, Your Grace, and I drag her past the gates.\"\nALEXANDER: \"Do it, Vaughn! Throw her past the estate perimeter!\"\n\nWhich would you post?",
+  "response_text": "{\"choice\":2,\"reason\":\"The sudden command to throw Catherine out creates immediate tension and a cliffhanger that begs for resolution.\",\"confidence\":\"high\"}",
+  "response_payload": {
+    "id": "chatcmpl-c0b7c705-e84e-4bef-b1fa-81df99394afb",
+    "object": "chat.completion",
+    "created": 1794128427,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"choice\":2,\"reason\":\"The sudden command to throw Catherine out creates immediate tension and a cliffhanger that begs for resolution.\",\"confidence\":\"high\"}",
+          "reasoning": "We need to pick which clip is more arresting, makes sense without context, ends on a hook. Clip1: confrontation, Catherine pleading, Juliana turning to give her a scullery maid role. Ends with \"You will scrub the floors you walked on as an impostor.\" That's a tense moment, but maybe less hook? Clip2: Alexander declares wife, then Lady Ashbourne confronts, Catherine pleading, then orders to throw her out. Ends with \"Do it, Vaughn! Throw her past the estate perimeter!\" That's a dramatic command, high tension, clear conflict, hook. Both have immediate action. Clip2 seems more urgent, multiple characters, a command to throw someone out. Likely more arresting. So choose 2.\n\nProvide JSON."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.37663647,
+      "prompt_tokens": 615,
+      "prompt_time": 0.098488404,
+      "completion_tokens": 196,
+      "completion_time": 0.405815947,
+      "total_tokens": 811,
+      "total_time": 0.504304351,
+      "completion_tokens_details": {
+        "reasoning_tokens": 157
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_c868cf1eaa",
+    "x_groq": {
+      "id": "req_01m6x66dsee629j8t26nyvx0pg",
+      "seed": 1979912880
+    },
+    "service_tier": "on_demand"
+  }
+}

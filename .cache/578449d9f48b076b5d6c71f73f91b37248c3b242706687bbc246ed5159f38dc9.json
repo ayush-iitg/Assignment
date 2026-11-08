@@ -1,0 +1,20 @@
+{
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "tag": "gate_p_024_a",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\nNOBLEWOMAN: \"Who are you?\"\nJULIANA: \"Juliana, my lady. I was hired for the winter cleaning.\"\nNOBLEWOMAN: \"And who gave you permission to enter this chamber?\"\n[action] Behind her grey skirt, Juliana quickly slips the small glass remedy vial into her apron pocket with her charcoal-dusted fingers.\nJULIANA: \"I heard her. I thought Her Grace needed help.\"\nNOBLEWOMAN: \"You thought? A new maid thinks she knows better than the physicians?\"\nJULIANA: \"She is suffering.\"\nNOBLEWOMAN: \"Then let her suffer.\"\nJULIANA: \"I cannot do that.\"\n[action] The noblewoman suddenly rears back her riding crop and strikes Juliana violently across the torso.\n[sfx] A sharp, stinging whip crack as the riding crop makes harsh contact.\n[action] Juliana gasps in pain, clutching her stomach and bending over as she absorbs the brutal strike.\nNOBLEWOMAN: \"You are a maid.\"",
+  "text": "{\n  \"who_is_the_main_character\": \"Juliana, a maid hired for winter cleaning\",\n  \"what_is_at_stake\": \"Juliana's physical safety and her ability to help a suffering person (referred to as 'Her Grace') against the noblewoman's orders\",\n  \"what_question_are_you_left_with\": \"Who is 'Her Grace', what is the remedy vial, and will Juliana survive or succeed in helping her?\",\n  \"would_you_keep_watching\": \"yes, the sudden violence and the hidden vial create immediate tension\",\n  \"passes\": {\n    \"character_identifiable\": true,\n    \"stakes_clear\": true,\n    \"ends_unresolved\": true,\n    \"would_watch\": true\n  }\n}",
+  "parsed": {
+    "who_is_the_main_character": "Juliana, a maid hired for winter cleaning",
+    "what_is_at_stake": "Juliana's physical safety and her ability to help a suffering person (referred to as 'Her Grace') against the noblewoman's orders",
+    "what_question_are_you_left_with": "Who is 'Her Grace', what is the remedy vial, and will Juliana survive or succeed in helping her?",
+    "would_you_keep_watching": "yes, the sudden violence and the hidden vial create immediate tension",
+    "passes": {
+      "character_identifiable": true,
+      "stakes_clear": true,
+      "ends_unresolved": true,
+      "would_watch": true
+    }
+  }
+}

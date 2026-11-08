@@ -1,0 +1,20 @@
+{
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "tag": "gate_p_009_a",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\n[action] Juliana quickly grabs bundles of dried herbs from the table and turns to Alexander.\nJULIANA: \"Alexander, I need hot water.\"\nALEXANDER: \"I'm on it.\"\n[action] Alexander hurries to the hearth and lifts a boiling iron kettle from the hearth chain, while the mother buries her face in her hands.\nPEASANT MOTHER: \"Please save him.\"\n[action] Alexander returns and pours steaming hot water into the stone mortar as Juliana prepares the remedy.\nJULIANA: \"He is not beyond saving.\"\n[action] The child swallows weakly and lets out a soft cough.\nPEASANT MOTHER: \"Why isn't it working?\"\nJULIANA: \"Wait.\"\nPEASANT MOTHER: \"His fever... it's breaking.\"\nPEASANT MOTHER: \"You saved him.\"\nJULIANA: \"The herbs did their work. Let him rest.\"\n[action] Juliana places a comforting hand over the mother's hands.\n[action] The mother gathers her sleeping son in her arms and steps back toward the rainy doorway.\nPEASANT MOTHER: \"I will tell the village what you did. They will never forget you.\"\n[action] The mother exits into the rainy twilight as Alexander pushes the door shut.\nALEXANDER: \"You cannot let the whole village start talking about you.\"\nJULIANA: \"A child's life matters more than gossip.\"\nALEXANDER: \"Gossip has a way of becoming dangerous.\"",
+  "text": "{\n  \"who_is_the_main_character\": \"Juliana (named in dialogue)\",\n  \"what_is_at_stake\": \"Saving a child's life from a fever, and subsequently managing the social danger of the village finding out about Juliana's actions.\",\n  \"what_question_are_you_left_with\": \"What is the specific danger that 'gossip' poses to Juliana, and why is she hiding her abilities?\",\n  \"would_you_keep_watching\": \"yes, the final line implies a hidden threat or secret that makes her actions dangerous.\",\n  \"passes\": {\n    \"character_identifiable\": true,\n    \"stakes_clear\": true,\n    \"ends_unresolved\": true,\n    \"would_watch\": true\n  }\n}",
+  "parsed": {
+    "who_is_the_main_character": "Juliana (named in dialogue)",
+    "what_is_at_stake": "Saving a child's life from a fever, and subsequently managing the social danger of the village finding out about Juliana's actions.",
+    "what_question_are_you_left_with": "What is the specific danger that 'gossip' poses to Juliana, and why is she hiding her abilities?",
+    "would_you_keep_watching": "yes, the final line implies a hidden threat or secret that makes her actions dangerous.",
+    "passes": {
+      "character_identifiable": true,
+      "stakes_clear": true,
+      "ends_unresolved": true,
+      "would_watch": true
+    }
+  }
+}

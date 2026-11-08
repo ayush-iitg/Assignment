@@ -1,0 +1,48 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "abmirror_random_legal_ep027",
+  "system": "You choose which clips get posted as ads for a vertical drama app.\n\nYou will see two clips taken from the same show, written out as everything that\nhappens in them. You have never seen the show. Pick the ONE you would post to\nstop a scrolling viewer and make them open the app.\n\nJudge only on: does something arresting happen immediately, does it make sense\nwithout context, and does it stop at a moment that leaves you needing more.\nIgnore length. Ignore which one you were shown first.\n\nYou must choose. Reply with JSON only:\n{\n  \"choice\": 1 or 2,\n  \"reason\": \"<one sentence>\",\n  \"confidence\": \"high\" | \"low\"\n}",
+  "prompt": "CLIP 1:\nJULIANA: \"The physicians were not saving her!\"\nBLOND NOBLEMAN: \"My aunt has been wasting away for months.\"\nBLOND NOBLEMAN: \"And now we find an unknown maid alone beside her bed...\"\nBLOND NOBLEMAN: \"...holding a substance no one authorized her to give.\"\nJULIANA: \"It is an antidote.\"\nCATHERINE: \"An antidote to what?\"\nBLOND NOBLEMAN: \"Answer her.\"\nJULIANA: \"Poison.\"\nBLOND NOBLEMAN: \"Poison.\"\nJULIANA: \"Someone has been poisoning Her Grace.\"\nCATHERINE: \"You hear that?!\"\nCATHERINE: \"She admits she has been giving the Duchess poison in secret!\"\n\n-----\n\nCLIP 2:\nDOWAGER DUCHESS: \"My lost son wore that ring!\"\nDOWAGER DUCHESS: \"Did your husband serve beside him?\"\nJULIANA: \"He never spoke of his officers. He only spoke of survival.\"\nDOWAGER DUCHESS: \"What is your husband's name?\"\n[sfx] Loud, violent pounding echoes on the wooden double doors.\n[action] The heavy mahogany double doors burst open, revealing the Blond Nobleman flanked by Lady Catherine and a royal guard in uniform.\nCATHERINE: \"What is that maid doing in Her Grace's private chamber?\"\nJULIANA: \"She needed help.\"\nCATHERINE: \"What are you hiding?\"\nJULIANA: \"Nothing.\"\nCATHERINE: \"Show me your hand.\"\nBLOND NOBLEMAN: \"Girl. Show me what you are holding.\"\nBLOND NOBLEMAN: \"What is this?\"\nJULIANA: \"Medicine.\"\nCATHERINE: \"Medicine? You are a new maid.\"\nCATHERINE: \"Who permitted you to give medicine to the Duchess?\"\nJULIANA: \"No one.\"\nCATHERINE: \"Then you administered it without permission.\"\nJULIANA: \"Because she was dying!\"\nBLOND NOBLEMAN: \"And you decided you knew better than every physician in this house?\"\nJULIANA: \"The physicians were not saving her!\"\n\nWhich would you post?",
+  "response_text": "{\"choice\":2,\"reason\":\"The sudden door burst and confrontation create immediate tension and end on a provocative revelation, prompting curiosity\",\"confidence\":\"high\"}",
+  "response_payload": {
+    "id": "chatcmpl-c4b7907f-4f35-4f97-9094-d81e55513331",
+    "object": "chat.completion",
+    "created": 1794130345,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"choice\":2,\"reason\":\"The sudden door burst and confrontation create immediate tension and end on a provocative revelation, prompting curiosity\",\"confidence\":\"high\"}",
+          "reasoning": "We need to pick which clip is more arresting, makes sense without context, ends on a hook. Clip 1 is a dialogue about poison, accusation, with tension. Clip 2 adds action: doors burst open, characters entering, more confrontation. Clip 2 seems more dynamic with sound effects and a reveal, ending with \"The physicians were not saving her!\" which repeats from clip 1. Clip 2 ends with a question? Actually ends with that line, a statement. It leaves need for more. Clip 1 ends with \"She admits she has been giving the Duchess poison in secret!\" That's also a hook. Which is more arresting? Clip 2 has visual action, doors bursting, more immediate. Likely better for ad. So choose 2.\n\nProvide JSON."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.317693953,
+      "prompt_tokens": 717,
+      "prompt_time": 0.077052606,
+      "completion_tokens": 200,
+      "completion_time": 0.518631288,
+      "total_tokens": 917,
+      "total_time": 0.595683894,
+      "prompt_tokens_details": {
+        "cached_tokens": 256
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 161
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_fe269835c7",
+    "x_groq": {
+      "id": "req_01m6x80y8cer6r7gf05ngyntk9",
+      "seed": 1113110704
+    },
+    "service_tier": "on_demand"
+  }
+}

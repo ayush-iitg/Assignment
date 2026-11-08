@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "abmirror_random_hooked_ep012",
+  "system": "You choose which clips get posted as ads for a vertical drama app.\n\nYou will see two clips taken from the same show, written out as everything that\nhappens in them. You have never seen the show. Pick the ONE you would post to\nstop a scrolling viewer and make them open the app.\n\nJudge only on: does something arresting happen immediately, does it make sense\nwithout context, and does it stop at a moment that leaves you needing more.\nIgnore length. Ignore which one you were shown first.\n\nYou must choose. Reply with JSON only:\n{\n  \"choice\": 1 or 2,\n  \"reason\": \"<one sentence>\",\n  \"confidence\": \"high\" | \"low\"\n}",
+  "prompt": "CLIP 1:\n[action] Juliana steps firmly forward, shielding Alexander with her body.\nJULIANA: \"No! That watch was not in his coat!\"\nCONSTABLE: \"I found it there myself.\"\nJULIANA: \"Then someone put it there!\"\nGERALD: \"The proof is in his coat, Juliana. A valuable pocket watch doesn't just walk into a beggar's pocket.\"\nALEXANDER: \"I have never touched your property.\"\nGERALD: \"Then perhaps your wife should explain why it was found in your coat.\"\nJULIANA: \"You planted it!\"\n[action] Juliana lunges a step forward, jabbing an accusing finger toward Gerald.\n\n-----\n\nCLIP 2:\nJULIANA: \"You planted it!\"\n[action] Juliana lunges a step forward, jabbing an accusing finger toward Gerald.\nCLARISSA: \"Oh, dear sister...\"\nCLARISSA: \"...still defending your broken scrap of a man?\"\nJULIANA: \"Name your price, Clarissa. I know you.\"\nCLARISSA: \"You always were clever, Juliana. Always searching for some way to escape.\"\nCLARISSA: \"Perhaps I can give you one.\"\nJULIANA: \"What do you want?\"\nCLARISSA: \"I want to see you crawl, sister.\"\nCLARISSA: \"My emerald signet ring fell deep into the frozen blackthorn briars at Ashworth Manor. The thorns have grown over it...\"\nCLARISSA: \"...sharp as steel. The ground is frozen, like pure ice.\"\n[action] Gerald bursts into a loud, mocking laugh beside the stony Constable.\nCLARISSA: \"You will retrieve it with your bare hands before the magistrate arrives.\"\n\nWhich would you post?",
+  "response_text": "{\"choice\":2,\"reason\":\"It drops a vivid, mysterious challenge about a hidden emerald ring and ends on a tense dare, creating immediate intrigue\",\"confidence\":\"high\"}",
+  "response_payload": {
+    "id": "chatcmpl-22f885b2-2de0-475b-9444-5d2e4248d3f6",
+    "object": "chat.completion",
+    "created": 1794129093,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"choice\":2,\"reason\":\"It drops a vivid, mysterious challenge about a hidden emerald ring and ends on a tense dare, creating immediate intrigue\",\"confidence\":\"high\"}",
+          "reasoning": "We need to pick which clip is more arresting, makes sense without context, ends on a hook. Clip1: a confrontation about a watch, accusation, but ends with Juliana lunging, finger toward Gerald. It's a bit generic courtroom drama. Clip2: more dialogue, includes \"You planted it!\" then more sibling rivalry, mention of emerald signet ring in frozen blackthorn briars, a challenge to retrieve it before magistrate arrives. Ends with that challenge, which is a hook. More vivid imagery, more intrigue. So choose Clip2.\n\nProvide JSON with choice 2, reason one sentence, confidence high."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.373308055,
+      "prompt_tokens": 626,
+      "prompt_time": 0.196744354,
+      "completion_tokens": 171,
+      "completion_time": 0.354068277,
+      "total_tokens": 797,
+      "total_time": 0.550812631,
+      "completion_tokens_details": {
+        "reasoning_tokens": 128
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_ca5edfaab2",
+    "x_groq": {
+      "id": "req_01m6x6tqj0e4e9m916wt03mb2k",
+      "seed": 703482897
+    },
+    "service_tier": "on_demand"
+  }
+}

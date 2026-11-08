@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "ab_random_legal_ep017",
+  "system": "You choose which clips get posted as ads for a vertical drama app.\n\nYou will see two clips taken from the same show, written out as everything that\nhappens in them. You have never seen the show. Pick the ONE you would post to\nstop a scrolling viewer and make them open the app.\n\nJudge only on: does something arresting happen immediately, does it make sense\nwithout context, and does it stop at a moment that leaves you needing more.\nIgnore length. Ignore which one you were shown first.\n\nYou must choose. Reply with JSON only:\n{\n  \"choice\": 1 or 2,\n  \"reason\": \"<one sentence>\",\n  \"confidence\": \"high\" | \"low\"\n}",
+  "prompt": "CLIP 1:\nJULIANA: \"You cannot promise that.\"\nALEXANDER: \"I just did.\"\n[action] Alexander squeezes Juliana's hands reassuringly as she rests her fingertips against his skin. The scene fades to black.\n[action] Juliana wrings out a clean linen cloth from the basin and tenderly dabs at the fresh cuts and abrasions on the back of Alexander's right hand.\nJULIANA: \"You were bleeding last night.\"\nALEXANDER: \"So were you.\"\nJULIANA: \"You make it very difficult to argue with you.\"\n[action] Juliana returns the damp cloth to the ceramic basin, her expression turning somber and reflective.\nJULIANA: \"I was frightened.\"\nALEXANDER: \"Of them?\"\n\n-----\n\nCLIP 2:\nALEXANDER: \"For what?\"\nJULIANA: \"For standing between me and those men.\"\nALEXANDER: \"I would do it again.\"\nJULIANA: \"Even if there were ten of them?\"\nALEXANDER: \"As long as I draw breath...\"\n[action] Alexander drops to one knee before Juliana, gently taking her trembling, bandaged hands into his large, weathered palms.\nALEXANDER: \"...no one will hurt you again.\"\nJULIANA: \"You cannot promise that.\"\nALEXANDER: \"I just did.\"\n[action] Alexander squeezes Juliana's hands reassuringly as she rests her fingertips against his skin. The scene fades to black.\n\nWhich would you post?",
+  "response_text": "{\"choice\":2,\"reason\":\"It opens with a tense confrontation and a protective kneeling gesture that ends on a promise, creating immediate drama and a hook for more.\",\"confidence\":\"high\"}",
+  "response_payload": {
+    "id": "chatcmpl-01684c3f-6af7-48fc-9b01-554c117d32a3",
+    "object": "chat.completion",
+    "created": 1794128852,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"choice\":2,\"reason\":\"It opens with a tense confrontation and a protective kneeling gesture that ends on a promise, creating immediate drama and a hook for more.\",\"confidence\":\"high\"}",
+          "reasoning": "We need to pick which clip is more arresting, makes sense without context, ends on a hook. Clip 1: starts with dialogue about promise, then actions, then more dialogue about bleeding, fear, etc. Ends with \"Of them?\" No clear hook. Clip 2: starts with conflict, mentions men, promise, kneeling, protective gesture, ends with same \"I just did.\" then squeezes hands, fades to black. Ends on promise, tension. Clip 2 seems more dramatic, immediate conflict, hook. So choose 2. Provide JSON."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.367832077,
+      "prompt_tokens": 573,
+      "prompt_time": 0.075877987,
+      "completion_tokens": 164,
+      "completion_time": 0.340063963,
+      "total_tokens": 737,
+      "total_time": 0.41594195,
+      "completion_tokens_details": {
+        "reasoning_tokens": 117
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_ca5edfaab2",
+    "x_groq": {
+      "id": "req_01m6x6kd08ew684axpqw2kysdx",
+      "seed": 1355780551
+    },
+    "service_tier": "on_demand"
+  }
+}

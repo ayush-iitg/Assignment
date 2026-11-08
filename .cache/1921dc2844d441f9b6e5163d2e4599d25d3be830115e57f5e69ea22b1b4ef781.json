@@ -1,0 +1,20 @@
+{
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "tag": "gate_p_001_m1",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\nJULIANA: \"You knew this before I walked through those doors!\"\nJULIANA: \"You let me come here...\"\nJULIANA: \"You let me dress in my mother's gown...\"\nJULIANA: \"You let me believe I was walking toward my husband!\"\nGERALD: \"I changed my mind.\"\nJULIANA: \"So that is what I was worth to you?\"\nGERALD: \"You have nothing to offer me anymore.\"\nGERALD: \"I cannot marry a woman of such plainness and low value...\"\nGERALD: \"...when Clarissa is the true jewel of the county.\"",
+  "text": "{\n  \"who_is_the_main_character\": \"Juliana (the clip names her, but provides no other identifying details like age or profession)\",\n  \"what_is_at_stake\": \"Juliana's marriage and social standing, as Gerald is breaking off the engagement to marry Clarissa instead\",\n  \"what_question_are_you_left_with\": \"How will Juliana react to this public humiliation and what will she do next?\",\n  \"would_you_keep_watching\": \"yes, to see how Juliana responds to being discarded for 'plainness'\",\n  \"passes\": {\n    \"character_identifiable\": true,\n    \"stakes_clear\": true,\n    \"ends_unresolved\": true,\n    \"would_watch\": true\n  }\n}",
+  "parsed": {
+    "who_is_the_main_character": "Juliana (the clip names her, but provides no other identifying details like age or profession)",
+    "what_is_at_stake": "Juliana's marriage and social standing, as Gerald is breaking off the engagement to marry Clarissa instead",
+    "what_question_are_you_left_with": "How will Juliana react to this public humiliation and what will she do next?",
+    "would_you_keep_watching": "yes, to see how Juliana responds to being discarded for 'plainness'",
+    "passes": {
+      "character_identifiable": true,
+      "stakes_clear": true,
+      "ends_unresolved": true,
+      "would_watch": true
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "ab_random_legal_ep002",
+  "system": "You choose which clips get posted as ads for a vertical drama app.\n\nYou will see two clips taken from the same show, written out as everything that\nhappens in them. You have never seen the show. Pick the ONE you would post to\nstop a scrolling viewer and make them open the app.\n\nJudge only on: does something arresting happen immediately, does it make sense\nwithout context, and does it stop at a moment that leaves you needing more.\nIgnore length. Ignore which one you were shown first.\n\nYou must choose. Reply with JSON only:\n{\n  \"choice\": 1 or 2,\n  \"reason\": \"<one sentence>\",\n  \"confidence\": \"high\" | \"low\"\n}",
+  "prompt": "CLIP 1:\nGERALD: \"Promises change when a better choice appears.\"\nJULIANA: \"A better choice? Is that what she is?\"\nGERALD: \"She is what I should have chosen from the beginning.\"\nJULIANA: \"Father...\"\nJULIANA: \"Surely you will not let him humiliate me like this?\"\nBLOND NOBLEMAN: \"Gerald has made his choice. Accept it, Juliana.\"\nBLOND NOBLEMAN: \"Do not disgrace us further.\"\nJULIANA: \"You won't even look at me.\"\n\n-----\n\nCLIP 2:\nCLARISSA: \"Gerald needs a real lady...\"\nCLARISSA: \"...not a dull creature who hides in her mother's apothecary herbs.\"\n[action] The matriarch steps into the center aisle, glaring down at Juliana with cold superiority.\nOFF-SCREEN VOICE: \"Oh, don't look so wounded, Juliana.\"\nOFF-SCREEN VOICE: \"You should be grateful you're at least allowed to attend the wedding.\"\nGERALD: \"Go home quietly, Juliana. At least leave this chapel with some dignity.\"\nJULIANA: \"Dignity?\"\nJULIANA: \"You abandoned a woman who trusted you...\"\nJULIANA: \"...because another woman promised you greater beauty and wealth.\"\nJULIANA: \"Do not mistake my heartbreak for your victory, Gerald.\"\nJULIANA: \"You wanted this entire chapel to believe that I was not worthy of you. But you have shown them something far more valuable.\"\nJULIANA: \"You have shown them exactly what your word is worth.\"\n[action] Juliana lifts her chin high, commanding the space with unassailable dignity.\nJULIANA: \"I may leave this chapel without a husband...\"\n\nWhich would you post?",
+  "text": "{\"choice\":2,\"reason\":\"The intense confrontation and Juliana\u2019s defiant climax create immediate tension and a clear hook for viewers\",\"confidence\":\"high\"}",
+  "parsed": {
+    "choice": 2,
+    "reason": "The intense confrontation and Juliana\u2019s defiant climax create immediate tension and a clear hook for viewers",
+    "confidence": "high"
+  }
+}

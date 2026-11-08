@@ -1,0 +1,20 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "gate_p_027_a",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\nJULIANA: \"The physicians were not saving her!\"\nBLOND NOBLEMAN: \"My aunt has been wasting away for months.\"\nBLOND NOBLEMAN: \"And now we find an unknown maid alone beside her bed...\"\nBLOND NOBLEMAN: \"...holding a substance no one authorized her to give.\"\nJULIANA: \"It is an antidote.\"\nCATHERINE: \"An antidote to what?\"\nBLOND NOBLEMAN: \"Answer her.\"\nJULIANA: \"Poison.\"\nBLOND NOBLEMAN: \"Poison.\"\nJULIANA: \"Someone has been poisoning Her Grace.\"\nCATHERINE: \"You hear that?!\"\nCATHERINE: \"She admits she has been giving the Duchess poison in secret!\"",
+  "text": "{\"who_is_the_main_character\":\"The clip does not explicitly label a main character; Juliana has the most dialogue and appears central\",\"what_is_at_stake\":\"The health/life of Her Grace (the Duchess) is threatened by poison\",\"what_question_are_you_left_with\":\"Who is actually responsible for the poisoning and what will happen to the maid?\",\"would_you_keep_watching\":\"maybe, the intrigue hints at a larger mystery\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":true,\"ends_unresolved\":true,\"would_watch\":true}}",
+  "parsed": {
+    "who_is_the_main_character": "The clip does not explicitly label a main character; Juliana has the most dialogue and appears central",
+    "what_is_at_stake": "The health/life of Her Grace (the Duchess) is threatened by poison",
+    "what_question_are_you_left_with": "Who is actually responsible for the poisoning and what will happen to the maid?",
+    "would_you_keep_watching": "maybe, the intrigue hints at a larger mystery",
+    "passes": {
+      "character_identifiable": true,
+      "stakes_clear": true,
+      "ends_unresolved": true,
+      "would_watch": true
+    }
+  }
+}

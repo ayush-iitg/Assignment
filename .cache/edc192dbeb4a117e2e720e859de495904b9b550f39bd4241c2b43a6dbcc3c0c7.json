@@ -1,0 +1,20 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "gate_p_020_a",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\n[action] Catherine's gloved hand sets her fine porcelain teacup down onto the silver tray with a delicate clatter.\n[sfx] Sharp porcelain chime of teacup meeting saucer.\nCATHERINE: \"Let the peasants rot in their barns.\"\nCATHERINE: \"Let them pray to their weeds.\"\nRUPERT: \"You have no rival here, Catherine.\"\nRUPERT: \"No one to stand in your way.\"\nCATHERINE: \"Once the old Duchess is gone...\"\nCATHERINE: \"...Ashbury will finally belong to us.\"\n[action] Catherine rises from her chair in one regal motion and glides toward the towering window overlooking the vast estate grounds.\nCATHERINE: \"This house will only bow to me.\"",
+  "text": "{\"who_is_the_main_character\":\"Catherine (named in the clip)\",\"what_is_at_stake\":\"Control of Ashbury and dominance over the peasants after the old Duchess dies\",\"what_question_are_you_left_with\":\"Will Catherine succeed in seizing the estate and how will others react?\",\"would_you_keep_watching\":\"maybe, the power struggle feels intriguing\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":true,\"ends_unresolved\":true,\"would_watch\":true}}",
+  "parsed": {
+    "who_is_the_main_character": "Catherine (named in the clip)",
+    "what_is_at_stake": "Control of Ashbury and dominance over the peasants after the old Duchess dies",
+    "what_question_are_you_left_with": "Will Catherine succeed in seizing the estate and how will others react?",
+    "would_you_keep_watching": "maybe, the power struggle feels intriguing",
+    "passes": {
+      "character_identifiable": true,
+      "stakes_clear": true,
+      "ends_unresolved": true,
+      "would_watch": true
+    }
+  }
+}

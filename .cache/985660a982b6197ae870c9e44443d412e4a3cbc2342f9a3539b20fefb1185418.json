@@ -1,0 +1,13 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "ab_random_legal_ep001",
+  "system": "You choose which clips get posted as ads for a vertical drama app.\n\nYou will see two clips taken from the same show, written out as everything that\nhappens in them. You have never seen the show. Pick the ONE you would post to\nstop a scrolling viewer and make them open the app.\n\nJudge only on: does something arresting happen immediately, does it make sense\nwithout context, and does it stop at a moment that leaves you needing more.\nIgnore length. Ignore which one you were shown first.\n\nYou must choose. Reply with JSON only:\n{\n  \"choice\": 1 or 2,\n  \"reason\": \"<one sentence>\",\n  \"confidence\": \"high\" | \"low\"\n}",
+  "prompt": "CLIP 1:\nJULIANA: \"How long?\"\nCLARISSA: \"Long enough to know he was never going to marry you.\"\n[action] Juliana turns abruptly toward the first row of pews, where her elderly father sits gripping an ornate brass cane.\nJULIANA: \"Father...\"\nJULIANA: \"Tell them this is a mistake.\"\nJULIANA: \"Father... please look at me.\"\n[action] The father tightens his jaw and stony expression, refusing to offer a single word or look.\nMATRIARCH: \"Enough!\"\nMATRIARCH: \"You have embarrassed this family long enough.\"\n\n-----\n\nCLIP 2:\nJULIANA: \"You knew this before I walked through those doors!\"\nJULIANA: \"You let me come here...\"\nJULIANA: \"You let me dress in my mother's gown...\"\nJULIANA: \"You let me believe I was walking toward my husband!\"\nGERALD: \"I changed my mind.\"\nJULIANA: \"You swore you loved me!\"\nCLARISSA: \"People change their minds, sister.\"\nJULIANA: \"And you knew?\"\n\nWhich would you post?",
+  "text": "{\"choice\":2,\"reason\":\"It erupts with accusations and ends on a unanswered question, creating immediate tension and a hook for viewers.\",\"confidence\":\"high\"}",
+  "parsed": {
+    "choice": 2,
+    "reason": "It erupts with accusations and ends on a unanswered question, creating immediate tension and a hook for viewers.",
+    "confidence": "high"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "tag": "gate_p_004_a",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\nTHE PRIEST: \"...husband and wife!\"\n[sfx] Dramatic musical chord swelling.\nGERALD: \"You have thrown yourself away!\"\nGERALD: \"For a penniless nobody!\"\nJULIANA: \"I would rather choose my own life...\"\nJULIANA: \"...than spend another moment begging for yours.\"\n[action] Gerald recoils slightly, mouth agape.\nLADY ASHCROFT: \"Do not bring this man anywhere near Ashcroft Manor!\"\nLADY ASHCROFT: \"You are disowned!\"",
+  "text": "{\n  \"who_is_the_main_character\": \"Juliana (the clip names her, but does not describe her appearance or role beyond being the one speaking to Gerald and Lady Ashcroft)\",\n  \"what_is_at_stake\": \"Juliana's social standing and family inheritance, as she is being disowned by Lady Ashcroft for marrying a man Gerald calls a 'penniless nobody'\",\n  \"what_question_are_you_left_with\": \"Who is the 'penniless nobody' Juliana married, and what will happen to her now that she is disowned?\",\n  \"would_you_keep_watching\": \"yes, the immediate threat of disownment creates a clear hook to see how she survives this fallout\",\n  \"passes\": {\n    \"character_identifiable\": true,\n    \"stakes_clear\": true,\n    \"ends_unresolved\": true,\n    \"would_watch\": true\n  }\n}",
+  "parsed": {
+    "who_is_the_main_character": "Juliana (the clip names her, but does not describe her appearance or role beyond being the one speaking to Gerald and Lady Ashcroft)",
+    "what_is_at_stake": "Juliana's social standing and family inheritance, as she is being disowned by Lady Ashcroft for marrying a man Gerald calls a 'penniless nobody'",
+    "what_question_are_you_left_with": "Who is the 'penniless nobody' Juliana married, and what will happen to her now that she is disowned?",
+    "would_you_keep_watching": "yes, the immediate threat of disownment creates a clear hook to see how she survives this fallout",
+    "passes": {
+      "character_identifiable": true,
+      "stakes_clear": true,
+      "ends_unresolved": true,
+      "would_watch": true
+    }
+  }
+}

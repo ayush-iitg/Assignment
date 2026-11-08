@@ -1,0 +1,20 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "gate_p_009_a",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\n[action] Alexander steps forward and unlatches the cottage door, opening it into the pouring rain.\nPEASANT MOTHER: \"Please! They told me there was a woman here who knows herbs. My boy is burning with fever!\"\nJULIANA: \"Bring him here. Quickly.\"\n[action] The trembling mother gently lays the feverish boy down atop the wooden table as Juliana leans in close.\nJULIANA: \"He seems very unwell, but he is resting steadily. How long has he been like this?\"\nPEASANT MOTHER: \"Since yesterday morning. He has barely eaten since sunset.\"\n[action] Juliana lifts the weathered herbal book and rapidly browses the handwritten pages.\nJULIANA: \"Feverfew... Not alone.\"\nJULIANA: \"Chamomile... and willow bark.\"\nALEXANDER: \"You're certain?\"\nJULIANA: \"I have to be.\"\n[action] Juliana quickly grabs bundles of dried herbs from the table and turns to Alexander.\nJULIANA: \"Alexander, I need hot water.\"\nALEXANDER: \"I'm on it.\"\n[action] Alexander hurries to the hearth and lifts a boiling iron kettle from the hearth chain, while the mother buries her face in her hands.\nPEASANT MOTHER: \"Please save him.\"\n[action] Alexander returns and pours steaming hot water into the stone mortar as Juliana prepares the remedy.\nJULIANA: \"He is not beyond saving.\"\n[action] The child swallows weakly and lets out a soft cough.\nPEASANT MOTHER: \"Why isn't it working?\"",
+  "text": "{\"who_is_the_main_character\":\"Juliana (the healer)\",\"what_is_at_stake\":\"The feverish child's life is in danger\",\"what_question_are_you_left_with\":\"Will the remedy Juliana prepares be enough to save the child?\",\"would_you_keep_watching\":\"maybe, the tension of a life\u2011or\u2011death cure is intriguing\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":true,\"ends_unresolved\":true,\"would_watch\":false}}",
+  "parsed": {
+    "who_is_the_main_character": "Juliana (the healer)",
+    "what_is_at_stake": "The feverish child's life is in danger",
+    "what_question_are_you_left_with": "Will the remedy Juliana prepares be enough to save the child?",
+    "would_you_keep_watching": "maybe, the tension of a life\u2011or\u2011death cure is intriguing",
+    "passes": {
+      "character_identifiable": true,
+      "stakes_clear": true,
+      "ends_unresolved": true,
+      "would_watch": false
+    }
+  }
+}

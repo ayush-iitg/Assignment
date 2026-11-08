@@ -1,0 +1,13 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "ab_random_legal_ep004",
+  "system": "You choose which clips get posted as ads for a vertical drama app.\n\nYou will see two clips taken from the same show, written out as everything that\nhappens in them. You have never seen the show. Pick the ONE you would post to\nstop a scrolling viewer and make them open the app.\n\nJudge only on: does something arresting happen immediately, does it make sense\nwithout context, and does it stop at a moment that leaves you needing more.\nIgnore length. Ignore which one you were shown first.\n\nYou must choose. Reply with JSON only:\n{\n  \"choice\": 1 or 2,\n  \"reason\": \"<one sentence>\",\n  \"confidence\": \"high\" | \"low\"\n}",
+  "prompt": "CLIP 1:\nTHE PRIEST: \"...husband and wife!\"\n[sfx] Dramatic musical chord swelling.\nGERALD: \"You have thrown yourself away!\"\nGERALD: \"For a penniless nobody!\"\nJULIANA: \"I would rather choose my own life...\"\nJULIANA: \"...than spend another moment begging for yours.\"\n[action] Gerald recoils slightly, mouth agape.\nLADY ASHCROFT: \"Do not bring this man anywhere near Ashcroft Manor!\"\nLADY ASHCROFT: \"You are disowned!\"\n\n-----\n\nCLIP 2:\n[action] He folds his fingers over hers, holding her hand with protective firmness.\nTHE PRIEST: \"My- My Lady...\"\nTHE PRIEST: \"Are you certain?\"\nJULIANA: \"I am.\"\nTHE PRIEST: \"Then... let us proceed.\"\nMYSTERIOUS BEARDED MAN: \"You need not say anything you do not mean.\"\nJULIANA: \"I truly mean it.\"\n[action] The Mysterious Bearded Man carefully slides the band onto Juliana's finger.\nMYSTERIOUS BEARDED MAN: \"You have my protection.\"\nMYSTERIOUS BEARDED MAN: \"You have my respect.\"\nMYSTERIOUS BEARDED MAN: \"And you have my word.\"\nTHE PRIEST: \"By the authority entrusted to me, I now pronounce you...\"\nTHE PRIEST: \"...husband and wife!\"\n[sfx] Dramatic musical chord swelling.\nGERALD: \"You have thrown yourself away!\"\nGERALD: \"For a penniless nobody!\"\n\nWhich would you post?",
+  "text": "{\"choice\":2,\"reason\":\"It builds tension with a secretive ceremony then ends on a shocking outburst, leaving a clear hook.\",\"confidence\":\"high\"}",
+  "parsed": {
+    "choice": 2,
+    "reason": "It builds tension with a secretive ceremony then ends on a shocking outburst, leaving a clear hook.",
+    "confidence": "high"
+  }
+}

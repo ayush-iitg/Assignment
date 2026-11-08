@@ -1,0 +1,48 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "abmirror_random_legal_ep042",
+  "system": "You choose which clips get posted as ads for a vertical drama app.\n\nYou will see two clips taken from the same show, written out as everything that\nhappens in them. You have never seen the show. Pick the ONE you would post to\nstop a scrolling viewer and make them open the app.\n\nJudge only on: does something arresting happen immediately, does it make sense\nwithout context, and does it stop at a moment that leaves you needing more.\nIgnore length. Ignore which one you were shown first.\n\nYou must choose. Reply with JSON only:\n{\n  \"choice\": 1 or 2,\n  \"reason\": \"<one sentence>\",\n  \"confidence\": \"high\" | \"low\"\n}",
+  "prompt": "CLIP 1:\nALEXANDER: \"And yet, here I stand. That is the lie you built your life upon.\"\nALEXANDER'S MOTHER: \"Alexander...\"\n[action] Alexander halts his march as his mother reaches him, placing her frail hands gently upon his chest.\nALEXANDER: \"Mother.\"\n[action] His mother gently cradles Alexander's scarred cheek, tears streaming down her face as guests in the background watch in stunned silence.\nALEXANDER'S MOTHER: \"Look at you... my beautiful boy.\"\n\n-----\n\nCLIP 2:\nALEXANDER: \"Juliana.\"\nBLOND NOBLEMAN: \"Guards! Arrest this imposter!\"\nROYAL GUARD: \"We will not.\"\nBLOND NOBLEMAN: \"I said arrest him!\"\nBLOND NOBLEMAN: \"Why?!\"\nROYAL GUARD: \"Because we know who he is.\"\nCATHERINE: \"Rupert...\"\nBLOND NOBLEMAN: \"You cannot be him. Alexander died!\"\nALEXANDER: \"And yet, here I stand. That is the lie you built your life upon.\"\n\nWhich would you post?",
+  "response_text": "{\"choice\":2,\"reason\":\"It launches with a tense confrontation and a shocking identity twist that ends on a cliffhanger, compelling viewers to want more.\",\"confidence\":\"high\"}",
+  "response_payload": {
+    "id": "chatcmpl-a9d57cd1-f677-4fb3-bced-b1d47cd234d2",
+    "object": "chat.completion",
+    "created": 1794129030,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"choice\":2,\"reason\":\"It launches with a tense confrontation and a shocking identity twist that ends on a cliffhanger, compelling viewers to want more.\",\"confidence\":\"high\"}",
+          "reasoning": "We need to pick which clip is more arresting, makes sense without context, ends on a hook. Clip1: emotional mother/son reunion, but may need context. Clip2: multiple characters, accusation, twist that Alexander is alive, ends with same line as clip1, but includes tension, arrest, identity reveal. Clip2 seems more hooky. So choose 2. Provide JSON."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.316958212,
+      "prompt_tokens": 494,
+      "prompt_time": 0.013293923,
+      "completion_tokens": 126,
+      "completion_time": 0.260501728,
+      "total_tokens": 620,
+      "total_time": 0.273795651,
+      "prompt_tokens_details": {
+        "cached_tokens": 256
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 82
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_64b2f1c926",
+    "x_groq": {
+      "id": "req_01m6x6rv52ew7anjqngfkxwd6w",
+      "seed": 1152067307
+    },
+    "service_tier": "on_demand"
+  }
+}

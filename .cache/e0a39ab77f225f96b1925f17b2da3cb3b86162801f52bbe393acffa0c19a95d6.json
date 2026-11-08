@@ -1,0 +1,20 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "gate_p_024_a",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\n[action] The noblewoman whips around sharply, thrusting the tip of her riding crop directly into Prudence's face.\nNOBLEWOMAN: \"Do you want the same punishment?\"\nPRUDENCE: \"No, my lady.\"\n[action] Juliana grips a coarse scrubbing brush with both hands and begins vigorously scraping the thick black ash across the hearthstones.\n[sfx] Rhythmic, harsh rasping sound of bristles scraping against stone.\nNOBLEWOMAN: \"That is where clever little servants belong.\"\nJULIANA: \"Let her think I am only a maid.\"\n[action] Juliana pauses scrubbing. Her soot-caked fingers reach into the deep pocket of her apron, carefully feeling the worn leather cover of her mother's remedy journal and the glass dropper bottle securely concealed within.\nJULIANA: \"Let her believe I am ignorant.\"\n[action] Juliana raises her head. Smudges of dark soot stain her fair cheek, but her piercing blue eyes burn with unwavering defiance and unyielding resolve as she stares toward the hallway.\nJULIANA: \"I will return. You cannot stop the healer.\"",
+  "text": "{\"who_is_the_main_character\":\"Juliana (named in the clip)\",\"what_is_at_stake\":\"Juliana is trying to protect the healer and avoid punishment from the noblewoman, risking discovery and further punishment\",\"what_question_are_you_left_with\":\"Will Juliana succeed in returning and protecting the healer, or will the noblewoman stop her?\",\"would_you_keep_watching\":\"maybe, the tension and defiance are intriguing\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":true,\"ends_unresolved\":true,\"would_watch\":true}}",
+  "parsed": {
+    "who_is_the_main_character": "Juliana (named in the clip)",
+    "what_is_at_stake": "Juliana is trying to protect the healer and avoid punishment from the noblewoman, risking discovery and further punishment",
+    "what_question_are_you_left_with": "Will Juliana succeed in returning and protecting the healer, or will the noblewoman stop her?",
+    "would_you_keep_watching": "maybe, the tension and defiance are intriguing",
+    "passes": {
+      "character_identifiable": true,
+      "stakes_clear": true,
+      "ends_unresolved": true,
+      "would_watch": true
+    }
+  }
+}

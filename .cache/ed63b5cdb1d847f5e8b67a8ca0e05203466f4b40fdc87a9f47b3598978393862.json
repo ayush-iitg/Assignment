@@ -1,0 +1,20 @@
+{
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "tag": "gate_p_023_a",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\nPRUDENCE: \"What are you saying?\"\nJULIANA: \"Someone is poisoning her.\"\n[sfx] Sharp intake of breath from Prudence.\nPRUDENCE: \"Poison?\"\nJULIANA: \"Arsenic.\"\n[sfx] Sudden violent coughing and sputtering from the Duchess.\nPRUDENCE: \"Can you save her?\"\nJULIANA: \"I can try.\"\n[sfx] Heavy, rhythmic scraping of stone pestle grinding charcoal and dried herbs.\nJULIANA: \"The charcoal may help remove what is still inside her. We must act quickly.\"\n[sfx] Sudden muffled thump and heavy footsteps echoing from the hallway outside the door!\nPRUDENCE: \"Juliana... someone is coming.\"",
+  "text": "{\n  \"who_is_the_main_character\": \"The clip features Prudence and Juliana, but never identifies a single main character or provides context for who they are.\",\n  \"what_is_at_stake\": \"A character referred to as 'the Duchess' is dying from arsenic poisoning, and the characters are attempting to save her while someone is approaching the door.\",\n  \"what_question_are_you_left_with\": \"Who is the Duchess, who is the person coming through the door, and what is the relationship between Prudence and Juliana?\",\n  \"would_you_keep_watching\": \"no, the clip provides zero context on who these people are or why I should care about the Duchess.\",\n  \"passes\": {\n    \"character_identifiable\": false,\n    \"stakes_clear\": false,\n    \"ends_unresolved\": true,\n    \"would_watch\": false\n  }\n}",
+  "parsed": {
+    "who_is_the_main_character": "The clip features Prudence and Juliana, but never identifies a single main character or provides context for who they are.",
+    "what_is_at_stake": "A character referred to as 'the Duchess' is dying from arsenic poisoning, and the characters are attempting to save her while someone is approaching the door.",
+    "what_question_are_you_left_with": "Who is the Duchess, who is the person coming through the door, and what is the relationship between Prudence and Juliana?",
+    "would_you_keep_watching": "no, the clip provides zero context on who these people are or why I should care about the Duchess.",
+    "passes": {
+      "character_identifiable": false,
+      "stakes_clear": false,
+      "ends_unresolved": true,
+      "would_watch": false
+    }
+  }
+}

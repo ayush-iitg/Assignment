@@ -1,0 +1,13 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "ab_random_hooked_ep012",
+  "system": "You choose which clips get posted as ads for a vertical drama app.\n\nYou will see two clips taken from the same show, written out as everything that\nhappens in them. You have never seen the show. Pick the ONE you would post to\nstop a scrolling viewer and make them open the app.\n\nJudge only on: does something arresting happen immediately, does it make sense\nwithout context, and does it stop at a moment that leaves you needing more.\nIgnore length. Ignore which one you were shown first.\n\nYou must choose. Reply with JSON only:\n{\n  \"choice\": 1 or 2,\n  \"reason\": \"<one sentence>\",\n  \"confidence\": \"high\" | \"low\"\n}",
+  "prompt": "CLIP 1:\nJULIANA: \"Then someone put it there!\"\nGERALD: \"The proof is in his coat, Juliana. A valuable pocket watch doesn't just walk into a beggar's pocket.\"\nALEXANDER: \"I have never touched your property.\"\nGERALD: \"Then perhaps your wife should explain why it was found in your coat.\"\nJULIANA: \"You planted it!\"\n[action] Juliana lunges a step forward, jabbing an accusing finger toward Gerald.\nCLARISSA: \"Oh, dear sister...\"\nCLARISSA: \"...still defending your broken scrap of a man?\"\nJULIANA: \"Name your price, Clarissa. I know you.\"\n\n-----\n\nCLIP 2:\nJULIANA: \"You planted it!\"\n[action] Juliana lunges a step forward, jabbing an accusing finger toward Gerald.\nCLARISSA: \"Oh, dear sister...\"\nCLARISSA: \"...still defending your broken scrap of a man?\"\nJULIANA: \"Name your price, Clarissa. I know you.\"\nCLARISSA: \"You always were clever, Juliana. Always searching for some way to escape.\"\nCLARISSA: \"Perhaps I can give you one.\"\nJULIANA: \"What do you want?\"\nCLARISSA: \"I want to see you crawl, sister.\"\nCLARISSA: \"My emerald signet ring fell deep into the frozen blackthorn briars at Ashworth Manor. The thorns have grown over it...\"\nCLARISSA: \"...sharp as steel. The ground is frozen, like pure ice.\"\n[action] Gerald bursts into a loud, mocking laugh beside the stony Constable.\nCLARISSA: \"You will retrieve it with your bare hands before the magistrate arrives.\"\n\nWhich would you post?",
+  "text": "{\"choice\":2,\"reason\":\"It escalates quickly with vivid stakes and a cliffhanger challenge, pulling viewers in for more\",\"confidence\":\"high\"}",
+  "parsed": {
+    "choice": 2,
+    "reason": "It escalates quickly with vivid stakes and a cliffhanger challenge, pulling viewers in for more",
+    "confidence": "high"
+  }
+}

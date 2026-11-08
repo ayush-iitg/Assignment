@@ -1,0 +1,20 @@
+{
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "tag": "gate_p_flagship",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\nLADY ASHCROFT: \"You are disowned!\"\nCLARISSA: \"Fail, or refuse, and your husband hangs from the gallows.\"\nCATHERINE: \"...before he sends you to the gallows.\"\nCATHERINE: \"One flame, and your mother's life's work becomes ash.\"\nHIGH PRIEST: \"And I have the power to undo in one hearing what took you three years to steal!\"",
+  "text": "{\n  \"who_is_the_main_character\": \"The clip features multiple speakers (Lady Ashcroft, Clarissa, Catherine, High Priest) but never identifies a single main character or provides context for who is being threatened.\",\n  \"what_is_at_stake\": \"The clip lists several high-stakes threats: a husband's execution, a mother's life's work being destroyed, and a legal/religious power to undo a three-year theft. However, it is unclear which threat is the primary conflict or how they relate to each other.\",\n  \"what_question_are_you_left_with\": \"Who is the person being threatened, and what is the actual situation connecting these disparate threats?\",\n  \"would_you_keep_watching\": \"no, the clip is just a list of threats with no context, characters, or narrative flow to hook a viewer.\",\n  \"passes\": {\n    \"character_identifiable\": false,\n    \"stakes_clear\": false,\n    \"ends_unresolved\": true,\n    \"would_watch\": false\n  }\n}",
+  "parsed": {
+    "who_is_the_main_character": "The clip features multiple speakers (Lady Ashcroft, Clarissa, Catherine, High Priest) but never identifies a single main character or provides context for who is being threatened.",
+    "what_is_at_stake": "The clip lists several high-stakes threats: a husband's execution, a mother's life's work being destroyed, and a legal/religious power to undo a three-year theft. However, it is unclear which threat is the primary conflict or how they relate to each other.",
+    "what_question_are_you_left_with": "Who is the person being threatened, and what is the actual situation connecting these disparate threats?",
+    "would_you_keep_watching": "no, the clip is just a list of threats with no context, characters, or narrative flow to hook a viewer.",
+    "passes": {
+      "character_identifiable": false,
+      "stakes_clear": false,
+      "ends_unresolved": true,
+      "would_watch": false
+    }
+  }
+}

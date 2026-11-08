@@ -1,0 +1,33 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "rank",
+  "system": "You are the editor deciding posting order for promo clips from one show.\nYou will see each promo's hook, cliffhanger and a blind viewer's comprehension result.\n\nReply with JSON only, and keep it short:\n{\n  \"order\": [\"<promo_id>\", \"<promo_id>\", ...],\n  \"post_first\": \"<promo_id>\",\n  \"post_first_reason\": \"<two sentences maximum>\",\n  \"rationale\": {\"<promo_id>\": \"<one short clause>\"}\n}\n\nInclude every promo_id you were given in \"order\". Put a rationale for the top 5\nonly. Favour promos a stranger understood, that open on something physical or\nshocking, and that leave a question. Spread hook types rather than posting four\nof a kind.",
+  "prompt": "p_012_a | episodes [12] | 34s | hook_type moral outrage | code score 0.94 | blind viewer 3/4\n  hook: Juliana erupts, shouting \u201cYou planted it!\u201d\n  cliffhanger: Clarissa orders Juliana to retrieve the emerald signet ring with her bare hands before the magistrate arrives, leaving the task\u2019s outcome unknown\n\np_028_a | episodes [28] | 23s | hook_type power reversal | code score 0.94 | blind viewer 4/4\n  hook: Juliana erupts, demanding no one speak of her husband, instantly thrusting the viewer into a fierce power struggle.\n  cliffhanger: Catherine threatens that Juliana will be sent to the gallows, leaving her fate hanging.\n\np_046_a | episodes [46] | 36s | hook_type power reversal | code score 0.93 | blind viewer 4/4\n  hook: A High Priest declares he can erase three years of stolen love in a single hearing.\n  cliffhanger: Alexander threatens to bring the Crown down on the priest, leaving the verdict unknown.\n\np_047_a | episodes [47] | 30s | hook_type power reversal | code score 0.91 | blind viewer 4/4\n  hook: Catherine\u2019s desperate scream for mercy grabs attention instantly.\n  cliffhanger: Juliana\u2019s cold command that Catherine must scrub the floors leaves her fate hanging.\n\np_032_a | episodes [32] | 29s | hook_type power reversal | code score 0.91 | blind viewer 4/4\n  hook: Catherine\u2019s frantic scream \u201cWhy?!\u201d erupts as she confronts Juliana, instantly signaling a violent showdown.\n  cliffhanger: She hoists a searing branding rod over Juliana and threatens to see how brave she is when it touches her skin, cutting just before the impact.\n\np_004_a | episodes [4] | 22s | hook_type power reversal | code score 0.90 | blind viewer 3/4\n  hook: The priest\u2019s booming declaration \u201c...husband and wife!\u201d instantly reveals a shocking marriage.\n  cliffhanger: Lady Ashcroft\u2019s venomous \u201cYou are disowned!\u201d leaves the fate of the couple hanging.\n\np_033_a | episodes [33] | 22s | hook_type moral outrage | code score 0.90 | blind viewer 4/4\n  hook: Lord threatens that the county gaol will take her brother before sunrise, raising the stakes instantly.\n  cliffhanger: Maid begs, \"What do you want me to say?!\" leaving the lord's demand unresolved.\n\np_042_a | episodes [42] | 23s | hook_type moral outrage | code score 0.88 | blind viewer 4/4\n  hook: A furious nobleman shouts, \u201cGuards! Arrest this imposter!\u201d\n  cliffhanger: Alexander declares he\u2019s alive, exposing the lie the nobleman built his life on.\n\np_001_a | episodes [1] | 24s | hook_type moral outrage | code score 0.88 | blind viewer 3/4\n  hook: Juliana erupts, accusing someone of knowing a terrible secret before she even entered the room.\n  cliffhanger: She demands, \u201cAnd you knew?\u201d leaving the truth hanging.\n\np_044_a | episodes [44] | 48s | hook_type power reversal | code score 0.88 | blind viewer 4/4\n  hook: A royal guard slams Rupert to the ground, blood and dust flying.\n  cliffhanger: Catherine defiantly declares she loved Alexander before everything fell apart, leaving his cold stare unanswered.\n\np_048_a | episodes [48] | 39s | hook_type power reversal | code score 0.87 | blind viewer 4/4\n  hook: Catherine reveals she was humiliated in the chapel, sparking a vengeful plan.\n  cliffhanger: She orders that no one sees the priest arrive, leaving his fate unknown.\n\np_024_a | episodes [24] | 22s | hook_type moral outrage | code score 0.86 | blind viewer 4/4\n  hook: The noblewoman whips around and slams her riding crop into Prudence\u2019s face.\n  cliffhanger: Juliana declares she will return, vowing the noblewoman can\u2019t stop the healer.",
+  "text": "{\"order\":[\"p_024_a\",\"p_044_a\",\"p_033_a\",\"p_028_a\",\"p_042_a\",\"p_046_a\",\"p_012_a\",\"p_047_a\",\"p_001_a\",\"p_032_a\",\"p_048_a\",\"p_004_a\"],\"post_first\":\"p_024_a\",\"post_first_reason\":\"It\u2019s a moral\u2011outrage hook with a vivid, physical assault that a blind viewer fully grasped. The cliffhanger leaves Juliana\u2019s revenge unanswered.\",\"rationale\":{\"p_024_a\":\"physical shock and clear moral outrage\",\"p_044_a\":\"physical violence and power reversal\",\"p_033_a\":\"high blind score, moral outrage\",\"p_028_a\":\"strong power reversal, clear fate question\",\"p_042_a\":\"moral outrage, high comprehension\"}}",
+  "parsed": {
+    "order": [
+      "p_024_a",
+      "p_044_a",
+      "p_033_a",
+      "p_028_a",
+      "p_042_a",
+      "p_046_a",
+      "p_012_a",
+      "p_047_a",
+      "p_001_a",
+      "p_032_a",
+      "p_048_a",
+      "p_004_a"
+    ],
+    "post_first": "p_024_a",
+    "post_first_reason": "It\u2019s a moral\u2011outrage hook with a vivid, physical assault that a blind viewer fully grasped. The cliffhanger leaves Juliana\u2019s revenge unanswered.",
+    "rationale": {
+      "p_024_a": "physical shock and clear moral outrage",
+      "p_044_a": "physical violence and power reversal",
+      "p_033_a": "high blind score, moral outrage",
+      "p_028_a": "strong power reversal, clear fate question",
+      "p_042_a": "moral outrage, high comprehension"
+    }
+  }
+}

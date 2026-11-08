@@ -1,0 +1,18 @@
+{
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "tag": "rank",
+  "system": "You are the editor deciding posting order for promo clips from one show.\nYou will see each promo's hook, cliffhanger and a blind viewer's comprehension result.\n\nReply with JSON only, and keep it short:\n{\n  \"order\": [\"<promo_id>\", \"<promo_id>\", ...],\n  \"post_first\": \"<promo_id>\",\n  \"post_first_reason\": \"<two sentences maximum>\",\n  \"rationale\": {\"<promo_id>\": \"<one short clause>\"}\n}\n\nInclude every promo_id you were given in \"order\". Put a rationale for the top 5\nonly. Favour promos a stranger understood, that open on something physical or\nshocking, and that leave a question. Spread hook types rather than posting four\nof a kind.",
+  "prompt": "p_001_a | episodes [1] | 56s | hook_type power reversal | code score 0.85 | blind viewer 4/4\n  hook: A director slams a report on a table and accuses a junior employee of stealing nine million dollars.\n  cliffhanger: The junior employee calmly states that in nine minutes, the boardroom will no longer belong to the director.",
+  "text": "{\n  \"order\": [\"p_001_a\"],\n  \"post_first\": \"p_001_a\",\n  \"post_first_reason\": \"The physical act of slamming a report creates immediate visual tension. The specific nine-minute countdown leaves a compelling question about the impending power shift.\",\n  \"rationale\": {\n    \"p_001_a\": \"High-comprehension power reversal with a concrete time-based cliffhanger.\"\n  }\n}",
+  "parsed": {
+    "order": [
+      "p_001_a"
+    ],
+    "post_first": "p_001_a",
+    "post_first_reason": "The physical act of slamming a report creates immediate visual tension. The specific nine-minute countdown leaves a compelling question about the impending power shift.",
+    "rationale": {
+      "p_001_a": "High-comprehension power reversal with a concrete time-based cliffhanger."
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "tag": "gate_p_030_a",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\nRUPERT: \"And Juliana?\"\nELDER NOBLEMAN: \"She goes before the magistrate tomorrow.\"\nCATHERINE: \"She will hang. A perfect solution. The town will cheer as the witch's disgraced daughter faces the noose.\"\nRUPERT: \"I will write the arrest warrant myself.\"\nELDER NOBLEMAN: \"Tomorrow, she stops being a prisoner. She becomes a witch.\"",
+  "text": "{\n  \"who_is_the_main_character\": \"The clip features Rupert, Catherine, and an Elder Nobleman, but never identifies a single main character or protagonist.\",\n  \"what_is_at_stake\": \"Juliana is being reclassified from a prisoner to a witch to face execution by hanging, which the characters view as a solution to a town's problem.\",\n  \"what_question_are_you_left_with\": \"Who is Juliana, why is she being accused of witchcraft, and what is the specific conflict that makes her execution a 'perfect solution'?\",\n  \"would_you_keep_watching\": \"no, the clip is just a static conversation with no context, action, or visual interest to hook a new viewer.\",\n  \"passes\": {\n    \"character_identifiable\": false,\n    \"stakes_clear\": false,\n    \"ends_unresolved\": true,\n    \"would_watch\": false\n  }\n}",
+  "parsed": {
+    "who_is_the_main_character": "The clip features Rupert, Catherine, and an Elder Nobleman, but never identifies a single main character or protagonist.",
+    "what_is_at_stake": "Juliana is being reclassified from a prisoner to a witch to face execution by hanging, which the characters view as a solution to a town's problem.",
+    "what_question_are_you_left_with": "Who is Juliana, why is she being accused of witchcraft, and what is the specific conflict that makes her execution a 'perfect solution'?",
+    "would_you_keep_watching": "no, the clip is just a static conversation with no context, action, or visual interest to hook a new viewer.",
+    "passes": {
+      "character_identifiable": false,
+      "stakes_clear": false,
+      "ends_unresolved": true,
+      "would_watch": false
+    }
+  }
+}

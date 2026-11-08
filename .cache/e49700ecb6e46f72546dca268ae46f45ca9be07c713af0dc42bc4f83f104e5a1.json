@@ -1,0 +1,22 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "rank",
+  "system": "You are the editor deciding posting order for promo clips from one show.\nYou will see each promo's hook, cliffhanger and a blind viewer's comprehension result.\n\nReply with JSON only:\n{\n  \"order\": [\"<promo_id>\", \"<promo_id>\", ...],\n  \"rationale\": {\"<promo_id>\": \"<one sentence on why it sits here>\"},\n  \"post_first\": \"<promo_id>\",\n  \"post_first_reason\": \"<two sentences maximum>\"\n}\n\nFavour promos a stranger understood, that open on something physical or shocking,\nand that leave a question. Spread hook types rather than posting four of a kind.",
+  "prompt": "p_031_a | episodes [31] | 40s | hook_type power reversal | code score 0.89 | blind viewer 3/4\n  hook: Catherine\u2019s hysterical, mocking laugh about love instantly grabs attention.\n  cliffhanger: Catherine\u2019s expression freezes in shock as a blow lands, leaving the result unknown.\n\np_001_a | episodes [1] | 24s | hook_type moral outrage | code score 0.88 | blind viewer 3/4\n  hook: Juliana erupts, accusing someone of knowing a terrible secret before she even entered the room.\n  cliffhanger: She demands, \u201cAnd you knew?\u201d leaving the truth hanging.\n\np_024_a | episodes [24] | 22s | hook_type moral outrage | code score 0.86 | blind viewer 4/4\n  hook: The noblewoman whips around and slams her riding crop into Prudence\u2019s face.\n  cliffhanger: Juliana declares she will return, vowing the noblewoman can\u2019t stop the healer.",
+  "text": "{\"order\":[\"p_024_a\",\"p_031_a\",\"p_001_a\"],\"rationale\":{\"p_024_a\":\"Physical shock and perfect comprehension make it a strong opener.\",\"p_031_a\":\"Power reversal hook adds variety and leaves a clear question.\",\"p_001_a\":\"Moral outrage provides a contrasting tension to close the set.\"},\"post_first\":\"p_024_a\",\"post_first_reason\":\"It begins with a vivid, shocking action that a blind viewer fully grasped, instantly grabbing attention. This sets a high\u2011impact tone for the series.\"}",
+  "parsed": {
+    "order": [
+      "p_024_a",
+      "p_031_a",
+      "p_001_a"
+    ],
+    "rationale": {
+      "p_024_a": "Physical shock and perfect comprehension make it a strong opener.",
+      "p_031_a": "Power reversal hook adds variety and leaves a clear question.",
+      "p_001_a": "Moral outrage provides a contrasting tension to close the set."
+    },
+    "post_first": "p_024_a",
+    "post_first_reason": "It begins with a vivid, shocking action that a blind viewer fully grasped, instantly grabbing attention. This sets a high\u2011impact tone for the series."
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "rank",
+  "system": "You are the editor deciding posting order for promo clips from one show.\nYou will see each promo's hook, cliffhanger and a blind viewer's comprehension result.\n\nReply with JSON only, and keep it short:\n{\n  \"order\": [\"<promo_id>\", \"<promo_id>\", ...],\n  \"post_first\": \"<promo_id>\",\n  \"post_first_reason\": \"<two sentences maximum>\",\n  \"rationale\": {\"<promo_id>\": \"<one short clause>\"}\n}\n\nInclude every promo_id you were given in \"order\". Put a rationale for the top 5\nonly. Favour promos a stranger understood, that open on something physical or\nshocking, and that leave a question. Spread hook types rather than posting four\nof a kind.",
+  "prompt": "p_044_a | episodes [44] | 48s | hook_type power reversal | code score 0.88 | blind viewer 4/4\n  hook: A royal guard slams Rupert to the ground, blood and dust flying.\n  cliffhanger: Catherine defiantly declares she loved Alexander before everything fell apart, leaving his cold stare unanswered.",
+  "text": "{\"order\":[\"p_044_a\"],\"post_first\":\"p_044_a\",\"post_first_reason\":\"The hook is visually striking with a guard slamming a character, grabbing attention. The cliffhanger poses an emotional question about love and betrayal.\",\"rationale\":{\"p_044_a\":\"high comprehension and strong physical hook\"}}",
+  "parsed": {
+    "order": [
+      "p_044_a"
+    ],
+    "post_first": "p_044_a",
+    "post_first_reason": "The hook is visually striking with a guard slamming a character, grabbing attention. The cliffhanger poses an emotional question about love and betrayal.",
+    "rationale": {
+      "p_044_a": "high comprehension and strong physical hook"
+    }
+  }
+}

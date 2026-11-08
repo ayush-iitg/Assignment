@@ -1,0 +1,20 @@
+{
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "tag": "gate_p_012_a",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\n[action] Gerald bursts into a loud, mocking laugh beside the stony Constable.\nCLARISSA: \"You will retrieve it with your bare hands before the magistrate arrives.\"\nGERALD: \"A lady's hands will be shredded to ribbons!\"\nCLARISSA: \"Do it, and we withdraw the charges.\"\nCLARISSA: \"Fail, or refuse, and your husband hangs from the gallows.\"\n[action] Alexander rests his scarred hand reassuringly on Juliana's shoulder, leaning in toward her.\nALEXANDER: \"Juliana, no. Do not let them hurt you. I can handle the law.\"\n[action] Juliana clutches the front of her rustic grey dress, her breathing trembling.\nJULIANA: \"I am not letting them take you.\"",
+  "text": "{\n  \"who_is_the_main_character\": \"Juliana (the clip names her, but does not explain who she is or her role)\",\n  \"what_is_at_stake\": \"Juliana must retrieve an object with her bare hands to save her husband from hanging, or he will be executed.\",\n  \"what_question_are_you_left_with\": \"What is the object she has to retrieve, and why is it dangerous enough to shred a lady's hands?\",\n  \"would_you_keep_watching\": \"yes, because the threat of immediate execution and the specific, painful condition create high tension.\",\n  \"passes\": {\n    \"character_identifiable\": true,\n    \"stakes_clear\": true,\n    \"ends_unresolved\": true,\n    \"would_watch\": true\n  }\n}",
+  "parsed": {
+    "who_is_the_main_character": "Juliana (the clip names her, but does not explain who she is or her role)",
+    "what_is_at_stake": "Juliana must retrieve an object with her bare hands to save her husband from hanging, or he will be executed.",
+    "what_question_are_you_left_with": "What is the object she has to retrieve, and why is it dangerous enough to shred a lady's hands?",
+    "would_you_keep_watching": "yes, because the threat of immediate execution and the specific, painful condition create high tension.",
+    "passes": {
+      "character_identifiable": true,
+      "stakes_clear": true,
+      "ends_unresolved": true,
+      "would_watch": true
+    }
+  }
+}

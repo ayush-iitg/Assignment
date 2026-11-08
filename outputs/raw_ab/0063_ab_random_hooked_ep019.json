@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "ab_random_hooked_ep019",
+  "system": "You choose which clips get posted as ads for a vertical drama app.\n\nYou will see two clips taken from the same show, written out as everything that\nhappens in them. You have never seen the show. Pick the ONE you would post to\nstop a scrolling viewer and make them open the app.\n\nJudge only on: does something arresting happen immediately, does it make sense\nwithout context, and does it stop at a moment that leaves you needing more.\nIgnore length. Ignore which one you were shown first.\n\nYou must choose. Reply with JSON only:\n{\n  \"choice\": 1 or 2,\n  \"reason\": \"<one sentence>\",\n  \"confidence\": \"high\" | \"low\"\n}",
+  "prompt": "CLIP 1:\n[action] A bald, scarred man dressed in a dark coat emerges from between the trees, immediately coming to a halt and bowing with clasped hands in formal deference.\nINFORMANT: \"Your Grace.\"\nALEXANDER: \"Tell me what is happening in Ashburg.\"\nINFORMANT: \"Lord Sterling's influence has grown since your disappearance. He has men in the county offices, the courts, even among the household staff.\"\nINFORMANT: \"Rupert has become the face of Ashburg. He sits in your father's room, signs your estate papers, gives orders as though the title already belongs to him.\"\nINFORMANT: \"And Lady Catherine, she behaves as though she is already the future duchess.\"\nINFORMANT: \"But they have separated her from the household. She is watched constantly. Every letter she sends is checked. Every visitor is questioned.\"\n\n-----\n\nCLIP 2:\nJULIANA: \"My mother's book almost burned with it.\"\n[action] Juliana tenderly lifts a scorched corner of parchment, revealing the surviving botanical drawing of medicinal herbs inside.\nELDER VILLAGER: \"My lady. You cannot stay here.\"\nELDER VILLAGER: \"There is an old barn near the village. It is empty.\"\n[action] The elder villager steps closer, resting a gentle, reassuring hand on Juliana's shoulder.\nELDER VILLAGER: \"Take it.\"\nJULIANA: \"We cannot ask the village to feed us.\"\nELDER VILLAGER: \"You saved my son's life.\"\nELDER VILLAGER: \"You saved mine, too.\"\nJULIANA: \"Thank you.\"\n[action] Alexander steps forward and accepts the thick folded blankets and a wooden bucket from the villager.\nALEXANDER: \"We will not forget this kindness.\"\nELDER VILLAGER: \"Neither will the village.\"\nJULIANA: \"Goodbye, Blackwood.\"\n[action] Juliana turns her back on the ruins. Wide tracking shot from behind as Alexander and Juliana walk side by side down the stone path, leaving the smoldering ash behind as the scene fades into black.\n[action] A bald, scarred man dressed in a dark coat emerges from between the trees, immediately coming to a halt and bowing with clasped hands in formal deference.\nINFORMANT: \"Your Grace.\"\n\nWhich would you post?",
+  "response_text": "{\"choice\":2,\"reason\":\"It combines emotional tension, visual intrigue, and ends on a mysterious figure that begs for more\",\"confidence\":\"high\"}",
+  "response_payload": {
+    "id": "chatcmpl-901829a5-b3d4-43bd-82f2-524dbf37ffff",
+    "object": "chat.completion",
+    "created": 1794128794,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"choice\":2,\"reason\":\"It combines emotional tension, visual intrigue, and ends on a mysterious figure that begs for more\",\"confidence\":\"high\"}",
+          "reasoning": "We need to pick which clip is more arresting, makes sense without context, stops at a moment needing more. Clip 1: a bald scarred man bows, informant says \"Your Grace.\" Then dialogue about political intrigue. It starts with a dramatic entrance, but the scene is exposition heavy, maybe less immediate hook.\n\nClip 2: starts with Juliana's mother book, shows tender moment, elder villager, then Alexander appears, then ends with the same bald man emerging and bowing, repeating the opening of Clip 1. Clip 2 has more visual action, emotional stakes, and ends on a cliffhanger with the mysterious man appearing after they leave ruins. That seems more arresting.\n\nThus choose Clip 2. Provide JSON."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.278895219,
+      "prompt_tokens": 744,
+      "prompt_time": 0.029019289,
+      "completion_tokens": 192,
+      "completion_time": 0.403036702,
+      "total_tokens": 936,
+      "total_time": 0.432055991,
+      "completion_tokens_details": {
+        "reasoning_tokens": 153
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_5082008e34",
+    "x_groq": {
+      "id": "req_01m6x6hm3wevmv2psjmj69k8eh",
+      "seed": 820555707
+    },
+    "service_tier": "on_demand"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "ab_random_legal_ep042",
+  "system": "You choose which clips get posted as ads for a vertical drama app.\n\nYou will see two clips taken from the same show, written out as everything that\nhappens in them. You have never seen the show. Pick the ONE you would post to\nstop a scrolling viewer and make them open the app.\n\nJudge only on: does something arresting happen immediately, does it make sense\nwithout context, and does it stop at a moment that leaves you needing more.\nIgnore length. Ignore which one you were shown first.\n\nYou must choose. Reply with JSON only:\n{\n  \"choice\": 1 or 2,\n  \"reason\": \"<one sentence>\",\n  \"confidence\": \"high\" | \"low\"\n}",
+  "prompt": "CLIP 1:\nALEXANDER: \"Juliana.\"\nBLOND NOBLEMAN: \"Guards! Arrest this imposter!\"\nROYAL GUARD: \"We will not.\"\nBLOND NOBLEMAN: \"I said arrest him!\"\nBLOND NOBLEMAN: \"Why?!\"\nROYAL GUARD: \"Because we know who he is.\"\nCATHERINE: \"Rupert...\"\nBLOND NOBLEMAN: \"You cannot be him. Alexander died!\"\nALEXANDER: \"And yet, here I stand. That is the lie you built your life upon.\"\n\n-----\n\nCLIP 2:\nALEXANDER: \"And yet, here I stand. That is the lie you built your life upon.\"\nALEXANDER'S MOTHER: \"Alexander...\"\n[action] Alexander halts his march as his mother reaches him, placing her frail hands gently upon his chest.\nALEXANDER: \"Mother.\"\n[action] His mother gently cradles Alexander's scarred cheek, tears streaming down her face as guests in the background watch in stunned silence.\nALEXANDER'S MOTHER: \"Look at you... my beautiful boy.\"\n\nWhich would you post?",
+  "text": "{\"choice\":1,\"reason\":\"The immediate accusation and mystery of an imposter creates a tense hook that leaves viewers wanting answers.\",\"confidence\":\"high\"}",
+  "parsed": {
+    "choice": 1,
+    "reason": "The immediate accusation and mystery of an imposter creates a tense hook that leaves viewers wanting answers.",
+    "confidence": "high"
+  }
+}

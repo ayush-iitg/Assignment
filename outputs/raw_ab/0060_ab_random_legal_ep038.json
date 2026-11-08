@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "ab_random_legal_ep038",
+  "system": "You choose which clips get posted as ads for a vertical drama app.\n\nYou will see two clips taken from the same show, written out as everything that\nhappens in them. You have never seen the show. Pick the ONE you would post to\nstop a scrolling viewer and make them open the app.\n\nJudge only on: does something arresting happen immediately, does it make sense\nwithout context, and does it stop at a moment that leaves you needing more.\nIgnore length. Ignore which one you were shown first.\n\nYou must choose. Reply with JSON only:\n{\n  \"choice\": 1 or 2,\n  \"reason\": \"<one sentence>\",\n  \"confidence\": \"high\" | \"low\"\n}",
+  "prompt": "CLIP 1:\nJULIANA: \"I will not betray him.\"\n[action] Juliana's eyes snap wide open in sudden realization as a deep resonant toll reverberates from above.\n[sfx] Solemn, resonant church bells begin tolling rhythmically from the cathedral above, echoing deep into the stone dungeon.\nJULIANA: \"Bells.\"\n[action] Juliana rushes toward the front of the cell, clutching the iron bars with both hands.\nJULIANA: \"The wedding.\"\nJULIANA: \"It's beginning.\"\nJULIANA: \"Then I suppose I'm next.\"\n[action] Juliana grips the bars tightly, her lips curving into a warm, defiant smile as she whispers her husband's name.\nJULIANA: \"Alexander...\"\n\n-----\n\nCLIP 2:\n[action] The Guard pauses, glancing over his shoulder into the gloomy corridor to ensure he is unobserved.\n[action] The Guard kneels down and slips a small loaf of rustic bread through the bottom gap between the iron bars, nudging it inside before withdrawing his gloved hand.\nJULIANA: \"Why?\"\nGUARD: \"Because no one should die hungry.\"\nGUARD: \"Eat it before they see.\"\n[action] The Guard's silhouette retreats into the shadows.\n[action] Juliana clutches the bread tightly with both hands, tears welling in her eyes.\nJULIANA: \"Thank you.\"\n[action] Starving and overcome with emotion, Juliana presses the bread to her lips and tears off a desperate, ravenous bite.\n[action] Juliana chews hungrily, closing her eyes as the agonizing reality of her plight hits her anew.\nJULIANA: \"Alexander...\"\nJULIANA: \"...are you safe?\"\nJULIANA: \"Do you even know what happened to me?\"\nJULIANA: \"Do you know they condemned me?\"\nJULIANA: \"What if I die here?\"\nJULIANA: \"What if I never see you again?\"\n[action] A heavy tear drips down from her jaw, falling into the dark dampness below.\nJULIANA: \"Keep him safe.\"\n\nWhich would you post?",
+  "response_text": "{\"choice\":1,\"reason\":\"The sudden tolling bells and Juliana’s realization create immediate tension and end on a mysterious, unanswered whisper.\",\"confidence\":\"high\"}",
+  "response_payload": {
+    "id": "chatcmpl-f3e248d7-9117-4c09-97b2-815d47980ec9",
+    "object": "chat.completion",
+    "created": 1794128788,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"choice\":1,\"reason\":\"The sudden tolling bells and Juliana’s realization create immediate tension and end on a mysterious, unanswered whisper.\",\"confidence\":\"high\"}",
+          "reasoning": "We need to choose which clip is more arresting, makes sense without context, ends on a hook. Clip 1: Bells toll, realization, mentions wedding, defiant smile, whispers husband's name. Ends with \"Alexander...\" no resolution. Clip 2: Guard gives bread, emotional, many lines, ends with \"Keep him safe.\" Both have emotional weight. Clip 1 has immediate dramatic sound (bells) and a hook: \"It's beginning... Then I suppose I'm next.\" That suggests impending event. Clip 2 is longer, more dialogue, but maybe less immediate hook? Clip 1 ends with a whisper, leaving mystery about wedding and fate. Clip 2 ends with \"Keep him safe.\" Also a hook. Which is more arresting? Clip 1 has sudden bells, visual of jail cell, immediate tension. Likely more attention-grabbing. So choose 1.\n\nProvide JSON."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.367608229,
+      "prompt_tokens": 705,
+      "prompt_time": 0.033320286,
+      "completion_tokens": 226,
+      "completion_time": 0.468475143,
+      "total_tokens": 931,
+      "total_time": 0.501795429,
+      "completion_tokens_details": {
+        "reasoning_tokens": 184
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_e5b4e54fbb",
+    "x_groq": {
+      "id": "req_01m6x6he92et6saaw5ffyss5te",
+      "seed": 1568756538
+    },
+    "service_tier": "on_demand"
+  }
+}

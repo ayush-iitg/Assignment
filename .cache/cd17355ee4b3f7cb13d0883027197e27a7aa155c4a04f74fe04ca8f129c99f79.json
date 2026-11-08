@@ -1,0 +1,20 @@
+{
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "tag": "gate_p_014_a",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\n[action] Alexander gently wraps clean linen bandages around Juliana's torn wrist and palm.\n[sfx] Crackling flames and wood popping in the open fireplace.\nALEXANDER: \"You could have lost your hands.\"\nJULIANA: \"But I didn't lose you.\"\nALEXANDER: \"I'm sorry.\"\nJULIANA: \"You didn't hurt me.\"\nJULIANA: \"You have taken my place today.\"\nJULIANA: \"And you are doing it better than me.\"\n[action] Juliana closes her eyes in exhausted relief, sinking into Alexander's warmth as his broad arm encloses her safely.\nALEXANDER: \"No one will ever hurt you for protecting me again.\"\n[action] Alexander strokes her cheek with his thumb, his gaze hardening into deadly, protective conviction.\n[action] Alexander's muscular arm drops into frame beside the bloody bucket; his scarred knuckles slowly and tightly clench into an iron fist of brewing vengeance.\n[sfx] Ominous, resonating low bass boom swelling into sudden silence as the screen cuts to black.",
+  "text": "{\n  \"who_is_the_main_character\": \"The clip names two characters, Alexander and Juliana, but does not specify which is the 'main' character; they are presented as a pair in a moment of intimacy and conflict.\",\n  \"what_is_at_stake\": \"The immediate physical safety of Juliana (who has a torn wrist) and the threat of future violence against her, which Alexander vows to prevent.\",\n  \"what_question_are_you_left_with\": \"Who hurt Juliana, and what specific act of vengeance is Alexander planning?\",\n  \"would_you_keep_watching\": \"yes, the ending implies a violent retaliation is about to happen.\",\n  \"passes\": {\n    \"character_identifiable\": true,\n    \"stakes_clear\": true,\n    \"ends_unresolved\": true,\n    \"would_watch\": true\n  }\n}",
+  "parsed": {
+    "who_is_the_main_character": "The clip names two characters, Alexander and Juliana, but does not specify which is the 'main' character; they are presented as a pair in a moment of intimacy and conflict.",
+    "what_is_at_stake": "The immediate physical safety of Juliana (who has a torn wrist) and the threat of future violence against her, which Alexander vows to prevent.",
+    "what_question_are_you_left_with": "Who hurt Juliana, and what specific act of vengeance is Alexander planning?",
+    "would_you_keep_watching": "yes, the ending implies a violent retaliation is about to happen.",
+    "passes": {
+      "character_identifiable": true,
+      "stakes_clear": true,
+      "ends_unresolved": true,
+      "would_watch": true
+    }
+  }
+}

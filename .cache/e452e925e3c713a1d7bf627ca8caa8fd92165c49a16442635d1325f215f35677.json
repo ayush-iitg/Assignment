@@ -1,0 +1,12 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "smoke",
+  "system": "Reply with JSON only.",
+  "prompt": "Return {\"ok\":true,\"n\":7}",
+  "text": "{\"ok\":true,\"n\":7}",
+  "parsed": {
+    "ok": true,
+    "n": 7
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "gate_p_026_a",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\nDOWAGER DUCHESS: \"Rupert and Catherine want me dead. They are poisoning me in my own bed, aren't they?\"\nJULIANA: \"Yes. But the charcoal is fighting the poison. You are safe now.\"\nDOWAGER DUCHESS: \"Then tell me... why is a girl of such noble spirit working as a common maid?\"\nJULIANA: \"Because my family cast me out to rot. I have nothing left in this world but my honor.\"\n[action] Juliana rests her right hand against the edge of the bedcover, unwittingly placing the unique ring directly within the Duchess's line of sight.\n[sfx] A sharp, stunned gasp.\n[action] The Duchess's mouth hangs open in pure disbelief as she stares fixedly at Juliana's hand.\nDOWAGER DUCHESS: \"Your hand... Let me see your hand.\"\nJULIANA: \"Your Grace? What is wrong? You look as though you've seen a ghost.\"\n[action] The Duchess reaches outward with trembling fingers, grasping frantically for Juliana.\n[sfx] A sudden sharp rustle of fabric as her fingers snap tight.\nDOWAGER DUCHESS: \"Do not move!\"\nDOWAGER DUCHESS: \"Where... where... Where did you get this ring? Speak to me!\"",
+  "text": "{\"who_is_the_main_character\":\"Dowager Duchess (named in the clip)\",\"what_is_at_stake\":\"The Duchess's life (possible poisoning) and the mystery of the ring Juliana is wearing, which could reveal a hidden threat or secret\",\"what_question_are_you_left_with\":\"Where did Juliana obtain the mysterious ring and what does it mean?\",\"would_you_keep_watching\":\"maybe, the intrigue of the ring and the characters' secrets is compelling\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":true,\"ends_unresolved\":true,\"would_watch\":true}}",
+  "parsed": {
+    "who_is_the_main_character": "Dowager Duchess (named in the clip)",
+    "what_is_at_stake": "The Duchess's life (possible poisoning) and the mystery of the ring Juliana is wearing, which could reveal a hidden threat or secret",
+    "what_question_are_you_left_with": "Where did Juliana obtain the mysterious ring and what does it mean?",
+    "would_you_keep_watching": "maybe, the intrigue of the ring and the characters' secrets is compelling",
+    "passes": {
+      "character_identifiable": true,
+      "stakes_clear": true,
+      "ends_unresolved": true,
+      "would_watch": true
+    }
+  }
+}

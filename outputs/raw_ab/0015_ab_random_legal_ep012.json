@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "ab_random_legal_ep012",
+  "system": "You choose which clips get posted as ads for a vertical drama app.\n\nYou will see two clips taken from the same show, written out as everything that\nhappens in them. You have never seen the show. Pick the ONE you would post to\nstop a scrolling viewer and make them open the app.\n\nJudge only on: does something arresting happen immediately, does it make sense\nwithout context, and does it stop at a moment that leaves you needing more.\nIgnore length. Ignore which one you were shown first.\n\nYou must choose. Reply with JSON only:\n{\n  \"choice\": 1 or 2,\n  \"reason\": \"<one sentence>\",\n  \"confidence\": \"high\" | \"low\"\n}",
+  "prompt": "CLIP 1:\n[action] Gerald bursts into a loud, mocking laugh beside the stony Constable.\nCLARISSA: \"You will retrieve it with your bare hands before the magistrate arrives.\"\nGERALD: \"A lady's hands will be shredded to ribbons!\"\nCLARISSA: \"Do it, and we withdraw the charges.\"\nCLARISSA: \"Fail, or refuse, and your husband hangs from the gallows.\"\n[action] Alexander rests his scarred hand reassuringly on Juliana's shoulder, leaning in toward her.\nALEXANDER: \"Juliana, no. Do not let them hurt you. I can handle the law.\"\n[action] Juliana clutches the front of her rustic grey dress, her breathing trembling.\nJULIANA: \"I am not letting them take you.\"\n[action] Juliana turns her head sharply back toward Clarissa, her expression hardening with fierce resolution.\nJULIANA: \"Tell me where the garden is.\"\n[action] Juliana locks eyes with Clarissa without flinching as the scene freezes on her brave, sacrificial defiance.\n\n-----\n\nCLIP 2:\nJULIANA: \"You planted it!\"\n[action] Juliana lunges a step forward, jabbing an accusing finger toward Gerald.\nCLARISSA: \"Oh, dear sister...\"\nCLARISSA: \"...still defending your broken scrap of a man?\"\nJULIANA: \"Name your price, Clarissa. I know you.\"\nCLARISSA: \"You always were clever, Juliana. Always searching for some way to escape.\"\nCLARISSA: \"Perhaps I can give you one.\"\nJULIANA: \"What do you want?\"\nCLARISSA: \"I want to see you crawl, sister.\"\nCLARISSA: \"My emerald signet ring fell deep into the frozen blackthorn briars at Ashworth Manor. The thorns have grown over it...\"\nCLARISSA: \"...sharp as steel. The ground is frozen, like pure ice.\"\n[action] Gerald bursts into a loud, mocking laugh beside the stony Constable.\nCLARISSA: \"You will retrieve it with your bare hands before the magistrate arrives.\"\n\nWhich would you post?",
+  "response_text": "{\"choice\":2,\"reason\":\"It presents a vivid mystery (the lost emerald ring in frozen thorns) and a tense challenge that ends on a hook, making viewers want to know what happens next.\",\"confidence\":\"high\"}",
+  "response_payload": {
+    "id": "chatcmpl-e6867c9b-5b7f-4b79-b64a-5dc0ab2258db",
+    "object": "chat.completion",
+    "created": 1794128428,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"choice\":2,\"reason\":\"It presents a vivid mystery (the lost emerald ring in frozen thorns) and a tense challenge that ends on a hook, making viewers want to know what happens next.\",\"confidence\":\"high\"}",
+          "reasoning": "We need to pick which clip is more arresting, makes sense without context, ends on a hook. Clip 1: starts with Gerald laughing, then dialogue about retrieving something with bare hands before magistrate, then threats, then Alexander comforting Juliana, Juliana defiant, asks where garden is, freezes on her defiance. It's a bit disjointed but has tension, a freeze at defiance.\n\nClip 2: Juliana accuses, dialogue with Clarissa, mention of emerald signet ring in frozen blackthorn briars, then Gerald laughs, then Clarissa repeats retrieve line. Ends with that line. It has a mystery about ring, frozen thorns, and a challenge. More specific hook: \"My emerald signet ring fell deep into the frozen blackthorn briars... I want to see you crawl, sister.\" Ends with retrieval challenge. That seems more intriguing.\n\nClip 2 seems more immediate conflict and mystery, ends on a challenge. Clip 1 ends on defiant freeze but less clear hook. So choose Clip 2.\n\nProvide JSON."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.370017864,
+      "prompt_tokens": 709,
+      "prompt_time": 0.043793575,
+      "completion_tokens": 272,
+      "completion_time": 0.574668997,
+      "total_tokens": 981,
+      "total_time": 0.618462572,
+      "completion_tokens_details": {
+        "reasoning_tokens": 218
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_8655ddce88",
+    "x_groq": {
+      "id": "req_01m6x66ey2e1xagaxqzyd8ynmw",
+      "seed": 1558160263
+    },
+    "service_tier": "on_demand"
+  }
+}

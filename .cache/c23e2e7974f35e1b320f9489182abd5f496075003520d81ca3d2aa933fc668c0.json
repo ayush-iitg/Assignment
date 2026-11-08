@@ -1,0 +1,20 @@
+{
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "tag": "gate_p_034_a",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\nJULIANA: \"I admit to healing the sick.\"\n[action] The Judge furiously raises his wooden gavel and strikes the sound block with sharp force.\nJUDGE: \"Silence!\"\n[sfx] [Sharp, echoing crack of the gavel slamming onto wood]\nJUDGE: \"Prudence. You served beside the accused?\"\n[action] Prudence the young maid stands trembling in the center of the courtroom floor, her head bowed in deep shame, clutching the sides of her apron.\nPRUDENCE: \"Yes, Your Honor.\"\nJUDGE: \"Did you witness Lady Juliana perform these treatments?\"\nJULIANA: \"Tell the truth.\"\nPRUDENCE: \"Yes.\"\nJUDGE: \"What did you see?\"\nPRUDENCE: \"She used herbs... and her mother's book.\"\nJUDGE: \"Did she draw strange markings?\"\nPRUDENCE: \"She... placed herbs around my brother's bed.\"\nJUDGE: \"And did she speak words you could not understand?\"\nPRUDENCE: \"Yes.\"\nLORD: \"Your Honor... the witness has confirmed the ritual.\"\n[action] Lady Juliana slams her cuffed hands against the wooden railing of the dock, her voice ringing out in indignant fury.\nJULIANA: \"It was not a ritual!\"",
+  "text": "{\n  \"who_is_the_main_character\": \"Lady Juliana (the accused)\",\n  \"what_is_at_stake\": \"Lady Juliana is on trial for performing 'strange' treatments or rituals, and the witness's testimony is being used to confirm these accusations.\",\n  \"what_question_are_you_left_with\": \"Will the judge accept the witness's testimony as proof of a ritual, or will Juliana's defense hold up?\",\n  \"would_you_keep_watching\": \"yes, to see if the witness's testimony is enough to convict her.\",\n  \"passes\": {\n    \"character_identifiable\": true,\n    \"stakes_clear\": true,\n    \"ends_unresolved\": true,\n    \"would_watch\": true\n  }\n}",
+  "parsed": {
+    "who_is_the_main_character": "Lady Juliana (the accused)",
+    "what_is_at_stake": "Lady Juliana is on trial for performing 'strange' treatments or rituals, and the witness's testimony is being used to confirm these accusations.",
+    "what_question_are_you_left_with": "Will the judge accept the witness's testimony as proof of a ritual, or will Juliana's defense hold up?",
+    "would_you_keep_watching": "yes, to see if the witness's testimony is enough to convict her.",
+    "passes": {
+      "character_identifiable": true,
+      "stakes_clear": true,
+      "ends_unresolved": true,
+      "would_watch": true
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "gate_p_021_m1",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\n[sfx] A loud wooden slam as the heavy double barn doors violently fly open.\nPRUDENCE: \"Lady Juliana! Please! You have to help me, Toby is dying!\"\n[action] Lady Juliana hurries over, placing her bandaged hands reassuringly on Prudence's trembling shoulders.\nJULIANA: \"Oh dear. Breathe. Tell me what has happened.\"\nPRUDENCE: \"My little brother Toby... his chest is burning! He cannot breathe!\"\nJULIANA: \"Tell me what the apothecary said. Did he not give you medicine?\"\n[sfx] Heavy, raspy chest coughs echoing in the small room, accompanied by crackling hearth fire.\n[action] Lady Juliana rushes in, sets the ledger on the rustic wooden table, and quickly flips open the pages.\nJULIANA: \"His skin is burning hot.\"\n[action] Lady Juliana places her bandaged hand against Toby's flushed, sweating forehead as he wheezes painfully.\nJULIANA: \"Prudence, fetch hot water immediately!\"\nPRUDENCE: \"Yes! Right away, I will get it!\"\n[action] Prudence wraps a cloth around the iron handle of the steaming kettle resting over the hearth fire and lifts it.\nJULIANA: \"I cannot let my own weariness stop me. This boy needs my mother's knowledge.\"",
+  "text": "{\"who_is_the_main_character\":\"The clip does not name a single main character, but Lady Juliana appears to be the central figure\",\"what_is_at_stake\":\"Toby's life is in danger as his chest burns and he cannot breathe\",\"what_question_are_you_left_with\":\"Will they be able to save Toby before he dies?\",\"would_you_keep_watching\":\"maybe, the urgent medical crisis creates tension\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":true,\"ends_unresolved\":true,\"would_watch\":true}}",
+  "parsed": {
+    "who_is_the_main_character": "The clip does not name a single main character, but Lady Juliana appears to be the central figure",
+    "what_is_at_stake": "Toby's life is in danger as his chest burns and he cannot breathe",
+    "what_question_are_you_left_with": "Will they be able to save Toby before he dies?",
+    "would_you_keep_watching": "maybe, the urgent medical crisis creates tension",
+    "passes": {
+      "character_identifiable": true,
+      "stakes_clear": true,
+      "ends_unresolved": true,
+      "would_watch": true
+    }
+  }
+}

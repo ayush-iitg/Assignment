@@ -1,7 +1,8 @@
 {
-  "_note": "Hand-picked promos, chosen by reading docs/_beatsheets.txt BEFORE any model was run and before the scorer existed. This is the only human judgment the evaluation leans on, so it is kept in one small file that can be replaced wholesale. Timestamps are seconds from each episode's start.",
-  "_authored_by": "DRAFTED BY AI (Claude) during the Phase 0 audit by reading docs/_beatsheets.txt, before the scorer or any model call existed. NOT YET REVIEWED BY AYUSH. The solution doc claims these are hand-picked by the author; that claim is only true once Ayush has read them and kept, changed or replaced each one. See docs/SUBMIT.md step 3.",
-  "_how_to_edit": "Add or change entries, then run: python evaluate.py",
+  "_what_this_is": "Six promo spans drafted by reading the episode beat sheets BEFORE the scorer existed and before any model ran. Timestamps are seconds from each episode's start.",
+  "_status": "SANITY CHECK ONLY — not the quality measure. Drafted with AI assistance, not independently reviewed by a human editor.",
+  "_why_it_is_not_the_headline": "A hand-picked reference set asks the wrong question: 'did the tool match one human's pick?' is not the job, and maintaining one per show would recreate the manual work the tool removes. With n=6 the per-episode spread is larger than the differences between approaches, so it cannot rank them. The headline quality measure is the blind A/B test in outputs/ab_test_balanced.json, which compares each pick against a random legal window, scales to any new show, and needs no human time.",
+  "_regenerate": "python evaluate.py",
   "promos": [
     {
       "episode": 1,
@@ -49,7 +50,7 @@
       "end_s": 160.00,
       "hook": "Catherine's enraged scream 'Enough!' as a branding iron sears her mother's book.",
       "cliffhanger": "The iron stops inches from Juliana's eyes; macro close-up of the ember in her eye.",
-      "why": "Pure peril needing no setup, cut mid-threat. Flagged at audit time as the weakest of my picks for standalone comprehension - a stranger is never told her name."
+      "why": "Pure peril needing no setup, cut mid-threat. Flagged at audit time as the weakest of the six for standalone comprehension - a stranger is never told her name."
     }
   ]
 }

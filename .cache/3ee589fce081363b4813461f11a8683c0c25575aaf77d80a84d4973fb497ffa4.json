@@ -1,0 +1,20 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "gate_p_003_a",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\nROYAL GUARD: \"Stand aside, stranger!\"\nMYSTERIOUS BEARDED MAN: \"I said...\"\nMYSTERIOUS BEARDED MAN: \"...let her go.\"\n[action] The Bearded Stranger effortlessly blocks the guard's strike and drives a devastating strike into him, dropping the armed guard instantly to the floor.\n[sfx] A heavy, bone-rattling punch followed by the clatter and thud of the guard collapsing onto the stone floor.\nGERALD: \"What are you waiting for?! He's only one man!\"\nMYSTERIOUS BEARDED MAN: \"Are you hurt?\"\n[action] Juliana softly shakes her head 'no', her wide blue eyes locked onto him.\nMYSTERIOUS BEARDED MAN: \"Good. Then don't touch her again.\"\nNOBLE MATRIARCH: \"You cannot interfere in a family matter!\"",
+  "text": "{\"who_is_the_main_character\":\"the bearded stranger (MYSTERIOUS BEARDED MAN) \u2013 the clip never gives a proper name\",\"what_is_at_stake\":\"Juliana's safety/freedom as the bearded man defends her against the guard and family interference\",\"what_question_are_you_left_with\":\"Will the bearded man be allowed to protect Juliana despite the noble matriarch's objection?\",\"would_you_keep_watching\":\"maybe, because the action is intriguing but the context is unclear\",\"passes\":{\"character_identifiable\":false,\"stakes_clear\":true,\"ends_unresolved\":true,\"would_watch\":false}}",
+  "parsed": {
+    "who_is_the_main_character": "the bearded stranger (MYSTERIOUS BEARDED MAN) \u2013 the clip never gives a proper name",
+    "what_is_at_stake": "Juliana's safety/freedom as the bearded man defends her against the guard and family interference",
+    "what_question_are_you_left_with": "Will the bearded man be allowed to protect Juliana despite the noble matriarch's objection?",
+    "would_you_keep_watching": "maybe, because the action is intriguing but the context is unclear",
+    "passes": {
+      "character_identifiable": false,
+      "stakes_clear": true,
+      "ends_unresolved": true,
+      "would_watch": false
+    }
+  }
+}

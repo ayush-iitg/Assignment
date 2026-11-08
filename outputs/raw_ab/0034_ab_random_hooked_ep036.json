@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "ab_random_hooked_ep036",
+  "system": "You choose which clips get posted as ads for a vertical drama app.\n\nYou will see two clips taken from the same show, written out as everything that\nhappens in them. You have never seen the show. Pick the ONE you would post to\nstop a scrolling viewer and make them open the app.\n\nJudge only on: does something arresting happen immediately, does it make sense\nwithout context, and does it stop at a moment that leaves you needing more.\nIgnore length. Ignore which one you were shown first.\n\nYou must choose. Reply with JSON only:\n{\n  \"choice\": 1 or 2,\n  \"reason\": \"<one sentence>\",\n  \"confidence\": \"high\" | \"low\"\n}",
+  "prompt": "CLIP 1:\nALEXANDER: \"Arrested?\"\nALEXANDER'S MOTHER: \"Rupert and Catherine accused her of poisoning me!\"\nALEXANDER: \"But she saved you!\"\nALEXANDER'S MOTHER: \"I told them!\"\nALEXANDER: \"You told them the truth!\"\nALEXANDER'S MOTHER: \"They called her a witch!\"\nALEXANDER: \"Juliana... is in a cell?\"\nALEXANDER'S MOTHER: \"She was taken before a magistrate.\"\nALEXANDER: \"And?!\"\nALEXANDER'S MOTHER: \"They condemned her.\"\nALEXANDER: \"No.\"\nALEXANDER'S MOTHER: \"She is to be executed.\"\nALEXANDER: \"When?\"\n\n-----\n\nCLIP 2:\nALEXANDER: \"They stole my home!\"\nALEXANDER: \"And now they have taken Juliana!\"\n[action] Close-up of Alexander's gloved hand clenching into a tight, leather-creaking fist.\n[sfx] The sharp, taut creak of leather straining under monstrous grip strength.\n[action] Alexander stands framed in the doorway, staring out into the vast, snow-covered pine forest under the cold moonlight.\nALEXANDER: \"Two days.\"\nALEXANDER: \"Then they have two days to celebrate.\"\nALEXANDER: \"Because before that wedding begins...\"\nALEXANDER: \"...their dead Duke is coming home.\"\n\nWhich would you post?",
+  "response_text": "{\"choice\":2,\"reason\":\"The vivid action, looming threat and cliffhanger line create immediate tension and curiosity\",\"confidence\":\"high\"}",
+  "response_payload": {
+    "id": "chatcmpl-0c59e1a7-7dc4-4a84-951b-0cfa87235cfd",
+    "object": "chat.completion",
+    "created": 1794128603,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"choice\":2,\"reason\":\"The vivid action, looming threat and cliffhanger line create immediate tension and curiosity\",\"confidence\":\"high\"}",
+          "reasoning": "We need to pick which clip is more arresting, makes sense without context, ends on a hook. Clip1 is dialogue about accusation, execution, but ends with \"When?\" It's a question, but maybe less visual. Clip2 has vivid description, action, tension, a looming threat (\"their dead Duke is coming home\") and ends with that line, a hook. So choose Clip2. Provide JSON."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.156764844,
+      "prompt_tokens": 565,
+      "prompt_time": 0.022121379,
+      "completion_tokens": 120,
+      "completion_time": 0.24824105,
+      "total_tokens": 685,
+      "total_time": 0.270362429,
+      "completion_tokens_details": {
+        "reasoning_tokens": 84
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_27194a498a",
+    "x_groq": {
+      "id": "req_01m6x6bst6e52rcyvr4t4hrbkb",
+      "seed": 1190627146
+    },
+    "service_tier": "on_demand"
+  }
+}

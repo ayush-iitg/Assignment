@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "ab_random_legal_ep036",
+  "system": "You choose which clips get posted as ads for a vertical drama app.\n\nYou will see two clips taken from the same show, written out as everything that\nhappens in them. You have never seen the show. Pick the ONE you would post to\nstop a scrolling viewer and make them open the app.\n\nJudge only on: does something arresting happen immediately, does it make sense\nwithout context, and does it stop at a moment that leaves you needing more.\nIgnore length. Ignore which one you were shown first.\n\nYou must choose. Reply with JSON only:\n{\n  \"choice\": 1 or 2,\n  \"reason\": \"<one sentence>\",\n  \"confidence\": \"high\" | \"low\"\n}",
+  "prompt": "CLIP 1:\n[action] Alexander's mother leans forward with both hands on the rustic table, searching her son's scarred face in disbelief.\nALEXANDER'S MOTHER: \"Then why did they never find you?\"\nALEXANDER: \"Because they made certain no one would look.\"\nALEXANDER'S MOTHER: \"Who?\"\nALEXANDER: \"Sterling... and Rupert.\"\nALEXANDER'S MOTHER: \"Rupert?\"\nALEXANDER: \"They knew where I was.\"\nALEXANDER: \"My position was leaked to the French... before I could expose what I had discovered.\"\nALEXANDER'S MOTHER: \"They gave you to the enemy?\"\nALEXANDER: \"They gave them my location.\"\nALEXANDER: \"They wanted the investigation buried.\"\n\n-----\n\nCLIP 2:\nALEXANDER: \"They stole my home!\"\nALEXANDER: \"And now they have taken Juliana!\"\n[action] Close-up of Alexander's gloved hand clenching into a tight, leather-creaking fist.\n[sfx] The sharp, taut creak of leather straining under monstrous grip strength.\n[action] Alexander stands framed in the doorway, staring out into the vast, snow-covered pine forest under the cold moonlight.\nALEXANDER: \"Two days.\"\nALEXANDER: \"Then they have two days to celebrate.\"\nALEXANDER: \"Because before that wedding begins...\"\nALEXANDER: \"...their dead Duke is coming home.\"\n\nWhich would you post?",
+  "response_text": "{\"choice\":2,\"reason\":\"The vivid, tense action and ominous cliffhanger about a dead duke returning create an immediate hook that works without context\",\"confidence\":\"high\"}",
+  "response_payload": {
+    "id": "chatcmpl-88d11a5d-b24c-47ac-bb48-842352e2d4be",
+    "object": "chat.completion",
+    "created": 1794128552,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"choice\":2,\"reason\":\"The vivid, tense action and ominous cliffhanger about a dead duke returning create an immediate hook that works without context\",\"confidence\":\"high\"}",
+          "reasoning": "We need to pick which clip is more arresting, makes sense without context, ends on a hook. Clip1 is a dialogue about conspiracy, mother, scarred face, mentions \"they gave you to the enemy\". It's somewhat intriguing but maybe less immediate action. Clip2 has more vivid action: gloved hand clenching, leather creak, snow forest, threat of dead Duke coming home, a wedding. Ends with ominous line. Likely more hook. So choose clip2.\n\nProvide JSON with choice 2, reason one sentence, confidence high."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.370446926,
+      "prompt_tokens": 568,
+      "prompt_time": 0.118650042,
+      "completion_tokens": 158,
+      "completion_time": 0.328655589,
+      "total_tokens": 726,
+      "total_time": 0.447305631,
+      "completion_tokens_details": {
+        "reasoning_tokens": 114
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_b1dd3e7a63",
+    "x_groq": {
+      "id": "req_01m6x6a7knebza9a01cjcr4ee3",
+      "seed": 1514464179
+    },
+    "service_tier": "on_demand"
+  }
+}

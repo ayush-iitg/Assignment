@@ -1,0 +1,48 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "ab_random_legal_ep025",
+  "system": "You choose which clips get posted as ads for a vertical drama app.\n\nYou will see two clips taken from the same show, written out as everything that\nhappens in them. You have never seen the show. Pick the ONE you would post to\nstop a scrolling viewer and make them open the app.\n\nJudge only on: does something arresting happen immediately, does it make sense\nwithout context, and does it stop at a moment that leaves you needing more.\nIgnore length. Ignore which one you were shown first.\n\nYou must choose. Reply with JSON only:\n{\n  \"choice\": 1 or 2,\n  \"reason\": \"<one sentence>\",\n  \"confidence\": \"high\" | \"low\"\n}",
+  "prompt": "CLIP 1:\nJULIANA: \"It is nothing.\"\n[action] Alexander's gloved fingers pull back the torn fabric of her cloak and sleeve, revealing a raw, bloody welt slashing across her bare shoulder.\nALEXANDER: \"Who did this?\"\nJULIANA: \"It does not matter.\"\nALEXANDER: \"Who?\"\n[action] Alexander steps directly into her space, firmly taking her hand in his.\nJULIANA: \"Lady Catherine.\"\nALEXANDER: \"Where did you meet her?\"\nJULIANA: \"I was in the wrong chamber. I was punished as a maid.\"\nALEXANDER: \"What were you doing there?\"\nALEXANDER: \"Juliana... why were you inside Ashburg Manor?\"\n\n-----\n\nCLIP 2:\nJULIANA: \"But it wasn't age.\"\nALEXANDER: \"What did you find?\"\nJULIANA: \"Poison.\"\nJULIANA: \"Arsenic.\"\n[action] Alexander's hand drops to his side and clenches into a white-knuckled fist, the thick scar across his hand tightening with intense restraint.\nJULIANA: \"Someone has been giving it to her again and again. Small amounts. Enough to make her weaker without killing her quickly.\"\nJULIANA: \"I made her medicine. She was still barely conscious, but her breathing became easier.\"\nALEXANDER: \"You treated her?\"\nJULIANA: \"Yes.\"\nALEXANDER: \"Alone?\"\nJULIANA: \"With Prudence.\"\nALEXANDER: \"Will you be going there again?\"\nJULIANA: \"I have to.\"\nJULIANA: \"She is still sick. I cannot leave her there.\"\n[action] Juliana places her gentle hand against Alexander's broad chest, trying to soothe his rising anger.\n[action] Alexander takes both of her hands into his own, gripping them tightly.\nJULIANA: \"Alexander... why are you so angry?\"\n\nWhich would you post?",
+  "response_text": "{\"choice\":1,\"reason\":\"The sudden reveal of a fresh, bloody wound grabs attention and ends on a tense unanswered question.\",\"confidence\":\"high\"}",
+  "response_payload": {
+    "id": "chatcmpl-2c2010e1-1954-4af6-82fe-b4e80951fcc3",
+    "object": "chat.completion",
+    "created": 1794128728,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"choice\":1,\"reason\":\"The sudden reveal of a fresh, bloody wound grabs attention and ends on a tense unanswered question.\",\"confidence\":\"high\"}",
+          "reasoning": "We need to pick which clip is more arresting, makes sense without context, ends on a hook. Clip 1: starts with \"It is nothing.\" Then Alexander pulls back torn fabric revealing bloody welt. Immediate visual shock. Dialogue about who did this, Lady Catherine, etc. Ends with \"Juliana... why were you inside Ashburg Manor?\" That's a question, hook. Clip 2: discussion about poison, arsenic, subtle tension, hand clenching, but less immediate visual shock. Ends with \"Alexander... why are you so angry?\" also a hook but less visceral. Clip 1 seems more arresting. So choose 1. Provide JSON."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.158344571,
+      "prompt_tokens": 673,
+      "prompt_time": 0.459838086,
+      "completion_tokens": 175,
+      "completion_time": 0.364617193,
+      "total_tokens": 848,
+      "total_time": 0.824455279,
+      "prompt_tokens_details": {
+        "cached_tokens": 256
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 136
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_c3da0d4bb9",
+    "x_groq": {
+      "id": "req_01m6x6fk8eeybtb8y34gr8pshe",
+      "seed": 1572056348
+    },
+    "service_tier": "on_demand"
+  }
+}

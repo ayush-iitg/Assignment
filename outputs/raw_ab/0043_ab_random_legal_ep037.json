@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "ab_random_legal_ep037",
+  "system": "You choose which clips get posted as ads for a vertical drama app.\n\nYou will see two clips taken from the same show, written out as everything that\nhappens in them. You have never seen the show. Pick the ONE you would post to\nstop a scrolling viewer and make them open the app.\n\nJudge only on: does something arresting happen immediately, does it make sense\nwithout context, and does it stop at a moment that leaves you needing more.\nIgnore length. Ignore which one you were shown first.\n\nYou must choose. Reply with JSON only:\n{\n  \"choice\": 1 or 2,\n  \"reason\": \"<one sentence>\",\n  \"confidence\": \"high\" | \"low\"\n}",
+  "prompt": "CLIP 1:\n[sfx] The harsh scrape and clatter of heavy iron chains dragging across wet stone.\nJULIANA: \"I will not!\"\nJULIANA: \"They can take my name. They can take my home.\"\nJULIANA: \"They cannot take who I am!\"\nNOBLEMAN: \"Do you think she'll actually be executed?\"\nCLARISSA: \"After what she has been accused of? Of course.\"\nNOBLEMAN: \"She was always stubborn.\"\nCLARISSA: \"That was her greatest mistake. She could have accepted what happened. She could have disappeared quietly.\"\n[action] Clarissa rises from her armchair holding a cut crystal glass filled with dark red wine, pacing toward the fireplace.\nCLARISSA: \"Instead she married a nobody, played healer to peasants, challenged people above her. And now the whole county will watch her pay for it.\"\nCLARISSA: \"Let them see what happens when a woman forgets her place.\"\n[action] Clarissa takes a slow sip of the red wine, her eyes gleaming with dark relish.\n\n-----\n\nCLIP 2:\nNOBLEMAN: \"So it is finally official.\"\nCLARISSA: \"Lady Catherine Ashbridge.\"\nCLARISSA: \"And after the ceremony...\"\nNOBLEMAN: \"What?\"\n[action] Clarissa hands the letter upward to him. He takes it and looks down at the bold heading.\nNOBLEMAN: \"The sentencing of the condemned.\"\nCLARISSA: \"They want the families to witness it.\"\nNOBLEMAN: \"A public execution after a wedding.\"\nCLARISSA: \"Not just an execution. A warning.\"\nNOBLEMAN: \"To whom?\"\nCLARISSA: \"To every woman who thinks she can rise above the place she was given.\"\nCLARISSA: \"Juliana's ruin will be a lesson. And we will be there to watch.\"\n[sfx] Rhythmic water drips splashing onto stagnant dungeon puddles and a low, mournful ambient drone.\n[action] Juliana curls her fingers back, pulling away from the foul sustenance in defiance.\n\nWhich would you post?",
+  "response_text": "{\"choice\":2,\"reason\":\"It reveals a shocking public execution tied to a wedding and ends on Juliana’s defiant gesture, creating immediate intrigue and a cliffhanger.\",\"confidence\":\"high\"}",
+  "response_payload": {
+    "id": "chatcmpl-2d8693e9-9729-4c22-b335-979964abd20e",
+    "object": "chat.completion",
+    "created": 1794128665,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"choice\":2,\"reason\":\"It reveals a shocking public execution tied to a wedding and ends on Juliana’s defiant gesture, creating immediate intrigue and a cliffhanger.\",\"confidence\":\"high\"}",
+          "reasoning": "We need to pick which clip is more arresting, makes sense without context, stops at a moment that leaves you needing more. Both are about execution of Juliana, a woman. Clip 1 has immediate harsh scrape of chains, Juliana shouting \"I will not!\" and a nobleman questioning execution, Clarissa sipping wine, etc. Ends with Clarissa sipping wine, eyes gleaming. That's a strong visual, but maybe ends with her sipping, not a cliffhanger. Clip 2 reveals a letter about sentencing after a wedding, and ends with Juliana curling fingers away from foul sustenance in defiance. That is a visual of defiance, maybe more cliffhanger. Which is more arresting? Clip 1 starts with chains scraping, immediate tension, but the ending is just Clarissa sipping wine, maybe less need for more. Clip 2 has a twist: execution after a wedding, warning to women, and ends with Juliana defying. That seems more intrigue. Both have context but can be understood. Clip 2 includes a letter, sentencing, and a visual of Juliana defying. That likely leaves you wanting to know what happens. So choose Clip 2.\n\nReturn JSON."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.471929604,
+      "prompt_tokens": 705,
+      "prompt_time": 0.133540874,
+      "completion_tokens": 294,
+      "completion_time": 0.608261686,
+      "total_tokens": 999,
+      "total_time": 0.74180256,
+      "completion_tokens_details": {
+        "reasoning_tokens": 246
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_ca5edfaab2",
+    "x_groq": {
+      "id": "req_01m6x6dnydevesxmp1c4fjckbr",
+      "seed": 2120400247
+    },
+    "service_tier": "on_demand"
+  }
+}

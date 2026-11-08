@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "ab_random_legal_ep048",
+  "system": "You choose which clips get posted as ads for a vertical drama app.\n\nYou will see two clips taken from the same show, written out as everything that\nhappens in them. You have never seen the show. Pick the ONE you would post to\nstop a scrolling viewer and make them open the app.\n\nJudge only on: does something arresting happen immediately, does it make sense\nwithout context, and does it stop at a moment that leaves you needing more.\nIgnore length. Ignore which one you were shown first.\n\nYou must choose. Reply with JSON only:\n{\n  \"choice\": 1 or 2,\n  \"reason\": \"<one sentence>\",\n  \"confidence\": \"high\" | \"low\"\n}",
+  "prompt": "CLIP 1:\n[action] Catherine strides forward and firmly grasps Agnes by both hands, stepping uncomfortably close.\nCATHERINE: \"Everyone in that chapel saw me humiliated today.\"\nCATHERINE: \"Good. Let them remember it.\"\nCATHERINE: \"Grief makes people careless, and carelessness is exactly what I need from that household right now.\"\nAGNES: \"My lady... the Duke has bailiffs watching every road out of the county.\"\nCATHERINE: \"I'm not leaving the county, Agnes. I'm going back into that house.\"\nCATHERINE: \"Father Thomas did his part beautifully today.\"\nCATHERINE: \"Now I need him to do a little more before that hearing convenes.\"\nAGNES: \"If someone sees him come to you...\"\nCATHERINE: \"Then no one sees him.\"\nCATHERINE: \"That is precisely your job tonight.\"\n[sfx] Dull clinking of heavy gold coins inside a leather pouch.\nCATHERINE: \"Send for the priest. Tonight.\"\nCATHERINE: \"And make sure no one sees him arrive.\"\n\n-----\n\nCLIP 2:\nCATHERINE: \"Ten days for the council to sit.\"\n[action] Catherine raises a gloved index finger, emphasizing each point with sinister precision.\nCATHERINE: \"Ten days for witnesses to be gathered.\"\nCATHERINE: \"Ten days for a decree to be undone.\"\nCATHERINE: \"Ten days is not a wall, Alexander. It's a door.\"\nCATHERINE: \"And doors can be closed from the other side.\"\n[action] Agnes, dressed in a grey maid's dress and white apron, steps inside with cautious hesitation and clasps her hands.\nAGNES: \"You sent for me, my lady?\"\nCATHERINE: \"Lock it.\"\n[sfx] Heavy metallic click of an iron key latching into a deadbolt.\n[action] Catherine strides forward and firmly grasps Agnes by both hands, stepping uncomfortably close.\nCATHERINE: \"Everyone in that chapel saw me humiliated today.\"\nCATHERINE: \"Good. Let them remember it.\"\nCATHERINE: \"Grief makes people careless, and carelessness is exactly what I need from that household right now.\"\nAGNES: \"My lady... the Duke has bailiffs watching every road out of the county.\"\n\nWhich would you post?",
+  "response_text": "{\"choice\":1,\"reason\":\"It opens with a tense physical grab and a cryptic plan that ends on a hook about a secret arrival, creating immediate intrigue without needing prior context.\",\"confidence\":\"high\"}",
+  "response_payload": {
+    "id": "chatcmpl-12813286-1962-4967-92ce-a4b7d56d1ebf",
+    "object": "chat.completion",
+    "created": 1794128487,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"choice\":1,\"reason\":\"It opens with a tense physical grab and a cryptic plan that ends on a hook about a secret arrival, creating immediate intrigue without needing prior context.\",\"confidence\":\"high\"}",
+          "reasoning": "We need to choose which clip is more arresting, makes sense without context, ends on a hook. Clip 1: starts with Catherine grabbing Agnes, mentions humiliation, plans to go back into house, mentions Father Thomas, bailiffs, \"Then no one sees him.\" There's a moment of tension. Clip 2 includes more exposition, repeats some lines, includes lock click, then repeats similar dialogue. Clip 2 is longer, but ends similarly? Clip 2 ends with Agnes saying \"My lady... the Duke has bailiffs...\" same as clip 1. Clip 2 includes the lock click, which is a hook. Clip 1 starts with tension too. Which is more arresting? Clip 2 has visual of lock, \"Lock it.\" heavy metallic click, then Catherine grabs Agnes again, repeating humiliation line. The repetition may be less effective. Clip 1 jumps straight into intrigue, no repetition. Clip 1 ends with \"And make sure no one sees him arrive.\" That's a hook. Clip 2 ends with same line but after lock click, maybe less immediate. I think Clip 1 is more concise and immediate. So choose 1. Provide JSON."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.370743289,
+      "prompt_tokens": 731,
+      "prompt_time": 0.038071039,
+      "completion_tokens": 290,
+      "completion_time": 0.609567319,
+      "total_tokens": 1021,
+      "total_time": 0.647638358,
+      "completion_tokens_details": {
+        "reasoning_tokens": 240
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_803c0ba83d",
+    "x_groq": {
+      "id": "req_01m6x687zdeczrxsjw83vn4fwc",
+      "seed": 314647766
+    },
+    "service_tier": "on_demand"
+  }
+}

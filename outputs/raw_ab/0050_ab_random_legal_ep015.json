@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "ab_random_legal_ep015",
+  "system": "You choose which clips get posted as ads for a vertical drama app.\n\nYou will see two clips taken from the same show, written out as everything that\nhappens in them. You have never seen the show. Pick the ONE you would post to\nstop a scrolling viewer and make them open the app.\n\nJudge only on: does something arresting happen immediately, does it make sense\nwithout context, and does it stop at a moment that leaves you needing more.\nIgnore length. Ignore which one you were shown first.\n\nYou must choose. Reply with JSON only:\n{\n  \"choice\": 1 or 2,\n  \"reason\": \"<one sentence>\",\n  \"confidence\": \"high\" | \"low\"\n}",
+  "prompt": "CLIP 1:\n[action] Juliana bursts through the cottage doorway, her hands wrapped in clean white bandages, freezing in horror at the destruction.\nJULIANA: \"Stop! What are you doing?!\"\nTHUG WITH CAP: \"We're clearing this rubbish.\"\nJULIANA: \"Those are medicinal plants!\"\nBALD THUG: \"They look like weeds to me.\"\n[action] The bald thug flings the bouquet into the mud and grinds his heavy boot directly onto the delicate flowers.\n[action] Juliana frantically tries to scoop the crushed soil and torn stems back into the bed with her bandaged hands.\nJULIANA: \"Please! Those plants took months to grow!\"\nTALL THUG: \"Months? You actually spend your days growing this filth?\"\n\n-----\n\nCLIP 2:\n[action] The Thug with Cap violently shoves Juliana back with both hands; she cries out as she loses her balance and crashes hard onto the wet stone path.\nJULIANA: \"Ah!\"\n[action] Juliana crawls forward on her elbows; fresh crimson blood seeps profusely through her white gauze bandages as she reaches for the ruined blossoms.\nJULIANA: \"My mother's plants...\"\nBALD THUG: \"Look at her! Crying over weeds!\"\nJULIANA: \"Stop!\"\n[action] The Tall Thug hoists his heavy wooden club above his head to crush the remaining herbs right before Juliana.\n[action] Alexander storms forward with lethal intensity, dark hair flying, breath misting in the cold, radiating untamed rage.\nJULIANA: \"Alexander...\"\n[action] Alexander places himself directly between Juliana and the three thugs, staring them down with cold, deadly intent.\nTHUG WITH CAP: \"What? You want to fight us, veteran?\"\n\nWhich would you post?",
+  "response_text": "{\"choice\":2,\"reason\":\"It opens with violent conflict, blood, and a mysterious savior arriving, ending on a tense showdown that begs for continuation\",\"confidence\":\"high\"}",
+  "response_payload": {
+    "id": "chatcmpl-a245cec0-d67f-4177-b088-87e6bf3be3a2",
+    "object": "chat.completion",
+    "created": 1794128725,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"choice\":2,\"reason\":\"It opens with violent conflict, blood, and a mysterious savior arriving, ending on a tense showdown that begs for continuation\",\"confidence\":\"high\"}",
+          "reasoning": "We need to pick which clip is more arresting, makes sense without context, ends at a moment that leaves you needing more. Clip 1: Julian bursts, bandaged hands, thugs destroying medicinal plants. Tension but maybe less immediate violence. Clip 2: More intense: Juliana is shoved, blood, Alexander appears, dramatic showdown. Ends with thugs questioning. That seems more hooky. So choose 2. Provide JSON."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.368065088,
+      "prompt_tokens": 629,
+      "prompt_time": 0.042441587,
+      "completion_tokens": 138,
+      "completion_time": 0.284249038,
+      "total_tokens": 767,
+      "total_time": 0.326690625,
+      "completion_tokens_details": {
+        "reasoning_tokens": 93
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_19b184c447",
+    "x_groq": {
+      "id": "req_01m6x6fh6degmttr3cnq5e2exv",
+      "seed": 1552238195
+    },
+    "service_tier": "on_demand"
+  }
+}

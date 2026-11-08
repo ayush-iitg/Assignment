@@ -1,0 +1,20 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "gate_p_039_a",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\n[action] The driver leaps off the cart, striking the sentry across the chest, seizing his neck, and tackling him violently against the wooden carriage wheel.\n[sfx] Dull physical thuds and scuffling boots on wet stone as the guard groans in surprise.\n[action] The loyalist locks the sentry into a tight sleeper hold, clamping a hand firmly over his mouth until his eyes roll back and he goes limp.\nLOYALIST FIGHTER: \"Sleep.\"\nCART DRIVER: \"The road is clear.\"\nLOYALIST FIGHTER: \"Tell the Duke.\"\n[action] Alexander stares solemnly at his rugged reflection, his expression dark and resolute.\n[action] Alexander snips through his overgrown locks, shedding the years of exile and camouflage.\n[sfx] Rhythmic, metallic snips of heavy shears cutting through thick hair.\nALEXANDER: \"Enough hiding.\"\n[action] Alexander lightly traces the jagged combat scar across his cheek, eyes burning with reclaimed power.\nALEXANDER: \"They buried Alexander Ashwin three years ago.\"\nALEXANDER: \"Today, he comes home.\"",
+  "text": "{\"who_is_the_main_character\":\"Alexander (named in the clip)\",\"what_is_at_stake\":\"unclear from the clip\",\"what_question_are_you_left_with\":\"What will Alexander do now that he has returned and plans to tell the Duke?\",\"would_you_keep_watching\":\"maybe, the mystery of his return is intriguing\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":false,\"ends_unresolved\":true,\"would_watch\":true}}",
+  "parsed": {
+    "who_is_the_main_character": "Alexander (named in the clip)",
+    "what_is_at_stake": "unclear from the clip",
+    "what_question_are_you_left_with": "What will Alexander do now that he has returned and plans to tell the Duke?",
+    "would_you_keep_watching": "maybe, the mystery of his return is intriguing",
+    "passes": {
+      "character_identifiable": true,
+      "stakes_clear": false,
+      "ends_unresolved": true,
+      "would_watch": true
+    }
+  }
+}

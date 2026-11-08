@@ -1,4 +1,0 @@
-#!/bin/sh
-# Minimal `timeout` replacement (macOS has no coreutils timeout).
-# Usage: bin/to 120 <command ...>
-exec perl -e 'alarm shift; exec @ARGV; die "exec failed: $!"' "$@"

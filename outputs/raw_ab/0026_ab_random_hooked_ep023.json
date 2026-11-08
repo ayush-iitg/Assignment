@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "ab_random_hooked_ep023",
+  "system": "You choose which clips get posted as ads for a vertical drama app.\n\nYou will see two clips taken from the same show, written out as everything that\nhappens in them. You have never seen the show. Pick the ONE you would post to\nstop a scrolling viewer and make them open the app.\n\nJudge only on: does something arresting happen immediately, does it make sense\nwithout context, and does it stop at a moment that leaves you needing more.\nIgnore length. Ignore which one you were shown first.\n\nYou must choose. Reply with JSON only:\n{\n  \"choice\": 1 or 2,\n  \"reason\": \"<one sentence>\",\n  \"confidence\": \"high\" | \"low\"\n}",
+  "prompt": "CLIP 1:\nPRUDENCE: \"What are you saying?\"\nJULIANA: \"Someone is poisoning her.\"\n[sfx] Sharp intake of breath from Prudence.\nPRUDENCE: \"Poison?\"\nJULIANA: \"Arsenic.\"\n[sfx] Sudden violent coughing and sputtering from the Duchess.\nPRUDENCE: \"Can you save her?\"\nJULIANA: \"I can try.\"\n[sfx] Heavy, rhythmic scraping of stone pestle grinding charcoal and dried herbs.\nJULIANA: \"The charcoal may help remove what is still inside her. We must act quickly.\"\n[sfx] Sudden muffled thump and heavy footsteps echoing from the hallway outside the door!\nPRUDENCE: \"Juliana... someone is coming.\"\n\n-----\n\nCLIP 2:\nJULIANA: \"Her pulse is weak.\"\nPRUDENCE: \"The physician said her heart is failing.\"\n[sfx] Duchess's raspy, labored inhalation.\nJULIANA: \"No.\"\nJULIANA: \"This is not simply old age.\"\n[action] Juliana draws in a sharp, startled breath, her eyes widening in horror.\nJULIANA: \"Mother.\"\nPRUDENCE: \"What is it?\"\nJULIANA: \"Weakness. Dry mouth. The discoloration beneath the nails. The slow wasting.\"\nJULIANA: \"I have seen these symptoms before.\"\nPRUDENCE: \"What are you saying?\"\nJULIANA: \"Someone is poisoning her.\"\n[sfx] Sharp intake of breath from Prudence.\nPRUDENCE: \"Poison?\"\nJULIANA: \"Arsenic.\"\n\nWhich would you post?",
+  "response_text": "{\"choice\":1,\"reason\":\"It launches straight into a poisoning crisis, vivid sounds, and ends with the tension of someone arriving, creating an immediate hook.\",\"confidence\":\"high\"}",
+  "response_payload": {
+    "id": "chatcmpl-ed4f11bc-dd39-4495-981c-78e5ea6acbcf",
+    "object": "chat.completion",
+    "created": 1794128543,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"choice\":1,\"reason\":\"It launches straight into a poisoning crisis, vivid sounds, and ends with the tension of someone arriving, creating an immediate hook.\",\"confidence\":\"high\"}",
+          "reasoning": "We need to pick which clip is more arresting, makes sense without context, ends on a hook. Clip 1 has immediate action: poisoning, coughing, grinding charcoal, someone coming. Ends with \"someone is coming.\" That's a hook. Clip 2 is longer exposition, ends with \"Arsenic.\" No immediate hook beyond reveal. Clip 1 seems more dynamic. So choose 1. Provide JSON."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.278019504,
+      "prompt_tokens": 599,
+      "prompt_time": 0.025982025,
+      "completion_tokens": 130,
+      "completion_time": 0.272938004,
+      "total_tokens": 729,
+      "total_time": 0.298920029,
+      "completion_tokens_details": {
+        "reasoning_tokens": 85
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_f73454f048",
+    "x_groq": {
+      "id": "req_01m6x69ysvemwa3kmt26bbfrrm",
+      "seed": 2042516360
+    },
+    "service_tier": "on_demand"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "ab_random_legal_ep033",
+  "system": "You choose which clips get posted as ads for a vertical drama app.\n\nYou will see two clips taken from the same show, written out as everything that\nhappens in them. You have never seen the show. Pick the ONE you would post to\nstop a scrolling viewer and make them open the app.\n\nJudge only on: does something arresting happen immediately, does it make sense\nwithout context, and does it stop at a moment that leaves you needing more.\nIgnore length. Ignore which one you were shown first.\n\nYou must choose. Reply with JSON only:\n{\n  \"choice\": 1 or 2,\n  \"reason\": \"<one sentence>\",\n  \"confidence\": \"high\" | \"low\"\n}",
+  "prompt": "CLIP 1:\nMAID: \"No!\"\nLORD: \"Think carefully.\"\nLORD: \"Your brother is still a pauper.\"\nLORD: \"One word from me, and the county gaol will take him before sunrise.\"\n[action] The maid gasps in sheer terror, her chest heaving as tears stream.\nMAID: \"Please, my Lord... he is only seven!\"\nLORD: \"Then help him.\"\nMAID: \"What do you want me to say?!\"\n\n-----\n\nCLIP 2:\nLORD: \"Around him.\"\nLORD: \"Like a circle?\"\nMAID: \"Yes.\"\nLORD: \"And she opened her mother's book...\"\nMAID: \"Yes.\"\nLORD: \"...and spoke words you could not understand.\"\nMAID: \"She was praying!\"\nLORD: \"Praying... or chanting?\"\nMAID: \"I don't know!\"\nLORD: \"You saw a woman draw a circle of herbs.\"\nLORD: \"You saw her use a forbidden book.\"\nLORD: \"You heard words you could not understand.\"\n\nWhich would you post?",
+  "text": "{\"choice\":1,\"reason\":\"The maid\u2019s desperate plea and the lord\u2019s threat create immediate tension and end on a cliff\u2011hanger question, compelling viewers to want more.\",\"confidence\":\"high\"}",
+  "parsed": {
+    "choice": 1,
+    "reason": "The maid\u2019s desperate plea and the lord\u2019s threat create immediate tension and end on a cliff\u2011hanger question, compelling viewers to want more.",
+    "confidence": "high"
+  }
+}

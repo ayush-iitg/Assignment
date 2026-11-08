@@ -1,7 +1,7 @@
 # Phase 0 — Audit (evidence only)
 
 Source: `I Married a Broken Soldier. He was a Duke/` (50 files) + `Kuku — AI Generalist Assignment.pdf` (6 pages).
-Scripts: `scripts/audit.py`, `audit2.py`, `audit3.py`. Machine-readable beat dump: `docs/_beatsheets.txt`.
+Every figure below is reproduced by `python run.py --input data --no-llm`, which prints the same counts and writes `outputs/parse_report.json`. This document is what I established about the data *before* designing anything, and it is why the solution is shaped the way it is.
 
 ## 1. Corpus shape
 

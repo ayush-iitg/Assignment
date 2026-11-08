@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "ab_random_legal_ep032",
+  "system": "You choose which clips get posted as ads for a vertical drama app.\n\nYou will see two clips taken from the same show, written out as everything that\nhappens in them. You have never seen the show. Pick the ONE you would post to\nstop a scrolling viewer and make them open the app.\n\nJudge only on: does something arresting happen immediately, does it make sense\nwithout context, and does it stop at a moment that leaves you needing more.\nIgnore length. Ignore which one you were shown first.\n\nYou must choose. Reply with JSON only:\n{\n  \"choice\": 1 or 2,\n  \"reason\": \"<one sentence>\",\n  \"confidence\": \"high\" | \"low\"\n}",
+  "prompt": "CLIP 1:\nCATHERINE: \"Why?!\"\nJULIANA: \"Because I am right!\"\nJULIANA: \"You want everyone to believe you are powerful.\"\nJULIANA: \"You want everyone to fear you.\"\nJULIANA: \"But look at you.\"\nJULIANA: \"You have to threaten a chained woman to feel powerful!\"\nCATHERINE: \"You insolent—!\"\nJULIANA: \"You may have the title you have always wanted...\"\nJULIANA: \"...but you will never have the courage to earn what you demand from everyone else.\"\nCATHERINE: \"You think you can lecture me?!\"\n[action] Catherine hoists the searing branding rod over Juliana with frantic fury.\nCATHERINE: \"Then let's see how brave you are when it touches your skin!\"\n\n-----\n\nCLIP 2:\nJULIANA: \"And a woman who never embarrasses the people standing behind her.\"\nCATHERINE: \"And what is wrong with that?!\"\nJULIANA: \"Nothing. Until you have nothing left beneath it.\"\nJULIANA: \"You have spent your whole life collecting things that make people bow...\"\nJULIANA: \"...but you have never learned how to make anyone love you.\"\nCATHERINE: \"Silence! Silence!\"\nCATHERINE: \"Why?!\"\nJULIANA: \"Because I am right!\"\n\nWhich would you post?",
+  "response_text": "{\"choice\":1,\"reason\":\"The branding rod threat creates immediate visual tension and ends on a cliffhanger, compelling viewers to want more\",\"confidence\":\"high\"}",
+  "response_payload": {
+    "id": "chatcmpl-5298c077-6412-40fc-b603-3715fc59cad0",
+    "object": "chat.completion",
+    "created": 1794128430,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"choice\":1,\"reason\":\"The branding rod threat creates immediate visual tension and ends on a cliffhanger, compelling viewers to want more\",\"confidence\":\"high\"}",
+          "reasoning": "We need to pick which clip is more arresting, makes sense without context, ends on a hook. Clip1 has immediate action: Catherine hoists a searing branding rod over Juliana, threatening to brand her. That's visual, tension. Clip2 is dialogue, ends with \"Because I am right!\" less hook. So choose Clip1. Provide JSON."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.317721494,
+      "prompt_tokens": 549,
+      "prompt_time": 0.026538285,
+      "completion_tokens": 115,
+      "completion_time": 0.237697712,
+      "total_tokens": 664,
+      "total_time": 0.264235997,
+      "completion_tokens_details": {
+        "reasoning_tokens": 74
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_dee443f41b",
+    "x_groq": {
+      "id": "req_01m6x66h63eq39p3jjk6n2v1bj",
+      "seed": 1363264183
+    },
+    "service_tier": "on_demand"
+  }
+}

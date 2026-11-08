@@ -1,0 +1,20 @@
+{
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "tag": "gate_p_037_m1",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\nBLOND NOBLEMAN: \"Every important family in the county should witness it.\"\nCATHERINE: \"The wedding?\"\nBLOND NOBLEMAN: \"The transfer of Ashbridge.\"\nCATHERINE: \"After the ceremony, no one will question who owns this house.\"\nBLOND NOBLEMAN: \"And no one will question what happened to the woman who tried to stop us.\"\nCLARISSA: \"To every woman who thinks she can rise above the place she was given.\"\nCLARISSA: \"Juliana's ruin will be a lesson. And we will be there to watch.\"\n[sfx] Rhythmic water drips splashing onto stagnant dungeon puddles and a low, mournful ambient drone.",
+  "text": "{\n  \"who_is_the_main_character\": \"The clip features a group of speakers (a Blond Nobleman, Catherine, and Clarissa) and mentions a victim named Juliana, but the clip never names a single protagonist or focuses on one specific individual as the main character.\",\n  \"what_is_at_stake\": \"The transfer of ownership of a house called Ashbridge and the public humiliation or destruction of a woman named Juliana who tried to stop it.\",\n  \"what_question_are_you_left_with\": \"What exactly is going to happen to Juliana, and who is the person watching this or experiencing the consequences?\",\n  \"would_you_keep_watching\": \"maybe, because the dialogue establishes a clear threat and a victim, but I don't know who I'm supposed to be rooting for or what the actual plot is beyond this one scene.\",\n  \"passes\": {\n    \"character_identifiable\": false,\n    \"stakes_clear\": true,\n    \"ends_unresolved\": true,\n    \"would_watch\": true\n  }\n}",
+  "parsed": {
+    "who_is_the_main_character": "The clip features a group of speakers (a Blond Nobleman, Catherine, and Clarissa) and mentions a victim named Juliana, but the clip never names a single protagonist or focuses on one specific individual as the main character.",
+    "what_is_at_stake": "The transfer of ownership of a house called Ashbridge and the public humiliation or destruction of a woman named Juliana who tried to stop it.",
+    "what_question_are_you_left_with": "What exactly is going to happen to Juliana, and who is the person watching this or experiencing the consequences?",
+    "would_you_keep_watching": "maybe, because the dialogue establishes a clear threat and a victim, but I don't know who I'm supposed to be rooting for or what the actual plot is beyond this one scene.",
+    "passes": {
+      "character_identifiable": false,
+      "stakes_clear": true,
+      "ends_unresolved": true,
+      "would_watch": true
+    }
+  }
+}

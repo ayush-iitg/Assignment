@@ -1,0 +1,20 @@
+{
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "tag": "gate_p_007_a",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\nGERALD: \"And your husband?\"\nGERALD: \"Where is that beggar husband?\"\n[action] The Scarred Bearded Man marches purposefully toward the cottage, carrying a heavy bundle of chopped firewood bound tightly with hemp cord.\n[sfx] A dull, heavy thud of timber striking the mud.\n[action] Gerald freezes, his arrogant bravado instantly vanishing as cold dread overtakes his face.\nARISTOCRATIC WOMAN: \"Gerald, don't let him frighten you.\"\nGERALD: \"What are you staring at?\"\n[action] Gerald rapidly turns on his heel toward the carriage, unwilling to face another second of the silent glare.\nGERALD: \"We are leaving.\"\nARISTOCRATIC WOMAN: \"Leaving? Gerald!\"\n[action] Aristocratic Woman scrambles back into the carriage, hiking up her gown in a fluster before slamming the door shut.\n[sfx] Carriage door slamming shut.",
+  "text": "{\n  \"who_is_the_main_character\": \"The clip features a man named Gerald and an unnamed Aristocratic Woman, but the central figure driving the action is the 'Scarred Bearded Man' who is never named.\",\n  \"what_is_at_stake\": \"Unclear from the clip. It appears to be a social confrontation or threat, but the specific danger or relationship dynamics are not explained.\",\n  \"what_question_are_you_left_with\": \"Who is the Scarred Bearded Man, why is he threatening Gerald, and what is the relationship between these characters?\",\n  \"would_you_keep_watching\": \"maybe, because the sudden shift in power and the mysterious stranger create immediate tension, though the context is missing.\",\n  \"passes\": {\n    \"character_identifiable\": false,\n    \"stakes_clear\": false,\n    \"ends_unresolved\": true,\n    \"would_watch\": true\n  }\n}",
+  "parsed": {
+    "who_is_the_main_character": "The clip features a man named Gerald and an unnamed Aristocratic Woman, but the central figure driving the action is the 'Scarred Bearded Man' who is never named.",
+    "what_is_at_stake": "Unclear from the clip. It appears to be a social confrontation or threat, but the specific danger or relationship dynamics are not explained.",
+    "what_question_are_you_left_with": "Who is the Scarred Bearded Man, why is he threatening Gerald, and what is the relationship between these characters?",
+    "would_you_keep_watching": "maybe, because the sudden shift in power and the mysterious stranger create immediate tension, though the context is missing.",
+    "passes": {
+      "character_identifiable": false,
+      "stakes_clear": false,
+      "ends_unresolved": true,
+      "would_watch": true
+    }
+  }
+}

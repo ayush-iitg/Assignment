@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "ab_random_hooked_ep037",
+  "system": "You choose which clips get posted as ads for a vertical drama app.\n\nYou will see two clips taken from the same show, written out as everything that\nhappens in them. You have never seen the show. Pick the ONE you would post to\nstop a scrolling viewer and make them open the app.\n\nJudge only on: does something arresting happen immediately, does it make sense\nwithout context, and does it stop at a moment that leaves you needing more.\nIgnore length. Ignore which one you were shown first.\n\nYou must choose. Reply with JSON only:\n{\n  \"choice\": 1 or 2,\n  \"reason\": \"<one sentence>\",\n  \"confidence\": \"high\" | \"low\"\n}",
+  "prompt": "CLIP 1:\nCATHERINE: \"The wedding?\"\nBLOND NOBLEMAN: \"The transfer of Ashbridge.\"\nCATHERINE: \"After the ceremony, no one will question who owns this house.\"\nBLOND NOBLEMAN: \"And no one will question what happened to the woman who tried to stop us.\"\nCATHERINE: \"Juliana's execution comes after the wedding.\"\nCATHERINE: \"Perfect timing. It will be a feast for our guests.\"\nBLOND NOBLEMAN: \"Send the invitations.\"\nCATHERINE: \"Especially to the Ashcrofts.\"\nBUTLER: \"Lady Clarissa, an invitation from Ashbridge Manor.\"\n[action] Clarissa takes the cream envelope, breaks the red wax seal with her gloved thumbs, and slides out the heavy card.\n\n-----\n\nCLIP 2:\n[sfx] The harsh scrape and clatter of heavy iron chains dragging across wet stone.\nJULIANA: \"I will not!\"\nJULIANA: \"They can take my name. They can take my home.\"\nJULIANA: \"They cannot take who I am!\"\nNOBLEMAN: \"Do you think she'll actually be executed?\"\nCLARISSA: \"After what she has been accused of? Of course.\"\nNOBLEMAN: \"She was always stubborn.\"\nCLARISSA: \"That was her greatest mistake. She could have accepted what happened. She could have disappeared quietly.\"\n[action] Clarissa rises from her armchair holding a cut crystal glass filled with dark red wine, pacing toward the fireplace.\nCLARISSA: \"Instead she married a nobody, played healer to peasants, challenged people above her. And now the whole county will watch her pay for it.\"\nCLARISSA: \"Let them see what happens when a woman forgets her place.\"\n[action] Clarissa takes a slow sip of the red wine, her eyes gleaming with dark relish.\n\nWhich would you post?",
+  "response_text": "{\"choice\":2,\"reason\":\"The vivid sounds, defiant dialogue, and Clarissa's darkly relishful sip create immediate tension and end on a hook demanding more\",\"confidence\":\"high\"}",
+  "response_payload": {
+    "id": "chatcmpl-59e418a7-de1a-4aac-8030-51951a2bf46d",
+    "object": "chat.completion",
+    "created": 1794128666,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"choice\":2,\"reason\":\"The vivid sounds, defiant dialogue, and Clarissa's darkly relishful sip create immediate tension and end on a hook demanding more\",\"confidence\":\"high\"}",
+          "reasoning": "We need to choose which clip is more arresting, makes sense without context, ends on a hook. Clip 1: dialogue about wedding, transfer, execution, invitation, ends with Clarissa taking envelope. It's intrigue but maybe less immediate action. Clip 2: heavy chains sound, Juliana resisting execution, Clarissa with wine, dark relish, ends with sip. More visceral, tension, hook. So choose Clip 2. Provide JSON."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.288137922,
+      "prompt_tokens": 651,
+      "prompt_time": 0.027193464,
+      "completion_tokens": 140,
+      "completion_time": 0.295608334,
+      "total_tokens": 791,
+      "total_time": 0.322801798,
+      "completion_tokens_details": {
+        "reasoning_tokens": 92
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_c800245357",
+    "x_groq": {
+      "id": "req_01m6x6dqehev8t0716y19w8hgh",
+      "seed": 377713180
+    },
+    "service_tier": "on_demand"
+  }
+}

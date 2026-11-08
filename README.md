@@ -1,148 +1,94 @@
 # Promo Finder
 
-Reads microdrama screenplays and returns ranked, timestamped **promo cut-lists** an editor can act on: which seconds of which episodes to post as a 20–60s clip on Instagram, TikTok or YouTube.
+Reads microdrama screenplays and returns ranked, timestamped **promo cut-lists** an editor can act on: which seconds of which episodes to post as a 20–60s clip.
 
-Kuku AI Generalist assignment, Problem 1. Ayush Raj, IIT Guwahati.
+Kuku AI Generalist assignment, **Problem 1**. Ayush Raj, IIT Guwahati.
 
-**The design decision everything follows from: code owns time, the model owns judgment.** The model is shown beats with timestamps *stripped from the prompt* and answers in beat IDs (`e012_b0043`); code looks each ID up in the parsed beat table and writes the timestamp. A hallucinated timestamp is not something this system can produce. The `timestamps_exist` validator proves it on every run — 92/92 on the full pack.
-
-It caught a real one: on episode 8, `qwen3.8-27b` named as its hook a beat starting **8.7 seconds before its own promo begins**. The hook text was fluent and that moment genuinely exists in the episode — it just isn't in the clip. No reader could catch that by eye.
+Solution doc: [`solution_doc.pdf`](solution_doc.pdf) · Results: [`outputs/promos.md`](outputs/promos.md) · Evaluation: [`outputs/eval_report.md`](outputs/eval_report.md) · Honest failures: [`outputs/rejected_promos.json`](outputs/rejected_promos.json)
 
 ---
 
-## Results on the supplied 50-episode pack
-
-| | |
-|---|---|
-| Episodes parsed | 50 → **3,727 timed beats** (1,754 camera · 1,487 dialogue · 372 action · 114 sfx) |
-| Promos shipped | **47** from 91 candidates (50 continuous stretches, 41 two-piece splices) |
-| Validators | **92/92 on all 6 checks**, zero invented timestamps |
-| Blind cold-viewer gate | 54 tested, **7 failed**, 87.0% pass, 0 untested |
-| Continuous vs spliced promos | pass the blind test at **0.886 vs 0.800** — splicing measurably costs comprehension |
-| Near-duplicates suppressed | 37, of which 10 are genuine cross-episode repeats (including episodes 31 and 32, which both end on a branding iron inches from the heroine's eye) |
-| Gold set — 6 promos hand-picked before the tool existed | all 6 overlap a tool pick. Mean IoU: code-only **0.354** · `gpt-oss-120b` **0.465** · `qwen3.8-27b` **0.359** |
-| Determinism | two runs → identical decision fingerprint `c7b809ad92b976e7` |
-| Cost for one full show | 127 API calls, 199,803 tokens, **$0.00 on free tier** |
-
-Full numbers: [`outputs/eval_report.md`](outputs/eval_report.md). Honest failures: [`outputs/rejected_promos.json`](outputs/rejected_promos.json).
-
----
-
-## Run it
+## Run it — no API key needed
 
 ```bash
 pip install -r requirements.txt
-
-# 1. Code-only. No API key, no network, works immediately.
-python run.py --input data --no-llm
-
-# 2. Full pipeline. Needs a key in .env (see below).
-python run.py --input data
-
-# 3. Web interface
-streamlit run app.py
-
-# 4. Evaluation report
-python evaluate.py
+python run.py --input data          # 47 promos from 50 episodes, ~1 second
+streamlit run app.py                # the web interface
 ```
 
-### API key
+**Every model response from the full run is committed in `.cache/`**, keyed by `(provider, model, prompt hash)`. So a reviewer with no API key reproduces the exact shipped output in under a second. Delete `.cache/` to force live calls.
 
-Copy `.env.example` to `.env` and add one key. Any of these providers work; no SDKs are installed, the client speaks HTTP directly.
-
-```
-GROQ_API_KEY=...            # free tier: 1,000 requests/day — what this was built on
-LLM_PROVIDER=groq
-LLM_MODEL=openai/gpt-oss-120b
-```
-
-Swap the model with a flag, no code change:
+For live calls, copy `.env.example` → `.env` and add one key. Swapping models is a flag, not a code change:
 
 ```bash
 python run.py --input data --model qwen/qwen3.8-27b
 python run.py --input data --provider gemini --model gemini-2.5-flash-lite
-python run.py --input data --provider openai --model gpt-4o-mini
+python run.py --input data --no-llm          # code only, zero network
+python run.py --input samples                # an episode the tool has never seen
+python evaluate.py                           # regenerate the evaluation report
+python ab_test.py                            # blind A/B against random windows
 ```
 
-### Useful flags
-
-| Flag | Effect |
-|---|---|
-| `--no-llm` | Deterministic scoring + templated copy. No network. Live-demo insurance. |
-| `--episodes 1,24,31` | Develop on a few episodes instead of 50. |
-| `--max-calls N` | Hard cap, default 400. Raises rather than overspending. |
-| `--no-cache` | Ignore the response cache. |
-| `--no-gate` / `--no-flagship` | Skip the blind gate / the cross-episode promo. |
-| `--top-k N` | Candidate windows per episode shown to the model (default 4). |
+Groq, OpenAI, Gemini, Anthropic and OpenRouter are wired. No vendor SDKs — the client speaks HTTP, so there is nothing to install.
 
 ---
 
-## How it works
+## The one design decision
 
-```
-50 .txt screenplays
-   │
-   ├─ parse.py      rule-based parser → 3,727 timed beats; reconciles labels vs
-   │                timestamps vs beats and ABORTS if they disagree; reports 22
-   │                source-data hazards; merges 64 speaker labels → 58 characters
-   │
-   ├─ score.py      tone tags → intensity curve → every legal 20–60s window on real
-   │                beat boundaries (18,141) → 4 sub-scores → shortlist 171
-   │                also proposes two-piece splices within an episode, rejected
-   │                unless the pair has an arc (speaker changes or intensity rises)
-   │                           ⬑ NO MODEL INVOLVED. Runs in 0.8s offline.
-   │
-   ├─ stages.py     selector: 1 call/episode, sees beat IDs and text, no timestamps
-   │
-   ├─ validate.py   6 hard checks + visual near-duplicate suppression
-   │
-   ├─ stages.py     blind cold-viewer gate: 1 call/promo, fresh context, clip text only
-   │
-   └─ pipeline.py   rank, build the flagship cross-episode promo, write outputs
-```
+> **Code owns time. The model owns judgment.**
 
-**The signal that makes this cheap:** the screenplays label the delivery of nearly every line of dialogue — `(Cold, Commanding)`, `(Screaming, Desperate)`, `(Whispering, Tearful)`. 1,472 of 1,487 dialogue beats carry one, across 617 distinct values. So the tool does not need a model to guess where the drama is; the script already says. A hand-written lexicon (`lexicon.py`, 90% hit rate) turns those tags into an intensity curve, and a promo is a shape on that curve: a spike inside the first 3 seconds, a rising edge, and a cut while still high.
+The model never sees a timestamp and never writes one. It reads beats as `[b07] JULIANA (desperate): "..."` and answers in beat IDs; code looks each ID up in the parsed table and emits the time. A hallucinated timestamp is not an output this system can produce — `timestamps_exist` is **92/92** on every run.
 
-**The check that makes it honest:** every candidate is handed to a second model instance with the logline, episode number and surrounding beats removed, and asked who this is, what's at stake, what question it leaves, and whether they'd keep watching. Promos that can't be followed are rejected with the transcript attached. Five were. One of my own hand-picked promos was flagged this way at audit time for exactly the reason the gate later measured.
+That isn't theoretical. On episode 8, `qwen3.8-27b` named as its hook a beat starting **8.7 seconds before its own promo begins**. The description was fluent and the moment genuinely exists in that episode — it just isn't in the clip. No reviewer catches that by reading; two validators did.
 
-## Outputs
+## What went to AI, what stayed as code
 
-| File | What it is |
+| Stage | Who | Why |
+|---|---|---|
+| Parse 50 files → 3,727 timed beats | **code** | the format is regular, so rules are faster, free and reproducible. Reconciles labels vs timestamps vs beats and aborts on mismatch |
+| Emotion → intensity curve | **code** | the scripts already label delivery — `(Cold, Commanding)`, `(Screaming, Desperate)` — on **1,472 of 1,487** dialogue beats across 617 values. A hand-written lexicon (90% hit rate) reads them. No guessing needed |
+| Enumerate 18,141 legal windows, score, shortlist 171 | **code** | 0.8s, offline, free. Every candidate is already length-legal and boundary-legal before a model sees it |
+| Choose among candidates, write the copy | **AI**, 1 call/episode | judgement is the one thing code can't do |
+| Splice two moments within an episode | **code** | rejected unless the pair has an arc: the speaker changes or intensity rises |
+| 6 hard validators + duplicate suppression | **code** | pass/fail, not advisory |
+| Blind comprehension gate | **AI**, 1 call/promo | a fresh instance sees only the clip — no logline, episode number or surrounding beats |
+| Final selection | **human** | the tool ranks and explains; it never posts |
+
+**Cost at real volume:** one 50-episode show = **127 calls, 199,803 tokens, $0.00** on free tier; ~$2.20/year at a show a week on Gemini Flash-Lite rates. Tokens are not the scaling cost — the free tier's 8,000 tokens/minute is, and it vanishes on a paid key. The real cost is editor attention, which is why the gate and duplicate suppression exist.
+
+## How I know it's good
+
+| | |
 |---|---|
-| `outputs/promos.md` | the editor's view: one ranked table |
-| `outputs/promos.json` | machine-readable, full scores and beat provenance |
-| `outputs/rejected_promos.json` | everything thrown out, with the reason and the gate transcript |
-| `outputs/parse_report.json` | hazards, tone coverage, alias map, per-episode stats |
-| `outputs/eval_report.md` | gold-set agreement, validator counts, gate rates, model stability |
-| `outputs/raw/` | unedited request/response pairs for every API call |
-| `outputs/tension_curves.json` | per-second intensity, per episode |
+| **Beats a random legal window** (blind, 38 pairs) | **75.8%** position-corrected, 78.6% on a counterbalanced subset |
+| Beats a window that already passes the hook filter | **65.1%** — so the hook rule does most of the lift, the scoring adds a smaller real edge |
+| Validators across 92 promos | **92/92** on all six. Zero invented timestamps |
+| Blind comprehension gate | 54 tested, **7 failed**, 0 untested |
+| Continuous vs spliced promos | **0.886 vs 0.800** pass rate — splicing measurably costs comprehension |
+| Determinism | two runs → identical fingerprint `c7b809ad92b976e7` |
+| Cross-model stability | mean IoU **0.50**, no overlap at all on 8 of 50 episodes |
 
-## Repo layout
+There is deliberately **no hand-picked gold set** as the headline. It asks the wrong question and wouldn't scale — see the solution doc.
+
+## What it can't do
+
+It can't see: shot quality, performance and music are invisible in text. Its prose embellishes even though its timestamps can't — the top promo's hook says "blood and dust flying" where the screenplay says "stone dust", and the word *blood* appears nowhere in that episode. 8 of 50 episodes ship nothing, having lost their best candidate to the gate or a duplicate. Scoring weights are hand-set and written down in one table; there is no labelled data, so nothing here is learned.
+
+Five things the AI got wrong, with before/after: [`docs/ai_mistakes_log.md`](docs/ai_mistakes_log.md).
+
+## Layout
 
 ```
-run.py            CLI
-app.py            Streamlit UI — a view over pipeline.run(), not a second implementation
-evaluate.py       evaluation harness
+run.py / app.py / evaluate.py / ab_test.py     CLI · web UI · evaluation · blind A/B
 promo/
-  parse.py        screenplay → beats
-  lexicon.py      tone-tag → intensity table (hand-written, in the open)
-  score.py        windows + the four sub-scores
-  llm.py          provider-agnostic client: cache, token pacer, retries, call cap
-  stages.py       the three prompts
-  validate.py     hard validators + duplicate suppression
-  pipeline.py     orchestration; the only place a timestamp is written
-data/             the 50-episode input pack
-samples/          a synthetic episode I wrote, for testing on unseen input
-docs/             audit, exploration, decision memo, spec, assumptions, AI mistakes log
-outputs/          results from the full run
+  parse.py      screenplay → beats           score.py     windows + 4 sub-scores
+  lexicon.py    tone tag → intensity         llm.py       provider-agnostic client
+  stages.py     the three prompts            validate.py  hard checks + dedup
+  pipeline.py   orchestration — the only place a timestamp is written
+data/           the 50-episode input pack    samples/     a synthetic unseen episode
+outputs/        full run + 127 raw call records  outputs_qwen/  second model, 128 records
+outputs_nollm/  code-only baseline           outputs_unseen/    unseen-input run
+docs/           framing, assumptions, audit, AI mistakes, video script
 ```
 
-## What this does not do
-
-Shot-level visual quality, performance and music are invisible to it — the input is text, so it is reading sheet music and guessing at the performance. It builds exactly one cross-episode promo rather than many, because stitching arbitrary moments across 50 episodes needs reliable character identity and this corpus has 64 speaker labels for 58 characters. The scoring weights are my judgment, hand-set and written down in one table; there is no labelled data for "good promo", so anything described as learned would be invented.
-
-Known limitations, measured rather than guessed: [`outputs/eval_report.md`](outputs/eval_report.md) §3 and the limitations section of the solution doc.
-
-## Input pack
-
-`data/` holds Kuku's 50-episode screenplay pack, included at the explicit direction of the repo owner, who states the Kuku team agreed to this. It is Kuku's own unreleased content. `data/` is the single input path, so excluding it is a one-line `.gitignore` change.
+`data/` holds Kuku's screenplay pack, included at the repo owner's direction. `data/` is the single input path, so excluding it is a one-line `.gitignore` change.

@@ -1,0 +1,20 @@
+{
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "tag": "gate_p_flagship",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\nCATHERINE: \"This pathetic book is the only thing you still have from your mother.\"\nJULIANA: \"I am not letting them take you.\"\nJULIANA: \"Let her think I am only a maid.\"\nALEXANDER: \"And yet, here I stand. That is the lie you built your life upon.\"\nHIGH PRIEST: \"And I have the power to undo in one hearing what took you three years to steal!\"",
+  "text": "{\n  \"who_is_the_main_character\": \"The clip features multiple named characters (Catherine, Juliana, Alexander, High Priest) but does not identify a single main character or protagonist.\",\n  \"what_is_at_stake\": \"Unclear from the clip. There is a conflict involving a 'pathetic book,' a mother, a maid identity, and a High Priest with power to undo something, but the specific goal or threat is not explained.\",\n  \"what_question_are_you_left_with\": \"Who is 'her' that Juliana is protecting, what is the book, and what did Alexander steal three years ago?\",\n  \"would_you_keep_watching\": \"no, the dialogue is disjointed and provides no context for the characters or the situation.\",\n  \"passes\": {\n    \"character_identifiable\": false,\n    \"stakes_clear\": false,\n    \"ends_unresolved\": true,\n    \"would_watch\": false\n  }\n}",
+  "parsed": {
+    "who_is_the_main_character": "The clip features multiple named characters (Catherine, Juliana, Alexander, High Priest) but does not identify a single main character or protagonist.",
+    "what_is_at_stake": "Unclear from the clip. There is a conflict involving a 'pathetic book,' a mother, a maid identity, and a High Priest with power to undo something, but the specific goal or threat is not explained.",
+    "what_question_are_you_left_with": "Who is 'her' that Juliana is protecting, what is the book, and what did Alexander steal three years ago?",
+    "would_you_keep_watching": "no, the dialogue is disjointed and provides no context for the characters or the situation.",
+    "passes": {
+      "character_identifiable": false,
+      "stakes_clear": false,
+      "ends_unresolved": true,
+      "would_watch": false
+    }
+  }
+}

@@ -16,9 +16,11 @@ Input `data` · 50 episodes · model `openai/gpt-oss-120b` · generated from `ou
 | Gate could not be run (counted separately, never as a pass) | 0 |
 | **Shipped** | 47 |
 
-## 1. Agreement with promos I picked by hand before building the tool
+## 1. Sanity check against spans drafted before the tool existed
 
-6 of 6 hand-picked promos overlap a tool pick. Mean IoU **0.465**.
+Kept as a sanity check only, not as a quality measure. A hand-picked gold set asks the wrong question — 'did the tool match one human's pick?' — and it does not scale: maintaining one per show would recreate the manual work the tool removes. The headline measure is the blind A/B in section 1b. With n=6 the numbers below cannot rank approaches, and the per-episode spread shows why.
+
+6 of 6 drafted spans overlap a tool pick. Mean IoU **0.465**.
 
 | Episode | My pick (s) | Tool pick (s) | IoU | Status | Why I picked it |
 |---|---|---|---|---|---|
@@ -27,7 +29,7 @@ Input `data` · 50 episodes · model `openai/gpt-oss-120b` · generated from `ou
 | 13 | 54.0-112.0 | 80.5-112.0 | 0.543 | shipped | Wordless physical ordeal, then an object reveal that poses a question without answering it. |
 | 15 | 47.4-78.0 | 47.4-82.4 | 0.874 | shipped | Violence opens it, and it cuts before the fight resolves - the viewer needs the outcome. |
 | 24 | 32.5-81.0 | 67.5-89.8 | 0.236 | shipped | Physical violence stops the scroll, then a secret-identity tease replaces resolution. |
-| 31 | 131.0-160.0 | 10.5-23.5 + 118.4-132.8 | 0.033 | rejected: near-duplicate of p_032_a (episodes [32], 1 apart, visual overlap 0.23 | Pure peril needing no setup, cut mid-threat. Flagged at audit time as the weakest of my picks for standalone comprehension - a stranger is never told her name. |
+| 31 | 131.0-160.0 | 10.5-23.5 + 118.4-132.8 | 0.033 | rejected: near-duplicate of p_032_a (episodes [32], 1 apart, visual overlap 0.23 | Pure peril needing no setup, cut mid-threat. Flagged at audit time as the weakest of the six for standalone comprehension - a stranger is never told her name. |
 
 **Code-only comparison:** with the model switched off, mean IoU against the same hand-picks is **0.354** (5/6 overlapping).
 
@@ -109,6 +111,44 @@ No invented timestamps in shipped output: **True**
 - *what is at stake* — The outcome of an unresolved hearing and the council's decision about a woman referred to as "her," with Catherine trying to delay the hearing and learn the council's knowledge
 - *what question are you left with* — What is the hearing about, who is "her," and how will the council ultimately decide?
 - *would you keep watching* — maybe, the dialogue hints at intrigue but lacks context
+
+
+## 1b. Blind A/B — does the tool beat picking at random?
+
+Judge: `openai/gpt-oss-120b`, seed 20261108. Each pick compared against a random legal window from the same episode. Blind: the judge sees two clips as text, never a score, never which is which. Order randomised per pair, then as many pairs as the free-tier token budget allowed were re-judged in the opposite order.
+
+> **Caveat.** The judge has a strong preference for whichever clip is shown second, so the uncorrected win rate is not trustworthy on its own. The position-corrected figure averages the two position-conditional rates; the counterbalanced subset removes position by construction. Report those, not the raw number.
+
+| Compared against | Pairs | Uncorrected | Shown 1st / 2nd | **Position-corrected** | Counterbalanced subset |
+|---|---|---|---|---|---|
+| Any legal 20–60s window — the whole system | 38 | 76.3% (p=0.00166) | 66.7% / 85.0% | **75.8%** | 78.6% over 28 judgements |
+| A window already passing the hook filter — what the tension scoring adds | 38 | 73.7% (p=0.0051) | 41.7% / 88.5% | **65.1%** | 64.3% over 28 judgements |
+
+Chance is 50%. This replaces a hand-picked reference set as the headline quality measure: it runs unattended on any new show, needs no editor time, and n equals the episode count rather than 6.
+
+*Any legal 20–60s window — the whole system* — on the 14 pairs judged in both orders, the tool was preferred both ways 10 times, the random window both ways 2 times, and 2 flipped with presentation order.
+
+*A window already passing the hook filter — what the tension scoring adds* — on the 14 pairs judged in both orders, the tool was preferred both ways 8 times, the random window both ways 4 times, and 2 flipped with presentation order.
+
+
+**Where the tool lost (Any legal 20–60s window — the whole system):**
+
+- episode 28: tool picked `113.3-136.7`, judge preferred `52.8-91.0` — *The violent snatching of a family heirloom and the threat of poison create immediate tension and end on a hook.*
+- episode 4: tool picked `113.0-134.5`, judge preferred `79.2-119.0` — *It builds tension with a secretive ceremony then ends on a shocking outburst, leaving a clear hook.*
+- episode 9: tool picked `6.3-54.0`, judge preferred `86.6-111.2` — *The mysterious rumor about a war veteran who looks like the dead Duke ends on a tense, unanswered "Impossible" hook.*
+- episode 18: tool picked `73.5-106.8`, judge preferred `38.0-68.0` — *The immediate danger of a collapsing ceiling and the urgent conflict over the ledger create a clear hook that compels viewers to want to see what happens next.*
+- episode 7: tool picked `21.0-69.5`, judge preferred `65.6-93.8` — *The scarred man’s ominous arrival and Gerald’s sudden dread create an immediate hook that leaves viewers wanting to know what happens next.*
+- episode 37: tool picked `104.0-148.0`, judge preferred `47.0-95.5` — *It reveals a shocking public execution tied to a wedding and ends on Juliana’s defiant gesture, creating immediate intrigue and a cliffhanger.*
+
+
+**Where the tool lost (A window already passing the hook filter — what the tension scoring adds):**
+
+- episode 28: tool picked `113.3-136.7`, judge preferred `54.0-103.7` — *The sudden violent grab of the locket and the reveal of a hidden identity create immediate tension and end on a mysterious hook.*
+- episode 1: tool picked `46.8-70.4`, judge preferred `7.2-29.8` — *The sudden, visual revelation at the altar creates immediate tension and ends on a shocking hook, enticing viewers to learn more.*
+- episode 47: tool picked `78.8-108.5`, judge preferred `43.0-78.5` — *The sudden command to throw Catherine out creates immediate tension and a cliffhanger that begs for resolution.*
+- episode 4: tool picked `113.0-134.5`, judge preferred `79.2-116.8` — *The mysterious bearded man’s protective promise and the sudden outburst create immediate tension and a hook that begs for continuation.*
+- episode 9: tool picked `6.3-54.0`, judge preferred `43.8-77.5` — *It ends on a mysterious warning that hints at larger conflict, leaving the viewer craving more.*
+- episode 30: tool picked `120.0-143.5`, judge preferred `44.8-72.8` — *The creaking doors, urgent dialogue about a hidden prisoner, and a tense reveal of a legal trap end on a cliffhanger that hooks viewers*
 
 
 ## 3b. Does splicing cost comprehension?

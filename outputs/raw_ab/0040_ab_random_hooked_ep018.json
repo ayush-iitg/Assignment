@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "ab_random_hooked_ep018",
+  "system": "You choose which clips get posted as ads for a vertical drama app.\n\nYou will see two clips taken from the same show, written out as everything that\nhappens in them. You have never seen the show. Pick the ONE you would post to\nstop a scrolling viewer and make them open the app.\n\nJudge only on: does something arresting happen immediately, does it make sense\nwithout context, and does it stop at a moment that leaves you needing more.\nIgnore length. Ignore which one you were shown first.\n\nYou must choose. Reply with JSON only:\n{\n  \"choice\": 1 or 2,\n  \"reason\": \"<one sentence>\",\n  \"confidence\": \"high\" | \"low\"\n}",
+  "prompt": "CLIP 1:\n[action] Alexander reaches the bed, hoisting Juliana up by her arms into a standing embrace.\nJULIANA: \"What happened?\"\nALEXANDER: \"Fire.\"\n[action] Alexander clutches Juliana against his chest with one strong arm, shielding her face from the sparks.\nALEXANDER: \"Stay close to me.\"\n[action] Juliana recoils from the heat, clutching Alexander's coat tightly.\nJULIANA: \"We cannot get through!\"\nALEXANDER: \"Then we go another way.\"\n[sfx] Loud wooden groaning and thunderous crash of burning rafters falling behind them.\n[action] Juliana spots the book and halts abruptly, pointing back toward the burning desk.\nJULIANA: \"The ledger!\"\n[action] Alexander firmly grips her arm, pulling her back toward safety.\nALEXANDER: \"Leave it!\"\n\n-----\n\nCLIP 2:\nALEXANDER: \"Juliana!\"\nJULIANA: \"It's my mother's!\"\n[action] Juliana snatches the scorched leather ledger from the burning table, pulling it tightly against her chest with both bandaged hands.\nJULIANA: \"Alexander!\"\nALEXANDER: \"Down!\"\n[action] Alexander lunges across the room, tackling her to the wooden floor and covering her body entirely with his own.\n[sfx] Massive wooden beam crashes directly where Juliana had been standing, showering them in sparks.\n[action] Alexander lifts his head slightly, checking her face and cradling her cheek tenderly.\nALEXANDER: \"I've got you.\"\n[action] Alexander scoops Juliana up in his arms, carrying her bridal-style as she clutches the ledger.\n[action] Juliana looks toward the side wall and points frantically at the parlor window.\nJULIANA: \"The window!\"\nALEXANDER: \"Hold on to me.\"\n\nWhich would you post?",
+  "response_text": "{\"choice\":2,\"reason\":\"The sudden beam crash, tender rescue, and frantic pointing at a window create immediate tension and a clear hook for more action.\",\"confidence\":\"high\"}",
+  "response_payload": {
+    "id": "chatcmpl-a6c42188-83e2-4342-bc18-e40b9b8a03cf",
+    "object": "chat.completion",
+    "created": 1794128611,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"choice\":2,\"reason\":\"The sudden beam crash, tender rescue, and frantic pointing at a window create immediate tension and a clear hook for more action.\",\"confidence\":\"high\"}",
+          "reasoning": "We need to pick which clip is more arresting, makes sense without context, ends on a hook. Both are similar. Clip 1: starts with Alexander reaching bed, \"What happened?\" \"Fire.\" There's immediate danger, burning rafters, ledger. Ends with Alexander pulling her away, \"Leave it!\" That's a cliffhanger: ledger left behind.\n\nClip 2: starts with \"Juliana!\" \"It's my mother's!\" She grabs ledger, Alexander tackles her, beam crashes where she stood, he cradles her, lifts her, she points at window, \"The window!\" He says \"Hold on to me.\" Ends with them about to escape via window. Also hook.\n\nWhich is more arresting? Clip 2 has more action: beam crash, tender cradling, then pointing at window. Ends with \"Hold on to me.\" That suggests imminent escape, tension. Clip 1 has less movement, but ledger left behind is a mystery. Clip 2 seems more dynamic and emotional.\n\nThus choose Clip 2. Provide JSON."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.315587713,
+      "prompt_tokens": 644,
+      "prompt_time": 0.032396383,
+      "completion_tokens": 259,
+      "completion_time": 0.545343441,
+      "total_tokens": 903,
+      "total_time": 0.577739824,
+      "completion_tokens_details": {
+        "reasoning_tokens": 214
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_4200b3f836",
+    "x_groq": {
+      "id": "req_01m6x6c1haer2rk38tny0gk0pz",
+      "seed": 2110320929
+    },
+    "service_tier": "on_demand"
+  }
+}

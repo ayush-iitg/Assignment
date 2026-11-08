@@ -1,0 +1,170 @@
+{
+  "judge": {
+    "provider": "groq",
+    "model": "openai/gpt-oss-120b",
+    "seed": 20261108
+  },
+  "design": "Each pick compared against a random legal window from the same episode. Blind: the judge sees two clips as text, never a score, never which is which. Order randomised per pair, then as many pairs as the free-tier token budget allowed were re-judged in the opposite order.",
+  "caveat": "The judge has a strong preference for whichever clip is shown second, so the uncorrected win rate is not trustworthy on its own. The position-corrected figure averages the two position-conditional rates; the counterbalanced subset removes position by construction. Report those, not the raw number.",
+  "summary": {
+    "random_legal": {
+      "n_pairs": 38,
+      "uncorrected_win_rate": 0.763,
+      "uncorrected_p_value": 0.00166,
+      "win_rate_when_tool_shown_first": 0.667,
+      "win_rate_when_tool_shown_second": 0.85,
+      "allocation_first_vs_second": [
+        18,
+        20
+      ],
+      "position_corrected_win_rate": 0.758,
+      "counterbalanced_subset": {
+        "pairs_judged_both_orders": 14,
+        "judgements": 28,
+        "win_rate": 0.786,
+        "tool_preferred_both_orders": 10,
+        "rival_preferred_both_orders": 2,
+        "flipped_with_order": 2
+      },
+      "losses": [
+        {
+          "episode": 28,
+          "tool": "113.3-136.7",
+          "rival": "52.8-91.0",
+          "reason": "The violent snatching of a family heirloom and the threat of poison create immediate tension and end on a hook."
+        },
+        {
+          "episode": 4,
+          "tool": "113.0-134.5",
+          "rival": "79.2-119.0",
+          "reason": "It builds tension with a secretive ceremony then ends on a shocking outburst, leaving a clear hook."
+        },
+        {
+          "episode": 9,
+          "tool": "6.3-54.0",
+          "rival": "86.6-111.2",
+          "reason": "The mysterious rumor about a war veteran who looks like the dead Duke ends on a tense, unanswered \"Impossible\" hook."
+        },
+        {
+          "episode": 18,
+          "tool": "73.5-106.8",
+          "rival": "38.0-68.0",
+          "reason": "The immediate danger of a collapsing ceiling and the urgent conflict over the ledger create a clear hook that compels viewers to want to see what happens next."
+        },
+        {
+          "episode": 7,
+          "tool": "21.0-69.5",
+          "rival": "65.6-93.8",
+          "reason": "The scarred man’s ominous arrival and Gerald’s sudden dread create an immediate hook that leaves viewers wanting to know what happens next."
+        },
+        {
+          "episode": 37,
+          "tool": "104.0-148.0",
+          "rival": "47.0-95.5",
+          "reason": "It reveals a shocking public execution tied to a wedding and ends on Juliana’s defiant gesture, creating immediate intrigue and a cliffhanger."
+        },
+        {
+          "episode": 43,
+          "tool": "69.0-93.0",
+          "rival": "3.9-60.0",
+          "reason": "It opens with a tense confrontation, reveals a shocking betrayal, and ends on a cliffhanger as Alexander demands the names, compelling viewers to want more."
+        },
+        {
+          "episode": 22,
+          "tool": "26.0-69.5",
+          "rival": "0.0-42.5",
+          "reason": "It builds immediate tension with danger and a dying duchess, ending on the ominous door shut that begs curiosity"
+        },
+        {
+          "episode": 19,
+          "tool": "43.0-70.5",
+          "rival": "1.8-49.2",
+          "reason": "It opens with dramatic loss and a mysterious figure, ending on a tense question that begs continuation"
+        }
+      ]
+    },
+    "random_hooked": {
+      "n_pairs": 38,
+      "uncorrected_win_rate": 0.737,
+      "uncorrected_p_value": 0.0051,
+      "win_rate_when_tool_shown_first": 0.417,
+      "win_rate_when_tool_shown_second": 0.885,
+      "allocation_first_vs_second": [
+        12,
+        26
+      ],
+      "position_corrected_win_rate": 0.651,
+      "counterbalanced_subset": {
+        "pairs_judged_both_orders": 14,
+        "judgements": 28,
+        "win_rate": 0.643,
+        "tool_preferred_both_orders": 8,
+        "rival_preferred_both_orders": 4,
+        "flipped_with_order": 2
+      },
+      "losses": [
+        {
+          "episode": 28,
+          "tool": "113.3-136.7",
+          "rival": "54.0-103.7",
+          "reason": "The sudden violent grab of the locket and the reveal of a hidden identity create immediate tension and end on a mysterious hook."
+        },
+        {
+          "episode": 1,
+          "tool": "46.8-70.4",
+          "rival": "7.2-29.8",
+          "reason": "The sudden, visual revelation at the altar creates immediate tension and ends on a shocking hook, enticing viewers to learn more."
+        },
+        {
+          "episode": 47,
+          "tool": "78.8-108.5",
+          "rival": "43.0-78.5",
+          "reason": "The sudden command to throw Catherine out creates immediate tension and a cliffhanger that begs for resolution."
+        },
+        {
+          "episode": 4,
+          "tool": "113.0-134.5",
+          "rival": "79.2-116.8",
+          "reason": "The mysterious bearded man’s protective promise and the sudden outburst create immediate tension and a hook that begs for continuation."
+        },
+        {
+          "episode": 9,
+          "tool": "6.3-54.0",
+          "rival": "43.8-77.5",
+          "reason": "It ends on a mysterious warning that hints at larger conflict, leaving the viewer craving more."
+        },
+        {
+          "episode": 30,
+          "tool": "120.0-143.5",
+          "rival": "44.8-72.8",
+          "reason": "The creaking doors, urgent dialogue about a hidden prisoner, and a tense reveal of a legal trap end on a cliffhanger that hooks viewers"
+        },
+        {
+          "episode": 7,
+          "tool": "21.0-69.5",
+          "rival": "70.0-103.2",
+          "reason": "The sudden arrival of the scarred man with firewood creates immediate tension and ends on a mysterious, unanswered line, prompting curiosity."
+        },
+        {
+          "episode": 38,
+          "tool": "62.8-84.0",
+          "rival": "3.2-39.0",
+          "reason": "The sudden act of a guard slipping bread to a starving prisoner creates immediate tension and ends on a haunting question that begs continuation"
+        },
+        {
+          "episode": 19,
+          "tool": "43.0-70.5",
+          "rival": "5.1-46.0",
+          "reason": "It combines emotional tension, visual intrigue, and ends on a mysterious figure that begs for more"
+        },
+        {
+          "episode": 49,
+          "tool": "48.8-76.8",
+          "rival": "77.2-112.8",
+          "reason": "It presents high‑stakes political intrigue and ends on a cliffhanger about a duke discovering a conspiracy, which hooks viewers without needing prior context."
+        }
+      ]
+    }
+  },
+  "n_mirrored_recovered": 28
+}

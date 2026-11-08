@@ -1,0 +1,20 @@
+{
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "tag": "gate_p_011_m1",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\nJULIANA: \"You have already taken enough from me. Leave!\"\nGERALD: \"Your husband stole my gold pocket watch!\"\nJULIANA: \"What? When?\"\nGERALD: \"The last time I came here.\"\nJULIANA: \"You never even entered the cottage!\"\nGERALD: \"Then you should have nothing to fear from a search.\"\nJULIANA: \"Alexander would never steal from you.\"\nGERALD: \"What is it, soldier? Going to strike a gentleman in front of his wife?\"\nJULIANA: \"Don't!\"\nALEXANDER: \"One blow would end this.\"\nALEXANDER: \"But one blow would destroy her life.\"\n[action] The Constable grabs the coat by the collar and begins rummaging through its deep pockets.\nJULIANA: \"That is his coat!\"",
+  "text": "{\n  \"who_is_the_main_character\": \"The clip features three named characters: Juliana, Gerald, and Alexander. It does not explicitly identify a single 'main' character, though Juliana is the central figure in the conflict.\",\n  \"what_is_at_stake\": \"Gerald is searching for a stolen gold pocket watch. If he finds it, Alexander (Juliana's husband) will be exposed as a thief, which Alexander implies would 'destroy her life.'\",\n  \"what_question_are_you_left_with\": \"Will the Constable find the watch in Alexander's coat, and what will happen to Juliana and Alexander if he does?\",\n  \"would_you_keep_watching\": \"yes, the tension of the search and the threat to the family's life is high.\",\n  \"passes\": {\n    \"character_identifiable\": true,\n    \"stakes_clear\": true,\n    \"ends_unresolved\": true,\n    \"would_watch\": true\n  }\n}",
+  "parsed": {
+    "who_is_the_main_character": "The clip features three named characters: Juliana, Gerald, and Alexander. It does not explicitly identify a single 'main' character, though Juliana is the central figure in the conflict.",
+    "what_is_at_stake": "Gerald is searching for a stolen gold pocket watch. If he finds it, Alexander (Juliana's husband) will be exposed as a thief, which Alexander implies would 'destroy her life.'",
+    "what_question_are_you_left_with": "Will the Constable find the watch in Alexander's coat, and what will happen to Juliana and Alexander if he does?",
+    "would_you_keep_watching": "yes, the tension of the search and the threat to the family's life is high.",
+    "passes": {
+      "character_identifiable": true,
+      "stakes_clear": true,
+      "ends_unresolved": true,
+      "would_watch": true
+    }
+  }
+}

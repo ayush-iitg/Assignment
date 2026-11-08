@@ -1,85 +1,55 @@
-# Phase 2 — Decision memo
+# Why Problem 1, and how I scoped it
 
-## 1. Weighted scoring matrix
+Written before any code existed. I sketched four genuinely different approaches to each of the three problems, scored them, then attacked my own winner.
 
-Weights (sum 100) = the five published lenses plus the five things that decide whether I actually land this in 7 hours.
-`frame` problem choice & framing 15 · `scale` approach/scale/cost 15 · `qual` quality checking 15 · `proto` prototype runs on real inputs 20 · `comms` explainability 5 · `feas` feasibility in 150 build-min 10 · `meas` measurability of quality 5 · `demo` demo-ability on an unseen input 5 · `dist` distinctiveness vs many similar candidates 7 · `safe` low overpromise risk 3. Scores 1–5, normalised to 100.
+## 1. Scoring
 
-| Approach | frame | scale | qual | proto | comms | feas | meas | demo | dist | safe | **Total** |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| **1B+1C+1D composite** | 5 | 5 | 5 | 5 | 4 | 3 | 5 | 5 | 5 | 5 | **95.0** |
-| 1D cold-viewer gate + pairwise | 4 | 4 | 5 | 4 | 4 | 4 | 5 | 5 | 5 | 5 | 87.0 |
-| 1B windows + beat-ID LLM | 4 | 4 | 4 | 5 | 4 | 4 | 4 | 5 | 4 | 4 | 85.0 |
-| 3.1 character-label drift | 3 | 4 | 4 | 5 | 4 | 5 | 5 | 4 | 4 | 4 | 84.0 |
-| 3.4 timeline validator | 3 | 4 | 4 | 5 | 4 | 5 | 5 | 4 | 3 | 5 | 83.2 |
-| 1C tone-curve, code ranks | 4 | 5 | 4 | 4 | 5 | 3 | 4 | 3 | 5 | 4 | 82.4 |
-| 2C evidence triage | 4 | 4 | 3 | 4 | 4 | 4 | 3 | 4 | 4 | 4 | 76.0 |
-| 2B rules + templates | 4 | 4 | 3 | 4 | 5 | 4 | 3 | 3 | 3 | 5 | 75.2 |
-| 2A RAG + citation verifier | 4 | 4 | 4 | 4 | 4 | 2 | 4 | 5 | 3 | 3 | 75.0 |
-| 3.3 runtime drift check | 2 | 3 | 3 | 5 | 5 | 5 | 5 | 4 | 2 | 5 | 73.8 |
-| 2D opponent sim + refusal | 3 | 3 | 4 | 3 | 4 | 4 | 4 | 4 | 4 | 5 | 70.6 |
-| 1A whole-episode LLM (the median submission) | 2 | 2 | 1 | 3 | 4 | 5 | 1 | 4 | 1 | 2 | 48.6 |
+Weights sum to 100: the five published lenses, plus four practical constraints that decide whether a thing actually ships — `feas` can I build it, `meas` can I measure whether it's good, `demo` does it survive being re-run on an unseen input, `safe` how easily it overpromises.
 
-## 2. Sensitivity: which weights flip the winner?
+`frame` 15 · `scale` 15 · `qual` 15 · `proto` 20 · `comms` 5 · `feas` 10 · `meas` 5 · `demo` 5 · `dist` 7 · `safe` 3. Scores 1–5, normalised.
 
-| Re-weighting | Winner | Runner-up |
-|---|---|---|
-| Base | 1B+1C+1D (95.0) | 1D (87.0) |
-| Ship-at-all-costs (feas 30, proto 30) | 1B+1C+1D (90.0) | 3.1 label drift (87.7) |
-| Distinctiveness ×3.5 (25) | 1B+1C+1D (95.8) | 1D (89.0) |
-| Problem-choice ×2.3 (35) | 1B+1C+1D (95.8) | 1D (85.8) |
-| Quality-checking ×2 (30) | 1B+1C+1D (95.7) | 1D (88.7) |
-| **Feasibility 40 (panic mode)** | **3.1 character-label drift (87.7)** | 3.4 timeline validator (87.1) |
-
-Only one reweighting flips it: if I decide I can't ship a working P1 pipeline, the right move is P3 character-label drift, because it's measurable and buildable in ~1.5 h. **That is my fallback, and the trigger is explicit: if the end-to-end ugly version isn't running on 2 episodes by build-minute 70, I switch.**
-
-## 3. Red team on my own pick
-
-| Attack | Honest answer |
+| Approach | Total |
 |---|---|
-| **"Everyone picks P1."** It has the input pack. The brief itself warns that similar submissions from one campus get reviewed closely. | True, and it's the main risk. I'm not betting on problem choice for distinctiveness; I'm betting on three things the median P1 build won't have: timestamps that *cannot* be hallucinated (the model selects beat IDs, code emits times), a promo score built from the tone tags already in Kuku's own screenplays, and a blind cold-viewer test that can fail my own promos. |
-| **"You have no media background. Why is your taste in promos worth anything?"** | It isn't, and I won't claim it. I claim a measurable proxy instead: hook in the first 3s, rising tension, a cut at an unresolved beat, and a comprehension test a context-free reader must pass. Where the tool disagrees with my hand-picks I report the disagreement rather than tuning until it agrees. |
-| **"No ground truth, so 'how do you know it's good' is hand-waving."** | Weakest point. Mitigation: a 5–6 promo gold set I built before any LLM ran (3 already in `00_audit.md`), rank stability across two runs and two models, and a validator suite with hard pass/fail. I will report overlap numbers even if they're bad. |
-| **"Tone tags are a crutch that won't exist on the next show."** | Fair. The parser reports tone-tag coverage; below a threshold it falls back to a lexicon over ACTION/SOUND FX text. I'll demo that path rather than hide it. |
-| **"A promo is visual; a screenplay isn't video."** | Agreed. The brief scopes this to finding moments and timestamps, no editing. I'll say plainly that shot-level visual impact is invisible to me and is the first thing I'd add with frame-level input. |
-| **"Problem 2 would stand out more."** | It would differentiate on topic but I'd be building legal content with zero legal background and no input pack, in 7 hours, under a rule that forbids inventing sections. Higher overpromise risk, lower chance of a prototype that survives being re-run live. |
+| **P1 — deterministic windows + LLM picks by beat ID + blind comprehension gate** | **95.0** |
+| P1 — blind comprehension gate with pairwise ranking, candidates from anywhere | 87.0 |
+| P1 — enumerate legal windows, LLM selects by beat ID | 85.0 |
+| P3 — character-label drift detector (64 labels for ~58 characters) | 84.0 |
+| P3 — screenplay timeline validator (out-of-order beats, overlapping dialogue) | 83.2 |
+| P1 — tone-tag tension curve, ranking fully in code, LLM writes only the copy | 82.4 |
+| P2 — evidence triage: messy story → case file + missing-proof checklist | 76.0 |
+| P2 — rule-based intake flows with reviewed templates, LLM out of the legal path | 75.2 |
+| P2 — RAG over bare act text with a citation verifier | 75.0 |
+| P3 — episode runtime drift check (12 of 50 episodes exceed the format) | 73.8 |
+| P2 — opponent role-play simulator + refusal/escalation classifier | 70.6 |
+| **P1 — paste the whole screenplay into one prompt (the default submission)** | **48.6** |
 
-**What the median competitor ships:** one prompt containing a whole screenplay, a bullet list of 3 promos with plausible-looking timestamps, a one-paragraph "ranking" with no method, and a doc that asserts the promos make sense standalone without testing it.
+The gap that mattered: 95.0 against **48.6** for the obvious build. Same problem, same input, same brief — the difference is entirely in where the work is placed.
 
-## 4. Decision
+## 2. Sensitivity — which weights flip the winner?
 
-- **Primary: Problem 1, built as 1B+1C with 1D as the quality gate.** Deterministic parser → enumerate 20–60s windows snapped to real beat boundaries → tone-tag tension score shortlists → LLM picks and explains by beat ID only → validators + blind cold-viewer comprehension test → ranked promo list with a "post this first" rationale.
-- **Fallback (trigger at build-minute 70): P3.1 character-label drift detector.** Already evidenced in `00_audit.md`.
-- **Degraded mode inside the primary (no API / quota dead): 1C alone** with templated hook/cliffhanger copy. The pipeline must still produce a complete ranked promo list with `--no-llm`.
+| Re-weighting | Winner |
+|---|---|
+| Base | **the chosen approach (95.0)** |
+| Ship-at-all-costs (feasibility 30, prototype 30) | the chosen approach (90.0) |
+| Distinctiveness ×3.5 | the chosen approach (95.8) |
+| Problem-choice ×2.3 | the chosen approach (95.8) |
+| Quality-checking ×2 | the chosen approach (95.7) |
+| **Feasibility 40 (panic mode)** | **P3 character-label drift (87.7)** |
 
-## 5. MUST / SHOULD / CUT — revised after the "web interface" instruction
+One reweighting flips it. If I couldn't ship a working promo pipeline, the right move was the label-drift detector — measurable, buildable in ~90 minutes, and already evidenced in `docs/00_audit.md`. I wrote that trigger down in advance rather than deciding under pressure.
 
-Phase 4 extended from 150 → **175 min**, funded by the 57 min earned in Phases 0–2 (not from buffer). Streamlit UI promoted from CUT to MUST; S3 demoted to CUT.
+## 3. Red team on my own choice
 
-| | Task | Min |
-|---|---|---|
-| **MUST** | M1 Parser: beats, tone tags, speaker aliasing, hazard handling (ep-6, ep-24, non-monotonic), parse report | 25 |
-| **MUST** | M2 Window enumeration + deterministic tension/hook/cliffhanger scoring from tone lexicon | 25 |
-| **MUST** | M3 Provider-agnostic LLM layer (env var provider+model, disk cache, 60s timeout, 2 retries, 429 handling, hard call cap) + selector prompt returning beat IDs | 30 |
-| **MUST** | M4 Validators: every timestamp exists in beat table, 20–60s, hook within first 3s, near-duplicate suppression | 10 |
-| **MUST** | M5 `run.py` CLI → `outputs/promos.json` + Markdown, incl. `--no-llm` mode | 10 |
-| **MUST** | M6 Blind cold-viewer comprehension gate (fresh context, strict rubric, transcript saved) — promoted, it is the distinctiveness | 25 |
-| **MUST** | **U1 Streamlit web UI** over the same functions: upload .txt → run → ranked table, rejected-with-transcript tab, parse report, tension curve, download buttons, provider/model selectors | 35 |
-| **SHOULD** | S2 Ranking rationale ("post this first because…"), composite score; pairwise tournament only if spare | 10 |
-| **SHOULD** | U2 Deploy to Streamlit Community Cloud + README run steps | 15 (Phase 6) |
-| **CUT** | S3 multi-segment promo, cross-episode thread stitching, visual/shot scoring, any training, auth |  |
+| Attack | Answer |
+|---|---|
+| **Everyone picks Problem 1.** It has the input pack, and the brief warns that similar submissions from one campus get reviewed closely. | True, and it is the main risk. I'm not betting on the problem for distinctiveness — I'm betting on three things the default build won't have: timestamps that *cannot* be hallucinated because the model only ever emits beat IDs; a promo score built from tone tags already sitting in Kuku's own screenplays; and a blind comprehension test that can and does overrule me. |
+| **You have no media background. Why is your taste worth anything?** | It isn't, and I don't claim it. I claim a measurable proxy — hook inside 3 seconds, rising tension, a cut at an unresolved beat — each enforced as a hard validator, and a blind A/B against a random legal window to show the scoring beats chance. Where the tool disagrees with me, I report the disagreement rather than tuning until it agrees. |
+| **A promo is visual; a screenplay isn't video.** | Agreed, and it's limitation #1 in the solution doc. The brief scopes this to finding moments and timestamps, with no editing. Shot quality and performance are invisible to me, and that's the first thing I'd fix with frame-level input. |
+| **Problem 2 would stand out more.** | It would differentiate on topic, but I'd be writing legal content with no legal background, no input pack, and a rule against inventing sections. Higher chance of overpromising, lower chance of a prototype that survives being re-run live. |
+| **Problem 3 lets you pick something you can win at.** | I found four real, evidenced candidates in the data — label drift, repeated cliffhanger framing, runtime drift, timeline defects. None of them clears the brief's own bar of mattering *more* than Problems 1 and 2. The brief states promo-picking is a manual bottleneck against a weekly cadence; that's a stronger claim than anything I could establish about label hygiene. Saying so is more honest than dressing up a QA chore as a business problem. |
 
-MUST = 160 min, SHOULD-in-phase-4 = 10 min, total 170 of 175.
+## 4. The decision
 
-**UI architecture rule: the UI is a view, not a second implementation.** `pipeline.run(files, config) → dict` is called identically by `run.py` and `app.py`. If the UI breaks, the CLI still produces every deliverable.
+**Problem 1.** A deterministic parser and scorer do the finding; the model makes only the judgment call and never touches arithmetic; a blind comprehension test gates the output; a human editor makes the final call and never sees an unranked list.
 
-**Confidentiality constraint on deployment** (PDF p.5: don't publish or share the input pack): the public repo and the deployed app ship **no Kuku episode files**. The deployed app defaults to upload mode. Precomputed results over the real pack go in the `outputs/` link on the submission form, not into a public GitHub repo.
-
----
-
-## STOP — I need two answers before I write code
-
-1. **Which API key do you have available?** Say the env var name and I'll wire it as the default (free tier is fine: Gemini 2.5 Flash-Lite is ~1,000 req/day). If you have none, I build `--no-llm` first and you add the key later — the pipeline will still run end-to-end, just with templated copy instead of LLM-written hooks.
-2. **Approve the plan above, or switch?** Default if you just say "go": Problem 1 as specified.
-
-⏱ **Checkpoint: 10 min used of 70 budgeted for Phases 0–2 (60 min ahead).** If I fall behind later, the first cut is S3 (multi-segment promo), then S2 drops from pairwise to a composite score.
+Declared in advance and still true: if the API or quota died, `--no-llm` had to produce a complete ranked list from code alone. It does, in 0.8 seconds, and that fallback turned into one of the more useful measurements in the project.

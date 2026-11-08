@@ -1,0 +1,20 @@
+{
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "tag": "gate_p_028_a",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\nJULIANA: \"Do not speak about my husband!\"\nCATHERINE: \"And look at you now. Scrubbing fireplaces in my house.\"\nCATHERINE: \"What a magnificent fall, Lady Juliana.\"\nBLOND NOBLEMAN: \"Drag her to the wet cells beneath the south tower.\"\nCATHERINE: \"And this?\"\nCATHERINE: \"This book of weeds will hang her before the magistrate.\"\nJULIANA: \"That book is my mother's life's work!\"\nCATHERINE: \"Then perhaps you can explain every page to the magistrate...\"\nCATHERINE: \"...before he sends you to the gallows.\"",
+  "text": "{\n  \"who_is_the_main_character\": \"Juliana (referred to as Lady Juliana), a woman scrubbing fireplaces who is being threatened with execution; the clip never names the other characters beyond 'Catherine' and 'Blond Nobleman'\",\n  \"what_is_at_stake\": \"Juliana's life and freedom, as she is being threatened with hanging by a magistrate based on a book she claims is her mother's work\",\n  \"what_question_are_you_left_with\": \"Will Juliana be able to explain the book to the magistrate in time to save her life, or will she be sent to the gallows?\",\n  \"would_you_keep_watching\": \"yes, the threat of immediate execution creates high tension and I want to see if she survives the confrontation\",\n  \"passes\": {\n    \"character_identifiable\": true,\n    \"stakes_clear\": true,\n    \"ends_unresolved\": true,\n    \"would_watch\": true\n  }\n}",
+  "parsed": {
+    "who_is_the_main_character": "Juliana (referred to as Lady Juliana), a woman scrubbing fireplaces who is being threatened with execution; the clip never names the other characters beyond 'Catherine' and 'Blond Nobleman'",
+    "what_is_at_stake": "Juliana's life and freedom, as she is being threatened with hanging by a magistrate based on a book she claims is her mother's work",
+    "what_question_are_you_left_with": "Will Juliana be able to explain the book to the magistrate in time to save her life, or will she be sent to the gallows?",
+    "would_you_keep_watching": "yes, the threat of immediate execution creates high tension and I want to see if she survives the confrontation",
+    "passes": {
+      "character_identifiable": true,
+      "stakes_clear": true,
+      "ends_unresolved": true,
+      "would_watch": true
+    }
+  }
+}

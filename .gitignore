@@ -1,10 +1,11 @@
 # secrets — never commit
 .env
 .env.*
+!.env.example
 .streamlit/secrets.toml
 
-# llm response cache (regenerable, keyed by provider+model+prompt hash)
-.cache/
+# my own prep material, not part of the submission
+private/
 
 # python
 __pycache__/
@@ -15,10 +16,11 @@ venv/
 # os
 .DS_Store
 
-# duplicate of data/ — the input pack is committed once, under data/
-I Married a Broken Soldier. He was a Duke/
+# NOTE: .cache/ IS committed on purpose. It holds every model response from the
+# full run, keyed by (provider, model, prompt hash), so a reviewer can clone
+# this repo with no API key and reproduce the exact 47 promos in under a second.
+# Delete .cache/ to force live API calls.
 
-# build scratch
-logs/
-outputs_dev/
-scripts/
+# raw-outputs bundle for the Drive link; duplicates outputs/
+kuku_raw_outputs.zip
+.vscode/

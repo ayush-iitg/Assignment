@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "ab_random_hooked_ep013",
+  "system": "You choose which clips get posted as ads for a vertical drama app.\n\nYou will see two clips taken from the same show, written out as everything that\nhappens in them. You have never seen the show. Pick the ONE you would post to\nstop a scrolling viewer and make them open the app.\n\nJudge only on: does something arresting happen immediately, does it make sense\nwithout context, and does it stop at a moment that leaves you needing more.\nIgnore length. Ignore which one you were shown first.\n\nYou must choose. Reply with JSON only:\n{\n  \"choice\": 1 or 2,\n  \"reason\": \"<one sentence>\",\n  \"confidence\": \"high\" | \"low\"\n}",
+  "prompt": "CLIP 1:\n[action] Juliana releases his hands and turns toward the briar thicket. Alexander stretches out his chained hands, attempting to hold her back, but the Constable restrains him.\nCLARISSA: \"Careful, sister.\"\nCLARISSA: \"That garden has swallowed better women than you.\"\nGERALD: \"Perhaps the beggar's wife will finally learn what her new life is worth.\"\n[action] Juliana drops to her knees in front of the frozen blackthorn branches, steadying her trembling breath.\nALEXANDER: \"Juliana, stop!\"\n[sfx] Rattling of heavy iron chains.\n[action] Juliana crawls forward on all fours, lowering her head under the jagged, arching thorns.\nALEXANDER: \"Please...\"\n[action] Sharp blackthorn spines rake across Juliana's fingers and knuckles, carving bloody gashes across her skin.\nJULIANA: \"No...\"\nCLARISSA: \"Look at her hands.\"\nCLARISSA: \"The lady has finally found something worthy of her.\"\n[action] Gerald leans his hands on the terrace railing, sneering callously.\nGERALD: \"Keep searching, Juliana. Your husband's freedom is somewhere in that garden.\"\n[sfx] Sickening crunch and scrape of thorns slicing through flesh.\nALEXANDER: \"Please... enough!\"\n[action] Juliana drags her body across the frozen, cracked soil beneath the dense roof of briars.\n\n-----\n\nCLIP 2:\n[action] Alexander loses control, violently lunging past the Constable toward the briars.\nALEXANDER: \"Stop!\"\n[action] Juliana continues clawing forward, branches lacerating her arm and cheek.\nJULIANA: \"Ahhh!\"\nALEXANDER: \"Juliana!\"\n[action] Juliana digs her torn fingers into the frost-hardened earth, turning over rocks and dead vegetation.\nALEXANDER: \"Juliana!\"\nJULIANA: \"Please, ring... you have to be here.\"\n[action] Her blood-smeared index finger brushes against a solid metallic object half-buried in the frozen dirt beneath a thorny branch.\n[action] Juliana reaches out her torn, bloodied hand and wraps her fingers tightly around the emerald ring.\n\nWhich would you post?",
+  "response_text": "{\"choice\":2,\"reason\":\"It opens with frantic action and ends on the mysterious discovery of an emerald ring, creating an immediate hook.\",\"confidence\":\"high\"}",
+  "response_payload": {
+    "id": "chatcmpl-bb78a0fe-2ea8-440b-b317-9aad04f9f145",
+    "object": "chat.completion",
+    "created": 1794128672,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"choice\":2,\"reason\":\"It opens with frantic action and ends on the mysterious discovery of an emerald ring, creating an immediate hook.\",\"confidence\":\"high\"}",
+          "reasoning": "We need to pick which clip is more arresting, makes sense without context, ends on a hook. Clip 1 is longer, includes dialogue, violence, but maybe less clear hook? Ends with Juliana dragging her body across soil. No clear cliffhanger. Clip 2 has immediate action, a character lunges, Juliana finds an emerald ring, ends with her holding ring. That is a hook: what is the ring? So Clip 2 likely better. Provide JSON with choice 2, reason one sentence, confidence high."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.320803283,
+      "prompt_tokens": 730,
+      "prompt_time": 0.036941402,
+      "completion_tokens": 151,
+      "completion_time": 0.313317223,
+      "total_tokens": 881,
+      "total_time": 0.350258625,
+      "completion_tokens_details": {
+        "reasoning_tokens": 110
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_8ea50c0161",
+    "x_groq": {
+      "id": "req_01m6x6dwqcee9sp6hkazrf3118",
+      "seed": 638398375
+    },
+    "service_tier": "on_demand"
+  }
+}

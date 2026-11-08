@@ -1,0 +1,20 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "gate_p_030_m1",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\nELDER NOBLEMAN: \"You have a rat in your cellar, Rupert. And the servants are beginning to smell it.\"\nRUPERT: \"The Ashcroft girl is locked tight. Nobody knows she is down there.\"\nELDER NOBLEMAN: \"The kitchen maids are whispering. They see the soup bowls returned unwiped. They see your guards outside the lower grates.\"\n[sfx] The heavy creak of massive mahogany doors gliding open on brass hinges.\nELDER NOBLEMAN: \"We give them a reason to condemn her.\"\nCATHERINE: \"You have a solution?\"\nELDER NOBLEMAN: \"We use the law to destroy her.\"",
+  "text": "{\"who_is_the_main_character\":\"The clip does not explicitly name a main character; Rupert appears to be the focal figure as he discusses the Ashcroft girl\u2019s situation\",\"what_is_at_stake\":\"The fate of the Ashcroft girl \u2013 whether she will be condemned or destroyed through legal means\",\"what_question_are_you_left_with\":\"Will the elders succeed in using the law to destroy her, and what will happen to the girl?\",\"would_you_keep_watching\":\"maybe, the political intrigue hints at larger conflict\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":true,\"ends_unresolved\":true,\"would_watch\":true}}",
+  "parsed": {
+    "who_is_the_main_character": "The clip does not explicitly name a main character; Rupert appears to be the focal figure as he discusses the Ashcroft girl\u2019s situation",
+    "what_is_at_stake": "The fate of the Ashcroft girl \u2013 whether she will be condemned or destroyed through legal means",
+    "what_question_are_you_left_with": "Will the elders succeed in using the law to destroy her, and what will happen to the girl?",
+    "would_you_keep_watching": "maybe, the political intrigue hints at larger conflict",
+    "passes": {
+      "character_identifiable": true,
+      "stakes_clear": true,
+      "ends_unresolved": true,
+      "would_watch": true
+    }
+  }
+}

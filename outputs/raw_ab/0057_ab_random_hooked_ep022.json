@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "ab_random_hooked_ep022",
+  "system": "You choose which clips get posted as ads for a vertical drama app.\n\nYou will see two clips taken from the same show, written out as everything that\nhappens in them. You have never seen the show. Pick the ONE you would post to\nstop a scrolling viewer and make them open the app.\n\nJudge only on: does something arresting happen immediately, does it make sense\nwithout context, and does it stop at a moment that leaves you needing more.\nIgnore length. Ignore which one you were shown first.\n\nYou must choose. Reply with JSON only:\n{\n  \"choice\": 1 or 2,\n  \"reason\": \"<one sentence>\",\n  \"confidence\": \"high\" | \"low\"\n}",
+  "prompt": "CLIP 1:\nHOUSEKEEPER: \"And can you keep your eyes and ears where they belong?\"\nJULIANA: \"Yes, ma'am.\"\nHOUSEKEEPER: \"Then prove it. The manor has no use for useless girls.\"\n[action] The Housekeeper turns and stalks away down the corridor. Prudence exhales a trembling breath of relief.\nPRUDENCE: \"That was close.\"\nJULIANA: \"Where is the West Wing?\"\nPRUDENCE: \"Beyond the grand staircase. Few servants go there.\"\n[action] Lady Juliana stops in her tracks and gazes upward in awe at the soaring gilded ceilings and aristocratic crest.\nJULIANA: \"This house...\"\n[action] Prudence rushes into frame, grabbing Juliana's arm to keep her moving.\nPRUDENCE: \"Do not stare. Keep walking.\"\n\n-----\n\nCLIP 2:\nPRUDENCE: \"And if they discover who you are?\"\nJULIANA: \"Then I will face that when she is breathing again.\"\nPRUDENCE: \"Then forget you were ever a lady.\"\nJULIANA: \"Today, I am only a maid.\"\n[action] Prudence opens the heavy wooden service door, and both women step inside into the dark servants' corridor as the door shuts firmly behind them.\n[sfx] Heavy wooden latch clicks shut with a thud.\nHOUSEKEEPER: \"Prudence.\"\nHOUSEKEEPER: \"Who is this?\"\nPRUDENCE: \"Julian, ma'am. New help for the winter cleaning.\"\nHOUSEKEEPER: \"She looks soft.\"\n[action] Close-up on Lady Juliana's hands gripping the iron handle of the wooden wash bucket firmly.\nJULIANA: \"I can work, ma'am.\"\nHOUSEKEEPER: \"Can you scrub stone?\"\nJULIANA: \"Yes, ma'am.\"\nHOUSEKEEPER: \"Carry coal?\"\nJULIANA: \"Yes, ma'am.\"\nHOUSEKEEPER: \"And can you keep your eyes and ears where they belong?\"\n\nWhich would you post?",
+  "response_text": "{\"choice\":2,\"reason\":\"It opens with tense dialogue, a mysterious locked door, and ends on a provocative question that leaves the viewer wanting more\",\"confidence\":\"high\"}",
+  "response_payload": {
+    "id": "chatcmpl-96d140f9-8748-42c9-8e48-f00e09b73168",
+    "object": "chat.completion",
+    "created": 1794128735,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"choice\":2,\"reason\":\"It opens with tense dialogue, a mysterious locked door, and ends on a provocative question that leaves the viewer wanting more\",\"confidence\":\"high\"}",
+          "reasoning": "We need to pick which clip is more arresting, makes sense without context, ends on a hook. Clip1: starts with housekeeper admonishing, then housekeeper leaves, Prudence relieved, talk about West Wing, awe at ceilings, then Prudence grabs Juliana. Ends with \"Keep walking.\" Not a strong hook.\n\nClip2: Tension about identity, door closing, housekeeper appears, questioning, repeated line \"And can you keep your eyes and ears where they belong?\" Ends with that line, which is a question, leaving hook. More immediate tension, mystery. So choose Clip2.\n\nProvide JSON with choice 2, reason one sentence, confidence high."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.368134642,
+      "prompt_tokens": 672,
+      "prompt_time": 0.031294433,
+      "completion_tokens": 182,
+      "completion_time": 0.374423405,
+      "total_tokens": 854,
+      "total_time": 0.405717838,
+      "completion_tokens_details": {
+        "reasoning_tokens": 138
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_19b184c447",
+    "x_groq": {
+      "id": "req_01m6x6ftqpe3brvx61e6gx6knp",
+      "seed": 1803072255
+    },
+    "service_tier": "on_demand"
+  }
+}

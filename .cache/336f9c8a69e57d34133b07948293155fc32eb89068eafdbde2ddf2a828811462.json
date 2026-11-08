@@ -1,0 +1,20 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "gate_p_002_a",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\nCLARISSA: \"Gerald needs a real lady...\"\nCLARISSA: \"...not a dull creature who hides in her mother's apothecary herbs.\"\n[action] The matriarch steps into the center aisle, glaring down at Juliana with cold superiority.\nOFF-SCREEN VOICE: \"Oh, don't look so wounded, Juliana.\"\nOFF-SCREEN VOICE: \"You should be grateful you're at least allowed to attend the wedding.\"\nGERALD: \"Go home quietly, Juliana. At least leave this chapel with some dignity.\"\nJULIANA: \"Dignity?\"\nJULIANA: \"You abandoned a woman who trusted you...\"\nJULIANA: \"...because another woman promised you greater beauty and wealth.\"\nJULIANA: \"Do not mistake my heartbreak for your victory, Gerald.\"\nJULIANA: \"You wanted this entire chapel to believe that I was not worthy of you. But you have shown them something far more valuable.\"\nJULIANA: \"You have shown them exactly what your word is worth.\"\n[action] Juliana lifts her chin high, commanding the space with unassailable dignity.\nJULIANA: \"I may leave this chapel without a husband...\"",
+  "text": "{\"who_is_the_main_character\":\"Juliana (named in the clip)\",\"what_is_at_stake\":\"Juliana's dignity and marriage prospects are threatened by Gerald's betrayal and the public humiliation at the wedding chapel\",\"what_question_are_you_left_with\":\"Will Juliana leave the chapel alone, or will she find a way to secure a husband or reclaim her standing?\",\"would_you_keep_watching\":\"maybe, the dialogue hints at drama but the resolution is unclear\",\"passes\":{\"character_identifiable\":true,\"stakes_clear\":true,\"ends_unresolved\":true,\"would_watch\":false}}",
+  "parsed": {
+    "who_is_the_main_character": "Juliana (named in the clip)",
+    "what_is_at_stake": "Juliana's dignity and marriage prospects are threatened by Gerald's betrayal and the public humiliation at the wedding chapel",
+    "what_question_are_you_left_with": "Will Juliana leave the chapel alone, or will she find a way to secure a husband or reclaim her standing?",
+    "would_you_keep_watching": "maybe, the dialogue hints at drama but the resolution is unclear",
+    "passes": {
+      "character_identifiable": true,
+      "stakes_clear": true,
+      "ends_unresolved": true,
+      "would_watch": false
+    }
+  }
+}

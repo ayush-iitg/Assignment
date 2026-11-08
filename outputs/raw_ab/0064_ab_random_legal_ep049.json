@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "ab_random_legal_ep049",
+  "system": "You choose which clips get posted as ads for a vertical drama app.\n\nYou will see two clips taken from the same show, written out as everything that\nhappens in them. You have never seen the show. Pick the ONE you would post to\nstop a scrolling viewer and make them open the app.\n\nJudge only on: does something arresting happen immediately, does it make sense\nwithout context, and does it stop at a moment that leaves you needing more.\nIgnore length. Ignore which one you were shown first.\n\nYou must choose. Reply with JSON only:\n{\n  \"choice\": 1 or 2,\n  \"reason\": \"<one sentence>\",\n  \"confidence\": \"high\" | \"low\"\n}",
+  "prompt": "CLIP 1:\nFATHER THOMAS: \"Careful men still hang, my lady, when the crime is treason against a Duke the King himself just restored.\"\nCATHERINE: \"Careful men who help me also get remembered.\"\nCATHERINE: \"A grateful Duchess collects debts differently than a desperate one.\"\n[action] Father Thomas slowly raises his right hand, palm turned upward in invitation and pact.\nFATHER THOMAS: \"The rest depends on how well you keep your part of this quiet.\"\nFATHER THOMAS: \"Then we understand each other.\"\n[action] Catherine reaches out and places her slender hand firmly into Father Thomas's open palm.\nCATHERINE: \"We always have.\"\n\n-----\n\nCLIP 2:\nCATHERINE: \"Today went better than either of us planned for. The whole court watched you humiliate her.\"\nFATHER THOMAS: \"Fitting choice, this room. A place the family forgot for a conversation they mustn't remember.\"\nCATHERINE: \"You always did have a taste for symbolism.\"\nFATHER THOMAS: \"And you always did have a taste for using me. It's why we suit each other.\"\nCATHERINE: \"Then make certain the council remembers that for the full ten days, not just the first hour.\"\nFATHER THOMAS: \"What is it you actually need from me, Catherine? Say it plainly, for once.\"\n\nWhich would you post?",
+  "response_text": "{\"choice\":2,\"reason\":\"It ends on a tense, unanswered question that creates immediate intrigue and conflict\",\"confidence\":\"high\"}",
+  "response_payload": {
+    "id": "chatcmpl-108b15f1-92dd-492f-ba91-8e46ae4fc7cb",
+    "object": "chat.completion",
+    "created": 1794128796,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"choice\":2,\"reason\":\"It ends on a tense, unanswered question that creates immediate intrigue and conflict\",\"confidence\":\"high\"}",
+          "reasoning": "We need to pick which clip is more arresting, makes sense without context, ends on a hook. Clip1: dialogue about treason, a pact, hand joining. Ends with \"We always have.\" That's a bit ambiguous but maybe not a hook. Clip2: more tension, mentions humiliation, secret conversation, council, asks \"What is it you actually need from me, Catherine? Say it plainly, for once.\" Ends on a question, a hook. Clip2 seems more dramatic, immediate conflict, ends with a question. So choose 2.\n\nProvide JSON with choice 2, reason one sentence, confidence high."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.27740999,
+      "prompt_tokens": 544,
+      "prompt_time": 0.027978446,
+      "completion_tokens": 163,
+      "completion_time": 0.341225205,
+      "total_tokens": 707,
+      "total_time": 0.369203651,
+      "completion_tokens_details": {
+        "reasoning_tokens": 128
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_5082008e34",
+    "x_groq": {
+      "id": "req_01m6x6hnt4etk9dp5q5kmhfncw",
+      "seed": 52275153
+    },
+    "service_tier": "on_demand"
+  }
+}

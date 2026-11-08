@@ -1,0 +1,20 @@
+{
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "tag": "gate_p_036_a",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\nALEXANDER: \"They stole my home!\"\nALEXANDER: \"And now they have taken Juliana!\"\n[action] Close-up of Alexander's gloved hand clenching into a tight, leather-creaking fist.\n[sfx] The sharp, taut creak of leather straining under monstrous grip strength.\n[action] Alexander stands framed in the doorway, staring out into the vast, snow-covered pine forest under the cold moonlight.\nALEXANDER: \"Two days.\"\nALEXANDER: \"Then they have two days to celebrate.\"\nALEXANDER: \"Because before that wedding begins...\"\nALEXANDER: \"...their dead Duke is coming home.\"",
+  "text": "{\n  \"who_is_the_main_character\": \"Alexander (the clip names him, but provides no other identifying details like title or species beyond his appearance and dialogue)\",\n  \"what_is_at_stake\": \"Reclaiming his home and rescuing Juliana before a wedding takes place in two days\",\n  \"what_question_are_you_left_with\": \"Who is the 'dead Duke' and how does he intend to stop the wedding?\",\n  \"would_you_keep_watching\": \"yes, the threat of a 'dead Duke' returning is intriguing and sets up a clear immediate goal\",\n  \"passes\": {\n    \"character_identifiable\": true,\n    \"stakes_clear\": true,\n    \"ends_unresolved\": true,\n    \"would_watch\": true\n  }\n}",
+  "parsed": {
+    "who_is_the_main_character": "Alexander (the clip names him, but provides no other identifying details like title or species beyond his appearance and dialogue)",
+    "what_is_at_stake": "Reclaiming his home and rescuing Juliana before a wedding takes place in two days",
+    "what_question_are_you_left_with": "Who is the 'dead Duke' and how does he intend to stop the wedding?",
+    "would_you_keep_watching": "yes, the threat of a 'dead Duke' returning is intriguing and sets up a clear immediate goal",
+    "passes": {
+      "character_identifiable": true,
+      "stakes_clear": true,
+      "ends_unresolved": true,
+      "would_watch": true
+    }
+  }
+}

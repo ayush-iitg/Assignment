@@ -1,0 +1,45 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "ab_random_hooked_ep001",
+  "system": "You choose which clips get posted as ads for a vertical drama app.\n\nYou will see two clips taken from the same show, written out as everything that\nhappens in them. You have never seen the show. Pick the ONE you would post to\nstop a scrolling viewer and make them open the app.\n\nJudge only on: does something arresting happen immediately, does it make sense\nwithout context, and does it stop at a moment that leaves you needing more.\nIgnore length. Ignore which one you were shown first.\n\nYou must choose. Reply with JSON only:\n{\n  \"choice\": 1 or 2,\n  \"reason\": \"<one sentence>\",\n  \"confidence\": \"high\" | \"low\"\n}",
+  "prompt": "CLIP 1:\nJULIANA: \"You knew this before I walked through those doors!\"\nJULIANA: \"You let me come here...\"\nJULIANA: \"You let me dress in my mother's gown...\"\nJULIANA: \"You let me believe I was walking toward my husband!\"\nGERALD: \"I changed my mind.\"\nJULIANA: \"You swore you loved me!\"\nCLARISSA: \"People change their minds, sister.\"\nJULIANA: \"And you knew?\"\n\n-----\n\nCLIP 2:\n[action] Juliana's eyes widen slightly in bewilderment as she notices something amiss at the altar.\nMATRIARCH: \"You should turn around, Juliana.\"\nJULIANA: \"Why?\"\nJULIANA: \"Gerald is waiting for me.\"\nMATRIARCH: \"Not anymore.\"\nJULIANA: \"What do you mean?\"\nMATRIARCH: \"Look for yourself.\"\n[action] Juliana walks forward past the Matriarch, her breath hitching as she approaches the altar steps, looking up in shock.\n\nWhich would you post?",
+  "response_text": "{\"choice\":2,\"reason\":\"The sudden, visual revelation at the altar creates immediate tension and ends on a shocking hook, enticing viewers to learn more.\",\"confidence\":\"high\"}",
+  "response_payload": {
+    "id": "chatcmpl-f06569ad-1331-4132-9a07-632523a3e1f6",
+    "object": "chat.completion",
+    "created": 1794128425,
+    "model": "openai/gpt-oss-120b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"choice\":2,\"reason\":\"The sudden, visual revelation at the altar creates immediate tension and ends on a shocking hook, enticing viewers to learn more.\",\"confidence\":\"high\"}",
+          "reasoning": "We need to pick which clip is more arresting, makes sense without context, ends on a hook. Clip 1 is dialogue heavy, reveals betrayal, but may be confusing without context. Clip 2 has visual action, a twist: \"Not anymore\", \"Look for yourself\", ends with Juliana shocked at altar. That seems more hook. So choose 2.\n\nProvide JSON with choice 2, reason one sentence, confidence high."
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "queue_time": 0.307813018,
+      "prompt_tokens": 481,
+      "prompt_time": 0.085747717,
+      "completion_tokens": 134,
+      "completion_time": 0.279407377,
+      "total_tokens": 615,
+      "total_time": 0.365155094,
+      "completion_tokens_details": {
+        "reasoning_tokens": 90
+      }
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_47082602e2",
+    "x_groq": {
+      "id": "req_01m6x66bvze4wb8r7j6y5npg0z",
+      "seed": 1268112577
+    },
+    "service_tier": "on_demand"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "provider": "groq",
+  "model": "qwen/qwen3.8-27b",
+  "tag": "gate_p_037_a",
+  "system": "You are a person scrolling social media. You have never heard of this show.\nYou just watched a short clip. Below is everything that happens in it - all the\ndialogue and action, in order. You have no other information.\n\nAnswer strictly from the clip. If the clip does not tell you something, say so\nplainly; do not guess from genre convention and do not be generous.\n\nReply with JSON only:\n{\n  \"who_is_the_main_character\": \"<name them if the clip names them; otherwise describe and say the clip never names them>\",\n  \"what_is_at_stake\": \"<what the conflict is, or 'unclear from the clip'>\",\n  \"what_question_are_you_left_with\": \"<the unresolved question, or 'none - it felt finished'>\",\n  \"would_you_keep_watching\": \"<yes | maybe | no>, then one short reason\",\n  \"passes\": {\n    \"character_identifiable\": true/false,\n    \"stakes_clear\": true/false,\n    \"ends_unresolved\": true/false,\n    \"would_watch\": true/false\n  }\n}\n\nBe strict. \"character_identifiable\" is false if the clip never says who they are.\n\"stakes_clear\" is false if you had to assume the situation. \"ends_unresolved\" is\nfalse if the clip resolved its own conflict.",
+  "prompt": "THE CLIP:\n[sfx] The harsh scrape and clatter of heavy iron chains dragging across wet stone.\nJULIANA: \"I will not!\"\nJULIANA: \"They can take my name. They can take my home.\"\nJULIANA: \"They cannot take who I am!\"\nNOBLEMAN: \"Do you think she'll actually be executed?\"\nCLARISSA: \"After what she has been accused of? Of course.\"\nNOBLEMAN: \"She was always stubborn.\"\nCLARISSA: \"That was her greatest mistake. She could have accepted what happened. She could have disappeared quietly.\"\n[action] Clarissa rises from her armchair holding a cut crystal glass filled with dark red wine, pacing toward the fireplace.\nCLARISSA: \"Instead she married a nobody, played healer to peasants, challenged people above her. And now the whole county will watch her pay for it.\"\nCLARISSA: \"Let them see what happens when a woman forgets her place.\"\n[action] Clarissa takes a slow sip of the red wine, her eyes gleaming with dark relish.",
+  "text": "{\n  \"who_is_the_main_character\": \"Juliana (named in dialogue, but not seen or described visually; Clarissa is also named and seen, but the conflict centers on Juliana's fate)\",\n  \"what_is_at_stake\": \"Juliana's life and identity; she is accused of a crime and faces execution for defying social norms (marrying a 'nobody', healing peasants).\",\n  \"what_question_are_you_left_with\": \"Will Juliana actually be executed, and what specific crime was she accused of?\",\n  \"would_you_keep_watching\": \"maybe, the tension of the impending execution and the villain's clear malice creates a strong hook, but the lack of visual context for the protagonist makes it hard to connect immediately\",\n  \"passes\": {\n    \"character_identifiable\": true,\n    \"stakes_clear\": true,\n    \"ends_unresolved\": true,\n    \"would_watch\": true\n  }\n}",
+  "parsed": {
+    "who_is_the_main_character": "Juliana (named in dialogue, but not seen or described visually; Clarissa is also named and seen, but the conflict centers on Juliana's fate)",
+    "what_is_at_stake": "Juliana's life and identity; she is accused of a crime and faces execution for defying social norms (marrying a 'nobody', healing peasants).",
+    "what_question_are_you_left_with": "Will Juliana actually be executed, and what specific crime was she accused of?",
+    "would_you_keep_watching": "maybe, the tension of the impending execution and the villain's clear malice creates a strong hook, but the lack of visual context for the protagonist makes it hard to connect immediately",
+    "passes": {
+      "character_identifiable": true,
+      "stakes_clear": true,
+      "ends_unresolved": true,
+      "would_watch": true
+    }
+  }
+}

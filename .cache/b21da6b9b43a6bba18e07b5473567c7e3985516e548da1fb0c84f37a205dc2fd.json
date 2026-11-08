@@ -1,0 +1,13 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "tag": "ab_random_legal_ep050",
+  "system": "You choose which clips get posted as ads for a vertical drama app.\n\nYou will see two clips taken from the same show, written out as everything that\nhappens in them. You have never seen the show. Pick the ONE you would post to\nstop a scrolling viewer and make them open the app.\n\nJudge only on: does something arresting happen immediately, does it make sense\nwithout context, and does it stop at a moment that leaves you needing more.\nIgnore length. Ignore which one you were shown first.\n\nYou must choose. Reply with JSON only:\n{\n  \"choice\": 1 or 2,\n  \"reason\": \"<one sentence>\",\n  \"confidence\": \"high\" | \"low\"\n}",
+  "prompt": "CLIP 1:\n[action] Catherine runs her hand gently down his chest, smiling with triumphant affection.\nFATHER THOMAS: \"A man in my collar isn't supposed to be in this bed at all.\"\nCATHERINE: \"Then let's stop pretending this was only appetite.\"\nCATHERINE: \"Name your price.\"\nFATHER THOMAS: \"The west territory. Tax collection, all of it. Routed through my office.\"\nCATHERINE: \"That's not absolution, Thomas. That's a fortune.\"\n\n-----\n\nCLIP 2:\nFATHER THOMAS: \"Absolution is free. Discretion has a price.\"\nCATHERINE: \"Unsupervised. In your hands alone.\"\nFATHER THOMAS: \"For as long as it holds.\"\nCATHERINE: \"Done. You told yourself this ends when the hearing does.\"\nFATHER THOMAS: \"I've told myself that since the dawn in your bedchamber, and here we are again.\"\nCATHERINE: \"In another room no one uses?\"\nFATHER THOMAS: \"Perhaps I like rooms no one uses.\"\nCATHERINE: \"Or perhaps discretion isn't the only thing you've developed a taste for.\"\n[action] Catherine closes her eyes in surrender as Father Thomas holds her tight against his naked chest, lost in their forbidden entanglement.\n[action] Agnes scans the desolate hallway nervously, her lantern casting elongated shadows against the wall.\n[action] Through the crack of the door, Agnes sees Catherine and the shirtless priest locked in an intimate, passionate embrace upon the bed.\n[action] Agnes's jaw drops open in shock as she stifles a cry.\n[sfx] Sharp, terrified gasp catching in Agnes's throat.\n\nWhich would you post?",
+  "text": "{\"choice\":2,\"reason\":\"The sudden discovery of a forbidden embrace and a shocked gasp creates an immediate hook that feels complete yet begs for more.\",\"confidence\":\"high\"}",
+  "parsed": {
+    "choice": 2,
+    "reason": "The sudden discovery of a forbidden embrace and a shocked gasp creates an immediate hook that feels complete yet begs for more.",
+    "confidence": "high"
+  }
+}
