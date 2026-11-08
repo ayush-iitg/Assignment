@@ -182,6 +182,26 @@ tab_promos, tab_rejected, tab_run = st.tabs(
 # ---------------------------------------------------------------------------
 
 with tab_promos:
+    ordered_by_model = set((result.get("rank_rationale") or {}).get("order") or [])
+    with st.expander("How this list is ordered"):
+        st.markdown(
+            f"""
+1. **The blind test is a filter, not a score.** {counts['gate_failed']} promos that
+   failed it were removed and are not ranked at all. They're in the Rejected tab.
+2. **Code sorts the survivors** by a composite of four sub-scores:
+   `0.30 x hook + 0.20 x tension + 0.30 x cliffhanger + 0.20 x standalone`.
+   Weights are hand-set and documented; there is no labelled data to learn them from.
+3. **The model reorders the top {len(ordered_by_model) or 12}**, seeing each promo's
+   hook, cliffhanger, hook type, composite score and blind-test score, and returns a
+   posting order. Everything below that keeps the composite order.
+
+So the composite column is deliberately **not** in descending order for the top
+rows. Where it isn't, the model moved something. And because the blind-test score
+reaches the ranking only through the model's judgement rather than as a numeric
+term, a 3/4 can sit above a 4/4.
+"""
+        )
+
     rows = [{
         "#": p.get("rank"),
         "Ep": ",".join(map(str, p["episodes"])),
@@ -191,6 +211,8 @@ with tab_promos:
         "Hook": p.get("hook", ""),
         "Cliffhanger": p.get("cliffhanger", ""),
         "Blind test": (p.get("cold_viewer") or {}).get("score", "—"),
+        "Score": round(p["scores"]["composite"], 3),
+        "Ordered by": "model" if p["promo_id"] in ordered_by_model else "score",
     } for p in promos]
     st.dataframe(pd.DataFrame(rows), hide_index=True, width="stretch", height=430)
 
@@ -254,20 +276,66 @@ with tab_promos:
 # Rejected
 # ---------------------------------------------------------------------------
 
+def rejection_kind(promo: dict) -> str:
+    reason = promo.get("rejected_reason") or ""
+    if "cold-viewer" in reason:
+        return "gate"
+    if "near-duplicate" in reason:
+        return "duplicate"
+    return "validator"
+
+
 with tab_rejected:
-    st.caption("Everything the pipeline threw out, and why. Several scored well "
-               "structurally and still failed the blind comprehension test.")
+    buckets = {"gate": [], "duplicate": [], "validator": []}
     for promo in result["rejected"]:
-        gate = promo.get("cold_viewer") or {}
-        with st.expander(f"episode {promo['episodes'][0]}  ·  "
-                         f"{promo.get('rejected_reason','')[:120]}"):
-            st.code(segments_of(promo))
-            st.markdown(f"**Proposed hook** — {promo.get('hook','')}")
-            st.markdown(f"**Proposed cliffhanger** — {promo.get('cliffhanger','')}")
-            if gate.get("answers"):
-                st.markdown(f"**Blind viewer test — {gate.get('score','')}**")
-                for question, answer in gate["answers"].items():
-                    st.markdown(f"- *{question.replace('_',' ')}* — {answer}")
+        buckets[rejection_kind(promo)].append(promo)
+
+    st.caption("Everything the pipeline threw out, grouped by why. The blind-test "
+               "failures are the interesting ones: they scored well structurally "
+               "and a context-free reader still could not follow them.")
+
+    sections = [
+        ("gate", "Failed the blind comprehension test",
+         "A reader shown only the clip could not say who this is, what is at "
+         "stake, or was left with nothing unresolved."),
+        ("duplicate", "Suppressed as a near-duplicate",
+         "Shows nearly the same thing as a higher-ranked promo from a nearby "
+         "episode, measured on visual descriptions. Posting both wastes a slot."),
+        ("validator", "Failed a hard validator",
+         "Broke one of the six structural rules, so it never reached the gate."),
+    ]
+    for key, title, blurb in sections:
+        rows = buckets[key]
+        if not rows:
+            continue
+        st.markdown(f"#### {title} ({len(rows)})")
+        st.caption(blurb)
+        for promo in rows:
+            gate = promo.get("cold_viewer") or {}
+            label = f"episode {promo['episodes'][0]}"
+            if key == "gate":
+                label += f"  ·  scored {gate.get('score','?')} on the blind test"
+            elif key == "duplicate":
+                label += f"  ·  duplicate of {promo.get('rejected_reason','').split('of ')[-1].split(' ')[0]}"
+            with st.expander(label):
+                # Informational, not an alarm: a suppressed duplicate is the
+                # pipeline working, not failing.
+                st.info(f"**Why it was dropped** — {promo.get('rejected_reason','')}")
+                st.code(segments_of(promo))
+                st.markdown(f"**Proposed hook** — {promo.get('hook','')}")
+                st.markdown(f"**Proposed cliffhanger** — {promo.get('cliffhanger','')}")
+                st.caption(f"Structural score {promo['scores']['composite']:.3f} "
+                           f"(hook {promo['scores']['hook']:.2f}, "
+                           f"cliffhanger {promo['scores']['cliffhanger']:.2f}, "
+                           f"standalone {promo['scores']['standalone']:.2f})")
+                if gate.get("answers"):
+                    st.markdown(f"**What the blind reader said — {gate.get('score','')}**")
+                    for question, answer in gate["answers"].items():
+                        st.markdown(f"- *{question.replace('_',' ')}* — {answer}")
+                if promo.get("validator_failures"):
+                    st.markdown("**Validator failures**")
+                    for failure in promo["validator_failures"]:
+                        st.markdown(f"- {failure}")
 
 
 # ---------------------------------------------------------------------------
