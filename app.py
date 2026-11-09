@@ -201,8 +201,8 @@ tab_promos, tab_rejected, tab_run = st.tabs([
 # ---------------------------------------------------------------------------
 
 with tab_promos:
-    ordered_by_model = set((result.get("rank_rationale") or {}).get("order") or [])
     rationale = result.get("rank_rationale") or {}
+    ordered_by_model = set(rationale.get("order") or [])
 
     if rationale.get("post_first_reason"):
         st.markdown(ui.section(
@@ -210,6 +210,50 @@ with tab_promos:
             f'<b>{rationale.get("post_first","")}</b> &nbsp;·&nbsp; '
             f'{ui.esc(rationale["post_first_reason"])}',
         ), unsafe_allow_html=True)
+
+    # -----------------------------------------------------------------------
+    # The whole list, and the two files an editor would take away.
+    # -----------------------------------------------------------------------
+    rows = [{
+        "#": p.get("rank"),
+        "Episodes": ",".join(map(str, p["episodes"])),
+        "Start → End": segments_text(p),
+        "Len": round(p["total_duration_s"], 1),
+        "Hook type": p.get("hook_type", ""),
+        "Hook": p.get("hook", ""),
+        "Cliffhanger": p.get("cliffhanger", ""),
+        "Blind test": (p.get("cold_viewer") or {}).get("score") or "—",
+        "Score": round(p["scores"]["composite"], 3),
+        "Ordered by": "model" if p["promo_id"] in ordered_by_model else "score",
+    } for p in promos]
+    frame = pd.DataFrame(rows)
+
+    st.markdown(ui.section(
+        f"Every promo · {len(promos)}",
+        "The cut list as an editor would receive it, in rank order. "
+        "<b>Ordered by</b> says whether a position came from the composite "
+        "score or from the model reordering the top of the list.",
+    ), unsafe_allow_html=True)
+
+    st.dataframe(
+        frame, hide_index=True, width="stretch", height=340,
+        column_config={
+            "#": st.column_config.NumberColumn(width="small"),
+            "Len": st.column_config.NumberColumn(format="%.1f s", width="small"),
+            "Score": st.column_config.ProgressColumn(
+                min_value=0.0, max_value=1.0, format="%.3f"),
+            "Hook": st.column_config.TextColumn(width="large"),
+            "Cliffhanger": st.column_config.TextColumn(width="large"),
+        },
+    )
+
+    get_json, get_csv, _ = st.columns([1, 1, 4])
+    get_json.download_button(
+        "Download JSON", json.dumps(promos, indent=2, ensure_ascii=False),
+        "promos.json", "application/json", width="stretch")
+    get_csv.download_button(
+        "Download CSV", frame.to_csv(index=False),
+        "promos.csv", "text/csv", width="stretch")
 
     with st.expander("How this list is ordered"):
         st.markdown(f"""
@@ -231,95 +275,97 @@ blind-test score reaches the ranking through the model's judgment rather than
 as a term in the formula.
         """)
 
-    for promo in promos:
+    # -----------------------------------------------------------------------
+    # One promo, in full. Defaults to rank 1 so the page shows a worked
+    # example without anyone having to click first.
+    # -----------------------------------------------------------------------
+    st.markdown(ui.section(
+        "One promo in detail",
+        "Exact segments, the four sub-scores behind its composite, what a "
+        "blind reader made of it, and where it sits on the episode's "
+        "intensity curve.",
+    ), unsafe_allow_html=True)
+
+    pick = st.selectbox(
+        "Inspect", [p["promo_id"] for p in promos],
+        format_func=lambda pid: next(
+            f'#{p["rank"]}  ·  episode {p["episodes"][0]}  ·  {p.get("hook","")[:64]}'
+            for p in promos if p["promo_id"] == pid
+        ),
+        label_visibility="collapsed",
+    )
+    chosen = next(p for p in promos if p["promo_id"] == pick)
+
+    one, two = st.columns([2, 3])
+    with one:
+        for seg in chosen["segments"]:
+            st.code(f'episode {seg["episode"]}\n{seg["start"]} → {seg["end"]}'
+                    f'   ({seg["duration_s"]:.1f}s)')
+        st.caption("Sub-scores")
+        st.json(chosen["scores"], expanded=True)
+    with two:
+        gate = chosen.get("cold_viewer") or {}
+        if gate.get("answers"):
+            st.caption(f'Blind viewer test — {gate.get("score","")}. A model '
+                       f'shown only this clip: no logline, no episode number, '
+                       f'nothing either side of it.')
+            for question, answer in gate["answers"].items():
+                st.markdown(f'**{question.replace("_"," ")}** — {answer}')
+        else:
+            st.caption("This promo did not go through the blind viewer test.")
+
+    curves = result.get("tension_curves") or {}
+    curve = curves.get(str(chosen["episodes"][0])) or curves.get(chosen["episodes"][0])
+    if curve:
+        lead_ep = chosen["episodes"][0]
+        here = [s for s in chosen["segments"] if s["episode"] == lead_ep]
+        band = pd.DataFrame([{"start": s["start_s"], "end": s["end_s"]} for s in here])
+        chart = (
+            alt.layer(
+                alt.Chart(band).mark_rect(
+                    color=ui.ACCENT, opacity=0.15
+                ).encode(x="start:Q", x2="end:Q"),
+                alt.Chart(pd.DataFrame(curve)).mark_area(
+                    line={"color": ui.ACCENT, "strokeWidth": 1.4},
+                    color=alt.Gradient(
+                        gradient="linear",
+                        stops=[alt.GradientStop(color=ui.WASH, offset=0),
+                               alt.GradientStop(color=ui.ACCENT, offset=1)],
+                        x1=1, x2=1, y1=1, y2=0,
+                    ),
+                ).encode(
+                    x=alt.X("t:Q", title="seconds into the episode",
+                            axis=alt.Axis(grid=False, tickCount=8)),
+                    y=alt.Y("intensity:Q", title=None,
+                            scale=alt.Scale(domain=[0, 1]),
+                            axis=alt.Axis(grid=True, tickCount=3)),
+                ),
+            )
+            .properties(height=210)
+            .configure_view(stroke=None)
+            .configure_axis(labelColor=ui.FAINT, titleColor=ui.FAINT,
+                            gridColor="#1E2430", domainColor="#1E2430",
+                            labelFontSize=10, titleFontSize=10)
+        )
+        st.caption(f"Intensity across episode {lead_ep}, computed from the "
+                   f"screenplay's own tone tags. The shaded band is this promo.")
+        st.altair_chart(chart, width="stretch")
+
+    # -----------------------------------------------------------------------
+    # The same ranking as cards, for reading rather than scanning.
+    # -----------------------------------------------------------------------
+    st.markdown("<hr>", unsafe_allow_html=True)
+    st.markdown(ui.section(
+        "All of them, card by card",
+        "The same ranking, read rather than scanned: what each promo opens "
+        "on, what it cuts away on, and why it holds up alone.",
+    ), unsafe_allow_html=True)
+
+    for item in promos:
         st.markdown(
-            ui.promo_card(promo, segments_text(promo), lead=promo.get("rank") == 1),
+            ui.promo_card(item, segments_text(item), lead=item.get("rank") == 1),
             unsafe_allow_html=True,
         )
-
-    st.markdown("<hr>", unsafe_allow_html=True)
-    rows = [{
-        "#": p.get("rank"),
-        "Episodes": ",".join(map(str, p["episodes"])),
-        "Start → End": segments_text(p),
-        "Len": round(p["total_duration_s"], 1),
-        "Hook type": p.get("hook_type", ""),
-        "Hook": p.get("hook", ""),
-        "Cliffhanger": p.get("cliffhanger", ""),
-        "Blind test": (p.get("cold_viewer") or {}).get("score", "—"),
-        "Score": round(p["scores"]["composite"], 3),
-        "Ordered by": "model" if p["promo_id"] in ordered_by_model else "score",
-    } for p in promos]
-    frame = pd.DataFrame(rows)
-
-    with st.expander("Full table, and the detail behind one promo"):
-        st.dataframe(frame, hide_index=True, width="stretch", height=330)
-        left, right = st.columns([1, 5])
-        left.download_button("JSON", json.dumps(promos, indent=2, ensure_ascii=False),
-                             "promos.json", "application/json")
-        right.download_button("CSV", frame.to_csv(index=False), "promos.csv", "text/csv")
-
-        pick = st.selectbox(
-            "Inspect", [p["promo_id"] for p in promos],
-            format_func=lambda pid: next(
-                f'#{p["rank"]}  ·  episode {p["episodes"][0]}  ·  {p.get("hook","")[:64]}'
-                for p in promos if p["promo_id"] == pid
-            ),
-        )
-        promo = next(p for p in promos if p["promo_id"] == pick)
-        one, two = st.columns([2, 3])
-        with one:
-            for seg in promo["segments"]:
-                st.code(f'episode {seg["episode"]}\n{seg["start"]} → {seg["end"]}'
-                        f'   ({seg["duration_s"]:.1f}s)')
-            st.caption("Sub-scores")
-            st.json(promo["scores"], expanded=True)
-        with two:
-            gate = promo.get("cold_viewer") or {}
-            if gate.get("answers"):
-                st.caption(f'Blind viewer test — {gate.get("score","")}. A model '
-                           f'shown only this clip: no logline, no episode number, '
-                           f'nothing either side of it.')
-                for question, answer in gate["answers"].items():
-                    st.markdown(f'**{question.replace("_"," ")}** — {answer}')
-            curves = result.get("tension_curves") or {}
-            curve = curves.get(str(promo["episodes"][0])) or curves.get(promo["episodes"][0])
-            if curve:
-                df = pd.DataFrame(curve)
-                band = pd.DataFrame([{
-                    "start": promo["segments"][0]["start_s"],
-                    "end": promo["segments"][-1]["end_s"],
-                }])
-                chart = (
-                    alt.layer(
-                        alt.Chart(band).mark_rect(
-                            color=ui.ACCENT, opacity=0.13
-                        ).encode(x="start:Q", x2="end:Q"),
-                        alt.Chart(df).mark_area(
-                            line={"color": ui.ACCENT, "strokeWidth": 1.4},
-                            color=alt.Gradient(
-                                gradient="linear",
-                                stops=[alt.GradientStop(color=ui.WASH, offset=0),
-                                       alt.GradientStop(color=ui.ACCENT, offset=1)],
-                                x1=1, x2=1, y1=1, y2=0,
-                            ),
-                        ).encode(
-                            x=alt.X("t:Q", title="seconds",
-                                    axis=alt.Axis(grid=False, tickCount=6)),
-                            y=alt.Y("intensity:Q", title=None,
-                                    scale=alt.Scale(domain=[0, 1]),
-                                    axis=alt.Axis(grid=True, tickCount=3)),
-                        ),
-                    )
-                    .properties(height=170)
-                    .configure_view(stroke=None)
-                    .configure_axis(labelColor=ui.FAINT, titleColor=ui.FAINT,
-                                    gridColor="#1E2430", domainColor="#1E2430",
-                                    labelFontSize=10, titleFontSize=10)
-                )
-                st.caption("Intensity across the episode, from the screenplay's own "
-                           "tone tags. The shaded band is this promo.")
-                st.altair_chart(chart, width='stretch')
 
 
 # ---------------------------------------------------------------------------
