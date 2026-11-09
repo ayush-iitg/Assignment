@@ -1,81 +1,93 @@
-# 3-minute walkthrough script
+# Walkthrough script — 2:24
 
-Record with the web UI already open and the repo already cloned. Nothing waits on the network — every model response is cached, so the full run completes in about a second. Terminal font large. **Rotate the Groq key before recording** — it's in `.env` and will appear on screen.
+**Before recording**
 
-**Total 2:50. Five shots.**
+- **Rotate the Groq key.** It's in `.env` and it will be on screen.
+- App already running (`python3 -m streamlit run app.py`), terminal already in the repo, large font. Nothing waits on the network: every model response is cached, so the full run finishes in under a second.
+- Narration is 326 words: 2:10 at a normal 150 words a minute, 2:20 even at a slow 140. That leaves room for the run to finish and for a pause on each click, and still lands under 2:30 at any pace.
+- Say the numbers as written. Each one is checked against a file; the table at the bottom says which.
 
 ---
 
-## 0:00–0:22 · The problem, and the thing I noticed
+## Shot 1 · 0:00–0:24 · The problem, and the thing I noticed
 
-*On screen: the Run details tab, source data panel.*
+*A screenplay file open, scrolled to a few tagged dialogue lines.*
 
-> "Kuku ships a new show every week, fifty episodes each, and today an editor watches all fifty by hand to pick the clips worth posting. I built a tool that reads the screenplays and hands them a ranked shortlist instead.
+> "Kuku ships fifty episodes a week, and an editor watches all fifty by hand to find the clips worth posting. Mine reads the screenplays and returns a ranked shortlist.
 >
-> The reason this is tractable is sitting in Kuku's own files. Every line of dialogue is already labelled with how it's delivered — *cold, commanding. screaming, desperate.* Fourteen hundred and seventy-two of fourteen eighty-seven dialogue beats have one. So I never need an AI to guess where the drama is. The script already says."
+> What makes that tractable is already in Kuku's files: every line of dialogue is labelled with how it's delivered — *cold, commanding; screaming, desperate.* So I never guess where the drama is."
 
 ---
 
-## 0:22–0:50 · It runs, with no API key
+## Shot 2 · 0:24–0:54 · It runs, and it runs with no key
 
 ```bash
-python run.py --input data
+python3 run.py --input data
 ```
 
-> "One command, all fifty episodes, one second. And note — I have no API key set here. Every model response from the full run is committed in the repo, so you can clone this and reproduce the exact output before you've signed up for anything.
->
-> Thirty-seven hundred beats. Twenty-two defects in the source data, reported not swallowed. Eighteen thousand legal twenty-to-sixty-second windows, all snapped to real beat boundaries. Three thousand rejected because nothing happens in the first three seconds. Forty-seven promos ship."
+*Let it finish on camera. About a second.*
+
+> "One command, fifty episodes, under a second — and no API key set. Every model response is committed, so you can clone this and reproduce all forty-seven promos without signing up."
 
 *Point at `timestamps_exist: 92/92`.*
 
-> "That line is the whole design. The model never sees a timestamp and never writes one — it answers in beat IDs, and my code looks up the time. A hallucinated timestamp isn't an output this thing can produce."
+> "That line is the whole design. The model never sees a timestamp and never writes one; it answers in beat IDs and code looks up the time. A hallucinated timestamp isn't unlikely. It's impossible."
 
 ---
 
-## 0:50–1:35 · The output an editor would use
+## Shot 3 · 0:54–1:16 · What an editor actually gets
 
-*Promos tab. Click row 1, then the inspect dropdown.*
+*Browser, **Ranked** tab. The table is the first thing on the page. The detail panel below it is already on rank 1.*
 
-> "Forty-seven promos, ranked. Episode forty-four, fourteen seconds to one-oh-two. It opens on a guard forcing a man to the ground — no dialogue needed, that's the scroll-stopper — and it cuts on a confession nobody answers.
->
-> Each one gets a hook type: moral outrage, power reversal, empathy shock, romantic tension. That's DramaBox's own taxonomy, and it's there so an editor can spread the types instead of posting four slaps in a row."
+> "Forty-seven promos, ranked. Number one: episode forty-four, fourteen seconds to one-oh-two. It opens on a guard forcing a man to the ground and cuts on a confession nobody answers."
 
-*Scroll to the intensity curve in the inspect panel.*
+*Point at the intensity curve.*
 
-> "And here's the mechanism, visible. Intensity per second, built from those tone tags. A promo is a shape on this curve — a spike inside the first three seconds, a rising edge, and a cut while it's still high."
+> "The curve is the mechanism: intensity from those tone tags. Spike early, cut while it's high."
 
 ---
 
-## 1:35–2:20 · How I know it's not just plausible
+## Shot 4 · 1:16–1:52 · How I know it isn't just plausible
 
-*Rejected tab. Open one of the 1-out-of-4 failures.*
+*Click **Rejected · 44**, open one gate failure so a transcript is on screen.*
 
-> "The brief says a promo has to make sense to someone who's never seen the show. Everyone will claim that. I measured it. Every candidate goes to a second model with everything stripped out — no logline, no episode number, no surrounding scenes. Four questions. Seven promos failed and don't ship. The transcript ships instead.
+> "Every candidate also goes to a second model with no logline and nothing either side. Seven failed and don't ship; their transcripts do.
 >
-> But the measure I'd actually defend is this one."
-
-*Switch to `outputs/eval_report.md`, section 1b.*
-
-> "I compare every pick against a **random legal window** from the same episode — same length rules, same real boundaries, just not selected. Blind judge, never sees a score. The tool wins seventy-six percent of the time.
->
-> And here's the part I want you to see: the judge turned out to strongly prefer whichever clip came second — eighty-eight percent there versus forty-two percent shown first. So I re-ran the pairs in the opposite order. Two independent corrections agree. Against a window that *already* has a strong opening, the win rate drops to sixty-five percent — which tells me the hook rule is doing most of the work and my tension scoring adds a smaller real edge. That decomposition is more useful to me than the headline number."
+> But the number I'd defend: every pick runs against a random legal window from the same episode. The judge preferred whichever clip it read second, so I ran both orders and counted pairs, not judgements. Seventy-seven percent, p nought-nought-three. Against a window that already passes the hook filter, seventy-three — and that drop is the honest part."
 
 ---
 
-## 2:20–2:50 · Re-runnable, and the honest limit
+## Shot 5 · 1:52–2:24 · The limit, and what I didn't ship
 
-```bash
-python run.py --input samples --model qwen/qwen3.8-27b
-```
+*Back to the ranked list.*
 
-> "Different input, different model, no code change. Five providers wired.
+> "It reads text, so it can't see whether a shot is any good. And it embellishes: that top hook says 'blood and dust'; the screenplay says 'stone dust'.
 >
-> The honest limit: this reads text, so it can't see whether a shot is any good or whether the actor landed the line. And it embellishes — the top promo's hook says 'blood and dust flying' where the screenplay says 'stone dust'. The word blood appears nowhere in that episode. Timestamps are verified; descriptions are not, and a copy verifier is the next thing I'd build.
->
-> Give me frames and the editor's accept-reject log, and those are the two weaknesses that close."
+> I also built three scoring improvements and didn't ship them: they changed eight of forty-three picks and I couldn't re-run the blind test in time. Shipping better promos beside a number describing the old ones would've been the one dishonest thing here. It's in the git history."
 
 ---
 
-### If they ask for a live re-run instead
+### If they ask for a live run
 
-Upload their file in the UI sidebar and press **Find promos**. A single unseen episode is about three calls and ten seconds. Say the call count out loud before pressing it.
+Sidebar uploader, then **Find promos**. One unseen episode is about three calls and six seconds. Say the call count out loud before you press it, so the cost is on the record.
+
+### Every number said out loud, and where to check it
+
+| Said | Source |
+|---|---|
+| 50 episodes · 47 promos | `outputs/promos.json` → `counts.shipped` |
+| 92 of 92 validators | `outputs/eval_report.md` §1 — 47 shipped + 44 rejected + 1 flagship |
+| 7 gate failures · 44 rejected | `outputs/eval_report.md` §3 |
+| ep 44, `00:14.00` → `01:02.40` | `outputs/promos.json` → rank 1, blind test 4/4 |
+| 77.4%, p = 0.003 · 73.3% | `outputs/ab_test_balanced.json` → `win_rate_decisive_pairs` |
+| 8 of 43 picks changed | git history, the reverted improvement |
+
+On screen but not narrated, if anyone pauses the video: 3,727 beats, 22 source defects reported rather than repaired, 18,141 legal windows, 3,376 rejected for having no hook in the first three seconds, 1,472 of 1,487 dialogue beats tone-tagged.
+
+### If you're running fast, add this back
+
+After shot 3's first paragraph, the one line worth 7 seconds:
+
+> "Each carries a hook type, so an editor can spread them instead of posting four slaps in a row."
+
+It's cut by default only because it's the least essential thing in the script, not because it's weak — it's the one line showing the taxonomy came from reading what ReelShort and DramaBox actually do. Never cut the stone-dust example or the unshipped improvements instead: the brief asks where AI got it wrong and what you'd do differently, and those two carry it.
