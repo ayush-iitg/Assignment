@@ -79,16 +79,24 @@ Five things the AI got wrong, with before/after: [`docs/ai_mistakes_log.md`](doc
 ## Layout
 
 ```
-run.py / app.py / evaluate.py / ab_test.py     CLI · web UI · evaluation · blind A/B
+run.py / app.py                CLI · web UI
+evaluate.py                    evaluation report
+ab_test.py / salvage_ab.py     blind A/B, and the counterbalanced recount
 promo/
   parse.py      screenplay → beats           score.py     windows + 4 sub-scores
   lexicon.py    tone tag → intensity         llm.py       provider-agnostic client
   stages.py     the three prompts            validate.py  hard checks + dedup
+  ui_style.py   presentation for app.py
   pipeline.py   orchestration — the only place a timestamp is written
 data/           the 50-episode input pack    samples/     a synthetic unseen episode
-outputs/        full run + 127 raw call records  outputs_qwen/  second model, 128 records
-outputs_nollm/  code-only baseline           outputs_unseen/    unseen-input run
+outputs/        the full run, 127 model calls, every request and response kept
+outputs_qwen/   second model, 128 records    outputs_nollm/     code-only baseline
+outputs_unseen/ unseen-input run             outputs/raw_ab/    158 A/B judgements
+.cache/         every model response, which is why this repo runs with no API key
+logs/           console transcript of the counterbalanced A/B run
 docs/           framing, assumptions, audit, AI mistakes, video script
 ```
+
+The A/B figures in the solution doc come from `outputs/ab_test_balanced.json`. `logs/ab_mirror2.log` is that run's transcript, and it shows both framings: a 72.4% raw win rate across all 76 judgements, which reduces to 24 of the 31 pairs the judge called the same way in both orders, so 77.4%. The doc quotes the pair-level number because a pair that flips when you swap the order is evidence of position bias, not of preference.
 
 `data/` holds Kuku's screenplay pack, included at the repo owner's direction. `data/` is the single input path, so excluding it is a one-line `.gitignore` change.

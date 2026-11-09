@@ -25,7 +25,7 @@ And there's no ground truth for "good promo", so the scoring weights are mine, s
 
 **Code owns time. The model owns judgment.** The model never sees a timestamp and never writes one. It reads beats as `[b07] JULIANA (desperate): "..."` and answers with beat IDs, and then code looks each one up. A hallucinated timestamp isn't unlikely in this design. It's impossible.
 
-That turned out to matter more than I expected. On episode 8, `qwen3.8-27b` chose a promo running `00:25.00` to `00:49.60` and then named as its hook a beat that starts 8.7 seconds *before* the promo begins. The description it wrote was fluent, and the moment it describes genuinely exists in that episode. It just isn't in the clip. Nobody catches that by reading the output, because the output is perfectly consistent with itself. Only checking it against the parsed beat table does, and two validators did.
+That turned out to matter more than I expected. On episode 8, `qwen3.8-27b` chose a promo running `00:25.00` to `00:49.60` and then named as its hook a beat that starts 8.7 seconds *before* the promo begins. The description it wrote was fluent, and the moment it describes genuinely exists in that episode. It just isn't in the clip. Nobody catches that by reading the output, because it's perfectly consistent with itself. Only a check against the parsed beat table does, and two validators did.
 
 ### How it works
 
@@ -45,13 +45,13 @@ The tool never posts anything. It turns "watch 50 episodes and scrub" into "look
 
 Across all 92 promos, including rejected ones, `timestamps_exist` passes 92 of 92, and so do the other five checks. The blind gate tested 54, failed 7, left none untested, and scored ends-unresolved 1.00, character-identifiable 0.91, stakes-clear 0.76, would-keep-watching 0.65. Two runs give the same decision fingerprint, `c7b809ad92b976e7`. 42 of the 50 episodes end up with a promo.
 
-None of that answers the real question, though, which is whether the picks beat picking at random. So I tested that directly. Every pick goes up against a random legal window from the same episode: same length rules, same real beat boundaries, just not chosen. A blind judge sees two clips as plain text and never sees a score.
+None of that answers the real question: do the picks beat picking at random? So I tested it directly. Every pick goes up against a random legal window from the same episode: same length rules, same real beat boundaries, just not chosen. A blind judge sees two clips as plain text and never sees a score.
 
 Every pair was judged twice, once with each clip shown first, because the judge turned out to prefer whichever clip it read second. Running both orders cancels that out instead of needing a correction afterwards. I counted by pair rather than by judgement, since two judgements of the same two clips aren't independent. Against any legal window, the tool was preferred in **both** orders on 24 of 38 pairs and the random window on 7, with 7 flipping. That's **77.4% of the 31 pairs that answered consistently, p=0.003**. Against a window that already passes the hook filter it's 22 to 8 with 8 flips, so **73.3%, p=0.016**. Chance is 50%.
 
 That second comparison is the more useful number. Demanding a strong opening does a lot of the work by itself, and the tension scoring and the model's choice add a real edge on top of it rather than being the whole story. I'd rather report that split than the flattering headline.
 
-Splicing turned out to cost comprehension, which I hadn't expected to be measurable. Continuous promos pass the gate at 0.886, spliced ones at 0.800, so the penalty I'd charged for the cut on instinct now has something behind it. Across two model families, agreement is only 0.50 IoU, with no overlap at all on 8 of the 50 episodes and hook-type agreement of 0.48. So a real part of this ranking is model taste rather than signal, which is an argument for keeping the editor in the loop.
+Splicing turned out to cost comprehension. Continuous promos pass the gate at 0.886, spliced ones at 0.800, so the penalty I'd charged for the cut on instinct now has something behind it. Across two model families, agreement is only 0.50 IoU, with no overlap on 8 of 50 episodes and hook-type agreement 0.48. So a real part of this ranking is model taste rather than signal, which is an argument for keeping the editor in the loop.
 
 I deliberately didn't build a hand-picked reference set as the headline measure. It asks whether the tool matched one person's taste, which isn't the job, and keeping one per show would recreate exactly the manual work the tool is meant to remove.
 
@@ -63,11 +63,11 @@ The duplicate check started life with a threshold of 0.45 on dialogue overlap. B
 
 Then the model wrote "blood and dust flying" for a beat that says "stone dust", and blood appears nowhere in that episode. The fix I had in mind was matching description words against the clip, so I ran it first. It flagged 46 of 47 promos, because the frequent offenders are words like `declares` and `hanging`, which are paraphrase rather than invention. Narrowed to concrete physical nouns it's 2 of 47. The real rate is about one in fifty, and the obvious verifier would have fired on everything while catching nothing.
 
-Then I noticed that `BLOND NOBLEMAN` speaks two beats from that same hook, and blond is one character away from blood. A character label corrupted into a substance would be a much more alarming failure than embellishment, and it fits the evidence at a glance. So I tested it: same prompt, same model, speaker renamed so the string blond appears nowhere. The fabrication survived. It's cliché completion, not corruption. The more interesting explanation was the wrong one, and I'd have had no evidence for it.
+Then I noticed that `BLOND NOBLEMAN` speaks two beats from that same hook, and blond is one character away from blood. A corrupted character label would be far more alarming than embellishment, and it fits the evidence. So I tested it: same prompt, same model, speaker renamed so the string blond appears nowhere. The fabrication survived. It's cliché completion, not corruption. The more interesting explanation was the wrong one, and I'd have had no evidence for it.
 
 ### Scale and cost
 
-Measured rather than projected: one 50-episode show is 127 API calls and about 200,000 tokens. At a show a week that's 2,600 episodes, roughly 6,600 calls and 10.4M tokens a year. The free tier covers it outright, and at Gemini Flash-Lite rates it'd be about $2.20 a year. Tokens are not the scaling cost and I'd say so in a planning meeting. What limits the free tier is 8,000 tokens a minute, which stretches a show to about 20 minutes of wall clock and disappears the moment someone pays. What costs real money is editor attention, and that's why the gate and the duplicate suppression exist. Provider is a flag, not a code change: Groq and Gemini are both verified end to end on different request schemas.
+Measured rather than projected: one 50-episode show needs 107 model calls and about 175,000 tokens. Building it cost 127; probes and retries aren't free. At a show a week that's 2,600 episodes, roughly 5,600 calls and 9M tokens a year. The free tier covers it outright, and at Gemini Flash-Lite rates it'd be about $2 a year. Tokens are not the scaling cost and I'd say so in a planning meeting. What limits the free tier is 8,000 tokens a minute, which stretches a show to about 20 minutes of wall clock and disappears the moment someone pays. What costs real money is editor attention, and that's why the gate and the duplicate suppression exist. Provider is a flag, not a code change: Groq and Gemini are both verified end to end on different request schemas.
 
 ### Where it falls over
 
