@@ -196,6 +196,6 @@ outputs_qwen/   second model, 128 records    outputs_nollm/     code-only baseli
 outputs_unseen/ unseen-input run             outputs/raw_ab/    158 A/B judgements
 .cache/         every model response, which is why this repo runs with no API key
 logs/           console transcript of the counterbalanced A/B run
-docs/           framing, assumptions, audit, AI mistakes, video script
+docs/           problem choice, assumptions, input audit, AI mistakes
 ```
 
