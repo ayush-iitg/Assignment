@@ -1,93 +1,94 @@
-# Walkthrough script — 2:24
+# Walkthrough script — 2:26, prototype only
+
+Everything happens inside the web app. No terminal, no editor, no files on screen.
 
 **Before recording**
 
-- **Rotate the Groq key.** It's in `.env` and it will be on screen.
-- App already running (`python3 -m streamlit run app.py`), terminal already in the repo, large font. Nothing waits on the network: every model response is cached, so the full run finishes in under a second.
-- Narration is 326 words: 2:10 at a normal 150 words a minute, 2:20 even at a slow 140. That leaves room for the run to finish and for a pause on each click, and still lands under 2:30 at any pace.
-- Say the numbers as written. Each one is checked against a file; the table at the bottom says which.
+1. **Rotate the Groq key**, then move the env file aside: `mv .env .env.hold`. Restore it afterwards.
+   This isn't only key hygiene. With no key present the sidebar prints *"No GROQ_API_KEY set. The bundled pack still runs from cached responses, which is how this reproduces without credentials"* — so the strongest claim in the video is visible on screen instead of asserted. Verified: the button still works and the run still returns all 47 promos.
+2. Start the app, open it in the browser, then hide the terminal for the whole recording.
+3. Zoom so the stat strip and the first rows of the table are visible together.
+4. Narration is 347 words: 2:18 at a normal 150 words a minute, 2:28 even at a slow 140. Under 2:30 either way, with room to let the run finish.
+5. Say the numbers as written. All of them are on screen except the A/B figures, which the script attributes out loud to the repo.
 
 ---
 
-## Shot 1 · 0:00–0:24 · The problem, and the thing I noticed
+## Shot 1 · 0:00–0:22 · The problem, and the sidebar
 
-*A screenplay file open, scrolled to a few tagged dialogue lines.*
+*App freshly loaded. Sidebar visible, with the no-key caption.*
 
-> "Kuku ships fifty episodes a week, and an editor watches all fifty by hand to find the clips worth posting. Mine reads the screenplays and returns a ranked shortlist.
+> "An editor at Kuku watches fifty episodes a week by hand to find the clips worth posting. This reads the screenplays instead and returns a ranked shortlist.
 >
-> What makes that tractable is already in Kuku's files: every line of dialogue is labelled with how it's delivered — *cold, commanding; screaming, desperate.* So I never guess where the drama is."
+> Before I run it, look at the sidebar: no API key set. Every response from the full run is cached here, so anyone can clone this and reproduce it."
 
 ---
 
-## Shot 2 · 0:24–0:54 · It runs, and it runs with no key
+## Shot 2 · 0:22–0:52 · Press it, then read the top line
 
-```bash
-python3 run.py --input data
-```
+*Press **Find promos**. Let the log lines and spinner play. About a second.*
 
-*Let it finish on camera. About a second.*
+> "Fifty episodes, under a second, zero live calls — a hundred and seven served from cache.
+>
+> Forty-seven promos. Zero invented timestamps, forty-seven of forty-seven validators passing."
 
-> "One command, fifty episodes, under a second — and no API key set. Every model response is committed, so you can clone this and reproduce all forty-seven promos without signing up."
+*Point at the **Invented timestamps** card.*
 
-*Point at `timestamps_exist: 92/92`.*
-
-> "That line is the whole design. The model never sees a timestamp and never writes one; it answers in beat IDs and code looks up the time. A hallucinated timestamp isn't unlikely. It's impossible."
+> "That card is the whole design. The model never sees a timestamp and never writes one; it answers in beat IDs and my code looks up the time. A hallucinated timestamp isn't unlikely here. It's impossible."
 
 ---
 
-## Shot 3 · 0:54–1:16 · What an editor actually gets
+## Shot 3 · 0:52–1:20 · The output, and the mechanism
 
-*Browser, **Ranked** tab. The table is the first thing on the page. The detail panel below it is already on rank 1.*
+*Ranked tab. The table is already the first thing on the page. Scroll it once, then move to the detail panel below, already on rank 1.*
 
-> "Forty-seven promos, ranked. Number one: episode forty-four, fourteen seconds to one-oh-two. It opens on a guard forcing a man to the ground and cuts on a confession nobody answers."
+> "Forty-seven ranked, with JSON and CSV right here. Number one: episode forty-four, fourteen seconds to one-oh-two — opens on a guard forcing a man to the ground, cuts on a confession nobody answers."
 
 *Point at the intensity curve.*
 
-> "The curve is the mechanism: intensity from those tone tags. Spike early, cut while it's high."
+> "And the mechanism is visible. Intensity per second, built from tone tags the screenplays already carry — *cold, commanding; screaming, desperate.* So I never guess where the drama is. Spike early, cut while it's still high."
 
 ---
 
-## Shot 4 · 1:16–1:52 · How I know it isn't just plausible
+## Shot 4 · 1:20–1:55 · How I know it isn't just plausible
 
-*Click **Rejected · 44**, open one gate failure so a transcript is on screen.*
+*Rejected tab. Open one blind-test failure so its transcript and four answers are on screen.*
 
-> "Every candidate also goes to a second model with no logline and nothing either side. Seven failed and don't ship; their transcripts do.
+> "Every candidate also faces a second model that sees only the clip. Seven failed, and they're all here with their transcripts.
 >
-> But the number I'd defend: every pick runs against a random legal window from the same episode. The judge preferred whichever clip it read second, so I ran both orders and counted pairs, not judgements. Seventy-seven percent, p nought-nought-three. Against a window that already passes the hook filter, seventy-three — and that drop is the honest part."
+> The number I'd defend isn't on this screen, it's in the evaluation report. Every pick ran against a random legal window from the same episode. The judge preferred whichever clip it read second, so I ran both orders and counted pairs. Seventy-seven percent, p nought-nought-three. Against a window that already passes the hook filter, seventy-three — and that drop is the honest part."
 
 ---
 
-## Shot 5 · 1:52–2:24 · The limit, and what I didn't ship
+## Shot 5 · 1:55–2:26 · Receipts, and what I didn't ship
 
-*Back to the ranked list.*
+*"How it ran" tab. Show the funnel, then open the raw requests expander and leave it open while you talk — it makes the point without narration.*
 
-> "It reads text, so it can't see whether a shot is any good. And it embellishes: that top hook says 'blood and dust'; the screenplay says 'stone dust'.
+> "Twenty-two defects in Kuku's files, reported rather than repaired. And it can't see, so shot quality is invisible to it.
 >
-> I also built three scoring improvements and didn't ship them: they changed eight of forty-three picks and I couldn't re-run the blind test in time. Shipping better promos beside a number describing the old ones would've been the one dishonest thing here. It's in the git history."
+> It also embellishes: that top hook says 'blood and dust'; the screenplay says 'stone dust'. I built three scoring improvements and didn't ship them, because they changed eight of forty-three picks and I couldn't re-run the blind test in time. Better promos beside a number describing the old ones would've been the one dishonest thing here."
 
 ---
 
 ### If they ask for a live run
 
-Sidebar uploader, then **Find promos**. One unseen episode is about three calls and six seconds. Say the call count out loud before you press it, so the cost is on the record.
+That needs the key back: restore `.env`, restart, then upload a file in the sidebar and press **Find promos**. One unseen episode is about three calls and six seconds. Say the call count out loud before you press it.
 
-### Every number said out loud, and where to check it
+### Where each number is on screen
 
-| Said | Source |
+| Said | Where it is in the app |
 |---|---|
-| 50 episodes · 47 promos | `outputs/promos.json` → `counts.shipped` |
-| 92 of 92 validators | `outputs/eval_report.md` §1 — 47 shipped + 44 rejected + 1 flagship |
-| 7 gate failures · 44 rejected | `outputs/eval_report.md` §3 |
-| ep 44, `00:14.00` → `01:02.40` | `outputs/promos.json` → rank 1, blind test 4/4 |
-| 77.4%, p = 0.003 · 73.3% | `outputs/ab_test_balanced.json` → `win_rate_decisive_pairs` |
-| 8 of 43 picks changed | git history, the reverted improvement |
+| 50 episodes · 3,727 beats | **Promos** card, sub-line |
+| 47 promos | **Promos** card, and the Ranked tab label |
+| 0 live calls · 107 cached · under a second | **Cost** card |
+| 0 invented timestamps · 47 of 47 validators | **Invented timestamps** card |
+| 7 blind-test failures | **Passed blind test** card, 47/54 · Rejected tab |
+| ep 44, `00:14.00` → `01:02.40` | Ranked table row 1, and the detail panel |
+| 22 source defects | How it ran → Source data, and the defects expander |
+| 77.4%, p = 0.003 · 73.3% | **Not in the app.** `outputs/ab_test_balanced.json`, written up in `outputs/eval_report.md` §2. Say "it's in the evaluation report", as scripted |
+| 8 of 43 picks changed | **Not in the app.** Git history |
 
-On screen but not narrated, if anyone pauses the video: 3,727 beats, 22 source defects reported rather than repaired, 18,141 legal windows, 3,376 rejected for having no hook in the first three seconds, 1,472 of 1,487 dialogue beats tone-tagged.
+### Two things not to do
 
-### If you're running fast, add this back
+Don't say "ninety-two of ninety-two". That counts shipped plus rejected plus the flagship and is right in the written doc, but the card on screen reads **47 / 47**. Saying a number that contradicts the screen someone is staring at is the fastest way to lose them.
 
-After shot 3's first paragraph, the one line worth 7 seconds:
-
-> "Each carries a hook type, so an editor can spread them instead of posting four slaps in a row."
-
-It's cut by default only because it's the least essential thing in the script, not because it's weak — it's the one line showing the taxonomy came from reading what ReelShort and DramaBox actually do. Never cut the stone-dust example or the unshipped improvements instead: the brief asks where AI got it wrong and what you'd do differently, and those two carry it.
+Don't cut the stone-dust example or the unshipped improvements to save time. The brief asks where AI got it wrong and what you'd do differently, and those two lines carry both. If a take runs long, drop "Spike early, cut while it's still high" from shot 3 instead.
