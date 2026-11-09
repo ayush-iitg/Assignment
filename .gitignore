@@ -24,3 +24,7 @@ venv/
 # raw-outputs bundle for the Drive link; duplicates outputs/
 kuku_raw_outputs.zip
 .vscode/
+
+# Finder's Archive Utility extracts the bundle in place when the zip is
+# double-clicked, producing a 6.9M duplicate of outputs/. Never commit it.
+kuku_raw_outputs/
