@@ -55,7 +55,7 @@ PROVIDERS = {
         "url": "https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",
         "key_env": "GEMINI_API_KEY",
         "style": "gemini",
-        "default_model": "gemini-2.5-flash-lite",
+        "default_model": "gemini-3.5-flash-lite",
     },
     "anthropic": {
         "url": "https://api.anthropic.com/v1/messages",

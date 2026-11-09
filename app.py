@@ -24,8 +24,8 @@ load_dotenv()
 MODELS = [
     ("groq", "openai/gpt-oss-120b"),
     ("groq", "qwen/qwen3.8-27b"),
-    ("gemini", "gemini-2.5-flash-lite"),
-    ("gemini", "gemini-2.5-flash"),
+    ("gemini", "gemini-3.5-flash-lite"),
+    ("gemini", "gemini-3.5-flash"),
     ("openai", "gpt-4o-mini"),
     ("anthropic", "claude-3-5-haiku-20241022"),
 ]

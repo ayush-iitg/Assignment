@@ -22,7 +22,7 @@ For live calls, copy `.env.example` → `.env` and add one key. Swapping models 
 
 ```bash
 python run.py --input data --model qwen/qwen3.8-27b
-python run.py --input data --provider gemini --model gemini-2.5-flash-lite
+python run.py --input data --provider gemini --model gemini-3.5-flash-lite
 python run.py --input data --no-llm          # code only, zero network
 python run.py --input samples                # an episode the tool has never seen
 python evaluate.py                           # regenerate the evaluation report
