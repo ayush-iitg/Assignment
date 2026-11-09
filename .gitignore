@@ -25,6 +25,9 @@ venv/
 kuku_raw_outputs.zip
 .vscode/
 
-# Finder's Archive Utility extracts the bundle in place when the zip is
-# double-clicked, producing a 6.9M duplicate of outputs/. Never commit it.
+# Local copies of the raw-outputs bundle: Finder's Archive Utility unpacks
+# the zip in place when it's double-clicked, and a copy of what went to
+# Drive is worth keeping on disk. Both are byte-identical duplicates of
+# outputs/, so neither belongs in the repo.
 kuku_raw_outputs/
+kuku_raw_outputs_upload/
