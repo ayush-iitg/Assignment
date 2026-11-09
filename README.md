@@ -97,6 +97,3 @@ logs/           console transcript of the counterbalanced A/B run
 docs/           framing, assumptions, audit, AI mistakes, video script
 ```
 
-The A/B figures in the solution doc come from `outputs/ab_test_balanced.json`. `logs/ab_mirror2.log` is that run's transcript, and it shows both framings: a 72.4% raw win rate across all 76 judgements, which reduces to 24 of the 31 pairs the judge called the same way in both orders, so 77.4%. The doc quotes the pair-level number because a pair that flips when you swap the order is evidence of position bias, not of preference.
-
-`data/` holds Kuku's screenplay pack, included at the repo owner's direction. `data/` is the single input path, so excluding it is a one-line `.gitignore` change.
