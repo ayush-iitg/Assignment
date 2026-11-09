@@ -1,138 +1,107 @@
-# Walkthrough script — features, then how ranking works
+# Video script — about 2:00, read word for word
 
-A tour of the app, then the six steps that turn 50 scripts into 47 ranked promos. Everything happens inside the web app. No terminal, no code on screen.
+Every line is a complete sentence. Read it exactly as written. You do not need to add anything while you talk.
 
 **Before you record**
 
-1. **Rotate the Groq key**, then move the env file aside: `mv .env .env.hold`. Put it back afterwards.
-   With no key there, the sidebar says *"No GROQ_API_KEY set. The bundled pack still runs from cached responses"*, so your reproducibility claim is visible rather than just spoken. Checked: the button still works and you still get all 47 promos.
-2. Start the app, open it in the browser, then hide the terminal.
-3. Open the **How it ran** tab once before you start. Steps 1 to 5 are all rows in its funnel table, so you can point at each row as you say it instead of hunting for numbers live.
-4. **Read it out loud once first.** If a line makes you stumble, change it.
+1. **Rotate the Groq key**, then move the env file aside: `mv .env .env.hold`. Put it back afterwards. With no key there, the sidebar shows the "no API key" message, which is what makes paragraph 2 true on screen.
+2. Start the app and open it in the browser. Hide the terminal.
+3. Do one run before you record. Then the results are already on screen if the live press goes wrong.
+4. Read the script out loud once. If a line feels awkward in your mouth, change that line.
 
-**On length.** 402 words, which is 2:40 at a normal speaking speed and 2:52 if you go slowly. The video lands at 2:48 with the pauses. The brief allows up to 3 minutes. Part 2 is the important half, so if you run long, trim Part 1 rather than the steps.
-
----
-
-# Part 1 · What's in the app
-
-## Shot 1 · 0:00–0:28 · The problem, and the sidebar
-
-*App just loaded, sidebar visible.*
-
-> Kuku puts out fifty new episodes every week. Right now, someone watches all fifty by hand to find the clips worth posting. This reads the scripts and gives back a ranked list instead.
->
-> In the sidebar you can drop in your own scripts, pick a model, and press one button. And there's no API key here. Every model answer is already saved, so anyone can run this and get the same output.
-
-## Shot 2 · 0:28–0:54 · The four numbers, and the three tabs
-
-*Press **Find promos**. When it finishes, point at each card, then each tab.*
-
-> Four numbers at the top. How many promos it found. How many passed a blind test. Zero made-up timestamps. And what the run cost.
->
-> Then three tabs. Ranked is the list, with start and end times and a download button. Rejected shows what it threw away and why. And How it ran shows every step and every call it made.
+**Length.** 292 words. That is 1:56 at a normal speaking speed, and about 2:05 with pauses. Even at a slow pace it only reaches 2:14, and the brief allows 3 minutes, so there is no need to hurry.
 
 ---
 
-# Part 2 · How a promo gets ranked
+## The script
 
-*Stay on **How it ran** for steps 1 to 5. Point at each funnel row as you say its number.*
+*Screen: the app is open, sidebar visible.*
 
-## Step 1 · 0:54–1:07 · Read the scripts
+**1.** Kuku puts out fifty new episodes every week, and right now a person watches all fifty by hand to find the clips worth posting. This tool reads the scripts and returns a ranked list instead.
 
-> Step one. It reads all fifty scripts and breaks them into three thousand seven hundred beats. Every line, every action, every camera note, each with a start and end time.
+*Screen: point at the sidebar, then press **Find promos**.*
 
-## Step 2 · 1:07–1:24 · Cut every possible clip and score it
+**2.** I am running it now. There is no API key here, because every model answer is already saved. Anyone can download this and get the same result.
 
-> Step two. It cuts every clip between twenty and sixty seconds long, always starting and ending on a real beat. That's eighteen thousand clips. Each gets four scores: the opening, the tension, the ending, and whether it stands alone.
+*Screen: the four cards along the top.*
 
-## Step 3 · 1:24–1:39 · Throw away the weak ones
+**3.** It found forty-seven promos from fifty episodes, and it invented zero timestamps.
 
-> Step three. If nothing happens in the first three seconds, it's gone. That removes three thousand clips. Then it keeps only the best few from each episode. Eighteen thousand becomes a hundred and seventy-one.
+*Screen: open **How it ran** and move down the funnel table.*
 
-## Step 4 · 1:39–1:57 · Let the model choose
+**4.** Here is how it works. It breaks the scripts into three thousand seven hundred beats, each with a start and an end time. It cuts every possible clip between twenty and sixty seconds, which gives eighteen thousand clips. It scores each one on its opening, its tension, its ending, and whether it stands alone. Any clip with nothing in the first three seconds is deleted. Then the model picks one promo per episode. It only sees beat numbers and never sees times, so it cannot invent a timestamp.
 
-> Step four. Now the model gets involved, once per episode. It picks from that short list and writes the hook and the ending line. It only ever sees beat IDs, never times, so it can't make up a timestamp. That gives ninety-one promos.
+*Screen: open **Rejected**.*
 
-## Step 5 · 1:57–2:15 · Check them and clean up
+**5.** Every promo also has to pass a blind test, where a second model sees only the clip and has to say who is in it and what is at stake. Seven promos failed, so I dropped them.
 
-> Step five. Six hard rules check every promo, and all ninety-one pass. Then it removes near-copies: thirty-seven showed almost the same thing as a better one. And a second model sees only the clip and answers four questions. Seven failed. Forty-seven are left.
+*Screen: open **Ranked** and point at the Score column.*
 
-## Step 6 · 2:15–2:48 · Put them in order
+**6.** The four scores are then combined into one. The top promo scored zero point eight seven six, but by score it was only tenth. The model moved it to first place, because a formula cannot judge which promo is best to post first.
 
-*Switch to the **Ranked** tab. Point at the Score column, then the "Ordered by" column.*
+*Screen: stay on **Ranked**.*
 
-> Step six. The four scores combine into one. Opening and ending count thirty percent each, tension and standalone twenty each.
->
-> Number one here scored point eight seven six. But by score alone, it was only tenth. The model moved it to the top, because a formula can't tell which promo is best to post first. The highest score sits at number nine.
->
-> One honest limit. It only reads text, so it can't tell you whether a shot actually looks good.
+**7.** To check that this beats guessing, I put every promo against a random clip from the same episode. A blind judge preferred mine seventy-seven percent of the time.
 
----
+*Screen: stay where you are.*
 
-# Read-through — just the words
-
-No stage directions. Line breaks are where to breathe.
-
-Kuku puts out fifty new episodes every week. Right now, someone watches all fifty by hand to find the clips worth posting. This reads the scripts and gives back a ranked list instead.
-
-In the sidebar you can drop in your own scripts, pick a model, and press one button. And there's no API key here. Every model answer is already saved, so anyone can run this and get the same output.
-
-Four numbers at the top. How many promos it found. How many passed a blind test. Zero made-up timestamps. And what the run cost.
-
-Then three tabs. Ranked is the list, with start and end times and a download button. Rejected shows what it threw away and why. And How it ran shows every step and every call it made.
-
-Step one. It reads all fifty scripts and breaks them into three thousand seven hundred beats. Every line, every action, every camera note, each with a start and end time.
-
-Step two. It cuts every clip between twenty and sixty seconds long, always starting and ending on a real beat. That's eighteen thousand clips. Each gets four scores: the opening, the tension, the ending, and whether it stands alone.
-
-Step three. If nothing happens in the first three seconds, it's gone. That removes three thousand clips. Then it keeps only the best few from each episode. Eighteen thousand becomes a hundred and seventy-one.
-
-Step four. Now the model gets involved, once per episode. It picks from that short list and writes the hook and the ending line. It only ever sees beat IDs, never times, so it can't make up a timestamp. That gives ninety-one promos.
-
-Step five. Six hard rules check every promo, and all ninety-one pass. Then it removes near-copies: thirty-seven showed almost the same thing as a better one. And a second model sees only the clip and answers four questions. Seven failed. Forty-seven are left.
-
-Step six. The four scores combine into one. Opening and ending count thirty percent each, tension and standalone twenty each.
-
-Number one here scored point eight seven six. But by score alone, it was only tenth. The model moved it to the top, because a formula can't tell which promo is best to post first. The highest score sits at number nine.
-
-One honest limit. It only reads text, so it can't tell you whether a shot actually looks good.
+**8.** The tool only reads text, so it cannot tell whether a shot looks good. That is the first thing I would fix.
 
 ---
 
-### Every number, and where it's on screen
+## The same script with nothing in between
 
-| You say | Where it is |
+Read straight down. Blank lines are where to breathe.
+
+Kuku puts out fifty new episodes every week, and right now a person watches all fifty by hand to find the clips worth posting. This tool reads the scripts and returns a ranked list instead.
+
+I am running it now. There is no API key here, because every model answer is already saved. Anyone can download this and get the same result.
+
+It found forty-seven promos from fifty episodes, and it invented zero timestamps.
+
+Here is how it works. It breaks the scripts into three thousand seven hundred beats, each with a start and an end time. It cuts every possible clip between twenty and sixty seconds, which gives eighteen thousand clips. It scores each one on its opening, its tension, its ending, and whether it stands alone. Any clip with nothing in the first three seconds is deleted. Then the model picks one promo per episode. It only sees beat numbers and never sees times, so it cannot invent a timestamp.
+
+Every promo also has to pass a blind test, where a second model sees only the clip and has to say who is in it and what is at stake. Seven promos failed, so I dropped them.
+
+The four scores are then combined into one. The top promo scored zero point eight seven six, but by score it was only tenth. The model moved it to first place, because a formula cannot judge which promo is best to post first.
+
+To check that this beats guessing, I put every promo against a random clip from the same episode. A blind judge preferred mine seventy-seven percent of the time.
+
+The tool only reads text, so it cannot tell whether a shot looks good. That is the first thing I would fix.
+
+---
+
+## Where to click, in order
+
+| At paragraph | Do this |
 |---|---|
-| fifty scripts · three thousand seven hundred beats | How it ran → Source data |
-| eighteen thousand clips | Funnel row 1 (18,141) |
-| removes three thousand | Funnel row 2 (3,376) |
-| a hundred and seventy-one | Funnel row 3 |
-| ninety-one promos | Funnel row 4 |
-| six rules, all ninety-one pass | Funnel row 5 (0 failures) · **Invented timestamps** card |
-| thirty-seven near-copies | Funnel row 6 · Rejected tab |
-| seven failed the blind test | Funnel row 7 · **Passed blind test** card, 47/54 |
-| forty-seven left | Funnel row 8 · **Promos** card |
-| thirty / twenty / thirty / twenty percent | Ranked tab → "How this list is ordered" |
-| point eight seven six | Ranked table row 1, Score column |
-| only tenth · highest sits at number nine | Score column isn't descending at the top, and "Ordered by" says `model` |
+| 1 | Nothing. The app is already open. |
+| 2 | Point at the sidebar, then press **Find promos** |
+| 3 | Point at the four cards along the top |
+| 4 | Open **How it ran**, move down the funnel table |
+| 5 | Open **Rejected** |
+| 6 | Open **Ranked**, point at the Score column |
+| 7 and 8 | Nothing. Stay on **Ranked**. |
 
-### The two things worth getting right
+## Every number is checked
 
-**The maths reconciles, so you can say it with confidence.** 0.30 × 1.0, plus 0.20 × 0.751, plus 0.30 × 0.94, plus 0.20 × 0.719, equals 0.876 exactly. The sub-scores are in the detail panel if anyone wants to check.
+| You say | Checked against |
+|---|---|
+| fifty episodes, three thousand seven hundred beats | `outputs/parse_report.json` |
+| eighteen thousand clips | funnel row 1, 18,141 |
+| forty-seven promos, zero invented timestamps | the **Promos** and **Invented timestamps** cards |
+| seven promos failed | funnel row 7, and the **Rejected** tab |
+| zero point eight seven six, only tenth | Ranked table row 1 |
+| seventy-seven percent | `outputs/ab_test_balanced.json` |
 
-**Number one is genuinely not the top scorer, and that's the point of step 6.** It scored 0.876 and ranked tenth on score alone. The formula's favourite, 0.941, is sitting at rank 9 — and it only got 3 out of 4 on the blind test, while number one got 4 out of 4. So don't say "the highest score"; say it was tenth and the model moved it. That one sentence explains why there's a model in the ranking at all, and a reviewer can verify it on screen in two seconds.
+Two of them are worth understanding, in case you are asked.
 
-### Two things not to say
+**"Only tenth" is true and it is the best part.** The top promo is genuinely not the highest scorer. It scored 0.876. The formula's favourite scored 0.941 and sits at rank 9, and that one only got 3 out of 4 on the blind test while the top one got 4 out of 4. You can see this on screen: the Score column is not in descending order at the top, and the "Ordered by" column says `model`.
 
-Don't say "ninety-two of ninety-two". That's right in the written doc, where it counts the flagship promo too, but the funnel on screen says ninety-one. Say what's on screen.
+**Seventy-seven percent is 77.4% rounded.** It counts the 31 pairs where the judge gave the same answer with the clips shown in both orders. The log file also shows 72.4%, which counts all 76 judgements including the ones that flipped when the order changed. Both are correct, and the solution doc uses the pair-level number.
 
-Don't read `1:02` as "one colon zero two". It's "one-oh-two".
+## Two things not to say
 
-### If you have twenty seconds spare
+Do not say "ninety-two of ninety-two". The written doc uses that number and it is correct there, but the screen shows ninety-one. Only say what is visible.
 
-You're at 2:48 and the brief allows three minutes. If you want the strongest thing in the submission, add this at the very end:
-
-> I also built three improvements that work, and I left them out. They changed eight of my forty-three picks, and I couldn't run the blind test again in time. Showing better promos next to a score from the old ones felt wrong. It's in the git history.
-
-The brief asks where AI got things wrong and what you'd do differently. The solution doc answers that in writing, but saying it out loud is what people remember.
+Do not read `1:02` as "one colon zero two". Say "one minute two".
