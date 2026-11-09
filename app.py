@@ -2,7 +2,7 @@
 Promo Finder - web interface.
 
 A view over promo.pipeline.run(), the same function run.py calls. No pipeline
-logic lives here.
+logic lives here; presentation lives in promo/ui_style.py.
 
     streamlit run app.py
 """
@@ -12,13 +12,16 @@ import glob
 import shutil
 import tempfile
 
+import altair as alt
 import pandas as pd
 import streamlit as st
 
 from promo.pipeline import run
 from promo.llm import PROVIDERS, load_dotenv
+from promo import ui_style as ui
 
-st.set_page_config(page_title="Promo Finder", page_icon="🎬", layout="wide")
+st.set_page_config(page_title="Promo Finder", page_icon="◆", layout="wide")
+st.markdown(ui.CSS, unsafe_allow_html=True)
 load_dotenv()
 
 MODELS = [
@@ -57,43 +60,59 @@ def load_latest() -> dict | None:
     return None
 
 
+def segments_text(promo: dict) -> str:
+    return "   +   ".join(
+        (f'ep{s["episode"]}  ' if len(promo["episodes"]) > 1 else "")
+        + f'{s["start"]} → {s["end"]}'
+        for s in promo["segments"]
+    )
+
+
 # ---------------------------------------------------------------------------
-# Sidebar
+# Controls
 # ---------------------------------------------------------------------------
 
 with st.sidebar:
-    st.markdown("### Run")
+    st.markdown('<div class="sec" style="margin-top:0">Run</div>',
+                unsafe_allow_html=True)
     uploaded = st.file_uploader(
-        "Screenplay .txt files", type=["txt"], accept_multiple_files=True,
+        "Screenplay files", type=["txt"], accept_multiple_files=True,
+        label_visibility="collapsed",
         help="Leave empty to use the bundled 50-episode pack.",
     )
+    st.caption("Drop .txt screenplays, or leave empty for the bundled pack.")
+
     choice = st.selectbox(
         "Model", range(len(MODELS)),
-        format_func=lambda i: f"{MODELS[i][1]}  ({MODELS[i][0]})",
+        format_func=lambda i: f"{MODELS[i][1]}",
     )
     provider, model = MODELS[choice]
+    st.caption(f"via {provider}")
     has_key = bool(key_for(provider))
-    go = st.button("▶  Find promos", type="primary", width="stretch")
+
+    go = st.button("Find promos", type="primary", width="stretch")
 
     if has_key:
         st.caption("Responses are cached, so a repeat run is instant.")
     else:
-        # No key is not a blocker. Every model response from the full run is
-        # committed in .cache/, keyed by (provider, model, prompt hash), and
-        # the client checks the cache before it checks for a key. So the
-        # bundled pack reproduces exactly with no credentials at all. Only a
-        # file the cache has never seen needs a live call.
         st.caption(
-            f"No {PROVIDERS[provider]['key_env']} configured. The bundled "
-            f"50-episode pack still runs from cached responses, which is how "
-            f"this reproduces without credentials. Uploading a new screenplay "
-            f"needs a key."
+            f"No {PROVIDERS[provider]['key_env']} set. The bundled pack still "
+            f"runs from cached responses, which is how this reproduces without "
+            f"credentials. A new screenplay would need a key."
         )
 
 
-st.title("🎬 Promo Finder")
-st.caption("Microdrama screenplays → ranked, timestamped promo cut-lists. "
-           "The model picks moments by beat ID; code writes every timestamp.")
+# ---------------------------------------------------------------------------
+# Header
+# ---------------------------------------------------------------------------
+
+st.markdown(ui.masthead(
+    "Promo Finder",
+    "Reads microdrama screenplays and returns ranked, timestamped promo "
+    "cut&nbsp;lists. <b>Code owns time, the model owns judgment</b>: the model "
+    "picks moments by beat ID and never sees or writes a timestamp, so every "
+    "time below is looked up from the parsed screenplay.",
+), unsafe_allow_html=True)
 
 if "result" not in st.session_state:
     st.session_state.result = load_latest()
@@ -120,7 +139,7 @@ if go:
 
     out_dir = tempfile.mkdtemp(prefix="promo_out_")
     try:
-        with st.spinner("Running…"):
+        with st.spinner("Parsing, scoring, then asking the model to choose…"):
             result = run(input_dir, out_dir, provider=provider, model=model,
                          max_calls=250, log=log)
             result["_folder"] = out_dir
@@ -131,11 +150,9 @@ if go:
         if "is not set" in message:
             st.error(
                 f"This input needs a live model call and no "
-                f"{PROVIDERS[provider]['key_env']} is configured. The bundled "
-                f"50-episode pack runs without one because its responses are "
-                f"cached; a screenplay the cache has never seen cannot. Add the "
-                f"key under **Settings → Secrets** and rerun, or clear the "
-                f"uploader to use the bundled pack."
+                f"{PROVIDERS[provider]['key_env']} is set. The bundled pack "
+                f"runs without one because its responses are cached; a "
+                f"screenplay the cache has never seen cannot."
             )
         else:
             st.error(message)
@@ -145,68 +162,87 @@ if go:
 
 result = st.session_state.get("result")
 if not result:
-    st.info("Press **Find promos**.")
+    st.info("Press **Find promos** to run on the bundled pack.")
     st.stop()
 
 
 # ---------------------------------------------------------------------------
-# Headline numbers
+# Stat strip
 # ---------------------------------------------------------------------------
 
 counts, stats, meta = result["counts"], result["llm"], result["run"]
 promos = result["promos"]
-cols = st.columns(4)
-cols[0].metric("Promos", counts["shipped"], f"from {len(meta['episodes'])} episodes")
+report = result["parse_report"]
 tested = counts["shipped"] + counts["gate_failed"]
-cols[1].metric("Passed blind viewer test",
-               f"{counts['shipped']}/{tested}" if tested else "n/a",
-               f"{counts['gate_failed']} rejected")
-cols[2].metric("Invented timestamps", "0",
-               f"{len(promos)}/{len(promos)} validators pass")
-cols[3].metric("API calls", stats["calls"], stats["model"])
+
+st.markdown(ui.stat_row([
+    ui.stat("Promos", counts["shipped"],
+            f'from {len(meta["episodes"])} episodes, {report["n_beats"]} beats'),
+    ui.stat("Passed blind test",
+            f'{counts["shipped"]}/{tested}' if tested else "—",
+            f'{counts["gate_failed"]} rejected with transcripts'),
+    ui.stat("Invented timestamps", "0",
+            f'{len(promos)}/{len(promos)} validators pass', good=True),
+    ui.stat("Cost", f'{stats["calls"]} calls',
+            f'{stats["cache_hits"]} cached · {meta["elapsed_s"]}s · '
+            f'{stats["model"].split("/")[-1]}'),
+]), unsafe_allow_html=True)
 
 
-def segments_of(promo: dict) -> str:
-    return "  +  ".join(
-        f"ep{s['episode']}  {s['start']} → {s['end']}" for s in promo["segments"]
-    )
-
-
-tab_promos, tab_rejected, tab_run = st.tabs(
-    [f"Promos ({len(promos)})", f"Rejected ({len(result['rejected'])})", "Run details"]
-)
+tab_promos, tab_rejected, tab_run = st.tabs([
+    f"Ranked  ·  {len(promos)}",
+    f"Rejected  ·  {len(result['rejected'])}",
+    "How it ran",
+])
 
 
 # ---------------------------------------------------------------------------
-# Promos
+# Ranked
 # ---------------------------------------------------------------------------
 
 with tab_promos:
     ordered_by_model = set((result.get("rank_rationale") or {}).get("order") or [])
-    with st.expander("How this list is ordered"):
-        st.markdown(
-            f"""
-1. **The blind test is a filter, not a score.** {counts['gate_failed']} promos that
-   failed it were removed and are not ranked at all. They're in the Rejected tab.
-2. **Code sorts the survivors** by a composite of four sub-scores:
-   `0.30 x hook + 0.20 x tension + 0.30 x cliffhanger + 0.20 x standalone`.
-   Weights are hand-set and documented; there is no labelled data to learn them from.
-3. **The model reorders the top {len(ordered_by_model) or 12}**, seeing each promo's
-   hook, cliffhanger, hook type, composite score and blind-test score, and returns a
-   posting order. Everything below that keeps the composite order.
+    rationale = result.get("rank_rationale") or {}
 
-So the composite column is deliberately **not** in descending order for the top
-rows. Where it isn't, the model moved something. And because the blind-test score
-reaches the ranking only through the model's judgement rather than as a numeric
-term, a 3/4 can sit above a 4/4.
-"""
+    if rationale.get("post_first_reason"):
+        st.markdown(ui.section(
+            "Post this first",
+            f'<b>{rationale.get("post_first","")}</b> &nbsp;·&nbsp; '
+            f'{ui.esc(rationale["post_first_reason"])}',
+        ), unsafe_allow_html=True)
+
+    with st.expander("How this list is ordered"):
+        st.markdown(f"""
+The blind comprehension test is a **filter, not a score**. The
+{counts['gate_failed']} promos that failed it were removed and are not ranked
+at all; they're in the Rejected tab with their transcripts.
+
+Code then sorts the survivors on a weighted composite:
+`0.30 × hook + 0.20 × tension + 0.30 × cliffhanger + 0.20 × standalone`.
+Weights are hand-set and documented. There's no labelled data to learn them from.
+
+The model reorders the top {len(ordered_by_model) or 12}, seeing each promo's
+hook, cliffhanger, hook type, composite score and blind-test result. Everything
+below that keeps the composite order. So the score column deliberately isn't
+descending at the top: where it isn't, the model moved something.
+
+One consequence worth knowing: a 3/4 can sit above a 4/4, because the
+blind-test score reaches the ranking through the model's judgment rather than
+as a term in the formula.
+        """)
+
+    for promo in promos:
+        st.markdown(
+            ui.promo_card(promo, segments_text(promo), lead=promo.get("rank") == 1),
+            unsafe_allow_html=True,
         )
 
+    st.markdown("<hr>", unsafe_allow_html=True)
     rows = [{
         "#": p.get("rank"),
-        "Ep": ",".join(map(str, p["episodes"])),
-        "Start → End": segments_of(p),
-        "Len": f"{p['total_duration_s']:.0f}s",
+        "Episodes": ",".join(map(str, p["episodes"])),
+        "Start → End": segments_text(p),
+        "Len": round(p["total_duration_s"], 1),
         "Hook type": p.get("hook_type", ""),
         "Hook": p.get("hook", ""),
         "Cliffhanger": p.get("cliffhanger", ""),
@@ -214,62 +250,76 @@ term, a 3/4 can sit above a 4/4.
         "Score": round(p["scores"]["composite"], 3),
         "Ordered by": "model" if p["promo_id"] in ordered_by_model else "score",
     } for p in promos]
-    st.dataframe(pd.DataFrame(rows), hide_index=True, width="stretch", height=430)
+    frame = pd.DataFrame(rows)
 
-    left, right = st.columns([1, 5])
-    left.download_button("⬇  JSON", json.dumps(promos, indent=2, ensure_ascii=False),
-                         "promos.json", "application/json")
-    right.download_button("⬇  CSV", pd.DataFrame(rows).to_csv(index=False),
-                          "promos.csv", "text/csv")
+    with st.expander("Full table, and the detail behind one promo"):
+        st.dataframe(frame, hide_index=True, width="stretch", height=330)
+        left, right = st.columns([1, 5])
+        left.download_button("JSON", json.dumps(promos, indent=2, ensure_ascii=False),
+                             "promos.json", "application/json")
+        right.download_button("CSV", frame.to_csv(index=False), "promos.csv", "text/csv")
 
-    st.divider()
-    pick = st.selectbox(
-        "Inspect", [p["promo_id"] for p in promos],
-        format_func=lambda pid: next(
-            f"#{p['rank']}  ·  episode {p['episodes'][0]}  ·  {p.get('hook','')[:70]}"
-            for p in promos if p["promo_id"] == pid
-        ),
-    )
-    promo = next(p for p in promos if p["promo_id"] == pick)
-
-    one, two = st.columns([2, 3])
-    with one:
-        for seg in promo["segments"]:
-            st.code(f"episode {seg['episode']}\n{seg['start']} → {seg['end']}"
-                    f"   ({seg['duration_s']:.1f}s)")
-        st.markdown(f"**Hook** — {promo.get('hook','')}")
-        st.markdown(f"**Cliffhanger** — {promo.get('cliffhanger','')}")
-        st.markdown(f"**Why it works** — {promo.get('why_it_works','')}")
-        if promo.get("rank_rationale"):
-            st.markdown(f"**Post order** — {promo['rank_rationale']}")
-    with two:
-        gate = promo.get("cold_viewer") or {}
-        if gate.get("answers"):
-            st.markdown(f"**Blind viewer test — {gate.get('score','')}**  \n"
-                        f"A model shown only this clip: no logline, no episode "
-                        f"number, no surrounding scenes.")
-            for question, answer in gate["answers"].items():
-                st.markdown(f"- *{question.replace('_',' ')}* — {answer}")
-        curves = result.get("tension_curves") or {}
-        key = str(promo["episodes"][0])
-        curve = curves.get(key) or curves.get(promo["episodes"][0])
-        if curve:
-            st.markdown("**Intensity across the episode**, from the screenplay's "
-                        "own tone tags. The promo is the spike-then-cut.")
-            st.line_chart(pd.DataFrame(curve).set_index("t"), height=180)
-
-    flagship = result.get("flagship")
-    if flagship:
-        with st.expander(f"Flagship cross-episode promo — "
-                         f"{flagship['total_duration_s']:.0f}s across episodes "
-                         f"{flagship['episodes']}  ·  blind test "
-                         f"{(flagship.get('cold_viewer') or {}).get('score','—')}"):
-            st.dataframe(pd.DataFrame(flagship["segments"])[
-                ["order", "episode", "start", "end", "duration_s"]
-            ], hide_index=True, width="stretch")
-            st.markdown(f"**Story a stranger follows** — {flagship.get('narrative','')}")
-            st.markdown(f"**Hook** — {flagship.get('hook','')}")
-            st.markdown(f"**Cliffhanger** — {flagship.get('cliffhanger','')}")
+        pick = st.selectbox(
+            "Inspect", [p["promo_id"] for p in promos],
+            format_func=lambda pid: next(
+                f'#{p["rank"]}  ·  episode {p["episodes"][0]}  ·  {p.get("hook","")[:64]}'
+                for p in promos if p["promo_id"] == pid
+            ),
+        )
+        promo = next(p for p in promos if p["promo_id"] == pick)
+        one, two = st.columns([2, 3])
+        with one:
+            for seg in promo["segments"]:
+                st.code(f'episode {seg["episode"]}\n{seg["start"]} → {seg["end"]}'
+                        f'   ({seg["duration_s"]:.1f}s)')
+            st.caption("Sub-scores")
+            st.json(promo["scores"], expanded=True)
+        with two:
+            gate = promo.get("cold_viewer") or {}
+            if gate.get("answers"):
+                st.caption(f'Blind viewer test — {gate.get("score","")}. A model '
+                           f'shown only this clip: no logline, no episode number, '
+                           f'nothing either side of it.')
+                for question, answer in gate["answers"].items():
+                    st.markdown(f'**{question.replace("_"," ")}** — {answer}')
+            curves = result.get("tension_curves") or {}
+            curve = curves.get(str(promo["episodes"][0])) or curves.get(promo["episodes"][0])
+            if curve:
+                df = pd.DataFrame(curve)
+                band = pd.DataFrame([{
+                    "start": promo["segments"][0]["start_s"],
+                    "end": promo["segments"][-1]["end_s"],
+                }])
+                chart = (
+                    alt.layer(
+                        alt.Chart(band).mark_rect(
+                            color=ui.ACCENT, opacity=0.13
+                        ).encode(x="start:Q", x2="end:Q"),
+                        alt.Chart(df).mark_area(
+                            line={"color": ui.ACCENT, "strokeWidth": 1.4},
+                            color=alt.Gradient(
+                                gradient="linear",
+                                stops=[alt.GradientStop(color=ui.WASH, offset=0),
+                                       alt.GradientStop(color=ui.ACCENT, offset=1)],
+                                x1=1, x2=1, y1=1, y2=0,
+                            ),
+                        ).encode(
+                            x=alt.X("t:Q", title="seconds",
+                                    axis=alt.Axis(grid=False, tickCount=6)),
+                            y=alt.Y("intensity:Q", title=None,
+                                    scale=alt.Scale(domain=[0, 1]),
+                                    axis=alt.Axis(grid=True, tickCount=3)),
+                        ),
+                    )
+                    .properties(height=170)
+                    .configure_view(stroke=None)
+                    .configure_axis(labelColor=ui.FAINT, titleColor=ui.FAINT,
+                                    gridColor="#1E2430", domainColor="#1E2430",
+                                    labelFontSize=10, titleFontSize=10)
+                )
+                st.caption("Intensity across the episode, from the screenplay's own "
+                           "tone tags. The shaded band is this promo.")
+                st.altair_chart(chart, width='stretch')
 
 
 # ---------------------------------------------------------------------------
@@ -290,17 +340,15 @@ with tab_rejected:
     for promo in result["rejected"]:
         buckets[rejection_kind(promo)].append(promo)
 
-    st.caption("Everything the pipeline threw out, grouped by why. The blind-test "
-               "failures are the interesting ones: they scored well structurally "
-               "and a context-free reader still could not follow them.")
-
     sections = [
         ("gate", "Failed the blind comprehension test",
-         "A reader shown only the clip could not say who this is, what is at "
-         "stake, or was left with nothing unresolved."),
+         "A reader shown only the clip couldn't say who this is or what's at "
+         "stake, or found nothing left unresolved. Several of these scored well "
+         "structurally, which is the point of testing comprehension separately."),
         ("duplicate", "Suppressed as a near-duplicate",
          "Shows nearly the same thing as a higher-ranked promo from a nearby "
-         "episode, measured on visual descriptions. Posting both wastes a slot."),
+         "episode, measured on visual descriptions rather than dialogue. Posting "
+         "both would waste a slot."),
         ("validator", "Failed a hard validator",
          "Broke one of the six structural rules, so it never reached the gate."),
     ]
@@ -308,85 +356,109 @@ with tab_rejected:
         rows = buckets[key]
         if not rows:
             continue
-        st.markdown(f"#### {title} ({len(rows)})")
-        st.caption(blurb)
+        st.markdown(ui.section(f"{title} · {len(rows)}", blurb), unsafe_allow_html=True)
         for promo in rows:
             gate = promo.get("cold_viewer") or {}
-            label = f"episode {promo['episodes'][0]}"
+            label = f'episode {promo["episodes"][0]}'
             if key == "gate":
-                label += f"  ·  scored {gate.get('score','?')} on the blind test"
+                label += f'  ·  blind test {gate.get("score","?")}'
             elif key == "duplicate":
-                label += f"  ·  duplicate of {promo.get('rejected_reason','').split('of ')[-1].split(' ')[0]}"
+                dup = (promo.get("rejected_reason") or "").split("of ")[-1].split(" ")[0]
+                label += f'  ·  duplicate of {dup}'
             with st.expander(label):
-                # Informational, not an alarm: a suppressed duplicate is the
-                # pipeline working, not failing.
-                st.info(f"**Why it was dropped** — {promo.get('rejected_reason','')}")
-                st.code(segments_of(promo))
-                st.markdown(f"**Proposed hook** — {promo.get('hook','')}")
-                st.markdown(f"**Proposed cliffhanger** — {promo.get('cliffhanger','')}")
-                st.caption(f"Structural score {promo['scores']['composite']:.3f} "
-                           f"(hook {promo['scores']['hook']:.2f}, "
-                           f"cliffhanger {promo['scores']['cliffhanger']:.2f}, "
-                           f"standalone {promo['scores']['standalone']:.2f})")
+                st.markdown(
+                    f'<p class="note" style="margin-bottom:.6rem">'
+                    f'<b>Dropped because</b> — {ui.esc(promo.get("rejected_reason",""))}'
+                    f'</p>', unsafe_allow_html=True)
+                st.markdown(f'<span class="ts">{ui.esc(segments_text(promo))}</span>',
+                            unsafe_allow_html=True)
+                st.markdown(f'\n**Proposed hook** — {promo.get("hook","")}')
+                st.markdown(f'**Proposed cliffhanger** — {promo.get("cliffhanger","")}')
+                s = promo["scores"]
+                st.caption(f'Structural score {s["composite"]:.3f} '
+                           f'(hook {s["hook"]:.2f}, cliffhanger {s["cliffhanger"]:.2f}, '
+                           f'standalone {s["standalone"]:.2f})')
                 if gate.get("answers"):
-                    st.markdown(f"**What the blind reader said — {gate.get('score','')}**")
+                    st.markdown("**What the blind reader said**")
                     for question, answer in gate["answers"].items():
-                        st.markdown(f"- *{question.replace('_',' ')}* — {answer}")
+                        st.markdown(f'- *{question.replace("_"," ")}* — {answer}')
                 if promo.get("validator_failures"):
-                    st.markdown("**Validator failures**")
                     for failure in promo["validator_failures"]:
                         st.markdown(f"- {failure}")
 
 
 # ---------------------------------------------------------------------------
-# Run details
+# How it ran
 # ---------------------------------------------------------------------------
 
 with tab_run:
-    report = result["parse_report"]
     funnel = [
         ("Legal 20–60s windows on real beat boundaries", counts["windows_enumerated"]),
-        ("Rejected — nothing arresting in first 3 seconds", counts["rejected_no_hook"]),
+        ("Rejected — nothing arresting in the first 3 seconds", counts["rejected_no_hook"]),
         ("Shortlisted for the model to judge", counts["shortlisted"]),
         ("Candidate promos built", counts["candidates"]),
         ("Dropped — failed a hard validator", counts["validator_failed"]),
         ("Dropped — near-duplicate of a better promo", counts["near_duplicates"]),
-        ("Dropped — failed the blind viewer test", counts["gate_failed"]),
+        ("Dropped — failed the blind test", counts["gate_failed"]),
         ("Shipped", counts["shipped"]),
+    ]
+    source = [
+        ("Episodes", str(report["n_files"])),
+        ("Beats parsed", str(report["n_beats"])),
+        ("Tone-tag coverage", f'{report["tone_tag_coverage"]*100:.1f}%'),
+        ("Lexicon hit rate",
+         f'{report["intensity_coverage"]["lexicon_hit_rate"]*100:.1f}%'),
+        ("Speaker labels → characters",
+         f'{report["speaker_labels_raw"]} → {report["characters_canonical"]}'),
+        ("Defects found in source files", str(report["n_hazards"])),
+        ("Tokens in / out", f'{stats["tokens_in"]} / {stats["tokens_out"]}'),
+        ("Runtime", f'{meta["elapsed_s"]}s'),
     ]
     one, two = st.columns(2)
     with one:
-        st.markdown("**Funnel**")
+        st.markdown(ui.section("Funnel"), unsafe_allow_html=True)
         st.dataframe(pd.DataFrame(funnel, columns=["Stage", "Count"]),
-                     hide_index=True, width="stretch")
+                     hide_index=True, width="stretch", height=322)
     with two:
-        st.markdown("**Source data**")
-        st.dataframe(pd.DataFrame([
-            ("Episodes", str(report["n_files"])),
-            ("Beats parsed", str(report["n_beats"])),
-            ("Tone-tag coverage", f"{report['tone_tag_coverage']*100:.1f}%"),
-            ("Lexicon hit rate",
-             f"{report['intensity_coverage']['lexicon_hit_rate']*100:.1f}%"),
-            ("Speaker labels → characters",
-             f"{report['speaker_labels_raw']} → {report['characters_canonical']}"),
-            ("Hazards found in source files", str(report["n_hazards"])),
-            ("Tokens in / out", f"{stats['tokens_in']} / {stats['tokens_out']}"),
-            ("Runtime", f"{meta['elapsed_s']}s"),
-        ], columns=["Measure", "Value"]), hide_index=True, width="stretch")
+        st.markdown(ui.section("Source data"), unsafe_allow_html=True)
+        st.dataframe(pd.DataFrame(source, columns=["Measure", "Value"]),
+                     hide_index=True, width="stretch", height=322)
 
-    with st.expander(f"Hazards in the source screenplays ({report['n_hazards']}) — "
-                     f"reported, not silently repaired"):
+    with st.expander(f'Defects found in the screenplays · {report["n_hazards"]}'):
+        st.caption("Reported, never silently repaired.")
         for hazard in report["hazards"]:
             st.text(hazard)
 
-    with st.expander(f"Speaker labels merged ({len(report['alias_map'])}) — an "
-                     f"honorific is only stripped when the bare name appears "
-                     f"elsewhere, so LORD and LADY ASHCROFT stay two people"):
+    with st.expander(f'Speaker labels merged · {len(report["alias_map"])}'):
+        st.caption("An honorific is only stripped when the bare name appears "
+                   "elsewhere in the corpus, so a title shared by two different "
+                   "characters doesn't collapse them into one.")
         st.json(report["alias_map"])
+
+    flagship = result.get("flagship")
+    if flagship:
+        gate = flagship.get("cold_viewer") or {}
+        with st.expander(
+            f'Cross-episode flagship promo · {flagship["total_duration_s"]:.0f}s '
+            f'across episodes {flagship["episodes"]} · blind test '
+            f'{gate.get("score","—")}'
+        ):
+            st.caption("The only promo that crosses episodes. Stitching freely "
+                       "across 50 needs reliable character identity, and this "
+                       "corpus has 64 speaker labels for 58 characters, so this "
+                       "is deliberately one output held to the same checks as "
+                       "everything else.")
+            st.dataframe(pd.DataFrame(flagship["segments"])[
+                ["order", "episode", "start", "end", "duration_s"]
+            ], hide_index=True, width="stretch")
+            st.markdown(f'**Story a stranger would follow** — {flagship.get("narrative","")}')
+            if gate.get("answers"):
+                for question, answer in gate["answers"].items():
+                    st.markdown(f'- *{question.replace("_"," ")}* — {answer}')
 
     folder = os.path.join(result.get("_folder", "outputs"), "raw")
     files = sorted(glob.glob(os.path.join(folder, "*.json")))
-    with st.expander(f"Raw model requests and responses ({len(files)})"):
+    with st.expander(f"Raw model requests and responses · {len(files)}"):
         if not files:
             st.caption("Every response came from cache on this run.")
         else:
@@ -394,6 +466,9 @@ with tab_run:
                                 label_visibility="collapsed")
             with open(os.path.join(folder, name), encoding="utf-8") as fh:
                 payload = json.load(fh)
+            st.caption("System prompt")
             st.code(payload["system"])
+            st.caption("User prompt")
             st.code(payload["prompt"][:4000])
+            st.caption("Response")
             st.code(payload["response_text"])

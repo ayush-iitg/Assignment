@@ -1,6 +1,13 @@
+# Palette matched to Kuku FM's own brand colours. Their site ships
+# <meta name="theme-color" content="#E25506">; #FF6A1F is that burnt orange
+# brightened slightly so it holds up against a dark background.
 [theme]
 base = "dark"
-primaryColor = "#E23E57"
+primaryColor = "#FF6A1F"
+backgroundColor = "#0B0D12"
+secondaryBackgroundColor = "#15181F"
+textColor = "#ECEFF4"
+font = "sans serif"
 
 [server]
 maxUploadSize = 20
