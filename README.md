@@ -172,11 +172,7 @@ One consequence worth knowing: a 3/4 can outrank a 4/4, because the blind-test r
 
 Full evidence, including the blind A/B against random windows: [`outputs/eval_report.md`](outputs/eval_report.md).
 
-## What it can't do
 
-It can't see: shot quality, performance and music are invisible in text. Its prose embellishes even though its timestamps can't — the top promo's hook says "blood and dust flying" where the screenplay says "stone dust", and the word *blood* appears nowhere in that episode. 8 of 50 episodes ship nothing, having lost their best candidate to the gate or a duplicate. Scoring weights are hand-set and written down in one table; there is no labelled data, so nothing here is learned.
-
-Five things the AI got wrong, with before/after: [`docs/ai_mistakes_log.md`](docs/ai_mistakes_log.md).
 
 ## Layout
 
